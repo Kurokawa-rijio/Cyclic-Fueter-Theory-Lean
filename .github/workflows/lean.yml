@@ -11,6 +11,21 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      # Install Elan without attempting to inspect the Lake workspace.
+      - name: Initialize Lean environment
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+
+      # Generate lake-manifest.json for this public repository.
+      - name: Generate Lake manifest
+        run: lake update
+
+      # Build after the manifest has been generated.
       - name: Build Lean project
         uses: leanprover/lean-action@v1
         with:
