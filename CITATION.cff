@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software in academic work, cite the version archived by Zenodo and the relevant research documents."
+title: "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results"
+authors:
+  - family-names: Kurokawa
+    given-names: Ryojiro
+abstract: >-
+  This software repository contains Lean 4 source files developed in connection with
+  the Cyclic Fueter Theory (CFT) research program. It formalizes selected algebraic
+  and geometric statements involving quaternionic algebra, Fueter-type operators,
+  matrix and spinor constructions, quantum-geometric identities, Cartan-frame
+  calculations, spherically symmetric Einstein–Yang–Mills reductions, junction
+  calculations, constraint-propagation identities, zero-mode calculations, and
+  selected Wess–Zumino–Witten (WZW)-related formulas. The repository includes an
+  author-maintained status ledger for 51 items grouped into α-I–α-VIII. Status labels
+  describe the current formalization scope and are not independent certification or
+  peer review of the corresponding research claims. Lean verifies theorem conclusions
+  from declared assumptions and imported results; formalization does not by itself
+  validate the physical interpretation or applicability of external results.
+keywords:
+  - Lean 4
+  - Mathlib
+  - Formalization
+  - Formal verification
+  - Interactive theorem proving
+  - Quaternionic analysis
+  - Fueter equations
+  - Clifford algebra
+  - Differential geometry
+  - Mathematical physics
+  - Einstein–Yang–Mills theory
+  - Constraint propagation
+  - Wess–Zumino–Witten model

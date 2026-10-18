@@ -1,0 +1,1 @@
+The README and build log in this directory were included with the source archive. They are retained as historical artifacts, not as the current repository instructions. In particular, the build log has not been verified as a build of the exact `2026-10-17b` source snapshot.

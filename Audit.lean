@@ -1,0 +1,783 @@
+import CFT.AlphaB_QH
+import CFT.AlphaCompleteA
+import CFT.AlphaCompleteB
+import CFT.AlphaCompleteC
+import CFT.AlphaCompleteC2
+import CFT.AlphaCompleteD
+import CFT.AlphaI
+import CFT.AlphaII
+import CFT.AlphaIII
+import CFT.AlphaIII_Codazzi
+import CFT.AlphaIII_Glue
+import CFT.AlphaIII_Israel
+import CFT.AlphaIII_Junction
+import CFT.AlphaIII_P1
+import CFT.AlphaIII_Shape
+import CFT.AlphaII_Action
+import CFT.AlphaII_Diagonal
+import CFT.AlphaII_EYM
+import CFT.AlphaII_Z5
+import CFT.AlphaIV
+import CFT.AlphaIV_Propagation
+import CFT.AlphaIV_Z9
+import CFT.AlphaI_AW
+import CFT.AlphaI_C
+import CFT.AlphaI_H3
+import CFT.AlphaI_QBij
+import CFT.AlphaIntegrals
+import CFT.AlphaV
+import CFT.AlphaVI
+import CFT.AlphaVII
+import CFT.AlphaVIII_Attractor
+import CFT.AlphaVIII_BF
+import CFT.AlphaVIII_BPS
+import CFT.AlphaVIII_Embedding
+import CFT.AlphaVIII_WZW
+import CFT.AlphaVIII_Z38
+import CFT.AlphaVIII_Z41
+import CFT.AlphaVIII_Z44
+import CFT.AlphaVIII_Z44b
+import CFT.AlphaVII_Abelian
+import CFT.AlphaVII_BL
+import CFT.AlphaVII_Bundle
+import CFT.AlphaVII_Chirality
+import CFT.AlphaVII_Lichnerowicz
+import CFT.AlphaVII_N1
+import CFT.AlphaVII_Perturb
+import CFT.AlphaVII_RSGeneral
+import CFT.AlphaVII_SO10
+import CFT.AlphaVII_Thooft
+import CFT.AlphaVII_Z28d
+import CFT.AlphaV_A4
+import CFT.AlphaV_FW
+import CFT.AlphaV_Gauss
+import CFT.Cartan.Aligned
+import CFT.Cartan.BochnerSign
+import CFT.Cartan.C2
+import CFT.Cartan.Frame
+import CFT.Cartan.SSCoefBj
+import CFT.Cartan.SSCoefK0
+import CFT.Cartan.SSCoefK1
+import CFT.Cartan.SSCoefK2
+import CFT.Cartan.SSCoefK3
+import CFT.Cartan.SSCoefR3
+import CFT.Cartan.SSCoefR6
+import CFT.Cartan.SSFirst
+import CFT.Cartan.SSJet
+import CFT.Cartan.SSK
+import CFT.Cartan.SSRows0
+import CFT.Cartan.SSRows1a
+import CFT.Cartan.SSRows1b
+import CFT.Cartan.SSRows2a
+import CFT.Cartan.SSRows2b
+import CFT.Cartan.SSRows3
+import CFT.Cartan.SecondStage
+import CFT.GaugeCovariance
+import CFT.ZeroModeL2
+
+#print axioms CFT.QH.qh_reciprocal
+#print axioms CFT.QH.gudermann
+#print axioms CFT.QH.gudermann_momentum
+#print axioms CFT.QH.gd_deriv
+#print axioms CFT.QH.conformal
+#print axioms CFT.QH.slope_H
+#print axioms CFT.QH.slope_Q
+#print axioms CFT.QH.slope_Q_value
+#print axioms CFT.QH.normal_H
+#print axioms CFT.QH.normal_Q
+#print axioms CFT.QH.contact
+#print axioms CFT.QH.ck_deriv
+#print axioms CFT.QH.cayley_klein
+#print axioms CFT.QH.curv_H_Q
+#print axioms CFT.QH.curv_Q_over_u
+#print axioms CFT.QH.area_H
+#print axioms CFT.QH.area_Q
+#print axioms CFT.QH.area_ratio
+#print axioms CFT.QH.hemisphere_area
+#print axioms CFT.QH.gauss_bonnet_H
+#print axioms CFT.AlphaCompleteA.H_a
+#print axioms CFT.AlphaCompleteA.H_pb
+#print axioms CFT.AlphaCompleteA.H_pa
+#print axioms CFT.AlphaCompleteA.H_b
+#print axioms CFT.AlphaCompleteA.hj_exact
+#print axioms CFT.AlphaCompleteA.center_ode
+#print axioms CFT.AlphaCompleteA.arrival_time
+#print axioms CFT.AlphaCompleteA.energy_ineq_alg
+#print axioms CFT.AlphaCompleteA.energy_monotone_integrand
+#print axioms CFT.AlphaCompleteA.collapse_time
+#print axioms CFT.AlphaCompleteA.energy_inequality
+#print axioms CFT.AlphaCompleteA.energy_inequality'
+#print axioms CFT.AlphaCompleteB.rho_injective
+#print axioms CFT.AlphaCompleteB.rho_star
+#print axioms CFT.AlphaCompleteB.rho_one
+#print axioms CFT.AlphaCompleteB.rho_SU2
+#print axioms CFT.AlphaCompleteB.lorentz_action
+#print axioms CFT.AlphaCompleteB.II_iff_cotton
+#print axioms CFT.AlphaCompleteB.frame_eq
+#print axioms CFT.AlphaCompleteB.maurer_cartan
+#print axioms CFT.AlphaCompleteB.inv_deriv
+#print axioms CFT.AlphaCompleteB.frame_metric
+#print axioms CFT.AlphaCompleteB.quantum_metric
+#print axioms CFT.AlphaCompleteB.pullback_metric
+#print axioms CFT.AlphaCompleteB.dQ0_deriv
+#print axioms CFT.AlphaCompleteC.F_diag
+#print axioms CFT.AlphaCompleteC.F_anti
+#print axioms CFT.AlphaCompleteC.F_eps
+#print axioms CFT.AlphaCompleteC.starF_closed
+#print axioms CFT.AlphaCompleteC2.bps_closed
+#print axioms CFT.AlphaCompleteC2.bps
+#print axioms CFT.AlphaCompleteC2.aB_eq
+#print axioms CFT.AlphaCompleteC2.apB_eq
+#print axioms CFT.AlphaCompleteD.zero_mode
+#print axioms CFT.AlphaCompleteD.zero_mode_other
+#print axioms CFT.AlphaCompleteD.count_integer_charge
+#print axioms CFT.AlphaCompleteD.admissible_half
+#print axioms CFT.AlphaCompleteD.count_half_charge
+#print axioms CFT.AlphaCompleteD.other_chirality_empty
+#print axioms CFT.AlphaCompleteD.exponent_condition
+#print axioms CFT.AlphaCompleteD.one_generation_from_twist
+#print axioms CFT.AlphaI.i_sq
+#print axioms CFT.AlphaI.j_sq
+#print axioms CFT.AlphaI.k_sq
+#print axioms CFT.AlphaI.ijk
+#print axioms CFT.AlphaI.normSq_mul'
+#print axioms CFT.AlphaI.det_rho
+#print axioms CFT.AlphaI.rho_mul
+#print axioms CFT.AlphaI.det_lorentz
+#print axioms CFT.AlphaI.dirac_sq
+#print axioms CFT.AlphaI.proj_idem
+#print axioms CFT.AlphaI.qD_unit
+#print axioms CFT.AlphaI.qD_upper
+#print axioms CFT.AlphaI.Qm_unit
+#print axioms CFT.AlphaI.Qm_rest
+#print axioms CFT.AlphaI.radial_metric
+#print axioms CFT.AlphaI.chi_deriv
+#print axioms CFT.AlphaI.hopf_norm
+#print axioms CFT.AlphaI.hopf_re
+#print axioms CFT.AlphaI.bps_k
+#print axioms CFT.AlphaI.bps_f
+#print axioms CFT.AlphaII.coeff_I
+#print axioms CFT.AlphaII.rm2_3d
+#print axioms CFT.AlphaII.ric2_of_I
+#print axioms CFT.AlphaII.trace_II
+#print axioms CFT.AlphaII.satI_flat
+#print axioms CFT.AlphaII.satI_sphere
+#print axioms CFT.AlphaII.not_satI_hyp
+#print axioms CFT.AlphaII.satI_sphProd
+#print axioms CFT.AlphaII.not_satI_hypProd
+#print axioms CFT.AlphaII.three_phases
+#print axioms CFT.AlphaII.kappa_sym
+#print axioms CFT.AlphaII.kappa_closed
+#print axioms CFT.AlphaII.window
+#print axioms CFT.AlphaII.window_cos
+#print axioms CFT.AlphaII.br_lapse_d1
+#print axioms CFT.AlphaII.br_lapse_d2
+#print axioms CFT.AlphaIII.israel_jump
+#print axioms CFT.AlphaIII.israel_impossible
+#print axioms CFT.AlphaIII.integrand_nonneg
+#print axioms CFT.AlphaIII.penrose_spherical
+#print axioms CFT.AlphaIII.no_flat_exterior
+#print axioms CFT.AlphaIII.M2_cap
+#print axioms CFT.AlphaIII.M2_equator
+#print axioms CFT.AlphaIII.M2_neck
+#print axioms CFT.AlphaIII.neck_marginal
+#print axioms CFT.AlphaIII.M2_flat
+#print axioms CFT.AlphaIII.a_eq_l
+#print axioms CFT.AlphaIII.schw_R
+#print axioms CFT.AlphaIII.schw_Rm2
+#print axioms CFT.AlphaIII.schw_consistent
+#print axioms CFT.AlphaIII.schw_not_I
+#print axioms CFT.AlphaIII.cap_newton
+#print axioms CFT.AlphaIII.flat_mass_rate
+#print axioms CFT.AlphaIII.min_mass
+#print axioms CFT.Codazzi.codazzi_s
+#print axioms CFT.Codazzi.codazzi_theta
+#print axioms CFT.Codazzi.codazzi_phi
+#print axioms CFT.Codazzi.hamiltonian_K
+#print axioms CFT.Glue.glue_C1
+#print axioms CFT.Glue.glue_EYM
+#print axioms CFT.Glue.no_flat_from_constraints
+#print axioms CFT.Glue.junction_marginal
+#print axioms CFT.Israel.trh_self
+#print axioms CFT.Israel.trh_linear
+#print axioms CFT.Israel.israel_trace
+#print axioms CFT.Israel.israel_inverse
+#print axioms CFT.Israel.israel_no_shell
+#print axioms CFT.Israel.israel_inverse_three
+#print axioms CFT.Israel.sphere_consistency
+#print axioms CFT.Junction.classify_null
+#print axioms CFT.Junction.weak_second_derivative
+#print axioms CFT.Junction.shell_density
+#print axioms CFT.Junction.no_shell_iff
+#print axioms CFT.Junction.constraint_form
+#print axioms CFT.AlphaIII.null_front
+#print axioms CFT.Shape.cap_slope
+#print axioms CFT.Shape.cap_slope_ends
+#print axioms CFT.Shape.band_cap
+#print axioms CFT.Shape.band_neck
+#print axioms CFT.Shape.cap_volume
+#print axioms CFT.Shape.gauss_bonnet_dumbbell
+#print axioms CFT.Shape.junction_mots
+#print axioms CFT.Shape.junction_schwarzschild
+#print axioms CFT.Shape.junction_entropy
+#print axioms CFT.Shape.normal_stress
+#print axioms CFT.Shape.ms_from_constraints
+#print axioms CFT.Shape.penrose_from_constraints
+#print axioms CFT.Action.spin_torsion_free
+#print axioms CFT.Action.spin_antisymmetric
+#print axioms CFT.Action.spin_is_witten
+#print axioms CFT.Action.s3_spin_connection
+#print axioms CFT.Action.lambda_zero
+#print axioms CFT.Action.junction_ghy
+#print axioms CFT.Action.coupling_size
+#print axioms CFT.Action.strong_or_classical
+#print axioms CFT.Diagonal.deriv_zero_of_const
+#print axioms CFT.Diagonal.cert
+#print axioms CFT.Diagonal.codazzi_to_flow
+#print axioms CFT.Diagonal.flow_s1
+#print axioms CFT.Diagonal.flow_s2
+#print axioms CFT.Diagonal.flow_e1
+#print axioms CFT.Diagonal.flow_e2
+#print axioms CFT.Diagonal.flow_e3
+#print axioms CFT.Diagonal.diagonal_class_degenerate
+#print axioms CFT.Diagonal.scalar_conserved
+#print axioms CFT.EYM.ym_stress
+#print axioms CFT.EYM.cap_stress
+#print axioms CFT.EYM.neck_stress
+#print axioms CFT.EYM.ell_cap
+#print axioms CFT.EYM.ell_neck
+#print axioms CFT.EYM.flux_cap
+#print axioms CFT.EYM.riem_identity
+#print axioms CFT.EYM.geometric_constraint
+#print axioms CFT.EYM.Rtt_deriv
+#print axioms CFT.EYM.sector_delta
+#print axioms CFT.EYM.sector_geodesic
+#print axioms CFT.EYM.phase_neck
+#print axioms CFT.EYM.phase_form
+#print axioms CFT.EYM.no_hyperbolic
+#print axioms CFT.EYM.neck_any_lapse
+#print axioms CFT.EYM.frw_exact
+#print axioms CFT.EYM.neck_W_slope
+#print axioms CFT.EYM.neck_W_unstable
+#print axioms CFT.Z5.E0_eq
+#print axioms CFT.Z5.cert
+#print axioms CFT.Z5.deriv_zero_on_open
+#print axioms CFT.Z5.dV_from_bd
+#print axioms CFT.Z5.flow_E0
+#print axioms CFT.Z5.flow_E1
+#print axioms CFT.Z5.flow_E2
+#print axioms CFT.Z5.static_W_trichotomy
+#print axioms CFT.Z5.const_of_discrete
+#print axioms CFT.Z5.static_classification
+#print axioms CFT.AlphaIV.jump_const
+#print axioms CFT.AlphaIV.ruu_jump
+#print axioms CFT.AlphaIV.energy_deriv
+#print axioms CFT.AlphaIV.energy_nondecreasing
+#print axioms CFT.AlphaIV.tan_gd
+#print axioms CFT.AlphaIV.gd_deriv
+#print axioms CFT.AlphaIV.sqrt_one_add_tan_sq
+#print axioms CFT.AlphaIV.front_deriv
+#print axioms CFT.AlphaIV.fronts_meet_before
+#print axioms CFT.AlphaIV.arrival_bound
+#print axioms CFT.AlphaIV.cap_lifetime
+#print axioms CFT.AlphaIV.gd_deriv_zero
+#print axioms CFT.AlphaIV.gd_zero
+#print axioms CFT.AlphaIV.wdw_exact
+#print axioms CFT.Propagation.deriv_inv
+#print axioms CFT.Propagation.deriv_ofNat
+#print axioms CFT.Propagation.hamiltonian_propagation
+#print axioms CFT.Propagation.momentum_propagation
+#print axioms CFT.Z9.acc_le
+#print axioms CFT.Z9.rp_nonpos
+#print axioms CFT.Z9.r_le
+#print axioms CFT.Z9.rp_bound
+#print axioms CFT.Z9.r_lt
+#print axioms CFT.Z9.energy_lower
+#print axioms CFT.Z9.psi_deriv
+#print axioms CFT.Z9.psi_r1
+#print axioms CFT.Z9.psi_lt
+#print axioms CFT.Z9.z9_collapse
+#print axioms CFT.Z9.z9_before_half_period
+#print axioms CFT.Z9.z9_reaches_zero
+#print axioms CFT.Z9.z44_from_z9
+#print axioms CFT.Z9.static_iff
+#print axioms CFT.Z9.static_dichotomy
+#print axioms CFT.Z9.neck_frequency
+#print axioms CFT.Z9.ms_general
+#print axioms CFT.Z9.rn_param
+#print axioms CFT.Z9.rn_extremal
+#print axioms CFT.Z9.neck_E
+#print axioms CFT.Z9.ms_deriv
+#print axioms CFT.Z9.ms_increases
+#print axioms CFT.Z9.throat_trapped
+#print axioms CFT.AlphaI_AW.curv_formula
+#print axioms CFT.AlphaI_AW.gram_trace
+#print axioms CFT.AlphaI_AW.gram_gauge
+#print axioms CFT.AlphaI_AW.wigner_coeffs
+#print axioms CFT.AlphaI_AW.berry_coeffs
+#print axioms CFT.AlphaI_AW.fueter_coeffs
+#print axioms CFT.AlphaI_AW.berry_eq_wigner
+#print axioms CFT.AlphaI_AW.trG_W
+#print axioms CFT.AlphaI_AW.trG_B
+#print axioms CFT.AlphaI_AW.trG_F
+#print axioms CFT.AlphaI_AW.ratio
+#print axioms CFT.AlphaI_AW.trG_B_lt
+#print axioms CFT.AlphaI_AW.wigner_deriv
+#print axioms CFT.AlphaI_AW.berry_deriv
+#print axioms CFT.AlphaI_AW.berry_not_gauge_wigner
+#print axioms CFT.FueterC.gam_i
+#print axioms CFT.FueterC.gam_mk
+#print axioms CFT.FueterC.C_table
+#print axioms CFT.FueterC.right_kernel
+#print axioms CFT.FueterC.left_kernel
+#print axioms CFT.FueterC.rank_three
+#print axioms CFT.FueterC.singular
+#print axioms CFT.FueterC.kerParam_injective
+#print axioms CFT.FueterC.ker_eq_range
+#print axioms CFT.FueterC.real_rank_twelve
+#print axioms CFT.H3.h_radial
+#print axioms CFT.H3.h_tangential
+#print axioms CFT.H3.h_rapidity
+#print axioms CFT.H3.warped_curvature
+#print axioms CFT.H3.sectional
+#print axioms CFT.H3.h3_curvature
+#print axioms CFT.H3.cap_curvature
+#print axioms CFT.QBij.sum_nonneg'
+#print axioms CFT.QBij.En_pos
+#print axioms CFT.QBij.En_sq
+#print axioms CFT.QBij.qmap_maps
+#print axioms CFT.QBij.qinv_left
+#print axioms CFT.QBij.qmap_inj
+#print axioms CFT.QBij.qinv_right
+#print axioms CFT.QBij.qmap_surj
+#print axioms CFT.QBij.qmap_bij
+#print axioms CFT.AlphaIntegrals.cap_constraint
+#print axioms CFT.AlphaIntegrals.neck_constraint
+#print axioms CFT.AlphaIntegrals.cap_r_deriv
+#print axioms CFT.AlphaIntegrals.cap_rp_deriv
+#print axioms CFT.AlphaIntegrals.junction_jumps
+#print axioms CFT.AlphaIntegrals.cap_energy
+#print axioms CFT.AlphaIntegrals.neck_energy
+#print axioms CFT.AlphaIntegrals.endpoint_F
+#print axioms CFT.AlphaIntegrals.endpoint_G
+#print axioms CFT.AlphaIntegrals.not_L2_half
+#print axioms CFT.AlphaIntegrals.not_L2_gt
+#print axioms CFT.AlphaIntegrals.beta23
+#print axioms CFT.AlphaIntegrals.beta23_m1
+#print axioms CFT.AlphaIntegrals.beta23_m2
+#print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.AlphaV.cos_gd
+#print axioms CFT.AlphaV.sin_gd
+#print axioms CFT.AlphaV.conformal_consistent
+#print axioms CFT.AlphaV.mode_identity
+#print axioms CFT.AlphaV.fw_generator
+#print axioms CFT.AlphaV.SS_singlet
+#print axioms CFT.AlphaV.SS_upup
+#print axioms CFT.AlphaV.level_shift
+#print axioms CFT.AlphaV.level_triplet
+#print axioms CFT.AlphaV.gauss_compactness
+#print axioms CFT.AlphaV.gauss_interior
+#print axioms CFT.AlphaV.gauss_vacuum
+#print axioms CFT.AlphaV.log_coeff_meron
+#print axioms CFT.AlphaV.a4_meron
+#print axioms CFT.AlphaV.a4_vacua
+#print axioms CFT.AlphaVI.s3_not_ultrastatic
+#print axioms CFT.AlphaVI.wdw_exact
+#print axioms CFT.AlphaVI.bracket_TK
+#print axioms CFT.AlphaVI.bracket_KH
+#print axioms CFT.AlphaVI.K_pa_deriv
+#print axioms CFT.AlphaVI.K_b_deriv
+#print axioms CFT.AlphaVI.T_a_deriv
+#print axioms CFT.AlphaVI.T_pa_deriv
+#print axioms CFT.AlphaVI.constraint_conserved
+#print axioms CFT.AlphaVI.instanton_action
+#print axioms CFT.AlphaVII.monopole_zero_modes
+#print axioms CFT.AlphaVII.monopole_gap
+#print axioms CFT.AlphaVII.one_generation
+#print axioms CFT.Attractor.f_deriv_e
+#print axioms CFT.Attractor.f_deriv_v1
+#print axioms CFT.Attractor.f_deriv_v2
+#print axioms CFT.Attractor.attractor_unique
+#print axioms CFT.Attractor.attractor_entropy
+#print axioms CFT.BF.exp_derivs
+#print axioms CFT.BF.char_root
+#print axioms CFT.BF.real_roots_iff
+#print axioms CFT.BF.bf_ads2
+#print axioms CFT.BF.oscillating_solution
+#print axioms CFT.BF.z42_conditional
+#print axioms CFT.BF.one_eighth_not_integer
+#print axioms CFT.BF.z42_adopted
+#print axioms CFT.BF.one_quarter_not_integer
+#print axioms CFT.BPS.susy_posSemidef
+#print axioms CFT.BPS.energy_split
+#print axioms CFT.BPS.bps_iff
+#print axioms CFT.BPS.susy_energy_nonneg
+#print axioms CFT.BPS.no_bf_violating_mode
+#print axioms CFT.Embedding.iota_mul
+#print axioms CFT.Embedding.iota_sub
+#print axioms CFT.Embedding.iota_add
+#print axioms CFT.Embedding.dM_iota
+#print axioms CFT.Embedding.curvature_embed
+#print axioms CFT.Embedding.trace_embed
+#print axioms CFT.Embedding.pontryagin_match
+#print axioms CFT.Embedding.gs_rhs_vanishes
+#print axioms CFT.Embedding.z40_alpha_term_vanishes
+#print axioms CFT.WZW.quat_bracket
+#print axioms CFT.WZW.eps_contract
+#print axioms CFT.WZW.s3_ricci
+#print axioms CFT.WZW.parallelizing_torsion
+#print axioms CFT.WZW.s3_volume
+#print axioms CFT.WZW.flux
+#print axioms CFT.WZW.level
+#print axioms CFT.Z38.ell_sq_eq
+#print axioms CFT.Z38.ell_ledger
+#print axioms CFT.Z38.ell_witten
+#print axioms CFT.Z38.kaplunovsky
+#print axioms CFT.Z38.wzw_level
+#print axioms CFT.Z38.wzw_obstruction
+#print axioms CFT.Z38.wzw_obstruction_values
+#print axioms CFT.Z41.entropy_from_action
+#print axioms CFT.Z41.z41_deriv_v1
+#print axioms CFT.Z41.z41_deriv_v2
+#print axioms CFT.Z41.z41_critical
+#print axioms CFT.Z41.z41_entropy
+#print axioms CFT.Z41.z41_neck
+#print axioms CFT.Z44.killing_time_pos
+#print axioms CFT.Z44.causal_time_ne_zero
+#print axioms CFT.Z44.throat_static
+#print axioms CFT.Z44.no_killing_spinor
+#print axioms CFT.Z44b.throat_ds_zero
+#print axioms CFT.Z44b.no_killing_spinor_sym
+#print axioms CFT.Z44b.z44_full
+#print axioms CFT.Abelian.decomposition
+#print axioms CFT.Abelian.cross_zero_parallel
+#print axioms CFT.Abelian.abelian_projection
+#print axioms CFT.Abelian.stabilizer_iff
+#print axioms CFT.Abelian.stabilizer_abelian
+#print axioms CFT.BL.bl_commute_color
+#print axioms CFT.BL.bl_direction
+#print axioms CFT.BL.bl_normalization
+#print axioms CFT.BL.bl_charges
+#print axioms CFT.BL.bl_anomaly_linear
+#print axioms CFT.BL.bl_anomaly_cubic
+#print axioms CFT.BL.bl_anomaly_needs_nuR
+#print axioms CFT.BL.bl_anomaly_without_nuR
+#print axioms CFT.BL.bl_anomaly_three_generations
+#print axioms CFT.Bundle.dirac_difference
+#print axioms CFT.Bundle.dirac_quantization
+#print axioms CFT.Bundle.curvature_N
+#print axioms CFT.Bundle.curvature_S
+#print axioms CFT.Bundle.chern_number
+#print axioms CFT.Bundle.chern_eq_two_q
+#print axioms CFT.Bundle.gauss_bonnet_round
+#print axioms CFT.Bundle.ym_formula
+#print axioms CFT.Bundle.ym_roots
+#print axioms CFT.Chirality.jr_unique
+#print axioms CFT.Chirality.kink_plus
+#print axioms CFT.Chirality.kink_minus
+#print axioms CFT.Chirality.tanh_deriv
+#print axioms CFT.Chirality.norm_plus
+#print axioms CFT.Chirality.norm_plus_lt
+#print axioms CFT.Chirality.norm_minus
+#print axioms CFT.Chirality.shell_unit
+#print axioms CFT.Chirality.shell_sign
+#print axioms CFT.Chirality.shell_equator
+#print axioms CFT.Chirality.shell_celestial
+#print axioms CFT.Chirality.helicity_chern
+#print axioms CFT.Chirality.chiral_protected
+#print axioms CFT.Chirality.conjugate_branch
+#print axioms CFT.Lichnerowicz.index_zero
+#print axioms CFT.Lichnerowicz.swap
+#print axioms CFT.Lichnerowicz.reorder1
+#print axioms CFT.Lichnerowicz.reorder2
+#print axioms CFT.Lichnerowicz.relabel1
+#print axioms CFT.Lichnerowicz.relabel2
+#print axioms CFT.Lichnerowicz.delta_sum
+#print axioms CFT.Lichnerowicz.clifford_three
+#print axioms CFT.Lichnerowicz.clifford_four
+#print axioms CFT.Lichnerowicz.no_zero_mode
+#print axioms CFT.Lichnerowicz.s9_scalar
+#print axioms CFT.N1.center_pure_trivial
+#print axioms CFT.N1.no_mixing
+#print axioms CFT.N1.M_parity
+#print axioms CFT.N1.U_parity
+#print axioms CFT.N1.U_det
+#print axioms CFT.N1.inversion_swaps
+#print axioms CFT.N1.left_right_commute
+#print axioms CFT.N1.charges_leptons
+#print axioms CFT.N1.charges_quarks
+#print axioms CFT.N1.hypercharges
+#print axioms CFT.N1.weinberg_full
+#print axioms CFT.N1.weinberg_leptons
+#print axioms CFT.N1.anomaly_Y3
+#print axioms CFT.N1.anomaly_grav
+#print axioms CFT.N1.anomaly_SU2sqY
+#print axioms CFT.N1.anomaly_SU3sqY
+#print axioms CFT.N1.witten_even
+#print axioms CFT.Perturb.rs_coefficients
+#print axioms CFT.Perturb.rs_single_level
+#print axioms CFT.Perturb.z28d_from_rs
+#print axioms CFT.Perturb.z28d_values
+#print axioms CFT.RS.rs_first
+#print axioms CFT.RS.rs_second
+#print axioms CFT.RS.rs_second_hermitian
+#print axioms CFT.SO10.ellipsoid_breaks
+#print axioms CFT.SO10.spinor16_count
+#print axioms CFT.SO10.spinor16_charges
+#print axioms CFT.SO10.higgs_bidoublet
+#print axioms CFT.SO10.yukawa_weight
+#print axioms CFT.Thooft.ricci
+#print axioms CFT.Thooft.n_dot_dn
+#print axioms CFT.Thooft.connection_decomp
+#print axioms CFT.Thooft.thooft_identity
+#print axioms CFT.Z28d.resolvent_formula
+#print axioms CFT.Z28d.z28d_first
+#print axioms CFT.Z28d.z28d_second
+#print axioms CFT.Z28d.vol_root_deriv
+#print axioms CFT.Z28d.vol_coefficient
+#print axioms CFT.Z28d.z28d_normalized
+#print axioms CFT.Z28d.z28d_values
+#print axioms CFT.A4.I_cubed
+#print axioms CFT.A4.curvature_formula
+#print axioms CFT.A4.curvature_traceless
+#print axioms CFT.A4.EF_eq
+#print axioms CFT.A4.trace_Msum_sq
+#print axioms CFT.A4.trace_EF_sq
+#print axioms CFT.A4.trace_Omega_sq
+#print axioms CFT.A4.integrand
+#print axioms CFT.A4.a4_value
+#print axioms CFT.A4.four_pi_three_halves
+#print axioms CFT.AlphaV.fw_exact
+#print axioms CFT.Gauss.gauss_normal
+#print axioms CFT.Gauss.gauss_angle
+#print axioms CFT.Gauss.gauss_mass
+#print axioms CFT.Gauss.gauss_schwarzschild
+#print axioms CFT.Gauss.gauss_marginal
+#print axioms CFT.Gauss.gauss_cap
+#print axioms CFT.Gauss.gauss_neck
+#print axioms CFT.Cartan.C2.unit_x
+#print axioms CFT.Cartan.C2.aligned_impossible
+#print axioms CFT.Cartan.ev_half
+#print axioms CFT.Cartan.C2.kappa_eq_neg_grad
+#print axioms CFT.Cartan.C2.kappa_nonpos
+#print axioms CFT.Cartan.C2.h01
+#print axioms CFT.Cartan.C2.h02
+#print axioms CFT.Cartan.C2.h12
+#print axioms CFT.Cartan.C2.hsum
+#print axioms CFT.Cartan.C2.hsq
+#print axioms CFT.Cartan.C2.riem
+#print axioms CFT.Cartan.C2.cod010
+#print axioms CFT.Cartan.C2.cod011
+#print axioms CFT.Cartan.C2.cod012
+#print axioms CFT.Cartan.C2.cod020
+#print axioms CFT.Cartan.C2.cod021
+#print axioms CFT.Cartan.C2.cod022
+#print axioms CFT.Cartan.C2.cod120
+#print axioms CFT.Cartan.C2.cod121
+#print axioms CFT.Cartan.C2.cod122
+#print axioms CFT.Cartan.C2.D00
+#print axioms CFT.Cartan.C2.D01
+#print axioms CFT.Cartan.C2.D02
+#print axioms CFT.Cartan.C2.D10
+#print axioms CFT.Cartan.C2.D11
+#print axioms CFT.Cartan.C2.D12
+#print axioms CFT.Cartan.C2.D20
+#print axioms CFT.Cartan.C2.D21
+#print axioms CFT.Cartan.C2.D22
+#print axioms CFT.Cartan.C2.G010
+#print axioms CFT.Cartan.C2.G011
+#print axioms CFT.Cartan.C2.G020
+#print axioms CFT.Cartan.C2.G021
+#print axioms CFT.Cartan.C2.G120
+#print axioms CFT.Cartan.C2.hhf
+#print axioms CFT.Cartan.C2.e_ofNat
+#print axioms CFT.Cartan.C2.pD00
+#print axioms CFT.Cartan.C2.pD01
+#print axioms CFT.Cartan.C2.pD02
+#print axioms CFT.Cartan.C2.pD10
+#print axioms CFT.Cartan.C2.pD11
+#print axioms CFT.Cartan.C2.pD12
+#print axioms CFT.Cartan.C2.pD20
+#print axioms CFT.Cartan.C2.pD21
+#print axioms CFT.Cartan.C2.pD22
+#print axioms CFT.Cartan.C2.pG010
+#print axioms CFT.Cartan.C2.pG020
+#print axioms CFT.Cartan.C2.pG120
+#print axioms CFT.Cartan.C2.pG011
+#print axioms CFT.Cartan.C2.pG021
+#print axioms CFT.Cartan.C2.pG121
+#print axioms CFT.Cartan.C2.pG012
+#print axioms CFT.Cartan.C2.pG022
+#print axioms CFT.Cartan.C2.pG122
+#print axioms CFT.Cartan.C2.S0101
+#print axioms CFT.Cartan.C2.S0102
+#print axioms CFT.Cartan.C2.S0112
+#print axioms CFT.Cartan.C2.S0201
+#print axioms CFT.Cartan.C2.S0202
+#print axioms CFT.Cartan.C2.S0212
+#print axioms CFT.Cartan.C2.S1201
+#print axioms CFT.Cartan.C2.S1202
+#print axioms CFT.Cartan.C2.S1212
+#print axioms CFT.Cartan.C2.T001
+#print axioms CFT.Cartan.C2.T002
+#print axioms CFT.Cartan.C2.T012
+#print axioms CFT.Cartan.C2.T101
+#print axioms CFT.Cartan.C2.T102
+#print axioms CFT.Cartan.C2.T112
+#print axioms CFT.Cartan.C2.T201
+#print axioms CFT.Cartan.C2.T202
+#print axioms CFT.Cartan.C2.T212
+#print axioms CFT.Cartan.C2.bochner
+#print axioms CFT.Cartan.two_isUnit
+#print axioms CFT.Cartan.natCast_isUnit
+#print axioms CFT.Cartan.Frame.Γ_diag
+#print axioms CFT.Cartan.Frame.Riem_anti_left
+#print axioms CFT.Cartan.Frame.Riem_anti_right
+#print axioms CFT.Cartan.two_mul_half
+#print axioms CFT.Cartan.riem_of_diag_ricci
+#print axioms CFT.Cartan.cfbj_k0
+#print axioms CFT.Cartan.cfbj_k1
+#print axioms CFT.Cartan.cfbj_k2
+#print axioms CFT.Cartan.cfbj_k3
+#print axioms CFT.Cartan.cfbj_k4
+#print axioms CFT.Cartan.cfk0_k0
+#print axioms CFT.Cartan.cfk0_k1
+#print axioms CFT.Cartan.cfk0_k2
+#print axioms CFT.Cartan.cfk0_k3
+#print axioms CFT.Cartan.cfk0_k4
+#print axioms CFT.Cartan.cfk0_k5
+#print axioms CFT.Cartan.cfk0_k6
+#print axioms CFT.Cartan.cfk0_k7
+#print axioms CFT.Cartan.cfk0_k8
+#print axioms CFT.Cartan.cfk0_k9
+#print axioms CFT.Cartan.cfk0_k10
+#print axioms CFT.Cartan.cfk0_k11
+#print axioms CFT.Cartan.cfk0_k12
+#print axioms CFT.Cartan.cfk0_k13
+#print axioms CFT.Cartan.cfk0_k14
+#print axioms CFT.Cartan.cfk0_k15
+#print axioms CFT.Cartan.cfk1_k0
+#print axioms CFT.Cartan.cfk1_k1
+#print axioms CFT.Cartan.cfk1_k2
+#print axioms CFT.Cartan.cfk1_k3
+#print axioms CFT.Cartan.cfk1_k4
+#print axioms CFT.Cartan.cfk1_k5
+#print axioms CFT.Cartan.cfk1_k6
+#print axioms CFT.Cartan.cfk1_k7
+#print axioms CFT.Cartan.cfk1_k8
+#print axioms CFT.Cartan.cfk1_k9
+#print axioms CFT.Cartan.cfk1_k10
+#print axioms CFT.Cartan.cfk1_k11
+#print axioms CFT.Cartan.cfk1_k12
+#print axioms CFT.Cartan.cfk1_k13
+#print axioms CFT.Cartan.cfk1_k14
+#print axioms CFT.Cartan.cfk1_k15
+#print axioms CFT.Cartan.cfk1_k16
+#print axioms CFT.Cartan.cfk2_k0
+#print axioms CFT.Cartan.cfk2_k1
+#print axioms CFT.Cartan.cfk2_k2
+#print axioms CFT.Cartan.cfk2_k3
+#print axioms CFT.Cartan.cfk2_k4
+#print axioms CFT.Cartan.cfk2_k5
+#print axioms CFT.Cartan.cfk2_k6
+#print axioms CFT.Cartan.cfk2_k7
+#print axioms CFT.Cartan.cfk2_k8
+#print axioms CFT.Cartan.cfk2_k9
+#print axioms CFT.Cartan.cfk2_k10
+#print axioms CFT.Cartan.cfk2_k11
+#print axioms CFT.Cartan.cfk2_k12
+#print axioms CFT.Cartan.cfk2_k13
+#print axioms CFT.Cartan.cfk2_k14
+#print axioms CFT.Cartan.cfk2_k15
+#print axioms CFT.Cartan.cfk2_k16
+#print axioms CFT.Cartan.cfk3_k0
+#print axioms CFT.Cartan.cfk3_k1
+#print axioms CFT.Cartan.cfk3_k2
+#print axioms CFT.Cartan.cfk3_k3
+#print axioms CFT.Cartan.cfk3_k4
+#print axioms CFT.Cartan.cfk3_k5
+#print axioms CFT.Cartan.cfk3_k6
+#print axioms CFT.Cartan.cfk3_k7
+#print axioms CFT.Cartan.cfk3_k8
+#print axioms CFT.Cartan.cfk3_k9
+#print axioms CFT.Cartan.cfk3_k10
+#print axioms CFT.Cartan.cfk3_k11
+#print axioms CFT.Cartan.cfk3_k12
+#print axioms CFT.Cartan.cfk3_k13
+#print axioms CFT.Cartan.cfk3_k14
+#print axioms CFT.Cartan.cfk3_k15
+#print axioms CFT.Cartan.cfk3_k16
+#print axioms CFT.Cartan.cfk3_k17
+#print axioms CFT.Cartan.cfr3_k0
+#print axioms CFT.Cartan.cfr3_k1
+#print axioms CFT.Cartan.cfr3_k2
+#print axioms CFT.Cartan.cfr3_k3
+#print axioms CFT.Cartan.cfr3_k4
+#print axioms CFT.Cartan.cfr3_k5
+#print axioms CFT.Cartan.cfr3_k6
+#print axioms CFT.Cartan.cfr3_k7
+#print axioms CFT.Cartan.cfr3_k8
+#print axioms CFT.Cartan.cfr3_k9
+#print axioms CFT.Cartan.cfr3_k10
+#print axioms CFT.Cartan.cfr3_k11
+#print axioms CFT.Cartan.cfr3_k12
+#print axioms CFT.Cartan.cfr3_k13
+#print axioms CFT.Cartan.cfr3_k14
+#print axioms CFT.Cartan.cfr3_k15
+#print axioms CFT.Cartan.cfr3_k16
+#print axioms CFT.Cartan.cfr3_k17
+#print axioms CFT.Cartan.cfr6_k0
+#print axioms CFT.Cartan.cfr6_k1
+#print axioms CFT.Cartan.cfr6_k2
+#print axioms CFT.Cartan.cfr6_k3
+#print axioms CFT.Cartan.cfr6_k4
+#print axioms CFT.Cartan.cfr6_k5
+#print axioms CFT.Cartan.cfr6_k6
+#print axioms CFT.Cartan.cfr6_k7
+#print axioms CFT.Cartan.cfr6_k8
+#print axioms CFT.Cartan.cfr6_k9
+#print axioms CFT.Cartan.cfr6_k10
+#print axioms CFT.Cartan.cfr6_k11
+#print axioms CFT.Cartan.cfr6_k12
+#print axioms CFT.Cartan.cfr6_k13
+#print axioms CFT.Cartan.cfr6_k14
+#print axioms CFT.Cartan.cfr6_k15
+#print axioms CFT.Cartan.cfr6_k16
+#print axioms CFT.Cartan.cfr6_k17
+#print axioms CFT.Cartan.C2.unit_prod
+#print axioms CFT.Cartan.C2.fs0al
+#print axioms CFT.Cartan.C2.fs0be
+#print axioms CFT.Cartan.C2.fs0ga
+#print axioms CFT.Cartan.C2.fs0et
+#print axioms CFT.Cartan.C2.fs1al
+#print axioms CFT.Cartan.C2.fs1be
+#print axioms CFT.Cartan.C2.fs1ga
+#print axioms CFT.Cartan.C2.fs1et
+#print axioms CFT.Cartan.K0
+#print axioms CFT.Cartan.K1
+#print axioms CFT.Cartan.K2
+#print axioms CFT.Cartan.K3
+#print axioms CFT.Cartan.C2.row0
+#print axioms CFT.Cartan.C2.row1
+#print axioms CFT.Cartan.C2.row2
+#print axioms CFT.Cartan.C2.row3
+#print axioms CFT.Cartan.C2.row4
+#print axioms CFT.Cartan.C2.row5
+#print axioms CFT.Cartan.C2.row6
+#print axioms CFT.Cartan.C2.row7
+#print axioms CFT.Cartan.C2.row8
+#print axioms CFT.Cartan.C2.row9
+#print axioms CFT.Cartan.C2.row10
+#print axioms CFT.Cartan.C2.row11
+#print axioms CFT.Cartan.C2.Bj_frame
+#print axioms CFT.Gauge.d_inv
+#print axioms CFT.Gauge.curvature_covariant
+#print axioms CFT.ZeroModeL2.rpow_between
+#print axioms CFT.ZeroModeL2.tan_half_bounds
+#print axioms CFT.ZeroModeL2.sin_bounds
+#print axioms CFT.ZeroModeL2.u_sq_bounds
+#print axioms CFT.ZeroModeL2.integrable_iff_of_bounds
+#print axioms CFT.ZeroModeL2.zero_side
+#print axioms CFT.ZeroModeL2.reflect
+#print axioms CFT.ZeroModeL2.pi_side
+#print axioms CFT.ZeroModeL2.zero_mode_L2

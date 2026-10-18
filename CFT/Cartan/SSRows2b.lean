@@ -1,0 +1,55 @@
+/- α-II.5:2 段目の捩れの式が C2 枠で成り立つこと(row7、row8) -/
+import CFT.Cartan.SSFirst
+import CFT.Cartan.SSJet
+
+namespace CFT.Cartan
+
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+
+variable {R : Type*} [CommRing R] [Algebra ℚ R]
+
+/-- 大きな多項式の elaborate を速くするための局所インスタンス(標準のものと定義上同じ) -/
+local instance (priority := high) hmR_SSRows2b : HMul R R R := instHMul
+local instance (priority := high) haR_SSRows2b : HAdd R R R := instHAdd
+local instance (priority := high) hsR_SSRows2b : HSub R R R := instHSub
+local instance (priority := high) hpR_SSRows2b : HPow R ℕ R := instHPow
+local instance (priority := high) ngR_SSRows2b : Neg R := inferInstance
+
+namespace C2
+
+variable {F : Frame R} {lam : Fin 3 → R} (H : C2 F lam)
+include H
+
+theorem row7 : n7 (lam 0) (lam 1) (lam 2) (alpha F lam) (beta F lam) (gamma F lam) (eta F lam) (F.e 2 (alpha F lam)) (F.e 2 (beta F lam)) (F.e 2 (gamma F lam)) (F.e 2 (eta F lam)) (F.e 0 (F.e 2 (alpha F lam))) (F.e 0 (F.e 2 (beta F lam))) (F.e 0 (F.e 2 (gamma F lam))) (F.e 0 (F.e 2 (eta F lam))) (F.e 1 (F.e 2 (alpha F lam))) (F.e 1 (F.e 2 (beta F lam))) (F.e 1 (F.e 2 (gamma F lam))) (F.e 1 (F.e 2 (eta F lam))) (F.e 2 (F.e 2 (alpha F lam))) (F.e 2 (F.e 2 (beta F lam))) (F.e 2 (F.e 2 (gamma F lam))) (F.e 2 (F.e 2 (eta F lam))) = 0 := by
+  have t := F.torsion 0 2 (gamma F lam)
+  simp only [Fin.sum_univ_three] at t
+  try simp only [F.metric 1 0, F.metric 2 0, F.metric 2 1, F.Γ_diag, H.pG010, H.pG020, H.pG120, H.pG011, H.pG021, H.pG121, H.pG012, H.pG022, H.pG122] at t
+  have d20ga := congrArg (F.e 2) H.fs0ga
+  simp only [map_add, map_sub, map_neg, Derivation.leibniz, Derivation.leibniz_pow, nsmul_eq_mul, Nat.cast_ofNat, pow_one, smul_eq_mul, Derivation.map_one_eq_zero, H.e_ofNat, H.pD00, H.pD01, H.pD02, H.pD10, H.pD11, H.pD12, H.pD20, H.pD21, H.pD22] at d20ga
+  have key : (((-1 * ((lam 2)^(5:ℕ))) + ((lam 1) * ((lam 0)^(4:ℕ))) + ((lam 1) * ((lam 2)^(4:ℕ))) + (-1 * (lam 2) * ((lam 0)^(4:ℕ))) + (-6 * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (4 * (lam 0) * ((lam 2)^(4:ℕ))) + (4 * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-4 * (lam 1) * (lam 2) * ((lam 0)^(3:ℕ))) + (6 * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(2:ℕ))))) * n7 (lam 0) (lam 1) (lam 2) (alpha F lam) (beta F lam) (gamma F lam) (eta F lam) (F.e 2 (alpha F lam)) (F.e 2 (beta F lam)) (F.e 2 (gamma F lam)) (F.e 2 (eta F lam)) (F.e 0 (F.e 2 (alpha F lam))) (F.e 0 (F.e 2 (beta F lam))) (F.e 0 (F.e 2 (gamma F lam))) (F.e 0 (F.e 2 (eta F lam))) (F.e 1 (F.e 2 (alpha F lam))) (F.e 1 (F.e 2 (beta F lam))) (F.e 1 (F.e 2 (gamma F lam))) (F.e 1 (F.e 2 (eta F lam))) (F.e 2 (F.e 2 (alpha F lam))) (F.e 2 (F.e 2 (beta F lam))) (F.e 2 (F.e 2 (gamma F lam))) (F.e 2 (F.e 2 (eta F lam))) = 0 := by
+    simp only [n7]
+    linear_combination ((((lam 2)^(6:ℕ)) + (((lam 0)^(4:ℕ)) * ((lam 1)^(2:ℕ))) + (((lam 0)^(4:ℕ)) * ((lam 2)^(2:ℕ))) + (((lam 1)^(2:ℕ)) * ((lam 2)^(4:ℕ))) + (-4 * (lam 0) * ((lam 2)^(5:ℕ))) + (-4 * ((lam 0)^(3:ℕ)) * ((lam 2)^(3:ℕ))) + (-2 * (lam 1) * ((lam 2)^(5:ℕ))) + (6 * ((lam 0)^(2:ℕ)) * ((lam 2)^(4:ℕ))) + (-12 * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-4 * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-4 * (lam 2) * ((lam 0)^(3:ℕ)) * ((lam 1)^(2:ℕ))) + (-2 * (lam 1) * (lam 2) * ((lam 0)^(4:ℕ))) + (6 * ((lam 0)^(2:ℕ)) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ))) + (8 * (lam 0) * (lam 1) * ((lam 2)^(4:ℕ))) + (8 * (lam 1) * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))))) * t + (((-1 * ((lam 2)^(3:ℕ))) + ((lam 1) * ((lam 0)^(2:ℕ))) + ((lam 1) * ((lam 2)^(2:ℕ))) + (-1 * (lam 2) * ((lam 0)^(2:ℕ))) + (2 * (lam 0) * ((lam 2)^(2:ℕ))) + (-2 * (lam 0) * (lam 1) * (lam 2)))) * d20ga + (((2 * (gamma F lam) * ((lam 2)^(5:ℕ))) + ((gamma F lam) * (lam 0) * ((lam 2)^(4:ℕ))) + ((gamma F lam) * ((lam 0)^(3:ℕ)) * ((lam 1)^(2:ℕ))) + (-11 * (gamma F lam) * (lam 1) * ((lam 2)^(4:ℕ))) + (-10 * (gamma F lam) * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-5 * (gamma F lam) * ((lam 0)^(2:ℕ)) * ((lam 1)^(3:ℕ))) + (-5 * (gamma F lam) * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-2 * (gamma F lam) * (lam 2) * ((lam 0)^(4:ℕ))) + (2 * (gamma F lam) * (lam 1) * ((lam 0)^(4:ℕ))) + (9 * (gamma F lam) * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (14 * (gamma F lam) * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-27 * (gamma F lam) * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ))) + (-10 * (gamma F lam) * (lam 1) * (lam 2) * ((lam 0)^(3:ℕ))) + (3 * (gamma F lam) * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(2:ℕ))) + (10 * (gamma F lam) * (lam 0) * (lam 2) * ((lam 1)^(3:ℕ))) + (12 * (gamma F lam) * (lam 2) * ((lam 0)^(2:ℕ)) * ((lam 1)^(2:ℕ))) + (16 * (gamma F lam) * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))))) * H.fs0ga + ((((eta F lam) * ((lam 0)^(5:ℕ))) + (-1 * (eta F lam) * ((lam 2)^(5:ℕ))) + (-10 * (eta F lam) * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-5 * (eta F lam) * (lam 2) * ((lam 0)^(4:ℕ))) + (5 * (eta F lam) * (lam 0) * ((lam 2)^(4:ℕ))) + (10 * (eta F lam) * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))))) * H.fs1ga
+  have hU : IsUnit (((-1 * ((lam 2)^(5:ℕ))) + ((lam 1) * ((lam 0)^(4:ℕ))) + ((lam 1) * ((lam 2)^(4:ℕ))) + (-1 * (lam 2) * ((lam 0)^(4:ℕ))) + (-6 * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (4 * (lam 0) * ((lam 2)^(4:ℕ))) + (4 * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-4 * (lam 1) * (lam 2) * ((lam 0)^(3:ℕ))) + (6 * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(2:ℕ))))) := by
+    have e : ((-1 * ((lam 2)^(5:ℕ))) + ((lam 1) * ((lam 0)^(4:ℕ))) + ((lam 1) * ((lam 2)^(4:ℕ))) + (-1 * (lam 2) * ((lam 0)^(4:ℕ))) + (-6 * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (4 * (lam 0) * ((lam 2)^(4:ℕ))) + (4 * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-4 * (lam 1) * (lam 2) * ((lam 0)^(3:ℕ))) + (6 * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(2:ℕ)))) = ((2 : R) ^ 0 * (lam 0 - lam 1) ^ 0 * (lam 0 - lam 2) ^ 4 * (lam 1 - lam 2) ^ 1) := by ring
+    rw [e]; exact H.unit_prod 0 0 4 1
+  exact hU.mul_right_eq_zero.mp key
+
+theorem row8 : n8 (lam 0) (lam 1) (lam 2) (alpha F lam) (beta F lam) (gamma F lam) (eta F lam) (F.e 2 (alpha F lam)) (F.e 2 (beta F lam)) (F.e 2 (gamma F lam)) (F.e 2 (eta F lam)) (F.e 0 (F.e 2 (alpha F lam))) (F.e 0 (F.e 2 (beta F lam))) (F.e 0 (F.e 2 (gamma F lam))) (F.e 0 (F.e 2 (eta F lam))) (F.e 1 (F.e 2 (alpha F lam))) (F.e 1 (F.e 2 (beta F lam))) (F.e 1 (F.e 2 (gamma F lam))) (F.e 1 (F.e 2 (eta F lam))) (F.e 2 (F.e 2 (alpha F lam))) (F.e 2 (F.e 2 (beta F lam))) (F.e 2 (F.e 2 (gamma F lam))) (F.e 2 (F.e 2 (eta F lam))) = 0 := by
+  have t := F.torsion 1 2 (gamma F lam)
+  simp only [Fin.sum_univ_three] at t
+  try simp only [F.metric 1 0, F.metric 2 0, F.metric 2 1, F.Γ_diag, H.pG010, H.pG020, H.pG120, H.pG011, H.pG021, H.pG121, H.pG012, H.pG022, H.pG122] at t
+  have d21ga := congrArg (F.e 2) H.fs1ga
+  simp only [map_add, map_sub, map_neg, Derivation.leibniz, Derivation.leibniz_pow, nsmul_eq_mul, Nat.cast_ofNat, pow_one, smul_eq_mul, Derivation.map_one_eq_zero, H.e_ofNat, H.pD00, H.pD01, H.pD02, H.pD10, H.pD11, H.pD12, H.pD20, H.pD21, H.pD22] at d21ga
+  have key : (((-1 * ((lam 2)^(5:ℕ))) + ((lam 0) * ((lam 1)^(4:ℕ))) + ((lam 0) * ((lam 2)^(4:ℕ))) + (-1 * (lam 2) * ((lam 1)^(4:ℕ))) + (-6 * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (4 * (lam 1) * ((lam 2)^(4:ℕ))) + (4 * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-4 * (lam 0) * (lam 2) * ((lam 1)^(3:ℕ))) + (6 * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ))))) * n8 (lam 0) (lam 1) (lam 2) (alpha F lam) (beta F lam) (gamma F lam) (eta F lam) (F.e 2 (alpha F lam)) (F.e 2 (beta F lam)) (F.e 2 (gamma F lam)) (F.e 2 (eta F lam)) (F.e 0 (F.e 2 (alpha F lam))) (F.e 0 (F.e 2 (beta F lam))) (F.e 0 (F.e 2 (gamma F lam))) (F.e 0 (F.e 2 (eta F lam))) (F.e 1 (F.e 2 (alpha F lam))) (F.e 1 (F.e 2 (beta F lam))) (F.e 1 (F.e 2 (gamma F lam))) (F.e 1 (F.e 2 (eta F lam))) (F.e 2 (F.e 2 (alpha F lam))) (F.e 2 (F.e 2 (beta F lam))) (F.e 2 (F.e 2 (gamma F lam))) (F.e 2 (F.e 2 (eta F lam))) = 0 := by
+    simp only [n8]
+    linear_combination ((((lam 2)^(6:ℕ)) + (((lam 0)^(2:ℕ)) * ((lam 1)^(4:ℕ))) + (((lam 0)^(2:ℕ)) * ((lam 2)^(4:ℕ))) + (((lam 1)^(4:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 1) * ((lam 2)^(5:ℕ))) + (-4 * ((lam 1)^(3:ℕ)) * ((lam 2)^(3:ℕ))) + (-2 * (lam 0) * ((lam 2)^(5:ℕ))) + (6 * ((lam 1)^(2:ℕ)) * ((lam 2)^(4:ℕ))) + (-12 * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-4 * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-4 * (lam 2) * ((lam 0)^(2:ℕ)) * ((lam 1)^(3:ℕ))) + (-2 * (lam 0) * (lam 2) * ((lam 1)^(4:ℕ))) + (6 * ((lam 0)^(2:ℕ)) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ))) + (8 * (lam 0) * (lam 1) * ((lam 2)^(4:ℕ))) + (8 * (lam 0) * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))))) * t + (((-1 * ((lam 2)^(3:ℕ))) + ((lam 0) * ((lam 1)^(2:ℕ))) + ((lam 0) * ((lam 2)^(2:ℕ))) + (-1 * (lam 2) * ((lam 1)^(2:ℕ))) + (2 * (lam 1) * ((lam 2)^(2:ℕ))) + (-2 * (lam 0) * (lam 1) * (lam 2)))) * d21ga + (((-2 * (gamma F lam) * ((lam 2)^(5:ℕ))) + (-1 * (gamma F lam) * (lam 1) * ((lam 2)^(4:ℕ))) + (-1 * (gamma F lam) * ((lam 0)^(2:ℕ)) * ((lam 1)^(3:ℕ))) + (-14 * (gamma F lam) * ((lam 0)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (-9 * (gamma F lam) * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-2 * (gamma F lam) * (lam 0) * ((lam 1)^(4:ℕ))) + (2 * (gamma F lam) * (lam 2) * ((lam 1)^(4:ℕ))) + (5 * (gamma F lam) * ((lam 0)^(3:ℕ)) * ((lam 1)^(2:ℕ))) + (5 * (gamma F lam) * ((lam 0)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (10 * (gamma F lam) * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (11 * (gamma F lam) * (lam 0) * ((lam 2)^(4:ℕ))) + (-16 * (gamma F lam) * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-12 * (gamma F lam) * (lam 2) * ((lam 0)^(2:ℕ)) * ((lam 1)^(2:ℕ))) + (-10 * (gamma F lam) * (lam 1) * (lam 2) * ((lam 0)^(3:ℕ))) + (-3 * (gamma F lam) * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ))) + (10 * (gamma F lam) * (lam 0) * (lam 2) * ((lam 1)^(3:ℕ))) + (27 * (gamma F lam) * (lam 1) * ((lam 0)^(2:ℕ)) * ((lam 2)^(2:ℕ))))) * H.fs1ga + ((((eta F lam) * ((lam 2)^(5:ℕ))) + (-1 * (eta F lam) * ((lam 1)^(5:ℕ))) + (-10 * (eta F lam) * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-5 * (eta F lam) * (lam 1) * ((lam 2)^(4:ℕ))) + (5 * (eta F lam) * (lam 2) * ((lam 1)^(4:ℕ))) + (10 * (eta F lam) * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))))) * H.fs0ga
+  have hU : IsUnit (((-1 * ((lam 2)^(5:ℕ))) + ((lam 0) * ((lam 1)^(4:ℕ))) + ((lam 0) * ((lam 2)^(4:ℕ))) + (-1 * (lam 2) * ((lam 1)^(4:ℕ))) + (-6 * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (4 * (lam 1) * ((lam 2)^(4:ℕ))) + (4 * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-4 * (lam 0) * (lam 2) * ((lam 1)^(3:ℕ))) + (6 * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ))))) := by
+    have e : ((-1 * ((lam 2)^(5:ℕ))) + ((lam 0) * ((lam 1)^(4:ℕ))) + ((lam 0) * ((lam 2)^(4:ℕ))) + (-1 * (lam 2) * ((lam 1)^(4:ℕ))) + (-6 * ((lam 1)^(2:ℕ)) * ((lam 2)^(3:ℕ))) + (4 * (lam 1) * ((lam 2)^(4:ℕ))) + (4 * ((lam 1)^(3:ℕ)) * ((lam 2)^(2:ℕ))) + (-4 * (lam 0) * (lam 1) * ((lam 2)^(3:ℕ))) + (-4 * (lam 0) * (lam 2) * ((lam 1)^(3:ℕ))) + (6 * (lam 0) * ((lam 1)^(2:ℕ)) * ((lam 2)^(2:ℕ)))) = ((2 : R) ^ 0 * (lam 0 - lam 1) ^ 0 * (lam 0 - lam 2) ^ 1 * (lam 1 - lam 2) ^ 4) := by ring
+    rw [e]; exact H.unit_prod 0 0 1 4
+  exact hU.mul_right_eq_zero.mp key
+
+
+end C2
+
+end CFT.Cartan

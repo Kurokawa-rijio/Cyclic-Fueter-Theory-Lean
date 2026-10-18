@@ -1,0 +1,16 @@
+# Lean/Lake build output
+.lake/
+.build/
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local environment files / secrets
+.env
+.env.*
+!.env.example
