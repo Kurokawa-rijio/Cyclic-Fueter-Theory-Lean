@@ -5,31 +5,36 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Build Lean project
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # Install Elan without attempting to inspect the Lake workspace.
-      - name: Initialize Lean environment
-        uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-          build: false
-          test: false
-          lint: false
+      - name: Install Elan
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf \
+            https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
-      # Generate lake-manifest.json for this public repository.
-      - name: Generate Lake manifest
-        run: lake update
+      - name: Resolve dependencies
+        shell: bash
+        run: |
+          lake --version
+          lake update
 
-      # Build after the manifest has been generated.
+      - name: Get Mathlib cache
+        shell: bash
+        run: lake exe cache get
+
       - name: Build Lean project
-        uses: leanprover/lean-action@v1
-        with:
-          build: true
-          test: false
-          lint: false
-          use-mathlib-cache: true
+        shell: bash
+        run: lake build
