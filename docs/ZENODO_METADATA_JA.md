@@ -4,13 +4,15 @@
 
 Cyclic Fueter Theory: Lean 4 Formalization of Selected Results
 
-## Description (Zenodo record)
+## Description (.zenodo.json, short form)
 
-This software repository contains Lean 4 source files developed in connection with the Cyclic Fueter Theory (CFT) research program. It formalizes selected algebraic and geometric statements involving quaternionic algebra, Fueter-type operators, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, spherically symmetric Einstein–Yang–Mills reductions, junction calculations, constraint-propagation identities, zero-mode calculations, and selected Wess–Zumino–Witten (WZW)-related formulas.
+This software repository contains Lean 4 source files developed in connection with the Cyclic Fueter Theory (CFT) research program. It formalizes selected algebraic and geometric statements involving quaternionic algebra, Fueter-type operators, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, the reduced Einstein–Yang–Mills action and its four-dimensional field equations, distributional junction conditions, characteristic evolution and constraint propagation, zero-mode calculations, and selected Wess–Zumino–Witten (WZW)-related formulas.
 
-The repository includes an author-maintained status ledger for 51 items grouped into α-I–α-VIII. The labels complete, partial, conditional, and not formalized as stated describe the current scope of this formalization; they are not independent certification or peer review of the corresponding research claims. Lean verifies each theorem from its declared assumptions and imported results. Formalization does not by itself establish that a physical model, external theorem, or interpretation is appropriate. Some statements rely on standard formulas or external results, while some broader claims remain partial or conditional.
+Version 0.2.0 contains 1074 theorem declarations in 101 modules, with no sorry and no project-specific axioms. The repository includes an author-maintained status ledger for 51 items grouped into α-I–α-VIII (35 complete including items that use a named external theorem, 9 partial, 3 conditional, 4 not formalized as stated) and 35 items in α-IX (10 complete). These labels describe the current scope of this formalization; they are not independent certification or peer review of the corresponding research claims. Lean verifies each theorem from its declared assumptions and imported results. Formalization does not by itself establish that a physical model, external theorem, or interpretation is appropriate.
 
-The project targets Lean 4.15.0 and Mathlib v4.15.0. To attempt a reproducible build, install Elan and run `lake update`, `lake exe cache get`, and `lake build` from the repository root. Build status should be checked for the specific release using its CI results.
+The project targets Lean 4.15.0 and Mathlib v4.15.0. To reproduce the build, install Elan and run `lake update`, `lake exe cache get`, and `lake build` from the repository root.
+
+The full description used on the Zenodo record is `docs/ZENODO_DESCRIPTION_v0.2.0.md`.
 
 ## Keywords
 
@@ -37,6 +39,6 @@ Zenodo supports controlled terms from EuroSciVoc, MeSH, and GEMET as well as cus
 
 ## Not yet specified
 
-- License: not set by this metadata change. Choose a license deliberately and add the matching license file/metadata before public release.
+- License: MIT (declared on the Zenodo record and in `LICENSE`).
 - ORCID and affiliation: omitted rather than guessed.
-- Version: omitted here; use the actual Git tag/release version.
+- Version: v0.2.0 (Git tag `v0.2.0`). The full Zenodo description for this version is `docs/ZENODO_DESCRIPTION_v0.2.0.md`.

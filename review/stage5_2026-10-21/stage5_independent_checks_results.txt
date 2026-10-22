@@ -1,0 +1,23 @@
+STAGE 5 INDEPENDENT SYMBOLIC CHECKS
+Source archive: CFT_alpha_lean_2026-10-21e.zip
+Scope: direct derivatives, the reduced energy identity, jump algebra, Taylor coefficients.
+PASS: gd derivative: d/dx atan(sinh x) = sech x; residual=0
+PASS: front derivative squared: (d/dx asinh(tan x))^2 = sec^2 x; residual=0
+PASS: cos(gd x)^2 = sech(x)^2; residual=0
+PASS: sin(gd x)^2 = tanh(x)^2; residual=0
+PASS: reduced energy balance: dE/dtau = -2 W^2 r_dot; residual=0
+PASS: mixed equation jump identity; residual=0
+PASS: transport equation is product derivative d_v(r q); residual=0
+PASS: uu constraint gives [r_uu] = -(2/r)[W_u^2]; residual=0
+PASS: Gudermann expansion through degree 5; residual=0
+PASS: front expansion through degree 5; residual=0
+PASS: metric coefficient expansion through degree 4; residual=0
+
+Symbolic checks: 11/11
+Important branch condition: d/dx asinh(tan x)=sec x requires -pi/2 < x < pi/2 (in particular cos x>0 on the principal strip).
+These checks are not a PDE existence/uniqueness proof and do not substitute for a Lean build.
+
+Series obtained from definitions:
+gd(x) = x**5/24 - x**3/6 + x + O(x^7)
+asinh(tan x) = x**5/24 + x**3/6 + x + O(x^7)
+cos(x)^2 = x**4/3 - x**2 + 1 + O(x^6)

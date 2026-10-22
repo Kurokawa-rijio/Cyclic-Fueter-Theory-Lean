@@ -1,0 +1,29 @@
+PASS | Gamma^u_uu = 2 sigma_u | residual = 0
+PASS | Gamma^v_vv = 2 sigma_v | residual = 0
+PASS | Gamma(0, 0, 1) vanishes | residual = 0
+PASS | Gamma(0, 1, 0) vanishes | residual = 0
+PASS | Gamma(0, 1, 1) vanishes | residual = 0
+PASS | Gamma(1, 0, 0) vanishes | residual = 0
+PASS | Gamma(1, 0, 1) vanishes | residual = 0
+PASS | Gamma(1, 1, 0) vanishes | residual = 0
+PASS | 2D Ricci scalar = 4 exp(-2 sigma) sigma_uv | residual = 0
+PASS | nabla_u nabla_u r = r_uu - 2 sigma_u r_u | residual = 0
+PASS | box_h r = -2 exp(-2 sigma) r_uv | residual = 0
+PASS | G_uu = -2/r (r_uu - 2 sigma_u r_u) | residual = 0
+PASS | spatial scalar-curvature delta coefficient | residual = 0
+PASS | spatial shell density formula | residual = 0
+PASS | cap R3 at equator = 6/ell^2 | residual = 0
+PASS | neck R3 = 2/ell^2 | residual = 0
+PASS | C1 seam has no spatial delta when [rprime]=0 | residual = 0
+PASS | rho_cap = 3/(8 pi G ell^2) | residual = 0
+PASS | rho_neck = 1/(8 pi G ell^2) | residual = 0
+PASS | normal stress jump = -1/(4 pi G ell^2) | residual = 0
+PASS | null-shell density mu = -[r_u]/(4 pi G r0) | residual = 0
+PASS | jump of mixed EYM equations gives r qprime + rv q = 0 | residual = 0
+PASS | transport derivative equals r q' + r' q | residual = 0
+
+SUMMARY
+23/23 symbolic checks passed.
+Analytic assumptions not automated by this script: piecewise C^2 traces; the reduced EYM mixed equation;
+uniqueness/transport on the characteristic; the physical cap radiation and neck magnetic equations of state;
+and the geometric distributional junction identities stated in the report.

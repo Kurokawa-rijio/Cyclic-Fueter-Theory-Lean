@@ -1,6 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this software in academic work, cite the version archived by Zenodo and the relevant research documents."
 title: "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results"
+version: "0.2.0"
+date-released: "2026-10-22"
+license: MIT
+repository-code: "https://github.com/Kurokawa-rijio/Cyclic-Fueter-Theory-Lean"
 authors:
   - family-names: Kurokawa
     given-names: Ryojiro
@@ -9,10 +13,12 @@ abstract: >-
   the Cyclic Fueter Theory (CFT) research program. It formalizes selected algebraic
   and geometric statements involving quaternionic algebra, Fueter-type operators,
   matrix and spinor constructions, quantum-geometric identities, Cartan-frame
-  calculations, spherically symmetric Einstein–Yang–Mills reductions, junction
-  calculations, constraint-propagation identities, zero-mode calculations, and
+  calculations, the reduced Einstein–Yang–Mills action and its four-dimensional
+  field equations, distributional junction conditions, characteristic evolution and
+  constraint-propagation identities, zero-mode calculations, and
   selected Wess–Zumino–Witten (WZW)-related formulas. The repository includes an
-  author-maintained status ledger for 51 items grouped into α-I–α-VIII. Status labels
+  author-maintained status ledger for 51 items grouped into α-I–α-VIII and 35 items
+  in α-IX (consequences of the action principle). Status labels
   describe the current formalization scope and are not independent certification or
   peer review of the corresponding research claims. Lean verifies theorem conclusions
   from declared assumptions and imported results; formalization does not by itself

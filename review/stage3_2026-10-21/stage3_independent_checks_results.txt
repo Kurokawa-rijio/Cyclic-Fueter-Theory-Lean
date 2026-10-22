@@ -1,0 +1,49 @@
+=== II.2/II.3: model algebra ===
+PASS | S3 model identity after a=ell | residual=0
+PASS | S2xR model identity after a=ell | residual=0
+PASS | Ricci norm identity from (I) | residual=0
+
+=== II.4: strict window from distinct eigenvalues ===
+PASS | normalized cubic discriminant identity | residual=0
+PASS | window square comparison identity | residual=0
+
+=== III.3: mass derivative from constraints ===
+PASS | M prime identity from Hamiltonian+momentum constraints | residual=0
+
+=== III.4: cap, neck, flat mass function ===
+PASS | cap M2 = a sin^3 chi | residual=0
+PASS | equator mass equals a | residual=0
+PASS | neck M2 equals ell | residual=0
+PASS | flat M2 equals 0 | residual=0
+
+=== III.5: Schwarzschild time-symmetric spatial slice ===
+PASS | warped metric K_s-theta formula | residual=0
+PASS | warped metric K_s-phi formula | residual=0
+PASS | warped metric K_theta-phi formula | residual=0
+PASS | Schwarzschild scalar curvature | residual=0
+PASS | Schwarzschild Riemann norm squared | residual=0
+
+=== III.6: nontrivial flat/Newtonian limit with double scaling ===
+PASS | curvature-source scaling 6/a²=16 pi G(a) rho0 | residual=0
+PASS | cap Misner-Sharp mass M2=a sin^3(s/a) | residual=0
+PASS | cap mass equals volume mass with fixed rho0 | residual=0
+PASS | mass derivative equals flat density source | residual=0
+limit r_a(s) as a->infinity = s
+limit rprime_a(s) as a->infinity = 1
+limit rsecond_a(s) as a->infinity = 0
+limit G(a) as a->infinity = 0
+limit m_a as a->infinity = 4*pi*rho0*s**3/3
+limit dm_a/ds as a->infinity = 4*pi*rho0*s**2
+series m_a (fixed s, rho0) = 13*pi*rho0*s**7/(90*a**4) - 2*pi*rho0*s**5/(3*a**2) + 4*pi*rho0*s**3/3 + O(a**(-5), (a, oo))
+
+=== III.7: lower bound at a neck ===
+PASS | ellstar/(2G) equals sqrt(pi)/(g sqrt(G)) after positivity conventions | residual=0
+
+=== V.4: Gauss map and compactness ===
+PASS | Gauss angle: sin² chi = 1 - rprime² | residual=0
+PASS | Misner-Sharp mass gives sin² chi = 2 G m/r | residual=0
+PASS | Schwarzschild compactness identity | residual=0
+
+=== Summary ===
+exact symbolic checks passed: 23/23
+Interpretation: these are algebraic/analytic checks only, not a fresh Lean build.
