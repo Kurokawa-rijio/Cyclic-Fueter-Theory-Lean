@@ -39,6 +39,7 @@ theorem bianchi (A : Fin 4 → S) (comm : ∀ i j f, d i (d j f) = d j (d i f)) 
   simp only [Fd, map_sub]
   linear_combination comm l m (A n) + comm m n (A l) + comm n l (A m)
 
+set_option maxHeartbeats 4000000 in
 /-- 【Z25】作用の第 1 変分。ε は定数(∂ε = 0)。 -/
 theorem first_variation (A B J : Fin 4 → S) (ε : S) (hε : ∀ i, d i ε = 0) :
     L4 d (fun n => A n + ε * B n) J
@@ -61,10 +62,10 @@ theorem div_div_F (A : Fin 4 → S) (comm : ∀ i j f, d i (d j f) = d j (d i f)
     + (eta 0 * eta 3) * comm 3 0 (Fd d A 0 3) + (eta 1 * eta 2) * comm 2 1 (Fd d A 1 2)
     + (eta 1 * eta 3) * comm 3 1 (Fd d A 1 3) + (eta 2 * eta 3) * comm 3 2 (Fd d A 2 3)
 
-/-- 運動方程式 E = 0 が成り立つなら電流は保存:∂_νJ^ν = 0 -/
+/-- 運動方程式 E = 0 が成り立つなら電流は保存:∂_νJ^ν = 0(J^ν は上付き) -/
 theorem current_conserved (A J : Fin 4 → S) (comm : ∀ i j f, d i (d j f) = d j (d i f))
     (heom : ∀ n, Eom d A J n = 0) :
-    ∑ n, eta n * d n (J n) = 0 := by
+    ∑ n, d n (J n) = 0 := by
   have hJ : ∀ n, J n = eta n * ∑ m, eta m * d m (Fd d A m n) := fun n => by
     have := heom n
     simp only [Eom] at this

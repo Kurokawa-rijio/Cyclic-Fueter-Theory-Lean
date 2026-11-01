@@ -21,6 +21,7 @@
   解の正則性:a > a_* では枝は実でなめらか。a_* より手前で古典の崩壊 a → 0 に至る前に破綻する。
 -/
 import CFT.AlphaVI_Static
+import Mathlib
 
 namespace CFT.Backreaction
 

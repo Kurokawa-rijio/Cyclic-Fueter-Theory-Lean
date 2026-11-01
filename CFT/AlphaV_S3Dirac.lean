@@ -17,12 +17,13 @@ import CFT.AlphaV
 
 namespace CFT.S3Dirac
 
-open Matrix Complex CFT.AlphaV
+open Matrix Complex CFT.AlphaV Quaternion
 
 /-- Levi-Civita 記号 -/
 def eps (a b c : Fin 3) : ℝ :=
-  if (a, b, c) = (0, 1, 2) ∨ (a, b, c) = (1, 2, 0) ∨ (a, b, c) = (2, 0, 1) then 1
-  else if (a, b, c) = (0, 2, 1) ∨ (a, b, c) = (2, 1, 0) ∨ (a, b, c) = (1, 0, 2) then -1 else 0
+  (![![![0, 0, 0], ![0, 0, 1], ![0, -1, 0]],
+     ![![0, 0, -1], ![0, 0, 0], ![1, 0, 0]],
+     ![![0, 1, 0], ![-1, 0, 0], ![0, 0, 0]]] : Fin 3 → Fin 3 → Fin 3 → ℝ) a b c
 
 /-- 虚数単位 e = (i, j, k) -/
 noncomputable def e : Fin 3 → ℍ[ℝ] := ![⟨0, 1, 0, 0⟩, ⟨0, 0, 1, 0⟩, ⟨0, 0, 0, 1⟩]
@@ -48,7 +49,8 @@ theorem spin_term :
   ext i j
   fin_cases i <;> fin_cases j <;>
     simp [σ, σx, σy, σz, eps, Fin.sum_univ_three, Matrix.mul_apply, Fin.sum_univ_two] <;>
-    (try ring_nf) <;> (try simp [Complex.I_sq]) <;> (try ring)
+    (try ring_nf) <;> (try simp [Complex.I_sq, pow_succ]) <;> (try ring_nf) <;>
+    (try simp [Complex.I_sq, pow_succ]) <;> (try ring)
 
 /-- ゲージ項 Σ_a σ_a ⊗ A(X_a)、A(X_a) = iλ σ_a(アイソスピン) -/
 noncomputable def gaugeTerm (lam : ℂ) : Matrix (Fin 2 × Fin 2) (Fin 2 × Fin 2) ℂ :=
@@ -62,8 +64,9 @@ theorem reduced_dirac (lam : ℂ) :
   ext ⟨i, j⟩ ⟨k, l⟩
   fin_cases i <;> fin_cases j <;> fin_cases k <;> fin_cases l <;>
     simp [gaugeTerm, SS, σ, σx, σy, σz, Fin.sum_univ_three, Matrix.kroneckerMap_apply,
-      Matrix.one_apply, Matrix.add_apply] <;>
-    (try ring_nf) <;> (try simp [Complex.I_sq]) <;> (try ring)
+      Matrix.one_apply, Matrix.add_apply, Prod.ext_iff] <;>
+    (try ring_nf) <;> (try simp [Complex.I_sq, pow_succ, Prod.ext_iff]) <;> (try ring_nf) <;>
+    (try simp [Complex.I_sq, pow_succ]) <;> (try ring)
 
 /-- 【α-V.2】一重項の準位 3/2 − 3λ -/
 theorem level_singlet (lam : ℂ) :
