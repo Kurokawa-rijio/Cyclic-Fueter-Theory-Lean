@@ -35,6 +35,20 @@ jobs:
         shell: bash
         run: lake exe cache get
 
-      - name: Build Lean project
+      # 作業ブランチでは新しいモジュールだけをビルドし、エラーを全部出し切る(main に入れる前に戻す)
+      - name: Build new modules (keep going)
         shell: bash
-        run: lake build
+        run: |
+          set +e
+          lake build --keep-going CFT.AlphaVI_Static CFT.AlphaVII_Commutant CFT.AlphaVI_Sech 2>&1 | tee build.log
+          status=${PIPESTATUS[0]}
+          grep -E -A8 "^error" build.log > errors.txt || true
+          { echo "## errors"; echo '```'; head -n 400 errors.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Upload errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: errors
+          path: errors.txt
