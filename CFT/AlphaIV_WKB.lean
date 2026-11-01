@@ -57,8 +57,7 @@ theorem hasDerivAt_Psi_b (a b A' σ' : ℝ) (hA : HasDerivAt A A' b) (hσ : HasD
   have hg := (hσc.const_mul (I * (a : ℂ))).mul_const (κ : ℂ)
   have h := hAc.mul hg.cexp
   convert h using 1
-  · funext y; simp only [Psi]; ring_nf
-  · ring
+  funext y; simp only [Psi]; ring_nf
 
 /-- 混合微分:∂_b(∂_aΨ) = iσ′κ Ψ + iσκ ∂_bΨ -/
 theorem hasDerivAt_Psia_b (a b A' σ' : ℝ) (hA : HasDerivAt A A' b) (hσ : HasDerivAt σ σ' b) :
@@ -70,8 +69,7 @@ theorem hasDerivAt_Psia_b (a b A' σ' : ℝ) (hA : HasDerivAt A A' b) (hσ : Has
   have h1 := (hσc.const_mul I).mul_const (κ : ℂ)
   have h := h1.mul (hasDerivAt_Psi_b κ A σ a b A' σ' hA hσ)
   convert h using 1
-  · funext y; simp only [Psia]
-  · ring
+  funext y; simp only [Psia]
 
 /-- WDW 作用素(順序:b²·Hfun、運動量を右に):
 (1/4c)(−ħ² a Ψ_aa + 2ħ² b Ψ_ab) − c a (b² − ℓ²) Ψ -/
@@ -110,8 +108,9 @@ theorem hasDerivAt_Q (C b : ℝ) : HasDerivAt (Q c l C) (C - 8 * c ^ 2 * b) b :=
   have h := ((hasDerivAt_id b).const_mul C).sub
     ((((hasDerivAt_pow 2 b).add_const (l ^ 2))).const_mul (4 * c ^ 2))
   convert h using 1
-  · funext y; simp [Q]
-  · simp; ring
+  rw [show (2 : ℕ) - 1 = 1 from rfl, pow_one]
+  push_cast
+  ring
 
 /-- 【α-IV.12、α-VI.4】Q(b) > 0 の点で、Ψ = e^{iaσ/ħ}/σ(σ = √Q)は WDW 方程式の厳密解。
 作用素・定義域(Q > 0)・偏微分はすべて実際の関数について。 -/
