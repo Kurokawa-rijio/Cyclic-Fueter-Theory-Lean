@@ -94,4 +94,30 @@ theorem static_S3_impossible (l σ κ s c κG : S) (H : SphD d 1 l (l * σ) s c)
   · exact this h
   · exact hl0 (inv_eq_zero.mp ((pow_eq_zero_iff two_ne_zero).mp h))
 
+set_option maxHeartbeats 0 in
+/-- 【α-VI.3 の物質側】4 次元の YM の応力は跡ゼロ:対角の計量で Σ_m g^{mm} T̂_mm = 0。
+F は任意の成分の表(ゲージ場の具体形によらない)。g^{mm} g_mm = 1 と 4 次元(¼ · 4 = 1)だけを使う。 -/
+theorem tym_traceless (N A R s : S) (hN : N ≠ 0) (hA : A ≠ 0) (hR : R ≠ 0) (hs : s ≠ 0)
+    (F : Fin 3 → Fin 4 → Fin 4 → S) :
+    giD N A R s 0 0 * Tym (gD N A R s) (giD N A R s) F 0 0
+      + giD N A R s 1 1 * Tym (gD N A R s) (giD N A R s) F 1 1
+      + giD N A R s 2 2 * Tym (gD N A R s) (giD N A R s) F 2 2
+      + giD N A R s 3 3 * Tym (gD N A R s) (giD N A R s) F 3 3 = 0 := by
+  simp only [Tym, gD, giD, Fin.sum_univ_four, Fin.sum_univ_three, Matrix.cons_val_zero,
+    Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_two, Matrix.cons_val_three,
+    Matrix.tail_cons, zero_mul, mul_zero, add_zero, zero_add]
+  field_simp
+  ring
+
+/-- 【α-VI.3】Einstein–Yang–Mills:超静的な S³ に YM の応力 T̂(任意の F)を置いた Einstein 方程式
+G_aa = κ_G T̂_aa は解をもたない(跡ゼロの YM 応力を `static_S3_impossible` に代入)。 -/
+theorem static_S3_YM_impossible (l σ κ s c κG : S) (H : SphD d 1 l (l * σ) s c)
+    (hl : ∀ i, d i l = 0) (hσ0 : d 0 σ = 0) (hσ1 : d 1 σ = κ)
+    (hκ1 : d 1 κ = -σ) (pyth : σ ^ 2 + κ ^ 2 = 1) (F : Fin 3 → Fin 4 → Fin 4 → S)
+    (E : ∀ a, Ein d (gD 1 l (l * σ) s) (giD 1 l (l * σ) s) (GD d 1 l (l * σ) s c) a a
+      = κG * Tym (gD 1 l (l * σ) s) (giD 1 l (l * σ) s) F a a) : False :=
+  static_S3_impossible d l σ κ s c κG H hl hσ0 hσ1 hκ1 pyth
+    (fun a b => Tym (gD 1 l (l * σ) s) (giD 1 l (l * σ) s) F a b) E
+    (tym_traceless 1 l (l * σ) s one_ne_zero H.hA H.hR H.hs F)
+
 end CFT.VIStatic

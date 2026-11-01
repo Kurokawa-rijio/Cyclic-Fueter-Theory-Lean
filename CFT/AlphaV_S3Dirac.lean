@@ -83,4 +83,89 @@ theorem level_triplet' (lam : ℂ) :
       = (3 / 2 + lam) • upup := by
   rw [reduced_dirac]; exact level_triplet lam
 
+/-! ### 幾何の側:S³ の左不変な枠(V.2 を実際の S³ に結ぶ) -/
+
+/-- 枠 X_a(q) = q e_a は S³ に接する:Re(q̄ · q e_a) = 0(q に直交) -/
+theorem frame_tangent (q : ℍ[ℝ]) (a : Fin 3) : (star q * (q * e a)).re = 0 := by
+  fin_cases a <;> simp [e] <;> ring
+
+/-- 枠は正規直交:Re(conj(q e_a) · q e_b) = |q|² δ_ab(|q| = 1 なら正規直交) -/
+theorem frame_orthonormal (q : ℍ[ℝ]) (a b : Fin 3) :
+    (star (q * e a) * (q * e b)).re
+      = (q.re ^ 2 + q.imI ^ 2 + q.imJ ^ 2 + q.imK ^ 2) * (if a = b then 1 else 0) := by
+  fin_cases a <;> fin_cases b <;> simp [e] <;> ring
+
+/-- X_b は線形な場 q ↦ q e_b なので、方向 v の微分は v e_b(Lie 括弧の計算に使う) -/
+theorem frame_deriv (q v : ℍ[ℝ]) (b : Fin 3) :
+    HasDerivAt (fun t : ℝ => (q + t • v) * e b) (v * e b) 0 := by
+  have h := ((hasDerivAt_id (0 : ℝ)).smul_const (v * e b)).const_add (q * e b)
+  have hf : (fun t : ℝ => (q + t • v) * e b) = fun t => q * e b + id t • (v * e b) := by
+    funext t
+    simp [add_mul, smul_mul_assoc]
+  rw [hf]
+  simpa using h
+
+/-- 【α-V.2】ベクトル場の Lie 括弧:[X_a, X_b](q) = DX_b(q)[X_a(q)] − DX_a(q)[X_b(q)]
+= (q e_a) e_b − (q e_b) e_a = Σ_c 2ε_abc X_c(q)(`frame_deriv` で DX_b(q)[v] = v e_b) -/
+theorem frame_bracket (q : ℍ[ℝ]) (a b : Fin 3) :
+    (q * e a) * e b - (q * e b) * e a = ∑ c, (2 * eps a b c) • (q * e c) := by
+  rw [mul_assoc, mul_assoc, ← mul_sub, lie_bracket, Finset.mul_sum]
+  exact Finset.sum_congr rfl (fun c _ => mul_smul_comm _ _ _)
+
+/-! ### 4 次元の不変な断面の上の固有空間の全体 -/
+
+/-- |↓↓⟩ -/
+def dndn : Fin 2 × Fin 2 → ℂ := fun ij => if ij = (1, 1) then 1 else 0
+
+/-- (|↑↓⟩ + |↓↑⟩) -/
+def tsym : Fin 2 × Fin 2 → ℂ := fun ij => if ij = (0, 1) then 1 else if ij = (1, 0) then 1 else 0
+
+theorem SS_dndn : SS.mulVec dndn = (1 : ℂ) • dndn := by
+  ext ⟨i, j⟩
+  fin_cases i <;> fin_cases j <;>
+    simp [SS, σx, σy, σz, dndn, Matrix.mulVec, dotProduct, Matrix.kroneckerMap_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_two, Matrix.add_apply] <;>
+    (try ring_nf) <;> (try simp [Complex.I_sq]) <;> (try ring) <;> (try simp [Prod.ext_iff])
+
+theorem SS_tsym : SS.mulVec tsym = (1 : ℂ) • tsym := by
+  ext ⟨i, j⟩
+  fin_cases i <;> fin_cases j <;>
+    simp [SS, σx, σy, σz, tsym, Matrix.mulVec, dotProduct, Matrix.kroneckerMap_apply,
+      Fintype.sum_prod_type, Fin.sum_univ_two, Matrix.add_apply] <;>
+    (try ring_nf) <;> (try simp [Complex.I_sq]) <;> (try ring) <;> (try simp [Prod.ext_iff])
+
+/-- SS v = μ v なら (3/2 + λSS) v = (3/2 + λμ) v -/
+theorem level_of (lam μ : ℂ) (v : Fin 2 × Fin 2 → ℂ) (h : SS.mulVec v = μ • v) :
+    ((3 / 2 : ℂ) • (1 : Matrix (Fin 2 × Fin 2) (Fin 2 × Fin 2) ℂ) + lam • SS).mulVec v
+      = (3 / 2 + lam * μ) • v := by
+  rw [Matrix.add_mulVec, Matrix.smul_mulVec_assoc, Matrix.smul_mulVec_assoc, Matrix.one_mulVec,
+    h, smul_smul, ← add_smul]
+
+/-- 4 次元の空間は三重項(upup, tsym, dndn)と一重項に分かれる:任意の v の分解 -/
+theorem decomp (v : Fin 2 × Fin 2 → ℂ) :
+    v = v (0, 0) • upup + v (1, 1) • dndn + ((v (0, 1) + v (1, 0)) / 2) • tsym
+      + ((v (0, 1) - v (1, 0)) / 2) • singlet := by
+  ext ⟨i, j⟩
+  fin_cases i <;> fin_cases j <;> simp [upup, dndn, tsym, singlet, Prod.ext_iff] <;> ring
+
+/-- 【α-V.2】還元した Dirac 作用素のスペクトルの全体:任意の v について
+D v = (3/2 + λ)(v − c·singlet) + (3/2 − 3λ) c·singlet、c = (v₀₁ − v₁₀)/2。
+三重項(3 次元)の固有値は 3/2 + λ、一重項(1 次元)は 3/2 − 3λ で、これで尽きる。 -/
+theorem reduced_dirac_spectrum (lam : ℂ) (v : Fin 2 × Fin 2 → ℂ) :
+    ((-I) • (Matrix.kroneckerMap (· * ·) ((3 / 2 * I) • (1 : Matrix (Fin 2) (Fin 2) ℂ))
+        (1 : Matrix (Fin 2) (Fin 2) ℂ) + gaugeTerm lam)).mulVec v
+      = (3 / 2 + lam) • (v - ((v (0, 1) - v (1, 0)) / 2) • singlet)
+        + (3 / 2 - 3 * lam) • (((v (0, 1) - v (1, 0)) / 2) • singlet) := by
+  rw [reduced_dirac]
+  have hu := level_of lam 1 upup SS_upup
+  have hd := level_of lam 1 dndn SS_dndn
+  have ht := level_of lam 1 tsym SS_tsym
+  have hs := level_of lam (-3) singlet SS_singlet
+  conv_lhs => rw [decomp v]
+  simp only [Matrix.mulVec_add, Matrix.mulVec_smul, hu, hd, ht, hs]
+  ext x
+  have hx := congrFun (decomp v) x
+  simp only [Pi.add_apply, Pi.smul_apply, Pi.sub_apply, smul_eq_mul] at hx ⊢
+  linear_combination (-(3 / 2 + lam)) * hx
+
 end CFT.S3Dirac
