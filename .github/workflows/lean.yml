@@ -41,13 +41,13 @@ jobs:
         run: |
           set +e
           status=0
-          for m in CFT.AlphaIV_WKB CFT.AlphaVI_Physical CFT.AlphaIV_Minisuperspace; do
+          for m in CFT.AlphaV_S3Dirac CFT.AlphaVII_Maxwell CFT.AlphaV_Backreaction; do
             lake build $m 2>&1 | tee -a build.log
             [ "${PIPESTATUS[0]}" = "0" ] || status=1
           done
           grep -E -A8 "^error|error:" build.log > errors.txt || true
           { echo "## errors"; echo '```'; head -n 400 errors.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
-          lake env lean scripts/check_phase2.lean 2>&1 | tee axioms.log
+          lake env lean scripts/check_phase3.lean 2>&1 | tee axioms.log
           { echo "## axioms"; echo '```'; cat axioms.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           exit $status
 
