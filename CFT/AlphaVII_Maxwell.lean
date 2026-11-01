@@ -5,7 +5,7 @@
   計量は η = diag(−1, 1, 1, 1)。接続 A_μ、曲率 F_μν = ∂_μA_ν − ∂_νA_μ。
   * Bianchi 恒等式 ∂_λF_μν + ∂_μF_νλ + ∂_νF_λμ = 0 は、A についての仮定なしに定義から従う
     (`bianchi`)。運動方程式ではない。
-  * 作用 L = −¼F_μνF^μν − J^νA_ν(ここでは 4L を扱う)の第 1 変分:
+  * 作用 L = −¼F_μνF^μν − J^νA_ν(ここでは 4L を扱う。J は上付きの成分 J^ν で持つ)の第 1 変分:
       4L(A + εB) = 4L(A) + 4ε(E^ν B_ν − ∂_μ(F^μν B_ν)) − ε² F_μν(B)F^μν(B)   (`first_variation`)
     E^ν = ∂_μF^μν − J^ν。全微分を除いた 1 次の項が消えることが運動方程式 ∂_μF^μν = J^ν
     (変分法の基本補題は標準的な事実)。
@@ -25,9 +25,9 @@ def eta : Fin 4 → S := ![-1, 1, 1, 1]
 /-- 曲率 F_μν = ∂_μA_ν − ∂_νA_μ -/
 def Fd (A : Fin 4 → S) (m n : Fin 4) : S := d m (A n) - d n (A m)
 
-/-- 4L = −F_μνF^μν − 4J^νA_ν(F^μν = η^μη^ν F_μν) -/
+/-- 4L = −F_μνF^μν − 4J^νA_ν(F^μν = η^μη^ν F_μν、J^ν は上付き) -/
 def L4 (A J : Fin 4 → S) : S :=
-  -(∑ m, ∑ n, eta m * eta n * Fd d A m n * Fd d A m n) - 4 * ∑ n, eta n * J n * A n
+  -(∑ m, ∑ n, eta m * eta n * Fd d A m n * Fd d A m n) - 4 * ∑ n, J n * A n
 
 /-- 運動方程式の左辺 E^ν = ∂_μF^μν − J^ν(η の成分は定数なので導分の外に出す) -/
 def Eom (A J : Fin 4 → S) (n : Fin 4) : S :=
@@ -43,7 +43,7 @@ set_option maxHeartbeats 4000000 in
 /-- 【Z25】作用の第 1 変分。ε は定数(∂ε = 0)。 -/
 theorem first_variation (A B J : Fin 4 → S) (ε : S) (hε : ∀ i, d i ε = 0) :
     L4 d (fun n => A n + ε * B n) J
-      = L4 d A J + 4 * ε * (∑ n, eta n * Eom d A J n * B n
+      = L4 d A J + 4 * ε * (∑ n, Eom d A J n * B n
           - ∑ m, eta m * ∑ n, eta n * d m (Fd d A m n * B n))
         - ε ^ 2 * ∑ m, ∑ n, eta m * eta n * Fd d B m n * Fd d B m n := by
   simp only [L4, Eom, Fd, map_add, Derivation.leibniz, hε, smul_eq_mul, mul_zero, add_zero,

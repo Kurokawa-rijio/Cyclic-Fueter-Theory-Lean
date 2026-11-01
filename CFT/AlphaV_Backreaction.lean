@@ -71,7 +71,6 @@ theorem cap_friedmann (L t : ℝ) (ht : t ^ 2 < L) :
   · have hne' : L - t ^ 2 ≠ 0 := hpos.ne'
     rw [div_pow, hsq]
     field_simp
-    ring
 
 /-- 保存則:ρ = K/a⁴(p = ρ/3)は ρ̇ = −4(ȧ/a)ρ をみたす -/
 theorem continuity_radiation (K : ℝ) (a : ℝ → ℝ) (a' t : ℝ) (ha : HasDerivAt a a' t)

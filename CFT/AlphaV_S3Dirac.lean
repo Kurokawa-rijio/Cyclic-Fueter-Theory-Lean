@@ -66,7 +66,8 @@ theorem reduced_dirac (lam : ℂ) :
     simp [gaugeTerm, SS, σ, σx, σy, σz, Fin.sum_univ_three, Matrix.kroneckerMap_apply,
       Matrix.one_apply, Matrix.add_apply, Prod.ext_iff] <;>
     (try ring_nf) <;> (try simp [Complex.I_sq, pow_succ, Prod.ext_iff]) <;> (try ring_nf) <;>
-    (try simp [Complex.I_sq, pow_succ]) <;> (try ring)
+    (try simp [Complex.I_sq, pow_succ]) <;> (try ring) <;>
+    linear_combination (I * lam) * Complex.I_sq
 
 /-- 【α-V.2】一重項の準位 3/2 − 3λ -/
 theorem level_singlet (lam : ℂ) :
