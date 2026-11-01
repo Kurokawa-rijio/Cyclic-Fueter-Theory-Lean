@@ -57,7 +57,6 @@ theorem hasDerivAt_Psi_b (a b A' σ' : ℝ) (hA : HasDerivAt A A' b) (hσ : HasD
   have hg := (hσc.const_mul (I * (a : ℂ))).mul_const (κ : ℂ)
   have h := hAc.mul hg.cexp
   convert h using 1
-  funext y; simp only [Psi]; ring_nf
 
 /-- 混合微分:∂_b(∂_aΨ) = iσ′κ Ψ + iσκ ∂_bΨ -/
 theorem hasDerivAt_Psia_b (a b A' σ' : ℝ) (hA : HasDerivAt A A' b) (hσ : HasDerivAt σ σ' b) :
@@ -69,7 +68,6 @@ theorem hasDerivAt_Psia_b (a b A' σ' : ℝ) (hA : HasDerivAt A A' b) (hσ : Has
   have h1 := (hσc.const_mul I).mul_const (κ : ℂ)
   have h := h1.mul (hasDerivAt_Psi_b κ A σ a b A' σ' hA hσ)
   convert h using 1
-  funext y; simp only [Psia]
 
 /-- WDW 作用素(順序:b²·Hfun、運動量を右に):
 (1/4c)(−ħ² a Ψ_aa + 2ħ² b Ψ_ab) − c a (b² − ℓ²) Ψ -/
