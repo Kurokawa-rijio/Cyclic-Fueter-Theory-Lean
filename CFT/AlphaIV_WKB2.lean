@@ -213,9 +213,17 @@ theorem wdw_exact_LB_neg (hb : ℝ) (hhb : hb * κ = 1) (hc : c ≠ 0) (C a b : 
   have hne : (fun y => -Real.sqrt (Q c l C y)) b ≠ 0 := by
     simp only [ne_eq, neg_eq_zero]; exact hs'
   have hA := hrd.div hσ hne
+  have alg1 : ∀ S Y : ℝ, S ≠ 0 → (-S) * (-(Y / (2 * S))) = Y / 2 := by
+    intro S Y hS
+    field_simp <;> ring
+  have alg2 : ∀ S R Y : ℝ, S ≠ 0 → R ≠ 0 →
+      (-S) * ((1 / (2 * R) * -S - R * -(Y / (2 * S))) / (-S) ^ 2) + (-(Y / (2 * S))) * (R / (-S))
+        = 1 / (2 * R) := by
+    intro S R Y hS hR
+    field_simp <;> ring
   exact wdw_exact_LB_of c l κ _ _ hb hhb hc C a b (-Real.sqrt (Q c l C b)) (Real.sqrt b) _ _
     (neg_ne_zero.mpr hs') hr' (by rw [neg_sq]; exact Real.sq_sqrt hQ.le) (Real.sq_sqrt hb0.le)
-    rfl rfl hσ hA (by field_simp <;> ring) (by field_simp <;> ring) Daa Dab hDaa hDab
+    rfl rfl hσ hA (alg1 _ _ hs') (alg2 _ _ _ hs' hr') Daa Dab hDaa hDab
 
 end
 
