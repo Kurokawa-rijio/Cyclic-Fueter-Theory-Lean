@@ -128,13 +128,16 @@ theorem wdw_exact_LB (hb : ℝ) (hhb : hb * κ = 1) (hc : c ≠ 0) (C a b : ℝ)
     linear_combination ((1 / (4 * (c : ℂ))) * a) * hsqC - (2 * (1 / (4 * (c : ℂ))) * a * b) * hsσ
       + ((c : ℂ) * a * ((b : ℂ) ^ 2 - (l : ℂ) ^ 2)) * hic
   -- 輸送(ħ¹):(σA)′ = (√b)′ = 1/(2√b)
+  have hsi : (s : ℂ) * (s : ℂ)⁻¹ = 1 := mul_inv_cancel₀ hs0
+  have hri : (r : ℂ) * (r : ℂ)⁻¹ = 1 := mul_inv_cancel₀ hr0
   have h2 : (s : ℂ) * ((1 / (2 * (r : ℂ)) * s - r * (((C : ℂ) - 8 * (c : ℂ) ^ 2 * b) / (2 * s)))
       / (s : ℂ) ^ 2) + (((C : ℂ) - 8 * (c : ℂ) ^ 2 * b) / (2 * s)) * ((r : ℂ) / s) = 1 / (2 * r) := by
-    field_simp <;> ring
-  have h3 : (s : ℂ) * ((r : ℂ) / s) = r := by field_simp
+    linear_combination ((r : ℂ)⁻¹ / 2 * ((s : ℂ) * (s : ℂ)⁻¹ + 1)
+      - (r : ℂ) * (((C : ℂ) - 8 * (c : ℂ) ^ 2 * b) / (2 * s)) * (s : ℂ)⁻¹) * hsi
+  have h3 : (s : ℂ) * ((r : ℂ) / s) = r := by linear_combination (r : ℂ) * hsi
   have h4 : (b : ℂ) * (1 / (2 * (r : ℂ))) = r / 2 := by
     rw [← hrsqC]
-    field_simp <;> ring
+    linear_combination ((r : ℂ) / 2) * hri
   push_cast
   generalize exp (I * (a : ℂ) * (s : ℂ) * (κ : ℂ)) = E
   linear_combination (E * ((r : ℂ) / s)) * h1

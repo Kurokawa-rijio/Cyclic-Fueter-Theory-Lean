@@ -159,7 +159,8 @@ theorem lb_operator (hb a b c : ℂ) (Ψa Ψaa Ψab Ψbb Ψb : ℂ) (hb0 : b ≠
     b ^ 2 * (-(hb ^ 2) / 2) * (a / (2 * c * b ^ 2) * Ψaa + 2 * (-1 / (2 * c * b)) * Ψab + 0 * Ψbb
       + 1 / (2 * c * b ^ 2) * Ψa + 0 * Ψb)
       = (1 / (4 * c)) * (-hb ^ 2 * a * Ψaa + 2 * hb ^ 2 * b * Ψab) - (1 / (4 * c)) * hb ^ 2 * Ψa := by
-  field_simp <;> ring
+  have hbb : b * b⁻¹ = 1 := mul_inv_cancel₀ hb0
+  linear_combination (-(hb ^ 2 * c⁻¹ / 4) * ((a * Ψaa + Ψa) * (b * b⁻¹ + 1) - 2 * b * Ψab)) * hbb
 
 end Real
 

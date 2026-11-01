@@ -14,6 +14,7 @@
   左不変な断面はなめらかな大域的断面なので、D の定義域(H¹)と L²(S³) の状態空間に属する。
 -/
 import CFT.AlphaV
+import Mathlib.Analysis.Quaternion
 
 namespace CFT.S3Dirac
 
@@ -110,7 +111,7 @@ theorem frame_deriv (q v : ℍ[ℝ]) (b : Fin 3) :
 theorem frame_bracket (q : ℍ[ℝ]) (a b : Fin 3) :
     (q * e a) * e b - (q * e b) * e a = ∑ c, (2 * eps a b c) • (q * e c) := by
   rw [mul_assoc, mul_assoc, ← mul_sub, lie_bracket, Finset.mul_sum]
-  exact Finset.sum_congr rfl (fun c _ => mul_smul_comm _ _ _)
+  exact Finset.sum_congr rfl (fun c _ => Algebra.mul_smul_comm _ _ _)
 
 /-! ### 4 次元の不変な断面の上の固有空間の全体 -/
 

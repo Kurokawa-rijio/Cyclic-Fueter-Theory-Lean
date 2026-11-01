@@ -103,10 +103,35 @@ theorem tym_traceless (N A R s : S) (hN : N ≠ 0) (hA : A ≠ 0) (hR : R ≠ 0)
       + giD N A R s 1 1 * Tym (gD N A R s) (giD N A R s) F 1 1
       + giD N A R s 2 2 * Tym (gD N A R s) (giD N A R s) F 2 2
       + giD N A R s 3 3 * Tym (gD N A R s) (giD N A R s) F 3 3 = 0 := by
-  simp only [Tym, gD, giD, Fin.sum_univ_four, Fin.sum_univ_three, Matrix.cons_val_zero,
-    Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_two, Matrix.cons_val_three,
-    Matrix.tail_cons, zero_mul, mul_zero, add_zero, zero_add]
-  field_simp
+  -- Σ_m g^{mm} (F_{m·}F_{m·}) = F²(対角の g^{-1} について、逆元の関係を使わない環の恒等式)
+  have hX : ∑ m, giD N A R s m m * (∑ a, ∑ l, ∑ k, F a m l * giD N A R s l k * F a m k)
+      = ∑ a, ∑ al, ∑ be, ∑ ga, ∑ de,
+          F a al be * giD N A R s al ga * giD N A R s be de * F a ga de := by
+    simp only [giD, Fin.sum_univ_four, Fin.sum_univ_three, Matrix.cons_val_zero,
+      Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_two, Matrix.cons_val_three,
+      Matrix.tail_cons, zero_mul, mul_zero, add_zero, zero_add]
+    ring
+  -- Σ_m g^{mm} g_mm = 4
+  have hB : ∑ m, giD N A R s m m * gD N A R s m m = 4 := by
+    have h1 : N⁻¹ ^ 2 * N ^ 2 = 1 := by rw [← mul_pow, inv_mul_cancel₀ hN, one_pow]
+    have h2 : A⁻¹ ^ 2 * A ^ 2 = 1 := by rw [← mul_pow, inv_mul_cancel₀ hA, one_pow]
+    have h3 : R⁻¹ ^ 2 * R ^ 2 = 1 := by rw [← mul_pow, inv_mul_cancel₀ hR, one_pow]
+    have h4 : s⁻¹ ^ 2 * s ^ 2 = 1 := by rw [← mul_pow, inv_mul_cancel₀ hs, one_pow]
+    simp only [giD, gD, Fin.sum_univ_four, Matrix.cons_val_zero,
+      Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_two, Matrix.cons_val_three,
+      Matrix.tail_cons]
+    linear_combination h1 + h2 + h3 + (s⁻¹ ^ 2 * s ^ 2) * h3 + h4
+  have e : giD N A R s 0 0 * Tym (gD N A R s) (giD N A R s) F 0 0
+      + giD N A R s 1 1 * Tym (gD N A R s) (giD N A R s) F 1 1
+      + giD N A R s 2 2 * Tym (gD N A R s) (giD N A R s) F 2 2
+      + giD N A R s 3 3 * Tym (gD N A R s) (giD N A R s) F 3 3
+      = ∑ m, giD N A R s m m * (∑ a, ∑ l, ∑ k, F a m l * giD N A R s l k * F a m k)
+        - 4⁻¹ * (∑ m, giD N A R s m m * gD N A R s m m)
+          * (∑ a, ∑ al, ∑ be, ∑ ga, ∑ de,
+              F a al be * giD N A R s al ga * giD N A R s be de * F a ga de) := by
+    simp only [Tym, Fin.sum_univ_four]
+    ring
+  rw [e, hX, hB]
   ring
 
 /-- 【α-VI.3】Einstein–Yang–Mills:超静的な S³ に YM の応力 T̂(任意の F)を置いた Einstein 方程式
