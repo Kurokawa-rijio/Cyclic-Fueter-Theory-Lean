@@ -146,6 +146,77 @@ theorem wdw_exact_LB (hb : ℝ) (hhb : hb * κ = 1) (hc : c ≠ 0) (C a b : ℝ)
     + (-((1 / (4 * (c : ℂ))) * (hb : ℂ) ^ 2 * I * (κ : ℂ) * E)) * h3
     + (-((1 / (4 * (c : ℂ))) * I * E * (r : ℂ) * (hb : ℂ))) * hu
 
+/-- 【α-VI.4】Laplace–Beltrami の順序の厳密解の一般形:σ(b) = s、s² = Q、sσ′ = Q′/2、A(b) = r/s、
+r² = b、輸送方程式 sA′ + σ′(r/s) = 1/(2r)(すなわち (σA)′ = (√b)′) -/
+theorem wdw_exact_LB_of (A σ : ℝ → ℝ) (hb : ℝ) (hhb : hb * κ = 1) (hc : c ≠ 0)
+    (C a b s r σ' A' : ℝ) (hs : s ≠ 0) (hr : r ≠ 0) (hsq : s ^ 2 = Q c l C b) (hrsq : r ^ 2 = b)
+    (hσb : σ b = s) (hAb : A b = r / s) (hσ : HasDerivAt σ σ' b) (hA : HasDerivAt A A' b)
+    (hσ' : s * σ' = (C - 8 * c ^ 2 * b) / 2) (htr : s * A' + σ' * (r / s) = 1 / (2 * r))
+    (Daa Dab : ℂ) (hDaa : HasDerivAt (fun x => Psia κ A σ x b) Daa a)
+    (hDab : HasDerivAt (fun y => Psia κ A σ a y) Dab b) :
+    wdwOpLB c l hb a b (Psi κ A σ a b) (Psia κ A σ a b) Daa Dab = 0 := by
+  simp only [wdwOpLB]
+  rw [wkb_identity c l κ A σ hb hhb a b A' σ' hA hσ Daa Dab hDaa hDab]
+  simp only [Psia, Psi, hσb, hAb]
+  have hs0 : (s : ℂ) ≠ 0 := by exact_mod_cast hs
+  have hr0 : (r : ℂ) ≠ 0 := by exact_mod_cast hr
+  have hc0 : (c : ℂ) ≠ 0 := by exact_mod_cast hc
+  have hu : (hb : ℂ) * (κ : ℂ) = 1 := by exact_mod_cast hhb
+  have hsqC : (s : ℂ) ^ 2 = (C : ℂ) * b - 4 * (c : ℂ) ^ 2 * ((b : ℂ) ^ 2 + (l : ℂ) ^ 2) := by
+    have := congrArg (fun t : ℝ => (t : ℂ)) hsq
+    simpa [Q] using this
+  have hrsqC : (r : ℂ) ^ 2 = (b : ℂ) := by exact_mod_cast hrsq
+  have hσ'C : (s : ℂ) * (σ' : ℂ) = ((C : ℂ) - 8 * (c : ℂ) ^ 2 * b) / 2 := by
+    have := congrArg (fun t : ℝ => (t : ℂ)) hσ'
+    push_cast at this
+    exact this
+  have htrC : (s : ℂ) * (A' : ℂ) + (σ' : ℂ) * ((r : ℂ) / (s : ℂ)) = 1 / (2 * (r : ℂ)) := by
+    have := congrArg (fun t : ℝ => (t : ℂ)) htr
+    push_cast at this
+    exact this
+  have hic : (1 / (4 * (c : ℂ))) * (4 * c) = 1 := by field_simp
+  have hsi : (s : ℂ) * (s : ℂ)⁻¹ = 1 := mul_inv_cancel₀ hs0
+  have hri : (r : ℂ) * (r : ℂ)⁻¹ = 1 := mul_inv_cancel₀ hr0
+  have h3 : (s : ℂ) * ((r : ℂ) / s) = r := by linear_combination (r : ℂ) * hsi
+  have h4 : (b : ℂ) * (1 / (2 * (r : ℂ))) = r / 2 := by
+    rw [← hrsqC]
+    linear_combination ((r : ℂ) / 2) * hri
+  push_cast
+  generalize exp (I * (a : ℂ) * (s : ℂ) * (κ : ℂ)) = E
+  linear_combination (E * ((r : ℂ) / s)) * ((1 / (4 * (c : ℂ))) * a * hsqC
+      - (2 * (1 / (4 * (c : ℂ))) * a * b) * hσ'C + ((c : ℂ) * a * ((b : ℂ) ^ 2 - (l : ℂ) ^ 2)) * hic)
+    + (E * 2 * (1 / (4 * (c : ℂ))) * I * (hb : ℂ) * (b : ℂ)) * htrC
+    + (E * 2 * (1 / (4 * (c : ℂ))) * I * (hb : ℂ)) * h4
+    + (-((1 / (4 * (c : ℂ))) * (hb : ℂ) ^ 2 * I * (κ : ℂ) * E)) * h3
+    + (-((1 / (4 * (c : ℂ))) * I * E * (r : ℂ) * (hb : ℂ))) * hu
+
+/-- 【α-VI.4】Laplace–Beltrami の順序の負の枝:σ = −√Q、Ψ = √b e^{iaσ/ħ}/σ も厳密解 -/
+theorem wdw_exact_LB_neg (hb : ℝ) (hhb : hb * κ = 1) (hc : c ≠ 0) (C a b : ℝ) (hb0 : 0 < b)
+    (hQ : 0 < Q c l C b) (Daa Dab : ℂ)
+    (hDaa : HasDerivAt (fun x => Psia κ (fun y => Real.sqrt y / (-Real.sqrt (Q c l C y)))
+      (fun y => -Real.sqrt (Q c l C y)) x b) Daa a)
+    (hDab : HasDerivAt (fun y => Psia κ (fun y => Real.sqrt y / (-Real.sqrt (Q c l C y)))
+      (fun y => -Real.sqrt (Q c l C y)) a y) Dab b) :
+    wdwOpLB c l hb a b
+      (Psi κ (fun y => Real.sqrt y / (-Real.sqrt (Q c l C y))) (fun y => -Real.sqrt (Q c l C y)) a b)
+      (Psia κ (fun y => Real.sqrt y / (-Real.sqrt (Q c l C y))) (fun y => -Real.sqrt (Q c l C y)) a b)
+      Daa Dab = 0 := by
+  have hspos : 0 < Real.sqrt (Q c l C b) := Real.sqrt_pos.mpr hQ
+  have hrpos : 0 < Real.sqrt b := Real.sqrt_pos.mpr hb0
+  have hs' : Real.sqrt (Q c l C b) ≠ 0 := hspos.ne'
+  have hr' : Real.sqrt b ≠ 0 := hrpos.ne'
+  have hσ : HasDerivAt (fun y => -Real.sqrt (Q c l C y))
+      (-((C - 8 * c ^ 2 * b) / (2 * Real.sqrt (Q c l C b)))) b :=
+    ((hasDerivAt_Q c l C b).sqrt hQ.ne').neg
+  have hrd : HasDerivAt (fun y => Real.sqrt y) (1 / (2 * Real.sqrt b)) b :=
+    Real.hasDerivAt_sqrt hb0.ne'
+  have hne : (fun y => -Real.sqrt (Q c l C y)) b ≠ 0 := by
+    simp only [ne_eq, neg_eq_zero]; exact hs'
+  have hA := hrd.div hσ hne
+  exact wdw_exact_LB_of c l κ _ _ hb hhb hc C a b (-Real.sqrt (Q c l C b)) (Real.sqrt b) _ _
+    (neg_ne_zero.mpr hs') hr' (by rw [neg_sq]; exact Real.sq_sqrt hQ.le) (Real.sq_sqrt hb0.le)
+    rfl rfl hσ hA (by field_simp <;> ring) (by field_simp <;> ring) Daa Dab hDaa hDab
+
 end
 
 end CFT.WKB2

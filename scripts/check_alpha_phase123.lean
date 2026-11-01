@@ -12,6 +12,9 @@ import CFT.AlphaIV_WKB2
 import CFT.AlphaVI_Physical2
 import CFT.AlphaV_FRW
 import CFT.AlphaVII_Tangent
+import CFT.AlphaVI_Affine
+import CFT.AlphaVI_Semiclassical
+import CFT.AlphaV_Anomaly
 
 #print axioms CFT.VIStatic.trace_einD
 #print axioms CFT.VIStatic.rsc_static_S3
@@ -104,6 +107,8 @@ import CFT.AlphaVII_Tangent
 #print axioms CFT.WKB2.wdw_exact_neg
 #print axioms CFT.WKB2.wdwOp_linear
 #print axioms CFT.WKB2.wdw_exact_LB
+#print axioms CFT.WKB2.wdw_exact_LB_of
+#print axioms CFT.WKB2.wdw_exact_LB_neg
 #print axioms CFT.Phys2.physical_branch
 #print axioms CFT.Phys2.K_minus_min
 #print axioms CFT.Phys2.K_gt_min
@@ -137,3 +142,19 @@ import CFT.AlphaVII_Tangent
 #print axioms CFT.Tangent.tangent_chern
 #print axioms CFT.Tangent.euler_char_two
 #print axioms CFT.Tangent.chern_eq_euler
+#print axioms CFT.Tangent.J_sq
+#print axioms CFT.Tangent.J_tangent
+#print axioms CFT.Tangent.J_isometry
+#print axioms CFT.Affine.affine_group_law
+#print axioms CFT.Affine.affine_unitary
+#print axioms CFT.Affine.affine_commutator
+#print axioms CFT.Affine.K_positive
+#print axioms CFT.Affine.sector_sign
+#print axioms CFT.Semi.Q_pos_iff
+#print axioms CFT.Semi.Cmin_ge
+#print axioms CFT.Semi.support_condition
+#print axioms CFT.Semi.stationary_point
+#print axioms CFT.Anomaly.beta_from_anomaly
+#print axioms CFT.Anomaly.kappa2_pos
+#print axioms CFT.Anomaly.rho_q_conserved
+#print axioms CFT.Anomaly.rho_unique
