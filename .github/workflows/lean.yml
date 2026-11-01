@@ -47,6 +47,8 @@ jobs:
           done
           grep -E -A8 "^error|error:" build.log > errors.txt || true
           { echo "## errors"; echo '```'; head -n 400 errors.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          lake env lean scripts/check_phase1.lean 2>&1 | tee axioms.log
+          { echo "## axioms"; echo '```'; cat axioms.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           exit $status
 
       - name: Upload errors

@@ -51,7 +51,7 @@ theorem trace_einD (N A R s : S) (hN : N ≠ 0) (hA : A ≠ 0) (hR : R ≠ 0) (h
 
 /-- 超静的な S³ のスカラー曲率は 6/ℓ² -/
 theorem rsc_static_S3 (l σ κ s c : S) (H : SphD d 1 l (l * σ) s c) (hl : ∀ i, d i l = 0)
-    (hσ0 : d 0 σ = 0) (hσ1 : d 1 σ = κ) (hκ0 : d 0 κ = 0) (hκ1 : d 1 κ = -σ)
+    (hσ0 : d 0 σ = 0) (hσ1 : d 1 σ = κ) (hκ1 : d 1 κ = -σ)
     (pyth : σ ^ 2 + κ ^ 2 = 1) :
     Rsc d (giD 1 l (l * σ) s) (GD d 1 l (l * σ) s c) = 6 * l⁻¹ ^ 2 := by
   have hA : l ≠ 0 := H.hA
@@ -79,14 +79,14 @@ theorem rsc_static_S3 (l σ κ s c : S) (H : SphD d 1 l (l * σ) s c) (hl : ∀ 
 G_aa = κ_G T_aa を同時にはみたせない。
 計算:跡をとると −R = κ_G Σ g^{aa}T_aa = 0、一方 R = 6/ℓ² ≠ 0。 -/
 theorem static_S3_impossible (l σ κ s c κG : S) (H : SphD d 1 l (l * σ) s c)
-    (hl : ∀ i, d i l = 0) (hσ0 : d 0 σ = 0) (hσ1 : d 1 σ = κ) (hκ0 : d 0 κ = 0)
+    (hl : ∀ i, d i l = 0) (hσ0 : d 0 σ = 0) (hσ1 : d 1 σ = κ)
     (hκ1 : d 1 κ = -σ) (pyth : σ ^ 2 + κ ^ 2 = 1) (T : Fin 4 → Fin 4 → S)
     (E : ∀ a, Ein d (gD 1 l (l * σ) s) (giD 1 l (l * σ) s) (GD d 1 l (l * σ) s c) a a
       = κG * T a a)
     (traceless : giD 1 l (l * σ) s 0 0 * T 0 0 + giD 1 l (l * σ) s 1 1 * T 1 1
       + giD 1 l (l * σ) s 2 2 * T 2 2 + giD 1 l (l * σ) s 3 3 * T 3 3 = 0) : False := by
   have htr := trace_einD d 1 l (l * σ) s one_ne_zero H.hA H.hR H.hs (GD d 1 l (l * σ) s c)
-  rw [E 0, E 1, E 2, E 3, rsc_static_S3 d l σ κ s c H hl hσ0 hσ1 hκ0 hκ1 pyth] at htr
+  rw [E 0, E 1, E 2, E 3, rsc_static_S3 d l σ κ s c H hl hσ0 hσ1 hκ1 pyth] at htr
   have h0 : (6 : S) * l⁻¹ ^ 2 = 0 := by linear_combination htr - κG * traceless
   have hl0 : l ≠ 0 := H.hA
   have : (6 : S) ≠ 0 := by norm_num
