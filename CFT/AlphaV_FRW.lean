@@ -268,8 +268,7 @@ theorem cap_semiclassical (L t : ℝ) (ht : t ^ 2 < L) :
       = L / (Real.sqrt (L - t ^ 2)) ^ 4 := by
   have hpos : 0 < L - t ^ 2 := by linarith
   have hne : Real.sqrt (L - t ^ 2) ≠ 0 := (Real.sqrt_pos.mpr hpos).ne'
-  rw [(CFT.Backreaction.cap_friedmann L t ht).2]
-  field_simp <;> ring
+  rw [(CFT.Backreaction.cap_friedmann L t ht).2, div_div, ← pow_add] <;> norm_num
 
 end Real
 
