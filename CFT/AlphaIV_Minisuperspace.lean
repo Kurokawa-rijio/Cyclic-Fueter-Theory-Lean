@@ -51,6 +51,7 @@ theorem fsq_W0 (N A R s : S) (hN : N ≠ 0) (hA : A ≠ 0) (hR : R ≠ 0) (hs : 
     Fsq (giD N A R s) (FT d 0 s) = 2 * R⁻¹ ^ 4 := by
   simp [Fsq, FT, giD, Fin.sum_univ_three, Fin.sum_univ_four]
   field_simp
+  ring_nf
   exact fsq_aux s R s⁻¹ R⁻¹ (mul_inv_cancel₀ hs) (mul_inv_cancel₀ hR)
 
 set_option maxHeartbeats 4000000 in
@@ -70,6 +71,7 @@ theorem reduced_density (N a b s c l : S) (H : SphD d N a b s c)
     Derivation.leibniz, Derivation.leibniz_pow, smul_eq_mul, nsmul_eq_mul, Nat.cast_ofNat,
     Nat.reduceSub, pow_one, iN]
   field_simp
+  ring_nf
   exact density_aux N a b s l (d 0 N) (d 0 a) (d 0 b) (d 0 (d 0 a)) (d 0 (d 0 b)) N⁻¹ a⁻¹ b⁻¹
     (mul_inv_cancel₀ hN) (mul_inv_cancel₀ ha) (mul_inv_cancel₀ hb)
 

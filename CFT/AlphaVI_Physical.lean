@@ -85,8 +85,7 @@ theorem dS_dC (a b c l C : ℝ) (hQ : 0 < CFT.WKB.Q c l C b) :
   have hlin : HasDerivAt (fun C' => CFT.WKB.Q c l C' b) b C := by
     have h := ((hasDerivAt_id C).mul_const b).sub_const (4 * c ^ 2 * (b ^ 2 + l ^ 2))
     convert h using 1
-    · funext C'; simp [CFT.WKB.Q]
-    · simp
+    simp
   have h := (hlin.sqrt hQ.ne').const_mul a
   convert h using 1
   ring
