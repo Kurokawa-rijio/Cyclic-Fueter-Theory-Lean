@@ -2,7 +2,7 @@
 
 Cyclic Fueter Theory develops a geometric construction beginning with cyclic quaternionic Fueter-type operators and their complex matrix and spinor representations. This Lean 4 archive formalizes selected calculations that connect a momentum-space quantum sphere and Dirac-type operators to relativistic mass-shell geometry, then studies a spherical Einstein–Yang–Mills (EYM) dumbbell whose gauge profile is tied to its spatial shape. The purpose is to make the algebraic identities, geometric correspondences, and field-equation calculations auditable—not to present a completed physical unification.
 
-Version 0.3.0 contains 1216 theorem declarations in 118 modules (a count of declarations, not of independent claims). All of them build without `sorry` or project-specific axioms; AUDIT_SENTENCE
+Version 0.3.0 contains 1216 theorem declarations in 118 modules (a count of declarations, not of independent claims). All of them build without `sorry` or project-specific axioms; 1202 depend only on Lean's standard axioms [propext, Classical.choice, Quot.sound], and the remaining 14 on subsets of these.
 
 ## Quantum sphere and relativistic geometry
 

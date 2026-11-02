@@ -79,7 +79,7 @@ lake env lean Audit.lean      # #print axioms for every theorem; output recorded
 lake env lean DepCheck.lean   # proof and statement dependencies; output recorded in review/depcheck.txt
 ```
 
-Recorded audit result for v0.3.0: AUDIT_LINE There is no `sorry` and no project-specific `axiom`. The GitHub Actions workflow runs the same audit after the build and reports the counts in the job summary.
+Recorded audit result for v0.3.0: 1216 theorems, of which 1202 depend only on Lean's standard axioms [propext, Classical.choice, Quot.sound], 7 on [propext, Quot.sound], 4 on [propext], and 3 on no axioms. `audit.txt` holds the v0.2.0 output for the 1074 unchanged theorems followed by the CI output (run 41331208469) for the 142 new ones; the full `lake build` and the complete audit of `Audit.lean` were also run together in CI (run 41374173874, success, no `sorryAx`). There is no `sorry` and no project-specific `axiom`. The GitHub Actions workflow runs the same audit after the build and reports the counts in the job summary.
 
 A GitHub Actions workflow under `.github/workflows/lean.yml` builds the project on pushes and pull requests.
 
