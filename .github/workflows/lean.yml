@@ -35,25 +35,31 @@ jobs:
         shell: bash
         run: lake exe cache get
 
-      # 作業ブランチでは新しいモジュールだけをビルドし、エラーを全部出し切る(main に入れる前に戻す)
-      - name: Build new modules (keep going)
+      - name: Build Lean project
+        shell: bash
+        run: lake build
+
+      - name: Axiom audit (every theorem)
         shell: bash
         run: |
-          set +e
-          status=0
-          for m in CFT.AlphaIV_Reduction CFT.AlphaVI_Static CFT.AlphaV_S3Dirac CFT.AlphaIV_WKB2 CFT.AlphaVI_Physical2 CFT.AlphaV_FRW CFT.AlphaVII_Tangent CFT.AlphaVII_Commutant CFT.AlphaVI_Sech CFT.AlphaVII_Maxwell CFT.AlphaVI_Affine CFT.AlphaVI_Semiclassical CFT.AlphaV_Anomaly; do
-            lake build $m 2>&1 | tee -a build.log
-            [ "${PIPESTATUS[0]}" = "0" ] || status=1
-          done
-          grep -E -A8 "^error|error:" build.log > errors.txt || true
-          { echo "## errors"; echo '```'; head -n 400 errors.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
-          lake env lean scripts/check_alpha_phase123.lean 2>&1 | tee axioms.log
-          { echo "## axioms"; echo '```'; cat axioms.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
-          exit $status
+          lake env lean Audit.lean > audit.txt 2>&1
+          total=$(grep -c "depends on axioms\|does not depend on any axioms" audit.txt || true)
+          sorry=$(grep -c "sorryAx" audit.txt || true)
+          std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
+          {
+            echo "## Axiom audit"
+            echo "- theorems audited: $total"
+            echo "- depending only on [propext, Classical.choice, Quot.sound]: $std"
+            echo "- using sorryAx: $sorry"
+            echo '```'
+            grep -v "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt | head -n 50
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          test "$sorry" = "0"
 
-      - name: Upload errors
+      - name: Upload audit output
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: errors
-          path: errors.txt
+          name: audit
+          path: audit.txt
