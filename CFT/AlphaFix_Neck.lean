@@ -118,7 +118,7 @@ theorem jt_neck_solution (l A B C t z : ℝ) (hl : l ≠ 0) (hc : cos (t / l) �
     let φtz := -(sin (t / l) / l) * Zz
     let ap := -(sin (t / l) / l)
     let a := cos (t / l)
-    -(ap / a) * φt + φzz / a ^ 2 - φ / l ^ 2 = 0 ∧ φtt + φ / l ^ 2 = 0 ∧ φtz - ap / a * φz = 0 := by
+    (-(ap / a) * φt + φzz / a ^ 2 - φ / l ^ 2 = 0 ∧ φtt + φ / l ^ 2 = 0 ∧ φtz - ap / a * φz = 0) := by
   intro Z Zz φ φt φtt φz φzz φtz ap a
   have hsc := sin_sq_add_cos_sq (t / l)
   refine ⟨?_, ?_, ?_⟩
@@ -195,7 +195,7 @@ theorem junction_near_boundary (L l uc : ℝ) (huc : 0 < uc) (huc2 : uc ≤ π /
       _ = 2 / rexp (L / l) := by field_simp
   have h2 : uc ≤ π / rexp (L / l) := by
     have h3 : uc * 2 * rexp (L / l) ≤ 2 * π := by
-      rw [div_mul_eq_mul_div, div_le_div_iff hpi he] at h1
+      rw [div_mul_eq_mul_div, div_le_div_iff₀ hpi he] at h1
       linarith
     rw [le_div_iff₀ he]
     linarith
@@ -266,6 +266,7 @@ theorem change_var (g : ℝ → ℝ) (u1 Y : ℝ) (hu : 0 < u1) (hY : 0 < Y) (hg
     continuousOn_inv₀.mono fun x hx => by simpa using (hpos x hx).ne'
   have himg : (fun u => log u - log u1) '' uIcc u1 (u1 * rexp Y) ⊆ Icc 0 Y := by
     rintro _ ⟨x, hx, rfl⟩
+    show log x - log u1 ∈ Icc 0 Y
     rw [uIcc_of_le hu2] at hx
     have hx0 : 0 < x := lt_of_lt_of_le hu hx.1
     constructor
@@ -289,8 +290,10 @@ theorem test_deriv (u1 Y u : ℝ) (hu : 0 < u) :
   have hs : Real.sqrt u ≠ 0 := (Real.sqrt_pos.2 hu).ne'
   have hsq : Real.sqrt u * Real.sqrt u = u := Real.mul_self_sqrt hu.le
   simp only [Function.comp_apply]
-  rw [show u⁻¹ = (Real.sqrt u * Real.sqrt u)⁻¹ by rw [hsq]]
-  field_simp <;> ring
+  rw [show u⁻¹ = (Real.sqrt u)⁻¹ * (Real.sqrt u)⁻¹ by rw [← mul_inv, hsq]]
+  generalize Real.sqrt u = S at hs ⊢
+  field_simp
+  ring
 
 /-- 中身の一致:f′² − f²/sin²u = G₂(log u − log u₁)·u⁻¹ -/
 theorem integrand_eq (u1 Y u : ℝ) (hu1 : 0 < u1) (hu : 0 < u) (hsin : sin u ≠ 0) :
@@ -437,7 +440,7 @@ theorem growth_rate_bound (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc ≤ π /
       · intro y hy
         have h0 : 0 ≤ uc * rexp y := (mul_pos huc (exp_pos y)).le
         have h1 : uc * rexp y ≤ uc * rexp 4 := mul_le_mul_of_nonneg_left (exp_le_exp.2 hy.2) huc.le
-        have h2 : (uc * rexp y) ^ 2 ≤ (uc * rexp 4) ^ 2 := pow_le_pow_left h0 h1 2
+        have h2 : (uc * rexp y) ^ 2 ≤ (uc * rexp 4) ^ 2 := pow_le_pow_left₀ h0 h1 2
         exact mul_le_mul_of_nonneg_right h2 (sq_nonneg _)
     rw [intervalIntegral.integral_const_mul, NeckInstability.int_sin_sq 4 (by norm_num)] at hm
     calc _ ≤ (uc * rexp 4) ^ 2 * (4 / 2) := hm
@@ -457,7 +460,7 @@ theorem growth_rate_bound (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc ≤ π /
   have hDle : D * rexp (2 * (L / l - 4)) ≤ π ^ 2 := by
     have h0 : 0 ≤ uc * rexp 4 := (mul_pos huc (exp_pos 4)).le
     have h1 : uc * rexp 4 ≤ π * rexp (-(L / l)) * rexp 4 := mul_le_mul_of_nonneg_right hb (exp_pos 4).le
-    have h2 : D ≤ (π * rexp (-(L / l)) * rexp 4) ^ 2 := pow_le_pow_left h0 h1 2
+    have h2 : D ≤ (π * rexp (-(L / l)) * rexp 4) ^ 2 := pow_le_pow_left₀ h0 h1 2
     have h3 : (π * rexp (-(L / l)) * rexp 4) ^ 2 * rexp (2 * (L / l - 4)) = π ^ 2 := by
       have e : rexp (-(L / l)) * rexp (-(L / l)) * (rexp 4 * rexp 4) * rexp (2 * (L / l - 4)) = 1 := by
         rw [← Real.exp_add, ← Real.exp_add, ← Real.exp_add, ← Real.exp_add]
@@ -489,7 +492,7 @@ theorem one_efold_before_collapse (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc 
   have he1 : (2.7 : ℝ) ≤ rexp 1 := le_of_lt (lt_trans (by norm_num) Real.exp_one_gt_d9)
   have he6 : (2.7 : ℝ) ^ 6 ≤ rexp 6 := by
     rw [show (6 : ℝ) = ((6 : ℕ) : ℝ) * 1 by norm_num, Real.exp_nat_mul]
-    exact pow_le_pow_left (by norm_num) he1 6
+    exact pow_le_pow_left₀ (by norm_num) he1 6
   have hE : rexp 6 ≤ rexp (2 * (L / l - 4)) := Real.exp_le_exp.2 (by linarith)
   have h27 : (387 : ℝ) ≤ (2.7 : ℝ) ^ 6 := by norm_num
   have hX : (387 : ℝ) ≤ rexp (2 * (L / l - 4)) := by linarith
@@ -536,7 +539,7 @@ theorem nonempty_window : ∃ u1 Y : ℝ, 0 < u1 ∧ 2 * π / Real.sqrt 3 < Y �
     nlinarith
   · have he : rexp 4 = rexp 1 ^ 4 := by rw [← Real.exp_nat_mul]; norm_num
     have h1 : rexp 1 < 3 := lt_trans Real.exp_one_lt_d9 (by norm_num)
-    have h2 : rexp 1 ^ 4 ≤ 3 ^ 4 := pow_le_pow_left (exp_pos 1).le h1.le 4
+    have h2 : rexp 1 ^ 4 ≤ 3 ^ 4 := pow_le_pow_left₀ (exp_pos 1).le h1.le 4
     have := pi_gt_three
     rw [he]
     nlinarith
