@@ -16,6 +16,7 @@
       (Bjorken–Drell §4.3)。この命題はその項を含まない。
 -/
 import CFT.AlphaV_FWOrder
+import Mathlib.RingTheory.Derivation.Basic
 
 namespace CFT.FixFW
 

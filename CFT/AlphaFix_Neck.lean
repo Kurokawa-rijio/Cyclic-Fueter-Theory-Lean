@@ -125,7 +125,10 @@ theorem jt_neck_solution (l A B C t z : ℝ) (hl : l ≠ 0) (hc : cos (t / l) �
   · have e : -(ap / a) * φt + φzz / a ^ 2 - φ / l ^ 2
         = -(Z / (l ^ 2 * cos (t / l))) * (sin (t / l) ^ 2 + cos (t / l) ^ 2 - 1) := by
       simp only [Z, φ, φt, φzz, ap, a]
-      field_simp <;> ring
+      generalize sin (t / l) = s
+      generalize cos (t / l) = c at hc ⊢
+      field_simp
+      ring
     rw [e, show sin (t / l) ^ 2 + cos (t / l) ^ 2 - 1 = 0 by linarith, mul_zero]
   · simp only [φtt, φ]
     field_simp <;> ring
@@ -292,7 +295,9 @@ theorem test_deriv (u1 Y u : ℝ) (hu : 0 < u) :
   simp only [Function.comp_apply]
   rw [show u⁻¹ = (Real.sqrt u)⁻¹ * (Real.sqrt u)⁻¹ by rw [← mul_inv, hsq]]
   generalize Real.sqrt u = S at hs ⊢
-  field_simp
+  have hS : S * (S⁻¹ * S⁻¹) = S⁻¹ := by rw [← mul_assoc, mul_inv_cancel₀ hs, one_mul]
+  rw [show S * (cos (π / Y * (log u - log u1)) * (π / Y * (S⁻¹ * S⁻¹)))
+      = π / Y * cos (π / Y * (log u - log u1)) * (S * (S⁻¹ * S⁻¹)) by ring, hS]
   ring
 
 /-- 中身の一致:f′² − f²/sin²u = G₂(log u − log u₁)·u⁻¹ -/
