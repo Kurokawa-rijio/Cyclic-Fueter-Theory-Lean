@@ -85,7 +85,7 @@ theorem ad_even (c : ℂ) : ad (c • (b * X)) Y = c • (b * (X * Y - Y * X)) :
   have h3 := bY' b Y hbY
   simp only [ad, smul_mul_assoc, mul_smul_comm, mul_assoc, mul_sub, smul_sub, hbb, hbX, hbY, h1, h2, h3,
     mul_neg, neg_mul, smul_neg, one_mul, mul_one, neg_neg]
-  module
+  all_goals module
 
 include hbb hbX hbY in
 set_option maxHeartbeats 1000000 in
@@ -128,7 +128,7 @@ theorem fw_order2 (c m : ℂ) (hc : 2 * m * c = 1) :
     + ((2 / 3 * c ^ 2) * hc) • (X * (X * X))
 
 /-- 1 回目の後の奇の部分 O₁ = c·O₁′ -/
-def odd1' (c : ℂ) : A := (Y * (X * b) - X * (Y * b)) - (4 / 3 * c) • (X * (X * X))
+noncomputable def odd1' (c : ℂ) : A := (Y * (X * b) - X * (Y * b)) - (4 / 3 * c) • (X * (X * X))
 
 theorem odd1_factor (c : ℂ) :
     c • (Y * (X * b) - X * (Y * b)) - (4 / 3 * c ^ 2) • (X * (X * X)) = c • odd1' b X Y c := by
@@ -155,7 +155,7 @@ theorem even1_even (c : ℂ) :
   have h3 := bY' b Y hbY
   simp only [mul_add, add_mul, mul_sub, sub_mul, smul_mul_assoc, mul_smul_comm, mul_assoc, neg_mul,
     mul_neg, smul_add, smul_sub, smul_neg, hbb, hbX, hbY, h1, h2, h3, one_mul, mul_one, neg_neg]
-  module
+  all_goals module
 
 end General
 

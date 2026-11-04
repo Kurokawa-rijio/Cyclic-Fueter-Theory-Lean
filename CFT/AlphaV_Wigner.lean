@@ -136,18 +136,20 @@ theorem dot_cross_p (p v : Fin 3 → ℂ) : dotc (crossv p v) p = 0 := by
 
 /-- sd は線形 -/
 theorem sd_lin (a b : ℂ) (x y : Fin 3 → ℂ) : sd (a • x - b • y) = a • sd x - b • sd y := by
-  simp only [sd, Fin.sum_univ_three, Pi.sub_apply, Pi.smul_apply, smul_eq_mul, sub_smul, mul_smul]
+  simp only [sd, Fin.sum_univ_three, Pi.sub_apply, Pi.smul_apply, smul_eq_mul, sub_smul, _root_.mul_smul]
   module
 
 theorem sd_cross_cross1 (p v : Fin 3 → ℂ) :
     sd (crossv p (crossv p v)) = dotc p v • sd p - dotc p p • sd v := by
-  rw [← sd_lin]; congr 1
-  funext k; fin_cases k <;> simp [crossv, dotc] <;> ring
+  have e : crossv p (crossv p v) = dotc p v • p - dotc p p • v := by
+    funext k; fin_cases k <;> simp [crossv, dotc] <;> ring
+  rw [e, sd_lin]
 
 theorem sd_cross_cross2 (p v : Fin 3 → ℂ) :
     sd (crossv (crossv p v) p) = dotc p p • sd v - dotc p v • sd p := by
-  rw [← sd_lin]; congr 1
-  funext k; fin_cases k <;> simp [crossv, dotc] <;> ring
+  have e : crossv (crossv p v) p = dotc p p • v - dotc p v • p := by
+    funext k; fin_cases k <;> simp [crossv, dotc] <;> ring
+  rw [e, sd_lin]
 
 /-- 方向 v への接続 A(v) = a iσ·(p×v) + b iσ·v -/
 def Av (p v : Fin 3 → ℂ) (a b : ℂ) : M2 :=
@@ -442,7 +444,9 @@ theorem n_deriv (m : ℝ) (E : ℝ → ℝ) (Ed t : ℝ) (hE : HasDerivAt E Ed t
   have hS : √(2 * E t * (E t + m)) ≠ 0 := (Real.sqrt_pos.2 hpos).ne'
   have h := (((hE.const_mul 2).mul (hE.add_const m)).sqrt hpos.ne').inv hS
   convert h using 1
-  field_simp <;> ring
+  generalize √(2 * E t * (E t + m)) = S at hS ⊢
+  field_simp
+  ring
 
 /-! ### 論文 G の点検:半角の形と、Fueter 接続と Berry 接続のゲージ同値 -/
 
