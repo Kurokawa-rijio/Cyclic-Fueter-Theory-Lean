@@ -66,7 +66,6 @@ theorem kret_hasDeriv (l η : ℝ) (hc : l * cos η ≠ 0) :
   have hg : HasDerivAt (fun s => (l * cos s) ^ 8) (8 * (l * cos η) ^ 7 * (l * -sin η)) η := by
     have := ((hasDerivAt_cos η).const_mul l).pow 8
     convert this using 1
-    simp only [Nat.cast_ofNat, show (8 : ℕ) - 1 = 7 from rfl]
   exact (hg.inv (pow_ne_zero 8 hc)).const_mul (24 * l ^ 4)
 
 /-- 【α-VIII.7】0 < η < π/2、ℓ > 0 で ∂_η K ≠ 0(帽子の曲率は単調に増え、時間によらない形にならない) -/

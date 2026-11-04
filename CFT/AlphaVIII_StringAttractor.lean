@@ -83,15 +83,15 @@ theorem string_attractor (p q v1 v2 e w : ℝ) (hp : 0 < p) (hq : 0 < q) (h1 : 0
   have k3 : 2 * e ^ 2 * v2 / v1 = 2 * p ^ 2 * v1 / v2 := by linarith
   have k4 : q = w * e * v2 / v1 := by linarith
   have m1 : w * (2 * e ^ 2 * v2 ^ 2 + 2 * p ^ 2 * v1 ^ 2) = 2 * (v1 ^ 2 * v2) := by
-    have e1 : w * (2 * e ^ 2 * v2 ^ 2 + 2 * p ^ 2 * v1 ^ 2)
-        = w * (2 * e ^ 2 * v2 / v1 ^ 2 + 2 * p ^ 2 / v2) * (v1 ^ 2 * v2) := by
+    have e1 : 2 * e ^ 2 * v2 ^ 2 + 2 * p ^ 2 * v1 ^ 2
+        = (2 * e ^ 2 * v2 / v1 ^ 2 + 2 * p ^ 2 / v2) * (v1 ^ 2 * v2) := by
       field_simp <;> ring
-    rw [e1, k1]
+    rw [e1, ← mul_assoc, k1]
   have m2 : w * (2 * e ^ 2 * v2 ^ 2 + 2 * p ^ 2 * v1 ^ 2) = 2 * (v1 * v2 ^ 2) := by
-    have e1 : w * (2 * e ^ 2 * v2 ^ 2 + 2 * p ^ 2 * v1 ^ 2)
-        = w * (2 * e ^ 2 / v1 + 2 * p ^ 2 * v1 / v2 ^ 2) * (v1 * v2 ^ 2) := by
+    have e1 : 2 * e ^ 2 * v2 ^ 2 + 2 * p ^ 2 * v1 ^ 2
+        = (2 * e ^ 2 / v1 + 2 * p ^ 2 * v1 / v2 ^ 2) * (v1 * v2 ^ 2) := by
       field_simp <;> ring
-    rw [e1, k2]
+    rw [e1, ← mul_assoc, k2]
   have m3 : e ^ 2 * v2 ^ 2 = p ^ 2 * v1 ^ 2 := by
     have e1 : e ^ 2 * v2 ^ 2 = (2 * e ^ 2 * v2 / v1) * (v1 * v2) / 2 := by field_simp <;> ring
     have e2 : p ^ 2 * v1 ^ 2 = (2 * p ^ 2 * v1 / v2) * (v1 * v2) / 2 := by field_simp <;> ring
@@ -99,7 +99,7 @@ theorem string_attractor (p q v1 v2 e w : ℝ) (hp : 0 < p) (hq : 0 < q) (h1 : 0
   have m4 : q * v1 = w * e * v2 := by rw [k4]; field_simp
   -- v₁ = v₂
   have hv : v1 = v2 := by
-    have : v1 * v2 * (v1 - v2) = 0 := by linear_combination (m1 - m2) / 2
+    have : v1 * v2 * (v1 - v2) = 0 := by linear_combination (m2 - m1) / 2
     have h12 : v1 * v2 ≠ 0 := mul_ne_zero a1 a2
     linarith [(mul_eq_zero.mp this).resolve_left h12]
   rw [← hv] at m1 m3 m4 ⊢
