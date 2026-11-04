@@ -27,6 +27,7 @@ import CFT.AlphaX_Unify
 import CFT.AlphaIV
 import Mathlib.Analysis.Calculus.Deriv.Add
 import Mathlib.Data.Matrix.Basic
+import Mathlib.Tactic.Module
 
 namespace CFT.FixUnify
 

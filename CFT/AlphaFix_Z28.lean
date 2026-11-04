@@ -27,7 +27,7 @@ import Mathlib.Algebra.BigOperators.Fin
 
 namespace CFT.FixZ28
 
-open Finset
+open Finset Asymptotics Filter Topology
 
 /-! ### (1) 1 次では楕円体 = 微分同相 + 共形 -/
 
@@ -113,8 +113,8 @@ theorem second_order_equal {H : Type*} (Nd Q : H → ℝ) (hN : ∀ h, Nd h = 0)
 
 /-- 【α-VII.4】まとめ:2 次の係数 99/250 > 0 なら ρ = 1 は楕円体族に沿った局所最小 -/
 theorem ellipsoid_local_min (Λ : ℝ → ℝ)
-    (hΛ : (fun t => Λ t - Λ 0 - (99 / 250) * t ^ 2) =o[nhds 0] (fun t => t ^ 2)) :
-    ∀ᶠ t in nhds 0, Λ 0 ≤ Λ t :=
+    (hΛ : (fun t => Λ t - Λ 0 - (99 / 250) * t ^ 2) =o[𝓝 0] (fun t => t ^ 2)) :
+    ∀ᶠ t in 𝓝 0, Λ 0 ≤ Λ t :=
   CFT.Z28Input.z28d_local_min Λ hΛ
 
 end CFT.FixZ28

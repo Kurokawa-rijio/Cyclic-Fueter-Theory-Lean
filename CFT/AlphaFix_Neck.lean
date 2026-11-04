@@ -225,6 +225,8 @@ noncomputable def G2 (u1 Y y : ℝ) : ℝ :=
 theorem int_sin_cos (Y : ℝ) (hY : 0 < Y) :
     ∫ y in (0 : ℝ)..Y, sin (π / Y * y) * cos (π / Y * y) = 0 := by
   have hk : π / Y ≠ 0 := div_ne_zero pi_ne_zero hY.ne'
+  have hπ0 := pi_ne_zero
+  have hY0 := hY.ne'
   have hd : ∀ x ∈ uIcc 0 Y, HasDerivAt (fun y => sin (π / Y * y) ^ 2 / (2 * (π / Y)))
       (sin (π / Y * x) * cos (π / Y * x)) x := by
     intro x _
@@ -243,9 +245,11 @@ theorem G1_integral (Y : ℝ) (hY : 0 < Y) : ∫ y in (0 : ℝ)..Y, G1 Y y = Y /
       + π / Y * (sin (π / Y * y) * cos (π / Y * y)) := by
     intro y; unfold G1; ring
   simp_rw [e]
-  rw [intervalIntegral.integral_add (by apply Continuous.intervalIntegrable; fun_prop)
-    (by apply Continuous.intervalIntegrable; fun_prop), intervalIntegral.integral_const_mul,
-    NeckInstability.Q_value Y hY, int_sin_cos Y hY]
+  have c1 : Continuous fun y : ℝ => (π / Y * cos (π / Y * y)) ^ 2 - 3 / 4 * sin (π / Y * y) ^ 2 := by
+    fun_prop
+  have c2 : Continuous fun y : ℝ => π / Y * (sin (π / Y * y) * cos (π / Y * y)) := by fun_prop
+  rw [intervalIntegral.integral_add (c1.intervalIntegrable _ _) (c2.intervalIntegrable _ _),
+    intervalIntegral.integral_const_mul, NeckInstability.Q_value Y hY, int_sin_cos Y hY]
   ring
 
 /-- 変数変換 y = log u − log u₁:∫_{u₁}^{u₁e^Y} g(log u − log u₁) u⁻¹ du = ∫₀^Y g(y) dy -/
@@ -439,10 +443,10 @@ theorem growth_rate_bound (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc ≤ π /
     calc _ ≤ (uc * rexp 4) ^ 2 * (4 / 2) := hm
       _ = (uc * rexp 4) ^ 2 * 2 := by norm_num
   -- −λ² N ≤ Q ≤ 2(π²/16 − 3/4) から λ² N₁ ≥ 2(3/4 − π²/16)
-  have hπ2 : π ^ 2 < 9.93 := by nlinarith [pi_lt_d2]
+  have hπ2 : π ^ 2 < 9.93 := by nlinarith [pi_lt_d2, pi_pos]
   have hc : 0 < 3 / 4 - π ^ 2 / 16 := by linarith
   set D := (uc * rexp 4) ^ 2 with hD
-  have hD0 : 0 < D := by positivity
+  have hD0 : 0 < D := by rw [hD]; positivity
   have hstep : 2 * (3 / 4 - π ^ 2 / 16) ≤ lam2 * (D * 2) := by
     have e : (4 : ℝ) / 2 * ((π / 4) ^ 2 - 3 / 4) = -(2 * (3 / 4 - π ^ 2 / 16)) := by ring
     rw [e] at hQ
@@ -480,13 +484,14 @@ theorem one_efold_before_collapse (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc 
     1 ≤ lam2 := by
   have hb := growth_rate_bound L l uc lam2 huc huc2 hjoin (by linarith) hlam hRay
   have hpi := pi_pos
-  have hπ2 : π ^ 2 < 9.93 := by nlinarith [pi_lt_d2]
+  have hπ2 : π ^ 2 < 9.93 := by nlinarith [pi_lt_d2, pi_pos]
   have hc : (0.12 : ℝ) ≤ 3 / 4 - π ^ 2 / 16 := by linarith
   have he1 : (2.7 : ℝ) ≤ rexp 1 := le_of_lt (lt_trans (by norm_num) Real.exp_one_gt_d9)
   have he6 : (2.7 : ℝ) ^ 6 ≤ rexp 6 := by
     rw [show (6 : ℝ) = ((6 : ℕ) : ℝ) * 1 by norm_num, Real.exp_nat_mul]
     exact pow_le_pow_left (by norm_num) he1 6
   have hE : rexp 6 ≤ rexp (2 * (L / l - 4)) := Real.exp_le_exp.2 (by linarith)
+  have h27 : (387 : ℝ) ≤ (2.7 : ℝ) ^ 6 := by norm_num
   have hX : (387 : ℝ) ≤ rexp (2 * (L / l - 4)) := by linarith
   have key : π ^ 2 ≤ (3 / 4 - π ^ 2 / 16) * rexp (2 * (L / l - 4)) := by
     have := mul_le_mul hc hX (by norm_num) (by linarith)
