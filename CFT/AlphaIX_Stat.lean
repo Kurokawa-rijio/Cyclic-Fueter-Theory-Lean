@@ -148,11 +148,12 @@ theorem bose_integral : ∫ t in Ioi (0 : ℝ), t ^ 3 / (rexp t - 1) = π ^ 4 / 
     simp only [smul_eq_mul]
     rw [show (4 : ℂ) - 1 = ((3 : ℕ) : ℂ) by norm_num, Complex.cpow_natCast]
     push_cast
+    ring_nf
     first
-    | ring
-    | (simp only [Complex.ofReal_exp]; ring)
-    | (rw [← Complex.ofReal_exp]; ring)
-    | (norm_num [Complex.ofReal_exp]; try ring)
+    | rfl
+    | (rw [← Complex.ofReal_exp]; rfl)
+    | (simp only [← Complex.ofReal_exp]; rfl)
+    | norm_cast
   rw [hmel] at hval
   have := Complex.ofReal_injective hval
   rw [this]; ring
