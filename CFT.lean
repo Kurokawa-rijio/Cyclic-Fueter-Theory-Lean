@@ -5,6 +5,12 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaFix_FW
+import CFT.AlphaFix_Gauge
+import CFT.AlphaFix_Neck
+import CFT.AlphaFix_Thermo
+import CFT.AlphaFix_Unify
+import CFT.AlphaFix_Z28
 import CFT.AlphaI
 import CFT.AlphaII
 import CFT.AlphaIII
@@ -39,6 +45,7 @@ import CFT.AlphaI_CFamily
 import CFT.AlphaI_H3
 import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
+import CFT.AlphaIndex
 import CFT.AlphaIntegrals
 import CFT.AlphaS1_Closure
 import CFT.AlphaS1_Derivation
