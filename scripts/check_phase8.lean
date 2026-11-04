@@ -3,6 +3,8 @@ import CFT.AlphaFix_Neck
 import CFT.AlphaFix_Unify
 import CFT.AlphaFix_Gauge
 import CFT.AlphaFix_FW
+import CFT.AlphaFix_Z28
+import CFT.AlphaIndex
 
 #print axioms CFT.FixThermo.int_inv_sq
 #print axioms CFT.FixThermo.maxwell_magnetic
@@ -82,3 +84,12 @@ import CFT.AlphaFix_FW
 #print axioms CFT.FixFW.comm_pi_pi
 #print axioms CFT.FixFW.comm_comm_phi
 #print axioms CFT.FixNeck.one_efold_before_collapse
+#print axioms CFT.FixZ28.norm_sq_expand
+#print axioms CFT.FixZ28.inner_expand
+#print axioms CFT.FixZ28.ellipsoid_conformal_first_order
+#print axioms CFT.FixZ28.ellipsoid_first_order
+#print axioms CFT.FixZ28.killing_stress
+#print axioms CFT.FixZ28.first_variation_coeff
+#print axioms CFT.FixZ28.normalized_first_variation
+#print axioms CFT.FixZ28.second_order_equal
+#print axioms CFT.FixZ28.ellipsoid_local_min

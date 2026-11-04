@@ -13,6 +13,7 @@ import CFT.AlphaFix_Gauge
 import CFT.AlphaFix_Neck
 import CFT.AlphaFix_Thermo
 import CFT.AlphaFix_Unify
+import CFT.AlphaFix_Z28
 import CFT.AlphaI
 import CFT.AlphaII
 import CFT.AlphaIII
@@ -51,7 +52,6 @@ import CFT.AlphaVII_Bundle
 import CFT.AlphaVII_Lichnerowicz
 import CFT.AlphaVII_N1
 import CFT.AlphaVII_SO10
-import CFT.AlphaVII_Z28Input
 import CFT.AlphaVII_Z28d
 import CFT.AlphaV_A4
 import CFT.AlphaV_Endpoint
@@ -63,7 +63,6 @@ import CFT.ZeroModeL2
 import Batteries.Tactic.Alias
 
 namespace CFT.Index
-
 
 /-! ## α-I 四元数と量子球面 Q -/
 
@@ -374,11 +373,20 @@ alias VII_3_center_pure_trivial := CFT.N1.center_pure_trivial
 /-- VII.3(運動学、完):SU(2) 単独で独立な超電荷 Y を作れない障害。運動学:四元数の左の作用。作用:—。力学:— -/
 alias VII_3_no_mixing := CFT.N1.no_mixing
 
-/-- VII.4(ダンベル、条):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族。作用:内部の Dirac の作用。力学:最低固有値の 2 次の係数 -/
+/-- VII.4(ダンベル、完(外)):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族(1 次では微分同相 + 共形)。作用:内部の Dirac の作用。力学:規格化した最低固有値の 2 次の係数 99/250 > 0 -/
+alias VII_4_ellipsoid_first_order := CFT.FixZ28.ellipsoid_first_order
+
+/-- VII.4(ダンベル、完(外)):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族(1 次では微分同相 + 共形)。作用:内部の Dirac の作用。力学:規格化した最低固有値の 2 次の係数 99/250 > 0 -/
+alias VII_4_killing_stress := CFT.FixZ28.killing_stress
+
+/-- VII.4(ダンベル、完(外)):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族(1 次では微分同相 + 共形)。作用:内部の Dirac の作用。力学:規格化した最低固有値の 2 次の係数 99/250 > 0 -/
+alias VII_4_normalized_first_variation := CFT.FixZ28.normalized_first_variation
+
+/-- VII.4(ダンベル、完(外)):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族(1 次では微分同相 + 共形)。作用:内部の Dirac の作用。力学:規格化した最低固有値の 2 次の係数 99/250 > 0 -/
 alias VII_4_z28d_values := CFT.Z28d.z28d_values
 
-/-- VII.4(ダンベル、条):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族。作用:内部の Dirac の作用。力学:最低固有値の 2 次の係数 -/
-alias VII_4_z28d_local_min := CFT.Z28Input.z28d_local_min
+/-- VII.4(ダンベル、完(外)):S⁹ 楕円体変形、99/250、ρ = 1 の局所最小。運動学:内部空間 S⁹ と楕円体の族(1 次では微分同相 + 共形)。作用:内部の Dirac の作用。力学:規格化した最低固有値の 2 次の係数 99/250 > 0 -/
+alias VII_4_ellipsoid_local_min := CFT.FixZ28.ellipsoid_local_min
 
 /-- VII.6(一般、完(外)):奇数次元の指数は 0。運動学:奇数次元の内部空間。作用:Dirac。力学:指数 0 -/
 alias VII_6_index_zero := CFT.Lichnerowicz.index_zero
