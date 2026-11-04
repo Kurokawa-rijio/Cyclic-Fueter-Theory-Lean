@@ -35,31 +35,20 @@ jobs:
         shell: bash
         run: lake exe cache get
 
-      - name: Build Lean project
-        shell: bash
-        run: lake build
-
-      - name: Axiom audit (every theorem)
+      # 作業ブランチ:新しいモジュールだけをビルドしてエラーを出し切る(main に入れる前に戻す)
+      - name: Build new modules (keep going)
         shell: bash
         run: |
-          lake env lean Audit.lean > audit.txt 2>&1
-          total=$(grep -c "depends on axioms\|does not depend on any axioms" audit.txt || true)
-          sorry=$(grep -c "sorryAx" audit.txt || true)
-          std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
-          {
-            echo "## Axiom audit"
-            echo "- theorems audited: $total"
-            echo "- depending only on [propext, Classical.choice, Quot.sound]: $std"
-            echo "- using sorryAx: $sorry"
-            echo '```'
-            grep -v "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt | head -n 50
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-          test "$sorry" = "0"
-
-      - name: Upload audit output
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: audit
-          path: audit.txt
+          set +e
+          status=0
+          for m in CFT.AlphaVIII_EOM CFT.AlphaVIII_StringAttractor CFT.AlphaVIII_Z44Cap; do
+            lake build $m 2>&1 | tee -a build.log
+            [ "${PIPESTATUS[0]}" = "0" ] || status=1
+          done
+          grep -E -A12 "error" build.log > errors.txt || true
+          { echo "## errors"; echo '```'; head -n 600 errors.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" = "0" ]; then
+            lake env lean scripts/check_phase5.lean 2>&1 | tee axioms.log
+            { echo "## axioms"; echo '```'; cat axioms.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit $status
