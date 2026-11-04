@@ -81,3 +81,4 @@ import CFT.AlphaFix_FW
 #print axioms CFT.FixFW.double_comm_pi
 #print axioms CFT.FixFW.comm_pi_pi
 #print axioms CFT.FixFW.comm_comm_phi
+#print axioms CFT.FixNeck.one_efold_before_collapse

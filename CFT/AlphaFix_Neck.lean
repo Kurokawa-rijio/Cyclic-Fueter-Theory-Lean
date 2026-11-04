@@ -480,6 +480,30 @@ theorem growth_rate_bound (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc ≤ π /
   have h5 := mul_le_mul_of_nonneg_left hDle hlam
   nlinarith
 
+/-- 【α-XI.1】L/ℓ ≥ 7 なら λ² ≥ 1:帽子の崩壊の時間 ℓ のうちに少なくとも 1 回 e 倍になる -/
+theorem one_efold_before_collapse (L l uc lam2 : ℝ) (huc : 0 < uc) (huc2 : uc ≤ π / 2)
+    (hjoin : sin uc = 1 / cosh (L / l)) (hL : 7 ≤ L / l) (hlam : 0 ≤ lam2)
+    (hRay : -lam2 * (∫ y in (0 : ℝ)..4, (uc * rexp y) ^ 2 * sin (π / 4 * y) ^ 2)
+      ≤ ∫ y in (0 : ℝ)..4, G2 uc 4 y) :
+    1 ≤ lam2 := by
+  have hb := growth_rate_bound L l uc lam2 huc huc2 hjoin (by linarith) hlam hRay
+  have hpi := pi_pos
+  have hπ2 : π ^ 2 < 9.93 := by nlinarith [pi_lt_d2]
+  have hc : (0.12 : ℝ) ≤ 3 / 4 - π ^ 2 / 16 := by linarith
+  have he1 : (2.7 : ℝ) ≤ rexp 1 := le_of_lt (lt_trans (by norm_num) Real.exp_one_gt_d9)
+  have he6 : (2.7 : ℝ) ^ 6 ≤ rexp 6 := by
+    rw [show (6 : ℝ) = ((6 : ℕ) : ℝ) * 1 by norm_num, Real.exp_nat_mul]
+    exact pow_le_pow_left (by norm_num) he1 6
+  have hE : rexp 6 ≤ rexp (2 * (L / l - 4)) := Real.exp_le_exp.2 (by linarith)
+  have hX : (387 : ℝ) ≤ rexp (2 * (L / l - 4)) := by linarith
+  have key : π ^ 2 ≤ (3 / 4 - π ^ 2 / 16) * rexp (2 * (L / l - 4)) := by
+    have := mul_le_mul hc hX (by norm_num) (by linarith)
+    linarith
+  have : 1 ≤ (3 / 4 - π ^ 2 / 16) * rexp (2 * (L / l - 4)) / π ^ 2 := by
+    rw [le_div_iff₀ (by positivity)]
+    linarith
+  linarith
+
 /-- 【α-XI.1】帽子の崩壊までの固有時間 ∫₀^{π/2} ℓ cos η dη = ℓ -/
 theorem cap_collapse_time (l : ℝ) : ∫ η in (0 : ℝ)..(π / 2), l * cos η = l := by
   rw [intervalIntegral.integral_const_mul, integral_cos, sin_pi_div_two, sin_zero]

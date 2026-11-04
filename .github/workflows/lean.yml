@@ -39,7 +39,7 @@ jobs:
         shell: bash
         run: |
           status=0
-          for m in CFT.AlphaFix_Thermo CFT.AlphaFix_Neck CFT.AlphaFix_Unify CFT.AlphaFix_Gauge CFT.AlphaFix_FW; do
+          for m in CFT.AlphaFix_Thermo CFT.AlphaFix_Neck CFT.AlphaFix_Unify CFT.AlphaFix_Gauge CFT.AlphaFix_FW CFT.AlphaIndex; do
             lake build $m 2>&1 | tee -a build.log
             [ "${PIPESTATUS[0]}" = "0" ] || status=1
           done
