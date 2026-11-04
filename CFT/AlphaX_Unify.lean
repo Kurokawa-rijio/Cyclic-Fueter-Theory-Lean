@@ -151,8 +151,8 @@ theorem nonempty_neck (l : ℝ) (hl : l ≠ 0) :
 
 /-- Wigner 回転の仮定をみたす例:Λ = L₁ = L₂ = L₂⁻¹ = 1 -/
 theorem nonempty_wigner :
-    (1 : CFT.Wigner.M2)ᴴ = 1 ∧ (1 : CFT.Wigner.M2) * 1 = 1 ∧
-    (1 : CFT.Wigner.M2) * ((1 : CFT.Wigner.M2) * 1) * (1 : CFT.Wigner.M2)ᴴ = 1 * 1 := by
+    Matrix.conjTranspose (1 : CFT.Wigner.M2) = 1 ∧ (1 : CFT.Wigner.M2) * 1 = 1 ∧
+    (1 : CFT.Wigner.M2) * ((1 : CFT.Wigner.M2) * 1) * Matrix.conjTranspose (1 : CFT.Wigner.M2) = 1 * 1 := by
   simp
 
 /-- 焦点の定理の仮定をみたす例:θ(s) = 2/(s − 2) は [0, 1] で θ < 0、θ′ = −θ²/2 -/

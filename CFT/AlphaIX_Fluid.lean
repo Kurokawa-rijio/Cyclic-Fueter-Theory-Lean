@@ -147,7 +147,7 @@ theorem lie_two_form (w u : Fin n → S) (μ ν : Fin n) :
 include hcomm in
 /-- 【α-IX.18】Kelvin:i_u ω = 0 なら L_u ω = 0 -/
 theorem kelvin (w u : Fin n → S) (h : ∀ ν, iuOm D w u ν = 0) (μ ν : Fin n) : lieOm D w u μ ν = 0 := by
-  rw [lie_two_form D hcomm, h, h, map_zero, sub_zero]
+  simp [lie_two_form D hcomm, h]
 
 include hcomm in
 /-- 【α-IX.19】磁束凍結:F = dA、理想 MHD i_u F = 0 なら L_u F = 0 -/

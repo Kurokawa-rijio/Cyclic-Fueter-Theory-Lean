@@ -78,7 +78,7 @@ theorem euclid_neck_curvature (l x : ℝ) (hl : l ≠ 0) :
     -(cosh (x / l) * (1 / l) * (1 / l)) / cosh (x / l) = -1 / l ^ 2 := by
   have hd : HasDerivAt (fun y : ℝ => y / l) (1 / l) x := (hasDerivAt_id' x).div_const l
   have hc : cosh (x / l) ≠ 0 := (cosh_pos _).ne'
-  refine ⟨(hasDerivAt_cosh (x / l)).comp x hd, ((hasDerivAt_sinh (x / l)).comp x hd).mul_const (1 / l), ?_⟩
+  refine ⟨(Real.hasDerivAt_cosh (x / l)).comp x hd, ((Real.hasDerivAt_sinh (x / l)).comp x hd).mul_const (1 / l), ?_⟩
   field_simp <;> ring
 
 /-! ### IX.23 第一法則と Smarr -/
@@ -90,7 +90,12 @@ theorem horizon_mass (rp Q M : ℝ) (hp : rp ≠ 0) :
     1 - 2 * M / rp + Q ^ 2 / rp ^ 2 = 0 ↔ M = Mrn rp Q := by
   simp only [Mrn]
   constructor
-  · intro h; field_simp at h ⊢; linarith
+  · intro h
+    have key : (1 - 2 * M / rp + Q ^ 2 / rp ^ 2) * rp ^ 2 = rp ^ 2 - 2 * M * rp + Q ^ 2 := by
+      field_simp; ring
+    rw [h, zero_mul] at key
+    rw [eq_div_iff (mul_ne_zero two_ne_zero hp)]
+    linarith
   · intro h; rw [h]; field_simp <;> ring
 
 /-- 【α-IX.23】第一法則:∂M/∂r₊ = T ∂S/∂r₊(S = πr₊²、T = (r₊ − r₋)/(4πr₊²)、r₋ = Q²/r₊)、∂M/∂Q = Φ = Q/r₊ -/
@@ -170,7 +175,7 @@ theorem nr_bounds (m p : ℝ) (hm : 0 < m) (hp : p ^ 2 ≤ 8 * m ^ 2) :
     by_cases hneg : m * (1 + x / 2 - x ^ 2 / 8) ≤ 0
     · exact le_trans hneg (Real.sqrt_nonneg _)
     push_neg at hneg
-    have ep : m ^ 2 + p ^ 2 = m ^ 2 * (1 + x) := by rw [hx]; field_simp; ring
+    have ep : m ^ 2 + p ^ 2 = m ^ 2 * (1 + x) := by rw [hx]; field_simp <;> ring
     have h1 : (1 + x / 2 - x ^ 2 / 8) ^ 2 ≤ 1 + x := by
       nlinarith [sq_nonneg x, mul_nonneg hx0 (sub_nonneg.2 hx8), mul_nonneg (mul_nonneg hx0 hx0) (mul_nonneg hx0 (sub_nonneg.2 hx8))]
     have h2 : (m * (1 + x / 2 - x ^ 2 / 8)) ^ 2 ≤ m ^ 2 + p ^ 2 := by
@@ -213,7 +218,7 @@ theorem micro_temperature (C T : ℝ) (hC : 0 < C) (hT : 0 < T) :
     π * Real.sqrt (2 * C) / Real.sqrt (2 * π ^ 2 * C * T ^ 2) = 1 / T := by
   have e : 2 * π ^ 2 * C * T ^ 2 = (2 * C) * (π * T) ^ 2 := by ring
   have hπ := pi_pos
-  rw [e, Real.sqrt_mul (by linarith), Real.sqrt_sq (by positivity)]
+  rw [e, Real.sqrt_mul (show (0 : ℝ) ≤ 2 * C by linarith) ((π * T) ^ 2), Real.sqrt_sq (by positivity)]
   have hs : 0 < Real.sqrt (2 * C) := Real.sqrt_pos.2 (by linarith)
   have hs' := hs.ne'
   have hT' := hT.ne'

@@ -79,7 +79,8 @@ theorem bose_series (t : ℝ) (ht : 0 < t) :
     HasSum (fun n : ℕ => (if n = 0 then (0 : ℂ) else 1) * ((rexp (-(n : ℝ) * t) : ℝ) : ℂ))
       ((1 / (rexp t - 1) : ℝ) : ℂ) := by
   have hr0 : 0 ≤ rexp (-t) := (exp_pos _).le
-  have hr1 : rexp (-t) < 1 := Real.exp_lt_one.mpr (by linarith)
+  have hr1 : rexp (-t) < 1 := by
+    have := Real.exp_lt_exp.mpr (show -t < 0 by linarith); rwa [Real.exp_zero] at this
   have hg := (hasSum_geometric_of_lt_one hr0 hr1).sub (hasSum_ite_eq 0 (1 : ℝ))
   have hfun : (fun n : ℕ => rexp (-t) ^ n - (if n = 0 then (1 : ℝ) else 0))
       = fun n : ℕ => (if n = 0 then (0 : ℝ) else 1) * rexp (-(n : ℝ) * t) := by
@@ -90,7 +91,8 @@ theorem bose_series (t : ℝ) (ht : 0 < t) :
       rw [← Real.exp_nat_mul]; congr 1; ring
   rw [hfun] at hg
   have hval : (1 - rexp (-t))⁻¹ - 1 = 1 / (rexp t - 1) := by
-    have h1 : 1 < rexp t := Real.one_lt_exp.mpr ht
+    have h1 : 1 < rexp t := by
+      have := Real.exp_lt_exp.mpr ht; rwa [Real.exp_zero] at this
     have h2 : rexp t - 1 ≠ 0 := by linarith
     have h4 : 1 - rexp (-t) ≠ 0 := by linarith
     have hprod : rexp t * rexp (-t) = 1 := by rw [← Real.exp_add]; simp
@@ -141,7 +143,7 @@ theorem bose_integral : ∫ t in Ioi (0 : ℝ), t ^ 3 / (rexp t - 1) = π ^ 4 / 
   -- mellin を実の積分に直す
   have hmel : mellin (fun t : ℝ => ((1 / (rexp t - 1) : ℝ) : ℂ)) 4
       = ((∫ t in Ioi (0 : ℝ), t ^ 3 / (rexp t - 1) : ℝ) : ℂ) := by
-    rw [mellin, ← integral_ofReal]
+    rw [mellin, ← integral_complex_ofReal]
     refine setIntegral_congr_fun measurableSet_Ioi fun t ht => ?_
     simp only [smul_eq_mul]
     have ht0 : (0 : ℝ) ≤ t := le_of_lt ht

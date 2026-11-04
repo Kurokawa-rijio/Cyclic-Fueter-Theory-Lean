@@ -49,7 +49,7 @@ theorem focusing (θ θd : ℝ → ℝ) (Λ : ℝ) (hΛ : 0 ≤ Λ)
       rw [interior_Icc] at hs
       have hs' := Ioo_subset_Icc_self hs
       rw [(hd s hs').deriv]
-      have hpos : 0 < θ s ^ 2 := by have := hneg s hs'; positivity
+      have hpos : 0 < θ s ^ 2 := by nlinarith [hneg s hs']
       have h1 : θ s ^ 2 / 2 ≤ -(θd s) := by linarith [hray s hs']
       have h2 : 1 / 2 ≤ -(θd s) / θ s ^ 2 := by
         rw [le_div_iff₀ hpos]; linarith
