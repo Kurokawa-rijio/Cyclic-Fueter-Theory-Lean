@@ -136,7 +136,7 @@ theorem dot_cross_p (p v : Fin 3 → ℂ) : dotc (crossv p v) p = 0 := by
 
 /-- sd は線形 -/
 theorem sd_lin (a b : ℂ) (x y : Fin 3 → ℂ) : sd (a • x - b • y) = a • sd x - b • sd y := by
-  simp only [sd, Fin.sum_univ_three, Pi.sub_apply, Pi.smul_apply, smul_eq_mul, sub_smul, _root_.mul_smul]
+  simp only [sd, Fin.sum_univ_three, Pi.sub_apply, Pi.smul_apply, smul_eq_mul, sub_smul, MulAction.mul_smul]
   module
 
 theorem sd_cross_cross1 (p v : Fin 3 → ℂ) :
