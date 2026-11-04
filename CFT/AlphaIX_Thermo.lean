@@ -78,7 +78,9 @@ theorem euclid_neck_curvature (l x : ℝ) (hl : l ≠ 0) :
     -(cosh (x / l) * (1 / l) * (1 / l)) / cosh (x / l) = -1 / l ^ 2 := by
   have hd : HasDerivAt (fun y : ℝ => y / l) (1 / l) x := (hasDerivAt_id' x).div_const l
   have hc : cosh (x / l) ≠ 0 := (cosh_pos _).ne'
-  refine ⟨(Real.hasDerivAt_cosh (x / l)).comp x hd, ((Real.hasDerivAt_sinh (x / l)).comp x hd).mul_const (1 / l), ?_⟩
+  refine ⟨?_, ?_, ?_⟩
+  · exact (Real.hasDerivAt_cosh (x / l)).comp x hd
+  · exact ((Real.hasDerivAt_sinh (x / l)).comp x hd).mul_const (1 / l)
   field_simp <;> ring
 
 /-! ### IX.23 第一法則と Smarr -/
@@ -224,6 +226,7 @@ theorem micro_temperature (C T : ℝ) (hC : 0 < C) (hT : 0 < T) :
   have hT' := hT.ne'
   have hπ' := hπ.ne'
   field_simp
+  ring
 
 /-! ### XI.2 高階補正と穏やかな WGC -/
 

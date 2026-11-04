@@ -143,10 +143,9 @@ theorem bose_integral : ∫ t in Ioi (0 : ℝ), t ^ 3 / (rexp t - 1) = π ^ 4 / 
   -- mellin を実の積分に直す
   have hmel : mellin (fun t : ℝ => ((1 / (rexp t - 1) : ℝ) : ℂ)) 4
       = ((∫ t in Ioi (0 : ℝ), t ^ 3 / (rexp t - 1) : ℝ) : ℂ) := by
-    rw [mellin, ← integral_complex_ofReal]
-    refine setIntegral_congr_fun measurableSet_Ioi fun t ht => ?_
+    rw [mellin]
+    refine (setIntegral_congr_fun measurableSet_Ioi fun t ht => ?_).trans integral_ofReal
     simp only [smul_eq_mul]
-    have ht0 : (0 : ℝ) ≤ t := le_of_lt ht
     rw [show (4 : ℂ) - 1 = ((3 : ℕ) : ℂ) by norm_num, Complex.cpow_natCast]
     push_cast
     ring
