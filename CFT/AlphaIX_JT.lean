@@ -108,8 +108,7 @@ noncomputable def U (l Φ : ℝ) : ℝ := 2 - 2 * l ^ 2 / Φ
 theorem U_deriv (l Φ : ℝ) (hΦ : Φ ≠ 0) : HasDerivAt (U l) (2 * l ^ 2 / Φ ^ 2) Φ := by
   have h := ((hasDerivAt_inv hΦ).const_mul (2 * l ^ 2)).const_sub 2
   convert h using 1
-  · funext x; simp only [U]; ring
-  · ring
+  ring
 
 /-- 【α-IX.11】定数の Φ:計量の方程式 U(Φ) = 0 と Φ の方程式 R₂ + U′(Φ) = 0 の解は Φ = ℓ²、R₂ = −2/ℓ² -/
 theorem neck_exact (l Φ R2 : ℝ) (hl : l ≠ 0) (hΦ : Φ ≠ 0) (hU : U l Φ = 0)
@@ -170,8 +169,7 @@ theorem schwarzian_energy (S0 C β : ℝ) (hβ : 0 < β) :
   have h := (((Real.hasDerivAt_log hb).const_mul (3 / 2)).const_sub (S0 + 3 / 2 * Real.log C)).add
     ((hasDerivAt_inv hb).const_mul (2 * π ^ 2 * C))
   convert h using 1
-  · funext x; simp only [logZ]; ring
-  · ring
+  ring
 
 /-- 【α-IX.14】S = log Z + βE = S₀ + 4π²CT + (3/2)log T + (3/2)(1 + log C)(T = 1/β) -/
 theorem schwarzian_entropy (S0 C β : ℝ) (hβ : 0 < β) :

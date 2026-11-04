@@ -76,6 +76,7 @@ theorem neck_ricci (N l s c : S) (H : SphD d N 1 l s c) (hN0 : d 0 N = 0)
   · rw [ricD_33 d N 1 l s c H]
     simp [d1, hN0, hNxx, hl0, hl1]
     try field_simp
+    try ring
 
 end Ricci
 
@@ -102,7 +103,7 @@ theorem neck_curvature_invariants (k : S) :
     let Rs : S := 0
     K - 2 * Ric2 + Rs ^ 2 / 3 = 0 ∧ K - 4 * Ric2 + Rs ^ 2 = -8 * k ^ 2 ∧ -8 * k ^ 2 = 2 * (-4 * k ^ 2) := by
   intro K Ric2 Rs
-  refine ⟨?_, ?_, ?_⟩ <;> simp only [K, Ric2, Rs] <;> ring
+  refine ⟨?_, ?_, ?_⟩ <;> (try simp only [K, Ric2, Rs]) <;> ring
 
 end H3
 
@@ -122,9 +123,12 @@ theorem neck_backreaction (l ε : ℝ) (hl : l ≠ 0) (hε : 0 ≤ ε) :
   intro x
   have hs : Real.sqrt (1 + 4 * ε) ^ 2 = 1 + 4 * ε := Real.sq_sqrt (by linarith)
   have hl2 : l ^ 2 ≠ 0 := pow_ne_zero 2 hl
-  have key : l ^ 2 * x ^ 2 - x - ε / l ^ 2 = 0 := by
-    have e : l ^ 2 * x ^ 2 - x - ε / l ^ 2 = (Real.sqrt (1 + 4 * ε) ^ 2 - (1 + 4 * ε)) / (4 * l ^ 2) := by
-      simp only [x]; field_simp <;> ring
+  simp only [x]
+  generalize Real.sqrt (1 + 4 * ε) = q at hs ⊢
+  have key : l ^ 2 * ((1 + q) / (2 * l ^ 2)) ^ 2 - (1 + q) / (2 * l ^ 2) - ε / l ^ 2 = 0 := by
+    have e : l ^ 2 * ((1 + q) / (2 * l ^ 2)) ^ 2 - (1 + q) / (2 * l ^ 2) - ε / l ^ 2
+        = (q ^ 2 - (1 + 4 * ε)) / (4 * l ^ 2) := by
+      field_simp; ring
     rw [e, hs, sub_self, zero_div]
   refine ⟨key, ?_⟩
   linear_combination key
@@ -206,7 +210,7 @@ theorem running_coupling (g b0 a : ℝ) (hg : g ≠ 0) (ha : 0 < a) :
       = 3 / (2 * a ^ 4) * (1 / g ^ 2 + b0 / (8 * π ^ 2) * Real.log (1 / a)) := by
   have := pi_ne_zero
   have ha0 := ha.ne'
-  rw [one_div, Real.log_inv]
+  rw [show Real.log (1 / a) = -Real.log a by rw [one_div, Real.log_inv]]
   field_simp <;> ring
 
 end CFT.NeckQuantum
