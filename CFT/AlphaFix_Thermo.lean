@@ -62,13 +62,11 @@ theorem maxwell_magnetic (β rp Q : ℝ) (hp : 0 < rp) :
     refine setIntegral_congr_fun measurableSet_Ioi fun r hr => ?_
     have hr0 : r ≠ 0 := (lt_trans hp hr).ne'
     show 2 * Q ^ 2 / r ^ 4 * r ^ 2 = 2 * Q ^ 2 * (r ^ 2)⁻¹
-    field_simp
-    ring
+    field_simp <;> ring
   rw [e, integral_mul_left, int_inv_sq rp hp]
   have := pi_ne_zero
   have := hp.ne'
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 【α-IX.24】磁荷の首:I = β(M − TS)(磁荷を固定した正準集団)、S = βM − I = πr₊² = A/4
 (T = (r₊ − Q²/r₊)/(4πr₊²)、βT = 1) -/
@@ -98,8 +96,7 @@ theorem free_energy (rp Q : ℝ) (hp : rp ≠ 0) :
       = rp / 4 + 3 * Q ^ 2 / (4 * rp) := by
   have := pi_ne_zero
   unfold Thermo.Mrn
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 同じ温度の二つの r₁ ≠ r₂ では r₁r₂ > 3Q² -/
 theorem same_T_product (r1 r2 Q : ℝ) (h1 : 0 < r1) (h2 : 0 < r2) (hne : r1 ≠ r2) (hQ : Q ≠ 0)
@@ -111,9 +108,9 @@ theorem same_T_product (r1 r2 Q : ℝ) (h1 : 0 < r1) (h2 : 0 < r2) (hne : r1 ≠
   have hr2 := h2.ne'
   have hT' : (r1 ^ 2 - Q ^ 2) * r2 ^ 3 = (r2 ^ 2 - Q ^ 2) * r1 ^ 3 := by
     have e1 : (r1 - Q ^ 2 / r1) / (4 * π * r1 ^ 2) = (r1 ^ 2 - Q ^ 2) / (4 * π * r1 ^ 3) := by
-      field_simp; ring
+      field_simp <;> ring
     have e2 : (r2 - Q ^ 2 / r2) / (4 * π * r2 ^ 2) = (r2 ^ 2 - Q ^ 2) / (4 * π * r2 ^ 3) := by
-      field_simp; ring
+      field_simp <;> ring
     rw [e1, e2, div_eq_div_iff (by positivity) (by positivity)] at hT
     have h4 : (4 * π) ≠ 0 := by positivity
     have h5 : 4 * π * ((r1 ^ 2 - Q ^ 2) * r2 ^ 3) = 4 * π * ((r2 ^ 2 - Q ^ 2) * r1 ^ 3) := by
@@ -143,7 +140,7 @@ theorem small_branch_preferred (r1 r2 Q : ℝ) (h1 : 0 < r1) (hlt : r1 < r2) (hQ
   have hp := same_T_product r1 r2 Q h1 h2 hlt.ne hQ hT
   have e : r2 / 4 + 3 * Q ^ 2 / (4 * r2) - (r1 / 4 + 3 * Q ^ 2 / (4 * r1))
       = (r2 - r1) * (r1 * r2 - 3 * Q ^ 2) / (4 * r1 * r2) := by
-    field_simp; ring
+    field_simp <;> ring
   have : 0 < (r2 - r1) * (r1 * r2 - 3 * Q ^ 2) / (4 * r1 * r2) := by
     apply div_pos
     · exact mul_pos (by linarith) (by linarith)
@@ -160,10 +157,9 @@ theorem heat_capacity_sign (r Q : ℝ) (hr : 0 < r) :
     have h2 := (hasDerivAt_const r (Q ^ 2)).div (hasDerivAt_pow 3 r) (pow_ne_zero 3 hr0)
     convert h1.sub h2 using 1
     simp only [Nat.cast_ofNat, show (3 : ℕ) - 1 = 2 from rfl]
-    field_simp
-    ring
+    field_simp <;> ring
   · have e : -1 / r ^ 2 + 3 * Q ^ 2 / r ^ 4 = (3 * Q ^ 2 - r ^ 2) / r ^ 4 := by
-      field_simp; ring
+      field_simp <;> ring
     rw [e, div_pos_iff_of_pos_right (by positivity)]
     constructor <;> intro h <;> linarith
 
@@ -196,7 +192,7 @@ theorem nr_limit (x : ℝ) (hx : 0 ≤ x) :
       rw [div_le_iff₀ hm0]; have := le_trans (le_max_right _ _) hm; linarith
     have key := sqrt_lower (x / m) ht0 ht8
     have e : x / 2 - x ^ 2 / 8 / m = m * (1 + x / m / 2 - (x / m) ^ 2 / 8 - 1) := by
-      field_simp; ring
+      field_simp <;> ring
     rw [e]
     exact mul_le_mul_of_nonneg_left (by linarith) hm0.le
   · filter_upwards [eventually_gt_atTop 0] with m hm
@@ -207,7 +203,7 @@ theorem nr_limit (x : ℝ) (hx : 0 ≤ x) :
       calc Real.sqrt (1 + x / m) ≤ Real.sqrt ((1 + x / m / 2) ^ 2) :=
             Real.sqrt_le_sqrt (by nlinarith [sq_nonneg (x / m / 2)])
         _ = 1 + x / m / 2 := Real.sqrt_sq hpos
-    have e : x / 2 = m * (1 + x / m / 2 - 1) := by field_simp; ring
+    have e : x / 2 = m * (1 + x / m / 2 - 1) := by field_simp <;> ring
     calc m * (Real.sqrt (1 + x / m) - 1) ≤ m * (1 + x / m / 2 - 1) :=
           mul_le_mul_of_nonneg_left (by linarith) hm.le
       _ = x / 2 := e.symm
@@ -222,7 +218,7 @@ theorem juttner_to_maxwell (β q : ℝ) :
     filter_upwards [eventually_gt_atTop 0] with m hm
     have hm0 : m ≠ 0 := hm.ne'
     have e : Real.sqrt (m ^ 2 + m * q ^ 2) = m * Real.sqrt (1 + q ^ 2 / m) := by
-      rw [show m ^ 2 + m * q ^ 2 = m ^ 2 * (1 + q ^ 2 / m) by field_simp; ring]
+      rw [show m ^ 2 + m * q ^ 2 = m ^ 2 * (1 + q ^ 2 / m) by field_simp <;> ring]
       rw [Real.sqrt_mul (by positivity), Real.sqrt_sq hm.le]
     rw [e]; ring
   exact (Real.continuous_exp.tendsto _).comp (h2.const_mul (-β))
@@ -308,8 +304,7 @@ theorem hedgehog_jacobian (θ φ : ℝ) :
 theorem hedgehog_degree : 1 / (4 * π) * ∫ _φ in (0 : ℝ)..(2 * π), ∫ θ in (0 : ℝ)..π, sin θ = 1 := by
   simp only [integral_sin, cos_zero, cos_pi, intervalIntegral.integral_const, smul_eq_mul, sub_zero]
   have := pi_ne_zero
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-! ### 非空性(X.6) -/
 

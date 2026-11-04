@@ -125,15 +125,12 @@ theorem jt_neck_solution (l A B C t z : ℝ) (hl : l ≠ 0) (hc : cos (t / l) �
   · have e : -(ap / a) * φt + φzz / a ^ 2 - φ / l ^ 2
         = -(Z / (l ^ 2 * cos (t / l))) * (sin (t / l) ^ 2 + cos (t / l) ^ 2 - 1) := by
       simp only [Z, φ, φt, φzz, ap, a]
-      field_simp
-      ring
+      field_simp <;> ring
     rw [e, show sin (t / l) ^ 2 + cos (t / l) ^ 2 - 1 = 0 by linarith, mul_zero]
   · simp only [φtt, φ]
-    field_simp
-    ring
+    field_simp <;> ring
   · simp only [φtz, ap, a, φz]
-    field_simp
-    ring
+    field_simp <;> ring
 
 /-- 【α-IX.14】静的な dilaton は 0 だけ:すべての (t, z) で φ_t = 0 なら A = B = C = 0 -/
 theorem no_static_dilaton (l A B C : ℝ) (hl : 0 < l)
@@ -175,8 +172,7 @@ theorem jt_gradient (l B t z : ℝ) (hl : l ≠ 0) (hc : cos (t / l) ≠ 0) :
     -(-(sin (t / l) / l) * (B * cosh (z / l))) ^ 2
       + (cos (t / l) * (B * sinh (z / l) / l)) ^ 2 / cos (t / l) ^ 2
       = (B / l) ^ 2 * (sinh (z / l) ^ 2 - sin (t / l) ^ 2 * cosh (z / l) ^ 2) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 【α-IX.14】首の中心 (0, 0) で勾配は 0(分岐面) -/
 theorem jt_bifurcation (l B : ℝ) :
@@ -236,8 +232,7 @@ theorem int_sin_cos (Y : ℝ) (hY : 0 < Y) :
     have h := (((hasDerivAt_sin (π / Y * x)).comp x hu).pow 2).div_const (2 * (π / Y))
     convert h using 1
     simp only [Function.comp_apply, Nat.cast_ofNat, show (2 : ℕ) - 1 = 1 from rfl, pow_one]
-    field_simp
-    ring
+    field_simp <;> ring
   rw [integral_eq_sub_of_hasDerivAt hd (by apply Continuous.intervalIntegrable; fun_prop)]
   rw [show π / Y * Y = π from div_mul_cancel₀ π hY.ne', sin_pi]
   simp
@@ -291,8 +286,7 @@ theorem test_deriv (u1 Y u : ℝ) (hu : 0 < u) :
   have hsq : Real.sqrt u * Real.sqrt u = u := Real.mul_self_sqrt hu.le
   simp only [Function.comp_apply]
   rw [show u⁻¹ = (Real.sqrt u * Real.sqrt u)⁻¹ by rw [hsq]]
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 中身の一致:f′² − f²/sin²u = G₂(log u − log u₁)·u⁻¹ -/
 theorem integrand_eq (u1 Y u : ℝ) (hu1 : 0 < u1) (hu : 0 < u) (hsin : sin u ≠ 0) :
@@ -307,8 +301,7 @@ theorem integrand_eq (u1 Y u : ℝ) (hu1 : 0 < u1) (hu : 0 < u) (hsin : sin u �
   have hs0 : Real.sqrt u ≠ 0 := (Real.sqrt_pos.2 hu).ne'
   have hu0 : u ≠ 0 := hu.ne'
   rw [div_pow, mul_pow, hs]
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 中身の一致(ノルム):f² = (u₁e^y)² sin²(πy/Y)·u⁻¹ -/
 theorem norm_integrand_eq (u1 Y u : ℝ) (hu1 : 0 < u1) (hu : 0 < u) :
@@ -318,8 +311,7 @@ theorem norm_integrand_eq (u1 Y u : ℝ) (hu1 : 0 < u1) (hu : 0 < u) :
     rw [Real.exp_sub, Real.exp_log hu, Real.exp_log hu1]; field_simp
   rw [he, mul_pow, Real.sq_sqrt hu.le]
   have hu0 : u ≠ 0 := hu.ne'
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- G₂ は [0, Y] で連続(窓 u₁e^Y < π) -/
 theorem G2_cont (u1 Y : ℝ) (hu1 : 0 < u1) (hwin : u1 * rexp Y < π) : ContinuousOn (G2 u1 Y) (Icc 0 Y) := by
@@ -405,7 +397,7 @@ theorem long_neck_unstable_actual (L l uc : ℝ) (hl : 0 < l) (huc : 0 < uc) (hu
   apply actual_form_neg uc _ huc hY'
   have hp : 0 < π / (2 * uc) := by positivity
   rw [Real.exp_log hp]
-  have : uc * (π / (2 * uc)) = π / 2 := by field_simp; ring
+  have : uc * (π / (2 * uc)) = π / 2 := by field_simp <;> ring
   rw [this]
   linarith [pi_pos]
 

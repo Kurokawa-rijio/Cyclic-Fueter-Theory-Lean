@@ -100,8 +100,7 @@ theorem cap_first_law (a : ℝ → ℝ) (ad C χ t : ℝ) (ha : HasDerivAt a ad 
   have h := (hq.const_mul (4 * π / 3)).mul hc
   convert h using 1
   simp only [Nat.cast_ofNat, show (4 : ℕ) - 1 = 3 from rfl, show (3 : ℕ) - 1 = 2 from rfl]
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 【α-X.4】首:R = ℓ 一定で (∇R)² = 0、m = ℓ/2 -/
 theorem neck_ms_mass (l : ℝ) : l / 2 * (1 - 0) = l / 2 := by ring

@@ -59,8 +59,7 @@ theorem ellipsoid_conformal_first_order (a0 a1 a2 c1 c2 u1 d2 ε : ℝ)
           / (1 + 2 * ε * u1 + ε ^ 2 * d2))) * (1 + 2 * ε * u1 + ε ^ 2 * d2) ^ 2
       = ε ^ 2 * ((a0 + 2 * ε * a1 + ε ^ 2 * a2) * (1 + 2 * ε * u1 + ε ^ 2 * d2) * d2
           + (1 + 2 * ε * u1) * (c1 + ε * c2) ^ 2) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 【α-VII.4 (1)】楕円体の誘導計量 |Av|² と、微分同相 φ_ε(x) = Ax/|Ax| で引き戻した丸い計量
 |dφ_ε v|² = (|Av|² − ⟨Ax, Av⟩²/|Ax|²)/|Ax|² の差:|Av|² − (1 + 2εu₁)|dφ_ε v|² は ε² の次数 -/

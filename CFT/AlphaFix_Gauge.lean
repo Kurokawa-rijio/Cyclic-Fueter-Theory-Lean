@@ -135,15 +135,13 @@ theorem spin_flux : ∫ _φ in (0 : ℝ)..(2 * π), ∫ θ in (0 : ℝ)..π, sin
 theorem euler_char : 1 / (2 * π) * ∫ _φ in (0 : ℝ)..(2 * π), ∫ θ in (0 : ℝ)..π, sin θ = 2 := by
   rw [spin_flux]
   have := pi_ne_zero
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 【α-VII.9】½ スピン接続のひねり:q = (1/4π)·½·∫dω = 1/2(= χ/4) -/
 theorem twist_charge : 1 / (4 * π) * (1 / 2 * ∫ _φ in (0 : ℝ)..(2 * π), ∫ θ in (0 : ℝ)..π, sin θ) = 1 / 2 := by
   rw [spin_flux]
   have := pi_ne_zero
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- 【α-VII.9】q = 1/2 のゼロモード tan(θ/2)^m sin(θ)^{1/2} が両端で L² ⇔ m = 0(ちょうど 1 個) -/
 theorem twist_zero_mode (m : ℤ) :
