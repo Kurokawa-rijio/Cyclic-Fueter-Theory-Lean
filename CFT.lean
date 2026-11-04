@@ -27,6 +27,7 @@ import CFT.AlphaIV_WKB
 import CFT.AlphaIV_WKB2
 import CFT.AlphaIV_Z9
 import CFT.AlphaIX_Classical
+import CFT.AlphaIX_JT
 import CFT.AlphaIX_YM
 import CFT.AlphaI_AW
 import CFT.AlphaI_C
@@ -95,8 +96,10 @@ import CFT.AlphaV_FW
 import CFT.AlphaV_FWOrder
 import CFT.AlphaV_Gauss
 import CFT.AlphaV_GaussMap
+import CFT.AlphaV_NeckQuantum
 import CFT.AlphaV_S3Dirac
 import CFT.AlphaV_Wigner
+import CFT.AlphaXI_NeckInstability
 import CFT.Cartan.Aligned
 import CFT.Cartan.BochnerSign
 import CFT.Cartan.C2
