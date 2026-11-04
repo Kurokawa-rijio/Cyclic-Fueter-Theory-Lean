@@ -54,11 +54,14 @@ import CFT.AlphaVII
 import CFT.AlphaVIII_Attractor
 import CFT.AlphaVIII_BF
 import CFT.AlphaVIII_BPS
+import CFT.AlphaVIII_EOM
 import CFT.AlphaVIII_Embedding
+import CFT.AlphaVIII_StringAttractor
 import CFT.AlphaVIII_WZW
 import CFT.AlphaVIII_Z38
 import CFT.AlphaVIII_Z41
 import CFT.AlphaVIII_Z44
+import CFT.AlphaVIII_Z44Cap
 import CFT.AlphaVIII_Z44b
 import CFT.AlphaVII_Abelian
 import CFT.AlphaVII_BL
@@ -816,6 +819,17 @@ import CFT.ZeroModeL2
 #print axioms CFT.BPS.bps_iff
 #print axioms CFT.BPS.susy_energy_nonneg
 #print axioms CFT.BPS.no_bf_violating_mode
+#print axioms CFT.EmbeddingEOM.iota_smul
+#print axioms CFT.EmbeddingEOM.iota_sum
+#print axioms CFT.EmbeddingEOM.iota_zero
+#print axioms CFT.EmbeddingEOM.iota_inj
+#print axioms CFT.EmbeddingEOM.covD_embed
+#print axioms CFT.EmbeddingEOM.ym_embed
+#print axioms CFT.EmbeddingEOM.ym_embed_iff
+#print axioms CFT.EmbeddingEOM.sq_embed
+#print axioms CFT.EmbeddingEOM.stress_embed
+#print axioms CFT.EmbeddingEOM.metric_alpha_cancel
+#print axioms CFT.EmbeddingEOM.all_alpha_terms_vanish
 #print axioms CFT.Embedding.iota_mul
 #print axioms CFT.Embedding.iota_sub
 #print axioms CFT.Embedding.iota_add
@@ -825,6 +839,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.Embedding.pontryagin_match
 #print axioms CFT.Embedding.gs_rhs_vanishes
 #print axioms CFT.Embedding.z40_alpha_term_vanishes
+#print axioms CFT.StringAttractor.fD_deriv_w
+#print axioms CFT.StringAttractor.dw_du
+#print axioms CFT.StringAttractor.string_attractor
+#print axioms CFT.StringAttractor.string_entropy
+#print axioms CFT.StringAttractor.no_attractor_magnetic
+#print axioms CFT.StringAttractor.veff_min
+#print axioms CFT.StringAttractor.veff_attained
+#print axioms CFT.StringAttractor.veff_second
+#print axioms CFT.StringAttractor.veff_magnetic_runaway
+#print axioms CFT.StringAttractor.neck_condition
 #print axioms CFT.WZW.quat_bracket
 #print axioms CFT.WZW.eps_contract
 #print axioms CFT.WZW.s3_ricci
@@ -849,6 +873,10 @@ import CFT.ZeroModeL2
 #print axioms CFT.Z44.causal_time_ne_zero
 #print axioms CFT.Z44.throat_static
 #print axioms CFT.Z44.no_killing_spinor
+#print axioms CFT.Z44Cap.cap_unique
+#print axioms CFT.Z44Cap.kret_hasDeriv
+#print axioms CFT.Z44Cap.kret_deriv_ne
+#print axioms CFT.Z44Cap.no_killing_spinor_cap
 #print axioms CFT.Z44b.throat_ds_zero
 #print axioms CFT.Z44b.no_killing_spinor_sym
 #print axioms CFT.Z44b.z44_full

@@ -55,11 +55,14 @@ import CFT.AlphaVII
 import CFT.AlphaVIII_Attractor
 import CFT.AlphaVIII_BF
 import CFT.AlphaVIII_BPS
+import CFT.AlphaVIII_EOM
 import CFT.AlphaVIII_Embedding
+import CFT.AlphaVIII_StringAttractor
 import CFT.AlphaVIII_WZW
 import CFT.AlphaVIII_Z38
 import CFT.AlphaVIII_Z41
 import CFT.AlphaVIII_Z44
+import CFT.AlphaVIII_Z44Cap
 import CFT.AlphaVIII_Z44b
 import CFT.AlphaVII_Abelian
 import CFT.AlphaVII_BL
