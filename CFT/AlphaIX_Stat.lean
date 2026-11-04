@@ -149,7 +149,7 @@ theorem bose_integral : ∫ t in Ioi (0 : ℝ), t ^ 3 / (rexp t - 1) = π ^ 4 / 
     rw [show (4 : ℂ) - 1 = ((3 : ℕ) : ℂ) by norm_num, Complex.cpow_natCast]
     push_cast
     ring_nf
-    first
+    try first
     | rfl
     | (rw [← Complex.ofReal_exp]; rfl)
     | (simp only [← Complex.ofReal_exp]; rfl)
