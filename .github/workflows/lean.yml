@@ -50,7 +50,8 @@ jobs:
       - name: Axiom audit (every theorem)
         shell: bash
         run: |
-          lake env lean scripts/check_phase9.lean > audit.txt 2>&1
+          lake env lean scripts/check_phase9.lean > audit.txt 2>&1 || echo LEAN_FAILED >> audit.txt
+          cat audit.txt
           total=$(grep -c "depends on axioms\|does not depend on any axioms" audit.txt || true)
           sorry=$(grep -c "sorryAx" audit.txt || true)
           std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
