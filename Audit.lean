@@ -54,6 +54,7 @@ import CFT.AlphaIntegrals
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
+import CFT.AlphaPillar_Smooth
 import CFT.AlphaRoot_Duality
 import CFT.AlphaRoot_Junction
 import CFT.AlphaS1_Closure
@@ -1043,6 +1044,18 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIII_6_energy_balance
 #print axioms CFT.Index.XIII_7_ground_state
 #print axioms CFT.Index.XIII_7_quantized
+#print axioms CFT.Index.XIV_1_no_static_throat
+#print axioms CFT.Index.XIV_2_cylinder_family
+#print axioms CFT.Index.XIV_2_cylinder_max
+#print axioms CFT.Index.XIV_3_esu_ym
+#print axioms CFT.Index.XIV_4_cylinder_mode
+#print axioms CFT.Index.XIV_4_esu_ym
+#print axioms CFT.Index.XIV_4_cylinder_max
+#print axioms CFT.Index.XIV_5_throat_mode
+#print axioms CFT.Index.XIV_5_bf_violation
+#print axioms CFT.Index.XIV_6_throat_mode
+#print axioms CFT.Index.XIV_6_bf_violation
+#print axioms CFT.Index.XIV_8_superpos_null
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1099,6 +1112,14 @@ import CFT.ZeroModeL2
 #print axioms CFT.SelfDual.cap_real_part
 #print axioms CFT.SelfDual.mass_shell
 #print axioms CFT.SelfDual.gudermann_phase
+#print axioms CFT.Smooth.no_static_throat
+#print axioms CFT.Smooth.cylinder_family
+#print axioms CFT.Smooth.cylinder_max
+#print axioms CFT.Smooth.esu_ym
+#print axioms CFT.Smooth.throat_mode
+#print axioms CFT.Smooth.bf_violation
+#print axioms CFT.Smooth.superpos_null
+#print axioms CFT.Smooth.cylinder_mode
 #print axioms CFT.RootDuality.det_M
 #print axioms CFT.RootDuality.real_slice_unitary
 #print axioms CFT.RootDuality.imag_slice_hermitian
