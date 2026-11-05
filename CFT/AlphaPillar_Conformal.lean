@@ -206,4 +206,18 @@ theorem neck_coordinate (l u : ℝ) (h0 : 0 < u) (h1 : u < π) :
   field_simp
   ring
 
+/-- 【柱 3】滑らかな道の行き先:単位磁荷の極限 RN(W = 0)は m(r) = 1 − 1/(2r)、N = 1 − 2m/r = (1 − 1/r)²
+で、r = 1(= ℓ)に縮退した地平線(AdS₂ × S² の喉)をもつ。m′ = (1 − W²)²/(2r²) をみたす。
+Bartnik–McKinnon 解の列はこの喉へ近づく(外部:Breitenlohner–Forgács–Maison 1993、数値で再現) -/
+theorem extremal_limit (r : ℝ) (hr : r ≠ 0) :
+    1 - 2 * (1 - (2 * r)⁻¹) / r = (1 - 1 / r) ^ 2 ∧
+    HasDerivAt (fun x => 1 - (2 * x)⁻¹) ((1 - (0 : ℝ) ^ 2) ^ 2 / (2 * r ^ 2)) r := by
+  constructor
+  · field_simp <;> ring
+  · have h := (((hasDerivAt_id' r).const_mul (2 : ℝ)).inv (mul_ne_zero two_ne_zero hr)).const_sub 1
+    have e : ((1 : ℝ) - 0 ^ 2) ^ 2 / (2 * r ^ 2) = -(-((2 : ℝ) * 1) / (2 * r) ^ 2) := by
+      field_simp <;> ring
+    rw [e]
+    exact h
+
 end CFT.Conformal

@@ -42,6 +42,7 @@ import CFT.AlphaI_AW
 import CFT.AlphaI_C
 import CFT.AlphaI_Operators
 import CFT.AlphaIntegrals
+import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaRoot_Duality
@@ -1058,7 +1059,61 @@ alias XII_7_gudermann_phase := CFT.SelfDual.gudermann_phase
 /-- XII.7(ダンベル、完):v6 の再現:帽子の自己双対接続は v6 の質量殻と量子半球をなぞる(Γ = 質量、K = 運動量、|A| = エネルギー、位相 = Gudermann の角)。帽子の一生 = 量子半球を頂点(静止)から赤道(光速)へ。運動学:量子半球 Q、質量殻、帽子。作用:EH + YM(自己双対の変数)。力学:a/ℓ = cos η = 1/cosh ζ = m/E、ȧ = −sinh ζ -/
 alias XII_7_cap_modulus := CFT.SelfDual.cap_modulus
 
--- XII.8(ダンベル、未着手):テスト C:新しい柱から新しい数を出す(WGC の窓、質量ギャップなど)。運動学:—。作用:—。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- XII.8(ダンベル、部):テスト C:新しい柱から新しい数を出す。半古典のミニ超空間で候補:ℓ²/ℓ_P² = 4(n + ½)/(3π)、α = 3π/(4n + 2)(XIII.7)。順序の曖昧さ、YM の量子化、切り詰めの影響は未評価。運動学:—。作用:—。力学:— -/
+alias XII_8_quantized := CFT.Conformal.quantized
+
+
+/-! ## α-XIII 共形の枠:物理の時空 = Ω² × 量子の球(静的宇宙 ℝ × S³)と滑らかさ -/
+
+/-- XIII.1(ダンベル、完):帽子と首は同じ静的宇宙の共形倍(帽子 Ω = ℓ cos η、首 Ω = ℓ/sin u)で、どちらも同じ線形な方程式 □Ω = Ω をみたす(YM の共形不変性)。静的な解の全体は (A + Bu)/sin u。首の両端の無限遠は S³ の極。運動学:静的宇宙(滑らかに閉じた S³)、倍率 Ω。作用:EYM(トレース R = 0)。力学:□̂Ω = Ω -/
+alias XIII_1_cap_box := CFT.Conformal.cap_box
+
+/-- XIII.1(ダンベル、完):帽子と首は同じ静的宇宙の共形倍(帽子 Ω = ℓ cos η、首 Ω = ℓ/sin u)で、どちらも同じ線形な方程式 □Ω = Ω をみたす(YM の共形不変性)。静的な解の全体は (A + Bu)/sin u。首の両端の無限遠は S³ の極。運動学:静的宇宙(滑らかに閉じた S³)、倍率 Ω。作用:EYM(トレース R = 0)。力学:□̂Ω = Ω -/
+alias XIII_1_neck_derivs := CFT.Conformal.neck_derivs
+
+/-- XIII.1(ダンベル、完):帽子と首は同じ静的宇宙の共形倍(帽子 Ω = ℓ cos η、首 Ω = ℓ/sin u)で、どちらも同じ線形な方程式 □Ω = Ω をみたす(YM の共形不変性)。静的な解の全体は (A + Bu)/sin u。首の両端の無限遠は S³ の極。運動学:静的宇宙(滑らかに閉じた S³)、倍率 Ω。作用:EYM(トレース R = 0)。力学:□̂Ω = Ω -/
+alias XIII_1_neck_box := CFT.Conformal.neck_box
+
+/-- XIII.1(ダンベル、完):帽子と首は同じ静的宇宙の共形倍(帽子 Ω = ℓ cos η、首 Ω = ℓ/sin u)で、どちらも同じ線形な方程式 □Ω = Ω をみたす(YM の共形不変性)。静的な解の全体は (A + Bu)/sin u。首の両端の無限遠は S³ の極。運動学:静的宇宙(滑らかに閉じた S³)、倍率 Ω。作用:EYM(トレース R = 0)。力学:□̂Ω = Ω -/
+alias XIII_1_neck_coordinate := CFT.Conformal.neck_coordinate
+
+/-- XIII.1(ダンベル、完):帽子と首は同じ静的宇宙の共形倍(帽子 Ω = ℓ cos η、首 Ω = ℓ/sin u)で、どちらも同じ線形な方程式 □Ω = Ω をみたす(YM の共形不変性)。静的な解の全体は (A + Bu)/sin u。首の両端の無限遠は S³ の極。運動学:静的宇宙(滑らかに閉じた S³)、倍率 Ω。作用:EYM(トレース R = 0)。力学:□̂Ω = Ω -/
+alias XIII_1_static_general := CFT.Conformal.static_general
+
+/-- XIII.1(ダンベル、完):帽子と首は同じ静的宇宙の共形倍(帽子 Ω = ℓ cos η、首 Ω = ℓ/sin u)で、どちらも同じ線形な方程式 □Ω = Ω をみたす(YM の共形不変性)。静的な解の全体は (A + Bu)/sin u。首の両端の無限遠は S³ の極。運動学:静的宇宙(滑らかに閉じた S³)、倍率 Ω。作用:EYM(トレース R = 0)。力学:□̂Ω = Ω -/
+alias XIII_1_static_general_deriv := CFT.Conformal.static_general_deriv
+
+/-- XIII.2(ダンベル、完):接合の跳び(X.14)は倍率の 2 階微分の縫い目:u = π/2 で Ω、Ω′ は一致、Ω″ は 0 と ℓ。物理の W = r′ は cos u + (Ω′/Ω) sin u。運動学:接合。作用:—。力学:跳び = Ω″ の跳び -/
+alias XIII_2_junction_seam := CFT.Conformal.junction_seam
+
+/-- XIII.2(ダンベル、完):接合の跳び(X.14)は倍率の 2 階微分の縫い目:u = π/2 で Ω、Ω′ は一致、Ω″ は 0 と ℓ。物理の W = r′ は cos u + (Ω′/Ω) sin u。運動学:接合。作用:—。力学:跳び = Ω″ の跳び -/
+alias XIII_2_r_prime_conformal := CFT.Conformal.r_prime_conformal
+
+/-- XIII.3(ダンベル、完(外)):Einstein の ηη 成分を共形の枠で再現:首 Ω² + Ω′² = ℓ²/sin⁴u、帽子 3(Ω² + Ω̇²) = 3ℓ²、どちらも ℓ² = 4πG/g²。運動学:帽子と首。作用:EYM(共形変換の公式は外部)。力学:IX.11・IX.17 と一致 -/
+alias XIII_3_eta_neck := CFT.Conformal.eta_neck
+
+/-- XIII.3(ダンベル、完(外)):Einstein の ηη 成分を共形の枠で再現:首 Ω² + Ω′² = ℓ²/sin⁴u、帽子 3(Ω² + Ω̇²) = 3ℓ²、どちらも ℓ² = 4πG/g²。運動学:帽子と首。作用:EYM(共形変換の公式は外部)。力学:IX.11・IX.17 と一致 -/
+alias XIII_3_eta_cap := CFT.Conformal.eta_cap
+
+-- XIII.4(ダンベル、部):共形平坦(一つの Ω)のままでは跳びは消えない:静的な場合、極で正則な Ω = Bu/sin u と YM 場では拘束が破れる(数値、B を走査)。時間に依存する場合は未。運動学:静的宇宙の上の静的な Ω と W。作用:EYM。力学:否定的(数値)(Lean の定理なし:外部定理の引用または未着手)
+
+/-- XIII.5(ダンベル、完(外)):滑らかな解は Weyl 曲率を許すと存在する:Bartnik–McKinnon 解の列(n 個の節)は n → ∞ で、滑らかな芯 + 半径ちょうど ℓ の無限に長い喉(W ≈ 0、N → 0、質量 → 極限の値)に近づく。接合も殻もない(数値で b_n = 0.4537、0.6518、0.6973、0.7055 と喉の長さ 1.5、3.1、4.8、7.2 を再現)。運動学:芯(帽子の代わり)と首。作用:EYM(磁場だけ、Higgs なし)。力学:跳びのないダンベルの半分(極限で) -/
+alias XIII_5_extremal_limit := CFT.Conformal.extremal_limit
+
+/-- XIII.6(ダンベル、完(外)):ミニ超空間:一様な Ω の作用 (3π/4G)∫(Ω² − Ω̇²)、解は周期 2π(巡回)、エネルギーは負で YM のエネルギー 3π²/g² と打ち消し合う ⇔ ℓ² = 4πG/g²。運動学:帽子(静的宇宙の上の一様な Ω)。作用:EH(共形の枠、外部)+ YM。力学:Hamilton 拘束 = エネルギーの釣り合い -/
+alias XIII_6_periodic := CFT.Conformal.periodic
+
+/-- XIII.6(ダンベル、完(外)):ミニ超空間:一様な Ω の作用 (3π/4G)∫(Ω² − Ω̇²)、解は周期 2π(巡回)、エネルギーは負で YM のエネルギー 3π²/g² と打ち消し合う ⇔ ℓ² = 4πG/g²。運動学:帽子(静的宇宙の上の一様な Ω)。作用:EH(共形の枠、外部)+ YM。力学:Hamilton 拘束 = エネルギーの釣り合い -/
+alias XIII_6_cap_energy := CFT.Conformal.cap_energy
+
+/-- XIII.6(ダンベル、完(外)):ミニ超空間:一様な Ω の作用 (3π/4G)∫(Ω² − Ω̇²)、解は周期 2π(巡回)、エネルギーは負で YM のエネルギー 3π²/g² と打ち消し合う ⇔ ℓ² = 4πG/g²。運動学:帽子(静的宇宙の上の一様な Ω)。作用:EH(共形の枠、外部)+ YM。力学:Hamilton 拘束 = エネルギーの釣り合い -/
+alias XIII_6_energy_balance := CFT.Conformal.energy_balance
+
+/-- XIII.7(ダンベル、完(外)):量子化(半古典):Ω は振動数 1 の負のエネルギーの振動子(基底状態の固有値 ½)。YM を帽子の古典の値に固定すると拘束 3π²/g² = n + ½ から ℓ²/ℓ_P² = 4(n + ½)/(3π)、α = 3π/(4n + 2)。運動学:帽子。作用:量子化した Ω + 古典の YM。力学:ℓ と g のとびとびの値(候補) -/
+alias XIII_7_ground_state := CFT.Conformal.ground_state
+
+/-- XIII.7(ダンベル、完(外)):量子化(半古典):Ω は振動数 1 の負のエネルギーの振動子(基底状態の固有値 ½)。YM を帽子の古典の値に固定すると拘束 3π²/g² = n + ½ から ℓ²/ℓ_P² = 4(n + ½)/(3π)、α = 3π/(4n + 2)。運動学:帽子。作用:量子化した Ω + 古典の YM。力学:ℓ と g のとびとびの値(候補) -/
+alias XIII_7_quantized := CFT.Conformal.quantized
 
 
 end CFT.Index
