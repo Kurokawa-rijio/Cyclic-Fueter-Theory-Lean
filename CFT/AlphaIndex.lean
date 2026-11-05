@@ -58,6 +58,7 @@ import CFT.AlphaV_Endpoint
 import CFT.AlphaV_FWOrder
 import CFT.AlphaV_NeckQuantum
 import CFT.AlphaV_Wigner
+import CFT.AlphaXI_HiggsNeck
 import CFT.AlphaX_Unify
 import CFT.ZeroModeL2
 import Batteries.Tactic.Alias
@@ -693,8 +694,16 @@ alias X_6_nonempty_window := CFT.FixNeck.nonempty_window
 
 -- X.7(ダンベル、未着手):数値:くさびの特性発展と大域的な継続。運動学:帽子・首・接合。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
+-- X.8(ダンベル、未着手):閉じたダンベルの全エネルギーは 0(ハミルトン拘束の積分)。運動学:ダンベル全体(閉じた空間)。作用:EYM + GHY。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
-/-! ## α-XI 弱い重力予想との接点 -/
+-- X.9(ダンベル、未着手):接合の動き:首の時計と帽子の時計の対応(XI.1 の時計の解釈を外す)。運動学:接合・波面。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
+
+-- X.10(ダンベル、未着手):作用はどこから決まるか:XI.4 の随伴 Higgs の出どころ(VII.8 の SO(10) の破れ、S⁹ の楕円体との関係)。運動学:内部空間 S⁹ と首。作用:—。力学:—(Lean の定理なし:外部定理の引用または未着手)
+
+-- X.11(ダンベル、未着手):帽子そのものの安定性(閉じた輻射 FRW の線形摂動)。運動学:帽子。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
+
+
+/-! ## α-XI 弱い重力予想と首の安定性 -/
 
 /-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
 alias XI_1_liouville_actual := CFT.FixNeck.liouville_actual
@@ -722,6 +731,36 @@ alias XI_3_front_marginally_trapped := CFT.FixNeck.front_marginally_trapped
 
 /-- XI.3(ダンベル、完):宇宙検閲:帽子の崩壊の前に捕捉面ができるか。運動学:帽子の波面、首。作用:EYM。力学:崩壊の前に波面の上に周辺的な捕捉面 -/
 alias XI_3_neck_marginal := CFT.FixNeck.neck_marginal
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_neck_rho := CFT.HiggsNeck.neck_rho
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_force_W_zero := CFT.HiggsNeck.force_W_zero
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_force_H_zero := CFT.HiggsNeck.force_H_zero
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_quad_expansion := CFT.HiggsNeck.quad_expansion
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_w_mass_neck := CFT.HiggsNeck.w_mass_neck
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_planck_condition := CFT.HiggsNeck.planck_condition
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_hardy_neck := CFT.HiggsNeck.hardy_neck
+
+/-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
+alias XI_4_no_growing_mode := CFT.HiggsNeck.no_growing_mode
+
+-- XI.5(ダンベル、未着手):dyon の首:電荷 q を加えたアトラクター(2pq = ℓ²)と W の安定性。運動学:首(磁荷 p と電荷 q)。作用:EYM(+ ディラトン)。力学:—(Lean の定理なし:外部定理の引用または未着手)
+
+-- XI.6(ダンベル、未着手):実効的な負の宇宙定数(V.7-N)での Hawking–Page 型の相転移。運動学:首。作用:量子応力を含む有効作用。力学:—(Lean の定理なし:外部定理の引用または未着手)
+
+-- XI.7(ダンベル、未着手):Higgs を入れたときの帽子と接合(W = cos χ の解の変化)。運動学:帽子・接合。作用:EYM + 随伴 Higgs。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
 
 end CFT.Index
