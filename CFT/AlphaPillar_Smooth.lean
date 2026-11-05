@@ -67,7 +67,7 @@ theorem cylinder_family (R L k : ℝ) (hR : R ≠ 0) :
     ring
   · rintro ⟨hL, hk⟩
     constructor
-    · rw [hL]; field_simp; ring
+    · rw [hL]; field_simp <;> ring
     · rw [hk, hL]; field_simp; ring
 
 /-- 【柱 4】円柱が存在する Λ の上限:1/R² − 1/R⁴ ≤ 1/4、等号 ⇔ R² = 2(平坦 × S²、半径 √2 ℓ) -/
@@ -104,7 +104,7 @@ theorem esu_ym (a x : ℝ) (ha : a ^ 2 = 2) (hs : sin x ≠ 0) :
   refine ⟨?_, ?_, ?_, ?_⟩
   · field_simp; ring
   · field_simp; ring
-  · field_simp; rw [ha]; ring
+  · field_simp <;> ring
   · field_simp; ring
 
 /-- 【柱 4】AdS₂ の喉の中の YM:W(s) = e^{−s/2}cos(√3 s/2) は W″ + W′ + W = 0 をみたす -/
