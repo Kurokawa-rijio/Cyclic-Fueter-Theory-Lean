@@ -14,3 +14,4 @@ import CFT.AlphaPillar_Conformal
 #print axioms CFT.Conformal.energy_balance
 #print axioms CFT.Conformal.ground_state
 #print axioms CFT.Conformal.quantized
+#print axioms CFT.Conformal.neck_coordinate

@@ -28,6 +28,7 @@
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 import Mathlib.Analysis.SpecialFunctions.Log.Deriv
 import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv
 
 namespace CFT.Conformal
 
@@ -105,7 +106,7 @@ theorem eta_neck (G g l u : ℝ) (hg : g ≠ 0) (hs : sin u ≠ 0) :
   · have e : l ^ 2 / sin u ^ 4 = l ^ 2 * (sin u ^ 2 + cos u ^ 2) / sin u ^ 4 := by rw [h1, mul_one]
     rw [e]
     field_simp
-    ring
+    linear_combination (l ^ 2 * sin u ^ 6) * h1
   · have e : 8 * π * G * (1 / (2 * g ^ 2 * sin u ^ 4)) = (4 * π * G / g ^ 2) / sin u ^ 4 := by
       field_simp <;> ring
     rw [e]
@@ -186,5 +187,23 @@ theorem quantized (G g n : ℝ) (hg : g ≠ 0) (hn : 0 ≤ n) (h : 3 * π ^ 2 / 
   · rw [hg2]
     have : (4 * n + 2) ≠ 0 := by linarith
     field_simp; ring
+
+/-- 【柱 3】首の座標 x = ℓ log tan(u/2) で dx/du = ℓ/sin u:円柱 dx² + ℓ²dΩ² = (ℓ²/sin²u)(du² + sin²u dΩ²)、
+x → ±∞ は u → 0、π(S³ の極) -/
+theorem neck_coordinate (l u : ℝ) (h0 : 0 < u) (h1 : u < π) :
+    HasDerivAt (fun v => l * Real.log (Real.tan (v / 2))) (l / Real.sin u) u := by
+  have hc : 0 < Real.cos (u / 2) := Real.cos_pos_of_mem_Ioo ⟨by linarith [pi_pos], by linarith⟩
+  have hs : 0 < Real.sin (u / 2) := Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith [pi_pos])
+  have ht : Real.tan (u / 2) ≠ 0 := by rw [Real.tan_eq_sin_div_cos]; exact (div_pos hs hc).ne'
+  have hu : HasDerivAt (fun v : ℝ => v / 2) (1 / 2) u := (hasDerivAt_id' u).div_const 2
+  have htan := (Real.hasDerivAt_tan hc.ne').comp u hu
+  have hlog := (htan.log ht).const_mul l
+  convert hlog using 1
+  have hsin : Real.sin u = 2 * Real.sin (u / 2) * Real.cos (u / 2) := by
+    rw [← Real.sin_two_mul]; congr 1; ring
+  simp only [Function.comp_apply]
+  rw [hsin, Real.tan_eq_sin_div_cos]
+  field_simp
+  ring
 
 end CFT.Conformal
