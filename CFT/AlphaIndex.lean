@@ -24,6 +24,7 @@ import CFT.AlphaIII
 import CFT.AlphaIII_Junction
 import CFT.AlphaIII_P1
 import CFT.AlphaIII_Shape
+import CFT.AlphaII_Action
 import CFT.AlphaII_Diagonal
 import CFT.AlphaII_EYM
 import CFT.AlphaII_Z5
@@ -41,6 +42,8 @@ import CFT.AlphaI_AW
 import CFT.AlphaI_C
 import CFT.AlphaI_Operators
 import CFT.AlphaIntegrals
+import CFT.AlphaPillar_Polar
+import CFT.AlphaPillar_SelfDual
 import CFT.AlphaRoot_Duality
 import CFT.AlphaRoot_Junction
 import CFT.AlphaS2_4DMatch
@@ -274,7 +277,7 @@ alias III_9_constraint_form := CFT.Junction.constraint_form
 alias IV_1_cap_constraint := CFT.AlphaIntegrals.cap_constraint
 
 /-- IV.1(ダンベル、完(外)):初期データと適切性。運動学:帽子・首の初期データ。作用:EYM。力学:拘束と適切性 -/
-alias IV_1_neck_constraint := CFT.AlphaIntegrals.neck_constraint
+alias IV_1_neck_constraint := CFT.SelfDual.neck_constraint
 
 /-- IV.1(ダンベル、完(外)):初期データと適切性。運動学:帽子・首の初期データ。作用:EYM。力学:拘束と適切性 -/
 alias IV_1_junction_jumps := CFT.AlphaIntegrals.junction_jumps
@@ -583,7 +586,7 @@ alias IX_8_particle_el := CFT.Classical.particle_el
 alias IX_9_hamilton := CFT.Classical.hamilton
 
 /-- IX.9(一般、完):Hamilton 形式と質量殻。運動学:質量殻。作用:粒子の作用。力学:Hamilton の式 -/
-alias IX_9_mass_shell := CFT.Classical.mass_shell
+alias IX_9_mass_shell := CFT.SelfDual.mass_shell
 
 /-- IX.10(ダンベル、完(橋)):球対称の縮約 S₂、U = 2 − 2ℓ²/Φ。運動学:首(球対称)。作用:EYM。力学:2 次元のディラトン重力 -/
 alias IX_10_reduction_identity := CFT.JT.reduction_identity
@@ -973,6 +976,89 @@ alias XI_4_no_growing_mode := CFT.HiggsNeck.no_growing_mode
 -- XI.6(ダンベル、未着手):実効的な負の宇宙定数(V.7-N)での Hawking–Page 型の相転移。運動学:首。作用:量子応力を含む有効作用。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
 -- XI.7(ダンベル、未着手):Higgs を入れたときの帽子と接合(W = cos χ の解の変化)。運動学:帽子・接合。作用:EYM + 随伴 Higgs。力学:—(Lean の定理なし:外部定理の引用または未着手)
+
+
+/-! ## α-XII 新しい柱:ローレンツ群 = 回転 × ブーストと自己双対接続 -/
+
+/-- XII.1(運動学、完):極分解:SL(2,ℂ) の元はただ一通りに 回転(SU(2) = 球面)× ブースト(正の Hermite = 双曲面)に分かれる。運動学:ℍ_ℂ = M₂(ℂ)、I.8 の複素の球面。作用:—。力学:— -/
+alias XII_1_ch2 := CFT.Polar.ch2
+
+/-- XII.1(運動学、完):極分解:SL(2,ℂ) の元はただ一通りに 回転(SU(2) = 球面)× ブースト(正の Hermite = 双曲面)に分かれる。運動学:ℍ_ℂ = M₂(ℂ)、I.8 の複素の球面。作用:—。力学:— -/
+alias XII_1_polar_exists := CFT.Polar.polar_exists
+
+/-- XII.1(運動学、完):極分解:SL(2,ℂ) の元はただ一通りに 回転(SU(2) = 球面)× ブースト(正の Hermite = 双曲面)に分かれる。運動学:ℍ_ℂ = M₂(ℂ)、I.8 の複素の球面。作用:—。力学:— -/
+alias XII_1_polar_unique := CFT.Polar.polar_unique
+
+/-- XII.1(運動学、完):極分解:SL(2,ℂ) の元はただ一通りに 回転(SU(2) = 球面)× ブースト(正の Hermite = 双曲面)に分かれる。運動学:ℍ_ℂ = M₂(ℂ)、I.8 の複素の球面。作用:—。力学:— -/
+alias XII_1_boost_from_square := CFT.Polar.boost_from_square
+
+/-- XII.2(運動学、完):球面と双曲面は頂点(恒等変換 = 静止)だけで交わる。運動学:SU(2) と正の Hermite 行列。作用:—。力学:— -/
+alias XII_2_sphere_meets_hyperboloid := CFT.Polar.sphere_meets_hyperboloid
+
+/-- XII.2(運動学、完):球面と双曲面は頂点(恒等変換 = 静止)だけで交わる。運動学:SU(2) と正の Hermite 行列。作用:—。力学:— -/
+alias XII_2_det_M := CFT.RootDuality.det_M
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_curvature_real := CFT.SelfDual.curvature_real
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_norm_c := CFT.SelfDual.norm_c
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_friedmann_selfdual := CFT.SelfDual.friedmann_selfdual
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_phase_lemma := CFT.SelfDual.phase_lemma
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_cap_hubble := CFT.SelfDual.cap_hubble
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_cap_modulus := CFT.SelfDual.cap_modulus
+
+/-- XII.3(ダンベル、完(外)):自己双対接続 A = Γ + iK で帽子を書く:c = 1 + iȧ、曲率の係数 c² − 2c = −|c|² は実数、Friedmann ⇔ |c|² = (8πG/3)ρa²、位相 = 共形時間 η(c·cos η = e^{−iη})。運動学:帽子 a = ℓ cos η(Γ = 回転、K = ȧ = ブースト)。作用:EH(Ashtekar の自己双対の変数、外部:拘束の同値)+ YM。力学:|c| = ℓ/a、arg c = −η -/
+alias XII_3_cap_rhs := CFT.SelfDual.cap_rhs
+
+/-- XII.4(ダンベル、完(外)):首は「回転(S²)× ブースト(AdS₂)」:S² の向きは単極子 cos θ dφ(回転だけ)、AdS₂ の向きは K^z_z = −tan(t/ℓ)/ℓ(ブーストだけ)、拘束は ³R = 16πGρ。運動学:首(同期の座標)。作用:EH(自己双対の変数)+ YM。力学:極分解が首の幾何として現れる、位相 t/ℓ -/
+alias XII_4_neck_extrinsic := CFT.SelfDual.neck_extrinsic
+
+/-- XII.4(ダンベル、完(外)):首は「回転(S²)× ブースト(AdS₂)」:S² の向きは単極子 cos θ dφ(回転だけ)、AdS₂ の向きは K^z_z = −tan(t/ℓ)/ℓ(ブーストだけ)、拘束は ³R = 16πGρ。運動学:首(同期の座標)。作用:EH(自己双対の変数)+ YM。力学:極分解が首の幾何として現れる、位相 t/ℓ -/
+alias XII_4_neck_constraint := CFT.SelfDual.neck_constraint
+
+/-- XII.4(ダンベル、完(外)):首は「回転(S²)× ブースト(AdS₂)」:S² の向きは単極子 cos θ dφ(回転だけ)、AdS₂ の向きは K^z_z = −tan(t/ℓ)/ℓ(ブーストだけ)、拘束は ³R = 16πGρ。運動学:首(同期の座標)。作用:EH(自己双対の変数)+ YM。力学:極分解が首の幾何として現れる、位相 t/ℓ -/
+alias XII_4_spin_is_witten := CFT.Action.spin_is_witten
+
+/-- XII.4(ダンベル、完(外)):首は「回転(S²)× ブースト(AdS₂)」:S² の向きは単極子 cos θ dφ(回転だけ)、AdS₂ の向きは K^z_z = −tan(t/ℓ)/ℓ(ブーストだけ)、拘束は ³R = 16πGρ。運動学:首(同期の座標)。作用:EH(自己双対の変数)+ YM。力学:極分解が首の幾何として現れる、位相 t/ℓ -/
+alias XII_4_neck_einstein := CFT.FixGeo.neck_einstein
+
+/-- XII.5(ダンベル、完):始まりと終わり:位相 0(純粋な回転 = 頂点、時間対称な瞬間)から π/2(純粋なブースト:帽子の崩壊と首の焦点)へ、帽子と首が同じ位相の時計で同時に回り切る。運動学:帽子と首。作用:EH + YM。力学:e^{−i0} = 1、e^{−iπ/2} = −i -/
+alias XII_5_end_phase := CFT.SelfDual.end_phase
+
+/-- XII.5(ダンベル、完):始まりと終わり:位相 0(純粋な回転 = 頂点、時間対称な瞬間)から π/2(純粋なブースト:帽子の崩壊と首の焦点)へ、帽子と首が同じ位相の時計で同時に回り切る。運動学:帽子と首。作用:EH + YM。力学:e^{−i0} = 1、e^{−iπ/2} = −i -/
+alias XII_5_phase_lemma := CFT.SelfDual.phase_lemma
+
+/-- XII.6(ダンベル、完(外)):テスト B:U21′(YM 場 = スピン接続、W = r′)は「YM 場 = 自己双対接続の実部(回転の部分)」と同じで、帽子と首ではすべての時刻で成り立つ(くさびの中の一般の発展では未)。運動学:帽子(W = cos χ は半径 a によらない)、首(W = 0)。作用:EYM + 新しい原理(YM = Re A)。力学:厳密な領域で力学と矛盾しない -/
+alias XII_6_real_part := CFT.SelfDual.real_part
+
+/-- XII.6(ダンベル、完(外)):テスト B:U21′(YM 場 = スピン接続、W = r′)は「YM 場 = 自己双対接続の実部(回転の部分)」と同じで、帽子と首ではすべての時刻で成り立つ(くさびの中の一般の発展では未)。運動学:帽子(W = cos χ は半径 a によらない)、首(W = 0)。作用:EYM + 新しい原理(YM = Re A)。力学:厳密な領域で力学と矛盾しない -/
+alias XII_6_cap_real_part := CFT.SelfDual.cap_real_part
+
+/-- XII.6(ダンベル、完(外)):テスト B:U21′(YM 場 = スピン接続、W = r′)は「YM 場 = 自己双対接続の実部(回転の部分)」と同じで、帽子と首ではすべての時刻で成り立つ(くさびの中の一般の発展では未)。運動学:帽子(W = cos χ は半径 a によらない)、首(W = 0)。作用:EYM + 新しい原理(YM = Re A)。力学:厳密な領域で力学と矛盾しない -/
+alias XII_6_spin_is_witten := CFT.Action.spin_is_witten
+
+/-- XII.6(ダンベル、完(外)):テスト B:U21′(YM 場 = スピン接続、W = r′)は「YM 場 = 自己双対接続の実部(回転の部分)」と同じで、帽子と首ではすべての時刻で成り立つ(くさびの中の一般の発展では未)。運動学:帽子(W = cos χ は半径 a によらない)、首(W = 0)。作用:EYM + 新しい原理(YM = Re A)。力学:厳密な領域で力学と矛盾しない -/
+alias XII_6_frw_exact := CFT.EYM.frw_exact
+
+/-- XII.7(ダンベル、完):v6 の再現:帽子の自己双対接続は v6 の質量殻と量子半球をなぞる(Γ = 質量、K = 運動量、|A| = エネルギー、位相 = Gudermann の角)。帽子の一生 = 量子半球を頂点(静止)から赤道(光速)へ。運動学:量子半球 Q、質量殻、帽子。作用:EH + YM(自己双対の変数)。力学:a/ℓ = cos η = 1/cosh ζ = m/E、ȧ = −sinh ζ -/
+alias XII_7_mass_shell := CFT.SelfDual.mass_shell
+
+/-- XII.7(ダンベル、完):v6 の再現:帽子の自己双対接続は v6 の質量殻と量子半球をなぞる(Γ = 質量、K = 運動量、|A| = エネルギー、位相 = Gudermann の角)。帽子の一生 = 量子半球を頂点(静止)から赤道(光速)へ。運動学:量子半球 Q、質量殻、帽子。作用:EH + YM(自己双対の変数)。力学:a/ℓ = cos η = 1/cosh ζ = m/E、ȧ = −sinh ζ -/
+alias XII_7_gudermann_phase := CFT.SelfDual.gudermann_phase
+
+/-- XII.7(ダンベル、完):v6 の再現:帽子の自己双対接続は v6 の質量殻と量子半球をなぞる(Γ = 質量、K = 運動量、|A| = エネルギー、位相 = Gudermann の角)。帽子の一生 = 量子半球を頂点(静止)から赤道(光速)へ。運動学:量子半球 Q、質量殻、帽子。作用:EH + YM(自己双対の変数)。力学:a/ℓ = cos η = 1/cosh ζ = m/E、ȧ = −sinh ζ -/
+alias XII_7_cap_modulus := CFT.SelfDual.cap_modulus
+
+-- XII.8(ダンベル、未着手):テスト C:新しい柱から新しい数を出す(WGC の窓、質量ギャップなど)。運動学:—。作用:—。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
 
 end CFT.Index
