@@ -1,4 +1,7 @@
 import CFT.AlphaB_QH
+import CFT.AlphaBridge_Clock
+import CFT.AlphaBridge_Thermal
+import CFT.AlphaBridge_Twist
 import CFT.AlphaCompleteA
 import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
@@ -159,6 +162,40 @@ import CFT.ZeroModeL2
 #print axioms CFT.QH.area_ratio
 #print axioms CFT.QH.hemisphere_area
 #print axioms CFT.QH.gauss_bonnet_H
+#print axioms CFT.BridgeClock.on_hyperboloid
+#print axioms CFT.BridgeClock.dt_embedding
+#print axioms CFT.BridgeClock.dz_embedding
+#print axioms CFT.BridgeClock.neck_gaussian
+#print axioms CFT.BridgeClock.cap_gaussian
+#print axioms CFT.BridgeClock.two_events
+#print axioms CFT.BridgeClock.same_point
+#print axioms CFT.BridgeClock.static_clock
+#print axioms CFT.BridgeClock.neck_centre_clock
+#print axioms CFT.BridgeThermal.dilaton_invariant
+#print axioms CFT.BridgeThermal.dilaton_grad
+#print axioms CFT.BridgeThermal.xi_norm
+#print axioms CFT.BridgeThermal.accel_formula
+#print axioms CFT.BridgeThermal.accel_identity
+#print axioms CFT.BridgeThermal.deser_levin
+#print axioms CFT.BridgeThermal.three_classes
+#print axioms CFT.BridgeThermal.rindler_lapse
+#print axioms CFT.BridgeThermal.unit_observer
+#print axioms CFT.BridgeThermal.junction_tan
+#print axioms CFT.BridgeTwist.eps_eq
+#print axioms CFT.BridgeTwist.s1T
+#print axioms CFT.BridgeTwist.s2T
+#print axioms CFT.BridgeTwist.s3T
+#print axioms CFT.BridgeTwist.xsT
+#print axioms CFT.BridgeTwist.eps_xsT
+#print axioms CFT.BridgeTwist.xs_sq
+#print axioms CFT.BridgeTwist.gauge_singlet
+#print axioms CFT.BridgeTwist.pole_singlet
+#print axioms CFT.BridgeTwist.chi_deriv
+#print axioms CFT.BridgeTwist.conformal_transfer
+#print axioms CFT.BridgeTwist.twist_cancel
+#print axioms CFT.BridgeTwist.system_reduce
+#print axioms CFT.BridgeTwist.zero_mode
+#print axioms CFT.BridgeTwist.localization
 #print axioms CFT.AlphaCompleteA.H_a
 #print axioms CFT.AlphaCompleteA.H_pb
 #print axioms CFT.AlphaCompleteA.H_pa
@@ -895,6 +932,33 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_6_nonempty_cap
 #print axioms CFT.Index.X_6_nonempty_magnetic
 #print axioms CFT.Index.X_6_nonempty_window
+#print axioms CFT.Index.X_9_on_hyperboloid
+#print axioms CFT.Index.X_9_neck_gaussian
+#print axioms CFT.Index.X_9_cap_gaussian
+#print axioms CFT.Index.X_9_two_events
+#print axioms CFT.Index.X_9_same_point
+#print axioms CFT.Index.X_9_static_clock
+#print axioms CFT.Index.X_9_neck_centre_clock
+#print axioms CFT.Index.X_12_gauge_singlet
+#print axioms CFT.Index.X_12_eps_xsT
+#print axioms CFT.Index.X_12_xs_sq
+#print axioms CFT.Index.X_12_pole_singlet
+#print axioms CFT.Index.X_12_chi_deriv
+#print axioms CFT.Index.X_12_conformal_transfer
+#print axioms CFT.Index.X_12_twist_cancel
+#print axioms CFT.Index.X_12_system_reduce
+#print axioms CFT.Index.X_12_zero_mode
+#print axioms CFT.Index.X_12_localization
+#print axioms CFT.Index.X_13_dilaton_invariant
+#print axioms CFT.Index.X_13_dilaton_grad
+#print axioms CFT.Index.X_13_xi_norm
+#print axioms CFT.Index.X_13_accel_formula
+#print axioms CFT.Index.X_13_accel_identity
+#print axioms CFT.Index.X_13_deser_levin
+#print axioms CFT.Index.X_13_three_classes
+#print axioms CFT.Index.X_13_rindler_lapse
+#print axioms CFT.Index.X_13_unit_observer
+#print axioms CFT.Index.X_13_junction_tan
 #print axioms CFT.Index.XI_1_liouville_actual
 #print axioms CFT.Index.XI_1_actual_form_neg
 #print axioms CFT.Index.XI_1_growth_rate_bound
