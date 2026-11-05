@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software in academic work, cite the version archived by Zenodo and the relevant research documents."
 title: "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results"
-version: "0.3.0"
-date-released: "2026-11-02"
+version: "0.4.0"
+date-released: "2026-11-05"
 license: MIT
 repository-code: "https://github.com/Kurokawa-rijio/Cyclic-Fueter-Theory-Lean"
 authors:
@@ -16,9 +16,10 @@ abstract: >-
   calculations, the reduced Einstein–Yang–Mills action and its four-dimensional
   field equations, distributional junction conditions, characteristic evolution and
   constraint-propagation identities, zero-mode calculations, and
-  selected Wess–Zumino–Witten (WZW)-related formulas. The repository includes an
-  author-maintained status ledger for 53 items grouped into α-I–α-VIII and 35 items
-  in α-IX (consequences of the action principle). Status labels
+  selected Wess–Zumino–Witten (WZW)-related formulas, and consequences of the action
+  principle for the Einstein–Yang–Mills dumbbell. The repository includes an
+  author-maintained status ledger of 107 items in α-I–α-XI, each recorded as
+  kinematics, action, and dynamics. Status labels
   describe the current formalization scope and are not independent certification or
   peer review of the corresponding research claims. Lean verifies theorem conclusions
   from declared assumptions and imported results; formalization does not by itself
@@ -37,3 +38,6 @@ keywords:
   - Einstein–Yang–Mills theory
   - Constraint propagation
   - Wess–Zumino–Witten model
+  - Anti-de Sitter space
+  - Jackiw–Teitelboim gravity
+  - Weak gravity conjecture

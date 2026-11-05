@@ -1,7 +1,7 @@
 # Cyclic Fueter Theory: Lean 4 Formalization of Selected Results
 
 **Author:** Ryojiro Kurokawa  
-**Version:** v0.3.0 (2026-11-02)  
+**Version:** v0.4.0 (2026-11-05)  
 **Lean toolchain:** `leanprover/lean4:v4.15.0`  
 **Mathlib dependency:** `v4.15.0`
 
@@ -11,7 +11,30 @@
 
 This repository contains Lean 4 formalizations associated with the research program *Cyclic Fueter Theory* (CFT) and the author's claim ledger α-I–α-IX. The code covers quaternionic algebra, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, the reduced Einstein–Yang–Mills (EYM) action and its field equations, curvature and stress tensors computed from metric and connection data, distributional junction conditions, characteristic evolution and constraint propagation, zero-mode calculations, and selected links to WZW and related geometric formulas.
 
-The current snapshot contains **1216 theorem declarations** in 118 Lean modules (v0.2.0: 1074 in 101). This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+The current snapshot contains **1544 theorem declarations** in 141 Lean modules (v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 244 aliases in the index module `CFT/AlphaIndex.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+
+## What changed in v0.4.0
+
+**Ledger restructured: kinematics → action → dynamics.** The research program is summarised by one sentence: *the dumbbell is kinematics; putting in an action produces dynamics.* The ledger (`docs/CLAIM_STATUS_JA.md`, Japanese) now has 107 items in α-I–α-XI. Each item records the kinematics (which part of the dumbbell — quantum hemisphere/cap, hyperbolic neck, junction/front, internal space — and which quantity), the action that is put in, and the dynamics derived from it. Items are grouped as *kinematics* (geometry alone), *dumbbell* (an action applied to dumbbell quantities), and *general* (standard physics checked in Lean, not specific to the dumbbell). A new label, *complete (bridge)*, marks theorems computed with abstract derivations whose algebra is complete but whose reading as real functions awaits the RealLine bridge. `CFT/AlphaIndex.lean` gives each item aliases to its representative theorems, with the kinematics/action/dynamics in the docstrings.
+
+**Independent audit and corrections (2026-11-04/05).** A reviewer who had not seen the work audited 40 items as a sceptical theoretical physicist. All recomputed Lean algebra was correct, but 11 classifications were lowered; each point was then fixed. Physics corrections: the neck is magnetically charged, so its Euclidean action is now computed from the magnetic Maxwell term, I = β(M + ΦQ)/2 = β(M − TS) (canonical ensemble at fixed magnetic charge), instead of the electric form (α-IX.24); the phase comparison uses the magnetic canonical ensemble instead of Hawking–Page, which needs a cosmological constant (α-IX.33). Strengthened results include: the JT dilaton on the neck solved in the neck coordinates (α-IX.14); the true quadratic form of the neck's W mode shown to be negative for long necks via a Liouville transform and the comparison 1/sin²u ≥ 1/u², with growth-rate bound λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π² (α-XI.1); at first order the ellipsoidal deformation of S⁹ is a diffeomorphism plus a conformal change, so the normalised Killing-spinor eigenvalue is critical (α-VII.4); a convex ellipsoid has positive scalar curvature, so the internal Dirac operator has no kernel (α-VII.8-C, a negative result); and the second Foldy–Wouthuysen step leaves the even part unchanged to order 1/m², with the Darwin and spin–orbit commutators computed as operators (α-V.1).
+
+**Consequences of the action (α-IX–α-XI).** Electromagnetism, particles, fluids and MHD, the JT/Schwarzian reduction of the neck, black-hole thermodynamics, KMS and fluctuation–dissipation for finite systems, focusing, Tolman–Ehrenfest, and the weak-gravity-conjecture-related items are formalised at the scopes stated in the ledger.
+
+**Supporting the neck with a Higgs field (α-XI.4).** With an adjoint Higgs field the neck (W = 0, H = v) remains an exact solution with the same radius ℓ² = 4πG/g². The W mode has mass m²ℓ² = −1 + m_W²ℓ² (m_W = gv). By the Breitenlohner–Freedman bound and a Hardy-type inequality, ∫(f′² − f²/(4 sin²u)) = ∫ sin u (h′² + h²/4) ≥ 0 with f = √(sin u) h, the neck has no growing mode for any length if m_W²ℓ² ≥ 3/4, i.e. v ≥ √(3/16π) M_Pl ≈ 0.244 M_Pl (the min–max principle is cited).
+
+**Replacing citations and weak checks by the dumbbell's own geometry.**
+- *Global classification (α-II.3).* For the spherically symmetric slices that the dumbbell needs, the citation of the general classification theorem is replaced by a proof. The S³ phase has the unique solution r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ), with amplitude ℓ (so r ≤ ℓ) and r′² = 1 at the poles (no conical singularity); the flat phase is linear; the neck is r = ℓ. The general non-symmetric case still cites the external theorem.
+- *Four-dimensional Einstein equations on the neck (α-IX.11).* From the Ricci eigenvalues (−1, −1, 1, 1)/ℓ², R = 0, and all four components of G = 8πG T hold if and only if ℓ² = 4πG/g².
+- *Cap and neck share one scale (α-IX.17).* The cap a = ℓ cos η satisfies a′² + a² = (8πG/3)ρa⁴ = ℓ², so the maximal cap radius equals the neck radius.
+- *Tolman–Ehrenfest on the neck (α-IX.25).* The hydrostatic equation is derived from ∇_μT^μ_x = 0 and the Christoffel symbols of the static metric; on the neck T = T₀/cosh(x/ℓ).
+- *Euclidean neck (α-IX.32, reformulated).* The dumbbell's Euclidean neck is not a compact H²/Γ, so ergodicity is no longer claimed. Instead, geodesic deviation J = cosh(s/ℓ) ≥ e^{s/ℓ}/2 gives Lyapunov exponent 1/ℓ.
+- *Killing spinors (α-VIII.7).* The no-go is proved with hypotheses restricted to the cap region.
+- *Schwarzian density of states (α-IX.29).* From the exact density ∝ sinh(2π√(2CE)), 1/T = 4π²C coth x/x; the correction to the leading term is exponentially small, and the relative difference from the canonical ensemble is 3/(4π²CT). The Laplace transform is cited.
+- *Quantum back-reaction on the cap (α-V.7′).* The sum of the two back-reaction terms is conserved; on the cap X = ℓ²/a⁴, and the ratio to the classical radiation is −2g²β_gℓ⁴/a⁴, growing toward the crunch.
+- *Higher-derivative corrections (α-XI.2).* Extremality is written as a critical point of M(r) (attractor form): p² = r² + 5k/r⁴ and M = r + 2k/r⁵ < p for 4k < r⁶; the neck becomes thinner. The Wald-entropy correction is cited.
+
+**Remaining.** Partial: 5 (the RealLine bridge items α-III.1, III.2, III.9, IV.2, and the non-emptiness item α-X.6 that depends on it). Not started: 8 (α-X.7 numerics; α-X.8–X.11 global consistency: total energy of the closed dumbbell, the junction clocks, the origin of the Higgs field in the internal space, stability of the cap; α-XI.5–XI.7: dyonic neck, effective negative cosmological constant, the cap with the Higgs field).
 
 ## What changed in v0.3.0
 
@@ -41,16 +64,19 @@ Seventeen new or extended modules (142 theorems) close ten items of α-I–α-VI
 
 Lean checks that each theorem follows from its formalized assumptions. It does not automatically validate whether those assumptions correctly model a physical system, whether an imported theorem applies to the research setting, or whether a numerical result is an exact solution of the field equations.
 
-The author-maintained status ledger (2026-11-02) classifies the 53 items of α-I–α-VIII as:
+The author-maintained status ledger (2026-11-05) classifies the 107 items of α-I–α-XI as:
 
-| Status | Count (v0.3.0, 53 items) | Count (v0.2.0, 51 items) | Meaning |
-|---|---:|---:|---|
-| Complete, including items that rely on a stated external theorem | 41 | 35 | The ledger considers the formalized statement complete at the stated scope |
-| Partial | 7 | 9 | The Lean statement is weaker than the full claim |
-| Conditional | 2 | 3 | A key hypothesis that is not a known theorem remains assumed |
-| Not formalized as stated | 3 | 4 | The formalized object differs from, or does not yet cover, the ledger claim |
+| Status | Count (v0.4.0, 107 items) | Meaning |
+|---|---:|---|
+| Complete | 50 | The Lean theorems show the item as stated |
+| Complete (external) | 35 | Complete at the stated scope, using a named, established external theorem whose hypotheses are checked |
+| Complete (bridge) | 9 | The algebra is complete in a differential field; the reading as real functions awaits the RealLine bridge |
+| Partial | 5 | The Lean statement is weaker than the full claim |
+| Conditional | 0 | A key hypothesis that is not a known theorem remains assumed |
+| Not formalized as stated | 0 | The formalized object differs from the ledger claim |
+| Not started | 8 | Not yet computed |
 
-The 35 items of α-IX (consequences of the action principle): 10 complete, 25 not yet started. In total, α has 88 items: 51 complete, 7 partial, 2 conditional, 3 not formalized, 25 not started. These are **author-maintained research classifications**, not peer-review results. Using a named, established theorem with its hypotheses checked is counted as complete. The v0.2.0 count of 35 included α-III.1, III.2, III.9 and IV.2, which are now partial (see the RealLine correction above).
+By category: kinematics 12 (all complete), dumbbell 69 (57 complete, 4 partial, 8 not started), general 25 (all complete), and 1 partial item (non-emptiness) outside the categories. For comparison, v0.3.0 had 88 items (51 complete, 7 partial, 2 conditional, 3 not formalized, 25 not started). These are **author-maintained research classifications**, not peer-review results.
 
 Specific limits of the present formalization:
 
@@ -58,7 +84,7 @@ Specific limits of the present formalization:
 - Local well-posedness of the characteristic initial-value problem (Goursat problem) and uniqueness of smooth EYM solutions in their domain of dependence (Choquet-Bruhat) are cited classical theorems. Global continuation of the solution in the wedge between the fronts is **not** claimed.
 - The 4D component match is carried out in synchronous gauge (lapse 1, zero shift). The lapse and shift variations (the constraints) are retained on the reduced-action side.
 - `W = r'` is a condition on time-symmetric initial data; it is not established as a dynamically invariant sector of the full EYM system.
-- Open problems that are deliberately left open (for example chirality on S⁹, the general local classification without the cited CIS theorem) are listed in `docs/README_JA_full.md`.
+- The general (non-spherically-symmetric) classification still cites the CIS theorem; masslessness and chirality do not come from the kernel of the internal Dirac operator (α-VII.8-C). Open items are listed in `docs/CLAIM_STATUS_JA.md`.
 
 ## Build
 
@@ -79,6 +105,8 @@ lake env lean Audit.lean      # #print axioms for every theorem; output recorded
 lake env lean DepCheck.lean   # proof and statement dependencies; output recorded in review/depcheck.txt
 ```
 
+AUDIT_V040
+
 Recorded audit result for v0.3.0: 1216 theorems, of which 1202 depend only on Lean's standard axioms [propext, Classical.choice, Quot.sound], 7 on [propext, Quot.sound], 4 on [propext], and 3 on no axioms. `audit.txt` holds the v0.2.0 output for the 1074 unchanged theorems followed by the CI output (run 41331208469) for the 142 new ones; the full `lake build` and the complete audit of `Audit.lean` were also run together in CI (run 41374173874, success, no `sorryAx`). There is no `sorry` and no project-specific `axiom`. The GitHub Actions workflow runs the same audit after the build and reports the counts in the job summary.
 
 A GitHub Actions workflow under `.github/workflows/lean.yml` builds the project on pushes and pull requests.
@@ -90,7 +118,8 @@ A GitHub Actions workflow under `.github/workflows/lean.yml` builds the project 
 - `Audit.lean`, `audit.txt`, `audit_raw.txt` — axiom audit source and output.
 - `DepCheck.lean` — dependency checks for the final theorems.
 - `review/` — claim ledgers, the 2026-10-21 per-item audit table (`audit_table_2026-10-21.md`), stage audits, patch notes, and dependency-check output. Older files in this folder are kept as history and contain older counts.
-- `docs/CLAIM_STATUS_JA.md` — current 53-item status ledger plus α-IX (88 items in total).
+- `docs/CLAIM_STATUS_JA.md` — current 107-item status ledger (kinematics, action, dynamics, category, status, representative theorems).
+- `CFT/AlphaIndex.lean` — index of the ledger: aliases of the representative theorems.
 - `docs/README_JA_full.md` — the author's full working record in Japanese (theorem names and notes for every item).
 - `docs/archive/` — historical README and build logs.
 - `scripts/` — SymPy scripts that generated the large component identities (see `scripts/README.md`). They are not needed to build the project.
