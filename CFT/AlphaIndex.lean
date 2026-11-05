@@ -41,6 +41,8 @@ import CFT.AlphaI_AW
 import CFT.AlphaI_C
 import CFT.AlphaI_Operators
 import CFT.AlphaIntegrals
+import CFT.AlphaRoot_Duality
+import CFT.AlphaRoot_Junction
 import CFT.AlphaS2_4DMatch
 import CFT.AlphaS2_Match
 import CFT.AlphaS4_Junction
@@ -132,6 +134,33 @@ alias I_7_bps_f := CFT.AlphaI.bps_f
 
 /-- I.7(運動学、完(外)):H³ 上の Berry 接続と BPS 単極子。運動学:双曲面 H³ と単極子。作用:—。力学:BPS 方程式 -/
 alias I_7_starF_closed := CFT.AlphaCompleteC.starF_closed
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_det_M := CFT.RootDuality.det_M
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_real_slice_unitary := CFT.RootDuality.real_slice_unitary
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_imag_slice_hermitian := CFT.RootDuality.imag_slice_hermitian
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_wick_path := CFT.RootDuality.wick_path
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_curvature_flip := CFT.RootDuality.curvature_flip
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_hemisphere_on_sphere := CFT.RootDuality.hemisphere_on_sphere
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_hemisphere_deriv := CFT.RootDuality.hemisphere_deriv
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_hemisphere_conformal := CFT.RootDuality.hemisphere_conformal
+
+/-- I.8(運動学、完):量子半球と相対双曲面は一つのものの二つの顔:M(z) = z₀ + i z·σ の行列式 z₀² + z·z の実の切り口(SU(2)、S³)と虚の切り口(Hermite、Minkowski、H³)、回転 c = e^{−iθ} で滑らかにつながる(Cartan の双対)。量子半球は双曲面の半球模型で、赤道は双曲面の無限遠。運動学:ℍ_ℂ = M₂(ℂ)、量子半球 Q = (m/E, p/E)、質量殻 H³。作用:—。力学:— -/
+alias I_8_equator_at_infinity := CFT.RootDuality.equator_at_infinity
 
 
 /-! ## α-II 作用・相の分類・Cartan 幾何 -/
@@ -854,6 +883,21 @@ alias X_13_unit_observer := CFT.BridgeThermal.unit_observer
 
 /-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
 alias X_13_junction_tan := CFT.BridgeThermal.junction_tan
+
+/-- X.14(ダンベル、完):接合での跳びの診断:形は C¹ でつながるが、曲率 ³R は 6/ℓ² → 2/ℓ²、密度は 3 分の 1、半径方向の圧力は符号が変わる。ハミルトン拘束は r″ の 2 次式で、接合では r″ = 0 と −1/ℓ の二つだけなので、純粋に磁気的な EYM(W = r′)の中では C² のダンベルはない。運動学:帽子と首の接合 (r, r′) = (ℓ, 0)。作用:EYM + ハミルトン拘束。力学:C² の接合は不可能(つなぎ方か作用を変える必要) -/
+alias X_14_curvature_jump := CFT.RootJunction.curvature_jump
+
+/-- X.14(ダンベル、完):接合での跳びの診断:形は C¹ でつながるが、曲率 ³R は 6/ℓ² → 2/ℓ²、密度は 3 分の 1、半径方向の圧力は符号が変わる。ハミルトン拘束は r″ の 2 次式で、接合では r″ = 0 と −1/ℓ の二つだけなので、純粋に磁気的な EYM(W = r′)の中では C² のダンベルはない。運動学:帽子と首の接合 (r, r′) = (ℓ, 0)。作用:EYM + ハミルトン拘束。力学:C² の接合は不可能(つなぎ方か作用を変える必要) -/
+alias X_14_stress_jump := CFT.RootJunction.stress_jump
+
+/-- X.14(ダンベル、完):接合での跳びの診断:形は C¹ でつながるが、曲率 ³R は 6/ℓ² → 2/ℓ²、密度は 3 分の 1、半径方向の圧力は符号が変わる。ハミルトン拘束は r″ の 2 次式で、接合では r″ = 0 と −1/ℓ の二つだけなので、純粋に磁気的な EYM(W = r′)の中では C² のダンベルはない。運動学:帽子と首の接合 (r, r′) = (ℓ, 0)。作用:EYM + ハミルトン拘束。力学:C² の接合は不可能(つなぎ方か作用を変える必要) -/
+alias X_14_hamC_quadratic := CFT.RootJunction.hamC_quadratic
+
+/-- X.14(ダンベル、完):接合での跳びの診断:形は C¹ でつながるが、曲率 ³R は 6/ℓ² → 2/ℓ²、密度は 3 分の 1、半径方向の圧力は符号が変わる。ハミルトン拘束は r″ の 2 次式で、接合では r″ = 0 と −1/ℓ の二つだけなので、純粋に磁気的な EYM(W = r′)の中では C² のダンベルはない。運動学:帽子と首の接合 (r, r′) = (ℓ, 0)。作用:EYM + ハミルトン拘束。力学:C² の接合は不可能(つなぎ方か作用を変える必要) -/
+alias X_14_junction_two_values := CFT.RootJunction.junction_two_values
+
+/-- X.14(ダンベル、完):接合での跳びの診断:形は C¹ でつながるが、曲率 ³R は 6/ℓ² → 2/ℓ²、密度は 3 分の 1、半径方向の圧力は符号が変わる。ハミルトン拘束は r″ の 2 次式で、接合では r″ = 0 と −1/ℓ の二つだけなので、純粋に磁気的な EYM(W = r′)の中では C² のダンベルはない。運動学:帽子と首の接合 (r, r′) = (ℓ, 0)。作用:EYM + ハミルトン拘束。力学:C² の接合は不可能(つなぎ方か作用を変える必要) -/
+alias X_14_no_C2_junction := CFT.RootJunction.no_C2_junction
 
 
 /-! ## α-XI 弱い重力予想と首の安定性 -/
