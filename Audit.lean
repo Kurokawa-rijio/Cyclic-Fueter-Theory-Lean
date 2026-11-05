@@ -109,6 +109,7 @@ import CFT.AlphaV_GaussMap
 import CFT.AlphaV_NeckQuantum
 import CFT.AlphaV_S3Dirac
 import CFT.AlphaV_Wigner
+import CFT.AlphaXI_HiggsNeck
 import CFT.AlphaXI_NeckInstability
 import CFT.AlphaX_Unify
 import CFT.Cartan.Aligned
@@ -847,6 +848,14 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_3_no_trapped_in_cap
 #print axioms CFT.Index.XI_3_front_marginally_trapped
 #print axioms CFT.Index.XI_3_neck_marginal
+#print axioms CFT.Index.XI_4_neck_rho
+#print axioms CFT.Index.XI_4_force_W_zero
+#print axioms CFT.Index.XI_4_force_H_zero
+#print axioms CFT.Index.XI_4_quad_expansion
+#print axioms CFT.Index.XI_4_w_mass_neck
+#print axioms CFT.Index.XI_4_planck_condition
+#print axioms CFT.Index.XI_4_hardy_neck
+#print axioms CFT.Index.XI_4_no_growing_mode
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1583,6 +1592,23 @@ import CFT.ZeroModeL2
 #print axioms CFT.Wigner.half_rotation_sq
 #print axioms CFT.Wigner.berry_fueter_gauge
 #print axioms CFT.Wigner.gauge_form
+#print axioms CFT.HiggsNeck.neck_rho
+#print axioms CFT.HiggsNeck.higgs_stress_zero
+#print axioms CFT.HiggsNeck.neck_vacuum
+#print axioms CFT.HiggsNeck.U_eq_rho
+#print axioms CFT.HiggsNeck.poly_deriv
+#print axioms CFT.HiggsNeck.force_W_zero
+#print axioms CFT.HiggsNeck.force_H_zero
+#print axioms CFT.HiggsNeck.quad_expansion
+#print axioms CFT.HiggsNeck.w_mass
+#print axioms CFT.HiggsNeck.kinetic_coeff
+#print axioms CFT.HiggsNeck.w_mass_neck
+#print axioms CFT.HiggsNeck.bf_condition
+#print axioms CFT.HiggsNeck.delta_real
+#print axioms CFT.HiggsNeck.planck_condition
+#print axioms CFT.HiggsNeck.hardy_pointwise
+#print axioms CFT.HiggsNeck.hardy_neck
+#print axioms CFT.HiggsNeck.no_growing_mode
 #print axioms CFT.NeckInstability.no_intrinsic_rate
 #print axioms CFT.NeckInstability.scaled_deriv
 #print axioms CFT.NeckInstability.int_sin_sq
