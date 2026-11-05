@@ -29,6 +29,7 @@ import Mathlib.Data.Matrix.Notation
 import Mathlib.LinearAlgebra.Matrix.Trace
 import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 import Mathlib.Analysis.Calculus.MeanValue
+import Mathlib.Analysis.Calculus.Deriv.Inv
 
 namespace CFT.BridgeTwist
 
@@ -47,18 +48,30 @@ def xs (x0 x1 x2 : ℝ) : Matrix (Fin 2) (Fin 2) ℂ := (x0 : ℂ) • s1 + (x1 
 theorem eps_eq : eps = I • s2 := by
   ext i j; fin_cases i <;> fin_cases j <;> simp [eps, s2]
 
+theorem s1T : s1ᵀ = s1 := by
+  ext i j; fin_cases i <;> fin_cases j <;> simp [s1, Matrix.transpose_apply]
+
+theorem s2T : s2ᵀ = -s2 := by
+  ext i j; fin_cases i <;> fin_cases j <;> simp [s2, Matrix.transpose_apply]
+
+theorem s3T : s3ᵀ = s3 := by
+  ext i j; fin_cases i <;> fin_cases j <;> simp [s3, Matrix.transpose_apply]
+
+theorem xsT (x0 x1 x2 : ℝ) : (xs x0 x1 x2)ᵀ = (x0 : ℂ) • s1 - (x1 : ℂ) • s2 + (x2 : ℂ) • s3 := by
+  simp only [xs, Matrix.transpose_add, Matrix.transpose_smul, s1T, s2T, s3T, smul_neg]
+  abel
+
 /-- 【橋 A】ε(x̂·σ)ᵀ = −(x̂·σ)ε(湯川の項 M(fε) = −(Gvh/2)f(x̂·σ)ε の核心) -/
 theorem eps_xsT (x0 x1 x2 : ℝ) : eps * (xs x0 x1 x2)ᵀ = -(xs x0 x1 x2 * eps) := by
+  rw [xsT]
   ext i j; fin_cases i <;> fin_cases j <;>
-    simp [eps, xs, s1, s2, s3, Matrix.mul_apply, Fin.sum_univ_two, Complex.ext_iff] <;>
-    (try constructor) <;> ring
+    simp [eps, xs, s1, s2, s3, Matrix.mul_apply, Fin.sum_univ_two, Complex.ext_iff, pow_two] <;> (try constructor) <;> ring
 
 /-- (x̂·σ)² = |x̂|² -/
 theorem xs_sq (x0 x1 x2 : ℝ) :
     xs x0 x1 x2 * xs x0 x1 x2 = ((x0 ^ 2 + x1 ^ 2 + x2 ^ 2 : ℝ) : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ) := by
   ext i j; fin_cases i <;> fin_cases j <;>
-    simp [xs, s1, s2, s3, Matrix.mul_apply, Fin.sum_univ_two, Complex.ext_iff] <;>
-    (try constructor) <;> ring
+    simp [eps, xs, s1, s2, s3, Matrix.mul_apply, Fin.sum_univ_two, Complex.ext_iff, pow_two] <;> (try constructor) <;> ring
 
 /-- 【橋 A】平坦なはりねずみのゲージ場の項:
 −(i/2) Σ ε_{akj} x̂_j σ_k ε σ_aᵀ = (x̂·σ)ε(σ·D(fε) の (1 − W)/ρ の項) -/
@@ -66,9 +79,9 @@ theorem gauge_singlet (x0 x1 x2 : ℝ) :
     (-I / 2) • ((x2 : ℂ) • (s2 * eps * s1ᵀ) + (x0 : ℂ) • (s3 * eps * s2ᵀ) + (x1 : ℂ) • (s1 * eps * s3ᵀ)
       - (x1 : ℂ) • (s3 * eps * s1ᵀ) - (x0 : ℂ) • (s2 * eps * s3ᵀ) - (x2 : ℂ) • (s1 * eps * s2ᵀ))
       = xs x0 x1 x2 * eps := by
+  rw [s1T, s2T, s3T]
   ext i j; fin_cases i <;> fin_cases j <;>
-    simp [eps, xs, s1, s2, s3, Matrix.mul_apply, Fin.sum_univ_two, Complex.ext_iff] <;>
-    (try constructor) <;> ring
+    simp [eps, xs, s1, s2, s3, Matrix.mul_apply, Fin.sum_univ_two, Complex.ext_iff, pow_two] <;> (try constructor) <;> ring
 
 /-- 【橋 A】極 2:(x̂·σ)ε(i x̂·σ)ᵀ = −iε(|x̂| = 1)。スピン枠とゲージの遷移が一重項の上で打ち消し合う -/
 theorem pole_singlet (x0 x1 x2 : ℝ) (h : x0 ^ 2 + x1 ^ 2 + x2 ^ 2 = 1) :

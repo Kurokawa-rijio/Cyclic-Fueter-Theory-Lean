@@ -73,8 +73,9 @@ theorem deser_levin (φ l I : ℝ) (hl : l ≠ 0) (hφ : φ ^ 2 - I * l ^ 2 ≠ 
     (I / l ^ 2) / (φ ^ 2 / l ^ 2 - I) = φ ^ 2 / (l ^ 2 * (φ ^ 2 - I * l ^ 2)) - 1 / l ^ 2 ∧
     ∀ φh, φh ^ 2 = I * l ^ 2 → φh ^ 2 / l ^ 4 = I / l ^ 2 := by
   refine ⟨?_, fun φh h => ?_⟩
-  · rw [accel_identity φ l I hl hφ]
-    field_simp <;> ring
+  · rw [accel_identity φ l I hl hφ, div_eq_div_iff hh hφ]
+    field_simp
+    ring
   · rw [h]; field_simp <;> ring
 
 /-- 【橋 B】三つの類:IX.14 の対称な解(A = C = 0)は I = B²/ℓ² > 0(熱的)、A = 0、B = C は I = 0(極限)、

@@ -4,10 +4,12 @@
   力学を出したもの、一般 = 一般の物理を Lean で確かめたもの。判定は docs/CLAIM_STATUS_JA.md と同じ。
   別名は元の定理とまったく同じ主張をもつ(新しい仮定は加えない)。
 -/
+import CFT.AlphaBridge_Clock
+import CFT.AlphaBridge_Thermal
+import CFT.AlphaBridge_Twist
 import CFT.AlphaCompleteA
 import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
-import CFT.AlphaCompleteD
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
@@ -429,7 +431,7 @@ alias VII_4_ellipsoid_local_min := CFT.FixZ28.ellipsoid_local_min
 alias VII_6_index_zero := CFT.Lichnerowicz.index_zero
 
 /-- VII.7(ダンベル、完):ゼロモード厳密解、2|q| 個、カイラリティ sign(q)。運動学:S² の単極子。作用:Dirac。力学:ゼロモード -/
-alias VII_7_zero_mode := CFT.AlphaCompleteD.zero_mode
+alias VII_7_zero_mode := CFT.BridgeTwist.zero_mode
 
 /-- VII.7(ダンベル、完):ゼロモード厳密解、2|q| 個、カイラリティ sign(q)。運動学:S² の単極子。作用:Dirac。力学:ゼロモード -/
 alias VII_7_monopole_zero_modes := CFT.AlphaVII.monopole_zero_modes
@@ -768,25 +770,104 @@ alias X_6_nonempty_window := CFT.FixNeck.nonempty_window
 
 -- X.8(ダンベル、未着手):閉じたダンベルの全エネルギーは 0(ハミルトン拘束の積分)。運動学:ダンベル全体(閉じた空間)。作用:EYM + GHY。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
--- X.9(ダンベル、未着手):接合の動き:首の時計と帽子の時計の対応(XI.1 の時計の解釈を外す)。運動学:接合・波面。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_on_hyperboloid := CFT.BridgeClock.on_hyperboloid
+
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_neck_gaussian := CFT.BridgeClock.neck_gaussian
+
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_cap_gaussian := CFT.BridgeClock.cap_gaussian
+
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_two_events := CFT.BridgeClock.two_events
+
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_same_point := CFT.BridgeClock.same_point
+
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_static_clock := CFT.BridgeClock.static_clock
+
+/-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
+alias X_9_neck_centre_clock := CFT.BridgeClock.neck_centre_clock
 
 -- X.10(ダンベル、未着手):作用はどこから決まるか:XI.4 の随伴 Higgs の出どころ(VII.8 の SO(10) の破れ、S⁹ の楕円体との関係)。運動学:内部空間 S⁹ と首。作用:—。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
 -- X.11(ダンベル、未着手):帽子そのものの安定性(閉じた輻射 FRW の線形摂動)。運動学:帽子。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_gauge_singlet := CFT.BridgeTwist.gauge_singlet
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_eps_xsT := CFT.BridgeTwist.eps_xsT
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_xs_sq := CFT.BridgeTwist.xs_sq
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_pole_singlet := CFT.BridgeTwist.pole_singlet
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_chi_deriv := CFT.BridgeTwist.chi_deriv
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_conformal_transfer := CFT.BridgeTwist.conformal_transfer
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_twist_cancel := CFT.BridgeTwist.twist_cancel
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_system_reduce := CFT.BridgeTwist.system_reduce
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_zero_mode := CFT.BridgeTwist.zero_mode
+
+/-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
+alias X_12_localization := CFT.BridgeTwist.localization
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_dilaton_invariant := CFT.BridgeThermal.dilaton_invariant
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_dilaton_grad := CFT.BridgeThermal.dilaton_grad
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_xi_norm := CFT.BridgeThermal.xi_norm
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_accel_formula := CFT.BridgeThermal.accel_formula
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_accel_identity := CFT.BridgeThermal.accel_identity
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_deser_levin := CFT.BridgeThermal.deser_levin
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_three_classes := CFT.BridgeThermal.three_classes
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_rindler_lapse := CFT.BridgeThermal.rindler_lapse
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_unit_observer := CFT.BridgeThermal.unit_observer
+
+/-- X.13(ダンベル、完(外)):首の温度の幾何:JT の dilaton が選ぶ Killing ベクトル、不変量 I による三つの類、a² − 1/ℓ² = (2πT_loc)²(IX.32 の否定的な結果が指した先)。運動学:首 −dt² + cos²(t/ℓ)dz²、dilaton φ。作用:JT(+ T = κ/2π は外部)。力学:I = (A² + B² − C²)/ℓ²、1/ℓ は温度が生じる臨界の加速度(Deser–Levin の形) -/
+alias X_13_junction_tan := CFT.BridgeThermal.junction_tan
+
 
 /-! ## α-XI 弱い重力予想と首の安定性 -/
 
-/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
+/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール(崩壊前の e 倍は首の中心の時計 = 共通のガウス時間で。接合のそばで測ると L によらず約 0.4 回(数値、X.7))。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
 alias XI_1_liouville_actual := CFT.FixNeck.liouville_actual
 
-/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
+/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール(崩壊前の e 倍は首の中心の時計 = 共通のガウス時間で。接合のそばで測ると L によらず約 0.4 回(数値、X.7))。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
 alias XI_1_actual_form_neg := CFT.FixNeck.actual_form_neg
 
-/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
+/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール(崩壊前の e 倍は首の中心の時計 = 共通のガウス時間で。接合のそばで測ると L によらず約 0.4 回(数値、X.7))。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
 alias XI_1_growth_rate_bound := CFT.FixNeck.growth_rate_bound
 
-/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
+/-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール(崩壊前の e 倍は首の中心の時計 = 共通のガウス時間で。接合のそばで測ると L によらず約 0.4 回(数値、X.7))。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
 alias XI_1_one_efold_before_collapse := CFT.FixNeck.one_efold_before_collapse
 
 /-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
@@ -843,7 +924,7 @@ alias XI_4_hardy_neck := CFT.HiggsNeck.hardy_neck
 /-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
 alias XI_4_no_growing_mode := CFT.HiggsNeck.no_growing_mode
 
--- XI.5(ダンベル、未着手):dyon の首:電荷 q を加えたアトラクター(2pq = ℓ²)と W の安定性。運動学:首(磁荷 p と電荷 q)。作用:EYM(+ ディラトン)。力学:—(Lean の定理なし:外部定理の引用または未着手)
+-- XI.5(ダンベル、未着手):dyon の首:電荷 q を加えたアトラクター(2pq = ℓ²)と W の安定性。E·B ≠ 0 で本当のカイラリティ(アノマリー)が出るか(X.12 の続き)。運動学:首(磁荷 p と電荷 q)。作用:EYM(+ ディラトン)。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
 -- XI.6(ダンベル、未着手):実効的な負の宇宙定数(V.7-N)での Hawking–Page 型の相転移。運動学:首。作用:量子応力を含む有効作用。力学:—(Lean の定理なし:外部定理の引用または未着手)
 

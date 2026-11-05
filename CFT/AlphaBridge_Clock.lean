@@ -22,6 +22,7 @@
     L によらず約 0.4 回の e 倍(探索の数値)。XI.1 (iv) は「首の中心の時計で」と範囲を限る。
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
+import Mathlib.Data.Real.Pi.Bounds
 
 namespace CFT.BridgeClock
 
