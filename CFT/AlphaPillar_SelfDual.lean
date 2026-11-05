@@ -137,7 +137,7 @@ theorem mass_shell (ζ : ℝ) :
   refine ⟨?_, ?_, ?_⟩
   · rw [norm_c]; nlinarith [h]
   · rw [div_pow, div_pow, neg_sq, ← add_div, div_eq_one_iff_eq (pow_ne_zero 2 hc)]
-    linarith
+    nlinarith [h]
   · rw [neg_sq]; exact h
 
 /-- 【柱 2】位相と Gudermann:tan θ = sinh ζ、cos θ > 0 なら cos θ = 1/cosh ζ(量子半球の高さ m/E)。
@@ -149,13 +149,14 @@ theorem gudermann_phase (θ ζ : ℝ) (hc : 0 < Real.cos θ) (ht : Real.sin θ /
   have h2 := Real.cosh_sq_sub_sinh_sq ζ
   have hch := Real.cosh_pos ζ
   have hs : Real.sin θ = Real.sinh ζ * Real.cos θ := by
-    field_simp at ht; linarith
+    rw [← ht, div_mul_cancel₀ _ hc.ne']
+  rw [hs] at h1
   have hsq : Real.cos θ ^ 2 * Real.cosh ζ ^ 2 = 1 := by
-    rw [hs] at h1; nlinarith [h1, h2]
+    linear_combination (Real.cos θ) ^ 2 * h2 + h1
   have hprod : Real.cos θ * Real.cosh ζ = 1 := by
     have hp : 0 < Real.cos θ * Real.cosh ζ := mul_pos hc hch
     nlinarith [sq_nonneg (Real.cos θ * Real.cosh ζ - 1), hsq]
-  field_simp
-  linarith
+  rw [eq_div_iff hch.ne']
+  exact hprod
 
 end CFT.SelfDual
