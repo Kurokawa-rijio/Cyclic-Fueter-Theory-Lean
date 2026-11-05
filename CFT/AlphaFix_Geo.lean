@@ -87,10 +87,9 @@ theorem s3_global (l : ℝ) (hl : l ≠ 0) (r rd : ℝ → ℝ) (hr : ∀ s, Has
   rw [hE0] at h
   have hl2 : 0 < l ^ 2 := by positivity
   have h1 : (r s - y s) ^ 2 / l ^ 2 = 0 := by
-    have := sq_nonneg (rd s - yd s)
-    have : 0 ≤ (r s - y s) ^ 2 / l ^ 2 := by positivity
-    simp only [E] at h
-    linarith
+    have hB := sq_nonneg (rd s - yd s)
+    have hA : 0 ≤ (r s - y s) ^ 2 / l ^ 2 := by positivity
+    exact ((add_eq_zero_iff_of_nonneg hA hB).1 h).1
   have h2 : (r s - y s) ^ 2 = 0 := by
     rcases div_eq_zero_iff.1 h1 with h | h
     · exact h
@@ -221,7 +220,7 @@ theorem jacobi_neck (l s : ℝ) (hl : l ≠ 0) :
   · have h := (Real.hasDerivAt_cosh (s / l)).comp s hu
     convert h using 1; ring
   · have h := ((Real.hasDerivAt_sinh (s / l)).comp s hu).div_const l
-    convert h using 1; field_simp <;> ring
+    convert h using 1; ring
 
 /-- 【α-IX.32】J(s) = cosh(s/ℓ) ≥ e^{s/ℓ}/2:隣の測地線は Lyapunov 指数 1/ℓ で離れる -/
 theorem lyapunov_neck (l s : ℝ) : rexp (s / l) / 2 ≤ cosh (s / l) := by

@@ -55,7 +55,7 @@ theorem micro_exact_deriv (C E : ℝ) (hC : 0 < C) (hE : 0 < E) :
 theorem coth_eq (x : ℝ) (hx : 0 < x) : cosh x / sinh x = 1 + 2 / (rexp (2 * x) - 1) := by
   have hsh : sinh x ≠ 0 := (Real.sinh_pos_iff.2 hx).ne'
   have he : rexp (2 * x) - 1 ≠ 0 := by
-    have : 1 < rexp (2 * x) := Real.one_lt_exp.2 (by linarith)
+    have : 1 < rexp (2 * x) := Real.one_lt_exp_iff.2 (by linarith)
     linarith
   rw [div_eq_iff hsh, Real.cosh_eq, Real.sinh_eq,
     show rexp (2 * x) = rexp x * rexp x by rw [← Real.exp_add]; ring_nf, Real.exp_neg]
@@ -77,7 +77,7 @@ theorem micro_exact_bound (C x : ℝ) (hC : 0 < C) (hx : 0 < x) :
     4 * π ^ 2 * C / x ≤ 4 * π ^ 2 * C * (cosh x / sinh x) / x ∧
     4 * π ^ 2 * C * (cosh x / sinh x) / x = 4 * π ^ 2 * C / x * (1 + 2 / (rexp (2 * x) - 1)) := by
   have he : 0 < rexp (2 * x) - 1 := by
-    have : 1 < rexp (2 * x) := Real.one_lt_exp.2 (by linarith)
+    have : 1 < rexp (2 * x) := Real.one_lt_exp_iff.2 (by linarith)
     linarith
   rw [coth_eq x hx]
   have hA : 0 < 4 * π ^ 2 * C / x := by have := pi_pos; positivity

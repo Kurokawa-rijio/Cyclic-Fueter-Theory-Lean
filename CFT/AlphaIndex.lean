@@ -8,8 +8,10 @@ import CFT.AlphaCompleteA
 import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteD
+import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
+import CFT.AlphaFix_Geo
 import CFT.AlphaFix_Neck
 import CFT.AlphaFix_Thermo
 import CFT.AlphaFix_Unify
@@ -60,6 +62,8 @@ import CFT.AlphaV_NeckQuantum
 import CFT.AlphaV_Wigner
 import CFT.AlphaXI_HiggsNeck
 import CFT.AlphaX_Unify
+import CFT.Cartan.SSRank
+import CFT.Cartan.SecondStage
 import CFT.ZeroModeL2
 import Batteries.Tactic.Alias
 
@@ -145,12 +149,32 @@ alias II_2_three_phases := CFT.AlphaII.three_phases
 /-- II.2(ダンベル、完(外)):平坦・S³(ℓ)・S²×ℝ 相の分類(CIS Theorem A)。運動学:球対称な空間の相。作用:ハミルトン拘束。力学:三つの相と半径 ℓ -/
 alias II_2_phase_neck := CFT.EYM.phase_neck
 
--- II.3(ダンベル、完(外)):大域的分類(CIS Theorem B)。運動学:完備な空間の大域的な形。作用:ハミルトン拘束。力学:大域的な分類(Lean の定理なし:外部定理の引用または未着手)
+/-- II.3(ダンベル、完):大域的分類:球対称な断面は S³(ℓ) の一部・平坦・首(半径 ℓ)の三つだけ(一般の場合は CIS Theorem B)。運動学:球対称な空間の断面 ds² + r(s)²dΩ²。作用:ハミルトン拘束(II.2 の三つの相)。力学:S³ 相は r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ)(振幅 ℓ、極で滑らか)、平坦相は直線、首は r = ℓ -/
+alias II_3_s3_global := CFT.FixGeo.s3_global
+
+/-- II.3(ダンベル、完):大域的分類:球対称な断面は S³(ℓ) の一部・平坦・首(半径 ℓ)の三つだけ(一般の場合は CIS Theorem B)。運動学:球対称な空間の断面 ds² + r(s)²dΩ²。作用:ハミルトン拘束(II.2 の三つの相)。力学:S³ 相は r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ)(振幅 ℓ、極で滑らか)、平坦相は直線、首は r = ℓ -/
+alias II_3_s3_amplitude := CFT.FixGeo.s3_amplitude
+
+/-- II.3(ダンベル、完):大域的分類:球対称な断面は S³(ℓ) の一部・平坦・首(半径 ℓ)の三つだけ(一般の場合は CIS Theorem B)。運動学:球対称な空間の断面 ds² + r(s)²dΩ²。作用:ハミルトン拘束(II.2 の三つの相)。力学:S³ 相は r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ)(振幅 ℓ、極で滑らか)、平坦相は直線、首は r = ℓ -/
+alias II_3_s3_pole_regular := CFT.FixGeo.s3_pole_regular
+
+/-- II.3(ダンベル、完):大域的分類:球対称な断面は S³(ℓ) の一部・平坦・首(半径 ℓ)の三つだけ(一般の場合は CIS Theorem B)。運動学:球対称な空間の断面 ds² + r(s)²dΩ²。作用:ハミルトン拘束(II.2 の三つの相)。力学:S³ 相は r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ)(振幅 ℓ、極で滑らか)、平坦相は直線、首は r = ℓ -/
+alias II_3_flat_global := CFT.FixGeo.flat_global
+
+/-- II.3(ダンベル、完):大域的分類:球対称な断面は S³(ℓ) の一部・平坦・首(半径 ℓ)の三つだけ(一般の場合は CIS Theorem B)。運動学:球対称な空間の断面 ds² + r(s)²dΩ²。作用:ハミルトン拘束(II.2 の三つの相)。力学:S³ 相は r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ)(振幅 ℓ、極で滑らか)、平坦相は直線、首は r = ℓ -/
+alias II_3_phase_neck := CFT.EYM.phase_neck
 
 /-- II.4(運動学、完):Codazzi 一般解、構造式、第一段階の両立条件。運動学:Cartan 幾何。作用:—。力学:— -/
 alias II_4_codazzi_to_flow := CFT.Diagonal.codazzi_to_flow
 
--- II.5(運動学、完(外)):第二段階の両立条件、階数 12。運動学:Cartan 幾何。作用:—。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- II.5(運動学、完(外)):第二段階の両立条件、階数 12。運動学:Cartan 幾何(C2 枠)。作用:—。力学:— -/
+alias II_5_Bj_frame := CFT.Cartan.C2.Bj_frame
+
+/-- II.5(運動学、完(外)):第二段階の両立条件、階数 12。運動学:Cartan 幾何(C2 枠)。作用:—。力学:— -/
+alias II_5_Bj_star := CFT.Cartan.Bj_star
+
+/-- II.5(運動学、完(外)):第二段階の両立条件、階数 12。運動学:Cartan 幾何(C2 枠)。作用:—。力学:— -/
+alias II_5_rank12_star := CFT.Cartan.rank12_star
 
 /-- II.6(運動学、完):対角型・整列型の非存在。運動学:Cartan 幾何。作用:—。力学:— -/
 alias II_6_flow_s1 := CFT.Diagonal.flow_s1
@@ -323,19 +347,31 @@ alias V_7_a4_meron := CFT.AlphaV.a4_meron
 /-- V.7(ダンベル、完(外)):量子応力と反作用(共形場、共形真空、背景 SU(2) に結合しない場)。運動学:帽子。作用:共形場の有効作用(アノマリー)。力学:反作用 -/
 alias V_7_curvature_traceless := CFT.A4.curvature_traceless
 
-/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る -/
+/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)、X = ℓ²/a⁴。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ -/
 alias V_7p_rho_beta_unique := CFT.NeckQuantum.rho_beta_unique
 
-/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る -/
+/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)、X = ℓ²/a⁴。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ -/
 alias V_7p_running_coupling := CFT.NeckQuantum.running_coupling
 
-/-- V.7-N(ダンベル、完(外)):首 AdS₂ × S² の上の共形場の量子応力。運動学:首。作用:共形場の有効作用(アノマリー)。力学:負の宇宙定数の働き、半径が縮む -/
+/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)、X = ℓ²/a⁴。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ -/
+alias V_7p_total_conserved := CFT.FixDyn.total_conserved
+
+/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)、X = ℓ²/a⁴。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ -/
+alias V_7p_cap_X := CFT.FixDyn.cap_X
+
+/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)、X = ℓ²/a⁴。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ -/
+alias V_7p_cap_backreaction_ratio := CFT.FixDyn.cap_backreaction_ratio
+
+/-- V.7′(ダンベル、完(外)):背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²)。運動学:帽子 a(t)、X = ℓ²/a⁴。作用:1 ループの YM の有効作用。力学:結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ -/
+alias V_7p_backreaction_grows := CFT.FixDyn.backreaction_grows
+
+/-- V.7-N(ダンベル、完(橋)):首 AdS₂ × S² の上の共形場の量子応力。運動学:首。作用:共形場の有効作用(アノマリー)。力学:負の宇宙定数の働き、半径が縮む -/
 alias V_7N_neck_ricci := CFT.NeckQuantum.neck_ricci
 
-/-- V.7-N(ダンベル、完(外)):首 AdS₂ × S² の上の共形場の量子応力。運動学:首。作用:共形場の有効作用(アノマリー)。力学:負の宇宙定数の働き、半径が縮む -/
+/-- V.7-N(ダンベル、完(橋)):首 AdS₂ × S² の上の共形場の量子応力。運動学:首。作用:共形場の有効作用(アノマリー)。力学:負の宇宙定数の働き、半径が縮む -/
 alias V_7N_neck_H3 := CFT.NeckQuantum.neck_H3
 
-/-- V.7-N(ダンベル、完(外)):首 AdS₂ × S² の上の共形場の量子応力。運動学:首。作用:共形場の有効作用(アノマリー)。力学:負の宇宙定数の働き、半径が縮む -/
+/-- V.7-N(ダンベル、完(橋)):首 AdS₂ × S² の上の共形場の量子応力。運動学:首。作用:共形場の有効作用(アノマリー)。力学:負の宇宙定数の働き、半径が縮む -/
 alias V_7N_neck_backreaction := CFT.NeckQuantum.neck_backreaction
 
 
@@ -455,11 +491,17 @@ alias VIII_5_ell_witten := CFT.Z38.ell_witten
 /-- VIII.5(ダンベル、完(外)):ℓ*² = α′/4、WZW 準位 k = 1/4。運動学:首の半径。作用:弦の有効作用。力学:ℓ*² = α′/4 -/
 alias VIII_5_wzw_level := CFT.Z38.wzw_level
 
-/-- VIII.7(ダンベル、完(外)):Killing スピノル不存在(超対称性の障害)。運動学:帽子 a = ℓ cos η。作用:EYM。力学:Killing スピノルはない -/
+/-- VIII.7(ダンベル、完(外)):Killing スピノル不存在(超対称性の障害)、帽子の領域だけの仮定で。運動学:帽子 a = ℓ cos η(0 ≤ η < π/2)。作用:EYM。力学:Killing スピノルはない -/
 alias VIII_7_cap_unique := CFT.Z44Cap.cap_unique
 
-/-- VIII.7(ダンベル、完(外)):Killing スピノル不存在(超対称性の障害)。運動学:帽子 a = ℓ cos η。作用:EYM。力学:Killing スピノルはない -/
+/-- VIII.7(ダンベル、完(外)):Killing スピノル不存在(超対称性の障害)、帽子の領域だけの仮定で。運動学:帽子 a = ℓ cos η(0 ≤ η < π/2)。作用:EYM。力学:Killing スピノルはない -/
 alias VIII_7_no_killing_spinor_cap := CFT.Z44Cap.no_killing_spinor_cap
+
+/-- VIII.7(ダンベル、完(外)):Killing スピノル不存在(超対称性の障害)、帽子の領域だけの仮定で。運動学:帽子 a = ℓ cos η(0 ≤ η < π/2)。作用:EYM。力学:Killing スピノルはない -/
+alias VIII_7_cap_unique_local := CFT.FixGeo.cap_unique_local
+
+/-- VIII.7(ダンベル、完(外)):Killing スピノル不存在(超対称性の障害)、帽子の領域だけの仮定で。運動学:帽子 a = ℓ cos η(0 ≤ η < π/2)。作用:EYM。力学:Killing スピノルはない -/
+alias VIII_7_no_killing_spinor_local := CFT.FixGeo.no_killing_spinor_local
 
 
 /-! ## α-IX 作用原理からの帰結 -/
@@ -512,17 +554,20 @@ alias IX_9_hamilton := CFT.Classical.hamilton
 /-- IX.9(一般、完):Hamilton 形式と質量殻。運動学:質量殻。作用:粒子の作用。力学:Hamilton の式 -/
 alias IX_9_mass_shell := CFT.Classical.mass_shell
 
-/-- IX.10(ダンベル、完(外)):球対称の縮約 S₂、U = 2 − 2ℓ²/Φ。運動学:首(球対称)。作用:EYM。力学:2 次元のディラトン重力 -/
+/-- IX.10(ダンベル、完(橋)):球対称の縮約 S₂、U = 2 − 2ℓ²/Φ。運動学:首(球対称)。作用:EYM。力学:2 次元のディラトン重力 -/
 alias IX_10_reduction_identity := CFT.JT.reduction_identity
 
-/-- IX.10(ダンベル、完(外)):球対称の縮約 S₂、U = 2 − 2ℓ²/Φ。運動学:首(球対称)。作用:EYM。力学:2 次元のディラトン重力 -/
+/-- IX.10(ダンベル、完(橋)):球対称の縮約 S₂、U = 2 − 2ℓ²/Φ。運動学:首(球対称)。作用:EYM。力学:2 次元のディラトン重力 -/
 alias IX_10_potential_from_YM := CFT.JT.potential_from_YM
 
-/-- IX.11(ダンベル、完):首 Φ = ℓ² は厳密な解(AdS₂)。運動学:首。作用:IX.10 の作用。力学:U = 0、R = −2/ℓ² -/
+/-- IX.11(ダンベル、完):首 Φ = ℓ² は厳密な解(AdS₂)、4 次元の Einstein 方程式でも。運動学:首 AdS₂ × S²(Ricci の固有値 (−1, −1, 1, 1)/ℓ²)。作用:IX.10 の作用、EYM。力学:U = 0、R = −2/ℓ²、G = 8πG T の 4 成分 ⇔ ℓ² = 4πG/g² -/
 alias IX_11_neck_exact := CFT.JT.neck_exact
 
-/-- IX.11(ダンベル、完):首 Φ = ℓ² は厳密な解(AdS₂)。運動学:首。作用:IX.10 の作用。力学:U = 0、R = −2/ℓ² -/
+/-- IX.11(ダンベル、完):首 Φ = ℓ² は厳密な解(AdS₂)、4 次元の Einstein 方程式でも。運動学:首 AdS₂ × S²(Ricci の固有値 (−1, −1, 1, 1)/ℓ²)。作用:IX.10 の作用、EYM。力学:U = 0、R = −2/ℓ²、G = 8πG T の 4 成分 ⇔ ℓ² = 4πG/g² -/
 alias IX_11_neck_metric_curvature := CFT.JT.neck_metric_curvature
+
+/-- IX.11(ダンベル、完):首 Φ = ℓ² は厳密な解(AdS₂)、4 次元の Einstein 方程式でも。運動学:首 AdS₂ × S²(Ricci の固有値 (−1, −1, 1, 1)/ℓ²)。作用:IX.10 の作用、EYM。力学:U = 0、R = −2/ℓ²、G = 8πG T の 4 成分 ⇔ ℓ² = 4πG/g² -/
+alias IX_11_neck_einstein := CFT.FixGeo.neck_einstein
 
 /-- IX.12(ダンベル、完):JT への展開(余りまで厳密)。運動学:首。作用:IX.10 の作用。力学:JT -/
 alias IX_12_jt_expansion := CFT.JT.jt_expansion
@@ -551,22 +596,28 @@ alias IX_15_delta_roots := CFT.JT.delta_roots
 /-- IX.15(ダンベル、完(外)):1 ループ:m²ℓ² = −1 < −1/4、Δ = ½ ± i√3/2。運動学:首。作用:W の 2 次の作用。力学:BF 限界を下回る -/
 alias IX_15_neck_mode_below_BF := CFT.JT.neck_mode_below_BF
 
-/-- IX.16(一般、完(外)):完全流体:連続の式と相対論的 Euler。運動学:Minkowski。作用:流体。力学:Euler 方程式 -/
+/-- IX.16(一般、完(橋)):完全流体:連続の式と相対論的 Euler。運動学:Minkowski。作用:流体。力学:Euler 方程式 -/
 alias IX_16_fluid_euler := CFT.Fluid.fluid_euler
 
-/-- IX.17(ダンベル、完):帽子は輻射の宇宙(p = ρ/3)。運動学:帽子。作用:YM。力学:閉じた輻射 FRW -/
+/-- IX.17(ダンベル、完):帽子は輻射の宇宙(p = ρ/3)、最大の半径は首の半径 ℓ。運動学:帽子 a = ℓ cos η。作用:YM(Friedmann)。力学:閉じた輻射 FRW、a′² + a² = (8πG/3)ρa⁴ = ℓ² -/
 alias IX_17_cap_radiation := CFT.Fluid.cap_radiation
 
-/-- IX.17(ダンベル、完):帽子は輻射の宇宙(p = ρ/3)。運動学:帽子。作用:YM。力学:閉じた輻射 FRW -/
+/-- IX.17(ダンベル、完):帽子は輻射の宇宙(p = ρ/3)、最大の半径は首の半径 ℓ。運動学:帽子 a = ℓ cos η。作用:YM(Friedmann)。力学:閉じた輻射 FRW、a′² + a² = (8πG/3)ρa⁴ = ℓ² -/
 alias IX_17_cap_stress := CFT.EYM.cap_stress
 
-/-- IX.18(一般、完(外)):Kelvin の循環定理の局所形。運動学:流体。作用:流体。力学:L_uω = 0 -/
+/-- IX.17(ダンベル、完):帽子は輻射の宇宙(p = ρ/3)、最大の半径は首の半径 ℓ。運動学:帽子 a = ℓ cos η。作用:YM(Friedmann)。力学:閉じた輻射 FRW、a′² + a² = (8πG/3)ρa⁴ = ℓ² -/
+alias IX_17_cap_rho := CFT.FixGeo.cap_rho
+
+/-- IX.17(ダンベル、完):帽子は輻射の宇宙(p = ρ/3)、最大の半径は首の半径 ℓ。運動学:帽子 a = ℓ cos η。作用:YM(Friedmann)。力学:閉じた輻射 FRW、a′² + a² = (8πG/3)ρa⁴ = ℓ² -/
+alias IX_17_cap_friedmann_l := CFT.FixGeo.cap_friedmann_l
+
+/-- IX.18(一般、完(橋)):Kelvin の循環定理の局所形。運動学:流体。作用:流体。力学:L_uω = 0 -/
 alias IX_18_kelvin := CFT.Fluid.kelvin
 
-/-- IX.19(一般、完(外)):理想 MHD の磁束凍結。運動学:流体。作用:MHD。力学:L_uF = 0 -/
+/-- IX.19(一般、完(橋)):理想 MHD の磁束凍結。運動学:流体。作用:MHD。力学:L_uF = 0 -/
 alias IX_19_flux_freezing := CFT.Fluid.flux_freezing
 
-/-- IX.20(一般、完):ヘリシティの釣り合い。運動学:Minkowski。作用:Maxwell。力学:ヘリシティの式 -/
+/-- IX.20(一般、完(橋)):ヘリシティの釣り合い。運動学:Minkowski。作用:Maxwell。力学:ヘリシティの式 -/
 alias IX_20_helicity_balance := CFT.Fluid.helicity_balance
 
 /-- IX.21(一般、完(外)):Hawking 温度、RN の T。運動学:地平線。作用:Euclid の EH。力学:T = κ/2π -/
@@ -590,11 +641,17 @@ alias IX_24_maxwell_magnetic := CFT.FixThermo.maxwell_magnetic
 /-- IX.24(ダンベル、完(外)):Euclid 作用(磁荷):I = β(M − TS)(正準集団)、S = A/4。運動学:首の磁荷。作用:Euclid の EH + GHY + Maxwell。力学:磁荷を固定した正準集団 -/
 alias IX_24_magnetic_action := CFT.FixThermo.magnetic_action
 
-/-- IX.25(一般、完(外)):Tolman–Ehrenfest。運動学:静的な時空。作用:輻射。力学:TN が一定 -/
+/-- IX.25(ダンベル、完):Tolman–Ehrenfest:∇_μT^μ_x = 0 から、首では T = T₀/cosh(x/ℓ)。運動学:首の静的な計量 −cosh²(x/ℓ)dt² + dx² + ℓ²dΩ²。作用:輻射。力学:p′ = −(ρ + p)N′/N、TN が一定 -/
+alias IX_25_christoffel_static := CFT.FixGeo.christoffel_static
+
+/-- IX.25(ダンベル、完):Tolman–Ehrenfest:∇_μT^μ_x = 0 から、首では T = T₀/cosh(x/ℓ)。運動学:首の静的な計量 −cosh²(x/ℓ)dt² + dx² + ℓ²dΩ²。作用:輻射。力学:p′ = −(ρ + p)N′/N、TN が一定 -/
+alias IX_25_static_euler := CFT.FixGeo.static_euler
+
+/-- IX.25(ダンベル、完):Tolman–Ehrenfest:∇_μT^μ_x = 0 から、首では T = T₀/cosh(x/ℓ)。運動学:首の静的な計量 −cosh²(x/ℓ)dt² + dx² + ℓ²dΩ²。作用:輻射。力学:p′ = −(ρ + p)N′/N、TN が一定 -/
 alias IX_25_tolman := CFT.Thermo.tolman
 
-/-- IX.25(一般、完(外)):Tolman–Ehrenfest。運動学:静的な時空。作用:輻射。力学:TN が一定 -/
-alias IX_25_tolman_const := CFT.Thermo.tolman_const
+/-- IX.25(ダンベル、完):Tolman–Ehrenfest:∇_μT^μ_x = 0 から、首では T = T₀/cosh(x/ℓ)。運動学:首の静的な計量 −cosh²(x/ℓ)dt² + dx² + ℓ²dΩ²。作用:輻射。力学:p′ = −(ρ + p)N′/N、TN が一定 -/
+alias IX_25_neck_tolman := CFT.FixGeo.neck_tolman
 
 /-- IX.26(一般、完):KMS 条件(有限次元)。運動学:有限系。作用:—。力学:KMS -/
 alias IX_26_kms := CFT.Stat.kms
@@ -614,11 +671,23 @@ alias IX_28_bose_integral := CFT.Stat.bose_integral
 /-- IX.28(一般、完):Planck の積分 π⁴/15、Stefan–Boltzmann。運動学:輻射。作用:—。力学:π⁴/15 -/
 alias IX_28_stefan_boltzmann := CFT.Stat.stefan_boltzmann
 
-/-- IX.29(一般、完(外)):Schwarzian の状態密度と熱力学の整合。運動学:首の JT。作用:JT。力学:dS/dE = 1/T -/
+/-- IX.29(ダンベル、完(外)):Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE)))。運動学:首の JT。作用:JT。力学:1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) -/
 alias IX_29_laplace_exponent := CFT.Thermo.laplace_exponent
 
-/-- IX.29(一般、完(外)):Schwarzian の状態密度と熱力学の整合。運動学:首の JT。作用:JT。力学:dS/dE = 1/T -/
+/-- IX.29(ダンベル、完(外)):Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE)))。運動学:首の JT。作用:JT。力学:1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) -/
 alias IX_29_micro_temperature := CFT.Thermo.micro_temperature
+
+/-- IX.29(ダンベル、完(外)):Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE)))。運動学:首の JT。作用:JT。力学:1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) -/
+alias IX_29_micro_exact_deriv := CFT.FixDyn.micro_exact_deriv
+
+/-- IX.29(ダンベル、完(外)):Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE)))。運動学:首の JT。作用:JT。力学:1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) -/
+alias IX_29_coth_eq := CFT.FixDyn.coth_eq
+
+/-- IX.29(ダンベル、完(外)):Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE)))。運動学:首の JT。作用:JT。力学:1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) -/
+alias IX_29_micro_exact_bound := CFT.FixDyn.micro_exact_bound
+
+/-- IX.29(ダンベル、完(外)):Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE)))。運動学:首の JT。作用:JT。力学:1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) -/
+alias IX_29_canonical_vs_micro := CFT.FixDyn.canonical_vs_micro
 
 /-- IX.30(一般、完):揺動散逸の関係(有限系、KMS から)。運動学:有限系。作用:—。力学:S(ω) = coth(βω/2)χ″(ω) -/
 alias IX_30_kms_weights := CFT.FixThermo.kms_weights
@@ -629,8 +698,11 @@ alias IX_30_fdt_spectral := CFT.FixThermo.fdt_spectral
 /-- IX.31(一般、完(外)):焦点を結ぶ定理。運動学:ヌルの測地線。作用:Einstein(NEC)。力学:θ → −∞ -/
 alias IX_31_focusing := CFT.Second.focusing
 
-/-- IX.32(一般、完(外)):Euclid の首 H²/Γ の面積、測地流のエルゴード性。運動学:Euclid の首。作用:—。力学:面積 4π(g − 1)ℓ² -/
-alias IX_32_hyperbolic_area := CFT.Second.hyperbolic_area
+/-- IX.32(運動学、完):Euclid の首の測地線の偏差:Lyapunov 指数 1/ℓ(コンパクトな H²/Γ ではないのでエルゴード性は主張しない)。運動学:Euclid の首(曲率 −1/ℓ²、IX.22)。作用:—。力学:J = cosh(s/ℓ) ≥ e^{s/ℓ}/2 -/
+alias IX_32_jacobi_neck := CFT.FixGeo.jacobi_neck
+
+/-- IX.32(運動学、完):Euclid の首の測地線の偏差:Lyapunov 指数 1/ℓ(コンパクトな H²/Γ ではないのでエルゴード性は主張しない)。運動学:Euclid の首(曲率 −1/ℓ²、IX.22)。作用:—。力学:J = cosh(s/ℓ) ≥ e^{s/ℓ}/2 -/
+alias IX_32_lyapunov_neck := CFT.FixGeo.lyapunov_neck
 
 /-- IX.33(ダンベル、完):相の比較(磁荷の正準集団)と W の凝縮。運動学:首につながる RN の枝。作用:IX.24 の Euclid 作用。力学:首につながる小さい枝が選ばれる -/
 alias IX_33_small_branch_preferred := CFT.FixThermo.small_branch_preferred
@@ -650,22 +722,22 @@ alias IX_34_hedgehog_degree := CFT.FixThermo.hedgehog_degree
 
 /-! ## α-X 統一と整合性 -/
 
-/-- X.1(一般、完):Noether の定理を作用から一般に。運動学:有限自由度。作用:L(q, q̇)。力学:Σ p_iK_i の保存 -/
+/-- X.1(一般、完(橋)):Noether の定理を作用から一般に。運動学:有限自由度。作用:L(q, q̇)。力学:Σ p_iK_i の保存 -/
 alias X_1_noether := CFT.FixUnify.noether
 
-/-- X.1(一般、完):Noether の定理を作用から一般に。運動学:有限自由度。作用:L(q, q̇)。力学:Σ p_iK_i の保存 -/
+/-- X.1(一般、完(橋)):Noether の定理を作用から一般に。運動学:有限自由度。作用:L(q, q̇)。力学:Σ p_iK_i の保存 -/
 alias X_1_cyclic_from_noether := CFT.FixUnify.cyclic_from_noether
 
-/-- X.1(一般、完):Noether の定理を作用から一般に。運動学:有限自由度。作用:L(q, q̇)。力学:Σ p_iK_i の保存 -/
+/-- X.1(一般、完(橋)):Noether の定理を作用から一般に。運動学:有限自由度。作用:L(q, q̇)。力学:Σ p_iK_i の保存 -/
 alias X_1_charge_conservation := CFT.Unify.charge_conservation
 
-/-- X.2(ダンベル、完):幾何光学 = HJ = WKB(首の波面)。運動学:首 −dt² + cos²(t/ℓ)dz²。作用:波動の作用。力学:アイコナール = 質量ゼロの HJ -/
+/-- X.2(ダンベル、完(橋)):幾何光学 = HJ = WKB(首の波面)。運動学:首 −dt² + cos²(t/ℓ)dz²。作用:波動の作用。力学:アイコナール = 質量ゼロの HJ -/
 alias X_2_wkb_2d := CFT.FixUnify.wkb_2d
 
-/-- X.2(ダンベル、完):幾何光学 = HJ = WKB(首の波面)。運動学:首 −dt² + cos²(t/ℓ)dz²。作用:波動の作用。力学:アイコナール = 質量ゼロの HJ -/
+/-- X.2(ダンベル、完(橋)):幾何光学 = HJ = WKB(首の波面)。運動学:首 −dt² + cos²(t/ℓ)dz²。作用:波動の作用。力学:アイコナール = 質量ゼロの HJ -/
 alias X_2_neck_eikonal := CFT.FixUnify.neck_eikonal
 
-/-- X.3(一般、完):ゲージ場 = 接続、力 = 曲率。運動学:U(1)、SU(2)、重力。作用:—。力学:— -/
+/-- X.3(一般、完(橋)):ゲージ場 = 接続、力 = 曲率。運動学:U(1)、SU(2)、重力。作用:—。力学:— -/
 alias X_3_abelian_gauge_invariance := CFT.Unify.abelian_gauge_invariance
 
 /-- X.4(ダンベル、完):質量(閉じたダンベルでは Misner–Sharp、ADM は定義されない)。運動学:帽子・首。作用:EYM(Friedmann)。力学:m = (4π/3)ρR³、dm = −p dV -/
@@ -717,11 +789,26 @@ alias XI_1_growth_rate_bound := CFT.FixNeck.growth_rate_bound
 /-- XI.1(ダンベル、完(外)):首の不安定性の時間スケール。運動学:首(大域 AdS₂)と接合 u_c。作用:W の 2 次の作用。力学:λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 -/
 alias XI_1_one_efold_before_collapse := CFT.FixNeck.one_efold_before_collapse
 
-/-- XI.2(一般、完(外)):高階補正(F⁴)の符号と穏やかな WGC。運動学:磁荷の RN。作用:L = −F²/4 + α(F²)²。力学:極限の M/Q < 1 -/
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
 alias XI_2_mass_function := CFT.Thermo.mass_function
 
-/-- XI.2(一般、完(外)):高階補正(F⁴)の符号と穏やかな WGC。運動学:磁荷の RN。作用:L = −F²/4 + α(F²)²。力学:極限の M/Q < 1 -/
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
 alias XI_2_lighter_extremal := CFT.Thermo.lighter_extremal
+
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
+alias XI_2_extremal_iff_critical := CFT.FixDyn.extremal_iff_critical
+
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
+alias XI_2_critical_radius := CFT.FixDyn.critical_radius
+
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
+alias XI_2_extremal_mass := CFT.FixDyn.extremal_mass
+
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
+alias XI_2_extremal_lighter := CFT.FixDyn.extremal_lighter
+
+/-- XI.2(ダンベル、完(外)):高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点)。運動学:首 = 極限の地平線(磁荷の RN)。作用:L = −F²/4 + α(F²)²。力学:p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる -/
+alias XI_2_neck_shrinks := CFT.FixDyn.neck_shrinks
 
 /-- XI.3(ダンベル、完):宇宙検閲:帽子の崩壊の前に捕捉面ができるか。運動学:帽子の波面、首。作用:EYM。力学:崩壊の前に波面の上に周辺的な捕捉面 -/
 alias XI_3_no_trapped_in_cap := CFT.Second.no_trapped_in_cap

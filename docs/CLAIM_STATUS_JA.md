@@ -22,6 +22,7 @@
 
 - **完**:Lean の定理が命題どおりのことを示す
 - **完(外)**:明示した確立済みの外部定理を、その条件を確かめたうえで使う範囲で完全
+- **完(橋)**:微分を抽象的な微分(Derivation)の体で計算した定理。代数は完全で、実数の関数への読み替えは RealLine の橋渡し(III.1 などと同じ最後の課題)を待つ
 - **部**:形式化が主張より弱い
 - **条**:核心の仮定または外部入力が残る(新しい原理・計算が要る)
 - **未**:未形式化
@@ -31,16 +32,30 @@ Lean の索引 `CFT/AlphaIndex.lean` は、各項目の代表の定理に別名�
 
 ## 集計
 
-**完 94(完(外)を含む)/ 部 5 / 条 0 / 未 0 / 未着手 8 = 107**
+**完 94(うち 完 50 / 完(外) 35 / 完(橋) 9)/ 部 5 / 条 0 / 未 0 / 未着手 8 = 107**
 
 | 区分 | 完 | 部 | 条 | 未着手 | 計 |
 |---|---:|---:|---:|---:|---:|
-| 運動学 | 11 | 0 | 0 | 0 | 11 |
-| ダンベル | 54 | 4 | 0 | 8 | 66 |
-| 一般 | 29 | 0 | 0 | 0 | 29 |
+| 運動学 | 12 | 0 | 0 | 0 | 12 |
+| ダンベル | 57 | 4 | 0 | 8 | 69 |
+| 一般 | 25 | 0 | 0 | 0 | 25 |
 | —(X.6 非空性) | 0 | 1 | 0 | 0 | 1 |
 
 残り:部 5 は RealLine の橋渡し(III.1、III.2、III.9、IV.2)と、その橋渡しを含む X.6 の非空性(最後の課題、質量ギャップの前)。未着手 8 は X.7(数値)、全体の整合性の X.8〜X.11、首を支える作用の拡張の XI.5〜XI.7。条件つきは 0。
+
+## 2026-11-05 の変更(その 4):引用と弱い確かめを、ダンベルの幾何で作り直す
+
+- **完(橋)の区分を作った**:IX.10、V.7-N、IX.16、IX.18、IX.19、IX.20、X.1、X.2、X.3 は微分を抽象的な Derivation で計算している。代数は完全なので完のままだが、実数の関数への読み替えは RealLine の橋渡しを待つことを判定に書いた。
+- **II.3(完(外) → 完)**:CIS Theorem B の引用を、ダンベルに要る球対称の範囲では自分で示した(AlphaFix_Geo)。S³ 相は r″ = −r/ℓ² の解の一意性(エネルギーの方法)で r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ) だけ。拘束から振幅は ℓ で r ≤ ℓ、極(r = 0)では r′² = 1(円錐の特異点なし)。平坦相は直線、首は r = ℓ。球対称でない一般の場合だけが CIS Theorem B。
+- **II.5**:Lean の計算(Bj_frame、Bj_star、rank12_star)が既にあることを台帳に書いた。引用は Cartan–Kähler の定理だけ。
+- **IX.11**:4 次元の Einstein 方程式で確かめた。首の Ricci の固有値 (−1, −1, 1, 1)/ℓ² から R = 0、YM の応力と比べて 4 成分すべて ⇔ ℓ² = 4πG/g²。
+- **IX.17**:帽子の最大の半径が首の半径 ℓ に等しいことを Friedmann の式 a′² + a² = (8πG/3)ρa⁴ = ℓ² で示した。
+- **IX.25(完(外) → 完、一般 → ダンベル)**:静水圧の式を ∇_μT^μ_x = 0 と Christoffel 記号 Γ^t_tx = N′/N から導いた。首では T = T₀/cosh(x/ℓ)。
+- **IX.32(命題を改めた、完(外) → 完、一般 → 運動学)**:ダンベルの Euclid の首はコンパクトな H²/Γ ではないので、エルゴード性は主張しない。かわりに測地線の偏差 J = cosh(s/ℓ) ≥ e^{s/ℓ}/2(Lyapunov 指数 1/ℓ)。
+- **VIII.7**:仮定を帽子の領域(0 ≤ η < π/2、0 < χ < π/2 − η)だけに絞った版を示した。
+- **IX.29(一般 → ダンベル)**:厳密な状態密度 ρ ∝ sinh(2π√(2CE)) から 1/T = 4π²C coth x/x。主要項との差は 2/(e^{2x} − 1) の割合で指数関数的に小さい。正準集団との差は 3/(4π²CT)。Laplace 変換は外部のまま。
+- **V.7′**:二つの反作用の項の和が保存すること、帽子で X = ℓ²/a⁴、古典の輻射との比 −2g²β_gℓ⁴/a⁴(崩壊に近づくと大きくなる)。
+- **XI.2(一般 → ダンベル)**:極限 = M(r) の臨界点(アトラクターの形)。p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p(4k < r⁶)、首は細くなる。Wald のエントロピーの補正は外部。
 
 ## 2026-11-05 の変更(その 3):全体の整合性の項目を追加(X.8〜X.11、103 → 107)
 
@@ -125,9 +140,9 @@ WGC に関わる項目:XI.4(首の安定の条件 m_W ≳ 0.24 g M_Pl は磁気�
 |---|---|---|---|---|---|---|---|
 | II.1 (Z2) | EYM + GHY 作用、W = r′ とスピン接続の関係 | 初期データ(W = r′) | EYM + GHY | W = r′ が保たれるのは三つの相だけ | ダンベル | 完(外) | `ym_stress` `sector_geodesic` `phase_form` |
 | II.2 (Z3) | 平坦・S³(ℓ)・S²×ℝ 相の分類(CIS Theorem A) | 球対称な空間の相 | ハミルトン拘束 | 三つの相と半径 ℓ | ダンベル | 完(外) | `three_phases` `phase_neck` |
-| II.3 (Z3) | 大域的分類(CIS Theorem B) | 完備な空間の大域的な形 | ハミルトン拘束 | 大域的な分類 | ダンベル | 完(外) | — |
+| II.3 (Z3) | 大域的分類:球対称な断面は S³(ℓ) の一部・平坦・首(半径 ℓ)の三つだけ(一般の場合は CIS Theorem B) | 球対称な空間の断面 ds² + r(s)²dΩ² | ハミルトン拘束(II.2 の三つの相) | S³ 相は r = r(0)cos(s/ℓ) + ℓr′(0)sin(s/ℓ)(振幅 ℓ、極で滑らか)、平坦相は直線、首は r = ℓ | ダンベル | 完 | `s3_global` `s3_amplitude` `s3_pole_regular` `flat_global` `phase_neck` |
 | II.4 (Z4-1, 2) | Codazzi 一般解、構造式、第一段階の両立条件 | Cartan 幾何 | — | — | 運動学 | 完 | `codazzi_to_flow` |
-| II.5 (Z4-3) | 第二段階の両立条件、階数 12 | Cartan 幾何 | — | — | 運動学 | 完(外) | — |
+| II.5 (Z4-3) | 第二段階の両立条件、階数 12 | Cartan 幾何(C2 枠) | — | — | 運動学 | 完(外) | `Bj_frame` `Bj_star` `rank12_star` |
 | II.6 (Z4-D, E) | 対角型・整列型の非存在 | Cartan 幾何 | — | — | 運動学 | 完 | `flow_s1` |
 | II.9 (Z5) | 静的解は首(W ≡ 0)か平坦(W ≡ ±1)のみ | 静的な球対称 | EYM | 静的解の分類 | ダンベル | 完 | `br_lapse_d1` `flow_E0` `E0_eq` |
 
@@ -167,8 +182,8 @@ WGC に関わる項目:XI.4(首の安定の条件 m_W ≳ 0.24 g M_Pl は磁気�
 | V.4 (Z19) | Gauss 写像から sin²χ = 2Gm/r | 帽子 | Einstein 方程式 | sin²χ = 2Gm/r | ダンベル | 完 | `gauss_compactness` `gauss_vacuum` |
 | V.5 (Z29) | 端点 Dirac 方程式の limit-point 性 | 帽子の端点 | Dirac の作用 | limit-point 性 | ダンベル | 完(外) | `endpoint_F` `xy_system` |
 | V.7 (Z31) | 量子応力と反作用(共形場、共形真空、背景 SU(2) に結合しない場) | 帽子 | 共形場の有効作用(アノマリー) | 反作用 | ダンベル | 完(外) | `a4_meron` `curvature_traceless` |
-| V.7′ (Z31) | 背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²) | 帽子 a(t) | 1 ループの YM の有効作用 | 結合定数が帽子の尺度で走る | ダンベル | 完(外) | `rho_beta_unique` `running_coupling` |
-| V.7-N (Z31) | 首 AdS₂ × S² の上の共形場の量子応力 | 首 | 共形場の有効作用(アノマリー) | 負の宇宙定数の働き、半径が縮む | ダンベル | 完(外) | `neck_ricci` `neck_H3` `neck_backreaction` |
+| V.7′ (Z31) | 背景 SU(2) 場の量子揺らぎと反作用(β 関数の項 ∝ F²) | 帽子 a(t)、X = ℓ²/a⁴ | 1 ループの YM の有効作用 | 結合定数が帽子の尺度で走る、反作用全体が保存、古典との比 −2g²β_gℓ⁴/a⁴ | ダンベル | 完(外) | `rho_beta_unique` `running_coupling` `total_conserved` `cap_X` `cap_backreaction_ratio` `backreaction_grows` |
+| V.7-N (Z31) | 首 AdS₂ × S² の上の共形場の量子応力 | 首 | 共形場の有効作用(アノマリー) | 負の宇宙定数の働き、半径が縮む | ダンベル | 完(橋) | `neck_ricci` `neck_H3` `neck_backreaction` |
 
 ## α-VI — 量子重力(4 項目)
 
@@ -199,7 +214,7 @@ WGC に関わる項目:XI.4(首の安定の条件 m_W ≳ 0.24 g M_Pl は磁気�
 | VIII.2 (Z39, 40) | 標準埋め込み、α′ 項の消失(Euclid の断面、Ω ∈ so(4)) | Euclid 化したダンベルのスピン接続 | ヘテロティックの O(α′) の作用 | 4 つの場の方程式で α′ 項が消える | 一般 | 完(外) | `all_alpha_terms_vanish` `ymH_embed_iff` `iota_antisymm` |
 | VIII.3 (Z41) | アトラクターとエントロピー | 首(磁荷) | Einstein–ディラトン–Maxwell(a = 1) | 磁荷だけではディラトンが逃げる | ダンベル | 完(外) | `string_attractor` `no_attractor_magnetic` `veff_min` |
 | VIII.5 (Z38, 42) | ℓ*² = α′/4、WZW 準位 k = 1/4 | 首の半径 | 弦の有効作用 | ℓ*² = α′/4 | ダンベル | 完(外) | `ell_witten` `wzw_level` |
-| VIII.7 (Z44) | Killing スピノル不存在(超対称性の障害) | 帽子 a = ℓ cos η | EYM | Killing スピノルはない | ダンベル | 完(外) | `cap_unique` `no_killing_spinor_cap` |
+| VIII.7 (Z44) | Killing スピノル不存在(超対称性の障害)、帽子の領域だけの仮定で | 帽子 a = ℓ cos η(0 ≤ η < π/2) | EYM | Killing スピノルはない | ダンベル | 完(外) | `cap_unique` `no_killing_spinor_cap` `cap_unique_local` `no_killing_spinor_local` |
 
 ## α-IX — 作用原理からの帰結(35 項目)
 
@@ -215,29 +230,29 @@ WGC に関わる項目:XI.4(首の安定の条件 m_W ≳ 0.24 g M_Pl は磁気�
 | IX.7 | 荷電した塵の Lorentz 力 | Minkowski | Maxwell + 塵 | Lorentz 力 | 一般 | 完 | `dust_lorentz` |
 | IX.8 | 粒子の Euler–Lagrange 方程式 | Minkowski | 粒子の作用 | 運動方程式 | 一般 | 完 | `particle_el` |
 | IX.9 | Hamilton 形式と質量殻 | 質量殻 | 粒子の作用 | Hamilton の式 | 一般 | 完 | `hamilton` `mass_shell` |
-| IX.10 | 球対称の縮約 S₂、U = 2 − 2ℓ²/Φ | 首(球対称) | EYM | 2 次元のディラトン重力 | ダンベル | 完(外) | `reduction_identity` `potential_from_YM` |
-| IX.11 | 首 Φ = ℓ² は厳密な解(AdS₂) | 首 | IX.10 の作用 | U = 0、R = −2/ℓ² | ダンベル | 完 | `neck_exact` `neck_metric_curvature` |
+| IX.10 | 球対称の縮約 S₂、U = 2 − 2ℓ²/Φ | 首(球対称) | EYM | 2 次元のディラトン重力 | ダンベル | 完(橋) | `reduction_identity` `potential_from_YM` |
+| IX.11 | 首 Φ = ℓ² は厳密な解(AdS₂)、4 次元の Einstein 方程式でも | 首 AdS₂ × S²(Ricci の固有値 (−1, −1, 1, 1)/ℓ²) | IX.10 の作用、EYM | U = 0、R = −2/ℓ²、G = 8πG T の 4 成分 ⇔ ℓ² = 4πG/g² | ダンベル | 完 | `neck_exact` `neck_metric_curvature` `neck_einstein` |
 | IX.12 | JT への展開(余りまで厳密) | 首 | IX.10 の作用 | JT | ダンベル | 完 | `jt_expansion` `jt_kinetic` |
 | IX.13 | 基底のエントロピー S₀ = πℓ²/G = 4π²/g²(ディラトンのない EYM) | 首 | EYM | S₀ | ダンベル | 完(外) | `ground_entropy` |
 | IX.14 | Schwarzian の熱力学(長い首、L/ℓ ≫ 1) | 首の JT dilaton と接合 | JT | 対称な dilaton = 永遠のブラックホール、E(β)、S(T) | ダンベル | 完(外) | `jt_neck_solution` `no_static_dilaton` `junction_near_boundary` `schwarzian_energy` |
 | IX.15 | 1 ループ:m²ℓ² = −1 < −1/4、Δ = ½ ± i√3/2 | 首 | W の 2 次の作用 | BF 限界を下回る | ダンベル | 完(外) | `delta_roots` `neck_mode_below_BF` |
-| IX.16 | 完全流体:連続の式と相対論的 Euler | Minkowski | 流体 | Euler 方程式 | 一般 | 完(外) | `fluid_euler` |
-| IX.17 | 帽子は輻射の宇宙(p = ρ/3) | 帽子 | YM | 閉じた輻射 FRW | ダンベル | 完 | `cap_radiation` `cap_stress` |
-| IX.18 | Kelvin の循環定理の局所形 | 流体 | 流体 | L_uω = 0 | 一般 | 完(外) | `kelvin` |
-| IX.19 | 理想 MHD の磁束凍結 | 流体 | MHD | L_uF = 0 | 一般 | 完(外) | `flux_freezing` |
-| IX.20 | ヘリシティの釣り合い | Minkowski | Maxwell | ヘリシティの式 | 一般 | 完 | `helicity_balance` |
+| IX.16 | 完全流体:連続の式と相対論的 Euler | Minkowski | 流体 | Euler 方程式 | 一般 | 完(橋) | `fluid_euler` |
+| IX.17 | 帽子は輻射の宇宙(p = ρ/3)、最大の半径は首の半径 ℓ | 帽子 a = ℓ cos η | YM(Friedmann) | 閉じた輻射 FRW、a′² + a² = (8πG/3)ρa⁴ = ℓ² | ダンベル | 完 | `cap_radiation` `cap_stress` `cap_rho` `cap_friedmann_l` |
+| IX.18 | Kelvin の循環定理の局所形 | 流体 | 流体 | L_uω = 0 | 一般 | 完(橋) | `kelvin` |
+| IX.19 | 理想 MHD の磁束凍結 | 流体 | MHD | L_uF = 0 | 一般 | 完(橋) | `flux_freezing` |
+| IX.20 | ヘリシティの釣り合い | Minkowski | Maxwell | ヘリシティの式 | 一般 | 完(橋) | `helicity_balance` |
 | IX.21 | Hawking 温度、RN の T | 地平線 | Euclid の EH | T = κ/2π | 一般 | 完(外) | `conical_period` `rn_slope` |
 | IX.22 | Euclid の首は H²(曲率 −1/ℓ²) | 首 | — | — | ダンベル | 完 | `euclid_neck_curvature` |
 | IX.23 | 第一法則と Smarr、極限で T = 0 | 磁荷の RN | EYM | 第一法則 | 一般 | 完 | `first_law` `smarr` |
 | IX.24 | Euclid 作用(磁荷):I = β(M − TS)(正準集団)、S = A/4 | 首の磁荷 | Euclid の EH + GHY + Maxwell | 磁荷を固定した正準集団 | ダンベル | 完(外) | `maxwell_magnetic` `magnetic_action` |
-| IX.25 | Tolman–Ehrenfest | 静的な時空 | 輻射 | TN が一定 | 一般 | 完(外) | `tolman` `tolman_const` |
+| IX.25 | Tolman–Ehrenfest:∇_μT^μ_x = 0 から、首では T = T₀/cosh(x/ℓ) | 首の静的な計量 −cosh²(x/ℓ)dt² + dx² + ℓ²dΩ² | 輻射 | p′ = −(ρ + p)N′/N、TN が一定 | ダンベル | 完 | `christoffel_static` `static_euler` `tolman` `neck_tolman` |
 | IX.26 | KMS 条件(有限次元) | 有限系 | — | KMS | 一般 | 完 | `kms` |
 | IX.27 | Jüttner 分布の非相対論の極限、Q の座標 m/E | 質量殻 | — | Jüttner → Maxwell | 一般 | 完(外) | `juttner_to_maxwell` `nr_monotone` `q_coordinate` |
 | IX.28 | Planck の積分 π⁴/15、Stefan–Boltzmann | 輻射 | — | π⁴/15 | 一般 | 完 | `bose_integral` `stefan_boltzmann` |
-| IX.29 | Schwarzian の状態密度と熱力学の整合 | 首の JT | JT | dS/dE = 1/T | 一般 | 完(外) | `laplace_exponent` `micro_temperature` |
+| IX.29 | Schwarzian の状態密度と熱力学の整合(厳密な ρ ∝ sinh(2π√(2CE))) | 首の JT | JT | 1/T = 4π²C coth x/x、主要項との差は指数関数的に小さい、正準集団との差 3/(4π²CT) | ダンベル | 完(外) | `laplace_exponent` `micro_temperature` `micro_exact_deriv` `coth_eq` `micro_exact_bound` `canonical_vs_micro` |
 | IX.30 | 揺動散逸の関係(有限系、KMS から) | 有限系 | — | S(ω) = coth(βω/2)χ″(ω) | 一般 | 完 | `kms_weights` `fdt_spectral` |
 | IX.31 | 焦点を結ぶ定理 | ヌルの測地線 | Einstein(NEC) | θ → −∞ | 一般 | 完(外) | `focusing` |
-| IX.32 | Euclid の首 H²/Γ の面積、測地流のエルゴード性 | Euclid の首 | — | 面積 4π(g − 1)ℓ² | 一般 | 完(外) | `hyperbolic_area` |
+| IX.32 | Euclid の首の測地線の偏差:Lyapunov 指数 1/ℓ(コンパクトな H²/Γ ではないのでエルゴード性は主張しない) | Euclid の首(曲率 −1/ℓ²、IX.22) | — | J = cosh(s/ℓ) ≥ e^{s/ℓ}/2 | 運動学 | 完 | `jacobi_neck` `lyapunov_neck` |
 | IX.33 | 相の比較(磁荷の正準集団)と W の凝縮 | 首につながる RN の枝 | IX.24 の Euclid 作用 | 首につながる小さい枝が選ばれる | ダンベル | 完 | `small_branch_preferred` `heat_capacity_sign` `landau` |
 | IX.34 | はりねずみの次数 = 1、π₂(S²) = ℤ | 帽子の単極子 n̂ = x̂ | YM | 次数 = 磁荷 | ダンベル | 完(外) | `hedgehog_jacobian` `hedgehog_degree` |
 
@@ -245,9 +260,9 @@ WGC に関わる項目:XI.4(首の安定の条件 m_W ≳ 0.24 g M_Pl は磁気�
 
 | 項目 | 内容 | 運動学(部品・量) | 作用 | 力学(導いたもの) | 区分 | 判定 | 代表の Lean 定理 |
 |---|---|---|---|---|---|---|---|
-| X.1 | Noether の定理を作用から一般に | 有限自由度 | L(q, q̇) | Σ p_iK_i の保存 | 一般 | 完 | `noether` `cyclic_from_noether` `charge_conservation` |
-| X.2 | 幾何光学 = HJ = WKB(首の波面) | 首 −dt² + cos²(t/ℓ)dz² | 波動の作用 | アイコナール = 質量ゼロの HJ | ダンベル | 完 | `wkb_2d` `neck_eikonal` |
-| X.3 | ゲージ場 = 接続、力 = 曲率 | U(1)、SU(2)、重力 | — | — | 一般 | 完 | `abelian_gauge_invariance` |
+| X.1 | Noether の定理を作用から一般に | 有限自由度 | L(q, q̇) | Σ p_iK_i の保存 | 一般 | 完(橋) | `noether` `cyclic_from_noether` `charge_conservation` |
+| X.2 | 幾何光学 = HJ = WKB(首の波面) | 首 −dt² + cos²(t/ℓ)dz² | 波動の作用 | アイコナール = 質量ゼロの HJ | ダンベル | 完(橋) | `wkb_2d` `neck_eikonal` |
+| X.3 | ゲージ場 = 接続、力 = 曲率 | U(1)、SU(2)、重力 | — | — | 一般 | 完(橋) | `abelian_gauge_invariance` |
 | X.4 | 質量(閉じたダンベルでは Misner–Sharp、ADM は定義されない) | 帽子・首 | EYM(Friedmann) | m = (4π/3)ρR³、dm = −p dV | ダンベル | 完 | `cap_ms_mass` `cap_first_law` `weak_discontinuity_no_mass` |
 | X.5 | 色電荷 Q^a の接合面での保存 | Witten の ansatz | YM | F_tr の交換子が消え Q = 0 | ダンベル | 完(外) | `witten_Ftr` `color_charge_vanishes` |
 | X.6 | すべての最終定理に非空性 | — | — | — | — | 部 | `nonempty_cap` `nonempty_magnetic` `nonempty_window` |
@@ -262,7 +277,7 @@ WGC に関わる項目:XI.4(首の安定の条件 m_W ≳ 0.24 g M_Pl は磁気�
 | 項目 | 内容 | 運動学(部品・量) | 作用 | 力学(導いたもの) | 区分 | 判定 | 代表の Lean 定理 |
 |---|---|---|---|---|---|---|---|
 | XI.1 | 首の不安定性の時間スケール | 首(大域 AdS₂)と接合 u_c | W の 2 次の作用 | λ² ≥ (3/4 − π²/16)e^{2(L/ℓ−4)}/π²、L/ℓ ≥ 7 で崩壊前に e 倍 | ダンベル | 完(外) | `liouville_actual` `actual_form_neg` `growth_rate_bound` `one_efold_before_collapse` |
-| XI.2 | 高階補正(F⁴)の符号と穏やかな WGC | 磁荷の RN | L = −F²/4 + α(F²)² | 極限の M/Q < 1 | 一般 | 完(外) | `mass_function` `lighter_extremal` |
+| XI.2 | 高階補正(F⁴)の符号と穏やかな WGC(アトラクターの形:極限 = M(r) の臨界点) | 首 = 極限の地平線(磁荷の RN) | L = −F²/4 + α(F²)² | p² = r² + 5k/r⁴、M = r + 2k/r⁵ < p、首は細くなる | ダンベル | 完(外) | `mass_function` `lighter_extremal` `extremal_iff_critical` `critical_radius` `extremal_mass` `extremal_lighter` `neck_shrinks` |
 | XI.3 | 宇宙検閲:帽子の崩壊の前に捕捉面ができるか | 帽子の波面、首 | EYM | 崩壊の前に波面の上に周辺的な捕捉面 | ダンベル | 完 | `no_trapped_in_cap` `front_marginally_trapped` `neck_marginal` |
 | XI.4 | 首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件 | 首(そのまま) | EYM + 随伴 Higgs | m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 | ダンベル | 完(外) | `neck_rho` `force_W_zero` `force_H_zero` `quad_expansion` `w_mass_neck` `planck_condition` `hardy_neck` `no_growing_mode` |
 | XI.5 | dyon の首:電荷 q を加えたアトラクター(2pq = ℓ²)と W の安定性 | 首(磁荷 p と電荷 q) | EYM(+ ディラトン) | — | ダンベル | 未着手 | — |
