@@ -51,6 +51,7 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaRoot_Duality
@@ -1025,6 +1026,23 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XII_7_mass_shell
 #print axioms CFT.Index.XII_7_gudermann_phase
 #print axioms CFT.Index.XII_7_cap_modulus
+#print axioms CFT.Index.XII_8_quantized
+#print axioms CFT.Index.XIII_1_cap_box
+#print axioms CFT.Index.XIII_1_neck_derivs
+#print axioms CFT.Index.XIII_1_neck_box
+#print axioms CFT.Index.XIII_1_neck_coordinate
+#print axioms CFT.Index.XIII_1_static_general
+#print axioms CFT.Index.XIII_1_static_general_deriv
+#print axioms CFT.Index.XIII_2_junction_seam
+#print axioms CFT.Index.XIII_2_r_prime_conformal
+#print axioms CFT.Index.XIII_3_eta_neck
+#print axioms CFT.Index.XIII_3_eta_cap
+#print axioms CFT.Index.XIII_5_extremal_limit
+#print axioms CFT.Index.XIII_6_periodic
+#print axioms CFT.Index.XIII_6_cap_energy
+#print axioms CFT.Index.XIII_6_energy_balance
+#print axioms CFT.Index.XIII_7_ground_state
+#print axioms CFT.Index.XIII_7_quantized
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1040,6 +1058,22 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaIntegrals.beta23_m1
 #print axioms CFT.AlphaIntegrals.beta23_m2
 #print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.Conformal.cap_box
+#print axioms CFT.Conformal.neck_derivs
+#print axioms CFT.Conformal.neck_box
+#print axioms CFT.Conformal.static_general
+#print axioms CFT.Conformal.static_general_deriv
+#print axioms CFT.Conformal.junction_seam
+#print axioms CFT.Conformal.r_prime_conformal
+#print axioms CFT.Conformal.eta_neck
+#print axioms CFT.Conformal.eta_cap
+#print axioms CFT.Conformal.periodic
+#print axioms CFT.Conformal.cap_energy
+#print axioms CFT.Conformal.energy_balance
+#print axioms CFT.Conformal.ground_state
+#print axioms CFT.Conformal.quantized
+#print axioms CFT.Conformal.neck_coordinate
+#print axioms CFT.Conformal.extremal_limit
 #print axioms CFT.Polar.ch2
 #print axioms CFT.Polar.det_add_one
 #print axioms CFT.Polar.trace_add_one

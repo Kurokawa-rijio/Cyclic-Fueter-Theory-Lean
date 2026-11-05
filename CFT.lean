@@ -52,6 +52,7 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaRoot_Duality
