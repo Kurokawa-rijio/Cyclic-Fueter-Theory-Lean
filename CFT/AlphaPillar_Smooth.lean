@@ -104,7 +104,8 @@ theorem esu_ym (a x : ℝ) (ha : a ^ 2 = 2) (hs : sin x ≠ 0) :
   refine ⟨?_, ?_, ?_, ?_⟩
   · field_simp; ring
   · field_simp; ring
-  · field_simp <;> ring
+  · field_simp
+    linear_combination (8 * sin x ^ 5) * ha
   · field_simp; ring
 
 /-- 【柱 4】AdS₂ の喉の中の YM:W(s) = e^{−s/2}cos(√3 s/2) は W″ + W′ + W = 0 をみたす -/
