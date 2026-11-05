@@ -16,6 +16,8 @@
     (4) 喉の中の YM:AdS₂ の喉(R = 1、k = 1)では W″ + W′ + W = 0、解は e^{−s/2}cos(√3 s/2)
         (`throat_mode`)。節の間隔 2π/√3、節が一つ増えるごとに減衰 e^{−π/√3}。
         有効質量 −1 は AdS₂ の BF 下限 −1/4 を下回る(`bf_violation`)。
+    (4′) 臨界の円柱(R = √2、Λ = 1/4)は磁荷 1 の RN–de Sitter の超冷極限(三つの地平線が一致、Plebański–Hacyan の
+        Minkowski₂ × S²)。その上の YM の線形のモード cos(s/√2) は静的宇宙の W と同じ関数(`cylinder_mode`)。
     (5) 帽子と首の Ω の足し算:N± = 4A² + ABc(8 − 4w²)w ± 8ABswt(w = 1/sin u、t = cot u)
         (`superpos_null`)。極の近くで −4ABc w³ が支配し、ヌルエネルギー条件を破る。
 -/
@@ -158,5 +160,22 @@ theorem superpos_null (A B c s w t : ℝ) (h1 : c ^ 2 + s ^ 2 = 1) (h2 : t ^ 2 +
   constructor
   · linear_combination (4 * A ^ 2) * h1 + (2 * B ^ 2 * w ^ 2 - 2 * A * B * c * w) * h2
   · linear_combination (4 * A ^ 2) * h1 + (2 * B ^ 2 * w ^ 2 - 2 * A * B * c * w) * h2
+
+/-- 【柱 4】臨界の円柱(R² = 2、Λ = 1/4、ν′ = 0:超冷極限 Minkowski₂ × S²)の上の線形の YM:W″ + W/2 = 0。
+解 W = cos(s/√2) は静的宇宙 + YM の W(`esu_ym`、a = √2)と同じ関数。節の間隔は π√2 -/
+theorem cylinder_mode (s : ℝ) :
+    HasDerivAt (fun t => cos (t / √2)) (-(sin (s / √2)) / √2) s ∧
+    HasDerivAt (fun t => -(sin (t / √2)) / √2) (-(cos (s / √2)) / 2) s ∧
+    -(cos (s / √2)) / 2 + cos (s / √2) / 2 = 0 := by
+  have h2 : √2 * √2 = 2 := Real.mul_self_sqrt (by norm_num)
+  have hne : √2 ≠ 0 := by positivity
+  refine ⟨?_, ?_, by ring⟩
+  · have := ((hasDerivAt_id' s).div_const √2).cos
+    convert this using 1; ring
+  · have := (((hasDerivAt_id' s).div_const √2).sin.neg).div_const √2
+    convert this using 1
+    field_simp
+    rw [h2]
+    ring
 
 end CFT.Smooth
