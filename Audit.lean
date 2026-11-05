@@ -51,6 +51,8 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaPillar_Polar
+import CFT.AlphaPillar_SelfDual
 import CFT.AlphaRoot_Duality
 import CFT.AlphaRoot_Junction
 import CFT.AlphaS1_Closure
@@ -997,6 +999,32 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_4_planck_condition
 #print axioms CFT.Index.XI_4_hardy_neck
 #print axioms CFT.Index.XI_4_no_growing_mode
+#print axioms CFT.Index.XII_1_ch2
+#print axioms CFT.Index.XII_1_polar_exists
+#print axioms CFT.Index.XII_1_polar_unique
+#print axioms CFT.Index.XII_1_boost_from_square
+#print axioms CFT.Index.XII_2_sphere_meets_hyperboloid
+#print axioms CFT.Index.XII_2_det_M
+#print axioms CFT.Index.XII_3_curvature_real
+#print axioms CFT.Index.XII_3_norm_c
+#print axioms CFT.Index.XII_3_friedmann_selfdual
+#print axioms CFT.Index.XII_3_phase_lemma
+#print axioms CFT.Index.XII_3_cap_hubble
+#print axioms CFT.Index.XII_3_cap_modulus
+#print axioms CFT.Index.XII_3_cap_rhs
+#print axioms CFT.Index.XII_4_neck_extrinsic
+#print axioms CFT.Index.XII_4_neck_constraint
+#print axioms CFT.Index.XII_4_spin_is_witten
+#print axioms CFT.Index.XII_4_neck_einstein
+#print axioms CFT.Index.XII_5_end_phase
+#print axioms CFT.Index.XII_5_phase_lemma
+#print axioms CFT.Index.XII_6_real_part
+#print axioms CFT.Index.XII_6_cap_real_part
+#print axioms CFT.Index.XII_6_spin_is_witten
+#print axioms CFT.Index.XII_6_frw_exact
+#print axioms CFT.Index.XII_7_mass_shell
+#print axioms CFT.Index.XII_7_gudermann_phase
+#print axioms CFT.Index.XII_7_cap_modulus
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1012,6 +1040,31 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaIntegrals.beta23_m1
 #print axioms CFT.AlphaIntegrals.beta23_m2
 #print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.Polar.ch2
+#print axioms CFT.Polar.det_add_one
+#print axioms CFT.Polar.trace_add_one
+#print axioms CFT.Polar.trace_sq
+#print axioms CFT.Polar.trace_gram
+#print axioms CFT.Polar.det_gram
+#print axioms CFT.Polar.gram_herm
+#print axioms CFT.Polar.polar_exists
+#print axioms CFT.Polar.boost_from_square
+#print axioms CFT.Polar.polar_unique
+#print axioms CFT.Polar.sphere_meets_hyperboloid
+#print axioms CFT.SelfDual.curvature_real
+#print axioms CFT.SelfDual.norm_c
+#print axioms CFT.SelfDual.friedmann_selfdual
+#print axioms CFT.SelfDual.phase_lemma
+#print axioms CFT.SelfDual.cap_hubble
+#print axioms CFT.SelfDual.cap_modulus
+#print axioms CFT.SelfDual.cap_rhs
+#print axioms CFT.SelfDual.neck_extrinsic
+#print axioms CFT.SelfDual.neck_constraint
+#print axioms CFT.SelfDual.end_phase
+#print axioms CFT.SelfDual.real_part
+#print axioms CFT.SelfDual.cap_real_part
+#print axioms CFT.SelfDual.mass_shell
+#print axioms CFT.SelfDual.gudermann_phase
 #print axioms CFT.RootDuality.det_M
 #print axioms CFT.RootDuality.real_slice_unitary
 #print axioms CFT.RootDuality.imag_slice_hermitian

@@ -35,26 +35,19 @@ jobs:
         shell: bash
         run: lake exe cache get
 
-      - name: Build Lean project (phase 13 modules only)
+      - name: Build Lean project
         shell: bash
-        run: |
-          set +e
-          set +o pipefail
-          status=0
-          for m in CFT.AlphaPillar_Polar CFT.AlphaPillar_SelfDual; do
-            lake build $m 2>&1 | tee -a build.log
-            [ "${PIPESTATUS[0]}" = "0" ] || status=1
-          done
-          exit $status
+        run: lake build
 
       - name: Axiom audit (every theorem)
         shell: bash
         run: |
-          lake env lean scripts/check_phase13.lean > audit.txt 2>&1 || echo LEAN_FAILED >> audit.txt
-          cat audit.txt
+          lake env lean Audit.lean > audit.txt 2>&1
           total=$(grep -c "depends on axioms\|does not depend on any axioms" audit.txt || true)
           sorry=$(grep -c "sorryAx" audit.txt || true)
           std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
+          echo "AUDIT_COUNTS total=$total std=$std sorry=$sorry"
+          grep -v "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt | sed 's/^/AUDIT_NONSTD /' || true
           {
             echo "## Axiom audit"
             echo "- theorems audited: $total"
