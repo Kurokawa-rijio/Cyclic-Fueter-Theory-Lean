@@ -52,6 +52,8 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaRoot_Duality
+import CFT.AlphaRoot_Junction
 import CFT.AlphaS1_Closure
 import CFT.AlphaS1_Derivation
 import CFT.AlphaS2_4DMatch

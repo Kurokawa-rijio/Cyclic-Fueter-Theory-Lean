@@ -51,6 +51,8 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaRoot_Duality
+import CFT.AlphaRoot_Junction
 import CFT.AlphaS1_Closure
 import CFT.AlphaS1_Derivation
 import CFT.AlphaS2_4DMatch
@@ -730,6 +732,15 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.I_7_bps_k
 #print axioms CFT.Index.I_7_bps_f
 #print axioms CFT.Index.I_7_starF_closed
+#print axioms CFT.Index.I_8_det_M
+#print axioms CFT.Index.I_8_real_slice_unitary
+#print axioms CFT.Index.I_8_imag_slice_hermitian
+#print axioms CFT.Index.I_8_wick_path
+#print axioms CFT.Index.I_8_curvature_flip
+#print axioms CFT.Index.I_8_hemisphere_on_sphere
+#print axioms CFT.Index.I_8_hemisphere_deriv
+#print axioms CFT.Index.I_8_hemisphere_conformal
+#print axioms CFT.Index.I_8_equator_at_infinity
 #print axioms CFT.Index.II_1_ym_stress
 #print axioms CFT.Index.II_1_sector_geodesic
 #print axioms CFT.Index.II_1_phase_form
@@ -959,6 +970,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_13_rindler_lapse
 #print axioms CFT.Index.X_13_unit_observer
 #print axioms CFT.Index.X_13_junction_tan
+#print axioms CFT.Index.X_14_curvature_jump
+#print axioms CFT.Index.X_14_stress_jump
+#print axioms CFT.Index.X_14_hamC_quadratic
+#print axioms CFT.Index.X_14_junction_two_values
+#print axioms CFT.Index.X_14_no_C2_junction
 #print axioms CFT.Index.XI_1_liouville_actual
 #print axioms CFT.Index.XI_1_actual_form_neg
 #print axioms CFT.Index.XI_1_growth_rate_bound
@@ -996,6 +1012,20 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaIntegrals.beta23_m1
 #print axioms CFT.AlphaIntegrals.beta23_m2
 #print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.RootDuality.det_M
+#print axioms CFT.RootDuality.real_slice_unitary
+#print axioms CFT.RootDuality.imag_slice_hermitian
+#print axioms CFT.RootDuality.wick_path
+#print axioms CFT.RootDuality.curvature_flip
+#print axioms CFT.RootDuality.hemisphere_on_sphere
+#print axioms CFT.RootDuality.hemisphere_deriv
+#print axioms CFT.RootDuality.hemisphere_conformal
+#print axioms CFT.RootDuality.equator_at_infinity
+#print axioms CFT.RootJunction.curvature_jump
+#print axioms CFT.RootJunction.stress_jump
+#print axioms CFT.RootJunction.hamC_quadratic
+#print axioms CFT.RootJunction.junction_two_values
+#print axioms CFT.RootJunction.no_C2_junction
 #print axioms CFT.S1C.symProd_expand
 #print axioms CFT.S1C.factorization_iff
 #print axioms CFT.S1C.cyclic_factorizes
