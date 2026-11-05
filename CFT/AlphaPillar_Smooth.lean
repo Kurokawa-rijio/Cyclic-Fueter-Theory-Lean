@@ -175,7 +175,5 @@ theorem cylinder_mode (s : ℝ) :
   · have := (((hasDerivAt_id' s).div_const √2).sin.neg).div_const √2
     convert this using 1
     field_simp
-    rw [h2]
-    ring
 
 end CFT.Smooth
