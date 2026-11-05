@@ -38,3 +38,30 @@ jobs:
       - name: Build Lean project
         shell: bash
         run: lake build
+
+      - name: Axiom audit (every theorem)
+        shell: bash
+        run: |
+          lake env lean Audit.lean > audit.txt 2>&1
+          total=$(grep -c "depends on axioms\|does not depend on any axioms" audit.txt || true)
+          sorry=$(grep -c "sorryAx" audit.txt || true)
+          std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
+          echo "AUDIT_COUNTS total=$total std=$std sorry=$sorry"
+          grep -v "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt | sed 's/^/AUDIT_NONSTD /' || true
+          {
+            echo "## Axiom audit"
+            echo "- theorems audited: $total"
+            echo "- depending only on [propext, Classical.choice, Quot.sound]: $std"
+            echo "- using sorryAx: $sorry"
+            echo '```'
+            grep -v "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt | head -n 50 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          test "$sorry" = "0"
+
+      - name: Upload audit output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit
+          path: audit.txt

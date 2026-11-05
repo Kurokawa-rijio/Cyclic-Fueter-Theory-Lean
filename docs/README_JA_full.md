@@ -1,4 +1,14 @@
+> **2026-11-05 注記:最新の判定は `docs/CLAIM_STATUS_JA.md`(運動学・作用・力学の台帳)と `CFT/AlphaIndex.lean`(各項目の代表の定理の索引)。この文書には古い判定と経緯が残っている。**
+
 # 命題群 α の Lean 4 形式化(α-I〜α-VIII の ◎・◎(既存定理の適用)・⊘)
+
+> **2026-11-02 の更新(v0.3.0)**:最新の判定は [`CLAIM_STATUS_JA.md`](CLAIM_STATUS_JA.md)(α-I〜VIII は 53 項目、α 全体は 88 項目)。
+> この文書の表のうち、次の項目の判定は更新された。
+> - 完全に:VI.3、VII.3、VII.8、IV.12、VI.4、VI.6、VI.8、V.2、VII.1、V.7(新しいモジュール AlphaVI_Static、AlphaVII_Commutant、AlphaVI_Sech、AlphaIV_Minisuperspace、AlphaIV_Reduction、AlphaIV_WKB、AlphaIV_WKB2、AlphaVI_Physical、AlphaVI_Physical2、AlphaVI_Affine、AlphaVI_Semiclassical、AlphaV_S3Dirac、AlphaVII_Maxwell、AlphaVII_Tangent、AlphaV_Backreaction、AlphaV_FRW、AlphaV_Anomaly)。
+> - 部分に戻した:III.1、III.2、III.9、IV.2(`RealLine` の定式化の欠陥。体と連続な環準同型の評価の組み合わせでは、どの元も区間で一定になる。最後の課題として可換環と点評価で作り直す)。
+> - 新しい項目:VII.8-C(質量ゼロのカイラルなモード、未)、V.7′(背景 SU(2) 場の量子揺らぎの反作用、未)。
+> 以下の本文は 2026-10-21 時点の記録で、上の項目について古い判定を含む。
+
 
 検証日:2026-10-21
 環境:Lean 4.15.0、Mathlib(タグ v4.15.0)

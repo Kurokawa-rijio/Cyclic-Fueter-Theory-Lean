@@ -1,5 +1,5 @@
 import re,glob,os
-root='/home/claude/lean/CFT'
+root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # リポジトリのルート
 mods=sorted(os.path.relpath(f,root+'/CFT')[:-5].replace('/','.') for f in glob.glob(root+'/CFT/**/*.lean',recursive=True) if not f.endswith('CFT/Basic.lean'))
 lines=[f"import CFT.{m}" for m in mods]+[""]
 for m in mods:
