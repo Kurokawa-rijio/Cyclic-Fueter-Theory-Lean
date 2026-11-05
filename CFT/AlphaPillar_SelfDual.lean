@@ -123,4 +123,39 @@ theorem cap_real_part (a χ : ℝ) (ha : a ≠ 0) :
   refine ⟨(Real.hasDerivAt_sin χ).const_mul a, ?_⟩
   exact mul_div_cancel_left₀ _ ha
 
+/-! ### 自己双対接続は v6 の質量殻と量子半球をなぞる -/
+
+/-- 【柱 2】ȧ = −sinh ζ と書くと:|c|² = cosh²ζ(エネルギー E/m)、c/|c| = (sech ζ, −tanh ζ) は単位円の上
+(量子半球 Q = (m/E, p/E))、(|c|, Im c) = (cosh ζ, −sinh ζ) は単位双曲線の上(質量殻 (E/m, p/m))。
+Re c = 1(スピン接続 Γ)が質量、Im c = ȧ(外曲率 K)が運動量の役 -/
+theorem mass_shell (ζ : ℝ) :
+    Complex.normSq (1 + I * ((-Real.sinh ζ : ℝ) : ℂ)) = Real.cosh ζ ^ 2 ∧
+    (1 / Real.cosh ζ) ^ 2 + (-Real.sinh ζ / Real.cosh ζ) ^ 2 = 1 ∧
+    Real.cosh ζ ^ 2 - (-Real.sinh ζ) ^ 2 = 1 := by
+  have h := Real.cosh_sq_sub_sinh_sq ζ
+  have hc := (Real.cosh_pos ζ).ne'
+  refine ⟨?_, ?_, ?_⟩
+  · rw [norm_c]; nlinarith [h]
+  · rw [div_pow, div_pow, neg_sq, ← add_div, div_eq_one_iff_eq (pow_ne_zero 2 hc)]
+    linarith
+  · rw [neg_sq]; exact h
+
+/-- 【柱 2】位相と Gudermann:tan θ = sinh ζ、cos θ > 0 なら cos θ = 1/cosh ζ(量子半球の高さ m/E)。
+帽子では θ = η、ȧ = −tan η = −sinh ζ、a/ℓ = cos η = 1/cosh ζ = m/E:
+帽子の一生(a = ℓ から a → 0)は、量子半球を頂点(静止)から赤道(光速)へたどることと同じ -/
+theorem gudermann_phase (θ ζ : ℝ) (hc : 0 < Real.cos θ) (ht : Real.sin θ / Real.cos θ = Real.sinh ζ) :
+    Real.cos θ = 1 / Real.cosh ζ := by
+  have h1 := Real.sin_sq_add_cos_sq θ
+  have h2 := Real.cosh_sq_sub_sinh_sq ζ
+  have hch := Real.cosh_pos ζ
+  have hs : Real.sin θ = Real.sinh ζ * Real.cos θ := by
+    field_simp at ht; linarith
+  have hsq : Real.cos θ ^ 2 * Real.cosh ζ ^ 2 = 1 := by
+    rw [hs] at h1; nlinarith [h1, h2]
+  have hprod : Real.cos θ * Real.cosh ζ = 1 := by
+    have hp : 0 < Real.cos θ * Real.cosh ζ := mul_pos hc hch
+    nlinarith [sq_nonneg (Real.cos θ * Real.cosh ζ - 1), hsq]
+  field_simp
+  linarith
+
 end CFT.SelfDual

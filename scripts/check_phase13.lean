@@ -24,3 +24,5 @@ import CFT.AlphaPillar_SelfDual
 #print axioms CFT.SelfDual.end_phase
 #print axioms CFT.SelfDual.real_part
 #print axioms CFT.SelfDual.cap_real_part
+#print axioms CFT.SelfDual.mass_shell
+#print axioms CFT.SelfDual.gudermann_phase

@@ -39,7 +39,6 @@ theorem det_add_one (X : M2) : (X + 1).det = X.det + X.trace + 1 := by
 theorem trace_add_one (X : M2) : (X + 1).trace = X.trace + 2 := by
   rw [Matrix.trace_add, Matrix.trace_one]
   simp
-  norm_num
 
 theorem trace_sq (X : M2) : (X * X).trace = X.trace ^ 2 - 2 * X.det := by
   rw [Matrix.trace_fin_two, Matrix.trace_fin_two, Matrix.det_fin_two]
@@ -90,7 +89,7 @@ theorem polar_exists (M : M2) (hM : M.det = 1) :
   have hBB : B * B = P := by
     rw [hBdef, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hPP, smul_smul]
     have : (s : ℂ)⁻¹ * (s : ℂ)⁻¹ * ((t : ℂ) + 2) = 1 := by
-      rw [← hs2]; field_simp
+      rw [← hs2]; field_simp <;> ring
     rw [this, one_smul]
   have hBtr : B.trace = (s : ℂ) := by
     rw [hBdef, Matrix.trace_smul, trace_add_one, hPtr, smul_eq_mul, ← hs2]
@@ -99,9 +98,8 @@ theorem polar_exists (M : M2) (hM : M.det = 1) :
   have hBdet : B.det = 1 := by
     rw [hBdef, Matrix.det_smul, det_add_one, hPdet, hPtr]
     simp only [Fintype.card_fin]
-    rw [inv_pow, ← hs2]
-    field_simp
-    ring
+    rw [inv_pow, show (1 : ℂ) + (t : ℂ) + 1 = (t : ℂ) + 2 by ring, ← hs2]
+    exact inv_mul_cancel₀ (pow_ne_zero 2 hsc)
   have hBh : Bᴴ = B := by
     rw [hBdef, Matrix.conjTranspose_smul, Matrix.conjTranspose_add, hPh, Matrix.conjTranspose_one]
     congr 1
