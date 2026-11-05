@@ -5,8 +5,10 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
+import CFT.AlphaFix_Geo
 import CFT.AlphaFix_Neck
 import CFT.AlphaFix_Thermo
 import CFT.AlphaFix_Unify
