@@ -48,6 +48,7 @@ jobs:
           std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
           echo "AUDIT_COUNTS total=$total std=$std sorry=$sorry"
           grep -v "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt | sed 's/^/AUDIT_NONSTD /' || true
+          sed 's/^/AUDIT_LINE /' audit.txt || true
           {
             echo "## Axiom audit"
             echo "- theorems audited: $total"
