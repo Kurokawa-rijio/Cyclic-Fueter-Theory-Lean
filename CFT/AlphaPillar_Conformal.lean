@@ -10,7 +10,7 @@
   * 帽子 Ω = ℓ cos η(時間だけ)、首 Ω = ℓ/sin u(場所だけ)は、どちらも □̂Ω = Ω をみたす
     (`cap_box`、`neck_box`)。首の座標 x = ℓ log tan(u/2) で dx = ℓ du/sin u(`neck_coordinate`)、
     円柱 dx² + ℓ²dΩ² = (ℓ²/sin²u)(du² + sin²u dΩ²):首の両端の無限遠は S³ の極(点)。
-  * 静的な解の全体は Ω = (A + Bu)/sin u(`static_general`)。
+  * Ω = (A + Bu)/sin u は静的な解(`static_general`。これで全部であることは示していない)。
   * 接合の跳び(X.14)は、倍率の 2 階微分の縫い目:u = π/2 で Ω = ℓ、Ω′ = 0 は両側で一致し、
     Ω″ は 0(帽子)と ℓ(首)(`junction_seam`)。物理の W = r′ は W = cos u + (Ω′/Ω) sin u(`r_prime_conformal`)。
   * Einstein の ηη 成分:首 Ω² + Ω′² = ℓ²/sin⁴u、帽子 3(Ω² + Ω̇²) = 3ℓ²。どちらも YM のエネルギーと
@@ -67,7 +67,7 @@ theorem neck_box (l u : ℝ) (hs : sin u ≠ 0) :
   field_simp
   ring
 
-/-- 【柱 3】静的な解の全体 Ω = f/sin u(f = A + Bu)は □̂Ω = Ω をみたす:
+/-- 【柱 3】静的な Ω = f/sin u(f = A + Bu)は □̂Ω = Ω をみたす:
 Ω′ = (B sin u − f cos u)/sin²u、Ω″ = (f sin²u − 2cos u(B sin u − f cos u))/sin³u -/
 theorem static_general (A B u : ℝ) (hs : sin u ≠ 0) :
     ((A + B * u) * sin u ^ 2 - 2 * cos u * (B * sin u - (A + B * u) * cos u)) / sin u ^ 3

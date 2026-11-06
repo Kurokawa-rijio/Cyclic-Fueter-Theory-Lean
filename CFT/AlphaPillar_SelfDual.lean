@@ -11,7 +11,7 @@
 
   テスト A(既知の方程式の再現)
   * 帽子(閉じた輻射 FRW):K^i = ȧσ^i なので c = 1 + iȧ。曲率の係数 c² − 2c = −(1 + ȧ²) は実数で
-    −|c|²(`curvature_real`、`norm_c`)。Friedmann の式 1 + ȧ² = (8πG/3)ρa² ⇔ |c|² = (8πG/3)ρa²
+    −|c|²(`curvature_real`、`norm_c`)。Friedmann の式 1 + ȧ² = (8πG/3)ρa² ⇒ |c|² = (8πG/3)ρa²(定理は一方向)
     (`friedmann_selfdual`)。
   * 帽子の解 a = ℓ cos η では ȧ = −tan η(`cap_hubble`)、c·cos η = e^{−iη}(`phase_lemma`):
     **自己双対接続の位相は共形時間 η そのもの**。|c| = 1/cos η = ℓ/a(`cap_modulus`)。
@@ -22,7 +22,8 @@
     **首は「回転(S²)× ブースト(AdS₂)」で、極分解が幾何として現れたもの**。
   * 時間対称な瞬間(η = 0、t = 0)では位相 0、A = Γ は実(純粋な回転 = 頂点)。終わり(帽子の崩壊
     η = π/2、首の焦点 t = πℓ/2)では位相 π/2、e^{−iπ/2} = −i で純粋なブースト(`end_phase`)。
-    帽子と首は、自己双対接続の位相という同じ時計で、同時に「回転」から「ブースト」へ回り切る。
+    (解釈)位相を媒介変数とみると、帽子と首はそろって「回転」から「ブースト」へ動く。ただし共通のガウス時間では
+    帽子の崩壊(ℓ)と首の焦点(πℓ/2)は別の出来事(AlphaBridge_Clock、X.9)。
   テスト B(仮定が帰結になるか)
   * U21′(YM 場 = スピン接続、W = r′)は「YM 場 = 自己双対接続の実部(回転の部分)」と同じ
     (`real_part`)。帽子では Γ の W = r′ = cos χ は半径 a によらない(`cap_real_part`)ので、YM の解
@@ -49,7 +50,7 @@ theorem curvature_real (ad : ℝ) :
 theorem norm_c (ad : ℝ) : Complex.normSq (1 + I * ad) = 1 + ad ^ 2 := by
   simp [Complex.normSq_apply] <;> ring
 
-/-- 【柱 2】Friedmann の式 ⇔ −(c² − 2c) = |c|² = (8πG/3)ρa² -/
+/-- 【柱 2】Friedmann の式 ⇒ −(c² − 2c) = |c|² = (8πG/3)ρa²(一方向) -/
 theorem friedmann_selfdual (G ρ a ad : ℝ) (h : ad ^ 2 + 1 = 8 * Real.pi * G / 3 * ρ * a ^ 2) :
     -((1 + I * ad) ^ 2 - 2 * (1 + I * ad)) = ((8 * Real.pi * G / 3 * ρ * a ^ 2 : ℝ) : ℂ) ∧
     Complex.normSq (1 + I * ad) = 8 * Real.pi * G / 3 * ρ * a ^ 2 := by
@@ -57,7 +58,7 @@ theorem friedmann_selfdual (G ρ a ad : ℝ) (h : ad ^ 2 + 1 = 8 * Real.pi * G /
   · rw [curvature_real, neg_neg, ← h]; push_cast; ring
   · rw [norm_c]; linarith
 
-/-- 【柱 2】位相:(1 − i tan θ)·cos θ = e^{−iθ}(帽子では θ = η、首では θ = t/ℓ) -/
+/-- 【柱 2】位相:(1 − i tan θ)·cos θ = e^{−iθ}(帽子では θ = η。首で θ = t/ℓ と読むのは解釈) -/
 theorem phase_lemma (θ : ℝ) (hc : Real.cos θ ≠ 0) :
     (1 + I * ((-(Real.sin θ / Real.cos θ) : ℝ) : ℂ)) * (Real.cos θ : ℂ) = Complex.exp (-(θ : ℂ) * I) := by
   have hc' : Complex.cos (θ : ℂ) ≠ 0 := by rw [← Complex.ofReal_cos]; exact_mod_cast hc
