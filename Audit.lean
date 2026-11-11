@@ -51,6 +51,7 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaOmega_Quantum
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
@@ -972,6 +973,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_11_rr_mode1
 #print axioms CFT.Index.X_11_rr_eta_integrability
 #print axioms CFT.Index.X_11_rr_cos_mode_excluded
+#print axioms CFT.Index.X_11_oq_osc_unique
+#print axioms CFT.Index.X_11_oq_osc_solution
+#print axioms CFT.Index.X_11_oq_fc_over_sin
+#print axioms CFT.Index.X_11W_oq_testfield
+#print axioms CFT.Index.X_11W_oq_spectrum
 #print axioms CFT.Index.X_12_gauge_singlet
 #print axioms CFT.Index.X_12_eps_xsT
 #print axioms CFT.Index.X_12_xs_sq
@@ -1082,6 +1088,17 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIV_6_throat_mode
 #print axioms CFT.Index.XIV_6_bf_violation
 #print axioms CFT.Index.XIV_8_superpos_null
+#print axioms CFT.Index.XIV_8_oq_M_superpos
+#print axioms CFT.Index.XIV_8_oq_product
+#print axioms CFT.Index.XIV_8_oq_no_superposition
+#print axioms CFT.Index.XV_1_oq_action_quadratic
+#print axioms CFT.Index.XV_2_oq_radius_wave
+#print axioms CFT.Index.XV_2_oq_cap_dalembert
+#print axioms CFT.Index.XV_3_oq_periodic
+#print axioms CFT.Index.XV_3_oq_antipodal
+#print axioms CFT.Index.XV_4_oq_energy_coeff
+#print axioms CFT.Index.XV_4_oq_classical_scale
+#print axioms CFT.Index.XV_4_oq_quantized_scale
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1097,6 +1114,24 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaIntegrals.beta23_m1
 #print axioms CFT.AlphaIntegrals.beta23_m2
 #print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.OQ.oq_M_superpos
+#print axioms CFT.OQ.oq_D
+#print axioms CFT.OQ.oq_product
+#print axioms CFT.OQ.oq_cubic_no_four
+#print axioms CFT.OQ.oq_no_superposition
+#print axioms CFT.OQ.oq_osc_unique
+#print axioms CFT.OQ.oq_osc_solution
+#print axioms CFT.OQ.oq_fc_over_sin
+#print axioms CFT.OQ.oq_testfield
+#print axioms CFT.OQ.oq_spectrum
+#print axioms CFT.OQ.oq_action_quadratic
+#print axioms CFT.OQ.oq_radius_wave
+#print axioms CFT.OQ.oq_periodic
+#print axioms CFT.OQ.oq_antipodal
+#print axioms CFT.OQ.oq_cap_dalembert
+#print axioms CFT.OQ.oq_energy_coeff
+#print axioms CFT.OQ.oq_classical_scale
+#print axioms CFT.OQ.oq_quantized_scale
 #print axioms CFT.Conformal.cap_box
 #print axioms CFT.Conformal.neck_derivs
 #print axioms CFT.Conformal.neck_box
