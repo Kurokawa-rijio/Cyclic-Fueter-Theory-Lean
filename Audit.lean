@@ -51,6 +51,7 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaOmega_Close
 import CFT.AlphaOmega_Quantum
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
@@ -960,6 +961,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_6_rj_color_nonempty
 #print axioms CFT.Index.X_6_rj_slice_nonempty
 #print axioms CFT.Index.X_6_rj_null_witness
+#print axioms CFT.Index.X_7_oc_raychaudhuri
+#print axioms CFT.Index.X_7_oc_raychaudhuri_sign
+#print axioms CFT.Index.X_7_oc_trapped
 #print axioms CFT.Index.X_8_rr_ms_constraint
 #print axioms CFT.Index.X_8_rr_closed_total_zero
 #print axioms CFT.Index.X_8_rr_cap_mass
@@ -1027,8 +1031,12 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_4_hardy_neck
 #print axioms CFT.Index.XI_4_no_growing_mode
 #print axioms CFT.Index.XI_5_rr_dyon_bf
+#print axioms CFT.Index.XI_5_oc_attractor
+#print axioms CFT.Index.XI_5_oc_EB
 #print axioms CFT.Index.XI_7_rr_higgs_cap_residual
 #print axioms CFT.Index.XI_7_rr_higgs_cap_nonzero
+#print axioms CFT.Index.XI_7_oc_higgs_vev
+#print axioms CFT.Index.XI_7_oc_higgs_sym
 #print axioms CFT.Index.XII_1_ch2
 #print axioms CFT.Index.XII_1_polar_exists
 #print axioms CFT.Index.XII_1_polar_unique
@@ -1048,6 +1056,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XII_4_neck_einstein
 #print axioms CFT.Index.XII_5_end_phase
 #print axioms CFT.Index.XII_5_phase_lemma
+#print axioms CFT.Index.XII_5_oc_ads_global
+#print axioms CFT.Index.XII_5_oc_ads_sync
+#print axioms CFT.Index.XII_5_oc_focus
 #print axioms CFT.Index.XII_6_real_part
 #print axioms CFT.Index.XII_6_cap_real_part
 #print axioms CFT.Index.XII_6_spin_is_witten
@@ -1056,6 +1067,8 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XII_7_gudermann_phase
 #print axioms CFT.Index.XII_7_cap_modulus
 #print axioms CFT.Index.XII_8_quantized
+#print axioms CFT.Index.XII_8_oc_well
+#print axioms CFT.Index.XII_8_oc_parity
 #print axioms CFT.Index.XIII_1_cap_box
 #print axioms CFT.Index.XIII_1_neck_derivs
 #print axioms CFT.Index.XIII_1_neck_box
@@ -1088,6 +1101,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIV_5_bf_violation
 #print axioms CFT.Index.XIV_6_throat_mode
 #print axioms CFT.Index.XIV_6_bf_violation
+#print axioms CFT.Index.XIV_7_oc_discrete_casimir
+#print axioms CFT.Index.XIV_7_oc_principal
+#print axioms CFT.Index.XIV_7_oc_node_spacing
 #print axioms CFT.Index.XIV_8_superpos_null
 #print axioms CFT.Index.XIV_8_oq_M_superpos
 #print axioms CFT.Index.XIV_8_oq_product
@@ -1100,6 +1116,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_4_oq_energy_coeff
 #print axioms CFT.Index.XV_4_oq_classical_scale
 #print axioms CFT.Index.XV_4_oq_quantized_scale
+#print axioms CFT.Index.XV_4_oc_omega_level
+#print axioms CFT.Index.XV_5_oq_neck_unique
+#print axioms CFT.Index.XV_5_oc_invariant_not_regular
 #print axioms CFT.Index.XV_6_oq_sl2_bracket
 #print axioms CFT.Index.XV_7_oq_neck_invariant
 #print axioms CFT.Index.XV_7_oq_neck_unique
@@ -1118,6 +1137,23 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaIntegrals.beta23_m1
 #print axioms CFT.AlphaIntegrals.beta23_m2
 #print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.OC.oc_raychaudhuri
+#print axioms CFT.OC.oc_raychaudhuri_sign
+#print axioms CFT.OC.oc_trapped
+#print axioms CFT.OC.oc_attractor
+#print axioms CFT.OC.oc_EB
+#print axioms CFT.OC.oc_higgs_vev
+#print axioms CFT.OC.oc_higgs_sym
+#print axioms CFT.OC.oc_ads_global
+#print axioms CFT.OC.oc_ads_sync
+#print axioms CFT.OC.oc_focus
+#print axioms CFT.OC.oc_omega_level
+#print axioms CFT.OC.oc_well
+#print axioms CFT.OC.oc_parity
+#print axioms CFT.OC.oc_discrete_casimir
+#print axioms CFT.OC.oc_principal
+#print axioms CFT.OC.oc_node_spacing
+#print axioms CFT.OC.oc_invariant_not_regular
 #print axioms CFT.OQ.oq_M_superpos
 #print axioms CFT.OQ.oq_D
 #print axioms CFT.OQ.oq_product
