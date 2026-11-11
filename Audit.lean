@@ -978,6 +978,7 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_11_oq_fc_over_sin
 #print axioms CFT.Index.X_11W_oq_testfield
 #print axioms CFT.Index.X_11W_oq_spectrum
+#print axioms CFT.Index.X_11W_oq_potential_shift
 #print axioms CFT.Index.X_12_gauge_singlet
 #print axioms CFT.Index.X_12_eps_xsT
 #print axioms CFT.Index.X_12_xs_sq
@@ -1099,6 +1100,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_4_oq_energy_coeff
 #print axioms CFT.Index.XV_4_oq_classical_scale
 #print axioms CFT.Index.XV_4_oq_quantized_scale
+#print axioms CFT.Index.XV_6_oq_sl2_bracket
+#print axioms CFT.Index.XV_7_oq_neck_invariant
+#print axioms CFT.Index.XV_7_oq_neck_unique
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1132,6 +1136,10 @@ import CFT.ZeroModeL2
 #print axioms CFT.OQ.oq_energy_coeff
 #print axioms CFT.OQ.oq_classical_scale
 #print axioms CFT.OQ.oq_quantized_scale
+#print axioms CFT.OQ.oq_sl2_bracket
+#print axioms CFT.OQ.oq_neck_invariant
+#print axioms CFT.OQ.oq_neck_unique
+#print axioms CFT.OQ.oq_potential_shift
 #print axioms CFT.Conformal.cap_box
 #print axioms CFT.Conformal.neck_derivs
 #print axioms CFT.Conformal.neck_box
