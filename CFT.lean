@@ -53,6 +53,7 @@ import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
 import CFT.AlphaOmega_Close
+import CFT.AlphaOmega_Last
 import CFT.AlphaOmega_Quantum
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar

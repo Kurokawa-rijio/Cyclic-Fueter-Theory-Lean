@@ -52,6 +52,7 @@ import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
 import CFT.AlphaOmega_Close
+import CFT.AlphaOmega_Last
 import CFT.AlphaOmega_Quantum
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
@@ -974,6 +975,7 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_9_same_point
 #print axioms CFT.Index.X_9_static_clock
 #print axioms CFT.Index.X_9_neck_centre_clock
+#print axioms CFT.Index.X_10_ol_rep_count
 #print axioms CFT.Index.X_11_rr_mode1
 #print axioms CFT.Index.X_11_rr_eta_integrability
 #print axioms CFT.Index.X_11_rr_cos_mode_excluded
@@ -983,6 +985,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_11W_oq_testfield
 #print axioms CFT.Index.X_11W_oq_spectrum
 #print axioms CFT.Index.X_11W_oq_potential_shift
+#print axioms CFT.Index.X_11B_ol_ym_energy
+#print axioms CFT.Index.X_11B_ol_sphaleron_rate
+#print axioms CFT.Index.X_11B_ol_geometry_rigid
 #print axioms CFT.Index.X_12_gauge_singlet
 #print axioms CFT.Index.X_12_eps_xsT
 #print axioms CFT.Index.X_12_xs_sq
@@ -1033,10 +1038,14 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_5_rr_dyon_bf
 #print axioms CFT.Index.XI_5_oc_attractor
 #print axioms CFT.Index.XI_5_oc_EB
+#print axioms CFT.Index.XI_6_ol_hp_sign
+#print axioms CFT.Index.XI_6_ol_hp_temperature
 #print axioms CFT.Index.XI_7_rr_higgs_cap_residual
 #print axioms CFT.Index.XI_7_rr_higgs_cap_nonzero
 #print axioms CFT.Index.XI_7_oc_higgs_vev
 #print axioms CFT.Index.XI_7_oc_higgs_sym
+#print axioms CFT.Index.XI_7B_ol_ps_W
+#print axioms CFT.Index.XI_7B_ol_ps_h
 #print axioms CFT.Index.XII_1_ch2
 #print axioms CFT.Index.XII_1_polar_exists
 #print axioms CFT.Index.XII_1_polar_unique
@@ -1122,6 +1131,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_6_oq_sl2_bracket
 #print axioms CFT.Index.XV_7_oq_neck_invariant
 #print axioms CFT.Index.XV_7_oq_neck_unique
+#print axioms CFT.Index.XV_8_ol_reduced_action
+#print axioms CFT.Index.XV_8_ol_gauge_k2
+#print axioms CFT.Index.XV_8_ol_gauge_count
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1154,6 +1166,17 @@ import CFT.ZeroModeL2
 #print axioms CFT.OC.oc_principal
 #print axioms CFT.OC.oc_node_spacing
 #print axioms CFT.OC.oc_invariant_not_regular
+#print axioms CFT.OL.ol_ym_energy
+#print axioms CFT.OL.ol_sphaleron_rate
+#print axioms CFT.OL.ol_geometry_rigid
+#print axioms CFT.OL.ol_hp_sign
+#print axioms CFT.OL.ol_hp_temperature
+#print axioms CFT.OL.ol_ps_W
+#print axioms CFT.OL.ol_ps_h
+#print axioms CFT.OL.ol_reduced_action
+#print axioms CFT.OL.ol_gauge_k2
+#print axioms CFT.OL.ol_gauge_count
+#print axioms CFT.OL.ol_rep_count
 #print axioms CFT.OQ.oq_M_superpos
 #print axioms CFT.OQ.oq_D
 #print axioms CFT.OQ.oq_product
