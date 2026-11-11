@@ -172,6 +172,7 @@ theorem oc_principal : -(1 / 4 : ℝ) - (Real.sqrt 3 / 2) ^ 2 = -1 := by
 theorem oc_node_spacing : Real.sqrt 3 / 2 * (2 * π / Real.sqrt 3) = π := by
   have h : Real.sqrt 3 ≠ 0 := by positivity
   field_simp
+  ring
 
 /-! ### α-XV.5:不変な配位は正則でない -/
 
