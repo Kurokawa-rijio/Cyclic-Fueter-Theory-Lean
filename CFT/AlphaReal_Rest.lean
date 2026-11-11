@@ -90,8 +90,7 @@ theorem rr_extremal_rprime_deriv {Ω Ωc Ωcc : ℝ → ℝ}
   よって r″ = Ω_ηη/Ω² -/
 theorem rr_hessian_char (Ω0 Ωcc Ωηη : ℝ) (hne : Ω0 ≠ 0) (htrace : -Ωηη + Ωcc = Ω0) :
     (Ωcc - Ω0) / Ω0 / Ω0 = Ωηη / Ω0 ^ 2 := by
-  rw [show Ωcc - Ω0 = Ωηη by linarith]
-  field_simp <;> ring
+  rw [show Ωcc - Ω0 = Ωηη by linarith, div_div, sq]
 
 /-- W = r′ 型のハミルトン拘束 P(r, r′, r″) = 2ℓ²r″² + 2rr″ + ℓ²(1 − r′²)²/r² − (1 − r′²) の r = ℓ、r′ = 0 での根は
   r″ = 0 と r″ = −1/ℓ だけ -/
@@ -160,24 +159,30 @@ def LinSol (c s C S f fe fc fee fcc fec W We Wc : ℝ) : Prop :=
   S ^ 2 * (2 * c * f - 2 * c * (fee - fcc) - 4 * s * fe) + 8 * C * W = 0 ∧
   (-fee + fcc - f) * S + 2 * C * fc = 0
 
-/-- ∂_η が生む摂動:f = −sin η、δW = 0 -/
+/-- ∂_η が生む摂動:f = −sin η、δW = 0(以下 c² + s² = 1、cos 2η = c² − s²、sin 2η = 2sc) -/
 theorem rr_mode0 (c s C S : ℝ) : LinSol c s C S (-s) (-c) 0 s 0 0 0 0 0 := by
   unfold LinSol; refine ⟨by ring, by ring, by ring, by ring⟩
 
 /-- ξ₁ = sin η cos χ ∂_η + cos η sin χ ∂_χ が生む摂動:f = cos χ cos 2η、δW = −cos η sin²χ
   (cos 2η = c² − s²、sin 2η = 2sc) -/
-theorem rr_mode1 (c s C S : ℝ) :
+theorem rr_mode1 (c s C S : ℝ) (h : s ^ 2 + c ^ 2 = 1) :
     LinSol c s C S (C * (c ^ 2 - s ^ 2)) (-2 * C * (2 * s * c)) (-S * (c ^ 2 - s ^ 2))
       (-4 * C * (c ^ 2 - s ^ 2)) (-C * (c ^ 2 - s ^ 2)) (2 * S * (2 * s * c))
       (-c * S ^ 2) (s * S ^ 2) (-2 * c * S * C) := by
-  unfold LinSol; refine ⟨by ring, by ring, by ring, by ring⟩
+  unfold LinSol
+  refine ⟨by linear_combination (16 * S * c * C - 8 * S ^ 2 * s) * h,
+    by linear_combination (16 * S * c * C + 8 * S ^ 2 * s) * h,
+    by linear_combination (8 * S ^ 2 * c * C) * h, by ring⟩
 
 /-- ξ₂ = cos η cos χ ∂_η − sin η sin χ ∂_χ が生む摂動:f = −cos χ sin 2η、δW = sin η sin²χ -/
-theorem rr_mode2 (c s C S : ℝ) :
+theorem rr_mode2 (c s C S : ℝ) (h : s ^ 2 + c ^ 2 = 1) :
     LinSol c s C S (-C * (2 * s * c)) (-2 * C * (c ^ 2 - s ^ 2)) (S * (2 * s * c))
       (4 * C * (2 * s * c)) (C * (2 * s * c)) (2 * S * (c ^ 2 - s ^ 2))
       (s * S ^ 2) (c * S ^ 2) (2 * s * S * C) := by
-  unfold LinSol; refine ⟨by ring, by ring, by ring, by ring⟩
+  unfold LinSol
+  refine ⟨by linear_combination (-16 * S * C * s - 8 * S ^ 2 * c) * h,
+    by linear_combination (-16 * S * C * s + 8 * S ^ 2 * c) * h,
+    by linear_combination (-8 * S ^ 2 * C * s) * h, by ring⟩
 
 /-- (C) と (T) から代数的に決まる δW(χ を固定した η の関数)の η 微分 -/
 theorem rr_dW_eta_deriv {F Fc Fe Fec Fee : ℝ → ℝ} (C S η : ℝ) (hF : HasDerivAt F (Fe η) η)

@@ -94,8 +94,8 @@ theorem rj_capFluxD_cont (l s : ℝ) : Continuous (capFluxD l s) := by
 theorem rj_color_dumbbell {l s a b j : ℝ} (hl : 0 < l) (hs : s ≠ 0)
     (ha : a < l * π / 2) (hb : l * π / 2 < b)
     (weak : ∀ φ φ' : ℝ → ℝ, (∀ x, HasDerivAt φ (φ' x) x) → Continuous φ' → φ a = 0 → φ b = 0 →
-      -((∫ x in a..l * π / 2, capFlux l s x * φ' x) + ∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ' x)
-        = (∫ x in a..l * π / 2, capFluxD l s x * φ x) + (∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ x)
+      -((∫ x in a..l * π / 2, capFlux l s x * φ' x) + ∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ' x)
+        = (∫ x in a..l * π / 2, capFluxD l s x * φ x) + (∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ x)
           + j * φ (l * π / 2)) :
     j = s / l ∧ j ≠ 0 := by
   have h := rj_delta_coeff_one (m := j) ha hb (pm := capFlux l s) (pp := fun _ => 0)
@@ -111,8 +111,8 @@ theorem rj_color_dumbbell {l s a b j : ℝ} (hl : 0 < l) (hs : s ≠ 0)
 /-- 非空性:上の弱い形の方程式は j = [流束] で実際に成り立つ(部分積分) -/
 theorem rj_color_nonempty (l s a b : ℝ) :
     ∃ j : ℝ, ∀ φ φ' : ℝ → ℝ, (∀ x, HasDerivAt φ (φ' x) x) → Continuous φ' → φ a = 0 → φ b = 0 →
-      -((∫ x in a..l * π / 2, capFlux l s x * φ' x) + ∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ' x)
-        = (∫ x in a..l * π / 2, capFluxD l s x * φ x) + (∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ x)
+      -((∫ x in a..l * π / 2, capFlux l s x * φ' x) + ∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ' x)
+        = (∫ x in a..l * π / 2, capFluxD l s x * φ x) + (∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ x)
           + j * φ (l * π / 2) :=
   ⟨_, rj_weak_of_pieces (pm := capFlux l s) (pp := fun _ => 0) (qm := capFluxD l s) (qp := fun _ => 0)
     (rj_capFlux_hasDeriv l s) (fun x => hasDerivAt_const x 0) (rj_capFluxD_cont l s) continuous_const⟩
@@ -162,8 +162,8 @@ noncomputable def scal3 (R R1 R2 : ℝ) : ℝ := 2 * (1 - R1 ^ 2 - 2 * R * R2) /
 theorem rj_slice_dumbbell {l a b m G σ : ℝ} (hl : 0 < l) (hG : G ≠ 0)
     (ha : a < l * π / 2) (hb : l * π / 2 < b)
     (weak : ∀ φ φ' : ℝ → ℝ, (∀ x, HasDerivAt φ (φ' x) x) → Continuous φ' → φ a = 0 → φ b = 0 →
-      -((∫ x in a..l * π / 2, capR1 l x * φ' x) + ∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ' x)
-        = (∫ x in a..l * π / 2, capR2 l x * φ x) + (∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ x)
+      -((∫ x in a..l * π / 2, capR1 l x * φ' x) + ∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ' x)
+        = (∫ x in a..l * π / 2, capR2 l x * φ x) + (∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ x)
           + m * φ (l * π / 2))
     (hσ : 8 * π * G * σ = -2 / l * m) :
     m = 0 ∧ σ = 0 ∧ scal3 (capR l (l * π / 2)) (capR1 l (l * π / 2)) (capR2 l (l * π / 2)) = 6 / l ^ 2
@@ -189,8 +189,8 @@ theorem rj_slice_dumbbell {l a b m G σ : ℝ} (hl : 0 < l) (hG : G ≠ 0)
 /-- 非空性:上の弱い形の方程式は m = [R′] で実際に成り立つ -/
 theorem rj_slice_nonempty (l a b : ℝ) :
     ∃ m : ℝ, ∀ φ φ' : ℝ → ℝ, (∀ x, HasDerivAt φ (φ' x) x) → Continuous φ' → φ a = 0 → φ b = 0 →
-      -((∫ x in a..l * π / 2, capR1 l x * φ' x) + ∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ' x)
-        = (∫ x in a..l * π / 2, capR2 l x * φ x) + (∫ x in l * π / 2..b, (fun _ => (0 : ℝ)) x * φ x)
+      -((∫ x in a..l * π / 2, capR1 l x * φ' x) + ∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ' x)
+        = (∫ x in a..l * π / 2, capR2 l x * φ x) + (∫ x in (l * π / 2)..b, (fun _ => (0 : ℝ)) x * φ x)
           + m * φ (l * π / 2) :=
   ⟨_, rj_weak_of_pieces (pm := capR1 l) (pp := fun _ => 0) (qm := capR2 l) (qp := fun _ => 0)
     (rj_capR1_hasDeriv l) (fun x => hasDerivAt_const x 0) (rj_capR2_cont l) continuous_const⟩
