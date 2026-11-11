@@ -51,6 +51,7 @@ import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
+import CFT.AlphaJunction_Unique
 import CFT.AlphaOmega_Close
 import CFT.AlphaOmega_Last
 import CFT.AlphaOmega_Quantum
@@ -1093,6 +1094,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIII_4_rr_conformal_two_values
 #print axioms CFT.Index.XIII_4G_rr_general_W_rpp
 #print axioms CFT.Index.XIII_4G_rr_general_W_any
+#print axioms CFT.Index.XIII_4A_ju_location
+#print axioms CFT.Index.XIII_4A_ju_C1_auto
+#print axioms CFT.Index.XIII_4A_ju_cap_second
+#print axioms CFT.Index.XIII_4A_ju_jump_fixed
+#print axioms CFT.Index.XIII_4A_ju_theorem_A
 #print axioms CFT.Index.XIII_5_extremal_limit
 #print axioms CFT.Index.XIII_6_periodic
 #print axioms CFT.Index.XIII_6_cap_energy
@@ -1149,6 +1155,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaIntegrals.beta23_m1
 #print axioms CFT.AlphaIntegrals.beta23_m2
 #print axioms CFT.AlphaIntegrals.z28d_coefficient
+#print axioms CFT.JU.ju_location
+#print axioms CFT.JU.ju_C1_auto
+#print axioms CFT.JU.ju_cap_second
+#print axioms CFT.JU.ju_jump_fixed
+#print axioms CFT.JU.ju_theorem_A
 #print axioms CFT.OC.oc_raychaudhuri
 #print axioms CFT.OC.oc_raychaudhuri_sign
 #print axioms CFT.OC.oc_trapped
