@@ -55,6 +55,8 @@ import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaPillar_Smooth
+import CFT.AlphaReal_Junction
+import CFT.AlphaReal_Rest
 import CFT.AlphaRoot_Duality
 import CFT.AlphaRoot_Junction
 import CFT.AlphaS1_Closure
@@ -765,8 +767,12 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.II_9_E0_eq
 #print axioms CFT.Index.III_1_israel_jump
 #print axioms CFT.Index.III_1_gauss_tube
+#print axioms CFT.Index.III_1_rj_tube_mismatch
+#print axioms CFT.Index.III_1_rj_color_dumbbell
 #print axioms CFT.Index.III_2_null_front
 #print axioms CFT.Index.III_2_jump_mixed
+#print axioms CFT.Index.III_2_rj_null_real
+#print axioms CFT.Index.III_2_rj_front_tangential
 #print axioms CFT.Index.III_3_penrose_from_constraints
 #print axioms CFT.Index.III_3_integrand_nonneg
 #print axioms CFT.Index.III_4_a_eq_l
@@ -778,12 +784,15 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.III_7_ell_cap
 #print axioms CFT.Index.III_9_no_shell_iff
 #print axioms CFT.Index.III_9_constraint_form
+#print axioms CFT.Index.III_9_rj_slice_dumbbell
 #print axioms CFT.Index.IV_1_cap_constraint
 #print axioms CFT.Index.IV_1_neck_constraint
 #print axioms CFT.Index.IV_1_junction_jumps
 #print axioms CFT.Index.IV_2_jump_const
 #print axioms CFT.Index.IV_2_ruu_jump
 #print axioms CFT.Index.IV_2_goursat_W
+#print axioms CFT.Index.IV_2_rj_Wu_transport
+#print axioms CFT.Index.IV_2_rj_ruu_corner
 #print axioms CFT.Index.IV_3_center_ode
 #print axioms CFT.Index.IV_4_energy_deriv
 #print axioms CFT.Index.IV_4_energy_nondecreasing
@@ -947,6 +956,12 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_6_nonempty_cap
 #print axioms CFT.Index.X_6_nonempty_magnetic
 #print axioms CFT.Index.X_6_nonempty_window
+#print axioms CFT.Index.X_6_rj_color_nonempty
+#print axioms CFT.Index.X_6_rj_slice_nonempty
+#print axioms CFT.Index.X_6_rj_null_witness
+#print axioms CFT.Index.X_8_rr_ms_constraint
+#print axioms CFT.Index.X_8_rr_closed_total_zero
+#print axioms CFT.Index.X_8_rr_cap_mass
 #print axioms CFT.Index.X_9_on_hyperboloid
 #print axioms CFT.Index.X_9_neck_gaussian
 #print axioms CFT.Index.X_9_cap_gaussian
@@ -954,6 +969,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_9_same_point
 #print axioms CFT.Index.X_9_static_clock
 #print axioms CFT.Index.X_9_neck_centre_clock
+#print axioms CFT.Index.X_11_rr_mode1
+#print axioms CFT.Index.X_11_rr_eta_integrability
+#print axioms CFT.Index.X_11_rr_cos_mode_excluded
 #print axioms CFT.Index.X_12_gauge_singlet
 #print axioms CFT.Index.X_12_eps_xsT
 #print axioms CFT.Index.X_12_xs_sq
@@ -1001,6 +1019,9 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_4_planck_condition
 #print axioms CFT.Index.XI_4_hardy_neck
 #print axioms CFT.Index.XI_4_no_growing_mode
+#print axioms CFT.Index.XI_5_rr_dyon_bf
+#print axioms CFT.Index.XI_7_rr_higgs_cap_residual
+#print axioms CFT.Index.XI_7_rr_higgs_cap_nonzero
 #print axioms CFT.Index.XII_1_ch2
 #print axioms CFT.Index.XII_1_polar_exists
 #print axioms CFT.Index.XII_1_polar_unique
@@ -1038,6 +1059,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIII_2_r_prime_conformal
 #print axioms CFT.Index.XIII_3_eta_neck
 #print axioms CFT.Index.XIII_3_eta_cap
+#print axioms CFT.Index.XIII_4_rr_hessian_char
+#print axioms CFT.Index.XIII_4_rr_two_roots
+#print axioms CFT.Index.XIII_4_rr_conformal_two_values
+#print axioms CFT.Index.XIII_4G_rr_general_W_rpp
+#print axioms CFT.Index.XIII_4G_rr_general_W_any
 #print axioms CFT.Index.XIII_5_extremal_limit
 #print axioms CFT.Index.XIII_6_periodic
 #print axioms CFT.Index.XIII_6_cap_energy
@@ -1120,6 +1146,47 @@ import CFT.ZeroModeL2
 #print axioms CFT.Smooth.bf_violation
 #print axioms CFT.Smooth.superpos_null
 #print axioms CFT.Smooth.cylinder_mode
+#print axioms CFT.RJ.rj_weak_of_pieces
+#print axioms CFT.RJ.rj_delta_coeff_one
+#print axioms CFT.RJ.rj_capW_hasDeriv
+#print axioms CFT.RJ.rj_capFlux_hasDeriv
+#print axioms CFT.RJ.rj_capFluxD_cont
+#print axioms CFT.RJ.rj_color_dumbbell
+#print axioms CFT.RJ.rj_color_nonempty
+#print axioms CFT.RJ.rj_cap_tube_radius
+#print axioms CFT.RJ.rj_tube_mismatch
+#print axioms CFT.RJ.rj_capR_hasDeriv
+#print axioms CFT.RJ.rj_capR1_hasDeriv
+#print axioms CFT.RJ.rj_capR2_cont
+#print axioms CFT.RJ.rj_slice_dumbbell
+#print axioms CFT.RJ.rj_slice_nonempty
+#print axioms CFT.RJ.rj_null_real
+#print axioms CFT.RJ.rj_front_tangential
+#print axioms CFT.RJ.rj_null_witness
+#print axioms CFT.RJ.rj_Wu_transport
+#print axioms CFT.RJ.rj_capWu_corner
+#print axioms CFT.RJ.rj_ruu_corner
+#print axioms CFT.RR.rr_ms_deriv
+#print axioms CFT.RR.rr_ms_constraint
+#print axioms CFT.RR.rr_closed_total_zero
+#print axioms CFT.RR.rr_cap_mass
+#print axioms CFT.RR.rr_extremal_rprime_deriv
+#print axioms CFT.RR.rr_hessian_char
+#print axioms CFT.RR.rr_two_roots
+#print axioms CFT.RR.rr_conformal_two_values
+#print axioms CFT.RR.rr_general_W_rpp
+#print axioms CFT.RR.rr_general_W_any
+#print axioms CFT.RR.rr_mode0
+#print axioms CFT.RR.rr_mode1
+#print axioms CFT.RR.rr_mode2
+#print axioms CFT.RR.rr_dW_eta_deriv
+#print axioms CFT.RR.rr_eta_integrability
+#print axioms CFT.RR.rr_chi_ode
+#print axioms CFT.RR.rr_cos_mode_excluded
+#print axioms CFT.RR.rr_cos_mode_Wchi
+#print axioms CFT.RR.rr_higgs_cap_residual
+#print axioms CFT.RR.rr_higgs_cap_nonzero
+#print axioms CFT.RR.rr_dyon_bf
 #print axioms CFT.RootDuality.det_M
 #print axioms CFT.RootDuality.real_slice_unitary
 #print axioms CFT.RootDuality.imag_slice_hermitian

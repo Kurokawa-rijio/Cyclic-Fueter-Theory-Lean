@@ -47,6 +47,8 @@ import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaPillar_Smooth
+import CFT.AlphaReal_Junction
+import CFT.AlphaReal_Rest
 import CFT.AlphaRoot_Duality
 import CFT.AlphaRoot_Junction
 import CFT.AlphaS2_4DMatch
@@ -228,17 +230,29 @@ alias II_9_E0_eq := CFT.Z5.E0_eq
 
 /-! ## α-III ダンベルの形と接合 -/
 
-/-- III.1(ダンベル、部):Israel 接合と法線応力の跳び。運動学:接合面。作用:EYM の Einstein 方程式。力学:法線応力の跳び -/
+/-- III.1(ダンベル、完):Israel 接合と法線応力の跳び:瞬間での [T_nn] = −1/(4πGℓ²) ≠ 0、時間的な管は面積半径が帽子 √(ℓ² − τ²)・首 ℓ で τ ≠ 0 で一致せず接合面になれない、表面の色の流れ j = s/ℓ ≠ 0(実関数と弱い形で、RealLine なし)。運動学:接合面。作用:EYM の Einstein 方程式と YM 方程式(弱い形)。力学:時間的な接合は不可能、接合はヌルの波面へ -/
 alias III_1_israel_jump := CFT.AlphaIII.israel_jump
 
-/-- III.1(ダンベル、部):Israel 接合と法線応力の跳び。運動学:接合面。作用:EYM の Einstein 方程式。力学:法線応力の跳び -/
+/-- III.1(ダンベル、完):Israel 接合と法線応力の跳び:瞬間での [T_nn] = −1/(4πGℓ²) ≠ 0、時間的な管は面積半径が帽子 √(ℓ² − τ²)・首 ℓ で τ ≠ 0 で一致せず接合面になれない、表面の色の流れ j = s/ℓ ≠ 0(実関数と弱い形で、RealLine なし)。運動学:接合面。作用:EYM の Einstein 方程式と YM 方程式(弱い形)。力学:時間的な接合は不可能、接合はヌルの波面へ -/
 alias III_1_gauss_tube := CFT.S4J.gauss_tube
 
-/-- III.2(ダンベル、部):波面での k^μ[T_μν] = 0。運動学:ヌルの波面。作用:EYM。力学:応力の跳びの条件 -/
+/-- III.1(ダンベル、完):Israel 接合と法線応力の跳び:瞬間での [T_nn] = −1/(4πGℓ²) ≠ 0、時間的な管は面積半径が帽子 √(ℓ² − τ²)・首 ℓ で τ ≠ 0 で一致せず接合面になれない、表面の色の流れ j = s/ℓ ≠ 0(実関数と弱い形で、RealLine なし)。運動学:接合面。作用:EYM の Einstein 方程式と YM 方程式(弱い形)。力学:時間的な接合は不可能、接合はヌルの波面へ -/
+alias III_1_rj_tube_mismatch := CFT.RJ.rj_tube_mismatch
+
+/-- III.1(ダンベル、完):Israel 接合と法線応力の跳び:瞬間での [T_nn] = −1/(4πGℓ²) ≠ 0、時間的な管は面積半径が帽子 √(ℓ² − τ²)・首 ℓ で τ ≠ 0 で一致せず接合面になれない、表面の色の流れ j = s/ℓ ≠ 0(実関数と弱い形で、RealLine なし)。運動学:接合面。作用:EYM の Einstein 方程式と YM 方程式(弱い形)。力学:時間的な接合は不可能、接合はヌルの波面へ -/
+alias III_1_rj_color_dumbbell := CFT.RJ.rj_color_dumbbell
+
+/-- III.2(ダンベル、完):波面での k^μ[T_μν] = 0:各 v の弱い形の uu 方程式と混合成分の式、角での [r_u] = 0 から面密度 μ = 0。W の連続から [T_vv] = 0、YM の表面流 0(実関数、RealLine なし)。運動学:ヌルの波面。作用:EYM(二重ヌル、弱い形)。力学:殻も表面流もない -/
 alias III_2_null_front := CFT.AlphaIII.null_front
 
-/-- III.2(ダンベル、部):波面での k^μ[T_μν] = 0。運動学:ヌルの波面。作用:EYM。力学:応力の跳びの条件 -/
+/-- III.2(ダンベル、完):波面での k^μ[T_μν] = 0:各 v の弱い形の uu 方程式と混合成分の式、角での [r_u] = 0 から面密度 μ = 0。W の連続から [T_vv] = 0、YM の表面流 0(実関数、RealLine なし)。運動学:ヌルの波面。作用:EYM(二重ヌル、弱い形)。力学:殻も表面流もない -/
 alias III_2_jump_mixed := CFT.S4J.jump_mixed
+
+/-- III.2(ダンベル、完):波面での k^μ[T_μν] = 0:各 v の弱い形の uu 方程式と混合成分の式、角での [r_u] = 0 から面密度 μ = 0。W の連続から [T_vv] = 0、YM の表面流 0(実関数、RealLine なし)。運動学:ヌルの波面。作用:EYM(二重ヌル、弱い形)。力学:殻も表面流もない -/
+alias III_2_rj_null_real := CFT.RJ.rj_null_real
+
+/-- III.2(ダンベル、完):波面での k^μ[T_μν] = 0:各 v の弱い形の uu 方程式と混合成分の式、角での [r_u] = 0 から面密度 μ = 0。W の連続から [T_vv] = 0、YM の表面流 0(実関数、RealLine なし)。運動学:ヌルの波面。作用:EYM(二重ヌル、弱い形)。力学:殻も表面流もない -/
+alias III_2_rj_front_tangential := CFT.RJ.rj_front_tangential
 
 /-- III.3(ダンベル、完):質量の下限 M₂ ≥ r₀。運動学:帽子と首の形。作用:拘束方程式。力学:質量の下限 -/
 alias III_3_penrose_from_constraints := CFT.Shape.penrose_from_constraints
@@ -267,11 +281,14 @@ alias III_7_min_mass := CFT.AlphaIII.min_mass
 /-- III.7(ダンベル、完):ℓ*/(2G) = √π M_Pl/g。運動学:首の半径 ℓ。作用:ハミルトン拘束。力学:ℓ² = 4πG/g² -/
 alias III_7_ell_cap := CFT.EYM.ell_cap
 
-/-- III.9(ダンベル、部):Gauss–Codazzi、時間的・空間的・ヌルの接合。運動学:接合面。作用:Einstein 方程式。力学:接合条件の分類 -/
+/-- III.9(ダンベル、完):Gauss–Codazzi、時間的・空間的・ヌルの接合:空間的(時間対称な切り口)は [R′] = 0 で殻なし、³R は 6/ℓ² → 2/ℓ² と跳ぶ。時間的は不可能(III.1)、ヌルは殻なしの弱い不連続(III.2、IV.2)。運動学:接合面。作用:Einstein 方程式(弱い形)。力学:接合条件の分類 -/
 alias III_9_no_shell_iff := CFT.Junction.no_shell_iff
 
-/-- III.9(ダンベル、部):Gauss–Codazzi、時間的・空間的・ヌルの接合。運動学:接合面。作用:Einstein 方程式。力学:接合条件の分類 -/
+/-- III.9(ダンベル、完):Gauss–Codazzi、時間的・空間的・ヌルの接合:空間的(時間対称な切り口)は [R′] = 0 で殻なし、³R は 6/ℓ² → 2/ℓ² と跳ぶ。時間的は不可能(III.1)、ヌルは殻なしの弱い不連続(III.2、IV.2)。運動学:接合面。作用:Einstein 方程式(弱い形)。力学:接合条件の分類 -/
 alias III_9_constraint_form := CFT.Junction.constraint_form
+
+/-- III.9(ダンベル、完):Gauss–Codazzi、時間的・空間的・ヌルの接合:空間的(時間対称な切り口)は [R′] = 0 で殻なし、³R は 6/ℓ² → 2/ℓ² と跳ぶ。時間的は不可能(III.1)、ヌルは殻なしの弱い不連続(III.2、IV.2)。運動学:接合面。作用:Einstein 方程式(弱い形)。力学:接合条件の分類 -/
+alias III_9_rj_slice_dumbbell := CFT.RJ.rj_slice_dumbbell
 
 
 /-! ## α-IV 時間発展と崩壊 -/
@@ -285,14 +302,20 @@ alias IV_1_neck_constraint := CFT.AlphaIntegrals.neck_constraint
 /-- IV.1(ダンベル、完(外)):初期データと適切性。運動学:帽子・首の初期データ。作用:EYM。力学:拘束と適切性 -/
 alias IV_1_junction_jumps := CFT.AlphaIntegrals.junction_jumps
 
-/-- IV.2(ダンベル、部):波面での跳びの輸送 [W_u]、[r_uu]。運動学:波面。作用:EYM(二重ヌル)。力学:跳びの輸送 -/
+/-- IV.2(ダンベル、完):波面での跳びの輸送:W_uv が両側で共通の値なら [W_u] は波面に沿って一定(角の値 1/(√2ℓ))、[r_u] = 0、角での [r_uu] = −1/ℓ(帽子の r = ℓcos²(u/(√2ℓ)) と一致)。運動学:波面。作用:EYM(二重ヌル)。力学:跳びは減衰も増幅もせず光速で運ばれる -/
 alias IV_2_jump_const := CFT.AlphaIV.jump_const
 
-/-- IV.2(ダンベル、部):波面での跳びの輸送 [W_u]、[r_uu]。運動学:波面。作用:EYM(二重ヌル)。力学:跳びの輸送 -/
+/-- IV.2(ダンベル、完):波面での跳びの輸送:W_uv が両側で共通の値なら [W_u] は波面に沿って一定(角の値 1/(√2ℓ))、[r_u] = 0、角での [r_uu] = −1/ℓ(帽子の r = ℓcos²(u/(√2ℓ)) と一致)。運動学:波面。作用:EYM(二重ヌル)。力学:跳びは減衰も増幅もせず光速で運ばれる -/
 alias IV_2_ruu_jump := CFT.AlphaIV.ruu_jump
 
-/-- IV.2(ダンベル、部):波面での跳びの輸送 [W_u]、[r_uu]。運動学:波面。作用:EYM(二重ヌル)。力学:跳びの輸送 -/
+/-- IV.2(ダンベル、完):波面での跳びの輸送:W_uv が両側で共通の値なら [W_u] は波面に沿って一定(角の値 1/(√2ℓ))、[r_u] = 0、角での [r_uu] = −1/ℓ(帽子の r = ℓcos²(u/(√2ℓ)) と一致)。運動学:波面。作用:EYM(二重ヌル)。力学:跳びは減衰も増幅もせず光速で運ばれる -/
 alias IV_2_goursat_W := CFT.S5.goursat_W
+
+/-- IV.2(ダンベル、完):波面での跳びの輸送:W_uv が両側で共通の値なら [W_u] は波面に沿って一定(角の値 1/(√2ℓ))、[r_u] = 0、角での [r_uu] = −1/ℓ(帽子の r = ℓcos²(u/(√2ℓ)) と一致)。運動学:波面。作用:EYM(二重ヌル)。力学:跳びは減衰も増幅もせず光速で運ばれる -/
+alias IV_2_rj_Wu_transport := CFT.RJ.rj_Wu_transport
+
+/-- IV.2(ダンベル、完):波面での跳びの輸送:W_uv が両側で共通の値なら [W_u] は波面に沿って一定(角の値 1/(√2ℓ))、[r_u] = 0、角での [r_uu] = −1/ℓ(帽子の r = ℓcos²(u/(√2ℓ)) と一致)。運動学:波面。作用:EYM(二重ヌル)。力学:跳びは減衰も増幅もせず光速で運ばれる -/
+alias IV_2_rj_ruu_corner := CFT.RJ.rj_ruu_corner
 
 /-- IV.3(ダンベル、完):二重ヌル方程式から中心の式を導出。運動学:帽子の中心。作用:EYM。力学:中心の ODE -/
 alias IV_3_center_ode := CFT.AlphaCompleteA.center_ode
@@ -792,18 +815,34 @@ alias X_5_witten_Ftr := CFT.FixUnify.witten_Ftr
 /-- X.5(ダンベル、完(外)):色電荷 Q^a の接合面での保存。運動学:Witten の ansatz。作用:YM。力学:F_tr の交換子が消え Q = 0 -/
 alias X_5_color_charge_vanishes := CFT.FixUnify.color_charge_vanishes
 
-/-- X.6(—、部):すべての最終定理に非空性。運動学:—。作用:—。力学:— -/
+/-- X.6(—、完):すべての最終定理に非空性(実関数版の最終定理は部分積分で仮定が満たせることを示す。RealLine 版は仮定が満たせないので置き換えた)。運動学:—。作用:—。力学:— -/
 alias X_6_nonempty_cap := CFT.Unify.nonempty_cap
 
-/-- X.6(—、部):すべての最終定理に非空性。運動学:—。作用:—。力学:— -/
+/-- X.6(—、完):すべての最終定理に非空性(実関数版の最終定理は部分積分で仮定が満たせることを示す。RealLine 版は仮定が満たせないので置き換えた)。運動学:—。作用:—。力学:— -/
 alias X_6_nonempty_magnetic := CFT.FixThermo.nonempty_magnetic
 
-/-- X.6(—、部):すべての最終定理に非空性。運動学:—。作用:—。力学:— -/
+/-- X.6(—、完):すべての最終定理に非空性(実関数版の最終定理は部分積分で仮定が満たせることを示す。RealLine 版は仮定が満たせないので置き換えた)。運動学:—。作用:—。力学:— -/
 alias X_6_nonempty_window := CFT.FixNeck.nonempty_window
+
+/-- X.6(—、完):すべての最終定理に非空性(実関数版の最終定理は部分積分で仮定が満たせることを示す。RealLine 版は仮定が満たせないので置き換えた)。運動学:—。作用:—。力学:— -/
+alias X_6_rj_color_nonempty := CFT.RJ.rj_color_nonempty
+
+/-- X.6(—、完):すべての最終定理に非空性(実関数版の最終定理は部分積分で仮定が満たせることを示す。RealLine 版は仮定が満たせないので置き換えた)。運動学:—。作用:—。力学:— -/
+alias X_6_rj_slice_nonempty := CFT.RJ.rj_slice_nonempty
+
+/-- X.6(—、完):すべての最終定理に非空性(実関数版の最終定理は部分積分で仮定が満たせることを示す。RealLine 版は仮定が満たせないので置き換えた)。運動学:—。作用:—。力学:— -/
+alias X_6_rj_null_witness := CFT.RJ.rj_null_witness
 
 -- X.7(ダンベル、未着手):数値:くさびの特性発展と大域的な継続。運動学:帽子・首・接合。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
--- X.8(ダンベル、未着手):閉じたダンベルの全エネルギーは 0(ハミルトン拘束の積分)。運動学:ダンベル全体(閉じた空間)。作用:EYM + GHY。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- X.8(ダンベル、完):閉じたダンベルの全エネルギーは 0:Misner–Sharp 質量 m = R(1 − R′²)/(2G) は m′ = 4πR²ρR′、両端の極で m = 0 なので ∫m′ = 0。帽子の m = ℓ sin³y/(2G) は赤道で首の ℓ/(2G) と一致。運動学:ダンベル全体(閉じた空間)。作用:EYM(ハミルトン拘束)。力学:全エネルギー 0 -/
+alias X_8_rr_ms_constraint := CFT.RR.rr_ms_constraint
+
+/-- X.8(ダンベル、完):閉じたダンベルの全エネルギーは 0:Misner–Sharp 質量 m = R(1 − R′²)/(2G) は m′ = 4πR²ρR′、両端の極で m = 0 なので ∫m′ = 0。帽子の m = ℓ sin³y/(2G) は赤道で首の ℓ/(2G) と一致。運動学:ダンベル全体(閉じた空間)。作用:EYM(ハミルトン拘束)。力学:全エネルギー 0 -/
+alias X_8_rr_closed_total_zero := CFT.RR.rr_closed_total_zero
+
+/-- X.8(ダンベル、完):閉じたダンベルの全エネルギーは 0:Misner–Sharp 質量 m = R(1 − R′²)/(2G) は m′ = 4πR²ρR′、両端の極で m = 0 なので ∫m′ = 0。帽子の m = ℓ sin³y/(2G) は赤道で首の ℓ/(2G) と一致。運動学:ダンベル全体(閉じた空間)。作用:EYM(ハミルトン拘束)。力学:全エネルギー 0 -/
+alias X_8_rr_cap_mass := CFT.RR.rr_cap_mass
 
 /-- X.9(ダンベル、完):共通の時計:初期の断面からのガウス正規時間(帽子 τ_c = ℓ sin η、首 t)。帽子の崩壊 ℓ と首の焦点 πℓ/2 は別の出来事。運動学:首の AdS₂ の埋め込み(同期・静的の座標)、帽子 a = ℓ cos η。作用:EYM(帽子と首の解)。力学:g_tt = −1、sin τ = sin(t/ℓ) sin u、首の中心の静的な時計 = ガウス時間 -/
 alias X_9_on_hyperboloid := CFT.BridgeClock.on_hyperboloid
@@ -828,7 +867,14 @@ alias X_9_neck_centre_clock := CFT.BridgeClock.neck_centre_clock
 
 -- X.10(ダンベル、未着手):作用はどこから決まるか:XI.4 の随伴 Higgs の出どころ(VII.8 の SO(10) の破れ、S⁹ の楕円体との関係)。運動学:内部空間 S⁹ と首。作用:—。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
--- X.11(ダンベル、未着手):帽子そのものの安定性(閉じた輻射 FRW の線形摂動)。運動学:帽子。作用:EYM。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- X.11(ダンベル、部):帽子そのものの安定性(閉じた輻射 FRW の線形摂動)。共形平坦・球対称・磁気的な摂動の部分:三つの共形 Killing の摂動が解、η 方向の可積分性の恒等式、χ 方向の常微分方程式への帰着、振幅の変化は除かれる(GRG 投稿論文の定理 1 の中核)。常微分方程式の一意性と Weyl 曲率をもつ摂動は残る。運動学:帽子。作用:EYM(線形化)。力学:共形平坦な摂動はゲージ(論文で証明、Lean は中核の恒等式) -/
+alias X_11_rr_mode1 := CFT.RR.rr_mode1
+
+/-- X.11(ダンベル、部):帽子そのものの安定性(閉じた輻射 FRW の線形摂動)。共形平坦・球対称・磁気的な摂動の部分:三つの共形 Killing の摂動が解、η 方向の可積分性の恒等式、χ 方向の常微分方程式への帰着、振幅の変化は除かれる(GRG 投稿論文の定理 1 の中核)。常微分方程式の一意性と Weyl 曲率をもつ摂動は残る。運動学:帽子。作用:EYM(線形化)。力学:共形平坦な摂動はゲージ(論文で証明、Lean は中核の恒等式) -/
+alias X_11_rr_eta_integrability := CFT.RR.rr_eta_integrability
+
+/-- X.11(ダンベル、部):帽子そのものの安定性(閉じた輻射 FRW の線形摂動)。共形平坦・球対称・磁気的な摂動の部分:三つの共形 Killing の摂動が解、η 方向の可積分性の恒等式、χ 方向の常微分方程式への帰着、振幅の変化は除かれる(GRG 投稿論文の定理 1 の中核)。常微分方程式の一意性と Weyl 曲率をもつ摂動は残る。運動学:帽子。作用:EYM(線形化)。力学:共形平坦な摂動はゲージ(論文で証明、Lean は中核の恒等式) -/
+alias X_11_rr_cos_mode_excluded := CFT.RR.rr_cos_mode_excluded
 
 /-- X.12(ダンベル、完(外)):W = r′ はねじれ:スピンとアイソスピンの一重項の上でスピン接続とゲージ場が打ち消し合う。湯川を入れたゼロモードは exp(∓∫m) で、二つの帽子に一つずつ局在(VII.8-C の否定的な結果が指した先)。外部:Dirac 作用素の共形共変性(Hitchin)、Callias の指数、4 次元の Dirac–湯川系を f′ = −img、g′ = imf へ縮約する部分(この縮約は形式化していない)。運動学:断面 dρ² + r²dΩ²、W = r′、極 2 の純粋ゲージ。作用:Dirac + 随伴 Higgs の湯川。力学:係数 (r′ − W)/r = 0、f = exp(∓∫m)、g = ±if、首で |f|² ≤ e^{−2m₀x} -/
 alias X_12_gauge_singlet := CFT.BridgeTwist.gauge_singlet
@@ -974,11 +1020,16 @@ alias XI_4_hardy_neck := CFT.HiggsNeck.hardy_neck
 /-- XI.4(ダンベル、完(外)):首を Higgs 場で支える(EYM–Higgs):首は厳密な解のまま、W の質量 m²ℓ² = −1 + m_W²ℓ²、安定の条件。運動学:首(そのまま)。作用:EYM + 随伴 Higgs。力学:m_W²ℓ² ≥ 3/4(v ≳ 0.244 M_Pl)ならどの長さの首も安定 -/
 alias XI_4_no_growing_mode := CFT.HiggsNeck.no_growing_mode
 
--- XI.5(ダンベル、未着手):dyon の首:電荷 q を加えたアトラクター(2pq = ℓ²)と W の安定性。E·B ≠ 0 で本当のカイラリティ(アノマリー)が出るか(X.12 の続き)。運動学:首(磁荷 p と電荷 q)。作用:EYM(+ ディラトン)。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- XI.5(ダンベル、部):dyon の首:電荷 q を加えたアトラクター(2pq = ℓ²)と W の安定性。電場による有効質量の負のずれ(外部の公式)を入れても W の BF 限界の破れは残る。アトラクターと E·B ≠ 0 のカイラリティは残る。運動学:首(磁荷 p と電荷 q)。作用:EYM(+ ディラトン)。力学:電場は不安定性を消さない -/
+alias XI_5_rr_dyon_bf := CFT.RR.rr_dyon_bf
 
 -- XI.6(ダンベル、未着手):実効的な負の宇宙定数(V.7-N)での Hawking–Page 型の相転移。運動学:首。作用:量子応力を含む有効作用。力学:—(Lean の定理なし:外部定理の引用または未着手)
 
--- XI.7(ダンベル、未着手):Higgs を入れたときの帽子と接合(W = cos χ の解の変化)。運動学:帽子・接合。作用:EYM + 随伴 Higgs。力学:—(Lean の定理なし:外部定理の引用または未着手)
+/-- XI.7(ダンベル、部):Higgs を入れたときの帽子と接合:W = cos χ は随伴 Higgs の質量項があると解でない(残差 −Ω²m²h² cos χ ≠ 0)。新しい帽子の解と接合は残る。運動学:帽子・接合。作用:EYM + 随伴 Higgs。力学:帽子の解は変わる -/
+alias XI_7_rr_higgs_cap_residual := CFT.RR.rr_higgs_cap_residual
+
+/-- XI.7(ダンベル、部):Higgs を入れたときの帽子と接合:W = cos χ は随伴 Higgs の質量項があると解でない(残差 −Ω²m²h² cos χ ≠ 0)。新しい帽子の解と接合は残る。運動学:帽子・接合。作用:EYM + 随伴 Higgs。力学:帽子の解は変わる -/
+alias XI_7_rr_higgs_cap_nonzero := CFT.RR.rr_higgs_cap_nonzero
 
 
 /-! ## α-XII 新しい柱:ローレンツ群 = 回転 × ブーストと自己双対接続 -/
@@ -1097,7 +1148,20 @@ alias XIII_3_eta_neck := CFT.Conformal.eta_neck
 /-- XIII.3(ダンベル、完(外)):Einstein の ηη 成分を共形の枠で再現:首 Ω² + Ω′² = ℓ²/sin⁴u、帽子 3(Ω² + Ω̇²) = 3ℓ²、どちらも ℓ² = 4πG/g²。運動学:帽子と首。作用:EYM(共形変換の公式は外部)。力学:IX.11・IX.17 と一致 -/
 alias XIII_3_eta_cap := CFT.Conformal.eta_cap
 
--- XIII.4(ダンベル、部):共形平坦(一つの Ω)のままでは跳びは消えない:静的な場合、極で正則な Ω = Bu/sin u と YM 場では拘束が破れる(数値、B を走査)。時間に依存する場合は未。運動学:静的宇宙の上の静的な Ω と W。作用:EYM。力学:否定的(数値)(Lean の定理なし:外部定理の引用または未着手)
+/-- XIII.4(ダンベル、完):共形平坦(一つの Ω)のままでは跳びは消えない:静的な場合は数値、時間に依存する場合も W = r′ 型の時間対称な切り口では極値球面で r″ = Ω_ηη/Ω² ∈ {0, −1/ℓ}(二つの根)。運動学:共形の枠の時間対称な切り口。作用:EYM(トレースとハミルトン拘束)。力学:否定的(定理) -/
+alias XIII_4_rr_hessian_char := CFT.RR.rr_hessian_char
+
+/-- XIII.4(ダンベル、完):共形平坦(一つの Ω)のままでは跳びは消えない:静的な場合は数値、時間に依存する場合も W = r′ 型の時間対称な切り口では極値球面で r″ = Ω_ηη/Ω² ∈ {0, −1/ℓ}(二つの根)。運動学:共形の枠の時間対称な切り口。作用:EYM(トレースとハミルトン拘束)。力学:否定的(定理) -/
+alias XIII_4_rr_two_roots := CFT.RR.rr_two_roots
+
+/-- XIII.4(ダンベル、完):共形平坦(一つの Ω)のままでは跳びは消えない:静的な場合は数値、時間に依存する場合も W = r′ 型の時間対称な切り口では極値球面で r″ = Ω_ηη/Ω² ∈ {0, −1/ℓ}(二つの根)。運動学:共形の枠の時間対称な切り口。作用:EYM(トレースとハミルトン拘束)。力学:否定的(定理) -/
+alias XIII_4_rr_conformal_two_values := CFT.RR.rr_conformal_two_values
+
+/-- XIII.4-G(ダンベル、完):一般の W では二つの根は消える:極値球面で r″ = (W² − W⁴/2 − ℓ²W′²)/ℓ、W = 0 なら任意の r″ ≤ 0 が W′ で実現できる。離散的な跳びは W = r′(スピン接続型)に固有。運動学:極値球面の初期データ。作用:EYM(ハミルトン拘束)。力学:跳びの離散性は W = r′ による -/
+alias XIII_4G_rr_general_W_rpp := CFT.RR.rr_general_W_rpp
+
+/-- XIII.4-G(ダンベル、完):一般の W では二つの根は消える:極値球面で r″ = (W² − W⁴/2 − ℓ²W′²)/ℓ、W = 0 なら任意の r″ ≤ 0 が W′ で実現できる。離散的な跳びは W = r′(スピン接続型)に固有。運動学:極値球面の初期データ。作用:EYM(ハミルトン拘束)。力学:跳びの離散性は W = r′ による -/
+alias XIII_4G_rr_general_W_any := CFT.RR.rr_general_W_any
 
 /-- XIII.5(ダンベル、完(外)):滑らかな解は Weyl 曲率を許すと存在する:Bartnik–McKinnon 解の列(n 個の節)は n → ∞ で、滑らかな芯 + 半径ちょうど ℓ の無限に長い喉(W ≈ 0、N → 0、質量 → 極限の値)に近づく。接合も殻もない(数値で b_n = 0.4537、0.6517、0.6970、0.7048、0.7062 を再現。前回報告の 0.6973、0.7055 は積分の打ち切りによる誤りで、ここで訂正)。運動学:芯(帽子の代わり)と首。作用:EYM(磁場だけ、Higgs なし)。力学:跳びのないダンベルの半分(極限で) -/
 alias XIII_5_extremal_limit := CFT.Conformal.extremal_limit

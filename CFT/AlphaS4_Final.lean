@@ -1,4 +1,10 @@
 /-
+  【2026-11-11 の注記】このファイルの最終定理は RealLine(体から ℝ への環準同型の族)を仮定にとる。体からの
+  環準同型は単射なので、連続性と中間値の定理から x ↦ ev_x(f) は定数になり、非定数の関数では仮定が満たせない
+  (定理は正しいが中身が空)。同じ内容を実関数と弱い形の方程式で述べ直した版は CFT/AlphaReal_Junction.lean
+  (rj_color_dumbbell、rj_tube_mismatch、rj_slice_dumbbell、rj_null_real)で、台帳はそちらを使う。
+-/
+/-
   段階 4 の最終定理を、補題を実際に呼び出す形で閉じる(2026-10-21 の評価基準 D:依存関係)
 
   AlphaS4_Distrib の合成定理(timelike_dumbbell、null_front_weak)は δ の係数の関係式を入力にしていた。
