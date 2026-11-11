@@ -26,6 +26,8 @@
     * `oq_energy_coeff`、`oq_classical_scale`、`oq_quantized_scale`:一様なモードの Ω の(負の)エネルギーの大きさ
       (3π/4G)(Ω̇² + Ω²) と YM のエネルギー 3π²/g² の釣り合い ⇔ ℓ² = 4πG/g²。振動数 1 の調和振動子として
       (n + ½) とおくと ℓ²/G = 4(n + ½)/(3π)、g²/(4π) = 3π/(4n + 2)(XII.8 の候補の出どころ、ℏ = 1)。
+    * `oq_sl2_bracket`:三つの共形 Killing ベクトルは sl(2,ℝ) をなす。`oq_neck_invariant`、`oq_neck_unique`:
+      首はその三つすべてで不変なただ一つの配位。`oq_potential_shift`:帽子の上の YM のポテンシャルは真空 + 3。
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 import Mathlib.Analysis.Calculus.MeanValue
@@ -246,5 +248,43 @@ theorem oq_quantized_scale (G g l : ℝ) (n : ℕ) (hG : G ≠ 0) (hg : g ≠ 0)
     have h2 : 3 * π ^ 2 = (n + 1 / 2) * g ^ 2 := by
       rw [← hYM]; field_simp
     linear_combination (-4 : ℝ) * h2
+
+/-! ### α-XV.6、XV.7:ゲージ代数 sl(2,ℝ) と、首の不変性 -/
+
+/-- 共形 Killing ベクトル ξ₁ = (sC, cS)、ξ₂ = (cC, −sS)((η, χ) 成分、c = cos η、s = sin η、C = cos χ、S = sin χ)の
+  交換子:[ξ₁, ξ₂] = −∂_η。∂_η との交換子 [∂_η, ξ₁] = ξ₂、[∂_η, ξ₂] = −ξ₁ と合わせて so(2,1) ≅ sl(2,ℝ)
+  (偏微分は手で入れた:∂_η(sC) = cC、∂_χ(sC) = −sS など) -/
+theorem oq_sl2_bracket (c s C S : ℝ) (h1 : s ^ 2 + c ^ 2 = 1) (h2 : S ^ 2 + C ^ 2 = 1) :
+    (s * C) * (-(s * C)) + (c * S) * (-(c * S)) - (c * C) * (c * C) - (-(s * S)) * (-(s * S)) = -1
+      ∧ (s * C) * (-(c * S)) + (c * S) * (-(s * C)) - (c * C) * (-(s * S)) - (-(s * S)) * (c * C) = 0 := by
+  constructor
+  · linear_combination (-(S ^ 2 + C ^ 2)) * h1 - h2
+  · ring
+
+/-- 首 Ω = ℓ/sin χ、W = 0 は三つの生成子すべてで不変:δΩ = ξ(Ω) + ψΩ = 0(ξ₁:ψ = cC、ξ₂:ψ = −sC)。
+  帽子のゲージの対称性(静的宇宙の共形 Killing)は、ちょうど首 AdS₂ の等長変換 -/
+theorem oq_neck_invariant (l c s C S : ℝ) (hS : S ≠ 0) :
+    (c * S) * (-(l * C / S ^ 2)) + (c * C) * (l / S) = 0
+      ∧ (-(s * S)) * (-(l * C / S ^ 2)) + (-(s * C)) * (l / S) = 0 := by
+  constructor
+  · field_simp
+    ring
+  · field_simp
+    ring
+
+/-- 逆:静的で ξ₁ で不変(sin χ Ω_χ + cos χ Ω = 0)なら Ω sin χ は定数、つまり Ω = 定数/sin χ(首だけ) -/
+theorem oq_neck_unique {Ω Ωc : ℝ → ℝ} (χ : ℝ) (hΩ : HasDerivAt Ω (Ωc χ) χ)
+    (hinv : sin χ * Ωc χ + cos χ * Ω χ = 0) : HasDerivAt (fun χ => Ω χ * sin χ) 0 χ := by
+  have h := hΩ.mul (hasDerivAt_sin χ)
+  convert h using 1
+  linear_combination -hinv
+
+/-- 帽子の上の YM のポテンシャルは、真空(W = ±1)の上のポテンシャル −2/sin²χ に定数 3 を足したもの。
+  真空の上の振動数 n + 2(整数)に対し、帽子の上では ω² = (n + 2)² − 3 -/
+theorem oq_potential_shift (S C : ℝ) (hS : S ≠ 0) (h : S ^ 2 + C ^ 2 = 1) :
+    (1 - 3 * C ^ 2) / S ^ 2 = (1 - 3 * 1 ^ 2) / S ^ 2 + 3 := by
+  rw [show 1 - 3 * C ^ 2 = 3 * S ^ 2 - 2 by linear_combination (-3 : ℝ) * h]
+  field_simp
+  ring
 
 end CFT.OQ
