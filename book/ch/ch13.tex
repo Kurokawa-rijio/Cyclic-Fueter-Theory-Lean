@@ -1,0 +1,53 @@
+\chapter{The action principle}\label{ch:action}
+
+\begin{questionbox}
+Why this action and not another? For gravity coupled to an $SU(2)$ gauge field, a few natural requirements leave almost no freedom: the group is fixed by the quaternions, the gauge-field action by gauge invariance, the gravitational action by diffeomorphism invariance, and the boundary term by the requirement that the variational problem make sense. This chapter goes through each step and then checks that the reduced action reproduces the full four-dimensional equations.
+\end{questionbox}
+
+\section{The group}
+
+Start from the cyclic Fueter family of Chapter~3. Its common solutions form a right quaternionic line $\gamma(-k)\mathbb H$. Which real linear maps of a quaternionic line preserve both its right $\mathbb H$-structure and its norm? Exactly left multiplication by unit quaternions (\lean{gauge\_group}, \lean{unit\_left\_mul}). So the internal symmetry at each point is $Sp(1)=SU(2)$, and its structure constants are the quaternion commutators (\lean{su\_two\_bracket}).
+
+\section{The gauge-field action}
+
+Among Lorentz-invariant quadratic Lagrangians with two derivatives, the general symbol is $a(k\cdot k)(\xi\cdot\xi)+b(k\cdot\xi)^2+m^2(\xi\cdot\xi)$. Gauge invariance $\xi\to\xi+tk$ forces $a+b=0$ and $m=0$ (\lean{maxwell\_symbol}, \lean{maxwell\_mass}), which is the Maxwell Lagrangian $-\tfrac14F_{\mu\nu}F^{\mu\nu}$ up to normalisation. In the non-Abelian case the coefficient of the quadratic term in $F$ is forced as well: covariance for all configurations requires it to be exactly one (\lean{ym\_coupling\_forced}), and then $\sum_aF^aF^a$ is invariant (\lean{ym\_invariance}). The topological term $\varepsilon FF$ is a total derivative and does not affect the equations (\lean{theta\_total\_derivative}).
+
+\section{The gravitational action}
+
+For a symmetric tensor field $h$, the Lorentz-invariant quadratic forms with two derivatives have four coefficients. Invariance under linearised diffeomorphisms $h\to h+k\xi+\xi k$ fixes them up to one overall constant (\lean{fierz\_pauli}). This is linearised Einstein--Hilbert. That its non-linear completion in four dimensions is unique, $R/(16\pi G)$ plus a cosmological constant, is Lovelock's theorem, which we quote. \external
+
+\section{The boundary term}
+
+The Einstein--Hilbert Lagrangian contains second derivatives of the metric. For a well-posed variational problem with the metric fixed on the boundary, those second derivatives must sit in a total derivative that a boundary term can cancel. For every spherically symmetric metric $-N^2dt^2+A^2dx^2+R^2d\Omega^2$ this is exactly what happens:
+\[
+\frac{\sqrt{-g}\,R}{\sin\theta}=L_1+\partial_t\bigl(2\sqrt h\,K_t\bigr)+\partial_x\bigl(-2\sqrt{-\gamma}\,K_x\bigr),
+\]
+with $L_1$ containing first derivatives only (\lean{ghy\_spherical}). The Gibbons--Hawking--York term cancels the two total derivatives. So the action
+\[
+S=\int\sqrt{-g}\Bigl[\frac{R}{16\pi G}-\frac1{4g^2}F^aF^a\Bigr]+\frac1{8\pi G}\oint K\sqrt h
+\]
+is not chosen. It is what remains.
+
+\section{Reduction and the four-dimensional check}
+
+Reducing this action to spherical symmetry gives a two-dimensional action for $N$, $A$, $R$ and $W$. Varying the reduced action is easier than varying the full one, but it raises a worry: are the reduced Euler--Lagrange equations really the same as the four-dimensional equations restricted to spherical symmetry? This is Palais' principle of symmetric criticality, which holds for compact symmetry groups but needs care.
+
+The repository avoids the question by checking directly. It computes all sixteen components of the four-dimensional Einstein tensor and all twelve components of the Yang--Mills equations for the spherical ansatz and shows that they are equivalent to the reduced equations (\lean{el\_iff\_alpha}, \lean{match\_N}, \lean{match\_W}, and the module \lean{AlphaS2\_4DMatch}).
+
+\begin{asidebox}{Spin connection and gauge field}
+On the slice $dx^2+r^2d\Omega^2$, the spin connection of Chapter~10 has components $r'd\theta$, $r'\sin\theta\,d\phi$, $\cos\theta\,d\phi$. These are precisely the Witten form of an $SU(2)$ field with $W=r'$ (\lean{spin\_is\_witten}). This identification was the starting point of the dumbbell. Chapter~16 shows that, within conformally flat slices, it is not an assumption but the case of equality of an inequality.
+\end{asidebox}
+
+\section{Noether}
+
+One more consequence of having an action. If the Lagrangian is invariant under $\delta q=\varepsilon K(q)$, the quantity $\sum_ip_iK_i$ is conserved along solutions (\lean{noether}). Cyclic coordinates are the special case $K=e_j$ (\lean{cyclic\_from\_noether}). Every conservation law in later chapters comes from here.
+
+\begin{standsbox}
+Each step uses a standard result, and Lovelock's theorem is quoted. The direct check of all four-dimensional components, which removes the need for symmetric criticality, and the identification of the spin connection with the Witten ansatz are checked here.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that gauge invariance forces $a+b=0$ and $m^2=0$. \emph{Answer:} \lean{maxwell\_mass}.\end{exercise}
+\begin{exercise}Show that $\varepsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}$ is a total derivative. \emph{Answer:} \lean{theta\_total\_derivative}.\end{exercise}
+\begin{exercise}Find the coefficients of the Fierz--Pauli Lagrangian from gauge invariance. \emph{Answer:} \lean{fierz\_pauli}.\end{exercise}
+\begin{exercise}Prove Noether's theorem for a finite-dimensional Lagrangian. \emph{Answer:} \lean{noether}.\end{exercise}

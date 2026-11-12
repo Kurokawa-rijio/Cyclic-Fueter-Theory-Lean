@@ -1,0 +1,64 @@
+\chapter{Moving frames and curvature}\label{ch:frames}
+
+\begin{questionbox}
+How do you compute the curvature of a curved space without drowning in indices? Cartan's answer is to attach an orthonormal frame to every point and watch how it turns. For the shapes in this book, a sphere-like cross-section of radius $r(x)$ swept along an axis, the whole computation fits on half a page, and the result will be used in every later chapter.
+\end{questionbox}
+
+\section{Frames and connection forms}
+
+On a curved space one cannot use Cartesian coordinates, but one can still choose, at every point, a set of orthonormal directions. Write the metric as $ds^2=\sum_a(e^a)^2$ for one-forms $e^a$. How these frames rotate from point to point is recorded by the \emph{connection forms} $\omega^a{}_b$, antisymmetric in $a,b$ and fixed by Cartan's first structure equation
+\[
+de^a+\omega^a{}_b\wedge e^b=0 .
+\]
+The curvature is then the second structure equation, $\Omega^a{}_b=d\omega^a{}_b+\omega^a{}_c\wedge\omega^c{}_b$. Compared with Christoffel symbols this is simply a better way to organise the same information: the rotation of the frame is a small antisymmetric matrix, and the curvature measures how much that rotation fails to close round a loop.
+
+\section{The warped product}
+
+Every slice in this book has the form
+\[
+ds^2=dx^2+f(x)^2\,d\Omega^2 .
+\]
+With the frame $e^x=dx$, $e^\theta=f\,d\theta$, $e^\phi=f\sin\theta\,d\phi$, the connection forms are
+\[
+\omega^\theta{}_x=f'\,d\theta,\qquad \omega^\phi{}_x=f'\sin\theta\,d\phi,\qquad \omega^\phi{}_\theta=\cos\theta\,d\phi ,
+\]
+and these are torsion-free in all components (\lean{spin\_torsion\_free}).
+
+\begin{theorem}\proved\label{thm:warped}
+The sectional curvatures of $dx^2+f^2d\Omega^2$ are
+\[
+K_{x\theta}=K_{x\phi}=-\frac{f''}{f},\qquad K_{\theta\phi}=\frac{1-f'^2}{f^2},
+\]
+and the scalar curvature is $R=\dfrac{2(1-f'^2-2ff'')}{f^2}$.
+\end{theorem}
+\noindent In the repository: \lean{warped\_curvature}, \lean{sectional}.
+
+The two numbers have direct meaning. The ``axial'' curvature $-f''/f$ says how the cross-sections bend towards or away from each other along the axis. The ``transverse'' curvature $(1-f'^2)/f^2$ compares the cross-section with a flat cone.
+
+Three examples will matter for the dumbbell.
+\begin{itemize}[leftmargin=*]
+\item $f=\ell\sin(x/\ell)$: both curvatures are $1/\ell^2$, the round three-sphere of radius $\ell$, which is the cap.
+\item $f=\ell$: the axial curvature is zero and the transverse one is $1/\ell^2$. This is the cylinder $\mathbb R\times S^2$, the spatial neck.
+\item $f=\sinh x$: both curvatures are $-1$, hyperbolic space, which we met as the space of velocities (\lean{h3\_curvature}).
+\end{itemize}
+
+\section{Einstein's tensor for spherical spacetimes}
+
+The same method in four dimensions handles the two kinds of spherically symmetric spacetime metrics used later: the diagonal form $-N^2dt^2+A^2dx^2+R^2d\Omega^2$, and the double null form $-2\Omega\,du\,dv+r^2d\Omega^2$. The repository computes the Christoffel symbols directly from the Levi-Civita formula, then the Ricci and Einstein tensors, component by component (\lean{einD\_00}, \lean{einD\_11}, \lean{einD\_01}, \lean{einN\_00}, \lean{einN\_01}, \lean{einN\_22}). Two formulas from that computation will be quoted repeatedly:
+\[
+G_{uu}=-\frac2r\Bigl(r_{uu}-\frac{\Omega_u}{\Omega}r_u\Bigr),\qquad G_{tt}/N^2=\tfrac12\,{}^3\!R\ \text{ at a moment of time symmetry.}
+\]
+The first is the focusing of light, the second the Hamiltonian constraint. Neither is assumed later; both come out of this calculation.
+
+\section{Gauss--Bonnet}
+
+For a closed surface the integral of the Gaussian curvature is $2\pi$ times the Euler characteristic. On a round sphere of radius $a$ this is $4\pi$ (\lean{gauss\_bonnet\_round}); on a disc of the hyperbolic plane it balances the geodesic curvature of the boundary (\lean{gauss\_bonnet\_H}). In Chapter~21 the same theorem turns the Euclidean action of the neck into a function of corner angles and topology only.
+
+\begin{standsbox}
+Standard differential geometry. What the repository adds is that every curvature formula used later is derived from the metric inside Lean rather than copied from a textbook.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Verify the first structure equation for the frame of $dx^2+f^2d\Omega^2$. \emph{Answer:} \lean{spin\_torsion\_free}.\end{exercise}
+\begin{exercise}Compute the sectional curvatures of $dx^2+f^2d\Omega^2$. \emph{Answer:} \lean{warped\_curvature}.\end{exercise}
+\begin{exercise}Show that $d\eta^2+\sinh^2\eta\,d\Omega^2$ has curvature $-1$. \emph{Answer:} \lean{h3\_curvature}.\end{exercise}

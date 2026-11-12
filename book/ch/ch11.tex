@@ -1,0 +1,41 @@
+\chapter{Slices and constraints}\label{ch:constraints}
+
+\begin{questionbox}
+In Newtonian mechanics you may choose the initial positions and velocities freely. In general relativity you may not: four of Einstein's ten equations contain no second time derivatives and must already hold on the initial slice. What do these constraints say, in plain words, for the slices of this book?
+\end{questionbox}
+
+\section{Initial data}
+
+A spacetime can be built by evolving a three-dimensional slice in time. The data on the slice are its metric $h_{ij}$ and its extrinsic curvature $K_{ij}$, which says how the slice sits in spacetime, or equivalently how fast its metric is changing. The Einstein equations split into six evolution equations and four constraints. The constraints are
+\[
+{}^3\!R+K^2-K_{ij}K^{ij}=16\pi G\rho,\qquad D_jK^j{}_i-D_iK=8\pi G\,j_i .
+\]
+The first is the \emph{Hamiltonian constraint}, the second the \emph{momentum constraint}. At a moment of time symmetry, $K_{ij}=0$, the momentum constraint is automatic and the Hamiltonian constraint says simply that the scalar curvature of space equals $16\pi G$ times the energy density.
+
+\section{Spherical slices}
+
+For $ds^2=dx^2+r(x)^2d\Omega^2$ the scalar curvature is the one from Chapter~10, so at time symmetry
+\begin{equation}\label{eq:hamconstr}
+\frac{2(1-r'^2-2rr'')}{r^2}=16\pi G\rho .
+\end{equation}
+Away from time symmetry, with $K^i{}_j=\operatorname{diag}(a,b,b)$, the momentum constraint reduces to one equation (\lean{codazzi\_s}),
+\[
+\frac{2r'}{r}(a-b)-2b'=8\pi G\,j_x ,
+\]
+and its angular components vanish identically (\lean{codazzi\_theta}, \lean{codazzi\_phi}).
+
+\section{When the matter is Yang--Mills}
+
+Suppose the energy density is that of a magnetic Yang--Mills field. One can then ask a geometric question: is there a relation between the curvature of space and the energy density that does not depend on the particular solution? If the gauge field is identified with the spin connection of the slice (we will see in Chapter~13 that this identification is natural), the Yang--Mills energy density becomes $|Rm|^2/(8g^2)$ and the Hamiltonian constraint reads
+\[
+R=\frac{\ell^2}{2}\,|Rm|^2,\qquad \ell^2=\frac{4\pi G}{g^2}
+\]
+(\lean{coeff\_I}). In three dimensions the full curvature is determined by the Ricci tensor, $|Rm|^2=4|Ric|^2-R^2$ (\lean{rm2\_3d}), so this is a condition on the Ricci tensor alone. It is the first time the length $\ell$ appears, and it appears as the ratio of Newton's constant to the gauge coupling.
+
+\begin{standsbox}
+The constraint equations are standard. The equation $R=(\ell^2/2)|Rm|^2$, obtained by identifying the gauge field with the spin connection, is specific to the programme, and Chapter~14 classifies its solutions.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Derive the reduced momentum constraint for $K=\operatorname{diag}(a,b,b)$. \emph{Answer:} \lean{codazzi\_s}.\end{exercise}
+\begin{exercise}Show that $|Rm|^2=4|Ric|^2-R^2$ in three dimensions in terms of sectional curvatures. \emph{Answer:} \lean{rm2\_3d}.\end{exercise}

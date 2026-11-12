@@ -1,0 +1,40 @@
+\chapter{Gauge fields}\label{ch:gauge}
+
+\begin{questionbox}
+Electromagnetism is the theory of a $U(1)$ connection; the strong and weak forces are theories of non-Abelian connections. What changes when the group stops commuting, and what does the simplest spherically symmetric $SU(2)$ field look like? The answer to the second question is a single function $W(r)$, and it will carry the whole matter content of the dumbbell.
+\end{questionbox}
+
+\section{Maxwell}
+
+Write the field strength as $F=dA$. Two sets of equations follow, and it is worth keeping them apart. The Bianchi identity $dF=0$ is automatic, a consequence of $d^2=0$ (\lean{bianchi}). The equation of motion $\partial_\mu F^{\mu\nu}=-J^\nu$ comes from the action, through the first variation (\lean{first\_variation}). Its time component is Gauss's law and its spatial components are Amp\`ere's (\lean{gauss}, \lean{ampere}), and taking its divergence gives charge conservation (\lean{current\_conserved}, \lean{charge\_conservation}).
+
+\section{Yang--Mills}
+
+For $SU(2)$ the potential has three components $A^a_\mu$ and the field strength picks up a quadratic term,
+\[
+F^a_{\mu\nu}=\partial_\mu A^a_\nu-\partial_\nu A^a_\mu+\varepsilon^{abc}A^b_\mu A^c_\nu .
+\]
+The structure constants $\varepsilon^{abc}$ are the commutators of the quaternion units of Chapter~1. Under a gauge transformation $A'=gAg^{-1}+g\,d(g^{-1})$ the field strength transforms by conjugation, $F'=gFg^{-1}$, in any associative algebra (\lean{curvature\_covariant}). The equation of motion is $D_\mu F^{a\mu\nu}=-J^{a\nu}$, and restricting to one colour direction gives back Maxwell (\lean{ym\_first\_variation}, \lean{u1\_projection}).
+
+\section{Monopole bundles}
+
+A magnetic monopole of charge $N$ cannot be described by one potential over the whole sphere; one needs two, on the northern and southern patches, related by a gauge transformation. Requiring that this transformation be single-valued forces Dirac's quantisation, and the integral of the curvature over the sphere, the Chern number, equals the charge (\lean{dirac\_quantization}, \lean{chern\_number}, \lean{chern\_eq\_two\_q}). The tangent bundle of $S^2$ is itself such a bundle with $|N|=2$, which is the Euler characteristic seen as a magnetic charge (\lean{AlphaVII\_Tangent}).
+
+\section{The spherically symmetric $SU(2)$ field}
+
+The most general purely magnetic, spherically symmetric $SU(2)$ field is described by one function $W(r)$, in the form introduced by Witten. In an orthonormal frame its magnetic field has
+\[
+B_r=\frac{1-W^2}{r^2},\qquad B_\theta=B_\phi=\frac{W'}{r}.
+\]
+Two values of $W$ are special. $W=\pm1$ is pure gauge: no field at all. $W=0$ is the embedded Abelian monopole of unit magnetic charge, a pure radial field $1/r^2$. Every configuration in this book interpolates between these.
+
+The energy density of the field is $\rho=\frac{1}{2g^2}\bigl(2W'^2/r^2+(1-W^2)^2/r^4\bigr)$, and its stress is traceless, as for any Yang--Mills field in four dimensions. The tracelessness is what makes the cap a radiation universe in Chapter~15.
+
+\begin{standsbox}
+Standard gauge theory, checked in Lean, including the separation of the Bianchi identity from the field equations and the non-Abelian covariance.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $F'=gFg^{-1}$ under a gauge transformation. \emph{Answer:} \lean{curvature\_covariant}.\end{exercise}
+\begin{exercise}Derive Gauss's law from the first variation of the Maxwell action. \emph{Answer:} \lean{gauss}.\end{exercise}
+\begin{exercise}Show that the Chern number of a monopole of charge $q$ is $2q$. \emph{Answer:} \lean{chern\_eq\_two\_q}.\end{exercise}
