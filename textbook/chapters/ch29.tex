@@ -1,0 +1,133 @@
+\chapter{Beyond Spherical Symmetry: Shape Degrees of Freedom}\markboth{\MakeUppercase{Chapter 29.\ Shape degrees of freedom}}{}
+\label{ch:shape}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the mass shell as hyperbolic space and its hyperbolic polar form (\cref{ch:hemisphere}); the glued slice and its invariants (\cref{prop:gluedslice}); the null constraint and Raychaudhuri's equation (\cref{thm:wedge}); the canonical variables (\cref{ch:wdw}); extremal black holes (\cref{ch:thermo}).\\
+\textbf{It provides:} the Yang--Mills energy and volume of the glued slice, and the observation that fixing the volume fixes the length of the throat; the shape of a two-dimensional cross-section as a point of the hyperbolic plane, in the same polar form as the mass shell; focusing by shape changes; the area of a rotating extremal throat; the conjugate pairs (volume, York time) and (area, radial momentum); and initial data of constant cross-sectional area, which collapse wherever the Yang--Mills field varies.
+\end{usesbox}
+
+Everything so far assumed spherical symmetry. Gravitational waves, rotation and anisotropic deformations are absent from that sector. This chapter takes the first steps beyond it: it identifies the degrees of freedom that spherical symmetry suppresses, shows where they enter the equations, and checks that they do not undo the main conclusions. We begin with what spherical symmetry still leaves free, namely the length of the throat.
+
+\section{Energy and volume of the glued slice}
+
+\begin{proposition}[Constraint, jumps and energy]\label{prop:sliceenergy}\ver\
+On the time-symmetric slice, with $w=r'$:
+\begin{enumerate}[label=(\roman*)]
+\item on the Tolman side ($r=\ell\sin(s/\ell)$, $r'=\cos(s/\ell)$, $r''=-\sin(s/\ell)/\ell$) both sides of the Hamiltonian constraint $\frac2{r^2}(1-r'^2-2rr'')=4\ell^2\bigl(\frac{w'^2}{r^2}+\frac{(1-w^2)^2}{2r^4}\bigr)$ equal $6/\ell^2$; on the throat both equal $2/\ell^2$;
+\item at the junction $s=\pi\ell/2$: $[r]=0$, $[r']=0$, $[r'']=1/\ell$, so the metric is $C^{1,1}$;
+\item in units of $4\pi/g^2$ the Yang--Mills energy of a Tolman half is $\int_0^{\pi\ell/2}\bigl[r''^2+\frac{(1-r'^2)^2}{2r^2}\bigr]\dd s=\frac{3\pi}{8\ell}$, and that of a throat of length $L$ is $L/(2\ell^2)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Fixing the volume]\label{prop:fixvolume}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\int_0^\pi\sin^2x\,\dd x=\pi/2$, so the two Tolman halves have volume $2\pi^2\ell^3$ and the glued slice $V=2\pi^2\ell^3+4\pi\ell^2L$; conversely $L=(V-2\pi^2\ell^3)/(4\pi\ell^2)$: fixing the volume fixes the length.
+\item A Lagrange multiplier that holds the volume fixed in time acts like a cosmological constant. With it, a static Tolman sphere requires $\Lambda=3/(4\ell^2)$ and then $\Omega^2=2\ell^2$.
+\item At that value of $\Lambda$ there is no throat: the throat equation $1/r^2=\Lambda+\ell^2/r^4$ becomes $3x^2-4x+4=0$ for $x=r^2/\ell^2$, which has no real root.
+\end{enumerate}
+\end{proposition}
+
+So a volume constraint cannot make the glued configuration static: the two pieces need incompatible values of the multiplier. The throat length $L$ remains the one free modulus of the spherical data, and its conjugate is the rate of change of area (\cref{thm:ks}).
+
+\section{The shape of a cross-section}
+
+Write the metric in a $2+2$ form,
+\[
+\dd s^2=-2e^f\dd u\,\dd v+r^2q_{AB}(\dd y^A+s^A\dd u)(\dd y^B+s^B\dd u),\qquad\det q=\det\gamma,
+\]
+so that $r^2$ carries the area element and the unimodular matrix $q$ carries the shape of the cross-section. In terms of an ellipticity $\beta$ and an orientation $\theta$,
+\[
+q=\begin{pmatrix}C+Sc&Ss\\Ss&C-Sc\end{pmatrix},\qquad C=\cosh2\beta,\ S=\sinh2\beta,\ c=\cos2\theta,\ s=\sin2\theta .
+\]
+
+\begin{theorem}[Shape space is the hyperbolic plane]\label{thm:shapespace}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\det q=1$: changing ellipticity and orientation does not change the area element.
+\item $\tr(q^{-1}\dot q)=0$.
+\item The shear is $\sigma^2=-\det(\dot q)/4=\dot\beta^2+\sinh^2(2\beta)\,\dot\theta^2$: the metric of the hyperbolic plane $SL(2,\mathbb R)/SO(2)$ in polar coordinates.
+\item (Focusing) The null constraint takes the form $r_{uu}-\omega_ur_u+B=0$ with $B=r(\beta_u^2+S^2\theta_u^2)+2\ell^2w_u^2/r\ge0$, so $r_{uu}-\omega_ur_u\le0$.
+\end{enumerate}
+\end{theorem}
+
+The pair $(\beta,\theta)$ is the two polarisations of a gravitational wave. Part (iii) is the hyperbolic polar form of \cref{ch:hemisphere} in a new role: there, a momentum on the mass shell was written with a rapidity and a direction; here the shape of a cross-section is written with a ``rapidity'' $2\beta$ and an angle $2\theta$, and the shape space carries the same hyperbolic metric. Part (iv) shows that gravitational waves enter the Raychaudhuri equation at the same place and with the same sign as the Yang--Mills field: both focus.
+
+\section{A rotating throat}
+
+\begin{proposition}[Extremal Kerr--Newman horizon]\label{prop:kn}\ver\
+For $M^2=a^2+Q^2$ the horizon area is $4\pi(M^2+a^2)=4\pi(Q^2+2a^2)\ge4\pi Q^2$, with equality iff $a=0$.
+\end{proposition}
+
+Among extremal throats of given charge, the round one has the smallest area. Rotation deforms the cross-section away from the round sphere and increases the area.
+
+\section{Volume, area and their conjugates}
+
+With $h=-N^2\dd t^2+\Lambda^2\dd x^2$ and no shift, $P_\Lambda=-r\dot r/N$ and $P_r=-(\Lambda\dot r+r\dot\Lambda)/N$; the volume density is $\Lambda r^2$ and the area $4\pi r^2$.
+
+\begin{proposition}[Weights and rigidity]\label{prop:weights}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\dot\Lambda r^2+2\Lambda r\dot r=-N(rP_r+\Lambda P_\Lambda)$: the rate of change of volume is the dilation generator $D=rP_r+\Lambda P_\Lambda$, the mean extrinsic curvature (York time).
+\item $\{\Lambda r^2,D\}=3\Lambda r^2$ and $\{r^2,D\}=2r^2$: volume has weight $3$, area weight $2$.
+\item If the area is constant along a null direction ($r_u=0$, $r_{uu}=0$), the constraint forces $\beta_u=0$, $S\theta_u=0$ and $w_u=0$: classically, constant area forbids both shape and gauge dynamics (the isolated-horizon condition \cite{AshtekarKrishnan2004}).
+\item If the expectation value $e$ of the squared shape rate is positive, then $-re<0$: as long as there are zero-point fluctuations, the area cannot stay exactly constant.
+\end{enumerate}
+\end{proposition}
+
+\section{Initial data of constant cross-sectional area}
+
+Impose only $r(x)=r_0$ on a time-symmetric slice, without assuming the throat form.
+
+\begin{theorem}[Constant-area data]\label{thm:constarea}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The Hamiltonian constraint gives $w'^2=\bigl(1-\ell^2(1-w^2)^2/r_0^2\bigr)/(2\ell^2)$: the gauge field can vary along the axis, in a way fixed by $r_0$. It turns ($w'=0$) where $w^2=1+r_0/\ell$.
+\item For $r_0=\ell$: $w'^2=w^2(2-w^2)/(2\ell^2)$, with $w=0$ (the throat) as a fixed point, and $w=\sqrt2/\cosh(x/\ell)$ is a solution: a solitary bump that approaches the throat at both ends.
+\item The quantity that determines the sign of $\ddot r$ is $-(1-\ell^2(1-w^2)^2/r^2)=-2\ell^2w'^2\le0$: wherever $w$ varies along the axis, the area begins to shrink. Only the throat, with $w'=0$, can stay at constant area.
+\end{enumerate}
+\end{theorem}
+
+So the throat is the only constant-area configuration that is not immediately driven to collapse, and any Yang--Mills ``bump'' along it, such as the soliton of (ii), starts the collapse described in \cref{ch:collapse}.
+
+\begin{litbox}
+The $2+2$ formalism is due to d'Inverno, Smallwood and Stachel; the shear of a null congruence and the Raychaudhuri equation are classical \cite{HawkingEllis}; extremal Kerr--Newman and its near-horizon geometry are standard; isolated horizons are reviewed in \cite{AshtekarKrishnan2004}; York time is from \cite{York1972}. New here are: the identification of the shape space of a cross-section, in the coordinates $(2\beta,2\theta)$, with the hyperbolic plane in the same polar form as the mass shell (\cref{thm:shapespace}); the observation that a volume multiplier cannot hold both pieces of the glued slice static (\cref{prop:fixvolume}); and the constant-area initial data with the Yang--Mills soliton $\sqrt2/\cosh(x/\ell)$ and their immediate collapse (\cref{thm:constarea}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item Energies $\frac{3\pi}{8\ell}$ and $L/(2\ell^2)$; $V=2\pi^2\ell^3+4\pi\ell^2L$ (\cref{prop:sliceenergy,prop:fixvolume}).
+\item Shape space $=$ hyperbolic plane; shape and gauge fields both focus (\cref{thm:shapespace}).
+\item Round extremal throats minimise area (\cref{prop:kn}).
+\item Constant-area data collapse unless $w'=0$ (\cref{thm:constarea}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show $\det q=1$ for the matrix $q$ above.
+\end{exercise}
+\begin{exercise}
+Verify that $w=\sqrt2/\cosh(x/\ell)$ satisfies $w'^2=w^2(2-w^2)/(2\ell^2)$.
+\end{exercise}
+\begin{exercise}
+Show that $3x^2-4x+4$ has no real root.
+\end{exercise}
+\begin{exercise}
+Compute $\int_0^{\pi\ell/2}\bigl[r''^2+(1-r'^2)^2/(2r^2)\bigr]\dd s$ for $r=\ell\sin(s/\ell)$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaIntegrals:cap_constraint,AlphaIntegrals:neck_constraint}{Hamiltonian constraint on both sides (two statements).$^*$}
+\chk{AlphaIntegrals:cap_r_deriv,AlphaIntegrals:cap_rp_deriv}{Derivatives of the Tolman profile (two statements).}
+\chk{AlphaIntegrals:junction_jumps}{$[r]=[r']=0$, $[r'']=1/\ell$.$^*$}
+\chk{AlphaIntegrals:cap_energy,AlphaIntegrals:neck_energy}{Yang--Mills energies $\frac{3\pi}{8\ell}$ and $L/(2\ell^2)$ (two statements).$^*$}
+\chk{AlphaFermion:vol_cap,AlphaFermion:vol_total,AlphaFermion:vol_neck_length}{Volume of the glued slice; length from volume (three statements).$^*$}
+\chk{AlphaFermion:vol_static_cap,AlphaFermion:vol_no_neck}{Volume multiplier: static Tolman sphere, no throat (two statements).$^*$}
+\chk{AlphaGeneral:gen_unimodular,AlphaGeneral:gen_trace_free}{$\det q=1$, $\tr(q^{-1}\dot q)=0$ (two statements).}
+\chk{AlphaGeneral:gen_shear}{Shear $=$ hyperbolic metric.$^*$}
+\chk{AlphaGeneral:gen_focusing}{Shape and gauge fields focus.$^*$}
+\chk{AlphaGeneral:gen_kn_area,AlphaGeneral:gen_kn_area_ge,AlphaGeneral:gen_kn_round_iff}{Extremal Kerr--Newman area (three statements).$^*$}
+\chk{AlphaShapeFluct:sf_volume_rate}{Volume rate $=$ dilation generator.$^*$}
+\chk{AlphaShapeFluct:sf_weight_volume,AlphaShapeFluct:sf_weight_area}{Weights $3$ and $2$ (two statements).}
+\chk{AlphaShapeFluct:sf_area_const_rigid}{Constant area forbids shape and gauge dynamics.$^*$}
+\chk{AlphaShapeFluct:sf_quantum_focus}{Zero-point fluctuations prevent exactly constant area.}
+\chk{AlphaConstArea:ca_constraint,AlphaConstArea:ca_turning,AlphaConstArea:ca_neck_fixed}{Constant-area data: $w'^2$, turning point, throat as fixed point (three statements).$^*$}
+\chk{AlphaConstArea:ca_soliton_deriv,AlphaConstArea:ca_soliton}{The soliton $\sqrt2/\cosh(x/\ell)$ (two statements).$^*$}
+\chk{AlphaConstArea:ca_collapse}{Collapse wherever $w'\ne0$.$^*$}
+\end{checklist}
