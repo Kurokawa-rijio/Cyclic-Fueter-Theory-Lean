@@ -1,0 +1,177 @@
+\chapter{The Action Principle}
+\label{ch:action}
+
+\begin{usesbox}
+\textbf{This chapter uses:} unit quaternions and $\SU(2)$ (\cref{thm:rho}); the factorisation criterion and the Fueter operators (\cref{thm:factcrit}); Maxwell and Yang--Mills fields (\cref{ch:fields}); the spherical metrics of \cref{ch:sphmetrics} and the magnetic ansatz \eqref{eq:magansatz}.\\
+\textbf{It provides:} the gauge group $\SU(2)$ as the symmetry of $\HH$ regarded as a right $\HH$-module; the uniqueness of the Maxwell and Yang--Mills actions at quadratic order, including the non-Abelian coupling and the Fierz--Pauli structure of linearised gravity; the boundary term that makes the gravitational action first order in spherical symmetry; Noether's theorem; the observation that the spin connection of a spherical slice has exactly the form of the magnetic Yang--Mills ansatz with $w=r'$; and the Einstein--Yang--Mills action with its natural length $\ell=\sqrt{4\pi G}/g$.
+\end{usesbox}
+
+The previous chapter took the actions as given. Here we ask why these actions and not others. The answer has three parts: the symmetry group must be specified, the possible kinetic terms must be classified, and the boundary terms must be fixed so that the variational problem is well posed. For gauge fields and for gravity at quadratic order, all three questions have short and complete answers. This is where the book passes from kinematics to dynamics.
+
+\section{The gauge group from quaternions}
+
+Regard $\HH$ as a right module over itself, the natural setting for quaternionic quantum mechanics and for the Fueter operator of \cref{ch:fueter}, whose coefficients act from the left. What are its symmetries?
+
+\begin{proposition}[Right-linear isometries of $\HH$]\label{prop:gaugegroup}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item A map $T:\HH\to\HH$ with $T(xq)=T(x)q$ for all $x,q$ is left multiplication by $T(1)$.
+\item If in addition $|T(x)|=|x|$ for all $x$, then $|T(1)|=1$.
+\item Conversely, left multiplication by a unit quaternion is right linear and norm preserving.
+\item The pure quaternions $\frac i2,\frac j2,\frac k2$ satisfy $[\tfrac i2,\tfrac j2]=\tfrac k2$ and cyclically: they are the structure constants $\epsilon_{abc}$ of $\su(2)$.
+\end{enumerate}
+\end{proposition}
+
+The group of symmetries is therefore the group of unit quaternions acting on the left, which is $\SU(2)$ by \cref{thm:rho}, and its Lie algebra has the structure constants $\epsilon_{abc}$ used in \cref{ch:fields}. The right action, which commutes with it (\cref{thm:commutant}), is what remains of the quaternionic scalars.
+
+\section{Uniqueness of the gauge-field actions}
+
+Consider a quadratic action for a vector field. In momentum space its symbol is a quadratic form in the polarisation $\xi$ and the momentum $k$. Rotational and Lorentz invariance allow
+\[
+Q(k,\xi)=a\,(k\cdot k)(\xi\cdot\xi)+b\,(k\cdot\xi)^2+m^2\,(\xi\cdot\xi).
+\]
+Gauge invariance means that $Q$ does not change when $\xi\mapsto\xi+tk$.
+
+\begin{theorem}[Maxwell is the unique gauge-invariant quadratic action]\label{thm:maxwellunique}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Without mass term, $Q$ is gauge invariant if and only if $a+b=0$; then $Q=\frac a2F_{\mu\nu}F^{\mu\nu}$ with $F_{\mu\nu}=k_\mu\xi_\nu-k_\nu\xi_\mu$.
+\item With mass term, $Q$ is gauge invariant if and only if $a+b=0$ and $m^2=0$.
+\item $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ is invariant under $A\mapsto A+\dd\lambda$.
+\end{enumerate}
+\end{theorem}
+
+The same reasoning applied to a symmetric tensor $h_{\mu\nu}$ with the linearised diffeomorphisms $\delta h_{\mu\nu}=k_\mu\xi_\nu+k_\nu\xi_\mu$ singles out linearised general relativity.
+
+\begin{theorem}[Fierz--Pauli]\label{thm:fierzpauli}\ver\
+The general quadratic symbol $c_0(k\cdot k)h_{\mu\nu}h^{\mu\nu}+c_1|k\cdot h|^2+c_2\,(\tr h)(k\cdot h\cdot k)+c_3(k\cdot k)(\tr h)^2$ is invariant under linearised diffeomorphisms if and only if $c_1=-2c_0$, $c_2=2c_0$, $c_3=-c_0$.
+\end{theorem}
+
+These are the relative coefficients of the quadratic part of the Einstein--Hilbert action \cite{FierzPauli1939}; the passage to the full nonlinear action is Lovelock's theorem \ext\ \cite{Lovelock1971}.
+
+For non-Abelian fields the question is what coefficient $c$ multiplies the commutator in $F^a_{\mu\nu}=\partial_\mu A^a_\nu-\partial_\nu A^a_\mu+c\,\epsilon_{abc}A^b_\mu A^c_\nu$.
+
+\begin{theorem}[The non-Abelian coupling is forced]\label{thm:utiyama}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Under an infinitesimal gauge transformation with parameter $\varepsilon^a$, $\delta F^a_{\mu\nu}=\epsilon_{abc}F^b_{\mu\nu}\varepsilon^c+(c-1)X^a_{\mu\nu}$, with $X$ given explicitly.
+\item If $F$ transforms covariantly for all configurations, then $c=1$.
+\item For $c=1$, $\delta F^a=\epsilon_{abc}F^b\varepsilon^c$, and $\sum_aF^a_{\mu\nu}\,\delta F^a_{\mu\nu}=0$: the Lagrangian $F^aF^a$ is invariant.
+\item The topological density is a total derivative: $\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}=4\,\partial_\mu(\epsilon^{\mu\nu\rho\sigma}A_\nu\partial_\rho A_\sigma)$ for an Abelian field, so it does not affect the field equations.
+\end{enumerate}
+\end{theorem}
+
+Item (ii) is the core of Utiyama's argument \cite{Utiyama1956}: the quadratic term in the field strength, and hence the self-interaction of Yang--Mills fields, is not a choice but a consequence of local gauge covariance.
+
+\section{Boundary terms}
+
+The Einstein--Hilbert Lagrangian $\sqrt{-g}R$ contains second derivatives of the metric. For a well-posed Dirichlet problem these must be removed by a boundary term, the Gibbons--Hawking--York term $\frac1{8\pi G}\oint\varepsilon K\sqrt{|h|}$ \cite{GibbonsHawking1977,York1972}. In spherical symmetry the cancellation can be made completely explicit.
+
+\begin{theorem}[First-order form of the spherical Einstein--Hilbert action]\label{thm:ghy}\ver\
+For $\dd s^2=-N^2\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$ with arbitrary $N,A,R$ of $(t,x)$,
+\[
+\frac{\sqrt{-g}\,R}{\sin\theta}=L_1+\partial_t\bigl(2\sqrt h\,K_t\bigr)+\partial_x\bigl(-2\sqrt{-\gamma}\,K_x\bigr),
+\]
+where $L_1=2AN-\frac{2AR_t^2}{N}-\frac{4RA_tR_t}{N}+\frac{2NR_x^2}{A}+\frac{4RN_xR_x}{A}$ contains only first derivatives, $\sqrt h\,K_t=(A_tR^2+2ARR_t)/N$ for the surfaces $t=$ const and $\sqrt{-\gamma}\,K_x=(N_xR^2+2NRR_x)/A$ for $x=$ const. The analogous identity for a closed FRW universe holds as well.
+\end{theorem}
+
+The two total derivatives are exactly what the Gibbons--Hawking--York term cancels, so the Einstein--Hilbert action plus its boundary term equals $\frac1{16\pi G}\int L_1$, a first-order Lagrangian in $N$, $A$ and $R$. This is the starting point for the reduction of Chapter~12.
+
+\section{Noether's theorem}
+
+\begin{theorem}[Noether]\label{thm:noether}\ver\
+Let $p_i=\partial L/\partial\dot q_i$ satisfy the Euler--Lagrange equations $\dot p_i=\partial L/\partial q_i$. If a variation $K_i$ is a symmetry in the sense $\sum_i(\partial L/\partial q_i\,K_i+p_i\dot K_i)=0$, then $\sum_ip_iK_i$ is conserved. In particular:
+\begin{enumerate}[label=(\roman*)]
+\item if $q_j$ is cyclic, $p_j$ is conserved;
+\item for a time-independent Lagrangian, $E=v\,\partial L/\partial v-L$ is conserved;
+\item for a central force $m\ddot{\mathbf q}=f\,\mathbf q$, the angular momentum $m(q_0\dot q_1-q_1\dot q_0)$ is conserved;
+\item for a field, $\partial_\mu F^{\mu\nu}=j^\nu$ with $F$ antisymmetric implies $\partial_\nu j^\nu=0$.
+\end{enumerate}
+\end{theorem}
+
+\section{The spin connection of a spherical slice}
+
+We now come to an observation that will organise much of Part~IV. Take a spherically symmetric three-geometry $\dd s^2+r(s)^2\dd\Omega^2$ with the orthonormal frame $(\dd s,\ r\dd\theta,\ r\sin\theta\,\dd\phi)$, and compute its Levi-Civita spin connection.
+
+\begin{theorem}[The spin connection is a magnetic Yang--Mills field]\label{thm:spinwitten}\ver\
+The connection one-forms of the frame above are antisymmetric and torsion free, and their nonzero components are
+\[
+\omega^\theta{}_s=r'\,\dd\theta,\qquad \omega^\phi{}_s=r'\sin\theta\,\dd\phi,\qquad \omega^\phi{}_\theta=\cos\theta\,\dd\phi .
+\]
+Under the isomorphism $\mathfrak{so}(3)\cong\su(2)$ this is precisely the magnetic Yang--Mills ansatz \eqref{eq:magansatz} with $w=r'$. Similarly, in a left-invariant frame on the unit three-sphere, $\dd e^a=-\epsilon_{abc}e^b\wedge e^c$ and the spin connection is $\omega^a{}_{bc}=-\epsilon_{abc}$.
+\end{theorem}
+
+In words: for any spherically symmetric slice, the geometry itself supplies an $\SU(2)$ gauge field of exactly the Witten form, with $w$ equal to the slope $r'$ of the areal radius. Identifying the Yang--Mills field with the spin connection is the ``standard embedding'' familiar from string compactifications \cite{CHSW1985}; here it arises in four-dimensional Einstein--Yang--Mills theory. Two values are special. At an equator of a round sphere, where $r'=0$, the spin connection is the embedded Dirac monopole $w=0$. In flat space, where $r'=1$, it is the vacuum $w=1$. We shall see in Chapter~13 that the condition $w=\pm r'$ is not an assumption but the equality case of an inequality.
+
+\section{The Einstein--Yang--Mills action and its length scale}
+
+The action of Einstein--Yang--Mills theory is
+\begin{equation}\label{eq:eymaction}
+S=\int\dd^4x\sqrt{-g}\,\Bigl[\frac{R}{16\pi G}-\frac1{4g^2}F^a_{\mu\nu}F^{a\mu\nu}\Bigr]
+\end{equation}
+plus the boundary term of \cref{thm:ghy}. It contains two constants, Newton's $G$ and the gauge coupling $g$, and in units $\hbar=c=1$ they combine into one length,
+\begin{equation}\label{eq:elldef}
+\ell=\frac{\sqrt{4\pi G}}{g},
+\end{equation}
+the natural unit of length of the theory, used for instance in the Bartnik--McKinnon analysis \cite{BartnikMcKinnon1988,VolkovGaltsov1999}.
+
+\begin{proposition}[The size of $\ell$]\label{prop:ellsize}\ver\
+With $\ell_P^2=G$ and $\alpha=g^2/(4\pi)$, $\alpha\,\ell^2=\ell_P^2$. Consequently, if the coupling is strong, $\alpha\ge\alpha_0>0$, then $\ell^2\le\ell_P^2/\alpha_0$; and if $\ell$ is classically large, $\ell\ge L$, then $\alpha\le\ell_P^2/L^2$. The two cannot hold at once for $L\gg\ell_P$.
+\end{proposition}
+
+So a classical geometry of size $\ell$ requires a weakly coupled gauge field, and a strongly coupled one lives at the Planck scale. Nothing in this book fixes the value of $\alpha$; in particular the fine-structure constant is not derived.
+
+\begin{litbox}
+The classification of gauge-invariant quadratic actions and the Fierz--Pauli result are textbook material \cite{FierzPauli1939,Weinberg1965}; Utiyama's derivation of the Yang--Mills coupling is from 1956 \cite{Utiyama1956}; the boundary term is due to York and to Gibbons and Hawking \cite{York1972,GibbonsHawking1977}. What is less common is \cref{thm:spinwitten} stated in this form: the Levi-Civita spin connection of every spherically symmetric slice is literally a magnetic Yang--Mills field of the Witten--Bartnik--McKinnon type with $w=r'$. The standard embedding is well known in string theory, but in four-dimensional Einstein--Yang--Mills theory the identification is usually not made, and in Part~IV it becomes the key to the geometry of the solutions.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $\SU(2)$ as the symmetry of $\HH$ (\cref{prop:gaugegroup}).
+\item Uniqueness of the Maxwell, Yang--Mills and linearised Einstein actions (\cref{thm:maxwellunique,thm:fierzpauli,thm:utiyama}).
+\item The first-order spherical Lagrangian $L_1$ (\cref{thm:ghy}) and Noether's theorem (\cref{thm:noether}).
+\item Spin connection $=$ magnetic ansatz with $w=r'$ (\cref{thm:spinwitten}).
+\item The EYM action and $\ell=\sqrt{4\pi G}/g$, with $\alpha\ell^2=\ell_P^2$ (\eqref{eq:eymaction}, \cref{prop:ellsize}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show directly that $(k\cdot k)(\xi\cdot\xi)-(k\cdot\xi)^2$ is unchanged by $\xi\mapsto\xi+tk$.
+\end{exercise}
+\begin{exercise}
+Verify $[\frac i2,\frac j2]=\frac k2$.
+\end{exercise}
+\begin{exercise}
+For the round sphere $r=a\sin(s/a)$, write the spin connection of \cref{thm:spinwitten} and identify $w(s)$. Where is $w=0$?
+\end{exercise}
+\begin{exercise}
+Taking $\alpha\approx1/137$, estimate $\ell$ in Planck units from \cref{prop:ellsize}.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS1_Derivation:right_linear_is_left_mul}{A right $\HH$-linear map is left multiplication by $T(1)$.$^*$}
+\chk{AlphaS1_Derivation:gauge_group}{If it also preserves the norm, $T(1)$ is a unit quaternion.$^*$}
+\chk{AlphaS1_Derivation:unit_left_mul}{Left multiplication by a unit quaternion is right linear and isometric.$^*$}
+\chk{AlphaS1_Derivation:su_two_bracket}{$[\frac i2,\frac j2]=\frac k2$ and cyclically.$^*$}
+\chk{AlphaS1_Derivation:maxwell_symbol}{Gauge invariance of the vector symbol iff $a+b=0$.$^*$}
+\chk{AlphaS1_Derivation:maxwell_is_F2}{For $a+b=0$ the symbol is $\frac a2F_{\mu\nu}F^{\mu\nu}$.$^*$}
+\chk{AlphaS1_Closure:maxwell_mass}{With a mass term: gauge invariance iff $a+b=0$ and $m^2=0$.$^*$}
+\chk{AlphaX_Unify:abelian_gauge_invariance}{$F$ is invariant under $A\mapsto A+\dd\lambda$.$^*$}
+\chk{AlphaS1_Derivation:fierz_pauli}{Fierz--Pauli coefficients from linearised diffeomorphism invariance.$^*$}
+\chk{AlphaS1_Closure:ym_coupling}{$\delta F=\epsilon F\varepsilon+(c-1)X$ for general coupling $c$.$^*$}
+\chk{AlphaS1_Closure:ym_coupling_forced}{Covariance for all configurations forces $c=1$.$^*$}
+\chk{AlphaS1_Derivation:ym_covariance}{For $c=1$, $\delta F^a=\epsilon_{abc}F^b\varepsilon^c$.$^*$}
+\chk{AlphaS1_Derivation:ym_invariance}{$\sum_aF^a\delta F^a=0$.$^*$}
+\chk{AlphaS1_Derivation:theta_total_derivative}{The topological density is a total derivative.$^*$}
+\chk{AlphaS1_Closure:ghy_spherical}{First-order form of $\sqrt{-g}R$ in spherical symmetry with explicit boundary terms.$^*$}
+\chk{AlphaS1_Derivation:ghy_frw}{The corresponding identity for a closed FRW universe.$^*$}
+\chk{AlphaFix_Unify:noether}{Noether's theorem for finitely many degrees of freedom.$^*$}
+\chk{AlphaFix_Unify:cyclic_from_noether}{Cyclic coordinates as a special case.$^*$}
+\chk{AlphaX_Unify:cyclic_momentum}{The momentum of a cyclic coordinate is conserved.$^*$}
+\chk{AlphaX_Unify:energy_conserved}{Energy conservation for time-independent Lagrangians.$^*$}
+\chk{AlphaX_Unify:angular_momentum}{Angular momentum conservation for central forces.$^*$}
+\chk{AlphaX_Unify:charge_conservation}{$\partial_\mu F^{\mu\nu}=j^\nu$ implies $\partial_\nu j^\nu=0$.$^*$}
+\chk{AlphaII_Action:spin_torsion_free}{The spherical spin connection is torsion free.$^*$}
+\chk{AlphaII_Action:spin_antisymmetric}{It is antisymmetric.$^*$}
+\chk{AlphaII_Action:spin_is_witten}{Its components are $(r'\dd\theta,\ r'\sin\theta\,\dd\phi,\ \cos\theta\,\dd\phi)$: the magnetic ansatz with $w=r'$.$^*$}
+\chk{AlphaII_Action:s3_spin_connection}{Spin connection of $S^3$ in a left-invariant frame.$^*$}
+\chk{AlphaII_Action:coupling_size}{$\alpha\ell^2=\ell_P^2$.$^*$}
+\chk{AlphaII_Action:strong_or_classical}{Strong coupling and classical size are incompatible.$^*$}
+\end{checklist}

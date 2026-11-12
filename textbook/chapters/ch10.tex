@@ -1,0 +1,200 @@
+\chapter{Maxwell, Yang--Mills and Fluids}
+\label{ch:fields}
+
+\begin{usesbox}
+\textbf{This chapter uses:} quaternions and $\su(2)$ (\cref{ch:quaternions}); the mass shell and the hemisphere point $(m/E,\mathbf p/E)$ (\cref{thm:hemibij}); connections and their curvature (\cref{ch:berrywigner,ch:monopoles}); the coordinate formulas and the two gauges of \cref{ch:sphmetrics}.\\
+\textbf{It provides:} Maxwell's equations as the Euler--Lagrange equations of the Maxwell action plus the Bianchi identity; charged particles and dust; relativistic perfect fluids, Kelvin's theorem and flux freezing; Yang--Mills fields, their gauge covariance and first variation; the three homogeneous Yang--Mills fields on $S^3$; and the field strength and stress tensor of the spherically symmetric magnetic Yang--Mills ansatz in both gauges.
+\end{usesbox}
+
+This chapter assembles the matter content of the rest of the book. Each field is introduced through its action, and its field equations are obtained as Euler--Lagrange equations. Each conservation law is then derived either as an identity that holds off shell, such as the Bianchi identity, or as a consequence of the field equations. Keeping these two kinds of statement apart is the point of the presentation, and the formal verification enforces it: in every theorem below it is stated explicitly which equations are assumed.
+
+Throughout, $\eta=\operatorname{diag}(-1,1,1,1)$, derivatives commute, and the coupling constants are constant.
+
+\section{Maxwell's equations}
+
+The field strength of a potential $A_\mu$ is $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$. Half of Maxwell's equations hold for every potential.
+
+\begin{theorem}[The Bianchi identity and its consequences]\label{thm:bianchi}\ver\
+For every $A_\mu$: $\partial_\lambda F_{\mu\nu}+\partial_\mu F_{\nu\lambda}+\partial_\nu F_{\lambda\mu}=0$. In terms of $\mathbf E$ and $\mathbf B$ this is $\nabla\cdot\mathbf B=0$ and $\nabla\times\mathbf E+\partial_t\mathbf B=0$. Moreover $\partial_\nu\partial_\mu F^{\mu\nu}=0$ identically.
+\end{theorem}
+
+The other half comes from the action $S=\int\bigl(-\frac14F_{\mu\nu}F^{\mu\nu}+J^\mu A_\mu\bigr)$.
+
+\begin{theorem}[First variation of the Maxwell action]\label{thm:maxwellvar}\ver\
+Under $A\mapsto A+\varepsilon B$ with constant $\varepsilon$, the Lagrangian changes by $\varepsilon$ times $\sum_\nu\mathcal E^\nu B_\nu$ plus a total divergence, plus a term of order $\varepsilon^2$. The Euler--Lagrange expression $\mathcal E^\nu$ has components
+\[
+\mathcal E^0=-\nabla\cdot\mathbf E+\rho,\qquad \mathcal E^1=\partial_tE_1-(\nabla\times\mathbf B)_1+J^1,
+\]
+so $\mathcal E=0$ is Gauss's law $\nabla\cdot\mathbf E=\rho$ and the Amp\`ere--Maxwell law $\nabla\times\mathbf B-\partial_t\mathbf E=\mathbf J$. If $\mathcal E=0$ then $\partial_\nu J^\nu=0$.
+\end{theorem}
+
+Charge conservation is not an extra postulate: it is the compatibility condition between the field equations and the identity $\partial_\nu\partial_\mu F^{\mu\nu}=0$. In spherical symmetry Gauss's law integrates to the familiar statement that the flux through a sphere measures the enclosed charge.
+
+\begin{proposition}[Integrated Gauss law]\label{prop:gaussint}\ver\
+If $\partial_r(r^2E_r)=r^2\rho$ on $[a,b]$, then $4\pi b^2E_r(b)-4\pi a^2E_r(a)=4\pi\int_a^br^2\rho\,\dd r$.
+\end{proposition}
+
+The Maxwell stress tensor $T_{\mu\nu}=F_{\mu\alpha}F_\nu{}^\alpha-\frac14\eta_{\mu\nu}F^2$ satisfies the identity $\partial^\mu T_{\mu\nu}=F_{\nu\alpha}\,\partial_\mu F^{\mu\alpha}$, which holds once the Bianchi identity is used; on shell the right side is $-F_{\nu\alpha}J^\alpha$, the Lorentz force density.
+
+\section{Charged particles and dust}
+
+\begin{theorem}[Charged particle]\label{thm:particle}\ver\
+For the worldline Lagrangian $L=\frac12m\,\eta_{\mu\nu}u^\mu u^\nu+q\,A_\mu u^\mu$, with $u^\mu=\dd x^\mu/\dd\tau$ and the chain rule $\dd A_\mu/\dd\tau=u^\nu\partial_\nu A_\mu$:
+\begin{enumerate}[label=(\roman*)]
+\item The Euler--Lagrange equations are the Lorentz force law $m\,\dd u_\mu/\dd\tau=qF_{\mu\nu}u^\nu$.
+\item With $p_\mu=m\eta_{\mu\nu}u^\nu+qA_\mu$ and $H=\frac1{2m}\eta^{\mu\nu}(p_\mu-qA_\mu)(p_\nu-qA_\nu)$, Hamilton's equations are equivalent to (i).
+\item If $\eta_{\mu\nu}u^\mu u^\nu=-1$ with $u^0>0$, then $E_{\mathrm{kin}}=mu^0$ and $\mathbf p_{\mathrm{kin}}=m\mathbf u$ satisfy $E_{\mathrm{kin}}^2=m^2+|\mathbf p_{\mathrm{kin}}|^2$, and $(m/E_{\mathrm{kin}},\mathbf p_{\mathrm{kin}}/E_{\mathrm{kin}})$ is a point of the unit sphere.
+\end{enumerate}
+\end{theorem}
+
+Item (iii) connects the classical particle with \cref{ch:hemisphere}: the kinetic four-momentum of a charged particle in any field, divided by its energy, is a point of the hemisphere.
+
+\begin{proposition}[Charged dust]\label{prop:dust}\ver\
+For dust $T^{\mu\nu}=\rho u^\mu u^\nu$ with charge current $\rho_eu^\mu$: if $\partial_\mu(\rho u^\mu)=0$ and the total stress--energy is conserved, then $\rho\,u^\mu\partial_\mu u^\nu=\rho_eF^\nu{}_\lambda u^\lambda$.
+\end{proposition}
+
+\section{Relativistic fluids}
+
+A perfect fluid has $T^{\mu\nu}=(\rho+p)u^\mu u^\nu+p\,\eta^{\mu\nu}$ with $u\cdot u=-1$.
+
+\begin{theorem}[Relativistic Euler equations]\label{thm:euler}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\partial_\mu T^{\mu\nu}=\bigl(\partial_\mu((\rho+p)u^\mu)\bigr)u^\nu+(\rho+p)u^\mu\partial_\mu u^\nu+\eta^{\nu\nu}\partial_\nu p$, and $u\cdot u=-1$ implies $u_\nu\partial_\mu u^\nu=0$.
+\item If $\partial_\mu T^{\mu\nu}=0$ then $\partial_\mu((\rho+p)u^\mu)=u^\mu\partial_\mu p$ and
+\[
+(\rho+p)\,u^\mu\partial_\mu u^\nu=-\eta^{\nu\nu}\partial_\nu p-u^\nu u^\mu\partial_\mu p .
+\]
+\end{enumerate}
+\end{theorem}
+
+Vorticity is governed by Cartan's formula for the Lie derivative. For a closed two-form $\omega=\dd w$, $\mathcal L_u\omega=\dd(i_u\omega)$.
+
+\begin{theorem}[Kelvin and flux freezing]\label{thm:kelvin}\ver\
+For $\omega_{\mu\nu}=\partial_\mu w_\nu-\partial_\nu w_\mu$:
+\begin{enumerate}[label=(\roman*)]
+\item $\partial_\lambda\omega_{\mu\nu}-\partial_\mu\omega_{\lambda\nu}+\partial_\nu\omega_{\lambda\mu}=0$, and $(\mathcal L_u\omega)_{\mu\nu}=\partial_\mu(i_u\omega)_\nu-\partial_\nu(i_u\omega)_\mu$.
+\item (Kelvin) If $i_u\omega=0$ then $\mathcal L_u\omega=0$: vorticity is carried along the flow.
+\item (Flux freezing) For $F=\dd A$ and ideal magnetohydrodynamics $i_uF=0$, $\mathcal L_uF=0$.
+\end{enumerate}
+\end{theorem}
+
+In three dimensions the vortex-stretching term involves a cross product, and here quaternions reappear: for pure quaternions $v,w$, $[v,w]=2\,v\times w$. Finally, magnetic helicity obeys the local balance law $\partial_t(\mathbf A\cdot\mathbf B)+\nabla\cdot(\varphi\mathbf B+\mathbf E\times\mathbf A)+2\,\mathbf E\cdot\mathbf B=0$, so it is conserved when $\mathbf E\cdot\mathbf B=0$.
+
+\section{Yang--Mills fields}
+
+For $\SU(2)$ we write the potential as $A^a_\mu$ with $a=1,2,3$ and use the structure constants $\epsilon_{abc}$:
+\[
+F^a_{\mu\nu}=\partial_\mu A^a_\nu-\partial_\nu A^a_\mu+\epsilon_{abc}A^b_\mu A^c_\nu .
+\]
+In matrix notation $F=\dd A+A\wedge A$, and a gauge transformation acts by $A\mapsto gAg^{-1}+g\,\dd g^{-1}$.
+
+\begin{theorem}[Gauge covariance and first variation]\label{thm:ymvar}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\partial_k(g^{-1})=-g^{-1}(\partial_kg)g^{-1}$, and under a gauge transformation $F'_{ij}=g\,F_{ij}\,g^{-1}$, in any associative algebra.
+\item $F^a_{\nu\mu}=-F^a_{\mu\nu}$, and $\delta F^a_{\mu\nu}=(\nabla_\mu\delta A)^a_\nu-(\nabla_\nu\delta A)^a_\mu$.
+\item The Lagrangian $-\frac14F^a_{\mu\nu}F^{a\mu\nu}+J^{a\mu}A^a_\mu$ has first variation $\sum\delta A^a_\nu\,\mathcal E^{a\nu}-\partial_\mu(F^{a\mu\nu}\delta A^a_\nu)$, with $\mathcal E^{a\nu}=\nabla_\mu F^{a\mu\nu}+J^{a\nu}$.
+\item If $A^2=A^3=0$ and $J^2=J^3=0$, the $a=1$ equation is Maxwell's equation.
+\end{enumerate}
+\end{theorem}
+
+The bookkeeping lemmas used in (iii), namely the relabelling of $\epsilon_{abc}$ in a triple product and $\sum F^{\mu\nu}(X_{\mu\nu}-X_{\nu\mu})=2\sum F^{\mu\nu}X_{\mu\nu}$, are recorded in the checklist.
+
+\subsection*{Homogeneous fields on the three-sphere}
+
+On $S^3=\SU(2)$ the simplest Yang--Mills fields are multiples of the Maurer--Cartan form, $A=\lambda\,U^{-1}\dd U$. They are invariant under left translations, so the Yang--Mills equation reduces to an algebraic condition on $\lambda$.
+
+\begin{theorem}[Homogeneous Yang--Mills fields on $S^3$]\label{thm:merons}\ver\
+For $A=\lambda\,U^{-1}\dd U$ the Yang--Mills expression is $8\ii\lambda(1-\lambda)(2\lambda-1)$ times a fixed generator. Hence $A$ solves the Yang--Mills equation if and only if $\lambda\in\{0,\tfrac12,1\}$.
+\end{theorem}
+
+The values $\lambda=0$ and $\lambda=1$ are the trivial connection and its gauge transform, both flat. The value $\lambda=\frac12$ is the meron \cite{deAlfaroFubiniFurlan1976}, half of a pure gauge. Its field strength does not vanish, and it will reappear in Chapter~15 as the matter content of a closed universe.
+
+\section{The spherically symmetric magnetic ansatz}
+
+The general spherically symmetric $\SU(2)$ potential can be brought, in a suitable gauge and in the purely magnetic sector, to the form \cite{Witten1977,BartnikMcKinnon1988}
+\begin{equation}\label{eq:magansatz}
+A^1=w\,\dd\theta,\qquad A^2=w\sin\theta\,\dd\phi,\qquad A^3=\cos\theta\,\dd\phi,
+\end{equation}
+with a single function $w(t,x)$. The value $w=\pm1$ is a pure gauge (vacuum), and $w=0$ is the embedded Dirac monopole of unit charge (\cref{thm:dirac}).
+
+\begin{theorem}[Field strength and stress tensor of the magnetic ansatz]\label{thm:ymstress}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The field strength of \eqref{eq:magansatz} has components $F^1_{t\theta}=w_t$, $F^1_{x\theta}=w_x$, $F^2_{t\phi}=w_t\sin\theta$, $F^2_{x\phi}=w_x\sin\theta$ and $F^3_{\theta\phi}=(w^2-1)\sin\theta$, and no others.
+\item With $\hat T_{\mu\nu}=F^a_{\mu\lambda}F^{a}{}_\nu{}^\lambda-\frac14g_{\mu\nu}F^a_{\alpha\beta}F^{a\alpha\beta}$ and the diagonal metric \eqref{eq:diagmetric}, the components $\hat T_{tt}$, $\hat T_{xx}$, $\hat T_{tx}=2w_tw_x/R^2$ and $\hat T_{\theta\theta}=(1-w^2)^2/(2R^2)$ are explicit; in particular
+\[
+\frac{\hat T_{tt}}{N^2}=\frac{w_t^2}{N^2R^2}+\frac{w_x^2}{A^2R^2}+\frac{(1-w^2)^2}{2R^4}.
+\]
+\item In the double-null gauge \eqref{eq:nullmetric}, $\hat T_{uu}=2w_u^2/r^2$, $\hat T_{vv}=2w_v^2/r^2$, $\hat T_{uv}=\Omega(1-w^2)^2/(2r^4)$, $\hat T_{\theta\theta}=(1-w^2)^2/(2r^2)$, and the mixed angular components vanish.
+\end{enumerate}
+\end{theorem}
+
+The physical stress tensor is $T_{\mu\nu}=\hat T_{\mu\nu}/g^2$. The energy density is the sum of a kinetic term, a gradient term and the magnetic self-energy $(1-w^2)^2/(2g^2R^4)$ of the angular field. The last term is what distinguishes Yang--Mills from Maxwell in spherical symmetry: at $w=0$ it is the Coulomb energy of a unit magnetic charge, and at $w=\pm1$ it vanishes.
+
+\begin{litbox}
+All equations in this chapter are standard; see Jackson for Maxwell \cite{Jackson}, Landau and Lifshitz for fluids \cite{LandauFluid}, and for Yang--Mills fields in spherical symmetry the ansatz of Witten \cite{Witten1977} as used by Bartnik and McKinnon \cite{BartnikMcKinnon1988} and reviewed by Volkov and Gal'tsov \cite{VolkovGaltsov1999}. The meron is due to de Alfaro, Fubini and Furlan \cite{deAlfaroFubiniFurlan1976}. The contribution here is organisational: each equation is labelled as an off-shell identity or an on-shell consequence, and the stress tensor of the magnetic ansatz is derived in both gauges that Part~IV uses.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item Maxwell and Yang--Mills equations as Euler--Lagrange equations; Bianchi identities; conservation laws (\cref{thm:bianchi,thm:maxwellvar,thm:ymvar}).
+\item The hemisphere point of a classical charged particle (\cref{thm:particle}).
+\item Homogeneous Yang--Mills fields on $S^3$: $\lambda\in\{0,\frac12,1\}$ (\cref{thm:merons}).
+\item The magnetic ansatz and its stress tensor (\cref{thm:ymstress}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+From $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ derive $\nabla\cdot\mathbf B=0$ and $\nabla\times\mathbf E+\partial_t\mathbf B=0$ with $E_i=F_{i0}$, $B_i=\frac12\epsilon_{ijk}F_{jk}$ (up to the sign conventions of your choice), and compare with \cref{thm:bianchi}.
+\end{exercise}
+\begin{exercise}
+Compute $F^3_{\theta\phi}$ for \eqref{eq:magansatz} and check $(w^2-1)\sin\theta$.
+\end{exercise}
+\begin{exercise}
+Show that $\lambda(1-\lambda)(2\lambda-1)=0$ has exactly the three roots of \cref{thm:merons}.
+\end{exercise}
+\begin{exercise}
+Verify $[v,w]=2v\times w$ for $v=i$, $w=j$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaVII_Maxwell:bianchi}{Bianchi identity $\partial_{[\lambda}F_{\mu\nu]}=0$.$^*$}
+\chk{AlphaIX_Classical:bianchi_div}{$\nabla\cdot\mathbf B=0$ identically.$^*$}
+\chk{AlphaIX_Classical:faraday}{$\nabla\times\mathbf E+\partial_t\mathbf B=0$ identically.$^*$}
+\chk{AlphaVII_Maxwell:div_div_F}{$\partial_\nu\partial_\mu F^{\mu\nu}=0$.$^*$}
+\chk{AlphaIX_Classical:eta_const,AlphaIX_Classical:eta_const',AlphaIX_Classical:d_quarter,AlphaIX_Fluid:d_eta}{The metric components and numerical constants have zero derivative (four statements).}
+\chk{AlphaVII_Maxwell:first_variation}{First variation of the Maxwell Lagrangian, exact to second order.$^*$}
+\chk{AlphaIX_Classical:first_variation}{First variation in Euler--Lagrange plus divergence form.$^*$}
+\chk{AlphaIX_Classical:gauss}{$\mathcal E^0=0\iff\nabla\cdot\mathbf E=\rho$.$^*$}
+\chk{AlphaIX_Classical:ampere}{$\mathcal E^1=\partial_tE_1-(\nabla\times\mathbf B)_1+J^1$.$^*$}
+\chk{AlphaVII_Maxwell:current_conserved}{On shell, $\partial_\nu J^\nu=0$.$^*$}
+\chk{AlphaIX_Classical:charge_conservation}{On shell, $\partial_\nu J^\nu=0$ (second formulation).$^*$}
+\chk{AlphaIX_Classical:gauss_integral}{Integrated spherical Gauss law.$^*$}
+\chk{AlphaIX_Classical:stress_divergence}{$\partial^\mu T_{\mu\nu}=F_{\nu\alpha}\partial_\mu F^{\mu\alpha}$.$^*$}
+\chk{AlphaIX_Classical:particle_el}{Euler--Lagrange equations of a charged particle: the Lorentz force.$^*$}
+\chk{AlphaIX_Classical:hamilton}{Hamilton's equations are equivalent to the Lorentz force law.$^*$}
+\chk{AlphaIX_Classical:mass_shell}{Kinetic momentum on the mass shell, and the hemisphere point $(m/E,\mathbf p/E)$.$^*$}
+\chk{AlphaIX_Classical:dust_lorentz}{Charged dust obeys the Lorentz force law.$^*$}
+\chk{AlphaIX_Fluid:divT_expand}{Expansion of $\partial_\mu T^{\mu\nu}$ for a perfect fluid.$^*$}
+\chk{AlphaIX_Fluid:norm_deriv}{$u\cdot u=-1$ implies $u_\nu\partial_\mu u^\nu=0$.$^*$}
+\chk{AlphaIX_Fluid:fluid_energy}{Energy equation $\partial_\mu((\rho+p)u^\mu)=u^\mu\partial_\mu p$.$^*$}
+\chk{AlphaIX_Fluid:fluid_euler}{Relativistic Euler equation.$^*$}
+\chk{AlphaIX_Fluid:cyclic_zero}{$\dd\omega=0$ in components.$^*$}
+\chk{AlphaIX_Fluid:lie_two_form}{Cartan's formula $\mathcal L_u\omega=\dd(i_u\omega)$ for closed $\omega$.$^*$}
+\chk{AlphaIX_Fluid:kelvin}{Kelvin: $i_u\omega=0\Rightarrow\mathcal L_u\omega=0$.$^*$}
+\chk{AlphaIX_Fluid:flux_freezing}{Flux freezing in ideal MHD.$^*$}
+\chk{AlphaIX_Fluid:cross_is_commutator}{$[v,w]=2v\times w$ for pure quaternions.$^*$}
+\chk{AlphaIX_Fluid:helicity_balance}{Magnetic helicity balance.$^*$}
+\chk{GaugeCovariance:d_inv}{$\partial_k(g^{-1})=-g^{-1}(\partial_kg)g^{-1}$.$^*$}
+\chk{GaugeCovariance:curvature_covariant}{$F'=gFg^{-1}$ under gauge transformations.$^*$}
+\chk{AlphaIX_YM:Fa_antisym,AlphaIX_YM:Fau_antisym,AlphaIX_YM:Fau_diag}{Antisymmetry of $F^a_{\mu\nu}$ with lower and upper indices, and vanishing diagonal (three statements).$^*$}
+\chk{AlphaIX_YM:dF_cov}{$\delta F=\nabla\delta A-\nabla\delta A$ (antisymmetrised).$^*$}
+\chk{AlphaIX_YM:antisym_sum}{$\sum F^{\mu\nu}(X_{\mu\nu}-X_{\nu\mu})=2\sum F^{\mu\nu}X_{\mu\nu}$.}
+\chk{AlphaIX_YM:relabel}{Relabelling of $\epsilon_{abc}$ in triple products.}
+\chk{AlphaIX_YM:ym_first_variation}{First variation of the Yang--Mills Lagrangian.$^*$}
+\chk{AlphaIX_YM:u1_projection}{Projection to $U(1)\subset\SU(2)$ gives Maxwell's equation.$^*$}
+\chk{AlphaVII_Bundle:ym_formula}{Yang--Mills expression for $\lambda U^{-1}\dd U$ on $S^3$: $8\ii\lambda(1-\lambda)(2\lambda-1)$ times a generator.$^*$}
+\chk{AlphaVII_Bundle:ym_roots}{Solutions exactly for $\lambda\in\{0,\frac12,1\}$.$^*$}
+\chk{AlphaS4_Curv:fym_eq}{Field strength of the magnetic ansatz.$^*$}
+\chk{AlphaS4_Curv:tymD_00,AlphaS4_Curv:tymD_11,AlphaS4_Curv:tymD_01,AlphaS4_Curv:tymD_22}{Stress tensor of the magnetic ansatz in the diagonal gauge (four components).$^*$}
+\chk{AlphaS4_Curv:tymN_00,AlphaS4_Curv:tymN_11,AlphaS4_Curv:tymN_01,AlphaS4_Curv:tymN_22,AlphaS4_Curv:tymN_12,AlphaS4_Curv:tymN_13}{Stress tensor of the magnetic ansatz in the double-null gauge (six components).$^*$}
+\end{checklist}

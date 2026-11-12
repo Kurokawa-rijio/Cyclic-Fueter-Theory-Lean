@@ -1,0 +1,86 @@
+\part{Curvature, Gauge Fields and the Action}
+
+\chapter{Moving Frames in Three Dimensions}
+\label{ch:frames}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the warped-product curvature computation of \cref{prop:warped}, which was an instance of the method developed here.\\
+\textbf{It provides:} an algebraic formulation of Cartan's method of moving frames for three-dimensional Riemannian geometry, with only two axioms (metric compatibility and vanishing torsion); the antisymmetries of the curvature; and the fact that in three dimensions the Riemann tensor is determined by the Ricci tensor, with sectional curvatures $K_{km}=\lambda_k+\lambda_m-R/2$ in an eigenframe of Ricci.
+\end{usesbox}
+
+Part~III turns from the kinematics of a single particle to fields on curved spacetime. Two kinds of curvature will be needed: the Riemannian curvature of spacetime and of its spatial slices, and the curvature of gauge connections. For the first we use Cartan's moving frames throughout \cite{Cartan,MTW}. In an orthonormal frame the metric is the identity matrix, all geometry sits in the connection coefficients, and both kinds of curvature are computed by the same rule, $\dd\omega+\omega\wedge\omega$. This chapter sets up the method in three dimensions, where it is used most. The spatial slices of the spherically symmetric spacetimes of Part~IV are three-dimensional, and so are the homogeneous geometries classified in Chapter~14.
+
+\section{Frames and connection coefficients}
+
+Let $(e_0,e_1,e_2)$ be an orthonormal frame on an open set $U$ of a three-dimensional Riemannian manifold, regarded as derivations of the algebra of smooth functions on $U$. The Levi-Civita connection is encoded in the functions
+\[
+\Gamma_{ijk}=\langle\nabla_{e_k}e_j,\,e_i\rangle .
+\]
+Everything we need follows from two axioms.
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Metric compatibility:} $\Gamma_{ijk}=-\Gamma_{jik}$.
+\item \emph{Vanishing torsion:} $[e_k,e_m]=\sum_x(\Gamma_{xmk}-\Gamma_{xkm})\,e_x$.
+\end{enumerate}
+In the language of forms, (1) says that the connection one-form $\omega^i{}_j=\Gamma_{ijk}\theta^k$ is antisymmetric, and (2) is the first structure equation $\dd\theta^i=-\omega^i{}_j\wedge\theta^j$. The curvature is defined by $R(X,Y)=\nabla_X\nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]}$, with components
+\[
+R_{njkm}=\langle R(e_k,e_m)e_j,e_n\rangle=e_k(\Gamma_{njm})-e_m(\Gamma_{njk})+\sum_x\bigl(\Gamma_{xjm}\Gamma_{nxk}-\Gamma_{xjk}\Gamma_{nxm}\bigr)-\sum_x c_{km}{}^x\,\Gamma_{njx},
+\]
+where $c_{km}{}^x=\Gamma_{xmk}-\Gamma_{xkm}$ are the structure functions of the frame. The Ricci tensor is $\mathrm{Ric}_{jm}=\sum_nR_{njnm}$ and the scalar curvature $R=\sum_j\mathrm{Ric}_{jj}$.
+
+Because the proofs below are purely algebraic, they hold over any commutative algebra over $\mathbb Q$ with derivations satisfying (1) and (2); in such an algebra $2$, and any nonzero integer, is invertible.
+
+\begin{proposition}[Basic consequences]\label{prop:frame}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\Gamma_{iik}=0$.
+\item $R_{njkm}=-R_{jnkm}$ and $R_{njkm}=-R_{njmk}$.
+\end{enumerate}
+\end{proposition}
+
+The antisymmetry in the last pair is built into the definition; the antisymmetry in the first pair is metric compatibility. We have not needed the first Bianchi identity, and in three dimensions we shall not need it for the next result either.
+
+\section{In three dimensions Ricci determines Riemann}
+
+A tensor with the two antisymmetries of \cref{prop:frame}(ii) has, in three dimensions, $3\times3=9$ independent components: one for each pair of antisymmetric index pairs. The Ricci contraction also has nine components. So it is plausible, and true, that the contraction can be inverted.
+
+\begin{theorem}[Riemann from Ricci in three dimensions]\label{thm:riemricci}\ver\
+Let $T_{njkm}$ be antisymmetric in $(n,j)$ and in $(k,m)$, and suppose its contraction $\sum_nT_{njnm}$ is diagonal with entries $\lambda_0,\lambda_1,\lambda_2$. Then $T$ is completely determined: its only independent components are the sectional curvatures
+\[
+K_{km}=T_{kmkm}=\lambda_k+\lambda_m-\frac{R}{2},\qquad R=\lambda_0+\lambda_1+\lambda_2,\quad k\ne m,
+\]
+and all components with three distinct indices vanish.
+\end{theorem}
+
+This is the frame version of the statement that the Weyl tensor vanishes identically in three dimensions, so that $R_{ijkl}$ is a linear combination of $\mathrm{Ric}$ and $R$ with the metric. It has two uses. Physically, the Einstein equations in three dimensions have no local degrees of freedom. Technically, a three-dimensional geometry is determined pointwise by its Ricci eigenvalues, which reduces the classification of Chapter~14 to a question about three functions.
+
+\begin{example}
+For the round three-sphere of radius $a$, $\mathrm{Ric}=\frac{2}{a^2}\mathbf 1$ and $R=6/a^2$, so $K_{km}=\frac{2}{a^2}+\frac{2}{a^2}-\frac{3}{a^2}=\frac1{a^2}$, in agreement with \cref{prop:warped}. For hyperbolic space, all signs reverse.
+\end{example}
+
+\begin{litbox}
+Moving frames are Cartan's \cite{Cartan}; the standard physics reference is Misner, Thorne and Wheeler \cite{MTW}. The vanishing of the Weyl tensor in three dimensions is classical. The only point of the present formulation is that it isolates exactly what the later computations use: an algebra of functions, two axioms for the connection coefficients, and no appeal to coordinates. Every curvature computation in Parts~III and IV that is labelled as verified rests on this foundation or on its four-dimensional coordinate analogue in Chapter~9.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The frame axioms and the curvature formula (\cref{prop:frame}).
+\item Riemann from Ricci in three dimensions, $K_{km}=\lambda_k+\lambda_m-R/2$ (\cref{thm:riemricci}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Use the metric axiom to show $\Gamma_{iik}=0$, and deduce that $\omega^i{}_i=0$.
+\end{exercise}
+\begin{exercise}
+From \cref{thm:riemricci}, express $\lambda_0$ in terms of the sectional curvatures and show $\lambda_0=K_{01}+K_{02}$.
+\end{exercise}
+\begin{exercise}
+For a product $S^2\times\RR$ with $S^2$ of radius $a$, the Ricci eigenvalues are $(1/a^2,1/a^2,0)$. Compute the three sectional curvatures from \cref{thm:riemricci}.
+\end{exercise}
+
+\begin{checklist}
+\chk{Cartan.Frame:two_isUnit,Cartan.Frame:natCast_isUnit,Cartan.Frame:two_mul_half}{In a $\mathbb Q$-algebra, $2$ and every nonzero natural number are invertible, and $2\cdot\frac12=1$ (three statements).}
+\chk{Cartan.Frame:Γ_diag}{$\Gamma_{iik}=0$.$^*$}
+\chk{Cartan.Frame:Riem_anti_left}{$R_{njkm}=-R_{jnkm}$.$^*$}
+\chk{Cartan.Frame:Riem_anti_right}{$R_{njkm}=-R_{njmk}$.$^*$}
+\chk{Cartan.Frame:riem_of_diag_ricci}{In three dimensions a doubly antisymmetric tensor with diagonal Ricci contraction is determined by it, with $K_{km}=\lambda_k+\lambda_m-R/2$.$^*$}
+\end{checklist}

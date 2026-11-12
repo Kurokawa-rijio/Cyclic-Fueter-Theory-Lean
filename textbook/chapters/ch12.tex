@@ -1,0 +1,164 @@
+\chapter{Spherical Reduction and the Four-Dimensional Check}\markboth{\MakeUppercase{Chapter 12.\ Spherical reduction}}{}
+\label{ch:reduction}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the Einstein tensor in the diagonal gauge (\cref{thm:einD}); the spherical momentum and Hamiltonian constraints (\cref{prop:codazzi}); the magnetic ansatz and its stress tensor (\cref{thm:ymstress}); the first-order Lagrangian $L_1$ (\cref{thm:ghy}); the EYM action and $\ell=\sqrt{4\pi G}/g$ (\eqref{eq:eymaction}).\\
+\textbf{It provides:} the reduced Lagrangian of spherically symmetric magnetic Einstein--Yang--Mills theory with lapse, shift and $w$; the five field equations (two constraints, the Yang--Mills equation and two evolution equations) as its Euler--Lagrange equations; a component-by-component proof that these five equations are equivalent to all sixteen Einstein and twelve Yang--Mills equations in four dimensions, so that no appeal to the principle of symmetric criticality is needed; and the homogeneous reduction with its Legendre transform, supermetric and Laplace--Beltrami ordering.
+\end{usesbox}
+
+Reducing an action by a symmetry before varying it is a standard shortcut, and a dangerous one: the Euler--Lagrange equations of the reduced action are not always the symmetric solutions of the full equations. Palais's principle of symmetric criticality \cite{Palais1979} says when the shortcut is safe, and for compact symmetry groups acting nicely it is. In this chapter we do not invoke it. We reduce the EYM action, derive the reduced equations, and then compare them with the full four-dimensional equations, component by component.
+
+\section{The reduced Lagrangian}
+
+Take the spherically symmetric metric with lapse $N$, shift $\beta$, radial scale $A$ and areal radius $R$,
+\[
+\dd s^2=-N^2\dd t^2+A^2(\dd x+\beta\,\dd t)^2+R^2\dd\Omega^2,
+\]
+and the magnetic Yang--Mills field \eqref{eq:magansatz} with $w(t,x)$. After integrating over the sphere and removing the Gibbons--Hawking--York terms (\cref{thm:ghy}), the action becomes $\frac1{16\pi G}\cdot4\pi\int\dd t\,\dd x\,L$ with
+\begin{equation}\label{eq:reducedL}
+L=L_1-4\ell^2\Bigl[\frac{N\,w'^2}{A}-\frac{A\,\dot w_\beta^{\,2}}{N}+\frac{NA(1-w^2)^2}{2R^2}\Bigr],
+\end{equation}
+where $L_1=2AN+(2NR'^2+4RN'R')/A-(2A/N)u^2-(4R/N)uv$ with $u=\dot R-\beta R'$, $v=\dot A-(A\beta)'$ and $\dot w_\beta=\dot w-\beta w'$. The Yang--Mills coupling enters only through $\ell^2=4\pi G/g^2$.
+
+\begin{theorem}[First variation of the reduced action]\label{thm:redvar}\ver\
+For any variation $\delta$ commuting with $\partial_t$ and $\partial_x$, with $\ell$ constant,
+\[
+\delta L=\delta N\,E_N+\delta A\,E_A+\delta R\,E_R+\delta\beta\,E_\beta+\delta w\,E_w+\partial_t\Theta^t+\partial_x\Theta^x,
+\]
+with explicit Euler--Lagrange expressions $E_N,\dots,E_w$ and boundary currents $\Theta^t,\Theta^x$.
+\end{theorem}
+
+\section{The five field equations}
+
+Now fix the synchronous gauge $N=1$, $\beta=0$, and write $D_x=A^{-1}\partial_x$ for the proper radial derivative, $K_x=-\dot A/A$ and $K_T=-\dot R/R$ for the radial and tangential extrinsic curvatures of the slices. Define:
+\begin{align*}
+\mathcal H&={}^{(3)}R+4K_xK_T+2K_T^2-4\ell^2\Bigl[\frac{\dot w^2+(D_xw)^2}{R^2}+\frac{(1-w^2)^2}{2R^4}\Bigr],\\
+&\qquad\text{with}\quad {}^{(3)}R=\frac{2(1-(D_xR)^2)}{R^2}-\frac{4D_xD_xR}{R},\\
+\mathcal M&=2\frac{D_xR}{R}(K_x-K_T)-2D_xK_T+4\ell^2\frac{\dot w\,D_xw}{R^2},\\
+\mathcal W&=\partial_t(A\dot w)-\partial_x(w'/A)-\frac{A\,w(1-w^2)}{R^2},\\
+\mathcal K_x&=\dot K_x+\frac{2D_xD_xR}{R}-(K_x+2K_T)K_x+2\ell^2\Bigl[\frac{\dot w^2+(D_xw)^2}{R^2}-\frac{(1-w^2)^2}{2R^4}\Bigr],\\
+\mathcal K_T&=\dot K_T-\frac{1-(D_xR)^2-RD_xD_xR}{R^2}-(K_x+2K_T)K_T+\ell^2\frac{(1-w^2)^2}{R^4}.
+\end{align*}
+$\mathcal H=0$ and $\mathcal M=0$ are the Hamiltonian and momentum constraints of \cref{prop:codazzi} with the Yang--Mills energy and momentum densities as sources; $\mathcal W=0$ is the Yang--Mills equation; and $\mathcal K_x=\mathcal K_T=0$ are the evolution equations of the extrinsic curvature.
+
+\begin{theorem}[Reduced Euler--Lagrange equations]\label{thm:redEL}\ver\
+In synchronous gauge,
+\[
+\begin{gathered}E_N=AR^2\mathcal H,\qquad E_\beta=-2A^2R^2\mathcal M,\qquad E_w=-8\ell^2\mathcal W,\\ E_A=-4R^2\mathcal K_T-R^2\mathcal H,\qquad E_R=-4AR(\mathcal K_x+\mathcal K_T)-2AR\,\mathcal H .\end{gathered}
+\]
+Since $A,R,\ell\ne0$ these relations are invertible, so all five Euler--Lagrange equations hold if and only if $\mathcal H=\mathcal M=\mathcal W=\mathcal K_x=\mathcal K_T=0$.
+\end{theorem}
+
+\section{The full four-dimensional check}
+
+The reduced equations would be of little use if they missed some of the four-dimensional equations. We now compute all of them. Let $E_{\mu\nu}=G_{\mu\nu}-2\ell^2\hat T_{\mu\nu}$, which is $G_{\mu\nu}-8\pi GT_{\mu\nu}$, and let $Y^{a\nu}$ denote the Yang--Mills equation $\nabla_\mu F^{a\mu\nu}=0$ with all its components.
+
+\begin{theorem}[Every four-dimensional component]\label{thm:4dcheck}\ver\
+For $\dd s^2=-\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$ and the magnetic ansatz, the sixteen Ricci and Einstein components and the sixteen components of $\hat T_{\mu\nu}$ are given explicitly, all twelve components of the Yang--Mills equation are computed, and
+\[
+\begin{gathered}E_{tt}=\tfrac12\mathcal H,\qquad E_{tx}=E_{xt}=-A\mathcal M,\qquad E_{xx}=A^2\bigl(2\mathcal K_T+\tfrac12\mathcal H\bigr),\\ E_{\theta\theta}=R^2\bigl(\mathcal K_x+\mathcal K_T+\tfrac12\mathcal H\bigr),\qquad E_{\phi\phi}=\sin^2\theta\,E_{\theta\theta},\end{gathered}
+\]
+with all other ten components of $E_{\mu\nu}$ identically zero. Of the Yang--Mills components, $Y^{1\theta}=-\sin\theta\,\mathcal W$ and $\sin\theta\,Y^{2\phi}=Y^{1\theta}$, and the other ten vanish identically. Consequently:
+\begin{enumerate}[label=(\roman*)]
+\item all sixteen Einstein equations and all twelve Yang--Mills equations hold if and only if $\mathcal H=\mathcal M=\mathcal W=\mathcal K_x=\mathcal K_T=0$;
+\item combined with \cref{thm:redEL}, the full four-dimensional equations hold if and only if the five Euler--Lagrange equations of the reduced action hold.
+\end{enumerate}
+\end{theorem}
+
+Item (ii) is the statement that reduction commutes with variation for this ansatz, proved without using Palais's principle. The price is a computation with thirty-two curvature and stress components, which is exactly what formal verification is good at. The identically vanishing components are not a formality. They show that the magnetic ansatz is consistent, in the sense that it does not force any further condition on $N,A,R,w$.
+
+\section{The homogeneous reduction}
+
+A second reduction will be needed in the quantum chapters. Assume that nothing depends on $x$ and that $w=0$, the embedded monopole of unit charge. The metric is then of Kantowski--Sachs type,
+\[
+\dd s^2=-N(t)^2\dd t^2+a(t)^2\dd x^2+b(t)^2\dd\Omega^2,
+\]
+with a magnetic field of unit charge on the spheres.
+
+\begin{theorem}[Homogeneous reduced action]\label{thm:ksaction}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For $w=0$, $\hat F^2=2/b^4$.
+\item The density satisfies $\sqrt{-g}\,(R-\ell^2\hat F^2)=2\sin\theta\,L/c+(\text{total time derivative})$, with
+\[
+L=c\Bigl[-\frac{a\dot b^2+2b\dot a\dot b}{N}+Na\Bigl(1-\frac{\ell^2}{b^2}\Bigr)\Bigr].
+\]
+\item The total derivative is exactly $\partial_t(2\sqrt h\,K)$ with $\sqrt h=ab^2\sin\theta$ and $K=\nabla_\mu n^\mu$, so it is removed by the Gibbons--Hawking--York term; the action with boundary term has density $2\sin\theta\,L/c$.
+\item With a coordinate length $L_x$ in $x$, $\int_0^\pi\sin\theta\,\dd\theta=2$ and the normalisation is $c=L_x/(2G)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Legendre transform and supermetric]\label{thm:kslegendre}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $p_a=\partial L/\partial\dot a=-2cb\dot b/N$ and $p_b=\partial L/\partial\dot b=-2c(a\dot b+b\dot a)/N$.
+\item $p_a\dot a+p_b\dot b-L=N\,\mathcal H_{\mathrm{KS}}(a,b,p_a,p_b)$, and $\partial L/\partial N=-\mathcal H_{\mathrm{KS}}$: the lapse is a Lagrange multiplier enforcing the Hamiltonian constraint $\mathcal H_{\mathrm{KS}}=0$.
+\item The velocity Hessian has determinant $-4c^2b^2/N^2\ne0$; the Legendre map is a bijection, with explicit inverse.
+\item The kinetic term is $\frac1{2N}G_{AB}\dot q^A\dot q^B$ with supermetric $G=\begin{psmallmatrix}0&-2cb\\-2cb&-2ca\end{psmallmatrix}$, whose inverse is $\begin{psmallmatrix}a/(2cb^2)&-1/(2cb)\\-1/(2cb)&0\end{psmallmatrix}$, and the momentum part of $\mathcal H_{\mathrm{KS}}$ is $\frac12G^{AB}p_Ap_B=(ap_a^2-2bp_ap_b)/(4cb^2)$.
+\item In the Laplace--Beltrami ordering, $b^2\cdot(-\frac{\hbar^2}2)\Delta_G\Psi=\frac1{4c}\bigl(-\hbar^2(a\Psi_{aa}+\Psi_a)+2\hbar^2b\Psi_{ab}\bigr)$; the first-order term comes from $\partial_a(\sqrt{G}G^{aa})=1/b$, and $\partial_b(\sqrt GG^{ab})=0$.
+\end{enumerate}
+\end{theorem}
+
+The supermetric has signature $(+,-)$, as for every minisuperspace model of gravity: one direction is timelike in the space of geometries. The Laplace--Beltrami ordering of (v) is the one we shall adopt when this model is quantised in Chapter~26.
+
+\begin{litbox}
+Spherical reduction of Einstein--Yang--Mills theory is the basis of the Bartnik--McKinnon and subsequent work \cite{BartnikMcKinnon1988,VolkovGaltsov1999}; the validity of reducing before varying is guaranteed in general by Palais's principle \cite{Palais1979}, discussed for gravity by Fels and Torre \cite{FelsTorre2002}. Kantowski--Sachs minisuperspaces are classical \cite{KantowskiSachs1966}. The new element here is \cref{thm:4dcheck}: a complete, component-by-component verification that the five reduced equations are equivalent to all twenty-eight four-dimensional equations, including the ten Einstein and ten Yang--Mills components that vanish identically, without any appeal to symmetric criticality.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The reduced Lagrangian \eqref{eq:reducedL} and its five equations $\mathcal H,\mathcal M,\mathcal W,\mathcal K_x,\mathcal K_T$ (\cref{thm:redvar,thm:redEL}).
+\item Equivalence with the full four-dimensional EYM equations (\cref{thm:4dcheck}).
+\item The homogeneous (Kantowski--Sachs) reduced action, its Legendre transform, supermetric and Laplace--Beltrami ordering (\cref{thm:ksaction,thm:kslegendre}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+From \cref{thm:redEL}, show that $E_N=E_\beta=E_w=E_A=E_R=0$ implies $\mathcal K_x=0$, by eliminating $\mathcal H$ and $\mathcal K_T$.
+\end{exercise}
+\begin{exercise}
+Check that $G\,G^{-1}=\mathbf 1$ for the supermetric of \cref{thm:kslegendre}(iv).
+\end{exercise}
+\begin{exercise}
+Show that $a=$ const, $b=\ell$ makes the potential term $Na(1-\ell^2/b^2)$ vanish, and interpret this using the unit magnetic charge.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS2_Action:first_variation}{First variation of the reduced Lagrangian with lapse, shift and $w$.$^*$}
+\chk{AlphaS2_Match:match_N}{$E_N=AR^2\mathcal H$.$^*$}
+\chk{AlphaS2_Match:match_b}{$E_\beta=-2A^2R^2\mathcal M$.$^*$}
+\chk{AlphaS2_Match:match_W}{$E_w=-8\ell^2\mathcal W$.$^*$}
+\chk{AlphaS2_Match:match_A}{$E_A=-4R^2\mathcal K_T-R^2\mathcal H$.$^*$}
+\chk{AlphaS2_Match:match_R}{$E_R=-4AR(\mathcal K_x+\mathcal K_T)-2AR\mathcal H$.$^*$}
+\chk{AlphaS2_Match:el_iff_abstract}{Inverting the five linear relations.$^*$}
+\chk{AlphaS2_Match:el_iff_alpha}{Reduced Euler--Lagrange equations $\iff$ the five field equations.$^*$}
+\chk{AlphaS2_4DMatch:ricA_*}{All sixteen Ricci components (sixteen statements).$^*$}
+\chk{AlphaS2_4DMatch:einA_*}{All sixteen Einstein components (sixteen statements).$^*$}
+\chk{AlphaS2_4DMatch:tymA_*}{All sixteen components of $\hat T_{\mu\nu}$ (sixteen statements).$^*$}
+\chk{AlphaS2_4DMatch:ymA_*}{All twelve components of the Yang--Mills equation (twelve statements).$^*$}
+\chk{AlphaS2_4DMatch:sync_*}{The sixteen components of $E_{\mu\nu}$ in terms of $\mathcal H,\mathcal M,\mathcal K_x,\mathcal K_T$ (sixteen statements).$^*$}
+\chk{AlphaS2_4DMatch:ym_sync_02,AlphaS2_4DMatch:ym_sync_13}{The nonzero Yang--Mills components in terms of $\mathcal W$ (two statements).$^*$}
+\chk{AlphaS2_4DMatch:fin4_cases,AlphaS2_4DMatch:fin3_cases}{Case splits over spacetime and Lie-algebra indices (two statements).}
+\chk{AlphaS2_4DMatch:full_4d_iff_alpha}{All twenty-eight four-dimensional equations $\iff$ the five field equations.$^*$}
+\chk{AlphaS2_4DMatch:palais_free}{All four-dimensional equations $\iff$ the reduced Euler--Lagrange equations.$^*$}
+\chk{AlphaIV_Minisuperspace:fsq_W0}{For $w=0$, $\hat F^2=2/b^4$.$^*$}
+\chk{AlphaIV_Minisuperspace:fsq_aux,AlphaIV_Minisuperspace:density_aux}{Polynomial identities used in the reduction (two statements).}
+\chk{AlphaIV_Minisuperspace:reduced_density}{The homogeneous density equals $2\sin\theta\,L/c$ plus a total derivative.$^*$}
+\chk{AlphaIV_Reduction:kext_divergence}{$K$ agrees with $\nabla_\mu n^\mu$.$^*$}
+\chk{AlphaIV_Reduction:ghy_boundary}{The total derivative is $\partial_t(2\sqrt hK)$.$^*$}
+\chk{AlphaIV_Reduction:action_with_ghy}{With the boundary term the density is exactly $2\sin\theta\,L/c$.$^*$}
+\chk{AlphaIV_Reduction:angular_integral}{$\int_0^\pi\sin\theta\,\dd\theta=2$.$^*$}
+\chk{AlphaIV_Reduction:reduced_coefficient}{Normalisation $c=L_x/(2G)$.$^*$}
+\chk{AlphaIV_Minisuperspace:L_ad}{$p_a=-2cb\dot b/N$.$^*$}
+\chk{AlphaIV_Minisuperspace:L_bd}{$p_b=-2c(a\dot b+b\dot a)/N$.$^*$}
+\chk{AlphaIV_Minisuperspace:legendre}{$p_a\dot a+p_b\dot b-L=N\mathcal H_{\mathrm{KS}}$.$^*$}
+\chk{AlphaIV_Minisuperspace:L_N}{$\partial L/\partial N=-\mathcal H_{\mathrm{KS}}$.$^*$}
+\chk{AlphaIV_Reduction:legendre_hessian}{Determinant of the velocity Hessian.$^*$}
+\chk{AlphaIV_Reduction:legendre_hessian_ne}{It is nonzero for $Nbc\ne0$.$^*$}
+\chk{AlphaIV_Reduction:legendre_inverse}{Velocities are recovered from momenta.$^*$}
+\chk{AlphaIV_Reduction:legendre_onto}{Every momentum is attained.$^*$}
+\chk{AlphaIV_Reduction:supermetric_kinetic}{Kinetic term as $\frac1{2N}G_{AB}\dot q^A\dot q^B$.$^*$}
+\chk{AlphaIV_Reduction:supermetric_inverse}{Inverse supermetric.$^*$}
+\chk{AlphaIV_Reduction:hamiltonian_supermetric}{Momentum part of $\mathcal H_{\mathrm{KS}}$ is $\frac12G^{AB}p_Ap_B$.$^*$}
+\chk{AlphaIV_Reduction:lb_coeff_a}{$\partial_a(\sqrt GG^{aa})=1/b$.$^*$}
+\chk{AlphaIV_Reduction:lb_coeff_b}{$\partial_b(\sqrt GG^{ab})=0$.$^*$}
+\chk{AlphaIV_Reduction:lb_operator}{The Laplace--Beltrami operator in explicit form.$^*$}
+\end{checklist}

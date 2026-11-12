@@ -1,0 +1,120 @@
+\chapter{The Curvature of Spherically Symmetric Spacetimes}
+\label{ch:sphmetrics}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the curvature of warped products (\cref{prop:warped}); the frame formalism (\cref{ch:frames}).\\
+\textbf{It provides:} the Christoffel symbols, Ricci tensor, scalar curvature and Einstein tensor of a general spherically symmetric metric in two gauges, the diagonal gauge $-N^2\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$ and the double-null gauge $-2\Omega\,\dd u\,\dd v+r^2\dd\Omega^2$, all derived from the Levi-Civita formula; and the Gauss--Codazzi data of a spherically symmetric spatial slice.
+\end{usesbox}
+
+Every spherically symmetric spacetime can be written as a warped product of a two-dimensional Lorentzian metric $h_{ab}$ and the round sphere,
+\[
+\dd s^2=h_{ab}\,\dd x^a\dd x^b+r^2\,\dd\Omega^2,\qquad \dd\Omega^2=\dd\theta^2+\sin^2\theta\,\dd\phi^2,
+\]
+where $r$, the areal radius, is a function on the two-dimensional quotient. The Einstein tensor of such a metric is the input to everything in Part~IV. Most texts quote it; here it is derived, in two gauges that will both be needed, from the coordinate formulas
+\[
+\Gamma^a{}_{bc}=\tfrac12g^{ae}(\partial_bg_{ec}+\partial_cg_{eb}-\partial_eg_{bc}),\qquad
+R_{bc}=\partial_a\Gamma^a{}_{bc}-\partial_c\Gamma^a{}_{ba}+\Gamma^a{}_{ae}\Gamma^e{}_{bc}-\Gamma^a{}_{ce}\Gamma^e{}_{ba},
+\]
+$R=g^{bc}R_{bc}$ and $G_{bc}=R_{bc}-\frac12g_{bc}R$. As in \cref{ch:frames} the derivation is algebraic: functions form a commutative algebra with four commuting derivations, $\partial_\theta\sin\theta=\cos\theta$ and $\partial_\theta\cos\theta=-\sin\theta$. We write subscripts for partial derivatives, $R_t=\partial_tR$ and so on.
+
+\section{The diagonal gauge}
+
+Consider
+\begin{equation}\label{eq:diagmetric}
+\dd s^2=-N^2\dd t^2+A^2\dd x^2+R^2\dd\Omega^2,
+\end{equation}
+with $N,A,R$ nonvanishing functions of $(t,x)$. Here $N$ is the lapse, $A\,\dd x$ the proper radial distance and $R$ the areal radius.
+
+\begin{theorem}[Einstein tensor in the diagonal gauge]\label{thm:einD}\ver\
+For \eqref{eq:diagmetric}, the inverse metric is diagonal, the Christoffel symbols are given by an explicit table, and
+\begin{align*}
+\frac{G_{tt}}{N^2}&=\frac{1}{R^2}\Bigl(1-\frac{R_x^2}{A^2}\Bigr)-\frac{2}{A^2R}\Bigl(R_{xx}-\frac{A_xR_x}{A}\Bigr)+\frac1{N^2}\Bigl(\frac{R_t^2}{R^2}+\frac{2A_tR_t}{AR}\Bigr),\\
+G_{tx}&=\frac2R\Bigl(\frac{A_t}{A}R_x+\frac{N_x}{N}R_t-R_{tx}\Bigr),\\
+\frac{G_{xx}}{A^2}&=-\frac{1}{R^2}\Bigl(1-\frac{R_x^2}{A^2}\Bigr)+\frac{2N_xR_x}{A^2NR}-\frac1{N^2}\Bigl(\frac{R_t^2}{R^2}+\frac{2R_{tt}}{R}-\frac{2N_tR_t}{NR}\Bigr),
+\end{align*}
+together with explicit expressions for $R_{tt},R_{xx},R_{\theta\theta},R_{\phi\phi},R_{tx}$, the scalar curvature and $G_{\theta\theta}=G_{\phi\phi}/\sin^2\theta$.
+\end{theorem}
+
+Two special cases are worth reading off at once. On a time-symmetric slice, where all $t$-derivatives vanish, $G_{tt}/N^2$ equals one half of the scalar curvature of the spatial metric $A^2\dd x^2+R^2\dd\Omega^2$. In proper-distance gauge $A=1$ this is
+\begin{equation}\label{eq:3R}
+\tfrac12\,{}^{(3)}R=\frac{1-R'^2}{R^2}-\frac{2R''}{R},
+\end{equation}
+which is \cref{prop:warped} again: the three sectional curvatures $-R''/R$, $-R''/R$ and $(1-R'^2)/R^2$ add up to $\frac12\,{}^{(3)}R$. And for $N=A^{-1}=\sqrt{1-2Gm/R}$, $R=x$, with constant $m$, one finds $G_{tt}=G_{xx}=G_{tx}=0$: the Schwarzschild metric.
+
+\section{The double-null gauge}
+
+For dynamical problems it is often better to use null coordinates,
+\begin{equation}\label{eq:nullmetric}
+\dd s^2=-2\Omega\,\dd u\,\dd v+r^2\dd\Omega^2 .
+\end{equation}
+
+\begin{theorem}[Einstein tensor in the double-null gauge]\label{thm:einN}\ver\
+For \eqref{eq:nullmetric},
+\begin{align*}
+G_{uu}&=-\frac2r\Bigl(r_{uu}-\frac{\Omega_u}{\Omega}r_u\Bigr),\qquad
+G_{vv}=-\frac2r\Bigl(r_{vv}-\frac{\Omega_v}{\Omega}r_v\Bigr),\\
+G_{uv}&=\frac{\Omega}{r^2}+\frac{2r_ur_v}{r^2}+\frac{2r_{uv}}{r},\\
+G_{\theta\theta}&=r^2\Bigl(\frac{\Omega_u\Omega_v}{\Omega^3}-\frac{\Omega_{uv}}{\Omega^2}\Bigr)-\frac{2r\,r_{uv}}{\Omega},
+\end{align*}
+with the corresponding Christoffel symbols, Ricci components (including $R_{uv}=R_{vu}$) and scalar curvature.
+\end{theorem}
+
+The equations $G_{uu}=8\pi GT_{uu}$ and $G_{vv}=8\pi GT_{vv}$ are the Raychaudhuri equations for the two families of radial null geodesics; with $\Omega=e^{2\sigma}$ they read $r_{uu}-2\sigma_ur_u=-4\pi Gr\,T_{uu}$. They play the central role in the analysis of null junctions in Chapter~17 and of collapse in Chapter~20.
+
+\section{Spherical slices: Gauss and Codazzi}
+
+Let a spacelike slice carry the metric $\dd s^2+r(s)^2\dd\Omega^2$ and extrinsic curvature $K^i{}_j=\operatorname{diag}(a,b,b)$, the most general spherically symmetric form. The Einstein equations split into the Hamiltonian constraint ${}^{(3)}R+K^2-K_{ij}K^{ij}=16\pi G\rho$ and the momentum constraint $\nabla_jK^j{}_i-\partial_iK=8\pi G\,j_i$.
+
+\begin{proposition}[Codazzi and Gauss data]\label{prop:codazzi}\ver\
+With Christoffel symbols computed from $\dd s^2+r^2\dd\Omega^2$:
+\begin{enumerate}[label=(\roman*)]
+\item $\nabla_jK^j{}_s-\partial_sK=2\frac{r'}{r}(a-b)-2b'$, and the angular components of $\nabla_jK^j{}_i-\partial_iK$ vanish.
+\item $K^2-K^i{}_jK^j{}_i=4ab+2b^2$.
+\end{enumerate}
+\end{proposition}
+
+So in spherical symmetry the momentum constraint is the single equation $2(r'/r)(a-b)-2b'=8\pi G\,j_s$, and the Hamiltonian constraint is ${}^{(3)}R+4ab+2b^2=16\pi G\rho$ with ${}^{(3)}R$ from \eqref{eq:3R}.
+
+\begin{litbox}
+These formulas are standard and appear, in various notations, in every treatment of spherical collapse; see for instance Misner and Sharp \cite{MisnerSharp1964}, Poisson \cite{PoissonToolkit} and the double-null formalism used by Christodoulou \cite{Christodoulou1993}. We include them, with complete verified derivations from the Levi-Civita formula, because everything in Part~IV depends on them and a sign error here would propagate everywhere. No new claim is made.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The Einstein tensor in the diagonal gauge, and ${}^{(3)}R$ of a spherical slice (\cref{thm:einD}, \eqref{eq:3R}).
+\item The Einstein tensor in the double-null gauge (\cref{thm:einN}).
+\item The spherical momentum and Hamiltonian constraints (\cref{prop:codazzi}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Using \cref{thm:einD}, show that $N=A^{-1}=\sqrt{1-2Gm/x}$, $R=x$ gives $G_{tt}=0$.
+\end{exercise}
+\begin{exercise}
+Using \eqref{eq:3R}, compute ${}^{(3)}R$ for $R(s)=a\sin(s/a)$ and for $R(s)=a$ (a cylinder $\RR\times S^2$).
+\end{exercise}
+\begin{exercise}
+Check \cref{prop:codazzi}(ii) directly from $K=a+2b$ and $K^i{}_jK^j{}_i=a^2+2b^2$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS4_Curv:giD_inv}{The inverse of the diagonal metric.$^*$}
+\chk{AlphaS4_Curv:gamD}{Christoffel symbols of the diagonal metric (table).$^*$}
+\chk{AlphaS4_Curv:ricD_00,AlphaS4_Curv:ricD_11,AlphaS4_Curv:ricD_22,AlphaS4_Curv:ricD_33,AlphaS4_Curv:ricD_01}{Ricci components $R_{tt},R_{xx},R_{\theta\theta},R_{\phi\phi},R_{tx}$ (five statements).$^*$}
+\chk{AlphaS4_Curv:rscD}{Scalar curvature of the diagonal metric.$^*$}
+\chk{AlphaS4_Curv:einD_00}{$G_{tt}$.$^*$}
+\chk{AlphaS4_Curv:einD_11}{$G_{xx}$.$^*$}
+\chk{AlphaS4_Curv:einD_22}{$G_{\theta\theta}$.$^*$}
+\chk{AlphaS4_Curv:einD_01}{$G_{tx}$.$^*$}
+\chk{AlphaS4_Curv:giN_inv}{The inverse of the double-null metric.$^*$}
+\chk{AlphaS4_Curv:gamN}{Christoffel symbols of the double-null metric.$^*$}
+\chk{AlphaS4_Curv:ricN_00,AlphaS4_Curv:ricN_11,AlphaS4_Curv:ricN_22,AlphaS4_Curv:ricN_33,AlphaS4_Curv:ricN_01,AlphaS4_Curv:ricN_10}{Ricci components in the double-null gauge, including $R_{uv}=R_{vu}$ (six statements).$^*$}
+\chk{AlphaS4_Curv:rscN}{Scalar curvature in the double-null gauge.$^*$}
+\chk{AlphaS4_Curv:einN_00}{$G_{uu}=-\frac2r(r_{uu}-\frac{\Omega_u}{\Omega}r_u)$.$^*$}
+\chk{AlphaS4_Curv:einN_11}{$G_{vv}$.$^*$}
+\chk{AlphaS4_Curv:einN_01}{$G_{uv}$.$^*$}
+\chk{AlphaS4_Curv:einN_22}{$G_{\theta\theta}$ in the double-null gauge.$^*$}
+\chk{AlphaIII_Codazzi:codazzi_s}{Radial component of the momentum constraint, $2\frac{r'}{r}(a-b)-2b'$.$^*$}
+\chk{AlphaIII_Codazzi:codazzi_theta,AlphaIII_Codazzi:codazzi_phi}{Angular components vanish (two statements).$^*$}
+\chk{AlphaIII_Codazzi:hamiltonian_K}{$K^2-K^i{}_jK^j{}_i=4ab+2b^2$.$^*$}
+\end{checklist}
