@@ -1,0 +1,54 @@
+\chapter{Fermions}\label{ch:fermions}
+
+\begin{questionbox}
+What happens to an electron-like particle on the dumbbell? On the cap, the cap's own gauge field makes one fermion level cross zero exactly: the cap is a sphaleron. In the reduced two-dimensional theory the fermion's mass is $W/r$, which changes sign at the junction, and the zero mode sits on the seam between cap and neck. Adding fermions does not spoil the consistency of the constraints.
+\end{questionbox}
+
+\section{The Dirac operator on the cap}
+
+Massless Dirac fields are conformally invariant, so on the cap one can work on the static universe $\mathbb R\times S^3$. On $S^3=SU(2)$ with its left-invariant frame and an isospin-$\tfrac12$ field, the Dirac operator reduces to
+\[
+D_\lambda=2\boldsymbol\sigma\cdot(\mathbf K+\lambda\mathbf T)+\tfrac32 ,
+\]
+where $\lambda=0$ and $\lambda=1$ are pure gauge and $\lambda=\tfrac12$ is the cap (\lean{reduced\_dirac}, \lean{reduced\_dirac\_spectrum}). At $\lambda=0$ one recovers the free spectrum $\pm(n+\tfrac32)$ (\lean{fer\_free\_plus}, \lean{fer\_free\_minus}).
+
+\begin{theorem}\proved
+On the spin--isospin singlet the eigenvalue is $\tfrac32-3\lambda=-\tfrac32f$ with $f=2\lambda-1$. At the cap, $f=0$, it is exactly zero. On the triplet it is $\lambda+\tfrac32$.
+\end{theorem}
+\noindent In the repository: \lean{level\_singlet}, \lean{fer\_hedgehog}, \lean{fer\_hedgehog\_zero}, \lean{fer\_triplet}.
+
+Chapter~20 showed that the cap sits on top of the potential barrier between two gauge vacua: it is a sphaleron. A fermion level crossing zero there is the mechanism by which sphalerons change fermion number, and here it happens exactly on the cap.
+
+\section{The reduced fermion}
+
+In the spherically symmetric sector a fermion reduces to a two-dimensional Dirac field with a mass proportional to $W/r$. On the cap in the conformal frame this mass is $\cot\chi$; on the neck it is zero. With the supersymmetric factorisation $(-\partial+m)(\partial+m)=-\partial^2+m^2-m'$, the cap's partner potential is constant, and the spectrum is exact:
+\[
+E^2=k^2-1 .
+\]
+The value $k=1$ is the zero mode $\psi=\sin\chi$; $k=2$ gives $\pm\sqrt3$, matching the $j=\tfrac12$ level of the four-dimensional operator (\lean{fer\_susy\_factor}, \lean{fer\_cap\_partner}, \lean{fer\_tower}, \lean{fer\_zero\_mode\_cap}, \lean{fer\_j\_half}).
+
+Since $W/r$ changes sign at the equator, the zero mode is concentrated at the junction sphere. This is the domain-wall mechanism of Interlude~A, now with the seam of the dumbbell as the wall. With an adjoint Yukawa coupling and $W=r'$, the spin connection and gauge field cancel on the singlet and the zero modes localise one on each cap (\lean{twist\_cancel}, \lean{zero\_mode}, \lean{localization}).
+
+\section{On the neck}
+
+On the neck the field is a monopole of charge $\tfrac12$ on the $S^2$ for each isospin component. By Chapter~9 each has one zero mode on the sphere, giving one massless fermion on $\mathrm{AdS}_2$ (\lean{fer\_monopole\_index}).
+
+\section{Consistency with gravity}
+
+Do the fermions spoil the propagation of the constraints? In double null form with right- and left-moving components $a$, $b$ and mass $\mu=W\nu$, the fermion number is conserved, $\partial_v|a|^2+\partial_u|b|^2=0$, and the sources satisfy the conservation law that makes the constraints propagate.
+
+\begin{theorem}\proved
+For any matter whose sources $A$, $B$, $D$ satisfy $rB_v+Br_v+A_u-\omega_uA+rDr_u=0$, the focusing constraint is preserved. The Yang--Mills sources and the coupled Yang--Mills--Dirac sources both satisfy it.
+\end{theorem}
+\noindent In the repository: \lean{fer\_constraint\_prop}, \lean{fer\_ym\_conservation}, \lean{sc\_number}, \lean{sc\_tau\_v}, \lean{sc\_conservation}.
+
+The coefficient of the fermion term in the constraint is not chosen by hand; it is the one value for which this holds.
+
+\begin{standsbox}
+The sphaleron zero mode and monopole zero modes are classical. The exact reduced spectrum on the cap, the localisation at the junction and the consistency of the coupled Einstein--Yang--Mills--Dirac constraints are checked here. The reduction from four dimensions to the two-dimensional fermion with mass $W/r$ is quoted, and its normalisation should be checked independently.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that the singlet level vanishes at $\lambda=1/2$. \emph{Answer:} \lean{fer\_hedgehog\_zero}.\end{exercise}
+\begin{exercise}Show that $\cot^2\chi-1/\sin^2\chi=-1$. \emph{Answer:} \lean{fer\_cap\_partner}.\end{exercise}
+\begin{exercise}Show that fermion number is conserved. \emph{Answer:} \lean{sc\_number}.\end{exercise}

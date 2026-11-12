@@ -1,0 +1,50 @@
+\chapter{Black-hole thermodynamics}\label{ch:thermo}
+
+\begin{questionbox}
+The neck is the throat of an extremal black hole. Black holes have a temperature and an entropy; where do they come from in this book's language? The temperature comes from a geometric requirement, that the Euclidean geometry have no conical tip. The entropy is a quarter of the horizon area. The neck is the coldest member of the family: its temperature is zero but its entropy is not.
+\end{questionbox}
+
+\section{Temperature from smoothness}
+
+Near a non-degenerate horizon the metric function $F(r)$ vanishes linearly, $F\approx F'(r_+)(r-r_+)$. Rotate time to imaginary values, $t=-i\tau$, and look at the two-dimensional Euclidean geometry $F\,d\tau^2+dr^2/F$. In the proper radial distance $\rho$ with $r-r_+=F'\rho^2/4$ it becomes
+\[
+\Bigl(\frac{F'}2\Bigr)^2\rho^2\,d\tau^2+d\rho^2 ,
+\]
+which is the plane in polar coordinates, provided $\tau$ has period $4\pi/F'$ (\lean{horizon\_polar}, \lean{sc\_cone}). Any other period leaves a conical tip at $\rho=0$. A period in imaginary time is a temperature, so
+\[
+T=\frac{F'(r_+)}{4\pi}
+\]
+(\lean{conical\_period}, \lean{sc\_temperature}). Nothing quantum was assumed except the identification of imaginary-time periodicity with temperature, which is a theorem of quantum statistical mechanics, the KMS condition (\lean{kms}).
+
+For the magnetic Reissner--Nordstr\"om family $F=(r-r_+)(r-r_-)/r^2$ the slope at the horizon is $(r_+-r_-)/r_+^2$ (\lean{rn\_slope}, \lean{fam\_hawking\_slope}). Schwarzschild has $T=1/(8\pi M)$ (\lean{fam\_schw\_T}). At extremality $r_+=r_-$, so $T=0$: the neck is cold (\lean{extremal\_cold}, \lean{fam\_extremal\_T}).
+
+\section{The four laws}
+
+\begin{theorem}\proved
+For the magnetic Reissner--Nordstr\"om family with $M=(r_++\ell^2/r_+)/2$:
+\begin{enumerate}[label=(\roman*)]
+\item first law: $dM=T\,dS$ at fixed charge, with $S=\pi r_+^2=A/4$;
+\item second law: on an apparent horizon, with non-negative energy flux and the outer conditions $r_{uv}<0$, $r_u<0$, the area does not decrease;
+\item third law: the extremal member has $T=0$ and entropy $\pi\ell^2/G$, which is not zero.
+\end{enumerate}
+\end{theorem}
+\noindent In the repository: \lean{first\_law}, \lean{fam\_first\_law}, \lean{sc\_second\_law}, \lean{focusing}, \lean{extremal\_cold}. The zeroth law, constancy of $T$ on the horizon, is automatic here by spherical symmetry.
+
+The entropy formula also follows from the Euclidean action. For a magnetic charge the Maxwell term must be integrated with the magnetic field, which gives $I=\beta(M+\Phi Q)/2=\beta(M-TS)$ and hence $S=\beta M-I=\pi r_+^2$ (\lean{maxwell\_magnetic}, \lean{magnetic\_action}). This is a point where the electric and magnetic cases genuinely differ, and the repository records an earlier error on it.
+
+\section{Which phase is preferred}
+
+At a given temperature there are two Reissner--Nordstr\"om branches. Their free energies $F=r_+/4+3Q^2/(4r_+)$ satisfy $F(r_1)<F(r_2)$ for the two radii at the same $T$, so the small branch, the one connected to the extremal neck, is preferred; it also has positive heat capacity (\lean{free\_energy}, \lean{same\_T\_product}, \lean{small\_branch\_preferred}, \lean{heat\_capacity\_sign}).
+
+\section{Temperature on the neck}
+
+Even at $T=0$, observers on the neck can see a temperature. The JT dilaton of Chapter~22 selects a Killing vector, and an observer with acceleration $a$ along it sees a local temperature with $a^2-1/\ell^2=(2\pi T_{\mathrm{loc}})^2$, the Deser--Levin form (\lean{dilaton\_invariant}, \lean{deser\_levin}, \lean{three\_classes}). Accelerations below $1/\ell$ see nothing; that is where the curvature of $\mathrm{AdS}_2$ comes in.
+
+\begin{standsbox}
+Black-hole thermodynamics is classical. The checks here are complete for the spherically symmetric case, with the temperature derived from smoothness and the magnetic action computed rather than assumed. Hawking radiation as particle production, and a microscopic count of the entropy, are not obtained. \open
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that the Euclidean metric is a smooth plane iff $\tau$ has period $4\pi/F'$. \emph{Answer:} \lean{sc\_cone\_flat}, \lean{sc\_temperature}.\end{exercise}
+\begin{exercise}Check $dM=T\,dS$ for $M=(r_++\ell^2/r_+)/2$. \emph{Answer:} \lean{fam\_first\_law}.\end{exercise}
+\begin{exercise}Show that the small branch has lower free energy. \emph{Answer:} \lean{small\_branch\_preferred}.\end{exercise}

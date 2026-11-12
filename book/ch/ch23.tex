@@ -1,0 +1,62 @@
+\chapter{Quantum cosmology}\label{ch:wdw}
+
+\begin{questionbox}
+Can one write down a quantum equation for the whole spherically symmetric dumbbell, cap and neck together? Yes: the Wheeler--DeWitt equation of the reduced theory. The same pair of constraints becomes a harmonic oscillator on the cap and a flat two-dimensional wave equation on the neck side, where the neck is a fold. The equation is written and its special cases are solved; its general solution with the gauge field and fermions is not known.
+\end{questionbox}
+
+\section{One action, three equations}
+
+The spherically symmetric Einstein--Yang--Mills action reduces to
+\[
+S=\frac1{4G}\int d^2x\,\sqrt{-h}\,\Bigl\{r^2R_h+2(\nabla r)^2+2-4\ell^2(\nabla W)^2-\frac{2\ell^2(1-W^2)^2}{r^2}\Bigr\}.
+\]
+In the conformal gauge $h=-2\Omega\,du\,dv$, varying with respect to $\log\Omega$, $W$ and $r$ gives three equations, and the repository checks that the field equations used throughout the book make all three vanish (\lean{can\_el\_Om\_of}, \lean{can\_el\_W\_of}, \lean{can\_el\_r\_of}). The variation itself is a hand computation that is standard; what Lean checks is the agreement.
+
+\section{The constraints in mass form}
+
+Write the two-dimensional metric as $-N^2dt^2+\Lambda^2(dx+N^xdt)^2$. The canonical momenta lead to a Hamiltonian constraint $H$ and a momentum constraint $H_x$. Define the mass function
+\[
+M=\frac{P_\Lambda^2}{2r}+\frac r2\Bigl(1-\frac{r'^2}{\Lambda^2}\Bigr).
+\]
+
+\begin{theorem}\proved
+Identically, $M'=-(r'/\Lambda)H_g-(P_\Lambda/(r\Lambda))H_{x,g}$, where $H_g$, $H_{x,g}$ are the gravitational parts. Hence, for any matter with Hamiltonian density $H_m$, the constraints are equivalent to
+\[
+M'=\frac{r'}\Lambda H_m+\frac{P_\Lambda}{r\Lambda}P_WW' .
+\]
+\end{theorem}
+\noindent In the repository: \lean{can\_mass\_identity}, \lean{can\_mass\_constraint}.
+
+Gravity has collapsed to one number per sphere, and the right side is matter only. The idea of using the mass as a canonical variable is due to Kucha\v r; the derivation of the canonical form and the closure of the constraint algebra are quoted \external.
+
+\section{The Wheeler--DeWitt equation}
+
+Replace momenta by derivatives: $\hat H\Psi[\Lambda,r,W]=0$ and $\hat H_x\Psi=0$. This is formal, since the operator ordering and regularisation are not fixed, as in every treatment of this kind. What can be checked is that the equation contains the cap and the neck.
+
+\begin{theorem}\proved\label{thm:twosections}
+On the cap, $\Lambda=\Omega$, $r=\Omega\sin\chi$, $W=\cos\chi$, the Hamiltonian constraint becomes $-(3\sin^2\chi/2\Omega)(\Omega_\eta^2+\Omega^2-\ell^2)$, the Friedmann constraint of a harmonic oscillator. Independent of $x$, it becomes the Kantowski--Sachs constraint, and at $W=0$, in the variables $\sigma=a^2r/2$ and $\theta=-(r+\ell^2/r)/2$, the flat two-dimensional Klein--Gordon equation $\partial_\sigma\partial_\theta\Psi=-4c^2\Psi$.
+\end{theorem}
+\noindent In the repository: \lean{qs\_cap\_H}, \lean{qs\_cap\_Hx}, \lean{can\_ks\_match}, \lean{ks\_hj\_solves}, \lean{qs\_dtheta}, \lean{qs\_dsigma}.
+
+The cap and the neck are two sections of one quantum equation, not two separate theories.
+
+\section{The neck is a fold}
+
+On the neck side the variable $\theta$ satisfies $\theta\le-\ell$, with equality only at $r=\ell$ (\lean{ks\_fold\_le}, \lean{ks\_fold\_eq}). The map $r\mapsto\ell^2/r$, $a\mapsto ar/\ell$ leaves $\sigma$ and $\theta$ unchanged (\lean{ks\_inversion\_theta}, \lean{ks\_inversion\_sigma}). So minisuperspace is folded at the neck: $r$ and $\ell^2/r$ have the same coordinates, and the neck is the crease. A wave function must choose to be even or odd across it.
+
+\section{The neck length and uncertainty}
+
+The length of the neck is $L=aL_x$, and its conjugate momentum is $p_L=-r\dot r$ (\lean{qs\_length\_pair}, \lean{qs\_length\_momentum}). By the uncertainty relation, $\Delta L\,\Delta(r\dot r)\ge\hbar/2$ in units with $G=1$. A perfectly static neck has a completely uncertain length. Plane waves in these variables have constant modulus, the extreme case (\lean{qs\_planewave\_flat}).
+
+\section{The neck alone, exactly}
+
+For the neck minisuperspace with lapse and two scale factors, the WKB series of the Wheeler--DeWitt equation terminates at first order, so $\Psi=e^{ia\sigma/\hbar}/\sigma$ is an exact solution wherever $\sigma^2>0$, for both momentum branches and for two natural orderings (\lean{wkb\_identity}, \lean{wdw\_exact\_sqrt}, \lean{wdw\_exact\_neg}, \lean{wdw\_exact\_LB}). The physical inner product is fixed, up to unitary equivalence, by the affine quantisation of the half-line (\lean{affine\_unitary}, \lean{K\_positive}).
+
+\begin{standsbox}
+Canonical quantisation of spherically symmetric gravity is a classic subject, and Reissner--Nordstr\"om interiors have been quantised in this way before. The reading of cap and neck as two sections of one constraint, the neck as a fold, and the neck length as conjugate to $-r\dot r$ are claimed in the weak sense of the guide. The general solution with $W$ and fermions, and the operator ordering, are open. \open
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $\theta\le-\ell$ with equality only at $r=\ell$. \emph{Answer:} \lean{ks\_fold\_le}, \lean{ks\_fold\_eq}.\end{exercise}
+\begin{exercise}Show that $\theta$ is invariant under $r\mapsto\ell^2/r$. \emph{Answer:} \lean{ks\_inversion\_theta}.\end{exercise}
+\begin{exercise}Substitute the cap into the Hamiltonian constraint. \emph{Answer:} \lean{qs\_cap\_H}.\end{exercise}

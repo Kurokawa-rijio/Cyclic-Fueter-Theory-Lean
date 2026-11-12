@@ -1,0 +1,41 @@
+\chapter{Quantum fields in curved spacetime}\label{ch:qft}
+
+\begin{questionbox}
+Before quantising gravity, one can quantise matter on a fixed curved background and ask how it pushes back. On the cap and on the neck this question has an almost unique answer, because the trace anomaly and conservation leave very little freedom.
+\end{questionbox}
+
+\section{The trace anomaly}
+
+For massless conformally invariant free fields the classical stress is traceless, but the renormalised quantum stress is not:
+\[
+\langle T^\mu{}_\mu\rangle=\frac{\hbar}{16\pi^2}\bigl(c_EC^2-a_EE_4+b\,\Box R\bigr),
+\]
+with $a_E>0$ fixed by the field content \external. Both the cap and the neck are conformally flat, so $C^2=0$, and the Euler density $E_4$ can be computed from their curvature (\lean{frw\_G00}, \lean{h3\_frw}, \lean{neck\_curvature\_invariants}).
+
+\section{On the cap}
+
+\begin{theorem}\proved
+On a closed FRW universe, for a state with its symmetry, the anomaly and conservation determine the quantum energy density uniquely up to a radiation term:
+\[
+\rho=\frac{\kappa_1}{a^4}+\frac{3\hbar a_E}{8\pi^2}X^2,\qquad X=\frac{\dot a^2+1}{a^2}.
+\]
+\end{theorem}
+\noindent In the repository: \lean{rho\_q\_conserved}, \lean{rho\_unique}, \lean{beta\_from\_anomaly}.
+
+The semiclassical Friedmann equation is then quadratic in $X$, with a branch that reduces to the classical one as $\hbar\to0$ (\lean{friedmann\_quadratic}, \lean{small\_branch}). On the exact cap the ratio of the quantum correction from the $SU(2)$ fluctuations to the classical radiation grows like $1/a^4$ towards the crunch (\lean{cap\_backreaction\_ratio}, \lean{backreaction\_grows}). The ultrastatic sphere cannot be supported by traceless Yang--Mills stress without a cosmological constant (\lean{esu\_backreaction}, \lean{esu\_trace\_zero}).
+
+\section{On the neck}
+
+On $\mathrm{AdS}_2\times S^2$ the Ricci eigenvalues are $(-1,-1,1,1)/\ell^2$ (\lean{neck\_ricci}). The conformal-vacuum stress is proportional to a conserved curvature tensor, and its trace matches the anomaly (\lean{neck\_H3}, \lean{neck\_trace\_consistent}). Its back-reaction shifts the neck radius slightly, with bounds checked in the repository (\lean{neck\_backreaction}, \lean{neck\_radius\_bounds}). The quantum fluctuations of the $SU(2)$ field itself add a term proportional to the $\beta$ function times $F^2$, which is conserved and unique on the neck (\lean{rho\_beta\_conserved}, \lean{rho\_beta\_unique}) and corresponds to a running coupling (\lean{running\_coupling}).
+
+\section{The heat-kernel coefficient}
+
+The anomaly coefficient for a Dirac field coupled to the $SU(2)$ background on $S^3$ can be computed from Gilkey's formula for the fourth heat-kernel coefficient. In the repository this reduces to finite-dimensional traces, and the result is checked (\lean{a4\_value}, \lean{curvature\_formula}).
+
+\begin{standsbox}
+The trace anomaly, the uniqueness of the FRW quantum stress and the conformal vacuum on $\mathrm{AdS}_2\times S^2$ are known results; the anomaly coefficients and the conformal transformation of the stress are quoted. Their application to the cap and the neck, with the back-reaction ratio and the neck radius shift, is checked here.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $\rho=\kappa_1/a^4+(3\hbar a_E/8\pi^2)X^2$ is conserved. \emph{Answer:} \lean{rho\_q\_conserved}.\end{exercise}
+\begin{exercise}Compute the Ricci eigenvalues of the neck. \emph{Answer:} \lean{neck\_ricci}.\end{exercise}
