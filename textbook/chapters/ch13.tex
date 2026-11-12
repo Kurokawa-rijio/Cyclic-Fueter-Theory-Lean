@@ -1,0 +1,169 @@
+\part{Spherical Einstein--Yang--Mills Theory: Solutions and Gluing}
+
+\chapter{Constraints, Mass and the Homogeneous Solutions}
+\label{ch:constraints}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the spherical Gauss--Codazzi data (\cref{prop:codazzi}); the warped-product and three-dimensional curvature formulas (\cref{prop:warped,thm:riemricci}); the magnetic ansatz and its stress tensor (\cref{thm:ymstress}); the spin connection as a magnetic Yang--Mills field (\cref{thm:spinwitten}); the EYM action, $\ell=\sqrt{4\pi G}/g$, and the five reduced equations (\cref{prop:ellsize,thm:redEL}).\\
+\textbf{It provides:} the vanishing of the colour-electric charge for the magnetic ansatz; the Misner--Sharp mass and its radial derivative from the constraints; a Penrose-type inequality and the minimal mass $\ell/(2G)$ of a configuration containing a marginally trapped throat of radius $\ell$; the observation that, when the Yang--Mills field equals the spin connection, the Hamiltonian constraint becomes the purely geometric condition ${}^{(3)}R=\frac{\ell^2}2|\mathrm{Riem}|^2$ and the Yang--Mills equation becomes the Codazzi condition on Ricci; and the result that the only complete homogeneous solutions are flat space, the round $S^3$ of radius $\ell$, and the cylinder $S^2(\ell)\times\RR$.
+\end{usesbox}
+
+With Part~III complete, we have the field equations of spherically symmetric Einstein--Yang--Mills theory in a form we trust. This Part studies their solutions. We start, as one usually does in general relativity, with initial data: a spacelike slice with its induced metric and extrinsic curvature, subject to the constraints. The aim of the chapter is a short list. It turns out that, once the gauge field is identified with the spin connection of the slice, only three homogeneous geometries satisfy the constraints, and two of them have the same radius $\ell$.
+
+\section{The magnetic ansatz carries no colour charge}
+
+The ansatz \eqref{eq:magansatz} has no $A_t$ or $A_r$ components. More generally, if $A_t=a_0T$ and $A_r=a_1T$ with the same generator $T$, the commutator in $F_{tr}$ vanishes.
+
+\begin{proposition}[No colour-electric field]\label{prop:nocolour}\ver\
+If $A_t=a_0T$ and $A_r=a_1T$ then $F_{tr}=(\partial_ta_1-\partial_ra_0)T$. For $a_0=a_1=0$ the radial colour-electric field vanishes and the colour charge $Q^a(r)=4\pi r^2E^a_r$ is zero on every sphere.
+\end{proposition}
+
+So the solutions considered in this Part are purely magnetic, with unit magnetic charge where $w=0$, and carry no non-Abelian electric charge. This is consistent with the theorem of Ershov and Gal'tsov that static EYM solitons cannot carry colour charge \cite{VolkovGaltsov1999}.
+
+\section{The mass function}
+
+Let a spherically symmetric slice carry the metric $\dd s^2+r(s)^2\dd\Omega^2$ and extrinsic curvature $\operatorname{diag}(a,K_T,K_T)$ as in \cref{prop:codazzi}. Define
+\[
+M=r\,\bigl(1-r'^2+r^2K_T^2\bigr)=2Gm ,
+\]
+so that $m$ is the Misner--Sharp mass \cite{MisnerSharp1964}: $1-2Gm/r=\nabla_\mu r\nabla^\mu r$.
+
+\begin{proposition}[The mass from the constraints]\label{prop:massprime}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item If the Hamiltonian and momentum constraints hold with energy density $\rho$ and momentum density $J$ (normalised as $2\rho=16\pi G\rho_{\mathrm{phys}}$), then $M'=r^2(\rho\,r'-J\,rK_T)$.
+\item On a time-symmetric slice with the magnetic ansatz, $m'$ satisfies $r'(1-r'^2)/2-rr'r''=r'\ell^2\bigl(w'^2+(1-w^2)^2/(2r^2)\bigr)$, which is the Hamiltonian constraint multiplied by $r'$.
+\item Examples: for a round $S^3$ of radius $a$ written as $r=a\sin\chi$, $M=a\sin^3\chi$, equal to $a$ at the equator; for a cylinder $r=\ell$, $M=\ell$ on every sphere; for flat space $M=0$. With $\rho=3/(8\pi Ga^2)$ for the round sphere, $\frac{4\pi}3\rho r^3=M/(2G)$, and in general $\dd m/\dd s=4\pi r^2\rho\,r'$ for $K_T=0$: the Newtonian expressions.
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem}[A Penrose-type inequality]\label{thm:penrose}\ver\
+Suppose that on $[s_0,s_1]$ the dominant energy condition $|J|\le\rho$ holds and the spheres are untrapped, $|rK_T|\le r'$. Then $\rho r'-J\,rK_T\ge0$, so $M$ is nondecreasing. If the sphere at $s_0$ is marginal, $r'(s_0)^2=r(s_0)^2K_T(s_0)^2$, then $M(s)\ge r(s_0)$ for all $s\in[s_0,s_1]$; in particular there is no flat point ($M=0$) outside a marginal sphere of positive radius. If the marginal sphere is a throat of radius $\ell$, then
+\[
+m(s)\ \ge\ \frac{\ell}{2G}=\frac{\sqrt\pi}{\sqrt G\,g}\qquad\text{on }[s_0,s_1].
+\]
+\end{theorem}
+
+The bound is attained by the cylinder of radius $\ell$, which is the spatial section of the Bertotti--Robinson throat of Chapter~15. In words: a spherically symmetric configuration that contains such a throat has at least the throat's mass.
+
+\section{When the gauge field is the spin connection}
+
+By \cref{thm:spinwitten}, every spherical slice carries a magnetic Yang--Mills field of its own, its spin connection, with $w=r'$. Suppose the physical gauge field \emph{is} this connection, the standard embedding. Then its curvature is the Riemann tensor of the slice, and its energy density is a curvature invariant.
+
+\begin{theorem}[The constraint becomes geometric]\label{thm:geomconstraint}\ver\
+For $w=r'$ on a time-symmetric slice:
+\begin{enumerate}[label=(\roman*)]
+\item $g^2\rho=\frac18|\mathrm{Riem}_3|^2$ with $|\mathrm{Riem}_3|^2=4\bigl(2(r''/r)^2+((1-r'^2)/r^2)^2\bigr)$, so the Hamiltonian constraint ${}^{(3)}R=16\pi G\rho$ reads
+\[
+{}^{(3)}R=\frac{\ell^2}{2}\,|\mathrm{Riem}_3|^2. \tag{I}
+\]
+\item In three dimensions $|\mathrm{Riem}|^2=4|\mathrm{Ric}|^2-R^2$, so (I) is equivalent to $|\mathrm{Ric}|^2=R/(2\ell^2)+R^2/4$.
+\item The Yang--Mills equation for the spin connection is $\nabla^aR_{abcd}=0$, which in three dimensions says that Ricci is a Codazzi tensor:
+\[
+\nabla_c\mathrm{Ric}_{bd}-\nabla_b\mathrm{Ric}_{cd}=0. \tag{II}
+\]
+By the contracted Bianchi identity its trace is $-\frac12\nabla_bR$. More precisely, (II) holds if and only if $\nabla R=0$ and the Cotton tensor vanishes.
+\end{enumerate}
+\end{theorem}
+
+So under the standard embedding the constraint equations of EYM theory become two conditions on the Riemannian geometry of the slice. (II) says that the slice has constant scalar curvature and is locally conformally flat, since the Cotton tensor is the obstruction to conformal flatness in three dimensions. Then (I) says $|\mathrm{Ric}|^2$ is constant too. Complete locally conformally flat three-manifolds with these properties have been classified by Cheng, Ishikawa and Shiohama \cite{CIS1999} \ext: the candidates are flat space, $S^3(a)$, $H^3(a)$, $S^2(a)\times\RR$ and $H^2(a)\times\RR$.
+
+\begin{theorem}[The three homogeneous solutions]\label{thm:threesol}\ver\
+Among the candidates above, (I) holds exactly for flat space, for the round three-sphere $S^3(\ell)$ of radius $\ell$, and for the cylinder $S^2(\ell)\times\RR$ of radius $\ell$. The hyperbolic candidates never satisfy (I), and the spatial Schwarzschild slice, with Ricci eigenvalues $(-2\mu,\mu,\mu)$, $R=0$ and $|\mathrm{Rm}|^2=24\mu^2$, does not satisfy (I) unless $\mu=0$.
+\end{theorem}
+
+The radius is not chosen; it is forced by the constraint to be the EYM length $\ell$. In terms of the slice functions: flat space has $r=s$ and $w=r'=1$, the vacuum. The round sphere has $r=\ell\sin(s/\ell)$ and $w=\cos(s/\ell)$, which runs from the vacuum at the poles to the monopole $w=0$ at the equator. The cylinder has $r=\ell$ and $w=0$, the unit magnetic monopole on every sphere.
+
+\begin{proposition}[Global form of the solutions]\label{prop:globalform}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item If $r''=-r/\ell^2$ then $r=r(0)\cos(s/\ell)+\ell r'(0)\sin(s/\ell)$; with the constraint $1-r'^2=r^2/\ell^2$ the amplitude is $r(0)^2+\ell^2r'(0)^2=\ell^2$, so $r\le\ell$; at a pole $r=0$ the constraint forces $r'^2=1$, so the slice closes smoothly without a conical singularity.
+\item If $r''=0$ then $r=r(0)+r'(0)s$, and the constraint forces $r'(0)^2=1$.
+\end{enumerate}
+\end{proposition}
+
+\section{Which solutions survive evolution}
+
+The standard embedding is a condition on a slice. It survives time evolution only if $w=r'$ continues to hold. Write $w_{tt}$ and $(r')_{tt}$ for the second time derivatives computed from the Yang--Mills equation and from the ADM evolution equations, with $\kappa=2\ell^2$.
+
+\begin{theorem}[Compatibility with evolution]\label{thm:sector}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $w_{tt}-(r')_{tt}$ has an explicit closed form, and in geodesic slicing ($N'=0$) it equals $\kappa N^2r'(rr''+1-r'^2)^2/r^4$. Hence it vanishes if and only if $r'=0$ or $rr''+1-r'^2=0$.
+\item If $r'=r''=0$ and the Hamiltonian constraint holds, then $r^2=\kappa/2=\ell^2$, and the difference vanishes for every lapse.
+\item If $rr''+1-r'^2=0$ (a space form), the constraint gives either $1-r'^2=0$ (flat) or $1-r'^2=r^2/\ell^2$ (the round $S^3(\ell)$); the hyperbolic branch $1-r'^2<0$ is excluded.
+\end{enumerate}
+\end{theorem}
+
+So the standard embedding is preserved, at least to second order in time, exactly on the three homogeneous solutions, and on the throat for any choice of lapse. The next chapter shows that the classification is complete, by excluding all non-homogeneous possibilities with a different method. The two chapters after that study the round sphere and the cylinder as spacetimes.
+
+\begin{litbox}
+Initial data and the Misner--Sharp mass are standard \cite{MisnerSharp1964,PoissonToolkit}; monotonicity of the mass under the dominant energy condition in spherical symmetry is classical, and Penrose-type inequalities have a long history. For EYM theory, the absence of colour charge for static solutions is due to Ershov and Gal'tsov \cite{VolkovGaltsov1999}. The classification of Cheng, Ishikawa and Shiohama \cite{CIS1999} is used as an external input. New here are \cref{thm:geomconstraint} and \cref{thm:threesol}. Under the standard embedding $w=r'$, the EYM constraints on a time-symmetric slice become the pair (I), (II) of geometric conditions, and their only complete homogeneous solutions are flat space, $S^3(\ell)$ and $S^2(\ell)\times\RR$, all with radius set by $\ell=\sqrt{4\pi G}/g$. Also new is \cref{thm:sector}, which says that the embedding survives evolution exactly on these.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $M=r(1-r'^2+r^2K_T^2)$, $M'=r^2(\rho r'-JrK_T)$, and the Penrose-type bound $m\ge\ell/(2G)$ (\cref{prop:massprime,thm:penrose}).
+\item The geometric form (I), (II) of the constraints under $w=r'$ (\cref{thm:geomconstraint}).
+\item The three homogeneous solutions: flat, $S^3(\ell)$ with $w=\cos(s/\ell)$, $S^2(\ell)\times\RR$ with $w=0$ (\cref{thm:threesol,prop:globalform}).
+\item Compatibility of $w=r'$ with evolution exactly on these (\cref{thm:sector}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Compute $M=r(1-r'^2)$ for $r=a\sin(s/a)$ and show $M=a\sin^3(s/a)$.
+\end{exercise}
+\begin{exercise}
+For $S^3(a)$, $R=6/a^2$ and $|\mathrm{Rm}|^2=12/a^4$. Show that (I) holds iff $a=\ell$. Do the same for $S^2(a)\times\RR$, with $R=2/a^2$ and $|\mathrm{Rm}|^2=4/a^4$.
+\end{exercise}
+\begin{exercise}
+Show that $H^3(a)$ violates (I) for every $a$ by comparing signs.
+\end{exercise}
+\begin{exercise}
+Verify that $\ell/(2G)=\sqrt\pi/(\sqrt G\,g)$ using $\ell^2=4\pi G/g^2$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaFix_Unify:witten_Ftr}{$F_{tr}=(\partial_ta_1-\partial_ra_0)T$ for a common generator.$^*$}
+\chk{AlphaFix_Unify:color_charge_vanishes,AlphaX_Unify:color_charge_zero}{The colour-electric field and charge vanish (two statements).$^*$}
+\chk{AlphaIII_Shape:ms_from_constraints}{$M'=r^2(\rho r'-JrK_T)$ from the constraints.$^*$}
+\chk{AlphaDumbbell_Bogomolny:ds2_mass_prime}{Time-symmetric mass derivative with the magnetic field.$^*$}
+\chk{AlphaIII:M2_cap}{$M=a\sin^3\chi$ on the round sphere.$^*$}
+\chk{AlphaIII:M2_equator}{$M=a$ at the equator.$^*$}
+\chk{AlphaIII:M2_neck}{$M=\ell$ on the cylinder.$^*$}
+\chk{AlphaIII:neck_marginal}{Every sphere of the cylinder is marginal.$^*$}
+\chk{AlphaIII:M2_flat}{$M=0$ in flat space.$^*$}
+\chk{AlphaIII:cap_newton}{$\frac{4\pi}3\rho r^3=M/(2G)$ on the round sphere.$^*$}
+\chk{AlphaIII:flat_mass_rate}{$\dd m/\dd s=4\pi r^2\rho r'$.$^*$}
+\chk{AlphaIII:integrand_nonneg}{$\rho r'-JrK\ge0$ under dominant energy and untrappedness.$^*$}
+\chk{AlphaIII:penrose_spherical}{Penrose-type inequality $M\ge r(s_0)$.$^*$}
+\chk{AlphaIII_Shape:penrose_from_constraints}{The same with the constraint equations as hypotheses.$^*$}
+\chk{AlphaIII:no_flat_exterior}{No flat point outside a marginal sphere.$^*$}
+\chk{AlphaIII:eq_of_sq_eq}{$a^2=b^2$ with $a,b\ge0$ implies $a=b$.}
+\chk{AlphaIII:min_mass}{$\ell/(2G)=\sqrt\pi/(\sqrt G g)$.$^*$}
+\chk{AlphaS3_Mass:min_mass_from_constraints}{Minimal mass $\ell/(2G)$ outside a marginal throat of radius $\ell$.$^*$}
+\chk{AlphaII_EYM:riem_identity}{For $w=r'$, $g^2\rho=|\mathrm{Riem}_3|^2/8$.$^*$}
+\chk{AlphaII_EYM:geometric_constraint}{${}^{(3)}R=16\pi G\rho$ becomes (I).$^*$}
+\chk{AlphaII:coeff_I}{The coefficient $\ell^2/2$ in (I).$^*$}
+\chk{AlphaII:rm2_3d}{$|\mathrm{Rm}|^2=4|\mathrm{Ric}|^2-R^2$ in three dimensions.$^*$}
+\chk{AlphaII:ric2_of_I}{(I) $\iff|\mathrm{Ric}|^2=R/(2\ell^2)+R^2/4$.$^*$}
+\chk{AlphaII:trace_II}{The trace of (II) gives $\nabla R=0$.$^*$}
+\chk{AlphaCompleteB:II_iff_cotton}{(II) $\iff\nabla R=0$ and vanishing Cotton tensor.$^*$}
+\chk{AlphaII:eq_of_sq_eq}{$a^2=\ell^2$ with $a,\ell>0$ implies $a=\ell$.}
+\chk{AlphaII:satI_flat}{Flat space satisfies (I).$^*$}
+\chk{AlphaII:satI_sphere}{$S^3(a)$ satisfies (I) iff $a=\ell$.$^*$}
+\chk{AlphaII:not_satI_hyp}{$H^3(a)$ never satisfies (I).$^*$}
+\chk{AlphaII:satI_sphProd}{$S^2(a)\times\RR$ satisfies (I) iff $a=\ell$.$^*$}
+\chk{AlphaII:not_satI_hypProd}{$H^2(a)\times\RR$ never satisfies (I).$^*$}
+\chk{AlphaII:three_phases}{The only solutions among the candidates: flat, $S^3(\ell)$, $S^2(\ell)\times\RR$.$^*$}
+\chk{AlphaIII:schw_R,AlphaIII:schw_Rm2,AlphaIII:schw_consistent}{The spatial Schwarzschild slice: Ricci eigenvalues, $R=0$, $|\mathrm{Rm}|^2=24\mu^2$ (three statements).$^*$}
+\chk{AlphaIII:schw_not_I}{It does not satisfy (I) for $\mu\ne0$.$^*$}
+\chk{AlphaFix_Geo:s3_global}{$r''=-r/\ell^2$ integrates to $r(0)\cos(s/\ell)+\ell r'(0)\sin(s/\ell)$.$^*$}
+\chk{AlphaFix_Geo:s3_amplitude}{The amplitude is $\ell$ and $r\le\ell$.$^*$}
+\chk{AlphaFix_Geo:s3_pole_regular}{At a pole $r'^2=1$: smooth closing.$^*$}
+\chk{AlphaFix_Geo:flat_global}{$r''=0$ integrates to a straight line.$^*$}
+\chk{AlphaII_EYM:Rtt_deriv}{Time derivative of the ADM expression $R_{tt}$.$^*$}
+\chk{AlphaII_EYM:sector_delta}{Closed form of $w_{tt}-(r')_{tt}$.$^*$}
+\chk{AlphaII_EYM:sector_geodesic}{In geodesic slicing it vanishes iff $r'=0$ or $rr''+1-r'^2=0$.$^*$}
+\chk{AlphaII_EYM:phase_neck}{$r'=r''=0$ forces $r^2=\ell^2$.$^*$}
+\chk{AlphaII_EYM:neck_any_lapse}{On the cylinder the difference vanishes for every lapse.$^*$}
+\chk{AlphaII_EYM:phase_form}{Space forms: flat or $S^3(\ell)$.$^*$}
+\chk{AlphaII_EYM:no_hyperbolic}{The hyperbolic branch is excluded.$^*$}
+\end{checklist}
