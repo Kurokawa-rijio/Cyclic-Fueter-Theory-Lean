@@ -116,3 +116,10 @@ AlphaFix_Geo:jacobi_neck	ch24
 AlphaFix_Geo:lyapunov_neck	ch24
 AlphaFix_Geo:cap_unique_local	ch23
 AlphaFix_Geo:no_killing_spinor_local	ch23
+AlphaS3_Closure:flat_r	ch15
+AlphaS3_Closure:flat_rp	ch15
+AlphaS3_Closure:flat_G	ch15
+AlphaS3_Closure:cap_mass_exact	ch15
+AlphaS3_Closure:flat_mass	ch15
+AlphaS3_Closure:cap_mass_rate	ch15
+AlphaS3_Closure:flat_mass_rate_limit	ch15

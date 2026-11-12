@@ -1,0 +1,157 @@
+\chapter{Three-Geometries with a Codazzi Ricci Tensor}
+\label{ch:homogeneous}
+
+\begin{usesbox}
+\textbf{This chapter uses:} moving frames and the fact that in three dimensions Ricci determines Riemann (\cref{prop:frame,thm:riemricci}); the geometric constraints (I) and (II) (\cref{thm:geomconstraint}).\\
+\textbf{It provides:} a local analysis of three-geometries whose Ricci tensor is a Codazzi tensor with constant invariants, the setting of (I)--(II) when the slice is not assumed complete or homogeneous: the first-stage solution of the Codazzi equations; the Bochner sign $\kappa=-|\nabla\mathrm{Ric}|^2\le0$; the window $0<R\ell^2<2$ for three distinct Ricci eigenvalues; the non-existence of the diagonal and aligned classes; and the second-stage compatibility analysis.
+\end{usesbox}
+
+\Cref{thm:threesol} used a global classification theorem as external input, and it assumed completeness. A physicist would like to know what happens locally, for instance on a piece of a slice near a junction, where neither completeness nor homogeneity can be assumed. This chapter attacks that question directly with moving frames. The analysis is long, and parts of it are computer-algebraic in nature: polynomial identities with many terms that were found by elimination and are then checked one by one in Lean. We describe the structure and the results, and we leave the individual identities to the checklist. The outcome is a set of strong necessary conditions and two non-existence theorems. A complete local classification is \opn.
+
+\section{The setting}
+
+By \cref{thm:geomconstraint} the slice geometry satisfies (II): $\mathrm{Ric}$ is a Codazzi tensor, equivalently $\nabla R=0$ and the Cotton tensor vanishes. It also satisfies (I), which fixes $|\mathrm{Ric}|^2$ in terms of $R$. Hence the elementary symmetric functions $\sigma_1=R$ and $\sigma_2$ of the Ricci eigenvalues are constant. If two eigenvalues coincide everywhere, the geometry is locally a warped product and falls under \cref{ch:constraints}. The remaining case is:
+
+\begin{definition}[Class C2]
+A three-geometry is of class C2 on an open set if its Ricci tensor is diagonal in an orthonormal frame with three eigenvalues $\lambda_0,\lambda_1,\lambda_2$ that are pairwise distinct at every point, $\mathrm{Ric}$ is a Codazzi tensor, and $\sigma_1$ and $\sigma_2$ are constant.
+\end{definition}
+
+\section{The first stage: solving the Codazzi equations}
+
+In the eigenframe of Ricci, the Codazzi equations $(\nabla_k\mathrm{Ric})_{ij}=(\nabla_i\mathrm{Ric})_{kj}$ become linear equations for the frame derivatives $e_k\lambda_i$ and the connection coefficients $\Gamma_{ijk}$, with coefficients that are differences of eigenvalues. Since these differences are invertible, the equations can be solved.
+
+\begin{theorem}[First stage]\label{thm:c2first}\ver\
+On a C2 geometry, the Riemann tensor is given by \cref{thm:riemricci}, and the Codazzi equations, the torsion equations and the curvature equations determine all frame derivatives $e_k\lambda_i$ and all connection coefficients in terms of the eigenvalues and four functions $a=\Gamma_{022}$, $b=\Gamma_{122}$, $c=\Gamma_{121}$, $h=\Gamma_{012}$. In the normalised variables
+\[
+\alpha=\frac{a}{(\lambda_0-\lambda_1)^2},\quad \beta=\frac{b}{(\lambda_0-\lambda_1)^2},\quad \gamma=\frac{c}{(\lambda_0-\lambda_2)^2},\quad \eta=\frac{h}{(\lambda_0-\lambda_2)(\lambda_1-\lambda_2)},
+\]
+everything is polynomial. Moreover the Bochner identity for a Codazzi tensor holds:
+\[
+\kappa:=\sum_{i<j}\Bigl(\lambda_i+\lambda_j-\frac R2\Bigr)(\lambda_i-\lambda_j)^2=-|\nabla\mathrm{Ric}|^2 .
+\]
+\end{theorem}
+
+The Bochner identity has an immediate pointwise consequence. Evaluating at a point,
+
+\begin{corollary}[Bochner sign]\label{cor:kappasign}\ver\
+$\kappa\le0$ at every point of a C2 geometry.
+\end{corollary}
+
+\section{The window}
+
+The constraint (I) and the sign of $\kappa$ together confine the scalar curvature to a narrow window. Write the eigenvalues as $\lambda_i=R/3+q\,c_i$ with $\sum c_i=0$ and $\sum_{i<j}c_ic_j=-\frac34$, and put $C=4c_1c_2c_3$; for three distinct eigenvalues $C$ plays the role of $\cos3\theta$.
+
+\begin{theorem}[Window]\label{thm:window}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\kappa=\sigma_1^3-4\sigma_1\sigma_2+9\sigma_3$.
+\item $\prod_{i<j}(c_i-c_j)^2=\frac{27}{16}(1-C^2)$, so distinct eigenvalues force $-1<C<1$.
+\item Under (I), $q=\sqrt R\sqrt{12-2R\ell^2}/(6\ell)$ and
+\[
+\kappa=\frac{(6-R\ell^2)R^{3/2}}{48\ell^3}\Bigl[2\ell\sqrt R+\sqrt{12-2R\ell^2}\,C\Bigr].
+\]
+\item Consequently, if the eigenvalues are distinct, (I) holds and $\kappa\le0$, then
+\[
+0<R\ell^2<2 .
+\]
+The bracket is negative exactly when $C<-\sqrt{2x/(6-x)}$ with $x=R\ell^2$.
+\end{enumerate}
+\end{theorem}
+
+Compare with the homogeneous solutions: $S^3(\ell)$ has $R\ell^2=6$ and $S^2(\ell)\times\RR$ has $R\ell^2=2$. A C2 geometry, if it exists, would have to sit strictly below the cylinder.
+
+\section{Two classes that do not exist}
+
+The first non-existence result concerns geometries with a symmetry direction.
+
+\begin{theorem}[No diagonal C2 geometry]\label{thm:diagonal}\ver\nogo\
+For $\dd t^2+a(t)^2\dd x^2+b(t)^2\dd y^2$, with $\alpha=a'/a$, $\beta=b'/b$, the Ricci eigenvalues are $\lambda_t=-(\alpha'+\alpha^2+\beta'+\beta^2)$, $\lambda_x=-(\alpha'+\alpha^2+\alpha\beta)$ and $\lambda_y=-(\beta'+\beta^2+\alpha\beta)$. If Ricci is Codazzi and $\sigma_2$ is constant, then on any interval
+\[
+\Delta=\alpha(\lambda_t-\lambda_x)(\lambda_t-\lambda_y)(\lambda_x-\lambda_y)=0 .
+\]
+\end{theorem}
+
+The proof writes the Codazzi conditions as a flow for $(\alpha,\beta,\alpha',\beta')$, shows that $\sigma_1$ is then automatically conserved, differentiates $\sigma_2$ four times along the flow, and exhibits an explicit certificate expressing $\Delta^2$ as a combination of these four derivatives. The certificate was found by solving a linear system of 195 unknowns in a weighted-homogeneous ansatz; Lean checks the resulting identity.
+
+\begin{theorem}[No aligned C2 geometry]\label{thm:aligned}\ver\nogo\
+There is no C2 geometry in which the eigenvalue gradients point along $e_0$, i.e.\ $e_1\lambda_i=e_2\lambda_i=0$ with $e_0\lambda_0$ invertible.
+\end{theorem}
+
+Here the first-stage equations force $\beta=\gamma=\eta=0$. Eliminating $e_0\alpha$ and $\alpha^2$ from three curvature equations leaves a cubic relation $g(\lambda)=0$ among the eigenvalues. Differentiating it along $e_0$ gives two more relations, and $\bigl((\lambda_0-\lambda_1)(\lambda_0-\lambda_2)(\lambda_1-\lambda_2)\bigr)^3$ is an explicit combination of the three, which contradicts distinctness.
+
+\section{The second stage}
+
+For a general C2 geometry the first-stage solution leaves the derivatives $e_2(\alpha,\beta,\gamma,\eta)$ free. At the second stage the torsion equations applied to $\alpha,\beta,\gamma,\eta$ and the derivatives of the Bochner polynomial $B$ give $21$ linear equations for the $12$ second derivatives $E_{kj}=e_kf_j$.
+
+\begin{theorem}[Second stage]\label{thm:secondstage}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The first-stage solution for $e_0$ and $e_1$ of $(\alpha,\beta,\gamma,\eta)$ holds on every C2 geometry, and the twelve torsion equations, written as polynomials $n_0,\dots,n_{11}$ in the jet variables, vanish on every C2 frame.
+\item The Bochner polynomial $B$ vanishes on every C2 frame.
+\item Four left-kernel combinations $K_0,\dots,K_3$ of the torsion rows are explicit multiples of $B$ and $e_0B$, so they impose nothing new; three further compatibility conditions are the torsion identities for the Hessian of $B$.
+\item At the point $x^*=(\lambda_0,\lambda_1,\lambda_2,\alpha,\beta,\gamma,\eta)=(0,-4,-2,-\frac1{32},-\frac1{32},-\frac1{16},\frac3{32})$, where $B(x^*)=0$, the $21\times12$ coefficient matrix has rank $12$.
+\end{enumerate}
+Consequently the left kernel is generically nine-dimensional, seven of its directions are automatic, and at most two independent compatibility conditions remain at the second stage.
+\end{theorem}
+
+The step from ``rank 12 at one point'' to ``rank 12 generically on the component of $\{B=0\}$ through that point'' is the lower semicontinuity of rank, a standard fact. Whether the two remaining conditions, together with (I), exclude C2 geometries altogether is \opn. If they did, \cref{thm:threesol} would hold locally, without completeness.
+
+\begin{litbox}
+Codazzi tensors and their Bochner identity are classical \cite{Derdzinski1980}. Three-manifolds with a Codazzi Ricci tensor are exactly the locally conformally flat ones with constant scalar curvature, whose complete examples are classified by Cheng, Ishikawa and Shiohama \cite{CIS1999}. The local analysis here, with the window $0<R\ell^2<2$ under the EYM constraint (I), the two non-existence theorems, and the second-stage rank computation, is new. Its value lies less in the individual identities, which are elimination certificates, than in replacing a global classification by checkable local statements. The remaining gap is stated explicitly.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The Bochner sign $\kappa\le0$ and the window $0<R\ell^2<2$ (\cref{cor:kappasign,thm:window}).
+\item Non-existence of diagonal and aligned C2 geometries (\cref{thm:diagonal,thm:aligned}).
+\item At most two independent second-stage conditions remain (\cref{thm:secondstage}); the local classification is open.
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Verify \cref{thm:window}(i) for $\lambda=(1,1,1)$ and for $\lambda=(1,0,0)$.
+\end{exercise}
+\begin{exercise}
+Compute $R\ell^2$ for $S^3(\ell)$ and for $S^2(\ell)\times\RR$ and confirm that neither lies in the window $0<R\ell^2<2$.
+\end{exercise}
+\begin{exercise}
+For the diagonal metric of \cref{thm:diagonal} with $b=$ const, show that $\lambda_y=0$ and $\lambda_t=\lambda_x$, so the eigenvalues are not distinct.
+\end{exercise}
+
+\begin{checklist}
+\chk{Cartan.C2:h01,Cartan.C2:h02,Cartan.C2:h12,Cartan.C2:hsum,Cartan.C2:hsq,Cartan.C2:hhf,Cartan.C2:e_ofNat}{Bookkeeping consequences of the C2 hypotheses (invertible differences, constant $\sigma_1,\sigma_2$, constants have zero derivative; seven statements).}
+\chk{Cartan.C2:riem}{The Riemann tensor of a C2 frame is given by Ricci.$^*$}
+\chk{Cartan.C2:cod*}{The nine Codazzi equations in the eigenframe (nine statements).$^*$}
+\chk{Cartan.C2:D*}{The nine frame derivatives $e_k\lambda_i$ (nine statements).$^*$}
+\chk{Cartan.C2:G*}{The remaining connection coefficients (five statements).$^*$}
+\chk{Cartan.C2:pD*,Cartan.C2:pG*}{The same in the polynomial variables $\alpha,\beta,\gamma,\eta$ (eighteen statements).$^*$}
+\chk{Cartan.C2:S*}{The nine curvature structure equations (nine statements).$^*$}
+\chk{Cartan.C2:T*}{The nine torsion equations (nine statements).$^*$}
+\chk{Cartan.C2:bochner}{The Bochner identity $\kappa=-|\nabla\mathrm{Ric}|^2$.$^*$}
+\chk{Cartan.BochnerSign:ev_half,Cartan.BochnerSign:kappa_eq_neg_grad}{Pointwise evaluation of the Bochner identity (two statements).$^*$}
+\chk{Cartan.BochnerSign:kappa_nonpos}{$\kappa\le0$ pointwise.$^*$}
+\chk{AlphaII:kappa_sym}{$\kappa=\sigma_1^3-4\sigma_1\sigma_2+9\sigma_3$.$^*$}
+\chk{AlphaII:kappa_closed}{Closed form of $\kappa$ under (I) in the angle variables.$^*$}
+\chk{AlphaS3_Closure:disc_identity}{$\prod(c_i-c_j)^2=\frac{27}{16}(1-C^2)$.$^*$}
+\chk{AlphaS3_Closure:C_strict}{Distinct eigenvalues force $-1<C<1$.$^*$}
+\chk{AlphaII:window}{Negative bracket forces $R\ell^2<2$.$^*$}
+\chk{AlphaII:window_cos}{The bracket is negative iff $C<-\sqrt{2x/(6-x)}$.$^*$}
+\chk{AlphaS3_Closure:window_strict}{Nonpositive bracket and $C>-1$ give $x<2$.$^*$}
+\chk{AlphaS3_Closure:strict_window}{From distinct eigenvalues, (I) and $\kappa\le0$: $0<R\ell^2<2$.$^*$}
+\chk{AlphaS3_Closure:c2_window}{The window holds at every point of a C2 geometry.$^*$}
+\chk{AlphaII_Diagonal:deriv_zero_of_const}{A function constant on an interval has zero derivative there.}
+\chk{AlphaII_Diagonal:codazzi_to_flow}{Codazzi conditions as a flow.$^*$}
+\chk{AlphaII_Diagonal:flow_s1,AlphaII_Diagonal:scalar_conserved}{$\sigma_1$ is conserved along the flow (two statements).$^*$}
+\chk{AlphaII_Diagonal:flow_s2,AlphaII_Diagonal:flow_e1,AlphaII_Diagonal:flow_e2,AlphaII_Diagonal:flow_e3}{Successive derivatives of $\sigma_2$ along the flow (four statements).$^*$}
+\chk{AlphaII_Diagonal:cert}{Certificate $\Delta^2=\sum c_ke_k$.$^*$}
+\chk{AlphaII_Diagonal:diagonal_class_degenerate}{No diagonal C2 geometry: $\Delta=0$.$^*$}
+\chk{Cartan.Aligned:unit_x}{The product of the eigenvalue differences is invertible.}
+\chk{Cartan.Aligned:aligned_impossible}{No aligned C2 geometry.$^*$}
+\chk{Cartan.SSFirst:*}{First-stage solution for $e_0,e_1$ of $(\alpha,\beta,\gamma,\eta)$ and an invertibility lemma (nine statements).$^*$}
+\chk{Cartan.SSRows0:*,Cartan.SSRows1a:*,Cartan.SSRows1b:*,Cartan.SSRows2a:*,Cartan.SSRows2b:*,Cartan.SSRows3:*}{The twelve torsion polynomials vanish on every C2 frame (twelve statements).$^*$}
+\chk{Cartan.SecondStage:Bj_frame}{The Bochner polynomial vanishes on every C2 frame.$^*$}
+\chk{Cartan.SSCoefBj:*}{Coefficient splitting for the Bochner certificate (five statements).}
+\chk{Cartan.SSK:*}{The four left-kernel combinations $K_0,\dots,K_3$ (four statements).$^*$}
+\chk{Cartan.SSCoefK0:*,Cartan.SSCoefK1:*,Cartan.SSCoefK2:*,Cartan.SSCoefK3:*}{Coefficient splitting for $K_0,\dots,K_3$ (sixty-eight statements).}
+\chk{Cartan.SSCoefR3:*,Cartan.SSCoefR6:*}{Coefficient splitting for torsion rows 3 and 6 (thirty-six statements).}
+\chk{Cartan.SSRank:Bj_star}{$B(x^*)=0$.$^*$}
+\chk{Cartan.SSRank:rank12_star}{The second-stage coefficient matrix has rank $12$ at $x^*$.$^*$}
+\end{checklist}
