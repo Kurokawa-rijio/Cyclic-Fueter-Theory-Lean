@@ -12,6 +12,7 @@ import CFT.AlphaCompleteD
 import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFamous
+import CFT.AlphaFermion
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge

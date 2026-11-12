@@ -11,6 +11,7 @@ import CFT.AlphaCompleteD
 import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFamous
+import CFT.AlphaFermion
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
@@ -295,6 +296,27 @@ import CFT.ZeroModeL2
 #print axioms CFT.FAM.fam_extremal_T
 #print axioms CFT.FAM.fam_first_law
 #print axioms CFT.FAM.fam_hagedorn
+#print axioms CFT.FER.fer_free_plus
+#print axioms CFT.FER.fer_free_minus
+#print axioms CFT.FER.fer_hedgehog
+#print axioms CFT.FER.fer_hedgehog_zero
+#print axioms CFT.FER.fer_triplet
+#print axioms CFT.FER.fer_j_half
+#print axioms CFT.FER.fer_susy_factor
+#print axioms CFT.FER.fer_cap_partner
+#print axioms CFT.FER.fer_tower_d1
+#print axioms CFT.FER.fer_tower_d2
+#print axioms CFT.FER.fer_tower
+#print axioms CFT.FER.fer_zero_mode_cap
+#print axioms CFT.FER.fer_zero_mode_neck
+#print axioms CFT.FER.fer_monopole_index
+#print axioms CFT.FER.fer_constraint_prop
+#print axioms CFT.FER.fer_ym_conservation
+#print axioms CFT.FER.vol_cap
+#print axioms CFT.FER.vol_total
+#print axioms CFT.FER.vol_neck_length
+#print axioms CFT.FER.vol_static_cap
+#print axioms CFT.FER.vol_no_neck
 #print axioms CFT.FixDyn.micro_exact_deriv
 #print axioms CFT.FixDyn.coth_eq
 #print axioms CFT.FixDyn.micro_exact_inv_T
@@ -1278,6 +1300,27 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_17_fam_extremal_T
 #print axioms CFT.Index.XV_17_fam_first_law
 #print axioms CFT.Index.XV_18_fam_hagedorn
+#print axioms CFT.Index.XV_19_vol_cap
+#print axioms CFT.Index.XV_19_vol_total
+#print axioms CFT.Index.XV_19_vol_neck_length
+#print axioms CFT.Index.XV_19_vol_static_cap
+#print axioms CFT.Index.XV_19_vol_no_neck
+#print axioms CFT.Index.XV_20_fer_free_plus
+#print axioms CFT.Index.XV_20_fer_free_minus
+#print axioms CFT.Index.XV_20_fer_hedgehog
+#print axioms CFT.Index.XV_20_fer_hedgehog_zero
+#print axioms CFT.Index.XV_20_fer_triplet
+#print axioms CFT.Index.XV_20_fer_j_half
+#print axioms CFT.Index.XV_21_fer_susy_factor
+#print axioms CFT.Index.XV_21_fer_cap_partner
+#print axioms CFT.Index.XV_21_fer_tower_d1
+#print axioms CFT.Index.XV_21_fer_tower_d2
+#print axioms CFT.Index.XV_21_fer_tower
+#print axioms CFT.Index.XV_21_fer_zero_mode_cap
+#print axioms CFT.Index.XV_21_fer_zero_mode_neck
+#print axioms CFT.Index.XV_22_fer_monopole_index
+#print axioms CFT.Index.XV_23_fer_constraint_prop
+#print axioms CFT.Index.XV_23_fer_ym_conservation
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
