@@ -1,0 +1,210 @@
+\chapter{Evolution: Constraint Propagation and Characteristic Fronts}\markboth{\MakeUppercase{Chapter 19.\ Evolution}}{}
+\label{ch:evolution}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the spherical Einstein tensor in diagonal and double-null form (\cref{thm:einD,thm:einN}); the Yang--Mills field strength $F=\dd A+A\wedge A$ and the magnetic ansatz \eqref{eq:magansatz}; the Tolman universe and the throat (\cref{thm:tolman,thm:br}); the Gudermannian (\cref{thm:gudermann}); the null junction conditions (\cref{thm:null,thm:nullfront}).\\
+\textbf{It provides:} the spherically symmetric EYM equations as a characteristic (Goursat) initial value problem; the proof that the constraints propagate, in both the double-null and the ADM form; the Tolman universe and the throat as solutions of the evolution equations in coordinates adapted to the junction; the characteristic fronts in the throat, which are lines of constant Mercator angle, $t=\ell\gd(z/\ell)$; and the transport of the jumps along the fronts.
+\end{usesbox}
+
+Chapters 13 to 18 treated a single moment of time. We now let the glued data evolve. The plan is the standard one for hyperbolic systems with constraints. First show that the evolution equations alone determine the solution and that the constraints, once satisfied, stay satisfied. Then identify the regions of the spacetime that are exactly known: those points whose past lies entirely in the Tolman part or entirely in the throat. The boundaries of these regions are null fronts from the junction sphere, and on the throat side these fronts are described by the Gudermannian of \cref{ch:hemisphere}.
+
+\section{The Yang--Mills equation in double-null gauge}
+
+Use the double-null metric \eqref{eq:nullmetric}, $\dd s^2=-2\Omega\,\dd u\,\dd v+r^2\dd\Omega^2$, and the magnetic ansatz with $w=w(u,v)$. Computing $F=\dd A+A\wedge A$ with the structure constants $\epsilon_{abc}$ of $\su(2)$, and then $D_\mu F^{\mu\nu}$, all components vanish identically except two, which are proportional to each other.
+
+\begin{theorem}[Double-null Yang--Mills equation]\label{thm:ymnull}\ver\
+For the magnetic ansatz in the double-null metric, the sixteen components $(D_\mu F^{\mu\nu})^a$ with $a=1,2,3$ and $\nu$ ranging over the coordinates reduce to the single equation
+\[
+w_{uv}=\frac{\Omega\,w(1-w^2)}{2r^2}.
+\]
+In the conformal gauge $\Omega=e^{2\sigma}$ the right-hand side is $e^{2\sigma}w(1-w^2)/(2r^2)$.
+\end{theorem}
+
+There is no $w_u$ or $w_v$ on the right-hand side. This will be important: the $uv$-derivative of $w$ is determined by quantities that are continuous across a null front.
+
+\section{A Goursat problem}
+
+The remaining Einstein equations split into evolution equations, which are second order in $\partial_u\partial_v$, and two constraints along the null directions.
+
+\begin{theorem}[Characteristic form of spherical EYM]\label{thm:goursat}\ver\
+Let $C_u=r_{uu}-(\Omega_u/\Omega)r_u+2\ell^2w_u^2/r$ and $C_v$ the same with $u\leftrightarrow v$.
+\begin{enumerate}[label=(\roman*)]
+\item The $uu$ and $vv$ components of $G_{\mu\nu}-8\pi GT_{\mu\nu}$ are $-(2/r)C_u$ and $-(2/r)C_v$.
+\item The $uv$ component of the Einstein equations is equivalent to
+\[
+r_{uv}=\frac{\Omega}{2r}\Bigl(\frac{\ell^2(1-w^2)^2}{r^2}-1\Bigr)-\frac{r_ur_v}{r},
+\]
+and the $\theta\theta$ component, given this, to
+\[
+\Omega_{uv}=\frac{\Omega_u\Omega_v}{\Omega}-\frac{2\Omega\,r_{uv}}{r}-\frac{\Omega^2\ell^2(1-w^2)^2}{r^4}.
+\]
+\item Together with \cref{thm:ymnull}, these three equations express $r_{uv}$, $\Omega_{uv}$, $w_{uv}$ through the fields and their first derivatives.
+\end{enumerate}
+\end{theorem}
+
+Equations of the form $f_{uv}=F(f,f_u,f_v)$ define a Goursat problem: one prescribes $f$ on two intersecting null lines $u=u_0$ and $v=v_0$, and the solution exists and is unique in a neighbourhood of the corner \cite{Goursat}. The constraints restrict the data on the two lines.
+
+\begin{theorem}[The constraints propagate]\label{thm:constrprop}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item If $r_{uv}$, $\Omega_{uv}$ and $w_{uv}$ satisfy the three evolution equations of \cref{thm:goursat}, then
+\[
+\partial_vC_u=-\frac{r_v}{r}\,C_u,\qquad \partial_uC_v=-\frac{r_u}{r}\,C_v .
+\]
+The same conclusion holds starting directly from the $uv$ and $\theta\theta$ Einstein equations and the Yang--Mills equation for $F=\dd A+A\wedge A$.
+\item Consequently, if $C_u=0$ on the initial line $v=v_0$ and $r>0$, then $C_u=0$ everywhere along each line of constant $u$: $C_u$ satisfies a linear homogeneous ODE with zero initial value.
+\item In the ADM formulation with zero shift and unit lapse, metric $-\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$, extrinsic curvature components $K^x{}_x$, $K^\theta{}_\theta$, and Yang--Mills momentum $P=A\,\partial_tw$, the Hamiltonian constraint $\mathcal H$ and the momentum constraint $\mathcal M$ satisfy
+\[
+\partial_t\mathcal H=2K\mathcal H-4\frac{DR}{R}\mathcal M-2D\mathcal M,\qquad \partial_t\mathcal M=2(K^x{}_x+K^\theta{}_\theta)\mathcal M-\tfrac12D\mathcal H,
+\]
+with $D=A^{-1}\partial_x$ and $K=K^x{}_x+2K^\theta{}_\theta$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Comments on the proof]
+Parts (i) and (iii) are identities in a differential field: the fields are treated as elements of a field with commuting derivations $\partial_u,\partial_v$ (or $\partial_t,\partial_x$), and the identities follow by expanding. Two elementary lemmas are used, $\partial(a^{-1})=-a^{-2}\partial a$ and $\partial n=0$ for integers $n$. Part (ii) is the uniqueness of solutions of a linear ODE on an interval. The ADM system in (iii) is linear and homogeneous in $(\mathcal H,\mathcal M)$, so vanishing initial constraints remain zero by the standard energy estimate for symmetric hyperbolic systems \ext.
+\end{proof}
+
+\Cref{thm:constrprop} is the spherical form of the contracted Bianchi identity $\nabla_\mu G^{\mu\nu}=0$, which we proved in general in \cref{ch:fields}. Here it appears as an explicit, checkable statement for the reduced equations. The existence and uniqueness of solutions to the full non-linear system are external input \ext; the classical reference is Choquet-Bruhat's theorem \cite{ChoquetBruhat1952}, and for data with a jump in second derivatives one needs the low-regularity theory, which in spherical symmetry is due to Christodoulou \cite{Christodoulou1993}.
+
+\section{The two exact solutions as evolutions}
+
+In the diagonal gauge $-N^2\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$ both pieces of the glued slice evolve explicitly.
+
+\begin{theorem}[Tolman side]\label{thm:tolmanevo}\ver\
+Take conformal time $\eta$ and polar angle $\chi$, $N=A=a(\eta)$, $R=a(\eta)\sin\chi$, $w=\cos\chi$.
+\begin{enumerate}[label=(\roman*)]
+\item The $tt$ component of the field equations is equivalent to the Friedmann equation $a'^2+a^2=\ell^2$; the $\chi\chi$ and $\theta\theta$ components are both equivalent to $2aa''-a'^2+a^2+\ell^2=0$; the $t\chi$ component holds identically.
+\item Together these give $a''=-a$, and the time-symmetric solution with $a(0)=\ell$ is $a=\ell\cos\eta$.
+\item The proper time at the centre is $\tau=\ell\sin\eta$, so the universe recollapses at $\eta=\pi/2$ after proper time $\ell$. The Yang--Mills energy density in units of $1/(8\pi G)$ is $3/(2a^4)$, which diverges as $\eta\to\pi/2$.
+\item $\ell<\pi\ell/2$: the crunch occurs before the time $\pi\ell/2$ at which the throat's synchronous coordinates (below) break down.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Throat side]\label{thm:throatevo}\ver\
+Take $N=1$, $A=\cos(t/\ell)$, $R=\ell$, $w=0$, i.e.\ the metric
+\[
+\dd s^2=-\dd t^2+\cos^2(t/\ell)\,\dd z^2+\ell^2\dd\Omega^2 .
+\]
+All components of the EYM equations hold. This is $\mathrm{AdS}_2\times S^2$ in Gaussian normal coordinates adapted to the time-symmetric slice $t=0$; the coordinates are valid for $|t|<\pi\ell/2$.
+\end{theorem}
+
+\section{Characteristic fronts in the throat}
+
+At $t=0$ the two pieces are joined at the junction sphere. The null fronts leaving it bound the regions where the solution is known exactly. On the throat side, a right-moving null curve satisfies $\dd z/\dd t=1/\cos(t/\ell)$.
+
+\begin{theorem}[Fronts as Mercator lines]\label{thm:fronts}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The null curve through $z=0$ at $t=0$ is $z=\ell\,\operatorname{arsinh}\tan(t/\ell)$, equivalently
+\[
+t=\ell\,\gd(z/\ell),
+\]
+and this is the only future-directed right-moving null curve through the origin within the strip $|t|<\pi\ell/2$. The two descriptions are mutually inverse on that strip.
+\item The identities $\tan\gd y=\sinh y$, $\cos\gd y=\operatorname{sech}y$, $\gd'y=\cos\gd y$ and $\sqrt{1+\tan^2u}=1/\cos u$ (for $\cos u>0$) are the ones behind (i).
+\item (Mercator) With $t=\ell\gd(y/\ell)$, $\dd t/\dd y=\cos(t/\ell)$, so
+\[
+-\dd t^2+\cos^2(t/\ell)\,\dd z^2=\cos^2(t/\ell)\bigl(-\dd y^2+\dd z^2\bigr).
+\]
+The same Gudermann map that makes the sphere $\dd\varphi^2+\cos^2\varphi\,\dd\lambda^2$ conformally flat in Mercator's coordinates makes the two-dimensional part of the throat conformally flat.
+\item Fronts entering a throat segment of length $L$ from both ends meet at $t_*=\ell\gd(L/(2\ell))$, and only then. For every $z$, the arrival time $\ell\gd(z/\ell)$ is less than $\pi\ell/2$.
+\item On the Tolman side the inward front from the junction is $\chi=\pi/2-\eta$; it reaches the centre exactly at the crunch $\eta=\pi/2$.
+\item As $\ell\to\infty$: $\ell\gd(z/\ell)\to z$, $\ell\operatorname{arsinh}\tan(t/\ell)\to t$, $\cos^2(t/\ell)\to1$ and $\operatorname{sech}(z/\ell)\to1$, the flat light cone.
+\end{enumerate}
+\end{theorem}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.15]
+\draw[->] (-3.4,0) -- (3.6,0) node[right] {\small $z/\ell$};
+\draw[->] (0,-0.1) -- (0,1.9) node[above] {\small $t/\ell$};
+\draw[dashed] (-3.3,1.5708) -- (3.3,1.5708) node[right] {\small $\pi/2$};
+\draw[thick,domain=0:3.3,samples=60] plot (\x,{2*atan(tanh(\x/2))*3.14159/180});
+\draw[thick,domain=-3.3:0,samples=60] plot (\x,{-2*atan(tanh(\x/2))*3.14159/180});
+\draw[thin,domain=0:1.8,samples=30] plot (\x,\x);
+\draw[thin,domain=-1.8:0,samples=30] plot (\x,-\x);
+\node[right] at (1.8,1.8) {\small $t=|z|$};
+\node[below right] at (2.3,1.35) {\small $t=\ell\gd(z/\ell)$};
+\end{tikzpicture}
+\caption{Null fronts from $z=0$ in the throat (thick), compared with the flat light cone (thin). In the synchronous coordinates the front approaches $t=\pi\ell/2$ but never reaches it.}
+\label{fig:fronts}
+\end{figure}
+
+\Cref{thm:fronts} is where the geometry of \cref{ch:hemisphere} returns. There the Gudermannian related the rapidity $\zeta$ of a particle to the polar angle $\chi$ on the hemisphere. Here the same function relates the proper distance $z/\ell$ along the throat to the arrival time $t/\ell$ of a light signal. The throat's time plays the role of the circular angle and its space the role of rapidity, which is the statement that $\mathrm{AdS}_2$ is Lorentzian hyperbolic space with a circle of time.
+
+\section{Jumps along the fronts}
+
+\begin{proposition}[Transport of jumps]\label{prop:jumps}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item If on both sides of a front $u=u_0$ the derivatives $\partial_v w_u^\pm$ equal $e^{2\sigma}w(1-w^2)/(2r^2)$, with $r,\sigma,w$ continuous, then the jump $[w_u]$ is independent of $v$. This holds equally in the differential-field formulation.
+\item If the constraint $r_{uu}=2\sigma_ur_u-2\ell^2w_u^2/r$ holds on both sides with $r,\sigma_u,r_u$ continuous, then $[r_{uu}]=-(2\ell^2/r)[w_u^2]$.
+\end{enumerate}
+\end{proposition}
+
+With the corner values from \cref{thm:nullfront} this gives $[w_u]=1/(\sqrt2\ell)$ and $[r_{uu}]=-1/\ell$ along the whole front. The glued spacetime is therefore smooth except across two null hypersurfaces, on which second derivatives jump by fixed amounts. This is a weak discontinuity in the sense of hyperbolic PDE \cite{CourantHilbert2}, the gravitational analogue of a sound front.
+
+\begin{litbox}
+The characteristic initial value problem for Einstein's equations goes back to Sachs and Bondi; in spherical symmetry, the double-null formulation of the Einstein--scalar field system is due to Christodoulou \cite{Christodoulou1993}, and it has been applied to EYM in numerical studies of critical collapse \cite{ChoptuikChmajBizon1996}. Constraint propagation for the ADM equations is classical \cite{Frittelli1997}. Mercator's projection and the Gudermannian are of course old. What we believe is new is: the reduction of spherical EYM in double-null gauge to a Goursat system, with the propagation of the null constraints, checked for the full field strength $F=\dd A+A\wedge A$ (\cref{thm:ymnull,thm:goursat,thm:constrprop}); the evolution of the glued slice with explicit exact regions; and the observation that the light fronts of the throat are Mercator lines, $t=\ell\gd(z/\ell)$, the same function that links rapidity and hemisphere angle in \cref{ch:hemisphere} (\cref{thm:fronts}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $w_{uv}=\Omega w(1-w^2)/(2r^2)$ and the Goursat form of the field equations (\cref{thm:ymnull,thm:goursat}).
+\item The constraints propagate (\cref{thm:constrprop}).
+\item Tolman side: $a=\ell\cos\eta$, crunch at proper time $\ell$; throat side: $-\dd t^2+\cos^2(t/\ell)\dd z^2+\ell^2\dd\Omega^2$ (\cref{thm:tolmanevo,thm:throatevo}).
+\item Fronts $t=\ell\gd(z/\ell)$, meeting at $\ell\gd(L/2\ell)<\pi\ell/2$ (\cref{thm:fronts}).
+\item Fixed jumps $[w_u]$, $[r_{uu}]$ along the fronts (\cref{prop:jumps}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show that $z(t)=\ell\operatorname{arsinh}\tan(t/\ell)$ satisfies $\dd z/\dd t=1/\cos(t/\ell)$ for $|t|<\pi\ell/2$.
+\end{exercise}
+\begin{exercise}
+From $a'^2+a^2=\ell^2$ and $2aa''-a'^2+a^2+\ell^2=0$ derive $a''=-a$.
+\end{exercise}
+\begin{exercise}
+Prove $\ell\gd(z/\ell)<\pi\ell/2$ for all real $z$ and $\ell>0$.
+\end{exercise}
+\begin{exercise}
+Show that the front $\chi=\pi/2-\eta$ is null for the metric $a^2(-\dd\eta^2+\dd\chi^2)$, and that a continuous $\chi'$ with $\chi'^2=1$ and $\chi'(0)=-1$ is identically $-1$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS5_Evolution:eps3_table}{The structure constants $\epsilon_{abc}$ of $\su(2)$ as a table.}
+\chk{AlphaS5_Evolution:ymN_*}{The sixteen components of the double-null Yang--Mills equation: fourteen vanish, two reduce to $w_{uv}=\Omega w(1-w^2)/(2r^2)$ (sixteen statements).$^*$}
+\chk{AlphaS5_Evolution:goursat_W}{Goursat form of the Yang--Mills equation.$^*$}
+\chk{AlphaS5_Evolution:fw_eq}{The same right-hand side in conformal gauge $\Omega=e^{2\sigma}$.}
+\chk{AlphaS5_Evolution:constraint_uu,AlphaS5_Evolution:constraint_vv}{The $uu$, $vv$ Einstein equations are $-(2/r)C_u$, $-(2/r)C_v$ (two statements).$^*$}
+\chk{AlphaS5_Evolution:goursat_r}{Goursat form for $r_{uv}$.$^*$}
+\chk{AlphaS5_Evolution:goursat_Om}{Goursat form for $\Omega_{uv}$.$^*$}
+\chk{AlphaS5_Evolution:constraint_prop_u,AlphaS5_Evolution:constraint_prop_v}{$\partial_vC_u=-(r_v/r)C_u$ and $\partial_uC_v=-(r_u/r)C_v$ (two statements).$^*$}
+\chk{AlphaS5_Curvature:constraint_prop_from_eqs}{The same, directly from the field equations with $F=\dd A+A\wedge A$.$^*$}
+\chk{AlphaS5_Evolution:constraint_transport}{Vanishing initial constraint stays zero.$^*$}
+\chk{AlphaIV_Propagation:deriv_inv,AlphaIV_Propagation:deriv_ofNat}{Derivation of an inverse and of an integer (two lemmas).}
+\chk{AlphaIV_Propagation:hamiltonian_propagation}{$\partial_t\mathcal H$ in terms of $\mathcal H,\mathcal M$.$^*$}
+\chk{AlphaIV_Propagation:momentum_propagation}{$\partial_t\mathcal M$ in terms of $\mathcal H,\mathcal M$.$^*$}
+\chk{AlphaS5_Evolution:capSph}{The Tolman data define a spherically symmetric diagonal metric.}
+\chk{AlphaS5_Evolution:cap_00}{$tt$ component $\Leftrightarrow$ $a'^2+a^2=\ell^2$.$^*$}
+\chk{AlphaS5_Evolution:cap_11,AlphaS5_Evolution:cap_22}{$\chi\chi$, $\theta\theta$ components $\Leftrightarrow$ $2aa''-a'^2+a^2+\ell^2=0$ (two statements).$^*$}
+\chk{AlphaS5_Evolution:cap_01}{The $t\chi$ component holds identically.}
+\chk{AlphaS5_Evolution:cap_accel}{$a''=-a$.}
+\chk{AlphaS5_Evolution:cap_unique}{Time-symmetric solution $a=\ell\cos\eta$ is unique.$^*$}
+\chk{AlphaS5_Evolution:cap_proper_time,AlphaIV:cap_lifetime}{Proper time $\ell\sin\eta$; crunch at $\eta=\pi/2$ after proper time $\ell$ (two statements).}
+\chk{AlphaS5_Evolution:cap_density}{Energy density $3/(2a^4)$.$^*$}
+\chk{AlphaS5_Evolution:cap_crunch}{The density diverges at the crunch.$^*$}
+\chk{AlphaS5_Evolution:t_sing_lt}{$\ell<\pi\ell/2$.}
+\chk{AlphaS5_Evolution:neckSph}{The throat data define a spherically symmetric diagonal metric.}
+\chk{AlphaS5_Evolution:neck_00,AlphaS5_Evolution:neck_11,AlphaS5_Evolution:neck_22,AlphaS5_Evolution:neck_01}{The throat in synchronous coordinates satisfies all components (four statements).$^*$}
+\chk{AlphaIV:front_deriv}{$\dd z/\dd t=1/\cos(t/\ell)$ along $z=\ell\operatorname{arsinh}\tan(t/\ell)$.$^*$}
+\chk{AlphaIV:tan_gd,AlphaIV:gd_deriv,AlphaIV:gd_deriv_zero,AlphaIV:gd_zero,AlphaIV:sqrt_one_add_tan_sq}{Identities for $\gd$ and $\tan$ (five statements).}
+\chk{AlphaS5_Evolution:cos_gd,AlphaS5_Evolution:front_deriv_zero}{$\cos\gd y=\operatorname{sech}y$; derivative of $\operatorname{arsinh}\circ\tan$ at $0$ (two statements).}
+\chk{AlphaS5_Evolution:front_gd_inv,AlphaS5_Evolution:gd_front_inv}{The front and $\ell\gd(\cdot/\ell)$ are mutually inverse (two statements).$^*$}
+\chk{AlphaS5_Evolution:mercator,AlphaS5_Evolution:neck_mercator}{Mercator: $\gd'=\cos\circ\gd$, and the throat metric becomes conformally flat (two statements).$^*$}
+\chk{AlphaS5_Evolution:null_curve_unique}{Uniqueness of the front $t=\ell\gd(z/\ell)$.$^*$}
+\chk{AlphaS5_Evolution:fronts_meet_iff}{Fronts meet iff $t=\ell\gd(L/2\ell)$.$^*$}
+\chk{AlphaIV:fronts_meet_before,AlphaIV:arrival_bound}{Meeting and arrival times are below $\pi\ell/2$ (two statements).$^*$}
+\chk{AlphaS5_Evolution:center_before_front}{Before the crunch the centre is outside the front.}
+\chk{AlphaS5_Evolution:flat_clock,AlphaS5_Evolution:flat_front,AlphaS5_Evolution:flat_metric}{Flat limits $\ell\to\infty$ (three statements).}
+\chk{AlphaIV:jump_const}{$[w_u]$ is constant along a front.$^*$}
+\chk{AlphaS5_Final:wave_jump_final}{The same in the differential-field formulation.$^*$}
+\chk{AlphaIV:ruu_jump}{$[r_{uu}]=-(2/r)[w_u^2]$ (in units with $\ell$ absorbed).}
+\end{checklist}

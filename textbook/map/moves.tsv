@@ -128,3 +128,8 @@ AlphaIII_Glue:no_flat_from_constraints	ch17
 AlphaIII_Glue:junction_marginal	ch17
 AlphaPillar_Smooth:superpos_null	ch21
 AlphaDumbbell_Bogomolny:ds2_neck_action	ch25
+AlphaIV:energy_deriv	ch20
+AlphaIV:energy_nondecreasing	ch20
+AlphaS5_Evolution:z9_maximal	ch20
+AlphaS5_Evolution:z9_reaches_zero_vacuous	ch20
+AlphaIV:wdw_exact	ch26
