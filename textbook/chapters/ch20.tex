@@ -1,0 +1,203 @@
+\chapter{Collapse, Clocks and Trapped Surfaces}\markboth{\MakeUppercase{Chapter 20.\ Collapse, clocks, trapped surfaces}}{}
+\label{ch:collapse}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the evolution of the two pieces and the fronts (\cref{thm:tolmanevo,thm:throatevo,thm:fronts}); the Goursat form and the null constraints (\cref{thm:goursat}); the Misner--Sharp mass (\cref{prop:massprime}); the throat as the near-horizon geometry of extremal Reissner--Nordstr\"om (\cref{thm:br}).\\
+\textbf{It provides:} the curvature blow-up of the Tolman crunch; the null expansions on the Tolman side, with the front as a marginally trapped surface and the region behind it trapped; three clocks on $\mathrm{AdS}_2$ and their relation; and a collapse theorem for the central sphere of the throat: once it is sourced by a sufficiently strong Yang--Mills gradient, it collapses within proper time $\pi r_1/2$, the free-fall time of a dust ball.
+\end{usesbox}
+
+The glued slice evolves into a spacetime with three regions: an exact Tolman region, an exact throat region, and a wedge between the fronts where the solution is not known in closed form. This chapter shows that the fate of all three is collapse. The Tolman region ends in a big crunch. The wedge is trapped. And the central sphere of the throat, which would sit forever at $r=\ell$ if left alone, collapses once the Yang--Mills waves from the junction reach it, provided their strength exceeds an explicit threshold.
+
+\section{The Tolman crunch}
+
+\begin{theorem}[Curvature of the crunch]\label{thm:crunch}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For a diagonal spherically symmetric metric $-N^2\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$, the Kretschmann scalar $K=R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}$ is given by an explicit polynomial in $N^{\pm1},A^{\pm1},R^{\pm1}$ and their first and second derivatives.
+\item For the Tolman universe, on solutions of the field equations, $K=24\ell^4/a^8$; with the proper time $\tau=\ell\sin\eta$ one has $a^2=\ell^2-\tau^2$.
+\item As $\eta\to\pi/2$, $K\to\infty$. Since $K$ and the energy density $3/(2a^4)$ are spatially uniform, the same limits hold at the centre $\chi\to0$.
+\item The curvature length $L_K=K^{-1/4}$ satisfies $L_K^4=a^8/(24\ell^4)$; already on the initial slice $L_K^4=\ell^4/24$.
+\end{enumerate}
+\end{theorem}
+
+The curvature on the initial slice is set by $\ell$ itself: the glued configuration lives at the scale $\ell=\sqrt{4\pi G}/g$ from the start. We come back to the meaning of this scale in Chapter~30.
+
+\section{Expansions and trapped surfaces}
+
+For a sphere of radius $R=a\sin\chi$ on the Tolman side, the two null expansions are proportional to $\partial_\pm R/R$ with $\partial_\pm=\partial_\eta\pm\partial_\chi$.
+
+\begin{theorem}[Expansions on the Tolman side]\label{thm:expansions}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For $a=\ell\cos\eta$,
+\[
+\frac{a'\sin\chi+a\cos\chi}{a\sin\chi}=\cot\chi-\tan\eta=\frac{\cos(\chi+\eta)}{\sin\chi\cos\eta},
+\]
+so the outgoing expansion $\theta_+\propto\cot\chi-\tan\eta$ and the ingoing $\theta_-\propto-\cot\chi-\tan\eta$.
+\item In the exact Tolman region $0<\chi$, $0\le\eta$, $\chi+\eta<\pi/2$, $\theta_+>0>\theta_-$: there are no trapped spheres.
+\item On the inward front $\chi=\pi/2-\eta$ (which is null, and stays inward-moving), $\theta_+=0$: every sphere on the front is marginally trapped. The front reaches $\chi=0$ only at $\eta=\pi/2$.
+\end{enumerate}
+\end{theorem}
+
+Behind the front we no longer have an exact solution, but the null constraint controls the sign of the expansion.
+
+\begin{theorem}[The wedge is trapped]\label{thm:wedge}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The constraint $C_u=0$ is equivalent to the Raychaudhuri equation
+\[
+\partial_u\Bigl(\frac{r_u}{\Omega}\Bigr)=-\frac{2\ell^2w_u^2}{r\,\Omega}\le0\qquad(r,\Omega>0).
+\]
+\item Hence if $r_u/\Omega=0$ on the front, then $r_u/\Omega\le0$ at every later point along each outgoing ray: the region behind a marginally trapped front is (marginally) trapped.
+\item (Focusing) If an expansion satisfies $\theta'\le-\theta^2/2$ and $\theta<0$ on an affine interval $[0,\Lambda]$, then $\Lambda<-2/\theta(0)$. The hypotheses are not empty: $\theta(s)=2/(s-2)$ satisfies them on $[0,1]$.
+\end{enumerate}
+\end{theorem}
+
+Part (iii) is the elementary core of the Penrose singularity theorem \cite{Penrose1965,HawkingEllis}: a trapped null congruence reaches a focal point within finite affine parameter. We use it only as an estimate; the global theorem is not needed here.
+
+\section{Three clocks on the throat}
+
+The throat region is a piece of $\mathrm{AdS}_2\times S^2$. Embed $\mathrm{AdS}_2$ of radius $\ell$ as the hyperboloid $-X_0^2-X_1^2+X_2^2=-\ell^2$ in $\mathbb R^{2,1}$. Three coordinate systems are useful.
+
+\begin{proposition}[Synchronous, static and global coordinates]\label{prop:clocks}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Synchronous) $X_0=\ell\cos(t/\ell)\cosh(z/\ell)$, $X_1=\ell\sin(t/\ell)$, $X_2=\ell\cos(t/\ell)\sinh(z/\ell)$ lies on the hyperboloid, and the induced metric is $-\dd t^2+\cos^2(t/\ell)\,\dd z^2$: $g_{tt}=-1$, $g_{tz}=0$, $g_{zz}=\cos^2(t/\ell)$. These are Gaussian normal coordinates.
+\item (Static) Writing the same point as $X_0=\ell\cosh(x/\ell)\cos\tau$, $X_1=\ell\cosh(x/\ell)\sin\tau$, $X_2=\ell\sinh(x/\ell)$ gives $\sin\tau\cosh(x/\ell)=\sin(t/\ell)$ and $\sinh(x/\ell)=\cos(t/\ell)\sinh(z/\ell)$. At a static position with $\cosh(x/\ell)\sin u=1$, $\sin\tau=\sin(t/\ell)\sin u$. At the centre $z=0$ one has $x=0$ and $\tau=t/\ell$: the static clock at the centre is the Gaussian time.
+\item (Global) $X_0=\cos\eta/\sin\chi$, $X_1=\sin\eta/\sin\chi$, $X_2=\cos\chi/\sin\chi$ (for unit radius) lies on the hyperboloid, giving the conformal metric $\ell^2(-\dd\eta^2+\dd\chi^2)/\sin^2\chi$.
+\item At the focal time $t=\pi\ell/2$ of the synchronous coordinates, $X_0=X_2=0$, which in global coordinates is the single point $\eta=\pi/2$, $\chi=\pi/2$. At the same conformal time the Tolman scale factor $\ell\cos\eta$ vanishes.
+\item In proper time the two events differ: the Tolman crunch occurs at $\tau=\ell$ (with $\dd\tau/\dd\eta=a$), before the synchronous focal time $\pi\ell/2$.
+\end{enumerate}
+\end{proposition}
+
+So the Tolman universe and the throat share a conformal clock normalised at the junction sphere (where $a=\ell$ and $\ell/\sin\chi=\ell$), and the crunch on one side and the coordinate focus on the other happen at the same conformal time $\eta=\pi/2$. In proper time the crunch comes first.
+
+\section{The central sphere of the throat}
+
+By reflection symmetry the sphere at the centre of the throat segment satisfies $\partial_sr=0$ for all time. Its area radius obeys an ordinary differential equation in proper time $\tau$, obtained from the double-null equations of \cref{thm:goursat}:
+\begin{equation}\label{eq:centre}
+\ddot r=-\frac{\dot r^2+1-\ell^2/r^2}{2r}-\frac{W^2}{r},
+\end{equation}
+where $W^2\ge0$ is the Yang--Mills gradient energy across the sphere, fed by the waves arriving along the fronts. For $W=0$ the throat $r=\ell$ is a solution.
+
+\begin{proposition}[Masses at the centre]\label{prop:centremass}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item With $h=\mathrm{diag}(-N^2,1)$, $\partial_tr=N\dot r$ and $\partial_sr=0$, the Misner--Sharp mass is $2Gm=r(1+\dot r^2)$.
+\item Define $E=r(1+\dot r^2)+\ell^2/r$. For the Reissner--Nordstr\"om function $f=1-E/r+\ell^2/r^2$ one has $r(1-f)+\ell^2/r=E$, so $E$ is the RN mass parameter $2GM$. The throat has $E=2\ell$, and then $f=(1-\ell/r)^2$: extremal RN.
+\item Along \eqref{eq:centre}, $\dd E/\dd\tau=-2W^2\dot r$ and $\dd(2Gm)/\dd\tau=\dot r(\ell^2/r^2-2W^2)$. During collapse ($\dot r\le0$) $E$ does not decrease; if moreover $2(rW)^2\ge\ell^2$, neither does $m$.
+\item At the centre, $2Gm/r=1+\dot r^2\ge1$, and both null expansions equal $(2/r)\dot r$. A collapsing central sphere is trapped.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Static centres and small oscillations]\label{prop:centrestatic}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Linearising \eqref{eq:centre} with $W=0$ about $r=\ell$ gives $\ddot r=-(r-\ell)/\ell^2$: the bare throat oscillates stably with period $2\pi\ell$.
+\item If $(rW)^2=\kappa$ is constant, a static central sphere exists if and only if $r^2=\ell^2-2\kappa$. Hence for $2\kappa\ge\ell^2$ there is no static centre, while for $2\kappa<\ell^2$ the sphere of radius $\sqrt{\ell^2-2\kappa}$ is static.
+\end{enumerate}
+\end{proposition}
+
+The threshold $2\kappa=\ell^2$ is sharp, and the main result of this chapter shows that above it collapse is unavoidable.
+
+\begin{theorem}[Collapse of the central sphere]\label{thm:centrecollapse}\ver\
+Suppose that $r,\dot r$ solve \eqref{eq:centre} with $r>0$ on $[\tau_1,\tau_2]$, that $\dot r(\tau_1)=0$ and $r(\tau_1)=r_1$, and that for some $\kappa$ with $2\kappa\ge\ell^2$ the source satisfies $(rW)^2\ge\kappa$ throughout. Then
+\[
+\tau_2-\tau_1<\frac{\pi r_1}2 .
+\]
+In particular, if $r_1\le\ell$, the central sphere collapses within proper time $\pi\ell/2$. Equivalently, the maximal interval $[\tau_1,T)$ on which a positive solution exists has $T-\tau_1\le\pi r_1/2$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1.} Writing the right-hand side of \eqref{eq:centre} as $\mathrm{acc}$,
+\[
+\mathrm{acc}+\frac1{2r}=-\frac{\dot r^2}{2r}+\frac{\ell^2-2(rW)^2}{2r^3}\le0,
+\]
+so $\ddot r\le-1/(2r)<0$. Since $\dot r(\tau_1)=0$, a comparison argument gives $\dot r\le0$ on the interval, hence $r\le r_1$, and in fact $\dot r\le-(\tau-\tau_1)/(4r_1)$ and $r<r_1$ for $\tau>\tau_1$.
+
+\emph{Step 2.} The quantity $E$ of \cref{prop:centremass} is non-decreasing while $\dot r\le0$, which yields the energy inequality $r\dot r^2\ge r_1-r$.
+
+\emph{Step 3.} Let $\Psi(x)=r_1\arccos\sqrt{x/r_1}+\sqrt{x(r_1-x)}$. Then $\Psi(r_1)=0$, $\Psi'(x)=-\sqrt x/\sqrt{r_1-x}$ for $0<x<r_1$, and $\Psi(x)<\pi r_1/2$ for $0<x\le r_1$. By Step 2, $\dd\Psi(r(\tau))/\dd\tau=-\dot r\sqrt r/\sqrt{r_1-r}\ge1$, so $\tau_2-\tau_1\le\Psi(r(\tau_2))<\pi r_1/2$.
+\end{proof}
+
+$\Psi$ is the cycloid of Newtonian free fall: a dust ball released from rest at radius $r_1$ with $2GM=r_1$ reaches the centre after proper time $\pi r_1/2$, as in the Oppenheimer--Snyder model \cite{OppenheimerSnyder1939}. \Cref{thm:centrecollapse} says the central sphere of the throat falls at least as fast as that dust ball.
+
+\begin{remark}\num\ 
+For constant $(rW)^2=\kappa$ the first integral $r(1+\dot r^2)+(\ell^2-2\kappa)/r$ gives the exact collapse time
+\[
+T=r_1\Bigl[\sqrt c+\frac{1-c}2\Bigl(\frac\pi2-\arcsin\frac{c-1}{c+1}\Bigr)\Bigr],\qquad c=\frac{2\kappa-\ell^2}{r_1^2},
+\]
+which equals $\pi r_1/2$ at $c=0$ and decreases with $c$; we checked it by numerical quadrature against $\int_0^{r_1}r\,\dd r/\sqrt{(r_1-r)(r+cr_1)}$. So the bound of \cref{thm:centrecollapse} is sharp.
+\end{remark}
+
+\begin{remark}
+An earlier formulation stated that a solution existing on all of $[\tau_1,\tau_1+\pi r_1/2]$ must reach $r=0$. Its hypotheses are contradictory for $\kappa>0$, since at a point where $r=0$ the condition $\kappa\le W^2r^2=0$ fails; the statement is therefore vacuous, and we list it only together with this observation. The correct statement is the bound on the maximal existence interval in \cref{thm:centrecollapse}. Likewise, the combined statement of the crunch in the evaluation-map formulation of \cref{ch:junctions} is listed for completeness; the results above rest on the formulation with real functions.
+\end{remark}
+
+\begin{litbox}
+Trapped surfaces and the focusing argument are due to Penrose \cite{Penrose1965}; the Misner--Sharp mass is from \cite{MisnerSharp1964}; Oppenheimer--Snyder collapse is classical \cite{OppenheimerSnyder1939}; the coordinate systems of $\mathrm{AdS}_2$ are standard (see e.g.\ \cite{Spradlin1999}). Gravitational collapse of Yang--Mills fields has been studied numerically, with critical phenomena at the threshold between dispersal and black-hole formation \cite{ChoptuikChmajBizon1996}. What is new here is the collapse theorem for the central sphere of a Bertotti--Robinson throat sourced by a Yang--Mills gradient, with the sharp threshold $2(rW)^2=\ell^2$ and the free-fall bound $\pi r_1/2$ (\cref{prop:centrestatic,thm:centrecollapse}); the identification of the combination $E=2Gm+\ell^2/r$ at the centre as the RN mass parameter, with the throat at the extremal value; the explicit expansions and the marginally trapped front on the Tolman side (\cref{thm:expansions,thm:wedge}); and the observation that the Tolman crunch and the focus of the throat's Gaussian coordinates occur at the same conformal time (\cref{prop:clocks}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item Tolman crunch: $K=24\ell^4/a^8\to\infty$ (\cref{thm:crunch}).
+\item No trapped spheres in the exact Tolman region; the front is marginally trapped; the wedge is trapped (\cref{thm:expansions,thm:wedge}).
+\item Synchronous, static and global clocks on $\mathrm{AdS}_2$; a common conformal time with the Tolman side (\cref{prop:clocks}).
+\item Central-sphere collapse within $\pi r_1/2$ above the threshold $2\kappa\ge\ell^2$ (\cref{thm:centrecollapse}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Verify $\cot\chi-\tan\eta=\cos(\chi+\eta)/(\sin\chi\cos\eta)$ and conclude that $\theta_+=0$ on $\chi+\eta=\pi/2$.
+\end{exercise}
+\begin{exercise}
+Check that the functions
+\[
+X_0=\ell\cos(t/\ell)\cosh(z/\ell),\quad X_1=\ell\sin(t/\ell),\quad X_2=\ell\cos(t/\ell)\sinh(z/\ell)
+\]
+satisfy $-X_0^2-X_1^2+X_2^2=-\ell^2$.
+\end{exercise}
+\begin{exercise}
+Show that $1-2\ell/r+\ell^2/r^2=(1-\ell/r)^2$ and that $E=2\ell$ for the throat.
+\end{exercise}
+\begin{exercise}
+Compute $\Psi'(x)$ for $\Psi(x)=r_1\arccos\sqrt{x/r_1}+\sqrt{x(r_1-x)}$.
+\end{exercise}
+\begin{exercise}
+Show that $\theta(s)=2/(s-2)$ satisfies $\theta'=-\theta^2/2$ and $\theta<0$ on $[0,1]$, and compare with $-2/\theta(0)$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS5_Curvature:gD_diag}{The diagonal metric and its inverse.}
+\chk{AlphaS5_Curvature:kretD}{Kretschmann scalar of a general diagonal spherically symmetric metric.$^*$}
+\chk{AlphaS5_Curvature:kret_cap}{$K=24\ell^4/a^8$ for the Tolman universe.$^*$}
+\chk{AlphaS5_Curvature:cap_cosmic}{$a^2=\ell^2-\tau^2$.}
+\chk{AlphaS5_Curvature:kret_blowup}{$K\to\infty$ at the crunch.$^*$}
+\chk{AlphaS5_Final:cap_crunch_final}{Crunch from the field equations (evaluation-map formulation; see the remark).}
+\chk{AlphaS5_Curvature:center_limit,AlphaS5_Curvature:density_center}{Uniform quantities have the same limit at the centre (two statements).}
+\chk{AlphaS5_Curvature:curv_length}{Curvature length $L_K^4=a^8/(24\ell^4)$.}
+\chk{AlphaIX_Second:expansion_cap}{Expansions on the Tolman side.$^*$}
+\chk{AlphaIX_Second:no_trapped_in_cap}{No trapped spheres in the exact Tolman region.$^*$}
+\chk{AlphaIX_Second:marginal_on_front}{$\theta_+=0$ on the front.$^*$}
+\chk{AlphaS5_Curvature:front_null,AlphaS5_Curvature:front_sign,AlphaS5_Curvature:front_inward,AlphaS5_Curvature:front_hits_center}{The inward front $\chi=\pi/2-\eta$ is null, keeps its direction, and reaches the centre at $\eta=\pi/2$ (four statements).$^*$}
+\chk{AlphaOmega_Close:oc_raychaudhuri,AlphaOmega_Close:oc_raychaudhuri_sign}{Raychaudhuri form of $C_u=0$ and its sign (two statements).$^*$}
+\chk{AlphaOmega_Close:oc_trapped}{Non-positive derivative and zero initial value give a non-positive function.}
+\chk{AlphaIX_Second:focusing}{Focusing: $\Lambda<-2/\theta(0)$.$^*$}
+\chk{AlphaX_Unify:nonempty_focusing}{An example satisfying the focusing hypotheses.}
+\chk{AlphaBridge_Clock:on_hyperboloid,AlphaOmega_Close:oc_ads_sync}{Synchronous coordinates lie on the hyperboloid (two statements).}
+\chk{AlphaBridge_Clock:dt_embedding,AlphaBridge_Clock:dz_embedding}{Derivatives of the embedding (two statements).}
+\chk{AlphaBridge_Clock:neck_gaussian}{The synchronous coordinates are Gaussian normal.$^*$}
+\chk{AlphaBridge_Clock:same_point,AlphaBridge_Clock:static_clock,AlphaBridge_Clock:neck_centre_clock}{Relation between synchronous and static coordinates (three statements).$^*$}
+\chk{AlphaOmega_Close:oc_ads_global}{Global coordinates lie on the hyperboloid.}
+\chk{AlphaOmega_Close:oc_focus}{The synchronous focus is the global point $\eta=\chi=\pi/2$, where $\ell\cos\eta=0$.$^*$}
+\chk{AlphaBridge_Clock:cap_gaussian,AlphaBridge_Clock:two_events}{Tolman comoving time; the crunch precedes the synchronous focus (two statements).$^*$}
+\chk{AlphaIV_Z9:ms_general}{$2Gm=r(1+\dot r^2)$ at the centre.}
+\chk{AlphaIV_Z9:rn_param,AlphaIV_Z9:rn_extremal,AlphaIV_Z9:neck_E}{$E$ is the RN parameter; the throat is extremal (three statements).$^*$}
+\chk{AlphaIV:energy_deriv,AlphaIV:energy_nondecreasing}{$\dd E/\dd\tau=-2W^2\dot r\ge0$ during collapse (two statements).$^*$}
+\chk{AlphaIV_Z9:ms_deriv,AlphaIV_Z9:ms_increases}{Evolution of $m$ and its sign (two statements).$^*$}
+\chk{AlphaIV_Z9:throat_trapped}{A collapsing central sphere is trapped.$^*$}
+\chk{AlphaIV_Z9:neck_frequency}{Linearisation about the bare throat.}
+\chk{AlphaIV_Z9:static_iff,AlphaIV_Z9:static_dichotomy}{Static centres iff $r^2=\ell^2-2\kappa$ (two statements).$^*$}
+\chk{AlphaIV_Z9:acc_le}{$\ddot r\le-1/(2r)$ in the class.$^*$}
+\chk{AlphaIV_Z9:rp_nonpos,AlphaIV_Z9:r_le,AlphaIV_Z9:rp_bound,AlphaIV_Z9:r_lt}{Monotonicity of $r$ and bounds on $\dot r$ (four statements).$^*$}
+\chk{AlphaIV_Z9:energy_lower}{$r\dot r^2\ge r_1-r$.$^*$}
+\chk{AlphaIV_Z9:psi_deriv,AlphaIV_Z9:psi_r1,AlphaIV_Z9:psi_lt}{The comparison function $\Psi$ (three statements).}
+\chk{AlphaIV_Z9:z9_collapse}{Collapse within $\pi r_1/2$.$^*$}
+\chk{AlphaIV_Z9:z9_before_half_period}{For $r_1\le\ell$, collapse within $\pi\ell/2$.$^*$}
+\chk{AlphaS5_Evolution:z9_maximal}{Maximal existence interval $\le\pi r_1/2$.$^*$}
+\chk{AlphaIV_Z9:z9_reaches_zero,AlphaS5_Evolution:z9_reaches_zero_vacuous}{The earlier ``reaches zero'' statement and the proof that its hypotheses are contradictory (two statements).}
+\end{checklist}
