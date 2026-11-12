@@ -23,7 +23,6 @@ theorem id_bog1 {Z : ℝ → ℝ} {Z' x : ℝ} (hZ : HasDerivAt Z Z' x) (h0 : Z 
 
 /-- −Z′/Z² = −(1/Z)(Z′/Z):W = 1/Z、h = Z′/Z なら W′ = −W h -/
 theorem id_bog1_form (Z Z' : ℝ) : -Z' / Z ^ 2 = -(Z⁻¹ * (Z' * Z⁻¹)) := by
-  rw [div_eq_mul_inv, inv_pow]
   ring
 
 theorem id_bog2 (Z Z' Z'' Zi xi : ℝ) (hZi : Z * Zi = 1)
