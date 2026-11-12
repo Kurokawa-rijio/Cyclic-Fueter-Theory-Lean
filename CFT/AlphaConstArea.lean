@@ -23,7 +23,6 @@ theorem ca_constraint (r W W1 l : ℝ) (hl : l ≠ 0)
 theorem ca_turning (r0 l : ℝ) (hr : r0 ≠ 0) (hl : l ≠ 0) :
     1 - l ^ 2 * (1 - (1 + r0 / l)) ^ 2 / r0 ^ 2 = 0 := by
   field_simp
-  ring
 
 theorem ca_neck_fixed (W l : ℝ) (hl : l ≠ 0) :
     (1 - l ^ 2 * (1 - W ^ 2) ^ 2 / l ^ 2) / (2 * l ^ 2) = W ^ 2 * (2 - W ^ 2) / (2 * l ^ 2) := by
