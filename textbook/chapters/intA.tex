@@ -1,0 +1,329 @@
+\startinterlude{A}
+\chapter[Internal Symmetry: Pati--Salam, Spin(10) and the Octonions]{Internal Symmetry:\\ Pati--Salam, Spin(10) and the Octonions}
+\markboth{\MakeUppercase{Interlude A.\ Internal symmetry}}{}
+\label{ch:intA}
+
+\begin{usesbox}
+\textbf{This interlude uses:} quaternions, left and right multiplication and the commutant theorem (\cref{ch:quaternions}); Minkowski space as $2\times2$ Hermitian matrices and ``rank one $=$ null $=$ pure'' (\cref{ch:lorentz}); the hemisphere and its equator (\cref{ch:hemisphere}); monopole zero modes and the index (\cref{ch:monopoles}); moving frames and Clifford algebras (\cref{ch:frames,ch:lorentz}); Yang--Mills fields (\cref{ch:fields}); the spin connection as a gauge field (\cref{thm:spinwitten}).\\
+\textbf{It provides:} the charges and anomaly cancellation of one generation; why one $\SU(2)$ is not enough and how left and right multiplication supply the Pati--Salam $\SU(2)_L\times\SU(2)_R$; $B-L$ from colour symmetry; the $\mathbf{16}$ of $\Spin(10)$ and its charges; new results on the octonions (left and right multiplication matrices as the two paravector representations of $\mathrm{Cl}_{0,7}$, a singular-value formula that makes their nullity explicit, the complex-function form of octonionic multiplication on a slice, and an explicit octonionic Weyl block for $\Spin(10)$ in which the Pati--Salam split and $B-L$ come from the slice); and a Kaluza--Klein-type model with internal $S^9$, including the negative result that the round $S^9$ carries no massless fermions.
+\end{usesbox}
+
+This interlude steps off the main line of the book. Parts~I--III built the kinematics and the action of gravity coupled to an $\SU(2)$ gauge field. The Standard Model of particle physics has a larger internal symmetry, $\SU(3)\times\SU(2)\times U(1)$, and a specific pattern of charges. Here we ask how much of that pattern is already encoded in the algebra of Part~I. The answer comes in three steps. One $\SU(2)$ is not enough. Left and right quaternionic multiplication give two commuting $\SU(2)$'s, as in Pati--Salam. And the octonions, through the same left and right multiplications, carry the $\mathbf{16}$ of $\Spin(10)$ in which one generation fits exactly. Nothing in Part~IV depends on this interlude.
+
+\section{One generation: charges and anomalies}
+
+A generation of the Standard Model, written as left-handed Weyl fermions with their multiplicities (colour times weak isospin), consists of
+\[
+Q_L\,(3,2)_{1/6},\quad u^c\,(\bar3,1)_{-2/3},\quad d^c\,(\bar3,1)_{1/3},\quad L\,(1,2)_{-1/2},\quad e^c\,(1,1)_{1},
+\]
+with the subscript the hypercharge $Y$ and $Q=T_{3L}+Y$.
+
+\begin{theorem}[Charges, anomalies and the Weinberg angle]\label{thm:smcharges}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The electric charges of $(\nu,e)$ and their right-handed partners are $0,-1,0,-1$, and of $(u,d)$ and partners $\frac23,-\frac13,\frac23,-\frac13$; the hypercharges are $-\frac12,-\frac12,0,-1,\frac16,\frac16,\frac23,-\frac13$.
+\item The $U(1)_Y^3$ and mixed gravitational anomalies cancel, $\sum Y^3=\sum Y=0$ (with multiplicities), as do $\SU(2)^2U(1)$ and $\SU(3)^2U(1)$; and the number of $\SU(2)$ doublets, $3+1=4$, is even, so Witten's global anomaly is absent.
+\item $\sin^2\theta_W=\Tr T_{3L}^2/\Tr Q^2=\frac38$ for a complete generation, but $\frac14$ for the leptons alone.
+\end{enumerate}
+\end{theorem}
+
+The value $\frac38$ is the prediction of grand unification at the unification scale \cite{GeorgiGlashow1974}. It requires the quarks: it is a statement about the whole generation, not about any part of it.
+
+\section{Why one SU(2) is not enough}
+
+Suppose the only internal symmetry were the $\SU(2)$ of unit quaternions acting from the left, as in \cref{prop:gaugegroup}.
+
+\begin{proposition}[No hypercharge from a single $\SU(2)$]\label{prop:nohyper}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item A pure quaternion commuting with $i$ and $j$ is zero: the centre of $\su(2)$ is trivial.
+\item Within the left action $L(\operatorname{Im}\HH)$, only $0$ commutes with $L_i$ and $L_j$: there is no independent generator to serve as hypercharge.
+\item Then $Q=T_3$ and $\sin^2\theta_W=\Tr T_3^2/\Tr Q^2=1$, whatever the representation: no mixing.
+\end{enumerate}
+\end{proposition}
+
+The missing generator is supplied by the right action. By \cref{thm:commutant} the right multiplications commute with the left ones and form a second $\su(2)$.
+
+\begin{proposition}[Left, right and parity]\label{prop:leftright}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $a(xb)=(ax)b$: left and right multiplications commute.
+\item In any group, $(g_LXg_R^{-1})^{-1}=g_RX^{-1}g_L^{-1}$: inversion exchanges the left and right actions.
+\item With $M(\mathbf p)=m-\ii\bs\cdot\mathbf p$, $M(-\mathbf p)M(\mathbf p)=(m^2+|\mathbf p|^2)\mathbf 1$; hence $U(\mathbf p)=M(\mathbf p)/E$ satisfies $U(-\mathbf p)U(\mathbf p)=\mathbf 1$ and $\det U(\mathbf p)=1$.
+\end{enumerate}
+\end{proposition}
+
+Item (iii) shows that parity $\mathbf p\mapsto-\mathbf p$ acts on the hemisphere point $U(\mathbf p)$ of \cref{ch:hemisphere} by inversion. By (ii), inversion exchanges left and right. So parity exchanges $\SU(2)_L$ and $\SU(2)_R$, which is the left--right symmetric structure of Pati and Salam \cite{PatiSalam1974}.
+
+\section{\texorpdfstring{$B-L$}{B-L} from colour}
+
+Pati and Salam treat lepton number as a fourth colour, $\SU(4)_C\supset\SU(3)_c$. The generator that distinguishes leptons from quarks inside $\SU(4)_C$ is then forced.
+
+\begin{theorem}[$B-L$ is unique]\label{thm:bl}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item A diagonal $4\times4$ matrix commuting with the colour permutations is constant on the three colours; if it is also traceless it is $a\cdot\operatorname{diag}(1,1,1,-3)$.
+\item Requiring the left-handed neutrino to be neutral, $Q=T_{3L}+T_{3R}+(B-L)/2$ with $\frac12+\frac{-3a}2=0$, fixes $-3a=-1$ and $a=\frac13$: $B-L=\frac13$ on quarks and $-1$ on leptons, and the electric charges come out as $0,-1,\frac23,-\frac13$.
+\item $U(1)_{B-L}$ is anomaly free, $\sum(B-L)=\sum(B-L)^3=0$ over the sixteen states of a generation, but only if the right-handed neutrino is included; without it both sums equal $-1$ per generation and $-3$ for three generations.
+\end{enumerate}
+\end{theorem}
+
+\section{The sixteen of Spin(10)}
+
+The Pati--Salam group $\SU(4)_C\times\SU(2)_L\times\SU(2)_R$ is locally $\SO(6)\times\SO(4)\subset\SO(10)$, and one generation including $\nu^c$ fills the sixteen-dimensional spinor representation of $\Spin(10)$ \cite{GeorgiSO10,FritzschMinkowski1975}. Its weights are $\frac12(\pm1,\dots,\pm1)$ with an even number of minus signs. Write them as sign vectors $e\in\{\pm1\}^5$, the first three components belonging to $\SO(6)$ and the last two to $\SO(4)$.
+
+\begin{theorem}[Charges of the $\mathbf{16}$]\label{thm:sixteen}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item There are sixteen weights. With $3(B-L)=-(e_0+e_1+e_2)$, $4T_{3L}=e_3+e_4$, $4T_{3R}=e_3-e_4$ and $Q=T_{3L}+T_{3R}+\frac12(B-L)$, so that $6Q=3e_3-(e_0+e_1+e_2)$, the charges $(6Q,3(B-L),4T_{3L},4T_{3R})$ of the sixteen weights are, up to order, those of one generation of left-handed Weyl fermions. The weights of the $\overline{\mathbf{16}}$ carry the opposite charges.
+\item Among the Cartan generators, those commuting with $\SU(3)_C\times\SU(2)_L$ are exactly the combinations of $T_{3R}$ and $B-L$.
+\item The charge operator $Q=T_{3L}+a\,T_{3R}+b\,(B-L)$ is fixed to $a=1$, $b=\frac12$ by requiring $\nu_L$ and $\nu^c$ to be neutral. If one only asks that each lepton doublet contain a neutral member, there are exactly four solutions, $(a,b)=(\pm1,\pm\frac12)$, related by relabelling.
+\item In the vector representation $\mathbf{10}$, the four $\SO(4)$ weights form the Higgs bidoublet $(1,2,2)$ with $(6Q,3Y)\in\{(6,3),(-6,-3),(0,-3),(0,3)\}$, and there are weights of $\mathbf{16}\cdot\mathbf{16}\cdot\mathbf{10}$ that sum to zero, as a Yukawa coupling requires.
+\end{enumerate}
+\end{theorem}
+
+\section{The octonions: new results}
+
+We now turn to the question raised in the introduction: can the algebra of Part~I, extended from quaternions to octonions, carry this $\mathbf{16}$? The statements in this section are new to this book. They are proved in the text and checked numerically by the script \texttt{numerics/octonion\_spin10.py} in the repository, but they have \emph{not} been formalised in Lean, and we mark them accordingly.
+
+\subsection*{Octonions and their multiplication matrices}
+
+The octonions $\OO$ are obtained from pairs of quaternions by the Cayley--Dickson rule $(a,b)(c,d)=(ac-\bar db,\ da+b\bar c)$ \cite{Baez2002,ConwaySmith}. They form an eight-dimensional normed division algebra, $|xy|=|x||y|$, which is neither commutative nor associative but is \emph{alternative}: any subalgebra generated by two elements is associative (Artin). As in \cref{ch:quaternions} let $L_a$ and $R_a$ be the $8\times8$ real matrices of $x\mapsto ax$ and $x\mapsto xa$.
+
+\begin{proposition}[Multiplication matrices]\label{prop:octmat}\txt\
+For every $a\in\OO$: $L_a^{\mathsf T}=L_{\bar a}$, $L_a^{\mathsf T}L_a=L_aL_a^{\mathsf T}=|a|^2\mathbf 1$, and likewise for $R_a$. Moreover $L_aR_a=R_aL_a$ (flexibility), while in general $L_aL_b\ne L_{ab}$ and $L_aR_b\ne R_bL_a$.
+\end{proposition}
+
+\begin{proof}
+Alternativity gives $\bar a(ax)=(\bar aa)x=|a|^2x$, which is $L_{\bar a}L_a=|a|^2$. Since $|ax|=|a||x|$, $L_a/|a|$ is orthogonal, so $L_a^{\mathsf T}=|a|^2L_a^{-1}=L_{\bar a}$, and $L_aL_a^{\mathsf T}=|a|^2$ because the matrices are square. The same argument applies to $R_a$, and flexibility $(ax)a=a(xa)$ is a consequence of alternativity.
+\end{proof}
+
+For imaginary units $e_1,\dots,e_7$, polarising $L_{\bar a}L_a=|a|^2$ gives $L_{e_i}L_{e_j}+L_{e_j}L_{e_i}=-2\delta_{ij}$, so the $L_{e_i}$ generate a representation of the Clifford algebra $\mathrm{Cl}_{0,7}$ on $\RR^8$, and the octonion $a=a_0+\sum a_ie_i$ is represented by the \emph{paravector} $L_a=a_0+\sum a_iL_{e_i}$, the sum of a scalar and a vector of the Clifford algebra.
+
+\begin{theorem}[Left and right multiplication are the two paravector representations]\label{thm:octcl7}\txt\num\
+Both $\{L_{e_i}\}$ and $\{R_{e_i}\}$ generate representations of $\mathrm{Cl}_{0,7}$ on $\RR^8$. Their volume elements are $L_{e_1}\cdots L_{e_7}=-\mathbf 1$ and $R_{e_1}\cdots R_{e_7}=+\mathbf 1$ (in the Cayley--Dickson basis), so they are the two inequivalent irreducible modules of $\mathrm{Cl}_{0,7}\cong\Mat_8(\RR)\oplus\Mat_8(\RR)$. The Lie algebra generated by the $L_{e_i}$ alone is all of $\mathfrak{so}(8)$, of dimension $28$, whereas for quaternions the $L_i,L_j,L_k$ generate only $\su(2)$.
+\end{theorem}
+
+The last statement is the algebraic face of non-associativity: for quaternions $[L_a,L_b]=L_{[a,b]}$ closes on three generators, while for octonions the commutators of left multiplications are no longer left multiplications and fill out $\mathfrak{so}(8)$.
+
+\subsection*{Nullity and a singular-value formula}
+
+Over the reals, $L_a$ is invertible for every $a\ne0$. Nullity appears when the octonions are complexified, $a=x+\ii y$ with $x,y\in\OO$ and $\ii$ a commuting imaginary unit. Write $\|a\|^2=|x|^2+|y|^2$ for the Hermitian norm and $N(a)=\sum_ka_k^2=|x|^2-|y|^2+2\ii\langle x,y\rangle$ for the complex quadratic norm.
+
+\begin{theorem}[Singular values of paravector multiplication]\label{thm:svformula}\txt\num\
+Let $a\mapsto L_a$ be a real-linear map from a Euclidean space into real $m\times m$ matrices with $L_a^{\mathsf T}L_a=|a|^2\mathbf 1$ (for example quaternionic or octonionic left or right multiplication, $m=4$ or $8$). Extend it complex-linearly. Then the singular values of $L_a$ are
+\[
+\sigma_\pm^2=\|a\|^2\pm\sqrt{\|a\|^4-|N(a)|^2},
+\]
+each with multiplicity $m/2$. In particular $L_a$ is singular if and only if $N(a)=0$, and then, for $a\ne0$, its nullity is exactly $m/2$: four for complex octonions, two for complex quaternions.
+\end{theorem}
+
+\begin{proof}
+$L_a^\dagger L_a=(L_x^{\mathsf T}-\ii L_y^{\mathsf T})(L_x+\ii L_y)=\|a\|^2+\ii M$ with $M=L_x^{\mathsf T}L_y-L_y^{\mathsf T}L_x$ real antisymmetric, so $\ii M$ is Hermitian and traceless. Polarisation gives $L_x^{\mathsf T}L_y+L_y^{\mathsf T}L_x=2\langle x,y\rangle$. Replacing $y$ by its component orthogonal to $x$ changes $M$ by a multiple of $L_x^{\mathsf T}L_x-L_x^{\mathsf T}L_x=0$, so we may assume $\langle x,y\rangle=0$; then $P=L_x^{\mathsf T}L_y$ is antisymmetric and $P^{\mathsf T}P=L_y^{\mathsf T}L_xL_x^{\mathsf T}L_y=|x|^2|y|^2$, whence $M^2=4P^2=-4|x|^2|y|^2$. In general $(\ii M)^2=4(|x|^2|y|^2-\langle x,y\rangle^2)=\|a\|^4-|N(a)|^2$. A traceless Hermitian matrix whose square is the scalar $c\ge0$ has eigenvalues $\pm\sqrt c$ with equal multiplicity, which gives the formula.
+\end{proof}
+
+This is the paravector form of the statement that a null vector annihilates half of a Clifford module. It is a quantitative version: the smaller singular value measures how close $a$ is to the null cone $N(a)=0$, and it vanishes exactly there.
+
+\subsection*{The complex-function form of octonionic multiplication}
+
+Fix an imaginary unit $I$, for example $I=e_7$. Then $\CC_I=\RR+\RR I$ is a copy of the complex numbers inside $\OO$, and every octonion lies in such a slice, as for quaternions in \cref{ch:quaternions}.
+
+\begin{theorem}[Multiplication on a slice]\label{thm:octslice}\txt\num\
+Let $J=R_I$. Then $J^2=-\mathbf 1$, and $J$ makes $\OO$ a complex vector space $\CC^4$. With respect to $J$:
+\begin{enumerate}[label=(\roman*)]
+\item $\OO=\CC_I\oplus\CC_I^\perp$ with $\dim_\CC\CC_I=1$ and $\dim_\CC\CC_I^\perp=3$;
+\item for $z=s+tI\in\CC_I$, left multiplication is
+\[
+L_z=\begin{pmatrix} s+tJ & 0\\ 0& (s-tJ)\,\mathbf 1_3\end{pmatrix},
+\]
+i.e.\ multiplication by $z$ on $\CC_I$ and by $\bar z$ on $\CC_I^\perp\cong\CC^3$;
+\item consequently, for a power series $f(z)=\sum c_nz^n$ with real coefficients, $L_{f(z)}=\operatorname{diag}\bigl(f(z),\overline{f(z)},\overline{f(z)},\overline{f(z)}\bigr)$ on the slice.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+$J^2=-1$ by alternativity, $(xI)I=x(II)=-x$. $L_I$ commutes with $R_I$ by flexibility. For $y\in\CC_I$, $Iy=yI$, so $L_I=J$ there; for $y\perp\CC_I$ imaginary and orthogonal to $I$, $Iy=-yI$, so $L_I=-J$ there. Then $L_{s+tI}=s+tL_I$ gives (ii). Powers of $z$ stay in the associative subalgebra $\CC_I$, so $L_{z^n}=L_z^n$, which gives (iii).
+\end{proof}
+
+So on each slice, octonionic left multiplication is literally a complex function, holomorphic on one complex line and antiholomorphic on the complementary $\CC^3$. The stabiliser of $I$ in the automorphism group $G_2$ of $\OO$ is $\SU(3)$, acting on this $\CC^3$ \ext\ \cite{GunaydinGursey1973}: the split $1+3$ is the split of a generation into a lepton and three colours of quark.
+
+\subsection*{An octonionic Weyl block for Spin(10)}
+
+The construction of \cref{ch:lorentz}, Minkowski space as $2\times2$ Hermitian matrices over $\CC$, works over any normed division algebra \cite{Sudbery1984,KugoTownsend1983,BaezHuerta2010}. Over $\OO$ it gives ten-dimensional Minkowski space as the Hermitian octonionic matrices $\begin{psmallmatrix}t+v_9&a\\\bar a&t-v_9\end{psmallmatrix}$, with determinant $t^2-v_9^2-|a|^2$. We use the Euclidean, complexified version.
+
+\begin{theorem}[Octonionic Weyl block]\label{thm:octspin10}\txt\num\
+\begin{enumerate}[label=(\roman*)]
+\item The nine real symmetric $16\times16$ matrices $\Gamma_j=\begin{psmallmatrix}0&L_{e_j}\\L_{e_j}^{\mathsf T}&0\end{psmallmatrix}$ $(j=0,\dots,7)$ and $\Gamma_8=\begin{psmallmatrix}\mathbf 1&0\\0&-\mathbf 1\end{psmallmatrix}$ anticommute and square to $\mathbf 1$; they represent $\mathrm{Cl}_{9,0}$ on $\OO^2=\RR^{16}$.
+\item For $v\in\CC^{10}$ put $\sigma(v)=\ii v_0\mathbf 1+\sum_{k=1}^9v_k\Gamma_{k-1}$ and $\tilde\sigma(v)=-\ii v_0\mathbf 1+\sum v_k\Gamma_{k-1}$. Then $\tilde\sigma(v)\sigma(v)=\sigma(v)\tilde\sigma(v)=(v\cdot v)\mathbf 1$, so $\gamma(v)=\begin{psmallmatrix}0&\sigma(v)\\\tilde\sigma(v)&0\end{psmallmatrix}$ generates $\mathrm{Cl}(10,\CC)$ on $\CC^{32}=\mathbf{16}\oplus\overline{\mathbf{16}}$, and $\sigma(v)$ is the Weyl block of $\Spin(10)$. In octonionic form, $\sigma(v)=\begin{psmallmatrix}\ii v_0+v_9&L_a\\L_{\bar a}&\ii v_0-v_9\end{psmallmatrix}$ with $a=\sum_{j=1}^8v_je_{j-1}$.
+\item The singular values of $\sigma(v)$ obey the formula of \cref{thm:svformula} with multiplicity $8$; for a nonzero null vector, $v\cdot v=0$, the nullity is $8$.
+\item Choose Cartan generators $\frac\ii2\gamma_p\gamma_q$ on five orthogonal planes: the three complex lines $(u,Ju)$ of $\CC_I^\perp$, the plane $\CC_I=(1,I)$, and the plane $(v_0,v_9)$. Their joint eigenvalues on the $\mathbf{16}$ are the sixteen sign vectors of \cref{thm:sixteen}, and with the first three planes as $\SO(6)$ and the last two as $\SO(4)$ the charges are those of one generation.
+\item In the vector representation, the sum of the three rotations of $\CC_I^\perp$, which is the direction of $B-L$ in $\SO(6)$, equals the complex structure $J=R_I$ on $\CC_I^\perp$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+(i) follows from \cref{prop:octmat} by polarisation. (ii) is the computation $(\mp\ii v_0+\Gamma\cdot\mathbf v)(\pm\ii v_0+\Gamma\cdot\mathbf v)=v_0^2+|\mathbf v|^2$ with the bilinear square, using (i). (iii) follows as in \cref{thm:svformula}, noting that $\sigma(x)^\dagger\sigma(y)-\sigma(y)^\dagger\sigma(x)$ is traceless because the $\Gamma_j$ are. (iv) and (v) are finite computations, carried out in the script.
+\end{proof}
+
+\Cref{thm:octspin10} answers the question of this section in the affirmative, with an honest qualification. The structures involved, normed division algebras, $\Spin(9)$ acting on $\OO^2$, and the $1+3$ split of $\OO$, are known; see Baez and Huerta \cite{BaezHuerta2010}, Furey \cite{Furey2016} and Krasnov \cite{Krasnov2021} for recent work along these lines. What this section adds is the paravector viewpoint, in which left and right multiplications are the two Clifford modules and their nullity is measured by the singular-value formula, together with an explicit verification that the slice decomposition $\OO=\CC_I\oplus\CC^3$ produces the Pati--Salam split of $\RR^{10}$ and the $B-L$ generator. In this picture the $\RR^4$ of $\SO(4)=\SU(2)_L\times\SU(2)_R$ is the complex slice $\CC_I$ together with the two extra directions $v_0,v_9$, and the $\RR^6$ of $\SO(6)\supset\SU(3)_c\times U(1)_{B-L}$ is its complement. Whether this algebraic fact has dynamical content is \opn.
+
+The paravector map also continues the theme of \cref{ch:lorentz} in a precise way. There, a $2\times2$ Hermitian matrix over $\CC$ is null exactly when it has rank one, and its rank-one elements are the pure states. Here a complexified paravector is null exactly when half of its singular values vanish, and the kernels of null Weyl blocks are the half-dimensional subspaces familiar from Cartan's pure spinors.
+
+\section{A Kaluza--Klein model with internal \texorpdfstring{$S^9$}{S9}}
+
+A Kaluza--Klein-style way to obtain $\SO(10)$ is as the isometry group of an internal round $S^9\subset\RR^{10}$. Deforming the sphere into the ellipsoid $(\rho\,y_H,\ y_6)$ with $\RR^{10}=\RR^4\oplus\RR^6$ breaks the symmetry to $\SO(4)\times\SO(6)$, the Pati--Salam group, because only block-diagonal matrices commute with $\operatorname{diag}(\rho,\dots,\rho,1,\dots,1)$ when $\rho\ne1$. The obvious question is whether the internal Dirac operator then has massless chiral modes. It does not.
+
+\begin{theorem}[No massless fermions on the round $S^9$]\label{thm:s9nogo}\ver\nogo\
+\begin{enumerate}[label=(\roman*)]
+\item For a symmetric operator, the orthogonal complement of the range equals the kernel, so its index vanishes; in odd dimension the Dirac operator has index zero.
+\item (Lichnerowicz) The Clifford identities $\gamma_i\gamma_j=-2\delta_{ij}-\gamma_j\gamma_i$ and the curvature symmetries give $\sum_{bcd}R_{abcd}\gamma_b\gamma_c\gamma_d=2\sum_c\bigl(\sum_bR_{abcb}\bigr)\gamma_c$, a Ricci contraction, and $\sum\gamma_aR_{abcd}\gamma_b\gamma_c\gamma_d=$ scalar curvature, hence $\|D\psi\|^2=\|\nabla\psi\|^2+\frac{\mathrm{scal}}4\|\psi\|^2$.
+\item On the unit $S^9$, $\mathrm{scal}=9\cdot8=72$ and $\mathrm{scal}/4=18>0$, so $D\psi=0$ implies $\psi=0$: there are no zero modes. More generally any internal space of positive scalar curvature, for instance a convex hypersurface (all principal curvatures positive, so $\sum_{i\ne j}\kappa_i\kappa_j>0$; an ellipsoid has positive second fundamental form), has none.
+\end{enumerate}
+\end{theorem}
+
+This is a version of the well-known obstruction to obtaining chiral fermions from smooth compactifications \cite{Witten1981}. The lowest Dirac eigenvalue is nevertheless interesting, because its dependence on the shape measures how the ellipsoidal deformation is ``felt'' by fermions.
+
+\begin{theorem}[Second-order shift of the lowest Dirac eigenvalue]\label{thm:s9pert}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Rayleigh--Schr\"odinger) For symmetric $H_0$ with normalised eigenvector $\psi_0$, $E_1=\langle V\psi_0,\psi_0\rangle$ and $E_2=\langle W\psi_0,\psi_0\rangle+\langle V\psi_0,\psi_1\rangle$; with a single excited level at gap $L$, $E_2=\langle W\psi_0\rangle-\|u\|^2/L$; in finite dimensions $E_2=W_{00}+\sum_{m\ne0}V_{0m}V_{m0}/(E_0-E_m)$, and $\sum|V_{m0}|^2/(E_0-E_m)$ for Hermitian $V$.
+\item For the conformal family $g_t=e^{2tf}g_0$ on $S^n$ with $f=|y_H|^2-\frac25$ and lowest eigenvalue $a=n/2$ (Killing spinors), given the standard Killing-spinor inputs $Du=au+w$, $Dw=Lu-\frac{n-2}2w$ with $u=f\psi$, $w=\dd f\cdot\psi$, the resolvent is $(D-a)^{-1}u=\frac{n-1}Lu+\frac1Lw$, the first-order shift vanishes, and $\lambda_2=-\frac{n^2(n-1)}{4L}A-\frac n4A$.
+\item The inputs are verified: Clifford sandwich and Hessian identities, $\sum_ie_ive_i=(n-2)v$, the value of $D(\dd f\cdot\psi)$, constancy of $\langle\psi,\psi\rangle$ for Killing spinors, and the moments of $X=|y_H|^2$ on $S^9$ (via the join $S^3*S^5$, volume element $\cos^3\theta\sin^5\theta$ and a Beta integral): $E[X]=\frac25$ and $\operatorname{Var}X=\frac1{25}=A$.
+\item For $n=9$, $L=2(2+9-1)=20$ and $A=\frac1{25}$: $\lambda_2=-\frac{207}{500}$, and the volume-normalised second-order coefficient is $\frac{n(n-1)}4(1-\frac nL)A=\frac{99}{250}>0$.
+\item To first order the ellipsoidal deformation equals a diffeomorphism plus a conformal rescaling, the normalised eigenvalue is stationary to first order, and its second-order coefficient does not depend on the second-order part of the deformation. Hence, along the ellipsoidal family, the round sphere is a strict local minimum of the normalised lowest Dirac eigenvalue.
+\end{enumerate}
+\end{theorem}
+
+The global question of whether the round sphere minimises the normalised eigenvalue among all ellipsoids is \opn; only the local statement is claimed.
+
+\section{Where chirality can come from}
+
+If the internal space gives no zero modes, chirality must come from somewhere else. Three standard mechanisms are present in the material of this book.
+
+\begin{proposition}[Domain walls]\label{prop:jackiwrebbi}\ver\
+For $f'=-mf$ with $M'=m$, the solution is unique: $f(y)=f(0)e^{M(0)-M(y)}$. For the kink $m=\tanh y$, $f_+=\operatorname{sech}y$ is normalisable, $\int_{-R}^R f_+^2=2\tanh R<2$, while $f_-=\cosh y$ is not, $\int_{-R}^Rf_-^2\ge2R$. Exactly one chirality is bound to the wall \cite{JackiwRebbi1976}.
+\end{proposition}
+
+\begin{proposition}[Helicity on the celestial sphere]\label{prop:helicity}\ver\
+The hemisphere point $(m/E,\mathbf p/E)$ is a unit vector, $m/E>0$ iff $m>0$, and $m/E=0$ iff $m=0$: massless states live on the equator. The helicity-$h$ line bundles over the equatorial sphere have Chern numbers $2h=\pm1$, summing to zero for a massive particle. If bundles that extend over the hemisphere have Chern number zero \ext, then the bundles of Chern number $\pm1$ do not extend: massless chirality is topologically protected against acquiring a mass on its own.
+\end{proposition}
+
+\begin{proposition}[Twisting by half the spin connection]\label{prop:twist}\ver\
+On the unit $S^2$ the spin connection $\omega_\phi=-\cos\theta$ has curvature $\sin\theta$, total flux $4\pi$ and Euler number $2$. Twisting by half of it gives charge $q=\frac12$. The candidate zero modes $\tan(\theta/2)^m\sin^{1/2}\theta$ are $L^2$ at both poles iff $m=0$, and the other chirality has none: exactly one zero mode.
+\end{proposition}
+
+Finally, the embedding of an $\mathfrak{so}(4)$ gauge field into $\mathfrak{so}(4+m)$ by $X\mapsto\operatorname{diag}(X,0)$ preserves antisymmetry, and the Yang--Mills equations, even with an additional $H\cdot F$ coupling, commute with the embedding: $A=\iota(\Omega)$ solves them if and only if $\Omega$ does. This is the four-dimensional analogue of the standard embedding of \cref{thm:spinwitten}.
+
+\begin{litbox}
+The charges and anomalies of a generation are textbook material; $\sin^2\theta_W=\frac38$ is due to Georgi, Quinn and Weinberg \cite{GeorgiGlashow1974}; Pati--Salam to \cite{PatiSalam1974}; $\SO(10)$ to Georgi and to Fritzsch--Minkowski \cite{GeorgiSO10,FritzschMinkowski1975}. The Lichnerowicz obstruction and its consequence for Kaluza--Klein theory are classical \cite{Witten1981}; domain-wall fermions are due to Jackiw and Rebbi \cite{JackiwRebbi1976}. The octonionic material builds on Baez \cite{Baez2002}, G\"unaydin--G\"ursey \cite{GunaydinGursey1973}, Baez--Huerta \cite{BaezHuerta2010}, Furey \cite{Furey2016} and Krasnov \cite{Krasnov2021}. New here are the singular-value formula for paravector multiplication (\cref{thm:svformula}), the reading of left and right octonionic multiplication as the two paravector modules of $\mathrm{Cl}_{0,7}$ (\cref{thm:octcl7}), and the explicit octonionic Weyl block in which the slice $\CC_I$ produces both the Pati--Salam split and the $B-L$ direction (\cref{thm:octspin10}). These are proved in the text and checked numerically, but not formalised. Also new, and formalised, is the second-order coefficient $\frac{99}{250}$ for the lowest Dirac eigenvalue of ellipsoidal $S^9$.
+\end{litbox}
+
+\section*{Exercises}
+\begin{exercise}
+Verify $\sin^2\theta_W=\frac38$ from the table of \cref{thm:smcharges} by computing $\Tr T_{3L}^2=2$ and $\Tr Q^2=\frac{16}3$ over one generation.
+\end{exercise}
+\begin{exercise}
+Check $\sum(B-L)^3=0$ over the sixteen states of \cref{thm:bl}, and show that removing $\nu^c$ leaves $-1$.
+\end{exercise}
+\begin{exercise}
+Using \cref{thm:svformula} with $m=4$, compute the singular values of $L_a$ for the complex quaternion $a=1+\ii\,i$, and confirm that it is null with nullity two.
+\end{exercise}
+\begin{exercise}
+In \cref{thm:octslice}, show that $Iy=-yI$ for an imaginary octonion $y$ orthogonal to $I$, using $|I+y|^2=|I|^2+|y|^2$ and $(I+y)^2=-|I+y|^2$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaVII_N1:charges_leptons}{Electric charges of the leptons, $0,-1,0,-1$.$^*$}
+\chk{AlphaVII_N1:charges_quarks}{Electric charges of the quarks, $\frac23,-\frac13,\frac23,-\frac13$.$^*$}
+\chk{AlphaVII_N1:hypercharges}{Hypercharges of one generation.$^*$}
+\chk{AlphaVII_N1:anomaly_Y3}{$U(1)_Y^3$ anomaly cancels.$^*$}
+\chk{AlphaVII_N1:anomaly_grav}{Mixed gravitational anomaly cancels.$^*$}
+\chk{AlphaVII_N1:anomaly_SU2sqY}{$\SU(2)^2U(1)$ anomaly cancels.$^*$}
+\chk{AlphaVII_N1:anomaly_SU3sqY}{$\SU(3)^2U(1)$ anomaly cancels.$^*$}
+\chk{AlphaVII_N1:witten_even}{Even number of doublets: no global $\SU(2)$ anomaly.$^*$}
+\chk{AlphaVII_N1:weinberg_full}{$\sin^2\theta_W=\frac38$ for a full generation.$^*$}
+\chk{AlphaVII_N1:weinberg_leptons}{$\frac14$ for the leptons alone.$^*$}
+\chk{AlphaVII_N1:center_pure_trivial}{The centre of $\su(2)$ is trivial.$^*$}
+\chk{AlphaVII_Commutant:no_hypercharge_left}{No generator of $L(\operatorname{Im}\HH)$ commutes with $L_i,L_j$.$^*$}
+\chk{AlphaVII_N1:no_mixing}{Without hypercharge, $\sin^2\theta_W=1$.$^*$}
+\chk{AlphaVII_Commutant:weinberg_left_only}{The same for the left action on $\RR^4$.$^*$}
+\chk{AlphaVII_N1:left_right_commute}{Left and right multiplications commute.$^*$}
+\chk{AlphaVII_N1:inversion_swaps}{Inversion exchanges left and right actions.$^*$}
+\chk{AlphaVII_N1:M_parity}{$M(-\mathbf p)M(\mathbf p)=(m^2+|\mathbf p|^2)\mathbf 1$.$^*$}
+\chk{AlphaVII_N1:U_parity}{$U(-\mathbf p)U(\mathbf p)=\mathbf 1$.$^*$}
+\chk{AlphaVII_N1:U_det}{$\det U(\mathbf p)=1$.$^*$}
+\chk{AlphaVII_BL:bl_commute_color}{Commuting with colour permutations forces equal colour entries.$^*$}
+\chk{AlphaVII_BL:bl_direction}{Tracelessness forces $\operatorname{diag}(1,1,1,-3)$.$^*$}
+\chk{AlphaVII_BL:bl_normalization}{Neutral $\nu_L$ fixes the normalisation.$^*$}
+\chk{AlphaVII_BL:bl_charges}{The resulting electric charges.$^*$}
+\chk{AlphaVII_BL:bl_anomaly_linear}{$\sum(B-L)=0$ over sixteen states.$^*$}
+\chk{AlphaVII_BL:bl_anomaly_cubic}{$\sum(B-L)^3=0$ over sixteen states.$^*$}
+\chk{AlphaVII_BL:bl_anomaly_needs_nuR}{Without $\nu^c$ the cubic sum is nonzero.$^*$}
+\chk{AlphaVII_BL:bl_anomaly_without_nuR}{Without $\nu^c$ both sums are $-1$.$^*$}
+\chk{AlphaVII_BL:bl_anomaly_three_generations}{Three generations without $\nu^c$: $-3$.$^*$}
+\chk{AlphaVII_SO10:spinor16_count}{Sixteen weights.$^*$}
+\chk{AlphaVII_SO10:spinor16_charges}{Their charges are one generation.$^*$}
+\chk{AlphaVII_Chirality:conjugate_branch}{The $\overline{\mathbf{16}}$ carries the opposite charges.$^*$}
+\chk{AlphaVII_Charge:hypercharge_commutant}{Cartan elements commuting with $\SU(3)\times\SU(2)_L$ are combinations of $T_{3R}$ and $B-L$.$^*$}
+\chk{AlphaVII_Charge:charge_unique}{Two neutrality conditions fix $Q$.$^*$}
+\chk{AlphaVII_Charge:charge_all_solutions}{Weaker conditions give exactly four solutions.$^*$}
+\chk{AlphaVII_Charge:charge_formula}{$6Q=3e_3-(e_0+e_1+e_2)$.$^*$}
+\chk{AlphaVII_Charge:charge_components}{The formulas for $B-L$, $T_{3L}$, $T_{3R}$.$^*$}
+\chk{AlphaVII_Charge:generation_from_neutrality}{Neutrality implies the charge table of one generation.$^*$}
+\chk{AlphaVII_SO10:higgs_bidoublet}{The $\SO(4)$ weights of the $\mathbf{10}$ form the Higgs bidoublet.$^*$}
+\chk{AlphaVII_SO10:yukawa_weight}{A $\mathbf{16}\cdot\mathbf{16}\cdot\mathbf{10}$ weight combination sums to zero.$^*$}
+\chk{AlphaVII_SO10:ellipsoid_breaks}{Commuting with $\operatorname{diag}(p)$ kills entries with $p_i\ne p_j$.$^*$}
+\chk{AlphaVII_Lichnerowicz:index_zero}{For symmetric $D$, $(\operatorname{ran}D)^\perp=\ker D$: index zero.$^*$}
+\chk{AlphaVII_Lichnerowicz:swap,AlphaVII_Lichnerowicz:reorder1,AlphaVII_Lichnerowicz:reorder2}{Clifford reordering identities (three statements).$^*$}
+\chk{AlphaVII_Lichnerowicz:relabel1,AlphaVII_Lichnerowicz:relabel2,AlphaVII_Lichnerowicz:delta_sum}{Relabelling of triple sums and Kronecker sums (three statements).}
+\chk{AlphaVII_Lichnerowicz:clifford_three}{$\sum R_{abcd}\gamma_b\gamma_c\gamma_d$ reduces to a Ricci contraction.$^*$}
+\chk{AlphaVII_Lichnerowicz:clifford_four}{$\sum\gamma_aR_{abcd}\gamma_b\gamma_c\gamma_d$ is the scalar curvature.$^*$}
+\chk{AlphaVII_Lichnerowicz:no_zero_mode}{$\|D\psi\|^2=\|\nabla\psi\|^2+c\|\psi\|^2$ with $c>0$ forces $\psi=0$ if $D\psi=0$.$^*$}
+\chk{AlphaVII_Lichnerowicz:s9_scalar}{$S^9$: scalar curvature $72$, $\mathrm{scal}/4=18$.$^*$}
+\chk{AlphaFix_Gauge:no_massless_internal}{Positive scalar curvature: no massless internal modes.$^*$}
+\chk{AlphaFix_Gauge:scal_pos_of_convex}{Positive principal curvatures give $\sum_{i\ne j}\kappa_i\kappa_j>0$.$^*$}
+\chk{AlphaFix_Gauge:ellipsoid_II_pos}{The second fundamental form of an ellipsoid is positive.$^*$}
+\chk{AlphaVII_Perturb:rs_coefficients}{Rayleigh--Schr\"odinger first- and second-order coefficients.$^*$}
+\chk{AlphaVII_Perturb:rs_single_level}{Single excited level: $E_2=\langle W\psi_0\rangle-\|u\|^2/L$.$^*$}
+\chk{AlphaVII_RSGeneral:rs_first}{General finite-dimensional first order.$^*$}
+\chk{AlphaVII_RSGeneral:rs_second}{General second order, $E_2=W_{00}+\sum V_{0m}V_{m0}/(E_0-E_m)$.$^*$}
+\chk{AlphaVII_RSGeneral:rs_second_hermitian}{Hermitian case.$^*$}
+\chk{AlphaVII_Z28d:resolvent_formula}{$(D-a)^{-1}u=\frac{n-1}Lu+\frac1Lw$.$^*$}
+\chk{AlphaVII_Z28d:z28d_first}{First-order shift vanishes.$^*$}
+\chk{AlphaVII_Z28d:z28d_second}{$\lambda_2=-\frac{n^2(n-1)}{4L}A-\frac n4A$.$^*$}
+\chk{AlphaVII_Perturb:z28d_from_rs}{The same coefficient from Rayleigh--Schr\"odinger.$^*$}
+\chk{AlphaVII_Z28Input:clifford_sq_one,AlphaVII_Z28Input:clifford_sq}{$e_i^2=-1$ and $\sum e_i^2=-n$ (two statements).$^*$}
+\chk{AlphaVII_Z28Input:sandwich_basis,AlphaVII_Z28Input:sandwich_sum,AlphaVII_Z28Input:clifford_sandwich}{Clifford sandwich $\sum_ie_ive_i=(n-2)v$ (three statements).$^*$}
+\chk{AlphaVII_Z28Input:clifford_hessian}{$\sum H_{ij}e_ie_j=-\tr H$ for symmetric $H$.$^*$}
+\chk{AlphaVII_Z28Input:dirac_killing}{The Dirac operator on $c\,e_i\psi$ and on $\dd f\cdot\psi$.$^*$}
+\chk{AlphaVII_Z28Input:dirac_input}{$D(\dd f\cdot\psi)=Lf\psi-\frac{n-2}2\dd f\cdot\psi$ for Killing spinors.$^*$}
+\chk{AlphaVII_Z28Input:skew_cross}{$\langle x,Tx\rangle=0$ for skew $T$.$^*$}
+\chk{AlphaVII_Z28Input:killing_inner_const}{$\langle\psi,\phi\rangle$ is constant for Killing spinors with the same constant.$^*$}
+\chk{AlphaVII_Z28Input:join_metric}{Line element of the join, $\dd\theta^2+\cos^2\theta|\dd\omega|^2+\sin^2\theta|\dd\eta|^2$.$^*$}
+\chk{AlphaVII_Z28Input:join_volume}{Volume element $\cos^3\theta\sin^5\theta$.$^*$}
+\chk{AlphaVII_Z28Input:beta_substitution}{Substitution $X=\cos^2\theta$ to a Beta integral.$^*$}
+\chk{AlphaVII_Z28Input:sphere_moments}{Moments of $X$ on $S^9$.$^*$}
+\chk{AlphaVII_Z28Input:mean_variance}{$E[X]=\frac25$, $\operatorname{Var}X=\frac1{25}$.$^*$}
+\chk{AlphaVII_Z28d:vol_root_deriv,AlphaVII_Z28d:vol_coefficient}{Volume normalisation $\mathrm{Vol}^{1/9}$ to second order (two statements).$^*$}
+\chk{AlphaVII_Z28d:z28d_normalized}{Normalised second-order coefficient $\frac{n(n-1)}4(1-\frac nL)A$.$^*$}
+\chk{AlphaVII_Z28d:z28d_values,AlphaVII_Perturb:z28d_values}{For $n=9$: $\lambda_2=-\frac{207}{500}$, coefficient $\frac{99}{250}$ (two statements).$^*$}
+\chk{AlphaVII_Z28Input:local_min_of_quadratic}{$f(t)=f(0)+ct^2+o(t^2)$ with $c>0$ is a local minimum.$^*$}
+\chk{AlphaVII_Z28Input:z28d_local_min,AlphaFix_Z28:ellipsoid_local_min}{The round $S^9$ is a local minimum along the ellipsoidal family (two statements).$^*$}
+\chk{AlphaVII_Z28Input:ellipsoid_tangent}{First-order change of the induced metric of the ellipsoid.$^*$}
+\chk{AlphaFix_Z28:norm_sq_expand,AlphaFix_Z28:inner_expand}{Expansions of $|(1+\varepsilon B)v|^2$ and $\langle Ax,Av\rangle$ (two statements).}
+\chk{AlphaFix_Z28:ellipsoid_conformal_first_order,AlphaFix_Z28:ellipsoid_first_order}{To first order the ellipsoid is a diffeomorphism plus a conformal factor (two statements).$^*$}
+\chk{AlphaFix_Z28:killing_stress}{Killing-spinor stress $T(X,Y)=-2\mu g(X,Y)\langle\psi,\psi\rangle$.$^*$}
+\chk{AlphaFix_Z28:first_variation_coeff,AlphaFix_Z28:normalized_first_variation}{The normalised eigenvalue is stationary to first order (two statements).$^*$}
+\chk{AlphaFix_Z28:second_order_equal}{The second-order coefficient is independent of the second-order deformation.$^*$}
+\chk{AlphaVII_Chirality:jr_unique}{Uniqueness of the domain-wall zero mode.$^*$}
+\chk{AlphaVII_Chirality:kink_plus,AlphaVII_Chirality:kink_minus,AlphaVII_Chirality:tanh_deriv}{The two candidate modes for the kink (three statements).$^*$}
+\chk{AlphaVII_Chirality:norm_plus,AlphaVII_Chirality:norm_plus_lt}{$\int f_+^2=2\tanh R<2$ (two statements).$^*$}
+\chk{AlphaVII_Chirality:norm_minus}{$\int f_-^2\ge2R$.$^*$}
+\chk{AlphaVII_Chirality:shell_unit}{The hemisphere point is a unit vector.$^*$}
+\chk{AlphaVII_Chirality:shell_sign}{$m/E>0\iff m>0$.$^*$}
+\chk{AlphaVII_Chirality:shell_equator}{$m/E=0\iff m=0$.$^*$}
+\chk{AlphaVII_Chirality:helicity_chern}{Helicity bundles have Chern numbers $\pm1$, summing to zero.$^*$}
+\chk{AlphaVII_Chirality:chiral_protected}{Chern number $\pm1$ bundles do not extend over the hemisphere.$^*$}
+\chk{AlphaFix_Gauge:spin_curvature,AlphaFix_Gauge:cartan_first}{Spin connection of $S^2$ and Cartan's first structure equation (two statements).$^*$}
+\chk{AlphaFix_Gauge:spin_flux,AlphaFix_Gauge:euler_char}{Total flux $4\pi$ and $\chi(S^2)=2$ (two statements).$^*$}
+\chk{AlphaFix_Gauge:twist_charge}{Twisting by half the spin connection gives $q=\frac12$.$^*$}
+\chk{AlphaFix_Gauge:twist_zero_mode}{Exactly one $L^2$ zero mode ($m=0$).$^*$}
+\chk{AlphaFix_Gauge:twist_chirality}{The other chirality has none.$^*$}
+\chk{AlphaFix_Gauge:iota_transpose,AlphaFix_Gauge:iota_neg,AlphaFix_Gauge:iota_antisymm}{The embedding $\mathfrak{so}(4)\to\mathfrak{so}(4+m)$ preserves transposition, negation and antisymmetry (three statements).$^*$}
+\chk{AlphaFix_Gauge:ymH_embed,AlphaFix_Gauge:ymH_embed_iff}{The Yang--Mills operator with $H\cdot F$ term commutes with the embedding (two statements).$^*$}
+\end{checklist}
+\stopinterlude

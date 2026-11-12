@@ -16,6 +16,7 @@
 \newcommand{\num}{\st{numerical}}
 \newcommand{\nogo}{\st{negative result}}
 \newcommand{\opn}{\st{open}}
+\newcommand{\txt}{\st{proved here, not formalised}}
 % invisible record of the formal declarations a statement covers
 \newcommand{\covers}[1]{\ignorespaces}
 % ---------- boxes ----------
@@ -37,7 +38,7 @@
 \newcommand{\chk}[2]{\refstepcounter{chk}\item[\textsf{\thechk}]\covers{#1}#2}
 % ---------- interludes ----------
 \newcommand{\startinterlude}[1]{\renewcommand{\chaptername}{Interlude}\renewcommand{\thechapter}{#1}}
-\newcommand{\stopinterlude}{\renewcommand{\chaptername}{Chapter}\renewcommand{\thechapter}{\arabic{chapter}}}
+\newcommand{\stopinterlude}{\renewcommand{\chaptername}{Chapter}\renewcommand{\thechapter}{\arabic{chapter}}\addtocounter{chapter}{-1}}
 % ---------- notation ----------
 \newcommand{\HH}{\mathbb{H}}
 \newcommand{\CC}{\mathbb{C}}
