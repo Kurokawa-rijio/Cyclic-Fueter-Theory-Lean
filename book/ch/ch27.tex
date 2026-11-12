@@ -1,0 +1,39 @@
+\chapter{Open problems}\label{ch:open}
+
+\begin{questionbox}
+What is left? Three things the book could not do, one number it could not derive, and a list of ideas that were tried and failed. The failures are kept because they narrow the search.
+\end{questionbox}
+
+\section{Three open problems}
+
+\paragraph{Gravitational waves beyond linear order.} On the cap, tensor perturbations at linear order are harmonic oscillators with integer frequencies $n\ge3$ and degeneracy $2(n^2-4)$ (\lean{os\_graviton}, \lean{os\_graviton\_count}). On the Yang--Mills background they mix with the gauge field's tensor modes. Representation theory says the mixing is a $2\times2$ problem for each helicity, and that on the cap, which is parity invariant, the two helicities behave alike (\lean{id\_tt\_count}, \lean{id\_parity}, \lean{id\_even}). The coupling strength and everything beyond linear order are open. This is the heart of quantum gravity. \open
+
+\paragraph{The general Wheeler--DeWitt solution.} Chapter~23 wrote the equation for the spherically symmetric sector and solved its special sections. With the gauge field and fermions as fields, the general solution, the operator ordering and the regularisation are not known. \open
+
+\paragraph{The internal sphere.} Interlude~A used an ellipsoidal $S^9$ to break $SO(10)$. Which ellipsoid, and why? The normalised total scalar curvature of the ellipsoid is $1+0.14259\operatorname{tr}\phi^2-0.02037\operatorname{tr}\phi^3+\dots$, with the same coefficients for every split of the axes, and only the round sphere is stationary in the range explored \numerical. Curvature alone selects nothing; the flux must be included. \open
+
+\section{The number not derived}
+
+The programme began with the hope of deriving the fine-structure constant. It has not. A semiclassical quantisation of the cap once suggested $\ell^2/\ell_P^2=4(n+\tfrac12)/(3\pi)$, but the constraints leave the conformally flat sector with a single state and the coupling is not quantised (Chapter~19). Every chapter of this book is consistent with any value of $g$.
+
+\section{Ideas that failed}
+
+\begin{itemize}[leftmargin=*]
+\item \emph{A common conformal clock} for cap and neck: the crunch and the focusing are different events (Chapter~18).
+\item \emph{A smooth conformally flat interpolation} between cap and neck: excluded within the class by the two roots, and not found numerically (Chapter~16).
+\item \emph{The \texttt{RealLine} bridge}: its hypotheses forced constant functions; replaced by real-function proofs (Chapter~17).
+\item \emph{The neck fold as an Airy turning point}: the coordinate is quadratic, not linear, and the smoothing scale depends on the state.
+\item \emph{A Regge-type quantisation of corner angles}: the junction is null, so the Euclidean corner angle is not defined.
+\item \emph{Condensation from the neck towards the cap}: the static solutions spiral into the throat instead.
+\item \emph{Selecting Pati--Salam by curvature}: see above.
+\item \emph{A dynamically fixed volume}: incompatible with the neck (Chapter~26).
+\item \emph{An overstated quantum constraint algebra}: an early text said that $\mathfrak{sl}(2,\mathbb R)$ was the whole constraint algebra; it is only the residual gauge symmetry (Chapter~19).
+\end{itemize}
+
+\section{Where this connects}
+
+Three active areas of research meet the dumbbell. Closed universes in quantum gravity, where recent work finds a one-dimensional Hilbert space unless an observer is included, have a concrete model here: a closed crunching universe attached to an $\mathrm{AdS}_2$ throat. Extremal horizons, which are now known to be generically non-smooth, meet the $C^1$ junction and the complex scaling dimension of $W$. And the weak gravity conjecture meets the stability window of Chapter~26. Each of these is a direction in which the next results are likely to be found.
+
+\begin{standsbox}
+This chapter makes no new claims. It records what is open and what was ruled out, as the claim ledger of the repository does.
+\end{standsbox}

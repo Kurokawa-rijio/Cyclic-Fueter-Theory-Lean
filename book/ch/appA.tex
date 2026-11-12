@@ -1,0 +1,15 @@
+\chapter{Tools}\label{app:A}
+
+This appendix collects the few facts from linear algebra, calculus and the calculus of variations that the book uses without comment.
+
+\section*{Linear algebra}
+For a $2\times2$ matrix $X$, the Cayley--Hamilton theorem reads $X^2=(\operatorname{tr}X)X-(\det X)\,1$, and the determinant is multiplicative. A matrix is Hermitian if $X^\dagger=X$ and unitary if $U^\dagger U=1$; Hermitian matrices have real eigenvalues and unitary ones have eigenvalues of modulus one. The Pauli matrices $\sigma_1,\sigma_2,\sigma_3$ are Hermitian, square to one and anticommute; $i\sigma_a$ multiply like the quaternion units up to sign.
+
+\section*{Ordinary differential equations}
+For $r''=-r/\ell^2$ the quantity $r^2+\ell^2r'^2$ is conserved, and this fixes the solution from its value and slope at one point; the same ``energy method'' proves uniqueness for the other linear equations in the book. A first-order equation such as $r^2+\ell^2r'^2=\ell^2$ can have a \emph{singular solution} that is not a member of its general family: it is the envelope of the family, where uniqueness fails. Chapter~16 is built on this.
+
+\section*{Calculus of variations}
+For an action $S=\int L(q,\dot q)\,dt$ the Euler--Lagrange equations are $\frac{d}{dt}\partial L/\partial\dot q=\partial L/\partial q$. Total derivatives in $L$ do not change the equations but do change the boundary terms; a boundary term is needed whenever $L$ contains second derivatives and the variational problem fixes only the coordinates on the boundary. In field theory, an equation that holds ``in the weak sense'' is obtained by multiplying by a smooth test function, integrating, and moving derivatives onto the test function.
+
+\section*{Distributions}
+If $f$ is smooth on each side of $x_0$ and continuous there while $f'$ jumps by $[f']$, then $f''$, as a distribution, is its piecewise value plus $[f']\delta_{x_0}$. Comparing the coefficients of $\delta$ on both sides of an equation gives the junction conditions of Chapter~17.

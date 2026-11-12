@@ -1,0 +1,34 @@
+\chapter{External theorems and numerical results}\label{app:C}
+
+The following results are used but not proved in Lean. Each is either a classical theorem with a standard reference or a numerical computation in the repository's \texttt{numerics} directory.
+
+\section*{External theorems}
+\begin{longtable}{@{}p{0.42\textwidth}p{0.18\textwidth}p{0.32\textwidth}@{}}
+\toprule Result & Used in & Reference\\\midrule\endhead
+Uniqueness of the gravitational action in four dimensions & Ch.~13 & Lovelock (1971)\\
+Classification of 3-manifolds with parallel Ricci tensor & Ch.~14 & Cheng, Ishikawa, Shiohama (1999)\\
+Conformal transformation of the scalar curvature & Ch.~19 & Wald, \emph{General Relativity}, App.~D\\
+Local existence for the characteristic initial value problem & Ch.~18 & classical (Rendall 1990)\\
+Index theorem & Ch.~9, 25 & Atiyah, Singer\\
+Raychaudhuri equation with shear & Ch.~26 & standard\\
+Rayleigh min--max for self-adjoint operators & Ch.~20 & standard\\
+Trace anomaly coefficients & Ch.~24 & Duff (1977); Birrell, Davies\\
+Euclidean action and its boundary terms & Ch.~21 & Gibbons, Hawking (1977)\\
+Canonical form and mass function & Ch.~23 & Kucha\v r (1994)\\
+Attractor mechanism, entropy function & Int.~B & Sen (2005)\\
+WZW level quantisation & Int.~B & Witten (1984)\\
+Rigidity of extremal horizons & Ch.~26 & recent literature\\
+Weak gravity conjecture, Festina Lente & Ch.~26 & conjectures, not theorems\\
+\bottomrule
+\end{longtable}
+
+\section*{Numerical results}
+\begin{longtable}{@{}p{0.55\textwidth}p{0.12\textwidth}p{0.25\textwidth}@{}}
+\toprule Result & Chapter & Script\\\midrule\endhead
+Wedge evolution, lifetime about $1.27\ell$ & 18 & \texttt{wedge\_evolution.py}\\
+Weyl invariant grows like $1/\cos^2\eta$ & 26 & \texttt{weyl\_growth.py}\\
+Ellipsoid curvature coefficients for $S^9$ & 27 & \texttt{ellipsoid\_curvature.py}\\
+Static solutions spiral into the throat & 27 & \texttt{static\_spiral.py}\\
+Smooth static sequences approach a throat of radius $\ell$ & 20 & repository numerics\\
+\bottomrule
+\end{longtable}

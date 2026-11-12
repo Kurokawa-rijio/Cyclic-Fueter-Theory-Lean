@@ -29,7 +29,9 @@
 \newcommand{\numerical}{\tagbox{55}{numerical}}
 \newcommand{\negative}{\tagbox{80}{negative result}}
 \newcommand{\open}{\tagbox{55}{open}}
-\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\leanus}{\textunderscore\allowbreak}
+\newcommand{\lean}[1]{{\ttfamily\def\_{\leanus}\hyphenchar\font=-1 #1}}
+\setlength{\emergencystretch}{3em}
 
 \newtcolorbox{leanbox}[1][]{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.4pt,arc=0pt,left=2mm,right=2mm,top=1mm,bottom=1mm,fonttitle=\small\sffamily\bfseries,title={Lean: #1},titlerule=0.4pt}
 \newtcolorbox{questionbox}{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.6pt,arc=0pt,fonttitle=\sffamily\bfseries,title={The question},titlerule=0.4pt}
@@ -48,9 +50,9 @@
 \frontmatter
 \maketitle
 \input{front}
+\input{plan}
 \tableofcontents
 \mainmatter
-\input{plan}
 \newcommand{\chap}[1]{\IfFileExists{ch/#1.tex}{\input{ch/#1}}{}}
 \part{Quaternions and rotations}
 \chap{ch01}\chap{ch02}\chap{ch03}\chap{ch04}

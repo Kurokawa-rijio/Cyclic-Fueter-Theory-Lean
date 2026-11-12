@@ -1,0 +1,65 @@
+\chapter[Shape degrees of freedom and the weak gravity conjecture]{Shape degrees of freedom and the weak gravity conjecture}\markboth{\MakeUppercase{Chapter 26. Shape and the WGC}}{}\label{ch:shape-wgc}
+
+\begin{questionbox}
+So far every cross-section of the dumbbell has been a round sphere. What if the shape is allowed to vary freely, and what if one insists on a fixed volume or a fixed cross-sectional area? And what does the dumbbell say about the weak gravity conjecture, one of the best-known proposed constraints on quantum gravity? This chapter collects the answers that the formalisation reaches.
+\end{questionbox}
+
+\section{Shape is a gravitational wave}
+
+Without any symmetry, write spacetime as two null directions times a two-dimensional cross-section,
+\[
+ds^2=-2e^f\,du\,dv+r^2q_{AB}(dy^A+s^Adu)(dy^B+s^Bdu),\qquad\det q=\det\gamma .
+\]
+The areal radius $r$ carries the size of the cross-section, and $q_{AB}$ carries its shape at fixed area. A unimodular $2\times2$ shape is described by an ellipticity $\beta$ and an orientation $\theta$.
+
+\begin{proposition}\proved
+For $q=\begin{pmatrix}C+Sc&Ss\\ Ss&C-Sc\end{pmatrix}$ with $C=\cosh2\beta$, $S=\sinh2\beta$, $c=\cos2\theta$, $s=\sin2\theta$: $\det q=1$, $\operatorname{tr}(q^{-1}\dot q)=0$, and the squared shear is $\dot\beta^2+\sinh^2(2\beta)\,\dot\theta^2$.
+\end{proposition}
+\noindent In the repository: \lean{gen\_unimodular}, \lean{gen\_trace\_free}, \lean{gen\_shear}.
+
+The space of shapes is a hyperbolic plane, and $(\beta,\theta)$ are the two polarisations of a gravitational wave. In the focusing constraint they enter as $r(\beta_u^2+\sinh^2(2\beta)\theta_u^2)$, beside the gauge-field term $2\ell^2W_u^2/r$ and with the same sign: both focus light (\lean{gen\_focusing}).
+
+Can the neck itself have a non-round cross-section of constant area? Only if it rotates: the near-horizon geometry of an extremal Kerr--Newman black hole has an oblate cross-section, the same along the axis, with area $4\pi(Q^2+2a^2)\ge4\pi Q^2$ and equality only for the round neck (\lean{gen\_kn\_area}, \lean{gen\_kn\_round\_iff}). Static non-round, and non-axisymmetric, cross-sections are excluded by rigidity theorems for extremal horizons \external.
+
+\section{Fixed volume, fixed area}
+
+At a moment of time symmetry the volume is the integral of the cross-sectional area along the axis: $2\pi^2\ell^3$ for two caps and $4\pi\ell^2L$ for a neck of length $L$. Fixing the volume therefore fixes the neck length (\lean{vol\_cap}, \lean{vol\_total}, \lean{vol\_neck\_length}). As a law of motion, however, fixed volume fails: imposing it with a multiplier acts like a cosmological constant, and the value that keeps the cap static, $\Lambda=3/(4\ell^2)$, admits no neck (\lean{vol\_static\_cap}, \lean{vol\_no\_neck}). \negative
+
+The volume rate is the dilation generator $rP_r+\Lambda P_\Lambda$, so volume and dilation are conjugate, and area is conjugate to $P_r/(2r)$ (\lean{sf\_volume\_rate}, \lean{sf\_weight\_volume}, \lean{sf\_weight\_area}). Shape enters neither. But the dynamics links them.
+
+\begin{theorem}\proved
+If the area is constant along a null direction, the focusing constraint forces $\beta_u=0$, $\sinh(2\beta)\theta_u=0$ and $W_u=0$: nothing moves. If the squared shear has a positive expectation value, as zero-point fluctuations ensure, the area must decrease.
+\end{theorem}
+\noindent In the repository: \lean{sf\_area\_const\_rigid}, \lean{sf\_quantum\_focus}.
+
+On a single slice one can still impose constant areal radius $r_0$. The constraint then reads $W'^2=(1-\ell^2(1-W^2)^2/r_0^2)/(2\ell^2)$, with turning points at $W^2=1+r_0/\ell$; at $r_0=\ell$ the neck $W=0$ is a fixed point and $W=\sqrt2/\cosh(x/\ell)$ is a lump that returns to it. Only the neck keeps its area at the next instant (\lean{ca\_constraint}, \lean{ca\_turning}, \lean{ca\_soliton}, \lean{ca\_collapse}).
+
+\section{Weyl curvature grows}
+
+Perturbing the cap by a small wave packet in $W$ and evolving numerically, the Weyl invariant grows roughly like $1/\cos^2\eta$ towards the crunch, from $0.36\varepsilon$ at $\eta=0.2$ to about $118\varepsilon$ at $\eta=1.4$, while the perturbation of $W$ stays of order $\varepsilon$ \numerical. The exact equations behind this are in the repository (\lean{os\_area\_linear}, \lean{os\_Q\_eq}, \lean{os\_backreaction\_ne}, \lean{ds\_N\_u}). The isotropic crunch of the cap is unstable to Weyl curvature, in the sense of Penrose's Weyl curvature hypothesis.
+
+\section{The weak gravity conjecture}
+
+The weak gravity conjecture proposes that in any consistent theory of quantum gravity with a gauge field there is a particle whose charge exceeds its mass in Planck units, $m\le q/\ell$ in the present units. It is a conjecture; partial results exist, notably for corrections to extremal black holes. The dumbbell has the extremal black hole built in, and several statements can be proved about it.
+
+\begin{theorem}\proved\label{thm:wgc}
+With an adjoint Higgs field of vacuum value $v$:
+\begin{enumerate}[label=(\roman*)]
+\item the electric condition for the $W$ boson, $(m_W\ell)^2\le1$, and the magnetic condition for the BPS monopole are the same condition, $4\pi Gv^2\le1$;
+\item together with the neck-stability bound of Chapter~20 this gives the window $\tfrac34\le(m_W\ell)^2\le1$, that is $3/(16\pi G)\le v^2\le1/(4\pi G)$;
+\item a neck exists only for $\Lambda\le1/(4\ell^2)=g^2/(16\pi G)$, and then stability implies the Festina Lente bound in the form $(m_W\ell)^2\ge\sqrt{\Lambda\ell^2}$.
+\end{enumerate}
+\end{theorem}
+\noindent In the repository: \lean{wgc\_W}, \lean{wgc\_monopole}, \lean{wgc\_window}, \lean{wgc\_window\_nonempty}, \lean{wgc\_lambda}, \lean{wgc\_lambda\_eq}, \lean{wgc\_lambda\_g}, \lean{wgc\_fl}.
+
+Earlier chapters add two related facts. With a quartic correction $(F^2)^2$, the extremal mass $M=r+2k/r^5$ falls below the charge, so extremal necks can decay, the mild form of the conjecture (\lean{extremal\_lighter}). And the curvature scale of the cap at its widest is comparable to the magnetic cutoff $1/(gM_{\mathrm{Pl}})$: the dumbbell lives at the cutoff from the start (\lean{wgc\_length}).
+
+\begin{standsbox}
+The weak gravity conjecture and the Festina Lente bound are conjectures and are not derived. The coincidence of the electric and magnetic conditions, the stability window and the bound on $\Lambda$ are claimed in the weak sense of the guide; the Festina Lente coefficient is quoted from the literature and should be checked. The shape results connect to current work on extremal horizons and closed universes; they do not quantise gravitational waves. \open
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that the shape matrix has determinant one. \emph{Answer:} \lean{gen\_unimodular}.\end{exercise}
+\begin{exercise}Show that the neck exists only for $\Lambda\le1/(4\ell^2)$. \emph{Answer:} \lean{wgc\_lambda}.\end{exercise}
+\begin{exercise}Show that $W=\sqrt2/\cosh(x/\ell)$ satisfies the constant-area equation at $r_0=\ell$. \emph{Answer:} \lean{ca\_soliton}.\end{exercise}
+\begin{exercise}Show that the window $3/4\le x\le1$ is not empty. \emph{Answer:} \lean{wgc\_window\_nonempty}.\end{exercise}

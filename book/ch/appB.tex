@@ -1,0 +1,30 @@
+\chapter{Reading a Lean theorem}\label{app:B}
+
+No knowledge of Lean is needed to read this book, but a few minutes with this appendix make the theorem names useful.
+
+\section*{The shape of a theorem}
+A Lean theorem has a name, a list of hypotheses and a conclusion:
+\begin{leanbox}[an example from Chapter 16]
+\begin{Verbatim}[fontsize=\small]
+theorem ju_location (l x : ℝ) (hl : 0 < l) (hx0 : 0 < x) (hx1 : x < π * l) :
+    l * sin (x / l) = l ↔ x = π * l / 2 := by
+  ...
+\end{Verbatim}
+\end{leanbox}
+\noindent Read it as: for real numbers $\ell$ and $x$ with $\ell>0$ and $0<x<\pi\ell$, the equation $\ell\sin(x/\ell)=\ell$ holds if and only if $x=\pi\ell/2$. Everything after \texttt{:= by} is the proof, which Lean checks. If the proof were wrong or incomplete, the repository would not build.
+
+\section*{Five tactics}
+Most proofs in the book use a handful of steps.
+\begin{itemize}[leftmargin=*]
+\item \texttt{ring}: proves an identity of commutative rings by expanding both sides.
+\item \texttt{field\_simp}: clears denominators, using the hypotheses that they are nonzero.
+\item \texttt{linear\_combination e}: proves an equation by showing that it is the given combination \texttt{e} of hypotheses plus a ring identity.
+\item \texttt{nlinarith}, \texttt{linarith}: prove inequalities from hypotheses and squares.
+\item \texttt{HasDerivAt f f' x}: the statement that $f$ has derivative $f'$ at $x$, built up from the derivatives of $\sin$, $\cosh$, products and quotients.
+\end{itemize}
+
+\section*{Checking it yourself}
+The repository builds with Lean~4.15.0 and Mathlib v4.15.0: install Elan, then run \texttt{lake update}, \texttt{lake exe cache get} and \texttt{lake build}. The command \texttt{\#print axioms} followed by a theorem name lists the axioms the proof depends on; for every theorem in this book it is a subset of \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}, the standard axioms of Lean's mathematics.
+
+\section*{What Lean does not check}
+Lean checks a theorem from its hypotheses. It does not check that the hypotheses describe nature, that an external theorem quoted in the text applies, or that a numerical computation is correct. That is why every result in the book carries a status tag.
