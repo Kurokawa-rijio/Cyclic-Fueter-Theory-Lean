@@ -1,0 +1,108 @@
+\chapter{Static Solutions}
+\label{ch:static}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the spherical Einstein tensor and the Yang--Mills stress (\cref{thm:einD,thm:ymstress}); the spin-connection condition $w=r'$ and the homogeneous solutions (\cref{thm:spinwitten,thm:threesol}); the Tolman universe and the Bertotti--Robinson throat (\cref{thm:tolman,thm:br}).\\
+\textbf{It provides:} a complete classification of static solutions with $w=r'$, which leaves only the throat and flat space, so that no static solution connects the two; and, allowing a cosmological constant, a ``map of smoothness'': static throats cannot have a waist, cylinders exist exactly for $\Lambda\le1/(4\ell^2)$, there is an exact static closed universe with Yang--Mills field, and inside the throat the Yang--Mills perturbation violates the Breitenlohner--Freedman bound.
+\end{usesbox}
+
+The Tolman universe is dynamical; the throat is static. The natural first question about joining them is whether a static configuration can interpolate between a region that looks like the round sphere and a region that looks like the throat. In EYM theory the answer is no. This chapter proves it under the spin-connection condition and then maps out what a cosmological constant changes. It is a chapter of negative results, and the negative results are informative: they show that any join of the two pieces must be dynamical, which motivates the junction analysis of the next two chapters.
+
+\section{Static solutions with \texorpdfstring{$w=r'$}{w=r'}}
+
+Take a static metric $-N(s)^2\dd t^2+\dd s^2+r(s)^2\dd\Omega^2$ in proper-distance gauge, the magnetic ansatz with $w=r'$, and write $V=w'=r''$. With $\rho$ and $p_r$ normalised as $8\pi G\times$ the physical quantities,
+\[
+\rho=2\ell^2\Bigl(\frac{V^2}{r^2}+\frac{(1-w^2)^2}{2r^4}\Bigr),\qquad p_r=2\ell^2\Bigl(\frac{V^2}{r^2}-\frac{(1-w^2)^2}{2r^4}\Bigr),
+\]
+the static field equations used are
+\begin{align*}
+\text{(a)}\quad&\frac{1-w^2-2rV}{r^2}=\rho &&\text{(Hamiltonian constraint)},\\
+\text{(b)}\quad&\frac{2w}{r}\frac{N'}{N}+\frac{w^2-1}{r^2}=p_r &&\text{(radial Einstein equation)},\\
+\text{(d)}\quad&(Nw')'=\frac{Nw(w^2-1)}{r^2} &&\text{(Yang--Mills equation)}.
+\end{align*}
+
+\begin{theorem}[Static classification]\label{thm:staticclass}\ver\nogo\
+On an interval where $r$ and $N$ do not vanish, every solution of (a), (b), (d) with $w=r'$ has either $w\equiv0$, in which case $r^2\equiv\ell^2$ (the Bertotti--Robinson throat), or $w\equiv\pm1$, in which case $V\equiv0$ and $\rho\equiv0$ (flat space). In particular no static solution joins the throat to anything else.
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+From (b) and (d) one solves for $V'$; the lapse drops out. Multiply (a) by $r^4$ to get a polynomial $E_0(\ell,r,w,V)=0$. On any open set where $w\ne0$ and $w^2\ne1$, differentiate $E_0=0$ three times along the flow, obtaining $E_1=E_2=E_3=0$. An explicit certificate
+\[
+\ell^2\bigl(rw(w^2-1)\bigr)^4=k_0E_0+k_1E_1+k_2E_2+k_3E_3
+\]
+then shows that this open set is empty. Hence $w(s)\in\{0,\pm1\}$ everywhere, and a continuous function with values in a discrete set is constant on an interval. The certificate was found from a Gr\"obner-basis computation and a Macaulay matrix of degree $16$; Lean verifies the identity.
+\end{proof}
+
+\section{A cosmological constant: the map of smoothness}
+
+Now relax the spin-connection condition and add a cosmological constant $\Lambda$. Work in units $\ell=1$ and write the static metric as $-e^{2\nu}\dd t^2+\dd s^2+r(s)^2\dd\Omega^2$, with $\kappa\rho=2w'^2/r^2+(1-w^2)^2/r^4$, $\kappa p_s=2w'^2/r^2-(1-w^2)^2/r^4$ and $\kappa p_\perp=(1-w^2)^2/r^4$.
+
+\begin{theorem}[No static waist]\label{thm:nowaist}\ver\nogo\
+At a point where $r'=0$, the $tt$ and $ss$ components of the field equations give $r''=-2w'^2/r\le0$. A static configuration cannot have a minimal sphere (a waist); the limiting case $r''=0$ is a cylinder.
+\end{theorem}
+
+This is the static form of the statement that a throat requires a violation of the null energy condition, and Yang--Mills fields do not provide one.
+
+\begin{theorem}[Cylinders, a static universe and the critical cylinder]\label{thm:cylinders}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item A cylinder $r=R$, $w=0$, $\nu'=k$ constant solves the equations if and only if $\Lambda=1/R^2-1/R^4$ and $k^2=(2-R^2)/R^4$. For $k^2>0$ it is $\mathrm{AdS}_2\times S^2$, for $k=0$ it is $\mathrm{Mink}_2\times S^2$. Cylinders exist only for $\Lambda\le\frac14$, with equality iff $R^2=2$. At $\Lambda=0$, $R=1=\ell$: the Bertotti--Robinson throat.
+\item The static universe $r=\sqrt2\sin(s/\sqrt2)$, $w=\cos(s/\sqrt2)$, $\nu=0$, $\Lambda=\frac34$ is an exact solution of all field equations.
+\item On the critical cylinder $R^2=2$, $\Lambda=\frac14$, the linearised Yang--Mills equation is $w''+w/2=0$, solved by $w=\cos(s/\sqrt2)$, the same function as in (ii).
+\end{enumerate}
+\end{theorem}
+
+The critical cylinder is the ultracold limit of the magnetically charged Reissner--Nordstr\"om--de Sitter solution, in which three horizons coincide; it is the Plebański--Hacyan spacetime \cite{PlebanskiHacyan1979}. Between the static universe at $\Lambda=\frac34$ and the critical cylinder at $\Lambda=\frac14$ there is a sequence of static closed solutions found numerically by Volkov and collaborators \cite{Volkov1996} \ext.
+
+\section{Inside the throat: an oscillating Yang--Mills field}
+
+The throat itself is stable as a geometry, but the Yang--Mills field inside it is not. Linearise around $w=0$ in the throat of radius $\ell=1$.
+
+\begin{theorem}[Throat mode]\label{thm:throatmode}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item In the throat, static perturbations satisfy $w''+w'+w=0$, solved by $w=e^{-s/2}\cos(\sqrt3\,s/2)$.
+\item The effective mass squared is $-1$, below the Breitenlohner--Freedman bound $-\frac14$ of $\mathrm{AdS}_2$, and the oscillation frequency is $\sqrt{1-\frac14}=\sqrt3/2$. Between consecutive nodes, a distance $2\pi/\sqrt3$ apart, the amplitude decreases by $e^{-\pi/\sqrt3}$.
+\end{enumerate}
+\end{theorem}
+
+The same number $e^{-\pi/\sqrt3}$ governs the approach of the Bartnik--McKinnon solutions to the extremal Reissner--Nordstr\"om geometry: each further node of the gauge field adds a throat segment and reduces the mass deficit by this factor \cite{BFM1994} \num. The instability of $w=0$ in the throat is the reason the throat alone is not a stable Yang--Mills configuration; we return to it in Chapter~22.
+
+\begin{litbox}
+Static spherically symmetric EYM solutions are the subject of a large literature, beginning with Bartnik and McKinnon \cite{BartnikMcKinnon1988} and reviewed by Volkov and Gal'tsov \cite{VolkovGaltsov1999}; the scaling $e^{-\pi/\sqrt3}$ is due to Breitenlohner, Forg\'acs and Maison \cite{BFM1994}; cosmological generalisations are due to Volkov et al.\ \cite{Volkov1996}; the Breitenlohner--Freedman bound is from \cite{BreitenlohnerFreedman1982}. New here are the classification of \cref{thm:staticclass} under the spin-connection condition, which leaves only the throat and flat space and is proved with an explicit algebraic certificate, and the compact statement of \cref{thm:nowaist}. Together with the explicit cylinder family and exact static universe they form a ``map'' of where static smooth configurations exist.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item No static solution with $w=r'$ joins the throat to anything else (\cref{thm:staticclass}).
+\item No static waist: $r''=-2w'^2/r\le0$ (\cref{thm:nowaist}).
+\item Cylinders exist iff $\Lambda\le1/(4\ell^2)$; exact static universe at $\Lambda=3/(4\ell^2)$ (\cref{thm:cylinders}).
+\item The throat mode violates the BF bound (\cref{thm:throatmode}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Check that $w=e^{-s/2}\cos(\sqrt3s/2)$ satisfies $w''+w'+w=0$.
+\end{exercise}
+\begin{exercise}
+Show that $1/R^2-1/R^4\le\frac14$ for all $R$, with equality iff $R^2=2$.
+\end{exercise}
+\begin{exercise}
+Using \cref{thm:nowaist}, explain why a static spherically symmetric EYM configuration cannot contain a sphere of minimal area.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaII_Z5:E0_eq}{The Hamiltonian constraint as the polynomial $E_0=r^4\cdot(\text{constraint})$.$^*$}
+\chk{AlphaII_Z5:dV_from_bd}{$V'$ from the radial Einstein and Yang--Mills equations; the lapse drops out.$^*$}
+\chk{AlphaII_Z5:flow_E0,AlphaII_Z5:flow_E1,AlphaII_Z5:flow_E2}{Derivatives of $E_0,E_1,E_2$ along the flow (three statements).$^*$}
+\chk{AlphaII_Z5:cert}{Certificate $\ell^2(rw(w^2-1))^4=\sum k_iE_i$.$^*$}
+\chk{AlphaII_Z5:deriv_zero_on_open}{A function constant on an open set has zero derivative.}
+\chk{AlphaII_Z5:static_W_trichotomy}{Pointwise $w=0$ or $w^2=1$.$^*$}
+\chk{AlphaII_Z5:const_of_discrete}{A continuous function with values in $\{0,\pm1\}$ is constant on an interval.$^*$}
+\chk{AlphaII_Z5:static_classification}{Static classification: the throat or flat space.$^*$}
+\chk{AlphaPillar_Smooth:no_static_throat}{No static waist: $r''=-2w'^2/r\le0$ where $r'=0$.$^*$}
+\chk{AlphaPillar_Smooth:cylinder_family}{The cylinder family with $\Lambda=1/R^2-1/R^4$, $k^2=(2-R^2)/R^4$.$^*$}
+\chk{AlphaPillar_Smooth:cylinder_max}{$\Lambda\le\frac14$ with equality iff $R^2=2$.$^*$}
+\chk{AlphaPillar_Smooth:esu_ym}{Exact static universe with Yang--Mills field at $\Lambda=\frac34$.$^*$}
+\chk{AlphaPillar_Smooth:cylinder_mode}{On the critical cylinder, $w=\cos(s/\sqrt2)$ solves $w''+w/2=0$.$^*$}
+\chk{AlphaPillar_Smooth:throat_mode}{In the throat, $w=e^{-s/2}\cos(\sqrt3s/2)$ solves $w''+w'+w=0$.$^*$}
+\chk{AlphaPillar_Smooth:bf_violation}{$-1<-\frac14$, frequency $\sqrt3/2$, damping $e^{-\pi/\sqrt3}$ per half period.$^*$}
+\end{checklist}

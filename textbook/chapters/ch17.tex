@@ -1,0 +1,200 @@
+\chapter{Junction Conditions}
+\label{ch:junctions}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the Einstein tensor in both gauges (\cref{thm:einD,thm:einN}); the Yang--Mills stress of the magnetic ansatz (\cref{thm:ymstress}); the Hamiltonian constraint and the mass (\cref{prop:codazzi,prop:massprime}); the round $S^3(\ell)$ with $w=\cos(s/\ell)$ and the cylinder with $w=0$ (\cref{thm:threesol,thm:tolman,thm:br}).\\
+\textbf{It provides:} junction conditions derived from the field equations in the sense of distributions, for spacelike, timelike and null surfaces in spherical symmetry, including the Yang--Mills surface current; and their application to gluing the Tolman universe to the Bertotti--Robinson throat along the equator: the spacelike join needs no shell but is only $C^1$, a timelike join needs both a gravitational shell and a colour current, and null fronts from the corner carry no shell.
+\end{usesbox}
+
+At its moment of maximal expansion the Tolman universe is a round $S^3(\ell)$, whose equator is a sphere of radius $\ell$ with $r'=0$. Every sphere of the Bertotti--Robinson throat also has radius $\ell$ and $r'=0$. It is tempting to cut $S^3(\ell)$ along its equator and insert a piece of the cylinder between the two hemispheres. The result is a closed slice shaped somewhat like a dumbbell: two round ends joined by a cylindrical bar. Whether such a slice is a legitimate initial data set, and how it evolves, is a question about junction conditions. In general relativity these are usually quoted in the form of Israel's conditions \cite{Israel1966} for timelike or spacelike surfaces and of Barrab\`es and Israel \cite{BarrabesIsrael1991} for null ones. Here we derive them from the field equations read as distributions, which also gives the Yang--Mills surface current, and then apply them.
+
+\section{Field equations as distributions}
+
+The basic tool is one-dimensional. A function $p$ that is $C^1$ on each side of $x_0$ has a distributional derivative equal to its pointwise derivative plus $[p]\,\delta_{x_0}$, where $[p]=p_+(x_0)-p_-(x_0)$ is the jump.
+
+\begin{lemma}[The coefficient of $\delta$]\label{lem:deltacoeff}\ver\
+Let $p_\pm$ be $C^1$ on $[a,x_0]$ and $[x_0,b]$ with $p_\pm'=S_\pm$ there, and let $\kappa$ be continuous and $C^1$ on each side. If
+\[
+-\int_a^b\,p\,(\kappa\varphi)'\,\dd x=\int_a^bS\,\varphi\,\dd x+m\,\varphi(x_0)
+\]
+for all test functions $\varphi$ vanishing at $a$ and $b$, then $m=\kappa(x_0)[p]$. Conversely, piecewise $C^1$ data always satisfy such a weak equation, with $m=[p]$ for $\kappa=1$. If two functions agree along a surface, so do their tangential derivatives.
+\end{lemma}
+
+Every junction condition below is an instance of this lemma: write the relevant field equation as $\kappa\,\partial_x(\text{something})=\text{source}$ with no other second transverse derivatives, read off the coefficient of $\delta$, and identify it with a surface source.
+
+\section{Spacelike slices}
+
+On a time-symmetric slice in the gauge \eqref{eq:diagmetric}, the Hamiltonian constraint is $G_{tt}/N^2=\frac12{}^{(3)}R$ with ${}^{(3)}R=2(1-(D_xR)^2-2R\,D_xD_xR)/R^2$ and $D_x=A^{-1}\partial_x$. The only second derivative is $R_{xx}$, with coefficient $-2/(A^2R)$.
+
+\begin{proposition}[Shells in a spacelike slice]\label{prop:sliceshell}\ver\
+A distributional Hamiltonian constraint with a surface energy density $\sigma$ at a sphere of radius $R_0$ requires
+\[
+\sigma=-\frac{[R_x]}{4\pi GR_0},
+\]
+so there is no shell if and only if $R_x$ is continuous. The same coefficient appears in the general Israel formula for a sphere.
+\end{proposition}
+
+\section{Timelike surfaces}
+
+For a timelike hypersurface with induced metric $h_{ab}$ and extrinsic curvature $K_{ab}$, Israel's conditions read $[K_{ab}]-h_{ab}[K]=-8\pi G\,S_{ab}$ \cite{Israel1966,PoissonToolkit}.
+
+\begin{proposition}[Israel's conditions, inverted]\label{prop:israel}\ver\
+For an $n$-dimensional surface with $\det h\ne0$ and $n\ne1$, the trace of the surface stress is $\tr_hS=(n-1)\tr_h[K]/(8\pi G)$, the relation can be inverted as $[K_{ab}]=-8\pi G\bigl(S_{ab}-\frac{\tr_hS}{n-1}h_{ab}\bigr)$, and $S_{ab}=0$ if and only if $[K_{ab}]=0$. For $n=3$, $[K_{ab}]=-8\pi G(S_{ab}-\frac12\tr_hS\,h_{ab})$.
+\end{proposition}
+
+In spherical symmetry everything is explicit.
+
+\begin{theorem}[Timelike junctions in spherical symmetry]\label{thm:tube}\ver\
+For the tube $x=x_0$ in the metric \eqref{eq:diagmetric}, with unit normal $n=A\,\dd x$:
+\begin{enumerate}[label=(\roman*)]
+\item $K_{tt}=-NN_x/A$, $K_{\theta\theta}=RR_x/A$, and the off-diagonal components vanish.
+\item $G_{nn}=G_{xx}/A^2$ depends only on quantities intrinsic to the tube ($N$, $R$ and their $t$-derivatives) and on $K$ ($N_x/A$, $R_x/A$); second $x$-derivatives enter $G_{tt}$ only through $-\frac{2N^2}{A^2R}R_{xx}$, and $G_{\theta\theta}+\frac{R^2}{2N^2}G_{tt}$ only through $\frac{R^2}{A^2N}N_{xx}$.
+\item Consequently the surface stress is determined by $[R_x]$ and $[N_x]$, and there is no shell iff $[R_x]=[N_x]=0$, iff (when $N,A,R$ are continuous) $[K_{ab}]=0$.
+\item Writing the Yang--Mills equation as $\partial_x(Ns\,w_x/A)+\partial_t(\cdots)+(\text{no derivatives})=0$, the colour surface current on the tube is $j=Ns\,[w_x/A]$; it vanishes iff $w_x/A$ is continuous.
+\item If there is no shell and the $nn$ Einstein equation holds on both sides at a time-symmetric moment, then $[w_x^2/A^2]=0$. For a tube moving with speed $\beta$, $[T(n,n)]=\gamma^2(1+\beta^2)[w^2]/R^2$ with $w=w_x/A$.
+\end{enumerate}
+\end{theorem}
+
+\section{Null surfaces}
+
+In the double-null gauge \eqref{eq:nullmetric}, the transverse second derivative across $u=u_0$ appears only in $G_{uu}=-\frac2r(r_{uu}-\frac{\Omega_u}\Omega r_u)$.
+
+\begin{theorem}[Null junctions]\label{thm:null}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Weak discontinuities.) For a null covector $k$ and any $a$ with $a\cdot k=0$, the bivector $F=k\wedge a$ has the algebraic structure of a jump across a null front.
+\item A null shell on $u=u_0$ has surface energy density $\mu=-[r_u]/(4\pi Gr_0)$, so there is no shell iff $[r_u]=0$; and $[r_{uu}]=-4\pi Gr_0[T_{uu}]$, which for Yang--Mills gives $[r_{uu}]=-\frac2{r_0}[w_u^2]$.
+\item The mixed equation $G_{uv}=8\pi GT_{uv}$ is equivalent to $rr_{uv}+r_ur_v=\frac\Omega2\bigl(\ell^2(1-w^2)^2/r^2-1\bigr)$. Taking its difference across the front gives $r[r_{uv}]+r_v[r_u]=0$, i.e.\ $(rq)'=0$ along the front for $q=[r_u]$. Hence if $[r_u]=0$ at one point of the front and $r>0$, there is no shell anywhere along it.
+\item The Yang--Mills flux across $u=$ const is $-s\,w_v$, a tangential derivative, so there is no colour current; $\hat T_{vv}=2w_v^2/r^2$, $\hat T_{uv}=\Omega(1-w^2)^2/(2r^4)$, and the angular $v$-components vanish.
+\item If $r$, $r_u$, $r_v$ and $\Omega$ are continuous, the Misner--Sharp mass is continuous: weak discontinuities carry no mass.
+\end{enumerate}
+\end{theorem}
+
+\section{Gluing the Tolman universe to the throat}
+
+We now apply these results at the equator of $S^3(\ell)$, where $r=\ell$ and $r'=0$ on both sides.
+
+\begin{theorem}[The spacelike join is $C^1$ but not $C^2$]\label{thm:c1notc2}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item If a round sphere of radius $a$ is joined in a $C^1$ way to a cylinder of radius $\ell$ at a sphere with $r'=0$, then $a=\ell$; the same follows from continuity of the Misner--Sharp mass.
+\item At the join, $r$ and $r'$ are continuous, so by \cref{prop:sliceshell} there is no shell: $\sigma=0$. The junction sphere is marginally trapped, and the throat side cannot open into a flat region (\cref{thm:penrose}).
+\item The Hamiltonian constraint under $w=r'$ is a quadratic equation for $r''$, $\kappa r''^2+2rr''+\bigl(\kappa(1-r'^2)^2/(2r^2)-(1-r'^2)\bigr)=0$ with $\kappa=2\ell^2$. At $(r,r')=(\ell,0)$ it has exactly two roots, $r''=0$ (the throat) and $r''=-1/\ell$ (the round sphere).
+\item Hence $r''$ jumps from $-1/\ell$ to $0$: the scalar curvature jumps from $6/\ell^2$ to $2/\ell^2$, the energy density from $3/(2g^2\ell^4)$ to $1/(2g^2\ell^4)$, and the radial pressure changes sign. If $r''=-r/\ell^2$ on one side and $r''=0$ on the other, $r''$ cannot be continuous at the join: there is no $C^2$ junction.
+\end{enumerate}
+\end{theorem}
+
+The two branches of the quadratic are separated by a positive discriminant, so passing from one to the other requires a jump. The join is as smooth as it can be without being $C^2$. Why that is so, and why it is nevertheless canonical, is the subject of the next chapter.
+
+\begin{theorem}[A timelike join needs a shell and a colour current]\label{thm:timelikejoin}\ver\nogo\
+Consider a timelike tube through the junction sphere.
+\begin{enumerate}[label=(\roman*)]
+\item The normal stress jumps: with $\rho_{\mathrm{Tolman}}=3/(8\pi G\ell^2)$, $p=\rho/3$ and $\rho_{\mathrm{throat}}=2/(16\pi G\ell^2)$, $[T_{nn}]=-1/(4\pi G\ell^2)\ne0$, so Israel's conditions with $S_{ab}=0$ cannot hold.
+\item On the Tolman side the tube at proper time $\tau$ has areal radius $\sqrt{\ell^2-\tau^2}$, which differs from $\ell$ for $\tau\ne0$: the first fundamental forms do not match.
+\item At the junction $w_x=-1/\ell$ on the Tolman side and $w_x=0$ on the throat side, so $[w_x^2]\ne0$ and the colour surface current $j=s/\ell\ne0$.
+\end{enumerate}
+Hence a timelike surface through the junction sphere requires both a gravitational shell and a Yang--Mills surface current. (This does not exclude timelike thin shells in general.)
+\end{theorem}
+
+\begin{theorem}[Null fronts from the corner carry no shell]\label{thm:nullfront}\ver\
+Let null fronts leave the junction sphere at the time-symmetric moment. Since $r_t=0$ there and the spacelike join is $C^1$, $[r_u]=0$ at the corner, and by \cref{thm:null}(iii) $[r_u]=0$ along the whole front: no null shell. Continuity of $w$ along the front gives $[\hat T_{vv}]\propto[w_v^2]=0$ and no colour current. The jump $[w_u]$ is transported unchanged along the front; at the corner $w_u=1/(\sqrt2\,\ell)$ on the Tolman side and $0$ on the throat side, and the constraint then gives $[r_{uu}]=-1/\ell$.
+\end{theorem}
+
+So the gluing is consistent as initial data, and its evolution is free of shells along the null directions. What propagates is a discontinuity in second derivatives, a gravitational and Yang--Mills ``wave front'', whose evolution is studied in Chapters~19 and~20.
+
+\subsection*{A remark on two formulations}
+
+An earlier formulation of the final timelike, colour, slice and null theorems was stated for fields in an abstract differential field together with a family of evaluation homomorphisms to the real line. Those theorems are formally correct, but their hypothesis cannot be satisfied by non-constant functions, because a homomorphism from a field is injective. They are listed in the checklist for completeness, and the results stated above rely on the reformulation with real functions and weak equations, which is shown to have satisfiable hypotheses.
+
+\begin{litbox}
+Israel's conditions \cite{Israel1966} and their null counterpart by Barrab\`es and Israel \cite{BarrabesIsrael1991} are standard; Poisson's book \cite{PoissonToolkit} gives a modern account. What this chapter adds is a derivation of the spherically symmetric junction conditions, including the Yang--Mills surface current, directly from the distributional field equations, with the coefficient of $\delta$ identified by integration by parts. It then applies them to gluing the Tolman universe to the Bertotti--Robinson throat. The spacelike join is shell-free and $C^1$ but not $C^2$, because the constraint is quadratic in $r''$ with exactly two roots at the junction. A timelike join requires a shell and a colour current. Null fronts carry no shell.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The $\delta$-coefficient lemma and the spherical junction conditions for all three types of surface (\cref{lem:deltacoeff}, \cref{prop:sliceshell,prop:israel}, \cref{thm:tube,thm:null}).
+\item The Tolman--throat join: shell-free, $C^1$, not $C^2$; $r''$ jumps from $-1/\ell$ to $0$ (\cref{thm:c1notc2}).
+\item A timelike join needs a shell and a colour current; null fronts carry none (\cref{thm:timelikejoin,thm:nullfront}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+For the quadratic in \cref{thm:c1notc2}(iii) with $r=\ell$, $r'=0$, $\kappa=2\ell^2$, compute the roots and the discriminant.
+\end{exercise}
+\begin{exercise}
+Compute ${}^{(3)}R=2(1-r'^2-2rr'')/r^2$ on both sides of the join and confirm the jump from $6/\ell^2$ to $2/\ell^2$.
+\end{exercise}
+\begin{exercise}
+Using \cref{prop:israel} with $n=3$, show that $\tr_h[K]=0$ and $[K_{ab}]=0$ follow from $S_{ab}=0$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS4_Junction:delta_coeff,AlphaS4_Distrib:delta_coeff_weighted,AlphaReal_Junction:rj_delta_coeff_one}{The coefficient of $\delta$ in a weak equation (three forms).$^*$}
+\chk{AlphaReal_Junction:rj_weak_of_pieces}{Piecewise $C^1$ data satisfy the weak equation with $m=[p]$.$^*$}
+\chk{AlphaIII_Junction:weak_second_derivative,AlphaIII_Null:tent_deriv}{Weak second derivatives and a test-function lemma (two statements).}
+\chk{AlphaS4_Distrib:trace_deriv_eq}{Equal traces on a surface have equal tangential derivatives.$^*$}
+\chk{AlphaIII_Junction:classify_null}{Classification of the junction surface by the norm of its normal.}
+\chk{AlphaS4_Junction:slice_hamiltonian}{On a time-symmetric slice $G_{tt}/N^2=\frac12{}^{(3)}R$.$^*$}
+\chk{AlphaIII_Junction:constraint_form}{${}^{(3)}R/2=(1-r'^2-2rr'')/r^2$.$^*$}
+\chk{AlphaS4_Distrib:slice_shell,AlphaIII_Junction:shell_density}{Spacelike shell density $\sigma=-[R_x]/(4\pi GR_0)$ (two statements).$^*$}
+\chk{AlphaIII_Junction:no_shell_iff}{No shell iff no jump.$^*$}
+\chk{AlphaIII_Israel:trh_self,AlphaIII_Israel:trh_linear}{The trace $\tr_h$ (two statements).}
+\chk{AlphaIII_Israel:israel_trace}{$\tr_hS=(n-1)\tr_h[K]/(8\pi G)$.$^*$}
+\chk{AlphaIII_Israel:israel_inverse,AlphaIII_Israel:israel_inverse_three}{Inversion of Israel's conditions, general $n$ and $n=3$ (two statements).$^*$}
+\chk{AlphaIII_Israel:israel_no_shell}{$S_{ab}=0$ iff $[K_{ab}]=0$.$^*$}
+\chk{AlphaIII_Israel:sphere_consistency}{Consistency of the spherical shell density with Israel's formula.$^*$}
+\chk{AlphaS4_Junction:tube_K}{Extrinsic curvature of the tube.$^*$}
+\chk{AlphaS4_Junction:gauss_tube}{$G_{nn}$ is intrinsic plus $K$.$^*$}
+\chk{AlphaS4_Junction:tube_tt_form,AlphaS4_Junction:tube_ang_form}{Where the second $x$-derivatives enter (two statements).$^*$}
+\chk{AlphaS4_Junction:tube_israel}{No shell iff $[R_x]=[N_x]=0$.$^*$}
+\chk{AlphaS4_Junction:tube_K_jump}{With continuous $N,A,R$: $[K]=0$ iff $[N_x]=[R_x]=0$.$^*$}
+\chk{AlphaS4_Junction:tnn_tube,AlphaS4_Junction:rho_tube,AlphaS4_Junction:flux_tube}{Yang--Mills $T_{nn}$, $\rho$ and $T_{tn}$ on the tube (three statements).$^*$}
+\chk{AlphaS4_Junction:ym_flux_tube}{Yang--Mills flux $Ns\,w_x/A$ across the tube.$^*$}
+\chk{AlphaS4_Distrib:ymD_02,AlphaS4_Distrib:ymD_split}{The Yang--Mills equation in divergence form (two statements).$^*$}
+\chk{AlphaS4_Distrib:tube_color_current,AlphaS4_Junction:color_current}{Colour surface current $Ns[w_x/A]$; zero iff continuous (two statements).$^*$}
+\chk{AlphaS4_Distrib:nn_eq_eval}{Passing the $nn$ equation to the values on each side.$^*$}
+\chk{AlphaS4_Junction:timelike_no_go,AlphaS4_Distrib:timelike_two_sided}{No shell and the $nn$ equations force $[w^2]=0$ (two statements).$^*$}
+\chk{AlphaS4_Junction:boosted_jump}{For a moving tube, $[T(n,n)]=\gamma^2(1+\beta^2)[w^2]/R^2$.$^*$}
+\chk{AlphaIII_P1:null_front}{Algebraic structure of a weak discontinuity across a null front.$^*$}
+\chk{AlphaS4_Junction:uu_form}{$G_{uu}=-\frac2r(r_{uu}-\frac{\Omega_u}{\Omega}r_u)$.$^*$}
+\chk{AlphaS4_Junction:mixed_eq}{The mixed equation $rr_{uv}+r_ur_v=\frac\Omega2(\ell^2(1-w^2)^2/r^2-1)$.$^*$}
+\chk{AlphaS4_Junction:ym_flux_null}{Yang--Mills flux across a null surface is $-s\,w_v$.$^*$}
+\chk{AlphaS4_Junction:null_tangential_stress}{$\hat T_{vv}$, $\hat T_{uv}$ and the vanishing angular $v$-components.$^*$}
+\chk{AlphaIII_Null:null_shell_from_weak,AlphaS4_Distrib:null_uu_shell}{Null shell density $\mu=-[r_u]/(4\pi Gr_0)$ (two statements).$^*$}
+\chk{AlphaIII_Null:null_no_shell_iff}{No null shell iff $[r_u]=0$.$^*$}
+\chk{AlphaIII_Null:null_ruu_jump,AlphaIII_Null:null_ruu_jump_ym}{$[r_{uu}]=-4\pi Gr_0[T_{uu}]$, and its Yang--Mills form (two statements).$^*$}
+\chk{AlphaS4_Junction:jump_mixed,AlphaS4_Junction:jump_transport}{$r[r_{uv}]+r_v[r_u]=0$ and transport of $[r_u]$ (two statements).$^*$}
+\chk{AlphaS4_Junction:initial_jump}{At a time-symmetric $C^1$ corner, $[r_u]=0$.$^*$}
+\chk{AlphaS4_Junction:null_front_no_shell,AlphaS4_Junction:null_front_from_mixed,AlphaS4_Distrib:null_front_weak}{No shell along the whole front (three statements).$^*$}
+\chk{AlphaS4_Distrib:null_color_current}{No colour current across a null front.$^*$}
+\chk{AlphaX_Unify:weak_discontinuity_no_mass}{Weak discontinuities carry no mass.$^*$}
+\chk{AlphaIII_Glue:glue_C1}{$C^1$ gluing forces $a=\ell$.$^*$}
+\chk{AlphaIII:a_eq_l}{Continuity of the mass forces $a=\ell$.$^*$}
+\chk{AlphaIII_Glue:junction_marginal}{The junction sphere is marginally trapped.$^*$}
+\chk{AlphaIII_Glue:no_flat_from_constraints}{The throat side cannot open into a flat region.$^*$}
+\chk{AlphaII_Action:junction_ghy}{Extrinsic curvatures and boundary data at the join on both sides.$^*$}
+\chk{AlphaRoot_Junction:hamC_quadratic}{The constraint is quadratic in $r''$.$^*$}
+\chk{AlphaRoot_Junction:junction_two_values}{At $(\ell,0)$ the roots are $0$ and $-1/\ell$.$^*$}
+\chk{AlphaRoot_Junction:curvature_jump}{${}^{(3)}R$ jumps from $6/\ell^2$ to $2/\ell^2$.$^*$}
+\chk{AlphaRoot_Junction:stress_jump}{Energy density and radial pressure jump.$^*$}
+\chk{AlphaRoot_Junction:no_C2_junction}{No $C^2$ junction.$^*$}
+\chk{AlphaReal_Junction:rj_capR_hasDeriv,AlphaReal_Junction:rj_capR1_hasDeriv,AlphaReal_Junction:rj_capR2_cont}{Derivatives of the areal radius on the Tolman side (three statements).}
+\chk{AlphaReal_Junction:rj_slice_dumbbell}{The spacelike join has $[R']=0$ and $\sigma=0$.$^*$}
+\chk{AlphaReal_Junction:rj_slice_nonempty}{Its hypotheses are satisfiable.$^*$}
+\chk{AlphaIII:israel_jump}{$[T_{nn}]=-1/(4\pi G\ell^2)$.$^*$}
+\chk{AlphaIII:israel_impossible}{Hence $[T_{nn}]\ne0$.$^*$}
+\chk{AlphaReal_Junction:rj_cap_tube_radius,AlphaReal_Junction:rj_tube_mismatch}{Areal radius $\sqrt{\ell^2-\tau^2}$ on the Tolman side differs from $\ell$ (two statements).$^*$}
+\chk{AlphaS4_Junction:cap_slope,AlphaS4_Junction:dumbbell_timelike}{$w_x=-1/\ell$ and $0$ on the two sides (two statements).$^*$}
+\chk{AlphaS4_Junction:dumbbell_no_shellfree_timelike,AlphaS4_Distrib:timelike_dumbbell}{No shell-free timelike junction through the junction sphere (two statements).$^*$}
+\chk{AlphaS4_Junction:dumbbell_color_current,AlphaS4_Distrib:dumbbell_color_needed}{A colour current is needed (two statements).$^*$}
+\chk{AlphaReal_Junction:rj_capW_hasDeriv,AlphaReal_Junction:rj_capFlux_hasDeriv,AlphaReal_Junction:rj_capFluxD_cont}{Derivatives of $w$ and of the Yang--Mills flux on the Tolman side (three statements).}
+\chk{AlphaReal_Junction:rj_color_dumbbell}{Colour current $j=s/\ell\ne0$ on the time-symmetric slice.$^*$}
+\chk{AlphaReal_Junction:rj_color_nonempty}{Its hypotheses are satisfiable.$^*$}
+\chk{AlphaReal_Junction:rj_null_real}{No null shell along fronts from the junction.$^*$}
+\chk{AlphaReal_Junction:rj_front_tangential}{Continuity of $w$ along the front: $[w_v^2]=0$, no colour current.$^*$}
+\chk{AlphaReal_Junction:rj_null_witness}{Its hypotheses are satisfiable.$^*$}
+\chk{AlphaS4_Junction:dumbbell_front}{The front from the junction sphere in the double-null gauge.$^*$}
+\chk{AlphaReal_Junction:rj_Wu_transport}{$[w_u]$ is constant along the front.$^*$}
+\chk{AlphaReal_Junction:rj_capWu_corner}{$w_u=1/(\sqrt2\,\ell)$ at the corner on the Tolman side.$^*$}
+\chk{AlphaReal_Junction:rj_ruu_corner}{$[r_{uu}]=-1/\ell$ at the corner.$^*$}
+\chk{AlphaS4_Final:RealLine.cont,AlphaS4_Final:shell_coeff,AlphaS4_Final:tt_side,AlphaS4_Final:ang_side,AlphaS4_Final:ym_side,AlphaS4_Final:uu_side,AlphaS4_Final:fymD,AlphaS4_Final:fymN}{Earlier formulation via evaluation homomorphisms: auxiliary statements (eight statements; hypothesis not satisfiable for non-constant fields, see the remark).}
+\chk{AlphaS4_Final:timelike_final,AlphaS4_Final:color_final,AlphaS4_Final:slice_final,AlphaS4_Final:null_final}{Earlier formulation of the four final junction theorems (four statements; superseded as explained in the remark).}
+\end{checklist}
