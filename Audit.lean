@@ -55,6 +55,7 @@ import CFT.AlphaJunction_Unique
 import CFT.AlphaOmega_Close
 import CFT.AlphaOmega_Last
 import CFT.AlphaOmega_Quantum
+import CFT.AlphaOpen_Split
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
@@ -977,6 +978,10 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_9_static_clock
 #print axioms CFT.Index.X_9_neck_centre_clock
 #print axioms CFT.Index.X_10_ol_rep_count
+#print axioms CFT.Index.X_10B_os_yamabe_factor
+#print axioms CFT.Index.X_10B_os_yamabe_l1
+#print axioms CFT.Index.X_10B_os_yamabe_l2
+#print axioms CFT.Index.X_10B_os_shape_S9
 #print axioms CFT.Index.X_11_rr_mode1
 #print axioms CFT.Index.X_11_rr_eta_integrability
 #print axioms CFT.Index.X_11_rr_cos_mode_excluded
@@ -989,6 +994,10 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_11B_ol_ym_energy
 #print axioms CFT.Index.X_11B_ol_sphaleron_rate
 #print axioms CFT.Index.X_11B_ol_geometry_rigid
+#print axioms CFT.Index.X_11C_os_area_linear
+#print axioms CFT.Index.X_11C_os_Q_eq
+#print axioms CFT.Index.X_11C_os_backreaction
+#print axioms CFT.Index.X_11C_os_backreaction_ne
 #print axioms CFT.Index.X_12_gauge_singlet
 #print axioms CFT.Index.X_12_eps_xsT
 #print axioms CFT.Index.X_12_xs_sq
@@ -1140,6 +1149,8 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_8_ol_reduced_action
 #print axioms CFT.Index.XV_8_ol_gauge_k2
 #print axioms CFT.Index.XV_8_ol_gauge_count
+#print axioms CFT.Index.XV_9_os_graviton
+#print axioms CFT.Index.XV_9_os_graviton_count
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1210,6 +1221,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.OQ.oq_neck_invariant
 #print axioms CFT.OQ.oq_neck_unique
 #print axioms CFT.OQ.oq_potential_shift
+#print axioms CFT.OS.os_area_linear
+#print axioms CFT.OS.os_Q_eq
+#print axioms CFT.OS.os_backreaction
+#print axioms CFT.OS.os_backreaction_ne
+#print axioms CFT.OS.os_graviton
+#print axioms CFT.OS.os_graviton_count
+#print axioms CFT.OS.os_yamabe_factor
+#print axioms CFT.OS.os_yamabe_l1
+#print axioms CFT.OS.os_yamabe_l2
+#print axioms CFT.OS.os_shape_S9
 #print axioms CFT.Conformal.cap_box
 #print axioms CFT.Conformal.neck_derivs
 #print axioms CFT.Conformal.neck_box

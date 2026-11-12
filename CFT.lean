@@ -56,6 +56,7 @@ import CFT.AlphaJunction_Unique
 import CFT.AlphaOmega_Close
 import CFT.AlphaOmega_Last
 import CFT.AlphaOmega_Quantum
+import CFT.AlphaOpen_Split
 import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
