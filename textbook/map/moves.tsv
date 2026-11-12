@@ -127,3 +127,4 @@ AlphaIII_Glue:glue_C1	ch17
 AlphaIII_Glue:no_flat_from_constraints	ch17
 AlphaIII_Glue:junction_marginal	ch17
 AlphaPillar_Smooth:superpos_null	ch21
+AlphaDumbbell_Bogomolny:ds2_neck_action	ch25

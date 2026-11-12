@@ -1,7 +1,7 @@
 # Progress (update after each chapter)
 
-Done and sent (PDF in /mnt/user-data/outputs/textbook/): ch01-ch12, intA.
-Coverage after intA: 629/1873. Remaining: ch13-ch31, intB, front (preface + Statement of Results), back (appendix mapping numbers -> Lean ids? decide), final merge.
+Done and sent (PDF in /mnt/user-data/outputs/textbook/): ch01-ch17, intA.
+Coverage after ch17: 1059/1873.
 
 Workflow per chapter:
 1. Re-read REQUIREMENTS.md rules.  2. python3 tools/dump.py <modules>  (+ map/moves.tsv for theorem-level moves)
