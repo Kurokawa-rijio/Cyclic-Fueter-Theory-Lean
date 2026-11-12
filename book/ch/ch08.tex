@@ -1,0 +1,49 @@
+\chapter{Connections and curvature: Fueter, Berry, Wigner}\label{ch:connections}
+
+\begin{questionbox}
+Carry a spinning particle round a loop in momentum space and bring it back. Does its spin come back the same? Not necessarily, and there are three natural ways to say by how much: the Fueter frame, the Berry phase of quantum mechanics, and the Wigner rotation of relativity. Two of them turn out to be the same connection in different gauges. The third is genuinely different, and one number tells them apart.
+\end{questionbox}
+
+\section{What a connection is}
+
+A connection tells you how to compare things at nearby points. In our setting the ``things'' are two-component spinors attached to each momentum $\mathbf p$, and a connection is a matrix-valued one-form $A=\sum_iA_i\,dp_i$ with $A_i$ in $\mathfrak{su}(2)$. Moving a spinor along a path with $\dot\psi=-A(\dot{\mathbf p})\psi$ is \emph{parallel transport}. Its failure to return round a small loop is measured by the curvature $F=dA+A\wedge A$.
+
+Two connections are \emph{gauge equivalent} if they differ only by a change of basis at each point, $A'=gAg^{-1}+g\,d(g^{-1})$. Then $F'=gFg^{-1}$, so anything built from $F$ that is unchanged by conjugation is a gauge invariant.
+
+\section{Three connections}
+
+Using $U(\mathbf p)=(m-i\boldsymbol\sigma\cdot\mathbf p)/E$ from Chapter~6:
+\begin{itemize}[leftmargin=*]
+\item the \emph{Fueter} (frame) connection is $A_F=\tfrac12U^{-1}dU$;
+\item the \emph{Berry} connection of positive-energy Dirac spinors is $A_B=\dfrac{i\boldsymbol\sigma\cdot(\mathbf p\times d\mathbf p)}{2E(E+m)}$;
+\item the \emph{Wigner} connection, the rotation part of the standard boost $L(\mathbf p)=\bigl((E+m)+\boldsymbol\sigma\cdot\mathbf p\bigr)/\sqrt{2m(E+m)}$, is $A_W=-\dfrac{i\boldsymbol\sigma\cdot(\mathbf p\times d\mathbf p)}{2m(E+m)}$.
+\end{itemize}
+One reads off at once that $A_B=-(m/E)A_W$. They point the same way but have different strengths, and the ratio depends on $\mathbf p$. That alone does not prove they are inequivalent, because gauge transformations can do surprising things. One needs an invariant.
+
+The Wigner rotation deserves its own sentence. For a Lorentz transformation $\Lambda$, the matrix $W=L(\Lambda\mathbf p)^{-1}\Lambda L(\mathbf p)$ is a rotation: unitary with determinant one (\lean{wigner\_unitary}, \lean{wigner\_det}), and it composes correctly, $W(\Lambda_2\Lambda_1,\mathbf p)=W(\Lambda_2,\Lambda_1\mathbf p)W(\Lambda_1,\mathbf p)$ (\lean{wigner\_cocycle}). Along a path of pure boosts it is transported exactly by $A_W$ (\lean{transport}), so Thomas precession is the holonomy of this connection.
+
+\section{The invariant that separates them}
+
+For any connection of the form $A_i=a(s)\,i\boldsymbol\sigma\cdot(\mathbf p\times e_i)+b(s)\,i\sigma_i$ with $s=|\mathbf p|^2$, one can compute the curvature in closed form and then the trace-Gram invariant $\mathcal G=\sum_k-2\operatorname{tr}(F_k^*F_k^*)$, which is unchanged by gauge transformations (\lean{curv\_formula}, \lean{gram\_trace}, \lean{gram\_gauge}).
+
+\begin{theorem}\proved\label{thm:aw}
+For the three connections above,
+\[
+\mathcal G_F=\mathcal G_B=\Bigl(\frac mE\Bigr)^4\mathcal G_W ,\qquad \mathcal G_W=\frac{2}{m^2E^2}+\frac1{m^4}.
+\]
+Hence for $E>m>0$, that is for every nonzero momentum, $\mathcal G_B<\mathcal G_W$, and the Berry and Wigner connections are not gauge equivalent. The Fueter and Berry connections are gauge equivalent, with the gauge transformation given by the Foldy--Wouthuysen half rotation $V=\bigl((E+m)-i\boldsymbol\sigma\cdot\mathbf p\bigr)/\sqrt{2E(E+m)}$, which satisfies $V^2=U$.
+\end{theorem}
+\noindent In the repository: \lean{trG\_W}, \lean{trG\_B}, \lean{trG\_F}, \lean{ratio}, \lean{berry\_not\_gauge\_wigner}, \lean{half\_rotation\_sq}, \lean{berry\_fueter\_gauge}.
+
+The pleasant surprise is the last sentence. The connection defined purely from the quaternion $U$ (Fueter) and the one defined from quantum states (Berry) are the same object, and the change of gauge between them is the transformation that separates particles from antiparticles at low energy. The relativistic Wigner rotation is the odd one out, by a factor $(m/E)^4$ in the invariant. In the half-angle form, $A_B=\tfrac12(1-m/E)\,i\boldsymbol\sigma\cdot(\mathbf n\times d\mathbf n)$ and $A_W=-\tfrac12(E/m-1)\,i\boldsymbol\sigma\cdot(\mathbf n\times d\mathbf n)$ with $\mathbf p=|\mathbf p|\mathbf n$ (\lean{berry\_half\_angle}, \lean{wigner\_half\_angle}).
+
+\begin{standsbox}
+Berry phases of Dirac spinors and Thomas--Wigner rotation are each well known, and the relation $A_B=-(m/E)A_W$ is easy. The gauge-invariant proof that they are inequivalent, and the identification of Berry with Fueter through the Foldy--Wouthuysen half rotation, are results of the author's programme; they are checked here and the author has not found them in this form. A separate paper on the observable consequences of the difference between $A_B$ and $A_W$ is in preparation.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that the Wigner rotation is unitary with determinant one. \emph{Answer:} \lean{wigner\_unitary}, \lean{wigner\_det}.\end{exercise}
+\begin{exercise}Verify the cocycle rule. \emph{Answer:} \lean{wigner\_cocycle}.\end{exercise}
+\begin{exercise}Show that $\mathcal G$ is unchanged when $F$ is replaced by $gFg^{-1}$. \emph{Answer:} \lean{gram\_gauge}.\end{exercise}
+\begin{exercise}Show that $V^2=U$. \emph{Answer:} \lean{half\_rotation\_sq}.\end{exercise}
+\begin{exercise}Show that $\mathcal G_B<\mathcal G_W$ whenever $E>m>0$. \emph{Answer:} \lean{trG\_B\_lt}.\end{exercise}

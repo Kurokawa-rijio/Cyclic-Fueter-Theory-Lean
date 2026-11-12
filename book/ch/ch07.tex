@@ -1,0 +1,69 @@
+\chapter{The Dirac equation and its projector}\label{ch:dirac}
+
+\begin{questionbox}
+Why does the unit quaternion $U(\mathbf p)=(m-i\boldsymbol\sigma\cdot\mathbf p)/E$ of Chapter~6 deserve the name ``quantum''? Because it is what the Dirac equation produces when one asks for the states of positive energy. The projector onto those states has a natural metric, and that metric is exactly half the metric of the quantum sphere.
+\end{questionbox}
+
+\section{A square root of $E^2$}
+
+Dirac looked for a Hamiltonian linear in momentum whose square is $E^2=m^2+|\mathbf p|^2$. Writing $H=m\beta+\alpha_1p_1+\alpha_2p_2+\alpha_3p_3$ and squaring, the cross terms must cancel and the squares must be one.
+
+\begin{proposition}\proved
+If $\beta^2=\alpha_i^2=1$ and $\beta,\alpha_1,\alpha_2,\alpha_3$ anticommute pairwise, then
+\[
+H^2=(m^2+p_1^2+p_2^2+p_3^2)\,1 .
+\]
+\end{proposition}
+\noindent In the repository: \lean{dirac\_sq}. The proof holds in any associative algebra, so it does not care which matrices one uses.
+
+Compare this with Chapter~3. There we wanted a first-order operator whose ``square'' is the Laplacian, and quaternion units did the job. Here we want one whose square is $E^2$, and anticommuting matrices do the job. The two problems are the same problem, and in the standard representation the $\alpha_i$ are built from the quaternion units of Chapter~1.
+
+\section{The positive-energy projector}
+
+Since $H^2=E^2$, the eigenvalues of $H$ are $\pm E$, and
+\[
+P_+=\tfrac12\Bigl(1+\frac HE\Bigr)
+\]
+is the projector onto positive energy.
+
+\begin{proposition}\proved
+If $H^2=E^2$ and $E\ne0$, then $P_+^2=P_+$.
+\end{proposition}
+\noindent In the repository: \lean{proj\_idem}.
+
+As $\mathbf p$ varies, $P_+(\mathbf p)$ traces out a family of two-dimensional subspaces, and any such family carries a metric, the \emph{quantum metric} $\tfrac12\operatorname{tr}(\partial_iP_+\,\partial_jP_+)$. It measures how fast the positive-energy states change with momentum.
+
+\begin{theorem}\proved\label{thm:qmetric}
+The quantum metric of $P_+$ equals one half of the metric pulled back by the map $Q$ of Chapter~6:
+\[
+\tfrac12\operatorname{tr}(\partial_iP_+\,\partial_jP_+)=\tfrac12\Bigl(\frac{\delta_{ij}}{E^2}-\frac{p_ip_j}{E^4}\Bigr).
+\]
+\end{theorem}
+\noindent In the repository: \lean{quantum\_metric}, together with \lean{pullback\_metric}.
+
+So the space of positive-energy Dirac states, measured in its own natural way, is a hemisphere of radius $1/\sqrt2$. Along a radial line the polar angle is $\chi=\arctan(p/m)$, whose derivative is $m/E^2$ (\lean{chi\_deriv}, \lean{radial\_metric}). The ``quantum sphere'' is therefore not a metaphor: it is the geometry of Dirac states.
+
+\section{The non-relativistic limit}
+
+The Dirac equation should reduce to the Schr\"odinger--Pauli equation at low speed. The standard way to see this is the Foldy--Wouthuysen transformation, which removes the terms that mix upper and lower components order by order in $1/m$. Write $H=m\beta+\mathcal O+\mathcal E$ with an odd part $\mathcal O$ (anticommuting with $\beta$) and an even part $\mathcal E$.
+
+\begin{theorem}\proved\label{thm:fw}
+After one transformation with generator $\beta\mathcal O/(2m)$ the Hamiltonian is, through order $1/m^2$,
+\[
+\beta\Bigl(m+\frac{\mathcal O^2}{2m}\Bigr)+\mathcal E-\frac{1}{8m^2}[\mathcal O,[\mathcal O,\mathcal E]] ,
+\]
+plus odd terms of order $1/m$. A second transformation removes those odd terms without changing the even part at this order.
+\end{theorem}
+\noindent In the repository: \lean{fw\_order2}, \lean{fw\_hadamard3}, \lean{second\_fw}, \lean{odd1\_factor}.
+
+With $\mathcal O=\boldsymbol\alpha\cdot\boldsymbol\pi$ in an external electromagnetic field, $\mathcal O^2/2m$ becomes the Pauli Hamiltonian with its $g=2$ magnetic moment, and the double commutator produces the Darwin term and the spin--orbit coupling (\lean{pauli\_nc}, \lean{darwin\_form}, \lean{so\_form}). The algebra is exact; the expansion itself is a formal series in $1/m$, which the source states explicitly.
+
+\begin{standsbox}
+The Dirac equation, the projector and Foldy--Wouthuysen are textbook material. The identification of the quantum metric with half the pullback metric of $Q$ is the bridge that the rest of Part~II stands on; it is a short computation, checked here, and the author has not found it stated in this form.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Square $m\beta+\boldsymbol\alpha\cdot\mathbf p$ using only the anticommutation relations. \emph{Answer:} \lean{dirac\_sq}.\end{exercise}
+\begin{exercise}Show that $P_+$ is idempotent. \emph{Answer:} \lean{proj\_idem}.\end{exercise}
+\begin{exercise}Show that $\bigl(-mp/E^3\bigr)^2+\bigl(m^2/E^3\bigr)^2=(m/E^2)^2$. What does it say about the radial direction? \emph{Answer:} \lean{radial\_metric}.\end{exercise}
+\begin{exercise}Differentiate $\arctan(p/m)$. \emph{Answer:} \lean{chi\_deriv}.\end{exercise}

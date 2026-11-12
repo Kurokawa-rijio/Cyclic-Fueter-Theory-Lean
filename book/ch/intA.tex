@@ -1,0 +1,42 @@
+\startinterlude{A}
+\chapter{The Standard Model from an internal sphere}\label{int:A}
+
+\begin{questionbox}
+Can the quaternionic picture say anything about the particles we actually see? It can say something about their charges. A round nine-sphere has the symmetry $SO(10)$; stretching it into an ellipsoid breaks the symmetry to the Pati--Salam group, and the lowest Dirac modes carry exactly the charges of one generation of quarks and leptons. The dynamics that would select this ellipsoid is not derived, and this interlude says so clearly.
+\end{questionbox}
+
+This interlude can be skipped without loss. It is placed here because it uses only the Dirac operator and the monopole of the preceding chapters, and because it is the part of the programme that touches particle physics most directly.
+
+\section{Why one $SU(2)$ is not enough}
+
+The quantum sphere of Chapter~6 is a copy of $SU(2)$. Electroweak physics needs $SU(2)_L\times U(1)_Y$, where the hypercharge $Y$ commutes with all of $SU(2)_L$. Inside a single $\mathfrak{su}(2)$ that is impossible: a pure quaternion commuting with both $i$ and $j$ is zero (\lean{center\_pure\_trivial}). With no $Y$ the weak mixing angle would satisfy $\sin^2\theta_W=1$ (\lean{no\_mixing}). This is a genuine obstruction, and the programme records it as a negative result. \negative
+
+The way out is to use both sides. Left and right multiplication of quaternions commute with each other (\lean{left\_right\_commute}), giving $SU(2)_L\times SU(2)_R$, and the inversion $U\mapsto U^{-1}$, which is momentum reversal $U(-\mathbf p)=U(\mathbf p)^{-1}$, exchanges them (\lean{inversion\_swaps}, \lean{U\_parity}). With $Q=T_{3L}+T_{3R}+(B-L)/2$, one generation gets the right charges and $\sin^2\theta_W=3/8$ at unification (\lean{charges\_leptons}, \lean{charges\_quarks}, \lean{weinberg\_full}).
+
+\section{The nine-sphere and Pati--Salam}
+
+Where do $B-L$ and colour come from? The round sphere $S^9\subset\mathbb R^{10}$ has isometry group $SO(10)$. Split $\mathbb R^{10}=\mathbb R^4\oplus\mathbb R^6$ and stretch the first factor by $\rho\ne1$. Only matrices that do not mix the two factors survive (\lean{ellipsoid\_breaks}), leaving $SO(4)\times SO(6)$, locally $SU(2)_L\times SU(2)_R\times SU(4)_C$: the Pati--Salam group.
+
+\begin{theorem}\proved
+The sixteen weights of the spinor representation of $SO(10)$, split as three plus two, carry the electric charge, $B-L$ and the two isospins of one Standard Model generation including a right-handed neutrino. The vector representation contains a Higgs bidoublet, and a Yukawa coupling $16\cdot16\cdot10$ is allowed by the weights.
+\end{theorem}
+\noindent In the repository: \lean{spinor16\_count}, \lean{spinor16\_charges}, \lean{higgs\_bidoublet}, \lean{yukawa\_weight}.
+
+The direction of $B-L$ inside $SU(4)$ is fixed by colour symmetry and tracelessness, and its normalisation by the neutrality of the left-handed neutrino (\lean{bl\_direction}, \lean{bl\_normalization}). The $B-L$ anomaly cancels only if the right-handed neutrino is present (\lean{bl\_anomaly\_cubic}, \lean{bl\_anomaly\_needs\_nuR}).
+
+\section{Chirality}
+
+The lowest Dirac modes of a round sphere are not zero modes: on $S^9$ the scalar curvature is $72$, and the Lichnerowicz formula forces every harmonic spinor to vanish (\lean{s9\_scalar}, \lean{no\_zero\_mode}). The index of the Dirac operator in odd dimensions is zero anyway (\lean{index\_zero}). So massless chiral fermions cannot come from the internal sphere alone. \negative
+
+They can come from a domain wall. If a mass changes sign across a wall, there is exactly one normalisable zero mode, of one chirality (\lean{jr\_unique}, \lean{kink\_plus}, \lean{norm\_plus\_lt}, \lean{norm\_minus}). This is the Jackiw--Rebbi mechanism, and Chapter~25 finds the same structure on the dumbbell: the mass $W/r$ of the reduced fermion changes sign at the junction, and the zero mode sits there.
+
+\begin{standsbox}
+The group theory of $SO(10)$, Pati--Salam and the anomaly conditions are standard. What is specific here is the route: the quaternionic obstruction to $U(1)_Y$, its removal by left and right multiplication, and the ellipsoidal $S^9$ as the source of the breaking. The dynamics that would choose the ellipsoid, and the potential of the resulting Higgs field, are open; a curvature-only selection was tested and fails (Chapter~27). \open
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that a pure quaternion commuting with $i$ and $j$ is zero. \emph{Answer:} \lean{center\_pure\_trivial}.\end{exercise}
+\begin{exercise}Show that a diagonal matrix commuting with the colour permutations has three equal entries. \emph{Answer:} \lean{bl\_commute\_color}.\end{exercise}
+\begin{exercise}Show that $\sum(B-L)^3=0$ over a generation with a right-handed neutrino and $\ne0$ without it. \emph{Answer:} \lean{bl\_anomaly\_cubic}, \lean{bl\_anomaly\_without\_nuR}.\end{exercise}
+\begin{exercise}Show that $1/\cosh y$ is square integrable on the line and $\cosh y$ is not. \emph{Answer:} \lean{norm\_plus\_lt}, \lean{norm\_minus}.\end{exercise}
+\stopinterlude{9}

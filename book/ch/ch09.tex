@@ -1,0 +1,59 @@
+\chapter{Monopoles and zero modes}\label{ch:monopole}
+
+\begin{questionbox}
+A magnetic monopole is the simplest place where geometry forces a quantum state to exist. Put a charged spinning particle on a sphere around a monopole of charge $q$, and there are exactly $2q$ states of zero energy, all of one handedness. In this chapter the monopole appears twice: once in momentum space, where the Berry connection of Chapter~8 is a monopole, and once on an ordinary sphere, which will later be the cross-section of the neck.
+\end{questionbox}
+
+\section{A monopole in momentum space}
+
+The Berry connection of Chapter~8 lives on momentum space, but Chapter~6 taught us that momentum space carries a natural curved metric. Take the metric $h=(\delta_{ij}-p_ip_j/E^2)/m^2$. Along a radial line its length element is $dp/E$, and across it the length element is $p/m$ times the round one (\lean{h\_radial}, \lean{h\_tangential}). Writing $p=m\sinh\eta$ turns this into
+\[
+h=d\eta^2+\sinh^2\eta\,d\Omega^2 ,
+\]
+hyperbolic space with curvature exactly $-1$ (\lean{h\_rapidity}, \lean{h3\_curvature}).
+
+\begin{theorem}\proved\label{thm:bps}
+On this hyperbolic space the Berry connection $A_B$ and the Higgs field $\Phi=(\mathbf p/E)\cdot T$, with $T=-i\boldsymbol\sigma/2$, satisfy the Bogomolny equation
+\[
+D_A\Phi=-{*F}.
+\]
+\end{theorem}
+\noindent In the repository: \lean{starF\_closed} and its supporting lemmas in \lean{AlphaCompleteC}.
+
+So the Berry phase of a relativistic electron is not just any connection: it is a BPS monopole on the space of velocities. Its Higgs field is the velocity $\mathbf p/E$ itself, which goes from zero at rest to unit length at infinite speed, the equator of the quantum sphere. We will meet the Bogomolny equation again in Chapter~16, where an inequality of exactly this type governs the shape of the dumbbell.
+
+\section{Zero modes on a sphere}
+
+Now put a particle of charge $q$ on a unit two-sphere around a monopole. After separating variables, the zero-energy condition for the Dirac operator reduces to a first-order equation in the polar angle,
+\[
+u'=V(\theta)\,u,\qquad V=\frac{m+q\cos\theta}{\sin\theta},
+\]
+with $m$ the azimuthal quantum number. It can be solved exactly.
+
+\begin{proposition}\proved
+The solution is $u(\theta)=\tan^m(\theta/2)\,\sin^q\theta$. Near $\theta=0$ it behaves like $\theta^{m+q}$ and near $\theta=\pi$ like $(\pi-\theta)^{q-m}$, so it is square integrable exactly when $|m|<q+\tfrac12$.
+\end{proposition}
+\noindent In the repository: \lean{zero\_mode}, \lean{exponent\_condition}, \lean{zero\_mode\_L2}.
+
+Counting the allowed values of $m$ gives the index.
+
+\begin{theorem}\proved\label{thm:index2q}
+If $q$ is an integer, $m$ runs over $2q$ half-integers; if $q$ is a half-integer, over $2q$ integers. In both cases there are exactly $2q$ zero modes, and the other chirality has none.
+\end{theorem}
+\noindent In the repository: \lean{count\_integer\_charge}, \lean{count\_half\_charge}, \lean{other\_chirality\_empty}.
+
+This is the Atiyah--Singer index theorem in its simplest instance, derived here by hand: the number of zero modes equals the magnetic flux, and they all have the same handedness. One also needs to know that the other solutions of the radial equation are really not normalisable, not just that their leading terms are not; that is a short estimate (\lean{large\_not\_L2}).
+
+\begin{asidebox}{Looking ahead}
+The neck of the dumbbell is $\mathrm{AdS}_2\times S^2$, and the Yang--Mills field on it is exactly a monopole of charge $1/2$ on the $S^2$ for each isospin component. By Theorem~\ref{thm:index2q} each component carries one zero mode, which becomes a massless fermion in the two-dimensional $\mathrm{AdS}_2$ (Chapter~25).
+\end{asidebox}
+
+\begin{standsbox}
+Monopole zero modes and their counting are classical. That the Berry connection of Dirac spinors, together with the velocity as a Higgs field, solves the Bogomolny equation on the space of velocities is part of the author's programme; it is checked here component by component, including the curvature $-1$ of the stage.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that the metric $h$ becomes $d\eta^2+\sinh^2\eta\,d\Omega^2$ under $p=m\sinh\eta$. \emph{Answer:} \lean{h\_rapidity}.\end{exercise}
+\begin{exercise}Check that $u=\tan^m(\theta/2)\sin^q\theta$ solves $u'=Vu$. \emph{Answer:} \lean{zero\_mode}.\end{exercise}
+\begin{exercise}Count the zero modes for $q=1$ and for $q=3/2$. \emph{Answer:} \lean{count\_integer\_charge}, \lean{count\_half\_charge}.\end{exercise}
+\begin{exercise}Show that a power $\theta^e$ is square integrable near $0$ exactly when $e>-1/2$. \emph{Answer:} \lean{exponent\_condition}.\end{exercise}

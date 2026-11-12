@@ -1,0 +1,63 @@
+\chapter{The mass-shell hyperboloid}\label{ch:massshell}
+
+\begin{questionbox}
+What shape does relativistic momentum have? For a particle of mass $m$ the energy and momentum satisfy $E^2-p^2=m^2$, which is a hyperboloid. This chapter learns to measure on it, with rapidity as the natural coordinate, and meets the Gudermann function that will reappear in the quantum sphere and on the neck of the dumbbell.
+\end{questionbox}
+
+\section{Velocity space}
+
+A particle of mass $m>0$ and momentum $\mathbf p$ has energy $E=\sqrt{m^2+|\mathbf p|^2}$. Divide by $m$ and write $X_0=E/m$ and $\mathbf u=\mathbf p/m$; then
+\[
+X_0^2-|\mathbf u|^2=1,\qquad X_0>0 .
+\]
+This is one sheet of a hyperboloid in four dimensions. Its points are four-velocities, so this three-dimensional surface is the space of all possible states of motion of the particle. It is the boost half of Chapter~4: every point is reached from the rest point $(1,\mathbf 0)$ by exactly one boost.
+
+The natural coordinate along a radial line is the \emph{rapidity} $\eta$, defined by $|\mathbf p|=m\sinh\eta$ and $E=m\cosh\eta$. Velocities do not add simply, but rapidities along one line do, which is why $\eta$ rather than $v$ measures distance on the hyperboloid.
+
+\section{The geometry of the hyperboloid}
+
+With the metric induced from Minkowski space, the hyperboloid of radius $m$ has
+\[
+ds_H^2=m^2\bigl(d\eta^2+\sinh^2\eta\,d\Omega^2\bigr),
+\]
+which is hyperbolic space of curvature $-1/m^2$. A short computation along a radial line shows what this means in practice.
+
+\begin{proposition}\proved
+On the mass shell $E(p)=\sqrt{m^2+p^2}$ the slope is $dE/dp=p/E=v$, the velocity. The outward normal in the Minkowski sense is $(E/m,p/m)$, the four-velocity, and it has Minkowski length $-1$. At $p=0$ the second derivative of $X_0(u)=\sqrt{1+u^2}$ is $+1$.
+\end{proposition}
+\noindent In the repository: \lean{slope\_H}, \lean{normal\_H}, and the curvature at the contact point inside \lean{cayley\_klein}.
+
+So the shell bends upward away from the rest point, and the normal to the shell at any point is the four-velocity of the particle in that state. Integrating, a disc of rapidity radius $\eta_0$ in a two-dimensional slice of the shell has area
+\[
+2\pi m^2(\cosh\eta_0-1)=2\pi m\,(E_0-m),
+\]
+proportional to the kinetic energy at its rim (\lean{area\_H}). Its curvature and the geodesic curvature of its boundary obey the Gauss--Bonnet theorem, as they must (\lean{gauss\_bonnet\_H}).
+
+\section{The Gudermann function}
+
+One function connects rapidity to angles, and it will turn up again and again. It is the Gudermann function
+\[
+\operatorname{gd}\eta=\arctan(\sinh\eta),\qquad \frac{d}{d\eta}\operatorname{gd}\eta=\frac{1}{\cosh\eta}.
+\]
+
+\begin{proposition}\proved\label{prop:gd}
+If $\chi=\operatorname{gd}\eta$, then
+\[
+\sin\chi=\tanh\eta=v,\qquad \cos\chi=\frac1{\cosh\eta}=\frac1\gamma,\qquad \tan\chi=\sinh\eta=\frac pm .
+\]
+The function $\operatorname{gd}$ is strictly increasing and maps the real line onto $(-\pi/2,\pi/2)$.
+\end{proposition}
+\noindent In the repository: \lean{gudermann}, \lean{gudermann\_momentum}, \lean{gd\_deriv}, \lean{gd\_strictMono}, \lean{gd\_surj}.
+
+In words: an angle $\chi$ that runs only up to a right angle can record every rapidity from zero to infinity. The cosine of that angle is the inverse Lorentz factor and the sine is the velocity. Infinite speed sits at $\chi=\pi/2$, at a finite angle. Chapter~6 turns this into a picture, and in Chapter~17 the same function will describe the arrival of a wave front on the neck of the dumbbell.
+
+\begin{standsbox}
+Classical. The chapter's job is to fix rapidity and the Gudermann function as the coordinates in which the quantum sphere and the mass shell will be compared.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $dE/dp=p/E$. \emph{Answer:} \lean{slope\_H}.\end{exercise}
+\begin{exercise}Show that the Minkowski normal of the shell is the four-velocity and has length $-1$. \emph{Answer:} \lean{normal\_H}.\end{exercise}
+\begin{exercise}Prove $\sin(\operatorname{gd}\eta)=\tanh\eta$ and $\cos(\operatorname{gd}\eta)=1/\cosh\eta$. \emph{Answer:} \lean{gudermann}.\end{exercise}
+\begin{exercise}Differentiate $\operatorname{gd}$. \emph{Answer:} \lean{gd\_deriv}.\end{exercise}
+\begin{exercise}Compute the area of a disc of rapidity radius $\eta_0$ on the shell. \emph{Answer:} \lean{area\_H}.\end{exercise}
