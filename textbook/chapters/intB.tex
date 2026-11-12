@@ -1,0 +1,166 @@
+\startinterlude{B}
+\chapter[Strings: Standard Embedding, Group Manifolds and Attractors]{Strings: Standard Embedding,\\ Group Manifolds and Attractors}
+\markboth{\MakeUppercase{Interlude B.\ Strings}}{}
+\label{ch:intB}
+
+\begin{usesbox}
+\textbf{This interlude uses:} quaternions and their structure constants (\cref{ch:quaternions}); the octonions and their multiplication matrices (\cref{ch:intA}); the spin connection as a gauge field (\cref{thm:spinwitten}); the round $S^3(\ell)$ of the Tolman universe (\cref{thm:tolman}); Sen's entropy function (\cref{thm:attractor}); the instanton and the Yang--Mills energy on $S^3$ (\cref{thm:instanton,prop:minisuper}).\\
+\textbf{It provides:} the heterotic standard embedding as the higher-dimensional version of the condition $w=r'$, and the proof that all $O(\alpha')$ terms cancel on it; $S^3$ as a group manifold with parallelizing torsion and quantised flux, and the obstruction to reading the Tolman $S^3$ as a Wess--Zumino--Witten target; the dilaton attractor and its magnetic runaway; the Hagedorn temperature of Yang--Mills theory on $S^3$; and, as new computations, a proof that the octonionic analogue of the quaternionic frame on $S^3$ has position-dependent structure functions on $S^7$, together with a factorisation that pins the Hagedorn point.
+\end{usesbox}
+
+This interlude steps off the main line a second time. String theory is the setting in which gravity and Yang--Mills fields are most naturally unified, and several ingredients of this book have string-theoretic counterparts: the identification of the gauge connection with the spin connection, the round three-sphere as a group manifold, and the attractor mechanism for near-horizon geometries. We examine each of them, and report both what carries over and what does not. Nothing in the rest of the book depends on this interlude.
+
+\section{The standard embedding}
+
+In heterotic string theory the Green--Schwarz mechanism requires the three-form field strength to satisfy $\dd H=\frac{\alpha'}4(\tr R\wedge R-\Tr F\wedge F)$, and the low-energy action contains the combination $-\frac{\alpha'}4(\Tr F^2-\tr R^2)$. The standard embedding of Candelas, Horowitz, Strominger and Witten \cite{CHSW1985} sets the gauge connection equal to the spin connection, $A=\iota(\omega)$, through an embedding $\iota$ of the holonomy algebra into the gauge algebra. In four dimensions with spherical symmetry this is exactly what the condition $w=r'$ of \cref{thm:spinwitten} does: the $\su(2)$ Yang--Mills potential is the spin connection of the spatial slice.
+
+\begin{theorem}[Cancellation on the standard embedding]\label{thm:stdembed}\ver\
+Let $\iota:\Mat_k(R)\to\Mat_m(R)$ be a block embedding. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $\iota$ is additive, multiplicative, linear and injective, commutes with derivatives, sums and the zero matrix, and preserves the trace normalisation $\Tr(\iota X\,\iota Y)=\tr(XY)$;
+\item the curvature commutes with the embedding, $F(\iota\omega)=\iota(R(\omega))$, and so do the covariant derivative and the Yang--Mills operator; the gauge-field equation for $A=\iota(\omega)$ is equivalent to the corresponding equation for $\omega$, not an independent condition;
+\item every component of the Pontryagin densities agrees, so the right-hand side of the Bianchi identity $\Tr F\wedge F-\tr R\wedge R$ vanishes componentwise; the squared densities and the stress tensors agree, $T(F(\iota\omega))=T(R(\omega))$;
+\item consequently all $O(\alpha')$ terms vanish together: in the metric equation, the dilaton equation, the $H$ Bianchi identity and the gauge-field equation. In particular the term $-\frac{\alpha'}4(\Tr F^2-\tr R^2)$ of the truncated effective action vanishes identically on $A=\iota(\omega)$, for every $\omega$.
+\end{enumerate}
+\end{theorem}
+
+Part (iv) is a negative statement for our purposes. The Yang--Mills term that produces the scale $\ell$ in the Einstein--Yang--Mills equations is cancelled, in this truncation, by the curvature-squared term on the standard embedding. So the four-dimensional relation $w=r'$ cannot be obtained as the standard embedding of a heterotic compactification at this order with the Yang--Mills dynamics intact. The cancellation is the reason the standard embedding solves the string equations to $O(\alpha')$; it is also the reason it carries no independent Yang--Mills stress.
+
+\section{The three-sphere as a group manifold}
+
+The unit quaternions form the group $\SU(2)\cong S^3$. On a group manifold there are two flat connections with torsion, the left- and right-parallelizing connections of Cartan and Schouten, and a string can propagate on it as a Wess--Zumino--Witten model.
+
+\begin{proposition}[Geometry of $S^3(R)$]\label{prop:s3group}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The quaternion commutators are $[i,j]=2k$, $[j,k]=2i$, $[k,i]=2j$, and $\sum_{c,d}\epsilon_{acd}\epsilon_{bcd}=2\delta_{ab}$.
+\item For the profile $f=R\sin(s/R)$ all sectional curvatures equal $1/R^2$, and the Ricci curvature is $2/R^2$.
+\item The parallelizing torsion $T_{abc}=(2/R)\epsilon_{abc}$ satisfies $\frac14\sum T_{acd}T_{bcd}=(2/R^2)\delta_{ab}$, which equals the Ricci curvature: the parallelizing connection is flat.
+\item The volume is $\int_0^{\pi R}4\pi R^2\sin^2(s/R)\,\dd s=2\pi^2R^3$, and the flux of $H=(2/R)\mathrm{vol}$ is $4\pi^2R^2$.
+\item The flux is quantised, $\int H/(4\pi^2\alpha')=k\in\ZZ$, if and only if $R^2=k\alpha'$.
+\end{enumerate}
+\end{proposition}
+
+\section{The string scale and the obstruction}
+
+Express $\ell$ in string units. If $G=c\,\frac{g^2}{4\pi}\alpha'$ for a constant $c$, then $\ell^2=4\pi G/g^2=c\,\alpha'$.
+
+\begin{theorem}[An integrality obstruction]\label{thm:wzwobstruction}\ver\nogo\
+\begin{enumerate}[label=(\roman*)]
+\item The heterotic tree-level relations $g^2=4\kappa^2/\alpha'$ and $\kappa^2=8\pi G$ give $c=\frac18$ (Kaplunovsky's normalisation \cite{Kaplunovsky1988}); Witten's relation $G_N=\alpha_{\rm GUT}\alpha'/4$ gives $c=\frac14$ \cite{Witten1996}.
+\item Then $\alpha'/\ell^2=8$ or $4$, and $\alpha'R(S^3)=48$ or $24$, $\alpha'R(S^4)=96$ or $48$: the curvature of the Tolman universe at maximal expansion is of string scale, and the $\alpha'$ expansion is not controlled.
+\item If the round $S^3(\ell)$ were the target of an $\SU(2)$ WZW model, its level would be $k=c$. For $0<c<1$ this is not a positive integer; in particular neither $\frac18$ nor $\frac14$ is an integer.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}[Smallest WZW sphere]\txt\
+The smallest WZW three-sphere has $k=1$ and radius $R=\sqrt{\alpha'}$, which is $2\sqrt2\,\ell$ for $c=\frac18$ and $2\ell$ for $c=\frac14$. The Tolman universe at maximal expansion is smaller than the smallest WZW sphere by these factors.
+\end{corollary}
+
+\section{The dilaton attractor}
+
+In string theory the four-dimensional effective action contains a dilaton $u$, which couples to the gauge kinetic term as $w=e^{-2u}$. Sen's entropy function then depends on $w$ as well.
+
+\begin{theorem}[String attractor and magnetic runaway]\label{thm:stringattractor}\ver\
+Let $f=\frac14\bigl(2v_1-2v_2+w(2e^2v_2/v_1-2p^2v_1/v_2)\bigr)$ and $\mathcal E=2\pi(qe-f)$.
+\begin{enumerate}[label=(\roman*)]
+\item $f$ is linear in $w$, and since $w=e^{-2u}>0$, $\partial_u=-2w\partial_w$, so $\partial_u\mathcal E=0$ iff $\partial_w\mathcal E=0$.
+\item For $p,q>0$ the critical point is unique: $v_1=v_2=2pq$, $e=p$, $w=q/p$. Its value is $\mathcal E=2\pi pq=4\pi v_2/4$, the horizon area over four. The hypotheses are satisfiable ($p=q=1$, $v_1=v_2=2$, $e=w=1$).
+\item The effective potential $V(w)=wp^2+q^2/w$ satisfies $V-2pq=(wp-q)^2/w\ge0$, with equality iff $w=q/p$, and $V''=2q^2/w^3>0$: the attractor is a non-degenerate minimum. Equivalently, $p^2/x+q^2x\ge2pq$ with equality iff $x=p/q$.
+\item (Magnetic runaway) For $q=0$, $p\ne0$ there is no critical point: $V=wp^2>0$ tends to $0$ as $w\to0$ without a minimum. The dilaton runs to weak coupling.
+\item For $p,q\ne0$ the field invariant $E\cdot B\propto pq/r^4$ does not vanish: the attractor is dyonic.
+\item The horizon radius equals $\ell$ iff $2pq=\ell^2$.
+\end{enumerate}
+\end{theorem}
+
+So the purely magnetic throat of this book, which in Einstein--Yang--Mills theory is an attractor (\cref{thm:attractor}), is not one once a string dilaton is added: the dilaton runs away, and a stable attractor requires both electric and magnetic charge. This is a second negative result.
+
+\section{The Hagedorn temperature of Yang--Mills theory on \texorpdfstring{$S^3$}{S3}}
+
+Free Yang--Mills theory on $S^3$ of radius $R$ has a Hagedorn transition at large $N$ \cite{Sundborg2000,AMMPV2004}. With $x=e^{-1/(RT)}$, the single-particle partition function of the vector field is $z_V(x)=(6x^2-2x^3)/(1-x)^3$ \ext, and the transition is at $z_V(x)=1$.
+
+\begin{theorem}[Hagedorn point]\label{thm:hagedorn}\ver\
+$6(2-\sqrt3)^2-2(2-\sqrt3)^3=(1-(2-\sqrt3))^3$, i.e.\ $z_V(2-\sqrt3)=1$.
+\end{theorem}
+
+\begin{proposition}[Uniqueness of the Hagedorn point]\txt\
+The equation $z_V(x)=1$ is equivalent, for $x\ne1$, to $x^3-3x^2-3x+1=0$, and
+\[
+x^3-3x^2-3x+1=(x+1)(x^2-4x+1),
+\]
+with roots $-1$ and $2\pm\sqrt3$. The only root in $(0,1)$ is $x_H=2-\sqrt3$. Hence $T_H=1/\bigl(R\log(2+\sqrt3)\bigr)\approx0.7593/R$.
+\end{proposition}
+
+\begin{proof}
+$z_V(x)=1$ means $6x^2-2x^3=1-3x+3x^2-x^3$, i.e.\ $x^3-3x^2-3x+1=0$. Expanding $(x+1)(x^2-4x+1)=x^3-3x^2-3x+1$ gives the factorisation. Finally $-\log(2-\sqrt3)=\log(2+\sqrt3)$ because $(2-\sqrt3)(2+\sqrt3)=1$.
+\end{proof}
+
+For the Tolman sphere $R=\ell$ this gives $T_H\ell\approx0.76$, about $4.8$ times the Rindler temperature $1/(2\pi\ell)$ of the throat.
+
+\section{New computation: the octonionic frame on \texorpdfstring{$S^7$}{S7}}
+
+The quaternionic structure behind \cref{prop:s3group} is the right-invariant frame $X_a(x)=x\,e_a$ ($a=1,2,3$) on the unit quaternions. Its octonionic analogue, $X_a(x)=x\,e_a$ ($a=1,\dots,7$) on the unit octonions, also trivialises the tangent bundle of $S^7$, which is therefore parallelizable \cite{Englert1982}. But $S^7$ is not a group. Using the right-multiplication matrices $R_a$ of \cref{ch:intA} we can make the difference explicit.
+
+\begin{theorem}[Structure functions on $S^7$]\label{thm:s7soft}\txt\
+Let $R_a$ be right multiplication by $e_a$, $a=1,\dots,7$, and $[x,y,z]=(xy)z-x(yz)$ the associator. For $|x|=1$:
+\begin{enumerate}[label=(\roman*)]
+\item the vectors $x\,e_c$, $c=1,\dots,7$, form an orthonormal basis of $T_xS^7$, and $[R_a,R_b]x$ is tangent to $S^7$;
+\item $[R_a,R_b]\,x=x\,[e_b,e_a]+2\,[x,e_b,e_a]$;
+\item hence the structure functions $f_{ab}{}^c(x)=\langle[R_a,R_b]x,\;x\,e_c\rangle$ are
+\[
+f_{ab}{}^c(x)=\langle[e_b,e_a],e_c\rangle+2\,\langle[x,e_b,e_a],\;x\,e_c\rangle .
+\]
+\end{enumerate}
+At $x=1$ they are twice the octonion structure constants. For the quaternions the associator vanishes and $f_{ab}{}^c=2\epsilon_{bac}$ is constant; for the octonions the second term is non-zero whenever $x$ lies outside the associative subalgebra generated by $e_a,e_b$, so the structure functions depend on the point.
+\end{theorem}
+
+\begin{proof}
+(i) Since $|xu|=|x||u|$, polarisation gives $\langle xu,xv\rangle=|x|^2\langle u,v\rangle$, so the $x\,e_c$ are orthonormal; they are orthogonal to $x=x\cdot1$ for the same reason. The matrices $R_a$ are antisymmetric ($e_a$ is imaginary), so $\langle R_aR_bx,x\rangle=-\langle R_bx,R_ax\rangle$ and $\langle[R_a,R_b]x,x\rangle=0$. (ii) By definition $(xe_b)e_a=x(e_be_a)+[x,e_b,e_a]$. Subtracting the same expression with $a\leftrightarrow b$ and using that the associator is alternating, $[x,e_a,e_b]=-[x,e_b,e_a]$, gives the formula. (iii) Take the inner product with $x\,e_c$ and use (i).
+\end{proof}
+
+\begin{remark}\num\
+We checked (i)--(iii) numerically at fifty random points of $S^7$ (errors below $10^{-14}$), together with the orthogonality of the associator to its arguments and the total antisymmetry of $f_{abc}(x)$ in all three indices. The structure functions vary over $S^7$ by more than $3$ in absolute value, while for $S^3$ they are constant to machine precision. The script is \texttt{numerics/s7\_soft\_algebra.py}.
+\end{remark}
+
+The three-sphere of the Tolman universe is a group manifold because the quaternions are associative; the WZW analysis of \cref{prop:s3group} rests on that. The octonionic seven-sphere is parallelizable but its frame algebra is ``soft'': the obstruction is precisely the associator, the same object that made the octonionic $L$ and $R$ matrices generate all of $\mathfrak{so}(8)$ in \cref{ch:intA}. A $\Spin(10)$-symmetric internal space of the type considered there therefore cannot be modelled on an octonionic group manifold.
+
+\begin{litbox}
+The standard embedding is due to Candelas, Horowitz, Strominger and Witten \cite{CHSW1985}; WZW models and flux quantisation are classical; the relation between $G$, $g$ and $\alpha'$ at tree level is in \cite{Kaplunovsky1988,Witten1996}; the entropy function with a dilaton is Sen's \cite{Sen2005}; the Hagedorn transition of Yang--Mills on $S^3$ is due to Sundborg and to Aharony et al.\ \cite{Sundborg2000,AMMPV2004}; parallelizing torsion on $S^7$ goes back to Cartan and Schouten and was used by Englert \cite{Englert1982}, and the soft algebra of $S^7$ is discussed by Cederwall and Preitschopf \cite{CederwallPreitschopf1995}. New here are the reading of $w=r'$ as a four-dimensional standard embedding together with the negative result that the Yang--Mills term cancels on it (\cref{thm:stdembed}); the integrality obstruction to the Tolman $S^3$ as a WZW target (\cref{thm:wzwobstruction}); the magnetic runaway of the dilaton attractor for the throat (\cref{thm:stringattractor}); and, proved in the text, the explicit associator formula for the structure functions of the octonionic frame on $S^7$ (\cref{thm:s7soft}).
+\end{litbox}
+
+\section*{Exercises}
+\begin{exercise}
+Verify $[i,j]=2k$ and $\sum_{c,d}\epsilon_{acd}\epsilon_{bcd}=2\delta_{ab}$.
+\end{exercise}
+\begin{exercise}
+Show $\int_0^{\pi R}4\pi R^2\sin^2(s/R)\,\dd s=2\pi^2R^3$.
+\end{exercise}
+\begin{exercise}
+Show that $wp^2+q^2/w-2pq=(wp-q)^2/w$ and find its minimum.
+\end{exercise}
+\begin{exercise}
+Factorise $x^3-3x^2-3x+1$ and identify the Hagedorn root.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaVIII_Embedding:iota_mul,AlphaVIII_Embedding:iota_sub,AlphaVIII_Embedding:iota_add,AlphaVIII_EOM:iota_smul,AlphaVIII_EOM:iota_sum,AlphaVIII_EOM:iota_zero,AlphaVIII_EOM:iota_inj}{Algebraic properties of the embedding (seven statements).}
+\chk{AlphaVIII_Embedding:dM_iota,AlphaVIII_Embedding:trace_embed}{Derivatives and trace normalisation (two statements).}
+\chk{AlphaVIII_Embedding:curvature_embed,AlphaVIII_EOM:covD_embed}{Curvature and covariant derivative commute with the embedding (two statements).$^*$}
+\chk{AlphaVIII_EOM:ym_embed,AlphaVIII_EOM:ym_embed_iff}{Yang--Mills operator; equivalence of the equations (two statements).$^*$}
+\chk{AlphaVIII_Embedding:pontryagin_match,AlphaVIII_Embedding:gs_rhs_vanishes}{Pontryagin densities agree; Bianchi right-hand side vanishes (two statements).$^*$}
+\chk{AlphaVIII_EOM:sq_embed,AlphaVIII_EOM:stress_embed}{Squared densities and stress tensors agree (two statements).$^*$}
+\chk{AlphaVIII_Embedding:z40_alpha_term_vanishes,AlphaVIII_EOM:metric_alpha_cancel,AlphaVIII_EOM:all_alpha_terms_vanish}{All $O(\alpha')$ terms vanish (three statements).$^*$}
+\chk{AlphaVIII_WZW:quat_bracket,AlphaVIII_WZW:eps_contract}{Quaternion commutators and $\epsilon\epsilon$ contraction (two statements).}
+\chk{AlphaVIII_WZW:s3_ricci,AlphaVIII_WZW:parallelizing_torsion}{Curvature and parallelizing torsion of $S^3(R)$ (two statements).$^*$}
+\chk{AlphaVIII_WZW:s3_volume,AlphaVIII_WZW:flux,AlphaVIII_WZW:level}{Volume, flux and level quantisation (three statements).$^*$}
+\chk{AlphaVIII_Z38:ell_sq_eq,AlphaVIII_Z38:ell_ledger,AlphaVIII_Z38:ell_witten,AlphaVIII_Z38:kaplunovsky}{$\ell^2=c\alpha'$ with $c=\frac18$ or $\frac14$ (four statements).$^*$}
+\chk{AlphaVIII_BF:z42_conditional,AlphaVIII_BF:z42_adopted}{$\alpha'/\ell^2$ and $\alpha'R$ for the two normalisations (two statements).}
+\chk{AlphaVIII_Z38:wzw_level,AlphaVIII_Z38:wzw_obstruction,AlphaVIII_Z38:wzw_obstruction_values,AlphaVIII_BF:one_eighth_not_integer,AlphaVIII_BF:one_quarter_not_integer}{The WZW level would be $c$, which is not an integer (five statements).$^*$}
+\chk{AlphaVIII_StringAttractor:fD_deriv_w,AlphaVIII_StringAttractor:dw_du}{Linearity in $w$; $\partial_u=-2w\partial_w$ (two statements).}
+\chk{AlphaVIII_StringAttractor:string_attractor,AlphaVIII_StringAttractor:string_entropy,AlphaX_Unify:nonempty_attractor}{Unique dyonic attractor, entropy $2\pi pq$, satisfiable (three statements).$^*$}
+\chk{AlphaVIII_StringAttractor:veff_min,AlphaVIII_StringAttractor:veff_attained,AlphaVIII_StringAttractor:veff_second,AlphaOmega_Close:oc_attractor}{Effective potential minimum (four statements).$^*$}
+\chk{AlphaVIII_StringAttractor:no_attractor_magnetic,AlphaVIII_StringAttractor:veff_magnetic_runaway}{Magnetic runaway (two statements).$^*$}
+\chk{AlphaOmega_Close:oc_EB}{$E\cdot B\ne0$ for dyons.}
+\chk{AlphaVIII_StringAttractor:neck_condition}{Horizon radius $\ell$ iff $2pq=\ell^2$.}
+\chk{AlphaFamous:fam_hagedorn}{$z_V(2-\sqrt3)=1$.$^*$}
+\end{checklist}
+\stopinterlude
