@@ -9,3 +9,4 @@ import CFT.AlphaIdeas_Check
 #print axioms CFT.ID.id_inv_potential
 #print axioms CFT.ID.id_yamabe_k0
 #print axioms CFT.ID.id_Z_integral
+#print axioms CFT.ID.id_bog1_form

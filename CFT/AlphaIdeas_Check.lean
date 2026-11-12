@@ -18,10 +18,13 @@ import Mathlib.Tactic
 namespace CFT.ID
 
 theorem id_bog1 {Z : ℝ → ℝ} {Z' x : ℝ} (hZ : HasDerivAt Z Z' x) (h0 : Z x ≠ 0) :
-    HasDerivAt (fun y => (Z y)⁻¹) (-((Z x)⁻¹ * (Z' * (Z x)⁻¹))) x := by
-  have h := hZ.inv h0
-  convert h using 1
-  field_simp
+    HasDerivAt (fun y => (Z y)⁻¹) (-Z' / Z x ^ 2) x :=
+  hZ.inv h0
+
+/-- −Z′/Z² = −(1/Z)(Z′/Z):W = 1/Z、h = Z′/Z なら W′ = −W h -/
+theorem id_bog1_form (Z Z' : ℝ) : -Z' / Z ^ 2 = -(Z⁻¹ * (Z' * Z⁻¹)) := by
+  rw [div_eq_mul_inv, inv_pow]
+  ring
 
 theorem id_bog2 (Z Z' Z'' Zi xi : ℝ) (hZi : Z * Zi = 1)
     (hZ : Z * Z'' - Z' ^ 2 = (Z ^ 2 - 1) * xi ^ 2) :
