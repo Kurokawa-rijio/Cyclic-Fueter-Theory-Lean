@@ -11,5 +11,103 @@
 \vfill
 {\small Draft, November 2026\par}
 \end{titlepage}
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{\MakeUppercase{Preface}}{}
+
+This book follows a single thread. It begins with the algebra of $2\times2$ matrices and ends with the dynamics of a closed universe joined to a black-hole throat. The thread is a geometric one. A quadratic form that factorises, such as $q\bar q=|q|^2$ for quaternions, $X X^\#=\det X$ for Hermitian matrices, or $\bar DD=\Delta$ for the Fueter operator, carries with it a sphere of null directions. Rank one means null, and null means pure. The same two-sphere serves as the space of imaginary units, as the Bloch sphere of a spin and as the celestial sphere of an observer. Once mass is added, the states of a relativistic particle fill a hemisphere over that sphere, at height $m/E$. The circular angle of the hemisphere and the rapidity of the particle are related by the Gudermannian.
+
+We follow this hemisphere through the book. In Part~II it is the space of positive-energy Dirac states, and its Berry connection is a monopole. In Part~III the spin connection of a spherical slice turns out to be a Yang--Mills potential with $w=r'$, and the Einstein--Yang--Mills action fixes a single length, $\ell=\sqrt{4\pi G}/g$. In Part~IV that length is the radius of two exact solutions. One is the closed radiation universe of Tolman. The other is the Bertotti--Robinson throat $\mathrm{AdS}_2\times S^2$. The two can be joined, and they join in exactly one way. In Parts~V and~VI the glued spacetime evolves, collapses and is quantised, and the hemisphere reappears as the Gauss map of the initial slice, as the light fronts of the throat, as the phase of the self-dual connection of the Tolman universe, and as the support of the J\"uttner distribution.
+
+\section*{Who this book is for}
+
+The book is written for advanced undergraduates in their second to fourth years and for graduate students in physics or mathematics. We assume linear algebra, multivariable calculus, special relativity and the elements of quantum mechanics, and some familiarity with differential forms. General relativity and gauge theory are developed as far as they are needed, but not from scratch: the reader who has seen the Einstein equations once will be comfortable. Each chapter opens with a box that lists what it uses from earlier chapters and what it provides to later ones. References point only backwards, so the chapters can be read in order without forward jumps. Two interludes, on internal symmetry and on string theory, step off the main line and can be skipped.
+
+For the expert, every chapter closes with a box titled ``Relation to the literature'', which separates what is standard from what we believe is new. The new results are collected in the Statement of Results below.
+
+\section*{Verification}
+
+Almost every statement in this book has been formalised in the Lean~4 proof assistant with the Mathlib library, and the proofs are checked by continuous integration. There are $1873$ such statements. Each chapter ends with a checklist that lists the verified statements belonging to it, in the order of the chapter, with closely related statements grouped together. The checklists account for all $1873$ statements exactly once.
+
+Verification has limits, and we mark them. Every theorem carries one of the following tags:
+\begin{itemize}[nosep]
+\item \ver: formally verified in Lean;
+\item \ext: relies on an external result that is standard in the literature but was not formalised, which we state where it is used;
+\item \num: checked numerically;
+\item \nogo: a negative result, verified;
+\item \opn: an open problem;
+\item \txt: proved in the text but not formalised.
+\end{itemize}
+Where a formal statement has a weakness, for example hypotheses that turn out not to be satisfiable, we say so in the text and list it in the checklist only with that remark. We have tried never to claim more than has been shown.
+
+\section*{What is not in this book}
+
+The book does not derive the fine-structure constant, or any other dimensionless constant of nature. The scale $\ell$ is fixed by the gauge coupling, not the other way round. Semiclassical level conditions that can be written down within the formalism are discussed in Chapter~26 only to explain why they do not amount to a derivation. Nor does the book explain why nature should realise the glued configuration; it shows that the configuration is consistent and, if it occurs, unique. These and other open questions are listed in the last chapter.
+
+\section*{Acknowledgements}
+
+The author thanks the developers of Lean and Mathlib, without whom the verification would not have been possible.
+
+\chapter*{Statement of Results}
+\addcontentsline{toc}{chapter}{Statement of Results}
+\markboth{\MakeUppercase{Statement of Results}}{}
+
+We list the results that, to our knowledge, are new, in the order in which they appear. Standard material that is reproved along the way is not listed. Unless marked otherwise, every result is formally verified.
+
+\subsection*{Kinematics: the geometry of states (Parts I and II)}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*]
+\item The quaternions and the Hermitian $2\times2$ matrices are the two real forms of $\Mat_2(\CC)$, and the null directions of both are parametrised by one two-sphere, which is at the same time the sphere of imaginary units, the Bloch sphere and the celestial sphere (Chapters~1--2).
+\item The map $\mathbf p\mapsto(m/E,\mathbf p/E)$ identifies the mass shell with the open upper hemisphere of $S^3$, the hemisphere model of hyperbolic space; the polar angle and the rapidity are related by $\chi=\gd\zeta$; the round metric equals $(m/E)^2$ times the mass-shell metric, and the quantum metric of positive-energy Dirac states is half the round metric (\cref{thm:gudermann,thm:hemiconformal,thm:quantummetric}).
+\item The Foldy--Wouthuysen rotation angle is the hemisphere angle $\chi$ (Chapter~5).
+\item The Berry connection of positive-energy states, with Higgs field $\mathbf p/E$, is an exact BPS monopole on hyperbolic space (\cref{thm:bps}).
+\end{enumerate}
+
+\subsection*{Curvature, gauge fields and the action (Part III)}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*,resume]
+\item The spin connection of a spherical slice $\dd s^2+r^2\dd\Omega^2$ is the magnetic Yang--Mills ansatz with $w=r'$, and the Einstein--Yang--Mills action then fixes the length $\ell=\sqrt{4\pi G}/g$ (\cref{thm:spinwitten}).
+\end{enumerate}
+
+\subsection*{Interlude A: internal symmetry}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*,resume]
+\item Left and right octonionic multiplication matrices are the two inequivalent paravector representations of $\mathrm{Cl}_{0,7}$; their singular values are $\sigma_\pm^2=\|a\|^2\pm\sqrt{\|a\|^4-|N(a)|^2}$, each with multiplicity $m/2$, so a null complex octonion has rank $4$ \txt\ (\cref{thm:octcl7,thm:svformula}).
+\item On a slice $\CC_I$, octonionic multiplication takes the complex-function form $L_z=\mathrm{diag}(z,\bar z,\bar z,\bar z)$ with $\OO=\CC_I\oplus\CC^3$, and an explicit octonionic Weyl block for $\Spin(10)$ has nullity $8$ on null vectors; the Pati--Salam split and $B-L=R_I$ come from the slice \txt\ (\cref{thm:octslice,thm:octspin10}).
+\item The round internal $S^9$ has no massless fermions, and along ellipsoidal deformations the normalised lowest Dirac eigenvalue has second-order coefficient $\frac{99}{250}>0$ (\cref{thm:s9nogo,thm:s9pert}).
+\end{enumerate}
+
+\subsection*{Spherically symmetric Einstein--Yang--Mills theory (Part IV)}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*,resume]
+\item With $w=r'$ the homogeneous solutions are exactly the round $S^3(\ell)$ of the Tolman universe, the throat of radius $\ell$, and flat space; the Tolman universe and the Bertotti--Robinson throat have the same radius $\ell$ (\cref{thm:threesol,thm:sameell}).
+\item No static solution with $w=r'$ joins the throat to anything else; the proof uses an explicit algebraic certificate (\cref{thm:staticclass}).
+\item The spacelike join of the two pieces is shell-free and $C^1$ but not $C^2$; a timelike join needs a shell and a colour current; null fronts carry no shell (\cref{thm:c1notc2,thm:timelikejoin,thm:nullfront}).
+\item The Weyl curvature is mass minus magnetic self-energy; on conformally flat time-symmetric data $r'^2\le w^2$, with $w=\pm r'$ as the equality case (\cref{thm:weyl,thm:bogomolny}).
+\item Both pieces satisfy $r^2+\ell^2r'^2=\ell^2$: the Tolman slices are its regular solutions and the throat its singular solution, the envelope. This explains the $C^1$-but-not-$C^2$ join, which is unique (\cref{thm:shape,thm:joinunique}).
+\end{enumerate}
+
+\subsection*{Evolution and stability (Part V)}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*,resume]
+\item The double-null EYM equations form a Goursat system whose null constraints propagate; the light fronts of the throat are Mercator lines $t=\ell\gd(z/\ell)$ (\cref{thm:goursat,thm:constrprop,thm:fronts}).
+\item The central sphere of the throat collapses within proper time $\pi r_1/2$ once $2(rW)^2\ge\ell^2$, and the bound is sharp (\cref{thm:centrecollapse}).
+\item The Gauss map of the initial slice has height $w=r'$ and $\sin^2\chi=2Gm/r$; both pieces are solutions of one conformal wave equation on $\mathbb R\times S^3$; the self-dual connection of the Tolman universe has phase $e^{-i\eta}$ and traces the hemisphere of states via the Gudermannian (\cref{thm:gaussmap,thm:confwave,thm:selfdual}).
+\item Throats longer than $(2\pi/\sqrt3+\log2)\ell$ are linearly unstable, with growth rate exponential in $L/\ell$ (\cref{thm:longthroat,thm:growth}).
+\item A Higgs triplet leaves the throat exact and lifts the BF violation iff $v^2\ge3M_{\rm Pl}^2/(16\pi)$; the spin-connection condition $w=r'$ is exactly the condition for spin and gauge connections to cancel for fermions; neither side admits a Killing spinor (\cref{thm:higgsbf,thm:zeromode,thm:nokilling}).
+\end{enumerate}
+
+\subsection*{Thermodynamics and quantum theory (Part VI and Interlude B)}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*,resume]
+\item Sen's entropy function of the EYM magnetic sector has a unique critical point, which at unit charge is a throat of radius exactly $\ell$ (\cref{thm:attractor}).
+\item The reduction to two dimensions gives $U(\Phi)=2-2\ell^2/\Phi$, and the JT ground-state entropy is $S_0=4\pi^2/g^2$, half the instanton action (\cref{thm:dilatongravity,thm:jt}).
+\item The standard embedding cancels all $O(\alpha')$ terms and with them the Yang--Mills term; the Tolman $S^3$ cannot be a WZW target; the octonionic frame of $S^7$ has structure functions $\langle[e_b,e_a],e_c\rangle+2\langle[x,e_b,e_a],xe_c\rangle$ \txt\ (\cref{thm:stdembed,thm:wzwobstruction,thm:s7soft}).
+\item The throat's Wheeler--DeWitt equation has exact solutions in two operator orderings; the reduced phase space is a half-plane bounded by the static throat and admits affine quantisation (\cref{thm:wdwexact,thm:observables,thm:affine}).
+\item The two conformal factors cannot be superposed; the trace anomaly shrinks the throat to $\ell^2/(1+a_Eg^2/4\pi^2)\le r^2\le\ell^2$; $a_4(\lambda)-a_4(0)=4\sqrt\pi\lambda^2(1-\lambda)^2$ for the twisted Dirac operator on $S^3$ (\cref{thm:nosuperpos,thm:throatback,thm:a4}).
+\item The Dirac operator on $S^3$ in a homogeneous background has a zero crossing exactly at the Tolman configuration (\cref{thm:s3dirac}).
+\end{enumerate}
+
+\subsection*{Beyond (Part VII)}
+\begin{enumerate}[label=R\arabic*.,leftmargin=*,resume]
+\item The shape space of a cross-section is the hyperbolic plane in the polar form of the mass shell; constant-area data collapse wherever $w'\ne0$ (\cref{thm:shapespace,thm:constarea}).
+\item $\ell$ is the length of the weak gravity conjecture; the $W$-boson and monopole conditions coincide; throat stability and the conjecture leave the window $\frac34\le4\pi Gv^2\le1$; a throat exists only if $\Lambda\le g^2/(16\pi G)$ (\cref{thm:wgcboth,thm:wgcwindow,thm:wgclambda}).
+\end{enumerate}
+
 \tableofcontents
 \mainmatter

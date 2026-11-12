@@ -1,6 +1,6 @@
 # Progress (update after each chapter)
 
-Done (sent): ch01-ch25, intA, intB. Chapter-only PDFs now built with 3 passes (2-pass gave wrong intra-chapter ref numbers; ch04,07,08,09,13,14,16,17,18,19 resent).
+Done (sent): front, ch01-ch31, intA, intB, full book (194 pp). Coverage 1873/1873.
 Coverage after intB: 1545/1873.
 
 Workflow per chapter:
