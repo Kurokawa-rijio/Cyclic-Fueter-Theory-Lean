@@ -1,0 +1,157 @@
+\chapter[Positive Energy and the Foldy--Wouthuysen Transformation]{Positive Energy and the Foldy--Wouthuysen Transformation}\markboth{\MakeUppercase{Chapter 5.\ Positive energy and the FW transformation}}{}
+\label{ch:fw}
+
+\begin{usesbox}
+\textbf{This chapter uses:} Dirac's factorisation and the energy projector (\cref{thm:diracsq,thm:projidem}); the hemisphere angle $\chi$ with $\cos\chi=m/E$ (\cref{thm:gudermann}).\\
+\textbf{It provides:} the exact Foldy--Wouthuysen transformation of the free Dirac Hamiltonian, read as the rotation of the hemisphere point back to the pole; the general Foldy--Wouthuysen expansion to order $1/m^2$ with the second transformation; and the Pauli Hamiltonian with $g=2$, the Darwin term and the spin--orbit term.
+\end{usesbox}
+
+The Dirac Hamiltonian mixes positive and negative energies. For many purposes, from atomic physics to the nonrelativistic limit of field theory, one wants a description in which the two are decoupled, so that the upper two components of the spinor describe a particle and nothing else. The standard tool is the Foldy--Wouthuysen (FW) transformation \cite{FoldyWouthuysen1950}, a unitary change of representation chosen to remove the ``odd'' operators that connect the upper and lower components. For a free particle it can be done exactly. In the presence of fields it is done order by order in $1/m$, and it produces the Pauli Hamiltonian with its relativistic corrections. In this chapter we derive both. The exact transformation has a pleasant geometric meaning in the language of \cref{ch:hemisphere}.
+
+\section{Even and odd operators}
+
+Let $\beta$ be the Dirac matrix of \cref{ch:lorentz}, with $\beta^2=1$. An operator $Z$ is called \emph{even} if $\beta Z=Z\beta$ and \emph{odd} if $\beta Z=-Z\beta$. In the Dirac representation, even operators are block diagonal and odd ones block off-diagonal. The Dirac Hamiltonian in external fields,
+\[
+H=m\beta+\mathcal O+\mathcal E,\qquad \mathcal O=\bm\alpha\cdot\bm\pi,\quad \mathcal E=e\Phi,\quad \bm\pi=\mathbf p-e\mathbf A,
+\]
+has odd part $\mathcal O$ and even part $\mathcal E$. Two algebraic facts drive everything. First, if $\mathbf n$ is odd and squares to one, then $\beta\mathbf n$ squares to minus one, so it generates rotations:
+\begin{lemma}\label{lem:fwgen}\ver\
+If $\beta^2=n^2=1$ and $n\beta=-\beta n$, then $(\beta n)^2=-1$. Hence $\exp(\tfrac\theta2\beta n)=\cos\tfrac\theta2+\beta n\sin\tfrac\theta2$.
+\end{lemma}
+Second, conjugating an odd operator by $\beta$ flips its sign, so products of two odd operators are even.
+
+\section{The free particle: an exact rotation}
+
+For $\mathcal E=0$ and $\mathbf A=0$ we have $H=m\beta+\bm\alpha\cdot\mathbf p$ with $H^2=E^2$.
+
+\begin{theorem}[Exact Foldy--Wouthuysen transformation]\label{thm:fwexact}\ver\
+In the Dirac representation put $U=(E+m)\mathbf 1+\beta\,\bm\alpha\cdot\mathbf p$ and $V=(E+m)\mathbf 1-\beta\,\bm\alpha\cdot\mathbf p$. If $E^2=m^2+|\mathbf p|^2$ then
+\[
+UHV=2E^2(E+m)\,\beta,\qquad UV=2E(E+m)\,\mathbf 1 .
+\]
+\end{theorem}
+
+For real $\mathbf p$ the operator $\beta\bm\alpha\cdot\mathbf p$ is anti-Hermitian, so $V=U^\dagger$, and the normalised operator $\hat U=U/\sqrt{2E(E+m)}$ is unitary with $\hat UH\hat U^\dagger=\beta E$. The free Hamiltonian has been diagonalised: the upper components carry energy $+E$ and the lower ones $-E$.
+
+Now compare with \cref{lem:fwgen}. With $n=\bm\alpha\cdot\hat{\mathbf p}$,
+\[
+\hat U=\sqrt{\frac{E+m}{2E}}+\beta\,\bm\alpha\cdot\hat{\mathbf p}\,\frac{|\mathbf p|}{\sqrt{2E(E+m)}}=\cos\frac\theta2+\beta n\sin\frac\theta2,\qquad \cos\theta=\frac mE ,
+\]
+since $2\cos^2(\theta/2)-1=(E+m)/E-1=m/E$. The rotation angle $\theta$ of the FW transformation is therefore exactly the polar angle $\chi=\gd\zeta$ of the hemisphere point $Q(\mathbf p)$ (\cref{thm:gudermann}). In words: \emph{the free FW transformation rotates the state of momentum $\mathbf p$, which sits at polar angle $\chi$ on the hemisphere, back to the pole}, where it becomes a state at rest. The angle is small when $|\mathbf p|\ll m$, which is why the FW expansion is an expansion in $1/m$.
+
+\section{The general expansion}
+
+In external fields the odd part no longer commutes with the even part and no closed form is available. One uses the generator $T=c\,\beta\mathcal O$ with $c=1/(2m)$ and the Hadamard formula
+\[
+e^{T}He^{-T}=H+[T,H]+\tfrac12[T,[T,H]]+\tfrac16[T,[T,[T,H]]]+\cdots .
+\]
+For unbounded operators this is a formal power series in $1/m$, an asymptotic expansion in the sense of Bjorken and Drell \cite{BjorkenDrell}; we treat it that way, and verify the exact form of each term up to third order.
+
+\begin{lemma}[Elementary commutators]\label{lem:fwad}\ver\
+Let $b$ satisfy $b^2=1$, let $X$ be odd and $Y$ even with respect to $b$, and put $\operatorname{ad}_T Z=TZ-ZT$ with $T=c\,bX$. Then
+\[
+\operatorname{ad}_T(mb)=-2mc\,X,\qquad \operatorname{ad}_TX=2c\,bX^2,\qquad \operatorname{ad}_TY=c\,b[X,Y].
+\]
+\end{lemma}
+
+\begin{theorem}[FW expansion to order $1/m^2$]\label{thm:fworder}\ver\
+With the notation of \cref{lem:fwad}, the Hadamard sum through third order is an explicit polynomial in $c$, $m$, $X$, $Y$ and $b$. For $c=1/(2m)$ it reorganises as
+\[
+H'=\underbrace{mb+Y+c\,X^2b-\tfrac{c^2}{2}[X,[X,Y]]}_{\text{even}}\;+\;\underbrace{c\,(YX-XY)b-\tfrac43c^2X^3}_{\text{odd}}\;+\;c^3R_3 ,
+\]
+that is, $H'=\beta\bigl(m+\mathcal O^2/2m\bigr)+\mathcal E-[\mathcal O,[\mathcal O,\mathcal E]]/8m^2+(\text{odd terms of order }1/m)+O(1/m^3)$.
+\end{theorem}
+
+The odd terms that survive are of order $1/m$, so a second transformation is needed to push them to higher order. It is the same construction applied to the new odd part.
+
+\begin{proposition}[The second transformation]\label{prop:secondfw}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The new odd part is $c\,\mathcal O_1'$ with $\mathcal O_1'=(YX-XY)b-\tfrac43cX^3$, and it is odd: $b\mathcal O_1'=-\mathcal O_1'b$.
+\item The new even part $Y_1=Y+cX^2b-\tfrac{c^2}2[X,[X,Y]]$ is even: $bY_1=Y_1b$.
+\item Applying the expansion with generator $c\,b\,(c\mathcal O_1')$ gives $mb+Y+c^2(Y\mathcal O_1'b-\mathcal O_1'Yb)+c^3(\cdots)$, so the even part changes only at order $c^3=1/(8m^3)$.
+\end{enumerate}
+\end{proposition}
+
+Consequently the even Hamiltonian to order $1/m^2$ is already fixed by the first transformation. This is the point that is often left implicit in textbook treatments; here it is a theorem.
+
+\section{The Pauli Hamiltonian}
+
+To read off the physics we specialise to Dirac's $4\times4$ structure. With $\beta=\operatorname{diag}(1,-1)$ in $2\times2$ blocks, $\mathcal O=\begin{psmallmatrix}0&S\\S&0\end{psmallmatrix}$ with $S=\bs\cdot\bm\pi$, and $\mathcal E=\operatorname{diag}(\Phi,\Phi)$, one finds $\mathcal O^2=\operatorname{diag}(S^2,S^2)$ and $[\mathcal O,[\mathcal O,\mathcal E]]=\operatorname{diag}([S,[S,\Phi]],[S,[S,\Phi]])$. Everything reduces to two identities for the $2\times2$ blocks.
+
+\begin{theorem}[Pauli's identity with minimal coupling]\label{thm:pauli}\ver\
+For noncommuting components $\pi_k$,
+\[
+(\bs\cdot\bm\pi)^2=\bm\pi^2+\ii\,\bs\cdot(\bm\pi\times\bm\pi).
+\]
+If $[\pi_j,\pi_k]=\ii e\,\epsilon_{jkl}B_l$, as for $\bm\pi=\mathbf p-e\mathbf A$ with $\mathbf B=\nabla\times\mathbf A$, then $(\bs\cdot\bm\pi)^2=\bm\pi^2-e\,\bs\cdot\mathbf B$.
+\end{theorem}
+
+The term $-e\bs\cdot\mathbf B/(2m)$ in $\beta\mathcal O^2/2m$ is the magnetic moment with gyromagnetic ratio $g=2$, which is therefore a consequence of the Dirac factorisation.
+
+\begin{theorem}[Darwin and spin--orbit structure]\label{thm:darwin}\ver\
+For any $\varphi$,
+\[
+[S,[S,\varphi]]=\sum_k[\pi_k,[\pi_k,\varphi]]+\ii\,\bs\cdot\mathbf L,\qquad L_l=f_{jk}-f_{kj}\ \ (jkl\text{ cyclic}),
+\]
+where $f_{jk}=\pi_j\pi_k\varphi-2\pi_j\varphi\pi_k+\varphi\pi_j\pi_k$, which satisfies $f_{kk}=[\pi_k,[\pi_k,\varphi]]$ and $f_{jk}-f_{kj}=-[[\pi_j,\pi_k],\varphi]+2(\pi_jg_k-\pi_kg_j)$ with $g_k=[\pi_k,\varphi]$. For differential operators $\pi_k=-\ii\partial_k-a_k$ acting on functions (the charge absorbed into $a_k$):
+\[
+[\pi_k,\varphi]=-\ii\,\partial_k\varphi,\qquad [\pi_k,[\pi_k,\varphi]]=-\partial_k^2\varphi,\qquad [\pi_j,\pi_k]=\ii(\partial_ja_k-\partial_ka_j),\qquad [[\pi_j,\pi_k],\varphi]=0 .
+\]
+\end{theorem}
+
+Inserting these into \cref{thm:fworder}, the term $-[\mathcal O,[\mathcal O,e\Phi]]/8m^2$ becomes the Darwin term $(e/8m^2)\nabla\cdot\mathbf E$ (with $\mathbf E=-\nabla\Phi$) plus the spin--orbit term. The final assembly is the standard one \cite{BjorkenDrell}, and gives the familiar Hamiltonian for the upper components,
+\[
+H_{\mathrm{FW}}=m+\frac{\bm\pi^2}{2m}+e\Phi-\frac{e}{2m}\bs\cdot\mathbf B-\frac{e}{8m^2}\bs\cdot(\mathbf E\times\bm\pi-\bm\pi\times\mathbf E)-\frac{e}{8m^2}\nabla\cdot\mathbf E+O(1/m^3).
+\]
+The algebraic identities behind each term are verified; the identification of the double commutators with $\nabla\cdot\mathbf E$ and $\mathbf E\times\bm\pi$ uses only the commutators of \cref{thm:darwin}. The term $-\bm\pi^4/8m^3$ belongs to the next order and is not claimed here.
+
+\begin{litbox}
+The transformation is due to Foldy and Wouthuysen \cite{FoldyWouthuysen1950}, and the expansion with its physical interpretation is textbook material \cite{BjorkenDrell}. Two points in this chapter go beyond the usual presentation. First, the rotation angle of the exact transformation is identified with the polar angle $\chi=\gd\zeta$ of the hemisphere model of \cref{ch:hemisphere}, so that the FW transformation is literally the rotation that brings a moving state back to the rest point of the hemisphere. Second, the bookkeeping of orders, including the fact that the second transformation leaves the even part unchanged to order $1/m^2$ (\cref{prop:secondfw}), is stated and verified as an algebraic theorem rather than left to inspection.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The exact free FW rotation and its angle $\chi$ (\cref{thm:fwexact}).
+\item The even Hamiltonian to order $1/m^2$ (\cref{thm:fworder,prop:secondfw}).
+\item $(\bs\cdot\bm\pi)^2=\bm\pi^2-e\bs\cdot\mathbf B$ and the Darwin and spin--orbit structure (\cref{thm:pauli,thm:darwin}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+For $\mathbf p=(0,0,p)$ write $U$ and $V$ of \cref{thm:fwexact} as $4\times4$ matrices and check $UV=2E(E+m)\mathbf 1$.
+\end{exercise}
+\begin{exercise}
+Show that $\cos^2(\theta/2)=(E+m)/(2E)$ implies $\cos\theta=m/E$, and conclude that the FW angle equals $\gd\zeta$.
+\end{exercise}
+\begin{exercise}
+Using \cref{lem:fwad}, compute $[T,[T,mb]]$ and confirm that it equals $-4mc^2\,bX^2$.
+\end{exercise}
+\begin{exercise}
+Derive $(\bs\cdot\bm\pi)^2=\bm\pi^2-e\bs\cdot\mathbf B$ for a constant magnetic field $\mathbf B=B\hat{\mathbf z}$ with $\mathbf A=\frac12\mathbf B\times\mathbf x$, by computing $[\pi_x,\pi_y]$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaV:fw_generator}{$(\beta n)^2=-1$ for anticommuting square roots of unity.$^*$}
+\chk{AlphaV_FW:fw_exact}{Exact FW for the free Dirac Hamiltonian: $UHV=2E^2(E+m)\beta$, $UV=2E(E+m)\mathbf 1$.$^*$}
+\chk{AlphaV_FWOrder:bb',AlphaV_FWOrder:bX',AlphaV_FWOrder:bY'}{Grading relations $b^2=1$, $bX=-Xb$, $bY=Yb$ in the form used for rewriting (three statements).}
+\chk{AlphaV_FWOrder:ad_beta}{$\operatorname{ad}_T(mb)=-2mcX$.$^*$}
+\chk{AlphaV_FWOrder:ad_odd}{$\operatorname{ad}_TX=2cbX^2$.$^*$}
+\chk{AlphaV_FWOrder:ad_even}{$\operatorname{ad}_TY=cb[X,Y]$.$^*$}
+\chk{AlphaV_FWOrder:fw_hadamard3}{Exact form of the Hadamard sum through third order.$^*$}
+\chk{AlphaV_FWOrder:fw_order2}{Its reorganisation into even, odd and $c^3$ parts at $c=1/2m$.$^*$}
+\chk{AlphaV_FWOrder:odd1_factor}{The new odd part is $c$ times $\mathcal O_1'$.$^*$}
+\chk{AlphaV_FWOrder:odd1_odd}{$\mathcal O_1'$ is odd.$^*$}
+\chk{AlphaV_FWOrder:even1_even}{The new even part is even.$^*$}
+\chk{AlphaFix_FW:second_fw}{The second transformation changes the even part only at order $c^3$.$^*$}
+\chk{AlphaV_FWOrder:block_rel}{Block form: $\mathcal O^2=\operatorname{diag}(S^2,S^2)$ and the double commutator in blocks.$^*$}
+\chk{AlphaV_FWOrder:II}{$\ii\cdot\ii\cdot x=-x$ (bookkeeping lemma).}
+\chk{AlphaV_FWOrder:pauli_nc}{$(\bs\cdot\bm\pi)^2=\bm\pi^2+\ii\bs\cdot(\bm\pi\times\bm\pi)$.$^*$}
+\chk{AlphaV_FWOrder:pauli_minimal}{With minimal coupling, $(\bs\cdot\bm\pi)^2=\bm\pi^2-e\bs\cdot\mathbf B$.$^*$}
+\chk{AlphaV_FWOrder:double_comm}{$[S,[S,\varphi]]=\sum_kf_{kk}+\ii\bs\cdot\mathbf L$.$^*$}
+\chk{AlphaV_FWOrder:so_form}{Spin--orbit form $f_{jk}-f_{kj}=-[[\pi_j,\pi_k],\varphi]+2(\pi_jg_k-\pi_kg_j)$.$^*$}
+\chk{AlphaV_FWOrder:darwin_form}{Darwin form $f_{kk}=[\pi_k,[\pi_k,\varphi]]$.$^*$}
+\chk{AlphaFix_FW:comm_pi_phi}{$[\pi_k,\varphi]=-\ii\partial_k\varphi$ for differential operators.$^*$}
+\chk{AlphaFix_FW:double_comm_pi}{$[\pi_k,[\pi_k,\varphi]]=-\partial_k^2\varphi$.$^*$}
+\chk{AlphaFix_FW:comm_pi_pi}{$[\pi_j,\pi_k]=\ii(\partial_ja_k-\partial_ka_j)$.$^*$}
+\chk{AlphaFix_FW:comm_comm_phi}{$[[\pi_j,\pi_k],\varphi]=0$.$^*$}
+\end{checklist}

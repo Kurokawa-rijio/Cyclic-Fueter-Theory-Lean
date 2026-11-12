@@ -1,0 +1,209 @@
+\chapter{Monopoles, Bundles and Zero Modes}
+\label{ch:monopoles}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the two-sphere of pure states and directions (\cref{ch:quaternions,ch:lorentz}); connections of the form \eqref{eq:connfamily} and their curvature (\cref{prop:gram}); the monopole form of the Berry connection at the celestial sphere (\cref{thm:halfangle,thm:bps}).\\
+\textbf{It provides:} the Dirac monopole as a $U(1)$ bundle over $S^2$ with integer Chern number; the tangent bundle of $S^2$ as the monopole of Chern number $2=\chi(S^2)$; the Abelian projection and 't Hooft's field-strength identity for an adjoint unit vector; the spectrum and zero modes of the Dirac operator on $S^2$ in a monopole field, with the $L^2$ condition $|m|<q+\frac12$ and the count $2q$; and Weyl's limit-point criterion at a singular endpoint of a radial Dirac system.
+\end{usesbox}
+
+The previous chapter ended with a monopole: at the boundary of the hemisphere, where particles become massless, the Berry connection turns into the field of a magnetic monopole in momentum space. Monopoles are the simplest place where the topology of bundles becomes physics, through Dirac's quantisation condition and through the index theorem, which counts zero modes. This chapter collects what we need of that story on the two-sphere. Later chapters use it twice: for the angular part of the Yang--Mills fields of spherically symmetric gravitating solutions, and for fermions in those backgrounds.
+
+\section{The Dirac monopole}
+
+On $S^2$ with polar angle $\theta$, a monopole of strength $N/2$ is described by two local potentials,
+\[
+a_N=\frac N2(1-\cos\theta)\,\dd\phi\quad(\theta\ne\pi),\qquad a_S=-\frac N2(1+\cos\theta)\,\dd\phi\quad(\theta\ne0),
+\]
+regular on the northern and southern patches respectively \cite{WuYang1975}.
+
+\begin{theorem}[Dirac quantisation and the Chern number]\label{thm:dirac}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item On the overlap, $a_N-a_S=N\,\dd\phi$, so the transition function is $e^{\ii N\phi}$.
+\item $e^{\ii N\phi}$ is single valued under $\phi\mapsto\phi+2\pi$ if and only if $N\in\ZZ$.
+\item Both potentials have the same curvature $f=\frac N2\sin\theta\,\dd\theta\wedge\dd\phi$.
+\item The first Chern number is $c_1=\frac1{2\pi}\int_{S^2}f=N$; for a monopole of charge $q=N/2$, $c_1=2q$.
+\end{enumerate}
+\end{theorem}
+
+Integrality of $N$ is Dirac's quantisation condition \cite{Dirac1931}: the product of electric and magnetic charges is quantised because the bundle has to close up.
+
+\section{The tangent bundle as a monopole}
+
+The most familiar non-trivial bundle over $S^2$ is its own tangent bundle. In the stereographic coordinate $z$ on the northern patch and $w=1/z$ on the southern one, tangent vectors transform by $\dd w/\dd z=-z^{-2}$.
+
+\begin{theorem}[The tangent bundle has Chern number $2=\chi(S^2)$]\label{thm:tangent}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\dd(1/z)/\dd z=-z^{-2}$. On the equator $z=e^{\ii\phi}$ the transition function is $-(e^{\ii\phi})^{-2}=e^{\ii(\pi-2\phi)}$, whose phase winds $-2$ times as $\phi$ goes once round.
+\item The bundle with $N=2$ is single valued and has $c_1=2$.
+\item By Gauss--Bonnet, $\int_{S^2}K\,\dd A=4\pi$ for the round sphere of any radius, so $\chi(S^2)=\frac1{2\pi}\int K\,\dd A=2$.
+\item Hence $c_1(TS^2)=\chi(S^2)$: the tangent bundle is the monopole bundle with $|N|=2$.
+\end{enumerate}
+\end{theorem}
+
+There is a gauge-theoretic way to see the same thing. Let $\mathbf n$ be a unit vector in $\RR^3$, thought of as an element of $\su(2)$ in the adjoint representation. The operator $J=\mathbf n\times\cdot$ generates the $U(1)$ of rotations about $\mathbf n$.
+
+\begin{proposition}[The unbroken $U(1)$ acts as a complex structure]\label{prop:J}\ver\
+If $|\mathbf n|=1$ and $\mathbf n\cdot\mathbf v=0$, then $\mathbf n\cdot(\mathbf n\times\mathbf v)=0$, $|\mathbf n\times\mathbf v|^2=|\mathbf v|^2$, and $\mathbf n\times(\mathbf n\times\mathbf v)=-\mathbf v$.
+\end{proposition}
+
+So $J$ is a rotation by $90^\circ$ in the plane $\mathbf n^\perp$, i.e.\ a complex structure. For the hedgehog $\mathbf n(\mathbf x)=\mathbf x$ on the unit sphere, $\mathbf n^\perp$ is the tangent plane $T_{\mathbf x}S^2$, and the components of an $\su(2)$ field orthogonal to $\mathbf n$, the charged $W$ bosons of the broken theory, become sections of the tangent bundle. This is why $|N|=2$ is the natural charge of a hedgehog configuration.
+
+\section{Abelian projection}
+
+Let $\mathbf A_\mu$ be an $\su(2)$ gauge field in the adjoint notation, with covariant derivative $D_\mu\mathbf n=\partial_\mu\mathbf n+g\,\mathbf A_\mu\times\mathbf n$ and field strength $\mathbf F_{\mu\nu}=\partial_\mu\mathbf A_\nu-\partial_\nu\mathbf A_\mu+g\,\mathbf A_\mu\times\mathbf A_\nu$. A unit adjoint field $\mathbf n$ reduces the gauge group to the $U(1)$ that fixes it, and this is how 't Hooft and Polyakov identified the electromagnetic field of a non-Abelian monopole \cite{tHooft1974,Polyakov1974}.
+
+\begin{proposition}[Stabiliser and decomposition]\label{prop:stab}\ver\
+For $|\mathbf n|=1$: every vector decomposes as $\mathbf F=(\mathbf F\cdot\mathbf n)\mathbf n+\mathbf n\times(\mathbf F\times\mathbf n)$; $\mathbf F\times\mathbf n=0$ implies $\mathbf F\parallel\mathbf n$; an infinitesimal rotation $\bm\omega$ fixes $\mathbf n$ if and only if $\bm\omega=(\bm\omega\cdot\mathbf n)\mathbf n$; and two such generators commute. The stabiliser of $\mathbf n$ is the Abelian $\mathfrak u(1)$.
+\end{proposition}
+
+\begin{theorem}[Abelian projection and 't Hooft's identity]\label{thm:thooft}\ver\
+Assume the derivatives commute and $g$ is constant.
+\begin{enumerate}[label=(\roman*)]
+\item $[D_\mu,D_\nu]\mathbf n=g\,\mathbf F_{\mu\nu}\times\mathbf n$, and $\mathbf n\cdot\partial_\mu\mathbf n=0$ when $|\mathbf n|=1$.
+\item If $D_\mu\mathbf n=0$, then $g\mathbf A_\mu=g(\mathbf A_\mu\cdot\mathbf n)\mathbf n-\mathbf n\times\partial_\mu\mathbf n$, and $\mathbf F_{\mu\nu}=(\mathbf n\cdot\mathbf F_{\mu\nu})\mathbf n$: the field strength is Abelian.
+\item In general,
+\[
+g\,\mathbf n\cdot\mathbf F_{\mu\nu}-\mathbf n\cdot(D_\mu\mathbf n\times D_\nu\mathbf n)=g\bigl(\partial_\mu(\mathbf n\cdot\mathbf A_\nu)-\partial_\nu(\mathbf n\cdot\mathbf A_\mu)\bigr)-\mathbf n\cdot(\partial_\mu\mathbf n\times\partial_\nu\mathbf n).
+\]
+\end{enumerate}
+\end{theorem}
+
+The left side of (iii) is 't Hooft's gauge-invariant electromagnetic field strength. The right side is a Maxwell field $\partial_\mu a_\nu-\partial_\nu a_\mu$ plus a term that depends only on $\mathbf n$, whose flux through a sphere counts how many times $\mathbf n$ wraps it: the magnetic charge is topological.
+
+\section{The Dirac operator on the sphere with a monopole}
+
+Consider a charged spin-$\frac12$ particle on the unit two-sphere in the field of a monopole of charge $q$. The square of its Dirac operator has eigenvalues
+\begin{equation}\label{eq:monopolespec}
+\lambda^2=(j+\tfrac12)^2-q^2,\qquad j=|q|-\tfrac12,\ |q|+\tfrac12,\ \dots,
+\end{equation}
+with multiplicity $2j+1$ \cite{KazamaYangGoldhaber1977}.
+
+\begin{proposition}[Zero modes and the gap]\label{prop:monopolespec}\ver\
+At $j=|q|-\frac12$ the value $(j+\frac12)^2-q^2$ vanishes and the multiplicity is $2j+1=2|q|$. For $j\ge|q|+\frac12$ it is strictly positive.
+\end{proposition}
+
+The zero modes can be written down. After separating the azimuthal dependence $e^{\ii m\phi}$, a zero mode satisfies a first-order equation $u'=V(\theta)u$ with $V=(m+q\cos\theta)/\sin\theta$, and the other chirality satisfies $v'=-Vv$.
+
+\begin{theorem}[Monopole zero modes]\label{thm:zeromodes}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $u(\theta)=\tan(\theta/2)^m\sin(\theta)^q$ satisfies $u'=\frac{m+q\cos\theta}{\sin\theta}u$ on $0<\theta<\pi$, and $v=\tan(\theta/2)^{-m}\sin(\theta)^{-q}$ satisfies $v'=-\frac{m+q\cos\theta}{\sin\theta}v$.
+\item Near $\theta=0$, $u^2$ is bounded above and below by constant multiples of $\theta^{2(m+q)}$; near $\theta=\pi$, by multiples of $(\pi-\theta)^{2(q-m)}$. A function bounded in this way is square integrable near $0$ exactly when the exponent exceeds $-1$.
+\item Consequently $u\in L^2$ at both ends if and only if $m+q>-\frac12$ and $q-m>-\frac12$, that is,
+\[
+|m|<q+\tfrac12 .
+\]
+\item For $q\ge\frac12$ the other chirality has no admissible $m$: the conditions $q-\frac12<m<\frac12-q$ are contradictory.
+\item Counting: for integer $q=n$ the admissible $m$ are the half-integers $k+\frac12$ with $-n\le k<n$, which are $2n$ in number; for $q=n+\frac12$ they are the integers $-n\le m\le n$, which are $2n+1$. In both cases the count is $2q$.
+\end{enumerate}
+\end{theorem}
+
+The count $2q$ of zero modes, all of one chirality, is the index of the twisted Dirac operator, and it equals the Chern number $c_1=2q$ of \cref{thm:dirac}. This is the simplest instance of the Atiyah--Singer index theorem \cite{AtiyahSinger}, and here every step is elementary.
+
+Two special cases deserve mention. Since $\chi(S^2)=2$, the index $\chi/2=1$. And if the spinor is twisted by one half of the spin connection, the resulting charge is $q=\chi(S^2)/4=\frac12$, and the number of zero modes is $2q=1$.
+
+\begin{proposition}\label{prop:onezeromode}\ver\
+$\chi(S^2)/2=1$, and twisting by half the spin connection gives $q=\frac12$ with $2q=1$ zero mode.
+\end{proposition}
+
+\section{Singular endpoints of radial Dirac systems}
+
+Radial Dirac equations, on spheres as above or in the spherically symmetric spacetimes of later chapters, often have a singular endpoint at $s=0$ where the coefficients behave like $\kappa/s$:
+\begin{equation}\label{eq:radialdirac}
+F'+\frac\kappa sF=p(s)\,G,\qquad -G'+\frac\kappa sG=q(s)\,F,\qquad |p|,|q|\le B .
+\end{equation}
+For $p=q=0$ the solutions are $F=s^{-\kappa}$ and $G=s^{\kappa}$. The question is whether the actual solutions behave like these leading terms, because that decides whether a boundary condition is needed at $s=0$.
+
+\begin{theorem}[Limit point at a singular endpoint]\label{thm:limitpoint}\ver\
+Let $0<s\le\delta\le1$ and $\kappa\ge0$, and put $x=s^\kappa F$, $y=s^\kappa G$.
+\begin{enumerate}[label=(\roman*)]
+\item The system becomes $x'=p\,y$, $y'=(2\kappa/s)y-q\,x$.
+\item $N=x^2+y^2$ satisfies $N'\ge-2BN$ pointwise; hence every solution obeys $x(s)^2+y(s)^2\le e^{2B(\delta-s)}(x(\delta)^2+y(\delta)^2)$, so $|F|,|G|\le Cs^{-\kappa}$.
+\item The solution with $x(\delta)=1$, $y(\delta)=0$ satisfies $x\ge\frac34$ on $(0,\delta]$ if $B\delta\le\frac18$, so $F\ge\frac34s^{-\kappa}$.
+\item If $\kappa\ge\frac12$, this solution is not square integrable: $\int_\varepsilon^\delta F^2\,\dd s\to\infty$ as $\varepsilon\to0^+$.
+\end{enumerate}
+\end{theorem}
+
+By Weyl's alternative \ext\ \cite{Weidmann}, an endpoint at which some solution fails to be $L^2$ is in the limit-point case, so the Dirac operator is essentially self-adjoint there and no boundary condition has to be imposed. The existence of the solution with prescribed data at $\delta$ is the standard existence theorem for linear systems \ext.
+
+\begin{litbox}
+The bundle description of the Dirac monopole is due to Wu and Yang \cite{WuYang1975}, the Abelian projection and the gauge-invariant field strength to 't Hooft and Polyakov \cite{tHooft1974,Polyakov1974}, and the monopole harmonics and spectrum \eqref{eq:monopolespec} to Wu--Yang and Kazama--Yang--Goldhaber \cite{KazamaYangGoldhaber1977}. Everything in this chapter is therefore known. What the formal verification adds is a complete, elementary chain from the explicit zero modes, through the $L^2$ analysis at both poles, to the count $2q=c_1$; the identification $c_1(TS^2)=\chi(S^2)$ via the hedgehog; and the endpoint estimate of \cref{thm:limitpoint}, which is needed later and is usually quoted rather than proved.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item Dirac quantisation and $c_1=2q$ (\cref{thm:dirac}); $c_1(TS^2)=\chi(S^2)=2$ (\cref{thm:tangent}).
+\item Abelian projection and 't Hooft's identity (\cref{thm:thooft}).
+\item Monopole zero modes: $L^2$ iff $|m|<q+\frac12$, number $2q$, one chirality (\cref{thm:zeromodes}).
+\item The limit-point estimate for radial Dirac systems (\cref{thm:limitpoint}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Compute $\partial_\theta a_N$ and $\partial_\theta a_S$ and confirm that both give $\frac N2\sin\theta$.
+\end{exercise}
+\begin{exercise}
+Verify $\int_0^\pi\frac N2\sin\theta\,\dd\theta=N$ and deduce $c_1=N$.
+\end{exercise}
+\begin{exercise}
+For $q=1$ list the admissible $m$ in \cref{thm:zeromodes}(v) and check that there are two.
+\end{exercise}
+\begin{exercise}
+Differentiate $u=\tan(\theta/2)^m\sin^q\theta$ and verify \cref{thm:zeromodes}(i), using $\frac{\dd}{\dd\theta}\log\tan(\theta/2)=1/\sin\theta$.
+\end{exercise}
+\begin{exercise}
+Show $\mathbf n\times(\mathbf n\times\mathbf v)=-\mathbf v$ for $|\mathbf n|=1$, $\mathbf n\cdot\mathbf v=0$, using the identity $\mathbf a\times(\mathbf b\times\mathbf c)=\mathbf b(\mathbf a\cdot\mathbf c)-\mathbf c(\mathbf a\cdot\mathbf b)$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaVII_Bundle:dirac_difference}{$a_N-a_S=N$.$^*$}
+\chk{AlphaVII_Bundle:dirac_quantization}{$e^{2\pi\ii N}=1\iff N\in\ZZ$.$^*$}
+\chk{AlphaVII_Bundle:curvature_N}{Curvature of the northern potential, $\frac N2\sin\theta$.$^*$}
+\chk{AlphaVII_Bundle:curvature_S}{Curvature of the southern potential, $\frac N2\sin\theta$.$^*$}
+\chk{AlphaVII_Bundle:chern_number}{$c_1=N$.$^*$}
+\chk{AlphaVII_Bundle:chern_eq_two_q}{$c_1=2q$ for charge $q=N/2$.$^*$}
+\chk{AlphaVII_Bundle:gauss_bonnet_round}{Gauss--Bonnet for the round sphere: $\int K\,\dd A=4\pi$.$^*$}
+\chk{AlphaVII_Tangent:chart_derivative}{$\dd(1/z)/\dd z=-z^{-2}$.$^*$}
+\chk{AlphaVII_Tangent:transition_on_equator}{Transition function on the equator $e^{\ii(\pi-2\phi)}$.$^*$}
+\chk{AlphaVII_Tangent:transition_winding}{Its phase winds $-2$ times.$^*$}
+\chk{AlphaVII_Tangent:tangent_single_valued}{The $N=2$ transition function is single valued.$^*$}
+\chk{AlphaVII_Tangent:tangent_chern}{$c_1=2$ for $N=2$.$^*$}
+\chk{AlphaVII_Tangent:euler_char_two}{$\chi(S^2)=2$ from Gauss--Bonnet.$^*$}
+\chk{AlphaVII_Tangent:chern_eq_euler}{$c_1(TS^2)=\chi(S^2)$.$^*$}
+\chk{AlphaVII_Tangent:J_sq}{$\mathbf n\times(\mathbf n\times\mathbf v)=-\mathbf v$ on $\mathbf n^\perp$.$^*$}
+\chk{AlphaVII_Tangent:J_tangent}{$\mathbf n\cdot(\mathbf n\times\mathbf v)=0$.$^*$}
+\chk{AlphaVII_Tangent:J_isometry}{$|\mathbf n\times\mathbf v|=|\mathbf v|$ on $\mathbf n^\perp$.$^*$}
+\chk{AlphaVII_Abelian:decomposition}{$\mathbf F=(\mathbf F\cdot\mathbf n)\mathbf n+\mathbf n\times(\mathbf F\times\mathbf n)$.$^*$}
+\chk{AlphaVII_Abelian:cross_zero_parallel}{$\mathbf F\times\mathbf n=0\Rightarrow\mathbf F\parallel\mathbf n$.$^*$}
+\chk{AlphaVII_Abelian:stabilizer_iff}{The stabiliser of $\mathbf n$ is spanned by $\mathbf n$.$^*$}
+\chk{AlphaVII_Abelian:stabilizer_abelian}{The stabiliser is Abelian.$^*$}
+\chk{AlphaVII_Abelian:abelian_projection}{$D\mathbf n=0$ and the Ricci identity imply $\mathbf F_{\mu\nu}=(\mathbf n\cdot\mathbf F_{\mu\nu})\mathbf n$.$^*$}
+\chk{AlphaVII_Thooft:ricci}{$[D_\mu,D_\nu]\mathbf n=g\mathbf F_{\mu\nu}\times\mathbf n$.$^*$}
+\chk{AlphaVII_Thooft:n_dot_dn}{$\mathbf n\cdot\partial_\mu\mathbf n=0$.$^*$}
+\chk{AlphaVII_Thooft:connection_decomp}{If $D_\mu\mathbf n=0$ then $g\mathbf A_\mu=g(\mathbf A_\mu\cdot\mathbf n)\mathbf n-\mathbf n\times\partial_\mu\mathbf n$.$^*$}
+\chk{AlphaVII_Thooft:thooft_identity}{'t Hooft's identity for the gauge-invariant field strength.$^*$}
+\chk{AlphaVII:monopole_zero_modes}{At $j=|q|-\frac12$: eigenvalue zero, multiplicity $2|q|$.$^*$}
+\chk{AlphaVII:monopole_gap}{For $j\ge|q|+\frac12$ the eigenvalue is positive.$^*$}
+\chk{AlphaCompleteD:zero_mode}{$u=\tan(\theta/2)^m\sin^q\theta$ solves $u'=Vu$.$^*$}
+\chk{AlphaCompleteD:zero_mode_other}{$v=\tan(\theta/2)^{-m}\sin^{-q}\theta$ solves $v'=-Vv$.$^*$}
+\chk{ZeroModeL2:rpow_between}{Powers preserve two-sided bounds.}
+\chk{ZeroModeL2:tan_half_bounds}{$\frac12\theta\le\tan(\theta/2)\le\theta$ on $(0,\pi/2)$.}
+\chk{ZeroModeL2:sin_bounds}{$\frac2\pi\theta\le\sin\theta\le\theta$ on $(0,\pi/2)$.}
+\chk{ZeroModeL2:u_sq_bounds}{$u^2$ is comparable to $\theta^{2(m+q)}$ near $0$.$^*$}
+\chk{ZeroModeL2:integrable_iff_of_bounds}{A function comparable to $\theta^e$ is integrable near $0$ iff $e>-1$.$^*$}
+\chk{ZeroModeL2:zero_side}{$u\in L^2$ near $\theta=0$ iff $m+q>-\frac12$.$^*$}
+\chk{ZeroModeL2:reflect}{$u(\pi-\varphi)=\tan(\varphi/2)^{-m}\sin^q\varphi$.}
+\chk{ZeroModeL2:pi_side}{$u\in L^2$ near $\theta=\pi$ iff $q-m>-\frac12$.$^*$}
+\chk{ZeroModeL2:zero_mode_L2}{$u\in L^2$ at both ends iff $|m|<q+\frac12$.$^*$}
+\chk{AlphaCompleteD:exponent_condition}{$m+q>-\frac12$ and $q-m>-\frac12$ iff $|m|<q+\frac12$.$^*$}
+\chk{AlphaCompleteD:other_chirality_empty}{For $q\ge\frac12$ the other chirality has no admissible $m$.$^*$}
+\chk{AlphaCompleteD:admissible_half}{Half-integer $m=k+\frac12$ is admissible iff $-n\le k<n$.$^*$}
+\chk{AlphaCompleteD:count_integer_charge}{For $q=n$ there are $2n$ zero modes.$^*$}
+\chk{AlphaCompleteD:count_half_charge}{For $q=n+\frac12$ there are $2n+1$ zero modes.$^*$}
+\chk{AlphaVII:one_generation}{$\chi(S^2)/2=1$.$^*$}
+\chk{AlphaCompleteD:one_generation_from_twist}{Twisting by half the spin connection: $q=\frac12$, one zero mode.$^*$}
+\chk{AlphaV_Endpoint:xy_system}{The substitution $x=s^\kappa F$, $y=s^\kappa G$.$^*$}
+\chk{AlphaV_Endpoint:norm_deriv_ge}{$N'\ge-2BN$ pointwise.$^*$}
+\chk{AlphaV_Endpoint:norm_bound}{$x^2+y^2\le e^{2B(\delta-s)}(x(\delta)^2+y(\delta)^2)$.$^*$}
+\chk{AlphaV_Endpoint:large_solution}{The large solution stays above $\frac34$.$^*$}
+\chk{AlphaV_Endpoint:large_not_L2}{For $\kappa\ge\frac12$ the large solution is not $L^2$.$^*$}
+\end{checklist}

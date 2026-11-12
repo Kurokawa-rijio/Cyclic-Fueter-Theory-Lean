@@ -1,0 +1,229 @@
+\chapter{Berry and Wigner Connections}
+\label{ch:berrywigner}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the polar decomposition and boosts (\cref{thm:polar}); the hemisphere map, the Gudermannian and the quantum metric (\cref{thm:hemibij,thm:gudermann,thm:hemiconformal,thm:quantummetric}); the Maurer--Cartan form of $U(\mathbf p)=(m-\ii\bs\cdot\mathbf p)/E$ (\cref{prop:mc}); the exact FW rotation (\cref{thm:fwexact}).\\
+\textbf{It provides:} three $\su(2)$ connections on momentum space (the Wigner connection of standard boosts, the Berry connection of positive-energy states, and the half Maurer--Cartan connection $\frac12U^{-1}\dd U$); the Wigner rotation as the holonomy of the first; a gauge-invariant quantity that distinguishes them, showing that the Berry and Wigner connections are not gauge equivalent while the Berry and Maurer--Cartan connections are, the gauge transformation being the FW half-rotation; and the fact that the Berry connection, with a natural Higgs field, is an exact BPS monopole on hyperbolic space.
+\end{usesbox}
+
+A massive spin-$\frac12$ particle carries an internal $\SU(2)$ that is rotated when the particle is accelerated. There are two textbook ways to describe this rotation. Wigner's description goes through the little group: a Lorentz transformation acting on a state of momentum $\mathbf p$ is compensated by a rotation in the rest frame, the Wigner rotation \cite{Wigner1939}, whose infinitesimal form is Thomas precession. Berry's description goes through adiabatic transport: the positive-energy subspace $\operatorname{ran}P(\mathbf p)$ is a two-dimensional subspace of $\CC^4$ that moves with $\mathbf p$, and the natural connection on this bundle of subspaces is the Berry connection \cite{Berry1984}. Both are $\su(2)$-valued connections on momentum space, which by \cref{ch:hemisphere} is hyperbolic three-space. This chapter compares them, and adds a third, coming from the hemisphere picture.
+
+\section{A family of connections and an invariant}
+
+All connections of this chapter are rotationally covariant $\su(2)$-valued one-forms on $\RR^3_{\mathbf p}$ of the form
+\begin{equation}\label{eq:connfamily}
+\mathcal A=\ii\bigl(a(s)\,\bs\cdot(\mathbf p\times\dd\mathbf p)+b(s)\,\bs\cdot\dd\mathbf p\bigr),\qquad s=|\mathbf p|^2 .
+\end{equation}
+Write $\mathcal A=\mathcal A_k\,\dd p^k$. Its curvature $\mathcal F_{jk}=\partial_j\mathcal A_k-\partial_k\mathcal A_j+[\mathcal A_j,\mathcal A_k]$ is again of a closed form, determined by $a,b$ and their derivatives $a'=\dd a/\dd s$, $b'=\dd b/\dd s$.
+
+\begin{proposition}[Curvature and a gauge invariant]\label{prop:gram}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The curvature of \eqref{eq:connfamily} has a closed form, which written as $\mathcal F_k=\frac12\epsilon_{kij}\mathcal F_{ij}=\ii\bigl(\alpha\,\sigma_k+\beta\,p_k\,\bs\cdot\mathbf p+\gamma\,(\mathbf p\times\bs)_k\bigr)$ is determined by three coefficients $\alpha,\beta,\gamma$.
+\item The sum $\sum_k-2\tr(\mathcal F_k\mathcal F_k)$ is a polynomial $\mathrm{tr}G(\alpha,\beta,\gamma,s)$ in these coefficients.
+\item $\tr\bigl((gXg^{-1})(gXg^{-1})\bigr)=\tr(XX)$ for every invertible $g$, so the quantity in (ii) is invariant under gauge transformations $\mathcal A\mapsto g\mathcal Ag^{-1}+g\,\dd g^{-1}$.
+\end{enumerate}
+\end{proposition}
+
+Pointwise gauge invariants such as this one are what decide whether two connections can be gauge equivalent.
+
+\section{The Wigner connection and Wigner rotations}
+
+The standard boost taking the rest momentum to $\mathbf p$ is, in the spinor representation,
+\begin{equation}\label{eq:stdboost}
+L(\mathbf p)=\frac{(E+m)\mathbf 1+\bs\cdot\mathbf p}{\sqrt{2m(E+m)}} .
+\end{equation}
+
+\begin{proposition}[The standard boost]\label{prop:stdboost}\ver\
+With $s_m=\sqrt{2m(E+m)}$: $L(\mathbf p)^{-1}=((E+m)\mathbf 1-\bs\cdot\mathbf p)/s_m$; $L(\mathbf p)^2=(E\mathbf 1+\bs\cdot\mathbf p)/m$; $\det L(\mathbf p)=1$; and for real $\mathbf p$ both $L$ and $L^{-1}$ are Hermitian.
+\end{proposition}
+
+So $L(\mathbf p)$ is the positive square root of the Hermitian matrix $(E+\bs\cdot\mathbf p)/m$ that represents the four-velocity, exactly as in \cref{thm:polar}(ii). For a Lorentz transformation $\Lambda\in\SL(2,\CC)$ the \emph{Wigner rotation} is $W(\Lambda,\mathbf p)=L(\Lambda\mathbf p)^{-1}\,\Lambda\,L(\mathbf p)$.
+
+\begin{theorem}[Wigner rotations]\label{thm:wigner}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item If $\Lambda L(\mathbf p)^2\Lambda^\dagger=L(\Lambda\mathbf p)^2$ (that is, $\Lambda$ maps the four-velocity of $\mathbf p$ to that of $\Lambda\mathbf p$), then $W$ is unitary; if all three matrices have determinant one, so does $W$. Thus $W\in\SU(2)$.
+\item Cocycle: $W(\Lambda_2\Lambda_1,\mathbf p)=W(\Lambda_2,\Lambda_1\mathbf p)\,W(\Lambda_1,\mathbf p)$.
+\item For a closed path, $\Lambda\mathbf p=\mathbf p$, the transformation $\Lambda=L\,W\,L^{-1}$ is conjugate to an element of the little group $\SU(2)$.
+\end{enumerate}
+\end{theorem}
+
+Infinitesimally, $L^{-1}\dd L$ splits into a Hermitian part, the infinitesimal boost, and an anti-Hermitian part, the infinitesimal rotation. The latter is the Wigner connection.
+
+\begin{theorem}[The Wigner connection]\label{thm:wignerconn}\ver\
+The anti-Hermitian part of $L(\mathbf p)^{-1}\partial_vL(\mathbf p)$ is
+\[
+\mathcal A^{\mathrm W}(v)=-\frac{\ii\,\bs\cdot(\mathbf p\times v)}{2m(E+m)},
+\]
+i.e.\ \eqref{eq:connfamily} with $a_{\mathrm W}=-1/(2m(E+m))$ and $b_{\mathrm W}=0$. Along a curve of pure boosts $g'=LZL^{-1}g$ with $Z$ Hermitian, the matrix $W(t)=L(\mathbf p(t))^{-1}g(t)L(\mathbf p_0)$ satisfies the transport equation $W'W^\dagger=-\mathcal A^{\mathrm W}(\dot{\mathbf p})$.
+\end{theorem}
+
+By uniqueness of solutions of linear ordinary differential equations \ext, $W(t)$ is the parallel transport of $\mathcal A^{\mathrm W}$, and for a closed curve the Wigner rotation is its holonomy. For a small loop the holonomy is determined by the curvature \ext\ (Ambrose--Singer). This is the geometric content of Thomas precession.
+
+\section{The Berry connection of positive-energy states}
+
+The Berry connection of the positive-energy bundle has the same form with a different coefficient. Writing $\mathbf p=|\mathbf p|\mathbf n$, the term $\mathbf p\times\dd\mathbf p$ becomes $|\mathbf p|^2\,\mathbf n\times\dd\mathbf n$, and the two connections read:
+
+\begin{theorem}[Berry and Wigner in half-angle form]\label{thm:halfangle}\ver\
+With $a_{\mathrm B}=1/(2E(E+m))$,
+\[
+\mathcal A^{\mathrm B}=\tfrac12\Bigl(1-\frac mE\Bigr)\,\ii\,\bs\cdot(\mathbf n\times\dd\mathbf n),\qquad
+\mathcal A^{\mathrm W}=-\tfrac12\Bigl(\frac Em-1\Bigr)\,\ii\,\bs\cdot(\mathbf n\times\dd\mathbf n),
+\]
+and $a_{\mathrm B}=-(m/E)\,a_{\mathrm W}$.
+\end{theorem}
+
+In the language of \cref{ch:hemisphere}, $1-m/E=1-\cos\chi$ and $E/m-1=\cosh\zeta-1$: the Berry coefficient is governed by the circular angle of the hemisphere and the Wigner coefficient by the hyperbolic angle of the mass shell. In the massless limit $m/E\to0$ the Berry connection becomes the monopole connection $\frac12\ii\bs\cdot(\mathbf n\times\dd\mathbf n)$ of a Weyl point, as expected.
+
+The third connection is the one carried by the hemisphere map itself, $\mathcal A^{\mathrm F}=\frac12U^{-1}\dd U$ with $U=(m-\ii\bs\cdot\mathbf p)/E$ (compare \cref{prop:mc}); its coefficients are $a_{\mathrm F}=1/(2E^2)$ and $b_{\mathrm F}=-m/(2E^2)$.
+
+\begin{theorem}[Which connections are gauge equivalent]\label{thm:gaugeineq}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The invariant of \cref{prop:gram} takes the values
+\[
+\mathrm{tr}G_{\mathrm W}=\frac{2}{m^2E^2}+\frac1{m^4},\qquad \mathrm{tr}G_{\mathrm B}=\mathrm{tr}G_{\mathrm F}=\frac{2m^2}{E^6}+\frac1{E^4}=\Bigl(\frac mE\Bigr)^4\mathrm{tr}G_{\mathrm W}.
+\]
+\item For $E>m>0$, $\mathrm{tr}G_{\mathrm B}<\mathrm{tr}G_{\mathrm W}$. Hence at every $\mathbf p\neq0$ there is no gauge transformation carrying the Wigner curvature to the Berry curvature: \emph{the Berry and Wigner connections are not gauge equivalent}.
+\item Let $V=((E+m)\mathbf 1-\ii\bs\cdot\mathbf p)/\sqrt{2E(E+m)}$. Then $V^2=U$, and
+\[
+\mathcal A^{\mathrm B}=V\mathcal A^{\mathrm F}V^{-1}+V\,\dd V^{-1}:
+\]
+\emph{the Berry connection and the half Maurer--Cartan connection are gauge equivalent}, and the gauge transformation is the square root of the hemisphere map.
+\end{enumerate}
+\end{theorem}
+
+The matrix $V$ in (iii) has the same form as the normalised FW operator $\hat U$ of \cref{thm:fwexact}, now in two-component form: it is the half-rotation by $\chi/2$. So the FW transformation, which rotates the moving state back to the pole of the hemisphere, is also the gauge transformation that turns the geometric connection of the hemisphere into the Berry connection. The Wigner connection is genuinely different, and the difference is measured by the factor $(m/E)^4$ in the invariant.
+
+The derivatives used in these computations are elementary but easy to get wrong, and we record them.
+
+\begin{lemma}[Derivatives]\label{lem:awderivs}\ver\
+As functions of $s=|\mathbf p|^2$ with $E=\sqrt{m^2+s}$: $\dd a_{\mathrm W}/\dd s=1/(4mE(E+m)^2)$ and $\dd a_{\mathrm B}/\dd s=-(2E+m)/(4E^3(E+m)^2)$. Along a curve, $\dd E/\dd t=\dot s/(2E)$, and the derivatives of $\sqrt{2m(E+m)}$ and $(2E(E+m))^{-1/2}$ follow by the chain rule.
+\end{lemma}
+
+\section{The state metric and the hyperbolic metric}
+
+The conformal relation of \cref{thm:hemiconformal} can be restated with the quantum normalisation of \cref{thm:quantummetric}. Let $g^{\mathrm Q}=\frac12(\dd\chi^2+\sin^2\chi\,\dd\Omega^2)$ be the quantum metric on the hemisphere.
+
+\begin{proposition}[Conformal factor and boundary]\label{prop:qconformal}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Under $\chi=\gd\rho$, the metric $(2/\cos^2\chi)\,g^{\mathrm Q}$ pulls back to $\dd\rho^2+\sinh^2\rho\,\dd\Omega^2$, and $2/\cos^2(\gd\rho)=2\cosh^2\rho$.
+\item $\gd$ is strictly increasing, $0\le\gd\rho<\pi/2$ for $\rho\ge0$, every $\chi\in[0,\pi/2)$ is attained, and $\gd\rho\to\pi/2$ as $\rho\to\infty$.
+\end{enumerate}
+\end{proposition}
+
+The conformal factor $2\cosh^2\rho$ blows up at the equator, as it must for a conformal map from a complete hyperbolic space to a bounded region. Conformal maps preserve neither the spectrum of the Laplacian nor general geodesics. What they preserve are conformally covariant operators: the conformal Laplacian $-\Delta+R/8$ and the Dirac operator in three dimensions transform with definite weights \ext\ \cite{Hitchin1974}, so zero modes and their weighted counterparts correspond between the two pictures.
+
+\section{The Berry connection is a hyperbolic BPS monopole}
+
+In \cref{ch:hemisphere} we saw that the height of the hemisphere is $m/E=\operatorname{sech}\zeta$ and the horizontal coordinate is $|\mathbf p|/E=\tanh\zeta$. These two functions satisfy a pair of first-order equations that should look familiar to anyone who has met the Bogomolny equations.
+
+\begin{lemma}\label{lem:sechtanh}\ver\
+$k=\operatorname{sech}\zeta$ and $f=\tanh\zeta$ satisfy $k'=-fk$ and $f'=k^2$.
+\end{lemma}
+
+Equip momentum space with the hyperbolic metric $h_{ij}=(\delta_{ij}-p_ip_j/E^2)/m^2$ of \cref{prop:shellmetric}, whose curvature is $-1$, and let $\star$ be its Hodge star. Take the Berry connection $\mathcal A^{\mathrm B}$ and the Higgs field $\Phi=(\mathbf p/E)\cdot T$ with $T=-\frac{\ii}{2}\bs$.
+
+\begin{theorem}[The Berry connection is a BPS monopole on $H^3$]\label{thm:bps}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The curvature of $\mathcal A^{\mathrm B}$ satisfies $\mathcal F_{ab}=\sum_c\epsilon_{abc}\mathcal F^*_c$ with an explicit $\mathcal F^*_c$; it is antisymmetric with vanishing diagonal.
+\item With $h^{ij}=m^2\delta_{ij}+p_ip_j$ and $\sqrt{\det h}=1/(m^2E)$, the Hodge dual satisfies $m^2(\star\mathcal F)_k=\sum_cK_{kc}\mathcal F^*_c$ with $K_{kc}=E^{-1}\bigl(m^2(m^2+s)\delta_{kc}-m^2p_kp_c\bigr)$.
+\item The Bogomolny equation holds exactly:
+\[
+D_{\mathcal A^{\mathrm B}}\Phi=-\star\mathcal F^{\mathrm B}.
+\]
+\item The coefficient used, $a=(1-m/E)/(2s)$, equals $1/(2E(E+m))$, and its $s$-derivative agrees with \cref{lem:awderivs}.
+\end{enumerate}
+\end{theorem}
+
+Monopoles on hyperbolic space were introduced by Atiyah \cite{Atiyah1984}, who showed that they are particularly well behaved, their moduli being described by holomorphic data on the sphere at infinity. \Cref{thm:bps} says that one of them is already present in the kinematics of a free massive Dirac particle: the Berry connection of the positive-energy states, together with the velocity $\mathbf p/E$ as Higgs field, is a spherically symmetric BPS monopole on the mass shell. Its asymptotic value $|\Phi|\to\frac12$ is reached at the celestial sphere, where the Berry connection becomes the Dirac monopole of a massless particle.
+
+\begin{litbox}
+Wigner rotations and the little group are Wigner's \cite{Wigner1939}; Thomas precession as holonomy is standard. The Berry connection is Berry's \cite{Berry1984}, and its monopole form for Weyl points is well known. Hyperbolic monopoles are due to Atiyah \cite{Atiyah1984}. The results of this chapter that we have not found in the literature are: the explicit gauge-invariant obstruction showing that the Berry and Wigner connections of a massive spin-$\frac12$ particle are not gauge equivalent, with the ratio $(m/E)^4$ (\cref{thm:gaugeineq}(i)--(ii)); the gauge equivalence of the Berry connection with the half Maurer--Cartan connection of the hemisphere map, implemented by the FW half-rotation (\cref{thm:gaugeineq}(iii)); and the statement that the Berry connection with Higgs field $\mathbf p/E$ solves the Bogomolny equation on the mass shell (\cref{thm:bps}). All three are verified in Lean; the identification of transport with holonomy uses the external results marked above.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The connections $\mathcal A^{\mathrm W}$, $\mathcal A^{\mathrm B}$, $\mathcal A^{\mathrm F}$ and the invariant that separates them (\cref{thm:wignerconn,thm:halfangle,thm:gaugeineq}).
+\item Wigner rotations as holonomy (\cref{thm:wigner}).
+\item The Berry connection as a hyperbolic BPS monopole, with profile $\operatorname{sech}\zeta$, $\tanh\zeta$ (\cref{thm:bps,lem:sechtanh}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Verify $L(\mathbf p)^2=(E+\bs\cdot\mathbf p)/m$ from \eqref{eq:stdboost} using $(\bs\cdot\mathbf p)^2=|\mathbf p|^2$.
+\end{exercise}
+\begin{exercise}
+Show that $a_{\mathrm B}=-(m/E)a_{\mathrm W}$ and that $|\mathbf p|^2a_{\mathrm B}=\frac12(1-m/E)$.
+\end{exercise}
+\begin{exercise}
+Check the ratio $\mathrm{tr}G_{\mathrm B}=(m/E)^4\mathrm{tr}G_{\mathrm W}$ from the two expressions in \cref{thm:gaugeineq}(i).
+\end{exercise}
+\begin{exercise}
+Verify $k'=-fk$ and $f'=k^2$ for $k=\operatorname{sech}\zeta$, $f=\tanh\zeta$.
+\end{exercise}
+\begin{exercise}
+Show that $V^2=U$ in \cref{thm:gaugeineq}(iii), using $E^2=m^2+|\mathbf p|^2$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaI_AW:curv_formula}{Closed form of the curvature of the family \eqref{eq:connfamily}.$^*$}
+\chk{AlphaI_AW:gram_trace}{The sum $\sum_k-2\tr(\mathcal F_k\mathcal F_k)$ as a polynomial in the curvature coefficients.$^*$}
+\chk{AlphaI_AW:gram_gauge}{$\tr((gXg^{-1})^2)=\tr(X^2)$: the invariant is gauge invariant.$^*$}
+\chk{AlphaV_Wigner:sd_mul_sd}{$(\bs\cdot\mathbf a)(\bs\cdot\mathbf b)=\mathbf a\cdot\mathbf b+\ii\bs\cdot(\mathbf a\times\mathbf b)$.}
+\chk{AlphaV_Wigner:cross_self,AlphaV_Wigner:sd_zero,AlphaV_Wigner:dot_p_cross,AlphaV_Wigner:dot_cross_p,AlphaV_Wigner:sd_lin}{Vector identities: $\mathbf p\times\mathbf p=0$, $\bs\cdot0=0$, $\mathbf p\cdot(\mathbf p\times\mathbf v)=0$ (both orders), linearity of $\bs\cdot$ (five statements).}
+\chk{AlphaV_Wigner:sd_cross_cross1,AlphaV_Wigner:sd_cross_cross2}{Double cross products under $\bs\cdot$ (two statements).}
+\chk{AlphaV_Wigner:sd_ev,AlphaV_Wigner:Av_ev}{$\bs\cdot\hat{\mathbf e}_i=\sigma_i$, and the connection evaluated on $\hat{\mathbf e}_i$ is its $i$-th component.}
+\chk{AlphaV_Wigner:si_sq}{$s_m^{-2}\cdot2m(E+m)=1$.}
+\chk{AlphaV_Wigner:boost_inv}{$L^{-1}L=LL^{-1}=\mathbf 1$.$^*$}
+\chk{AlphaV_Wigner:boost_sq}{$L^2=(E+\bs\cdot\mathbf p)/m$.$^*$}
+\chk{AlphaV_Wigner:boost_det}{$\det L=1$.$^*$}
+\chk{AlphaV_Wigner:sd_herm,AlphaV_Wigner:cross_ofR,AlphaV_Wigner:dotc_ofR}{For real vectors, $\bs\cdot\mathbf q$ is Hermitian and cross and dot products are real (three statements).}
+\chk{AlphaV_Wigner:boost_herm,AlphaV_Wigner:boostInv_herm}{For real $\mathbf p$, $L$ and $L^{-1}$ are Hermitian.$^*$}
+\chk{AlphaV_Wigner:wigner_unitary}{The Wigner rotation is unitary.$^*$}
+\chk{AlphaV_Wigner:wigner_det}{The Wigner rotation has determinant one.$^*$}
+\chk{AlphaV_Wigner:wigner_cocycle}{Cocycle property of Wigner rotations.$^*$}
+\chk{AlphaV_Wigner:loop_conjugate}{For a closed path, $\Lambda=LWL^{-1}$.$^*$}
+\chk{AlphaV_Wigner:antiH_eq}{The anti-Hermitian part of $H+K$ ($H$ Hermitian, $K$ anti-Hermitian) is $K$.}
+\chk{AlphaV_Wigner:wigner_connection}{$L^{-1}\partial_vL$ in closed form.$^*$}
+\chk{AlphaV_Wigner:wigner_AW}{Its anti-Hermitian part is $-\ii\bs\cdot(\mathbf p\times v)/(2m(E+m))$.$^*$}
+\chk{AlphaV_Wigner:wigner_coeff}{$-s_m^{-2}=-1/(2m(E+m))$.$^*$}
+\chk{AlphaI_AW:wigner_coeffs}{Wigner coefficients $a=-1/(2m(E+m))$ and $a'$.$^*$}
+\chk{AlphaV_Wigner:MD.mul,AlphaV_Wigner:MD.const,AlphaV_Wigner:MD.unique,AlphaV_Wigner:MD.conjT}{Calculus of matrix-valued functions: product rule, constants, uniqueness of derivatives, conjugate transpose (four statements).}
+\chk{AlphaV_Wigner:unitary_deriv}{If $W$ is unitary for all $t$, then $W'W^\dagger+W{W'}^\dagger=0$.}
+\chk{AlphaV_Wigner:inv_deriv}{Derivative of an inverse: $(L^{-1})'=-L^{-1}L'L^{-1}$.}
+\chk{AlphaV_Wigner:transport}{Transport equation $W'W^\dagger=-\mathcal A^{\mathrm W}(\dot{\mathbf p})$ along pure boosts.$^*$}
+\chk{AlphaV_Wigner:E_deriv,AlphaV_Wigner:s_deriv,AlphaV_Wigner:n_deriv}{Chain-rule derivatives of $E$, $\sqrt{2m(E+m)}$ and $(2E(E+m))^{-1/2}$ along a curve (three statements).$^*$}
+\chk{AlphaI_AW:wigner_deriv}{$\dd a_{\mathrm W}/\dd s=1/(4mE(E+m)^2)$.$^*$}
+\chk{AlphaI_AW:berry_deriv}{$\dd a_{\mathrm B}/\dd s=-(2E+m)/(4E^3(E+m)^2)$.$^*$}
+\chk{AlphaV_Wigner:cross_radial}{$(\rho\mathbf n)\times(\dot\rho\mathbf n+\rho\dot{\mathbf n})=\rho^2\,\mathbf n\times\dot{\mathbf n}$.$^*$}
+\chk{AlphaV_Wigner:berry_half_angle}{$|\mathbf p|^2/(2E(E+m))=\frac12(1-m/E)$.$^*$}
+\chk{AlphaV_Wigner:wigner_half_angle}{$-|\mathbf p|^2/(2m(E+m))=-\frac12(E/m-1)$.$^*$}
+\chk{AlphaI_AW:berry_coeffs}{Berry coefficients $a=1/(2E(E+m))$ and $a'$.$^*$}
+\chk{AlphaI_AW:fueter_coeffs}{Coefficients of $\frac12U^{-1}\dd U$: $a=1/(2E^2)$, $b=-m/(2E^2)$ and derivatives.$^*$}
+\chk{AlphaI_AW:berry_eq_wigner}{$a_{\mathrm B}=-(m/E)a_{\mathrm W}$.$^*$}
+\chk{AlphaI_AW:trG_W}{$\mathrm{tr}G_{\mathrm W}=2/(m^2E^2)+1/m^4$.$^*$}
+\chk{AlphaI_AW:trG_B}{$\mathrm{tr}G_{\mathrm B}=2m^2/E^6+1/E^4$.$^*$}
+\chk{AlphaI_AW:trG_F}{$\mathrm{tr}G_{\mathrm F}=2m^2/E^6+1/E^4$.$^*$}
+\chk{AlphaI_AW:ratio}{$\mathrm{tr}G_{\mathrm B}=(m/E)^4\mathrm{tr}G_{\mathrm W}$.$^*$}
+\chk{AlphaI_AW:trG_B_lt}{$\mathrm{tr}G_{\mathrm B}<\mathrm{tr}G_{\mathrm W}$ for $E>m>0$.$^*$}
+\chk{AlphaI_AW:berry_not_gauge_wigner}{The Berry and Wigner curvatures are not gauge equivalent at any $\mathbf p\ne0$.$^*$}
+\chk{AlphaV_Wigner:half_rotation_sq}{$V^2=U$.$^*$}
+\chk{AlphaV_Wigner:berry_fueter_gauge}{The gauge relation between $\mathcal A^{\mathrm F}$ and $\mathcal A^{\mathrm B}$ via $V$.$^*$}
+\chk{AlphaV_Wigner:gauge_form}{Algebraic form of a gauge transformation $V\mathcal A V^{-1}+V\dd V^{-1}$.$^*$}
+\chk{AlphaV_Wigner:metric_pullback}{$(2/\cos^2\chi)g^{\mathrm Q}$ pulls back to the hyperbolic metric under $\chi=\gd\rho$.$^*$}
+\chk{AlphaV_Wigner:conformal_factor}{$2/\cos^2(\gd\rho)=2\cosh^2\rho$.$^*$}
+\chk{AlphaV_Wigner:gd_strictMono}{$\gd$ is strictly increasing.$^*$}
+\chk{AlphaV_Wigner:gd_lt}{$\gd\rho<\pi/2$.$^*$}
+\chk{AlphaV_Wigner:gd_nonneg}{$\gd\rho\ge0$ for $\rho\ge0$.$^*$}
+\chk{AlphaV_Wigner:gd_surj}{Every $\chi\in[0,\pi/2)$ equals $\gd\rho$ for some $\rho\ge0$.$^*$}
+\chk{AlphaV_Wigner:boundary_limit}{$\gd\rho\to\pi/2$ as $\rho\to\infty$.$^*$}
+\chk{AlphaI:bps_k}{$(\operatorname{sech}\zeta)'=-\tanh\zeta\operatorname{sech}\zeta$.$^*$}
+\chk{AlphaI:bps_f}{$(\tanh\zeta)'=\operatorname{sech}^2\zeta$.$^*$}
+\chk{AlphaCompleteC:F_diag}{The curvature has vanishing diagonal.$^*$}
+\chk{AlphaCompleteC:F_anti}{The curvature is antisymmetric.$^*$}
+\chk{AlphaCompleteC:F_eps}{$\mathcal F_{ab}=\sum_c\epsilon_{abc}\mathcal F^*_c$.$^*$}
+\chk{AlphaCompleteC:starF_closed}{$m^2(\star\mathcal F)_k=\sum_cK_{kc}\mathcal F^*_c$.$^*$}
+\chk{AlphaCompleteC2:bps_closed}{$m^2D_k\Phi+\sum_cK_{kc}\mathcal F^*_c=0$.$^*$}
+\chk{AlphaCompleteC2:bps}{Bogomolny equation $D_{\mathcal A^{\mathrm B}}\Phi=-\star\mathcal F^{\mathrm B}$ on $H^3$.$^*$}
+\chk{AlphaCompleteC2:aB_eq}{$(1-m/E)/(2s)=1/(2E(E+m))$.$^*$}
+\chk{AlphaCompleteC2:apB_eq}{The $s$-derivative of $a$ agrees with the Berry derivative.$^*$}
+\end{checklist}

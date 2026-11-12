@@ -24,3 +24,16 @@ AlphaS1_Closure:maxwell_mass	ch11
 AlphaS1_Closure:ym_coupling	ch11
 AlphaS1_Closure:ym_coupling_forced	ch11
 AlphaS1_Closure:ghy_spherical	ch11
+AlphaV:fw_generator	ch05
+AlphaV:SS_singlet	ch28
+AlphaV:SS_upup	ch28
+AlphaV:level_shift	ch28
+AlphaV:level_triplet	ch28
+AlphaV:gauss_compactness	ch21
+AlphaV:gauss_interior	ch21
+AlphaV:gauss_vacuum	ch21
+AlphaV:log_coeff_meron	ch27
+AlphaV:a4_meron	ch27
+AlphaV:a4_vacua	ch27
+AlphaVII_Bundle:ym_formula	ch10
+AlphaVII_Bundle:ym_roots	ch10
