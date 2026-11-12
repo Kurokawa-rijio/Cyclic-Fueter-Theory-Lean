@@ -1,7 +1,7 @@
 # Progress (update after each chapter)
 
-Done (sent): ch01-ch20, intA. Chapter-only PDFs now built with 3 passes (2-pass gave wrong intra-chapter ref numbers; ch04,07,08,09,13,14,16,17,18,19 resent).
-Coverage after ch20: 1215/1873.
+Done (sent): ch01-ch25, intA, intB. Chapter-only PDFs now built with 3 passes (2-pass gave wrong intra-chapter ref numbers; ch04,07,08,09,13,14,16,17,18,19 resent).
+Coverage after intB: 1545/1873.
 
 Workflow per chapter:
 1. Re-read REQUIREMENTS.md rules.  2. python3 tools/dump.py <modules>  (+ map/moves.tsv for theorem-level moves)
