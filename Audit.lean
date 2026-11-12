@@ -8,6 +8,7 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaConstArea
 import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFamous
@@ -20,6 +21,7 @@ import CFT.AlphaFix_Neck
 import CFT.AlphaFix_Thermo
 import CFT.AlphaFix_Unify
 import CFT.AlphaFix_Z28
+import CFT.AlphaGeneral
 import CFT.AlphaI
 import CFT.AlphaII
 import CFT.AlphaIII
@@ -86,6 +88,8 @@ import CFT.AlphaS4_Junction
 import CFT.AlphaS5_Curvature
 import CFT.AlphaS5_Evolution
 import CFT.AlphaS5_Final
+import CFT.AlphaShapeFluct
+import CFT.AlphaSphericalClose
 import CFT.AlphaV
 import CFT.AlphaVI
 import CFT.AlphaVII
@@ -161,6 +165,7 @@ import CFT.Cartan.SSRows2b
 import CFT.Cartan.SSRows3
 import CFT.Cartan.SecondStage
 import CFT.GaugeCovariance
+import CFT.SphericalTheory
 import CFT.ZeroModeL2
 
 #print axioms CFT.QH.qh_reciprocal
@@ -265,6 +270,12 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaCompleteD.other_chirality_empty
 #print axioms CFT.AlphaCompleteD.exponent_condition
 #print axioms CFT.AlphaCompleteD.one_generation_from_twist
+#print axioms CFT.CA.ca_constraint
+#print axioms CFT.CA.ca_turning
+#print axioms CFT.CA.ca_neck_fixed
+#print axioms CFT.CA.ca_soliton_deriv
+#print axioms CFT.CA.ca_soliton
+#print axioms CFT.CA.ca_collapse
 #print axioms CFT.DS.ds2_mass_prime
 #print axioms CFT.DS.ds2_bogomolny
 #print axioms CFT.DS.ds2_num
@@ -434,6 +445,13 @@ import CFT.ZeroModeL2
 #print axioms CFT.FixZ28.normalized_first_variation
 #print axioms CFT.FixZ28.second_order_equal
 #print axioms CFT.FixZ28.ellipsoid_local_min
+#print axioms CFT.GEN.gen_unimodular
+#print axioms CFT.GEN.gen_trace_free
+#print axioms CFT.GEN.gen_shear
+#print axioms CFT.GEN.gen_focusing
+#print axioms CFT.GEN.gen_kn_area
+#print axioms CFT.GEN.gen_kn_area_ge
+#print axioms CFT.GEN.gen_kn_round_iff
 #print axioms CFT.AlphaI.i_sq
 #print axioms CFT.AlphaI.j_sq
 #print axioms CFT.AlphaI.k_sq
@@ -1321,6 +1339,33 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_22_fer_monopole_index
 #print axioms CFT.Index.XV_23_fer_constraint_prop
 #print axioms CFT.Index.XV_23_fer_ym_conservation
+#print axioms CFT.Index.XV_24_gen_unimodular
+#print axioms CFT.Index.XV_24_gen_trace_free
+#print axioms CFT.Index.XV_24_gen_shear
+#print axioms CFT.Index.XV_24_gen_focusing
+#print axioms CFT.Index.XV_24_gen_kn_area
+#print axioms CFT.Index.XV_24_gen_kn_area_ge
+#print axioms CFT.Index.XV_24_gen_kn_round_iff
+#print axioms CFT.Index.XV_25_sf_volume_rate
+#print axioms CFT.Index.XV_25_sf_weight_volume
+#print axioms CFT.Index.XV_25_sf_weight_area
+#print axioms CFT.Index.XV_25_sf_area_const_rigid
+#print axioms CFT.Index.XV_25_sf_quantum_focus
+#print axioms CFT.Index.XV_26_ca_constraint
+#print axioms CFT.Index.XV_26_ca_turning
+#print axioms CFT.Index.XV_26_ca_neck_fixed
+#print axioms CFT.Index.XV_26_ca_soliton_deriv
+#print axioms CFT.Index.XV_26_ca_soliton
+#print axioms CFT.Index.XV_26_ca_collapse
+#print axioms CFT.Index.XV_27_sc_number
+#print axioms CFT.Index.XV_27_sc_B_u
+#print axioms CFT.Index.XV_27_sc_tau_v
+#print axioms CFT.Index.XV_27_sc_conservation
+#print axioms CFT.Index.XV_28_sc_cone
+#print axioms CFT.Index.XV_28_sc_cone_flat
+#print axioms CFT.Index.XV_28_sc_temperature
+#print axioms CFT.Index.XV_28_sc_second_law
+#print axioms CFT.Index.XV_29_spherical_field_equations
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1805,6 +1850,19 @@ import CFT.ZeroModeL2
 #print axioms CFT.S5.z9_reaches_zero_vacuous
 #print axioms CFT.S5F.wave_jump_final
 #print axioms CFT.S5F.cap_crunch_final
+#print axioms CFT.SF.sf_volume_rate
+#print axioms CFT.SF.sf_weight_volume
+#print axioms CFT.SF.sf_weight_area
+#print axioms CFT.SF.sf_area_const_rigid
+#print axioms CFT.SF.sf_quantum_focus
+#print axioms CFT.SC.sc_number
+#print axioms CFT.SC.sc_B_u
+#print axioms CFT.SC.sc_tau_v
+#print axioms CFT.SC.sc_conservation
+#print axioms CFT.SC.sc_cone
+#print axioms CFT.SC.sc_cone_flat
+#print axioms CFT.SC.sc_temperature
+#print axioms CFT.SC.sc_second_law
 #print axioms CFT.AlphaV.cos_gd
 #print axioms CFT.AlphaV.sin_gd
 #print axioms CFT.AlphaV.conformal_consistent
@@ -2503,6 +2561,7 @@ import CFT.ZeroModeL2
 #print axioms CFT.Cartan.C2.Bj_frame
 #print axioms CFT.Gauge.d_inv
 #print axioms CFT.Gauge.curvature_covariant
+#print axioms CFT.Spherical.spherical_field_equations
 #print axioms CFT.ZeroModeL2.rpow_between
 #print axioms CFT.ZeroModeL2.tan_half_bounds
 #print axioms CFT.ZeroModeL2.sin_bounds

@@ -9,6 +9,7 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaConstArea
 import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFamous
@@ -21,6 +22,7 @@ import CFT.AlphaFix_Neck
 import CFT.AlphaFix_Thermo
 import CFT.AlphaFix_Unify
 import CFT.AlphaFix_Z28
+import CFT.AlphaGeneral
 import CFT.AlphaI
 import CFT.AlphaII
 import CFT.AlphaIII
@@ -87,6 +89,8 @@ import CFT.AlphaS4_Junction
 import CFT.AlphaS5_Curvature
 import CFT.AlphaS5_Evolution
 import CFT.AlphaS5_Final
+import CFT.AlphaShapeFluct
+import CFT.AlphaSphericalClose
 import CFT.AlphaV
 import CFT.AlphaVI
 import CFT.AlphaVII
@@ -162,4 +166,5 @@ import CFT.Cartan.SSRows2b
 import CFT.Cartan.SSRows3
 import CFT.Cartan.SecondStage
 import CFT.GaugeCovariance
+import CFT.SphericalTheory
 import CFT.ZeroModeL2
