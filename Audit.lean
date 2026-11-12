@@ -54,6 +54,7 @@ import CFT.AlphaI_QBij
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
 import CFT.AlphaJunction_Unique
+import CFT.AlphaKS_WDW
 import CFT.AlphaOmega_Close
 import CFT.AlphaOmega_Last
 import CFT.AlphaOmega_Quantum
@@ -1188,6 +1189,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_8_ol_gauge_count
 #print axioms CFT.Index.XV_9_os_graviton
 #print axioms CFT.Index.XV_9_os_graviton_count
+#print axioms CFT.Index.XV_9K_ks_hamiltonian
+#print axioms CFT.Index.XV_9K_ks_rn
+#print axioms CFT.Index.XV_9K_ks_hj
+#print axioms CFT.Index.XV_9K_ks_hj_solves
+#print axioms CFT.Index.XV_9K_ks_inversion_theta
+#print axioms CFT.Index.XV_9K_ks_inversion_sigma
+#print axioms CFT.Index.XV_9K_ks_fold_id
+#print axioms CFT.Index.XV_9K_ks_fold_le
+#print axioms CFT.Index.XV_9K_ks_fold_eq
+#print axioms CFT.Index.XV_9K_ks_inverted
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1208,6 +1219,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.JU.ju_cap_second
 #print axioms CFT.JU.ju_jump_fixed
 #print axioms CFT.JU.ju_theorem_A
+#print axioms CFT.KS.ks_hamiltonian
+#print axioms CFT.KS.ks_rn
+#print axioms CFT.KS.ks_hj
+#print axioms CFT.KS.ks_hj_solves
+#print axioms CFT.KS.ks_inversion_theta
+#print axioms CFT.KS.ks_inversion_sigma
+#print axioms CFT.KS.ks_fold_id
+#print axioms CFT.KS.ks_fold_le
+#print axioms CFT.KS.ks_fold_eq
+#print axioms CFT.KS.ks_inverted
 #print axioms CFT.OC.oc_raychaudhuri
 #print axioms CFT.OC.oc_raychaudhuri_sign
 #print axioms CFT.OC.oc_trapped
