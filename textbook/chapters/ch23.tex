@@ -1,0 +1,168 @@
+\chapter{Higgs Fields, Instantons, Zero Modes and Supersymmetry}\markboth{\MakeUppercase{Chapter 23.\ Higgs, instantons, zero modes, SUSY}}{}
+\label{ch:higgs}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the throat and the BF analysis (\cref{thm:br,thm:bf,thm:longthroat}); the spin-connection condition $w=r'$ (\cref{thm:spinwitten}); the Pauli matrices (Chapter~2); the hedgehog and the monopole zero modes (\cref{ch:monopoles}); the Tolman crunch and the collapse of the central sphere (\cref{thm:crunch,thm:centrecollapse}).\\
+\textbf{It provides:} the throat as an exact solution of the Einstein--Yang--Mills--Higgs system, with a Higgs mass that lifts the BF violation exactly when the Higgs vacuum expectation value is of Planck size; the throat as the top of the barrier between Yang--Mills vacua, and the instanton action $8\pi^2/g^2$ as an integral of $\operatorname{sech}^4$; the cancellation of spin and gauge connections for a fermion in the hedgehog background, which holds exactly when $w=r'$, and the resulting localised zero mode; and the absence of Killing spinors on both sides of the glued spacetime.
+\end{usesbox}
+
+This chapter collects four extensions of the pure Einstein--Yang--Mills picture, each of which tests the glued spacetime against a standard piece of particle physics. Adding a Higgs field asks whether the throat survives symmetry breaking and whether a mass can cure its instability. The instanton asks what the throat is in the Euclidean theory. A fermion in the background asks what the spin-connection condition means for spinors. And supersymmetry asks whether the configuration could be BPS. The first three give positive answers with a twist; the last gives a clean negative answer.
+
+\section{Adding a Higgs triplet}
+
+Add a Higgs field $\Phi$ in the adjoint with potential $V=\frac\lambda4(|\Phi|^2-v^2)^2$ and the spherically symmetric ansatz $\Phi=H(r)\,\hat{\mathbf x}\cdot\boldsymbol\tau$, so that $|D_r\Phi|=H'$ and $|D_\theta\Phi|=wH/r$.
+
+\begin{proposition}[The throat survives]\label{prop:higgsthroat}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item At $w=0$, $H=v$, the energy density is that of the pure EYM throat. The Higgs stress tensor $D_\mu\Phi D_\nu\Phi-g_{\mu\nu}(\frac12|D\Phi|^2+V)$ vanishes because $D\Phi=0$ and $V(v)=0$.
+\item The force terms of the $w$ and $H$ equations vanish at $w=0$, $H=v$, so the throat is still an exact solution.
+\item Conversely, a uniform Higgs vacuum $H=v\ne0$ is compatible with the $H$ equation only if $w=0$; in the symmetric phase $H=0$ the potential contributes $\lambda v^4/4$, a cosmological constant.
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Higgs mass and the BF bound]\label{thm:higgsbf}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Expanding the potential part $U$ of the energy density about $w=0$ at $H=v$:
+\[
+U(w)-U(0)=\Bigl(\frac{v^2}{r^2}-\frac1{g^2r^4}\Bigr)w^2+\frac{w^4}{2g^2r^4},
+\]
+and the kinetic coefficient is $w'^2/(g^2r^2)$. The effective mass is $m^2=g^2v^2-1/r^2$.
+\item At $r=\ell$, $m^2\ell^2=-1+m_W^2\ell^2$ with $m_W=gv$; for $v=0$ this is the value $-1$ of \cref{prop:throatbf}.
+\item The BF bound $m^2\ell^2\ge-\frac14$ holds if and only if $m_W^2\ell^2\ge\frac34$, and then $\Delta=\frac12\pm\sqrt{\frac14+m^2\ell^2}$ is real.
+\item With $\ell^2=4\pi G/g^2$ and $G=1/M_{\rm Pl}^2$, $m_W^2\ell^2=4\pi v^2/M_{\rm Pl}^2$, so the bound holds if and only if $v^2\ge3M_{\rm Pl}^2/(16\pi)$, equivalently $m_W^2\ge3g^2M_{\rm Pl}^2/(16\pi)$.
+\item (Hardy inequality on the throat) If $\mu\ge-\frac14$, then for every $C^1$ function $h$ vanishing at the ends of a window $[a,b]\subset(0,\pi)$, the function $f=\sqrt{\sin u}\,h$ satisfies
+\[
+\int_a^b\Bigl(f'^2+\frac{\mu f^2}{\sin^2u}\Bigr)\dd u\ \ge\ \int_a^b\Bigl(f'^2-\frac{f^2}{4\sin^2u}\Bigr)\dd u=\int_a^b\sin u\Bigl(h'^2+\frac{h^2}4\Bigr)\dd u\ \ge0 .
+\]
+There is no growing mode of the form used in \cref{thm:longthroat}, for any length of the throat.
+\end{enumerate}
+\end{theorem}
+
+So a Higgs mechanism can stabilise the throat, but only with a vacuum expectation value of order $0.24\,M_{\rm Pl}$. For the electroweak scale $v\approx246$\,GeV and $M_{\rm Pl}\approx1.22\times10^{19}$\,GeV one finds $m_W^2\ell^2\approx5\times10^{-33}$, short of $\frac34$ by about thirty-two orders of magnitude: the throat remains BF-unstable. This is a sharp, negative statement about the relevance of the electroweak Higgs to the glued spacetime.
+
+\section{The barrier, the instanton, and the hedgehog charge}
+
+\begin{proposition}[The throat is the top of the barrier]\label{prop:barrier}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The magnetic energy $F(w)=\frac12(1-w^2)^2$ has $F'(0)=0$, $F''(0)=-2$, and $F(\pm1)=0<F(0)=\frac12$. The throat value $w=0$ is the maximum between the two vacua $w=\pm1$.
+\item At the equator of the round $S^3$ the magnetic flux through the sphere is $4\pi\sin^2(\pi/2)=4\pi$: the hedgehog has degree $1$.
+\end{enumerate}
+\end{proposition}
+
+The configuration $w=0$ on a two-sphere is the magnetic monopole of unit charge embedded in $SU(2)$; on $S^3$ the homogeneous configuration $w=0$ is the top of the barrier between topologically distinct vacua, the analogue of the electroweak sphaleron \cite{KlinkhamerManton1984}. Tunnelling through the barrier is described by an instanton.
+
+\begin{theorem}[Instanton action]\label{thm:instanton}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\tanh'=\operatorname{sech}^2$, $\tanh^2=1-\operatorname{sech}^2$, $\tanh$ is odd with limits $\pm1$ at $\pm\infty$; $F=\tanh-\tanh^3/3$ satisfies $F'=\operatorname{sech}^4$ with limits $\pm\frac23$.
+\item $\operatorname{sech}^4$ is continuous and integrable on $\mathbb R$, with $\int_{\mathbb R}\operatorname{sech}^4x\,\dd x=\frac43$ and $\int_{\mathbb R}2\operatorname{sech}^4x\,\dd x=\frac83$.
+\item Hence $3\pi^2\int_{\mathbb R}2\operatorname{sech}^4x\,\dd x=8\pi^2$.
+\end{enumerate}
+\end{theorem}
+
+In Euclidean conformal time $\tau$ on $\mathbb R\times S^3$, the homogeneous Yang--Mills field $w=\tanh\tau$ interpolates between the vacua $w=-1$ and $w=+1$; its action density is $2\operatorname{sech}^4\tau$ in units of $3\pi^2/g^2$, so \cref{thm:instanton}(iii) is the statement that its action is $8\pi^2/g^2$, the action of the BPST instanton \cite{BPST1975}. This is the instanton mapped conformally to the cylinder; the throat sits at its midpoint $\tau=0$.
+
+\section{Zero modes: spin from isospin}
+
+Consider a Dirac fermion in the fundamental of $SU(2)$, in the hedgehog background, and look for states that are singlets of the combined rotation $\mathbf J=\mathbf L+\mathbf S+\mathbf T$. Write the spinor--isospinor as a $2\times2$ matrix $\psi=f(\rho)\,\epsilon$ with $\epsilon=i\sigma_2$.
+
+\begin{proposition}[Matrix identities]\label{prop:twistmatrices}\ver\
+$\epsilon=i\sigma_2$; $\sigma_1^T=\sigma_1$, $\sigma_2^T=-\sigma_2$, $\sigma_3^T=\sigma_3$; for $\hat x\cdot\boldsymbol\sigma$ with real components, $(\hat x\cdot\boldsymbol\sigma)^2=|\hat x|^2$ and $\epsilon(\hat x\cdot\boldsymbol\sigma)^T=-(\hat x\cdot\boldsymbol\sigma)\epsilon$. The gauge term of the hedgehog acting on the singlet is $-\frac i2\sum\epsilon_{akj}\hat x_j\sigma_k\epsilon\sigma_a^T=(\hat x\cdot\boldsymbol\sigma)\epsilon$, and for $|\hat x|=1$, $(\hat x\cdot\boldsymbol\sigma)\epsilon(i\hat x\cdot\boldsymbol\sigma)^T=-i\epsilon$: the spin frame and the gauge transition cancel on the singlet.
+\end{proposition}
+
+\begin{theorem}[Cancellation and the zero mode]\label{thm:zeromode}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Conformal transfer) Let $R(\rho)$ be a flat radius with $\dd R/\dd\rho=R/r$ and $\chi=(r/R)f$. The flat-space radial residual $\dd\chi/\dd R+\frac{1-w}R\chi+(r/R)m\chi$ equals $(r/R)^2$ times the curved residual
+\[
+f'+\frac{r'-w}r\,f+mf .
+\]
+\item If $w=r'$, the coefficient $(r'-w)/r$ vanishes: the spin connection of the sphere and the Yang--Mills connection cancel.
+\item With the coefficient zero, the coupled system $f'=-img$, $g'=imf$ reduces with $g=s\,i\,f$ ($s=\pm1$) to $f'=smf$, solved by $f=e^{sM}$ with $M'=m$.
+\item (Localisation) If $m\ge m_0>0$ on an interval $[a,b]$, then $|f(b)/f(a)|^2=e^{-2(M(b)-M(a))}\le e^{-2m_0(b-a)}$ for $s=-1$.
+\end{enumerate}
+\end{theorem}
+
+The cancellation in (ii) is the curved-space version of the classic observation of Jackiw and Rebbi and of Hasenfratz and 't~Hooft that in a hedgehog background isospin turns into spin \cite{JackiwRebbi1976}. In flat space the cancellation holds asymptotically, where $w\to1$ and $r'=1$. In the glued spacetime it holds \emph{everywhere}, because $w=r'$ throughout the slice: the spin-connection condition of \cref{ch:action} is exactly the condition for fermions to see no net connection in the angular directions. A fermion mass $m$ that is positive on the throat then produces a zero mode localised there, exponentially in the length of the throat.
+
+\section{No supersymmetry}
+
+\begin{theorem}[BPS bound for a supercharge]\label{thm:bps}\ver\
+For any complex matrix $Q$, the operator $H=Q^\dagger Q+QQ^\dagger$ is positive semi-definite, with $\langle\psi,H\psi\rangle=\|Q\psi\|^2+\|Q^\dagger\psi\|^2$. A state has zero energy if and only if $Q\psi=Q^\dagger\psi=0$. Every eigenvalue is non-negative; in particular there is no eigenstate with negative energy.
+\end{theorem}
+
+A mode that violates the BF bound is a negative-energy mode in this sense, so the throat with its Yang--Mills mode $\mu=-1$ cannot be the bosonic part of a supersymmetric vacuum. A more geometric version uses Killing spinors.
+
+\begin{theorem}[No Killing spinors]\label{thm:nokilling}\ver\
+Suppose that $\varepsilon$ is a nowhere-vanishing Killing spinor, so that $K^\mu=\bar\varepsilon\gamma^\mu\varepsilon$ is a causal Killing vector with $K^t=\varepsilon^\dagger\varepsilon$ \ext.
+\begin{enumerate}[label=(\roman*)]
+\item $K^t=\sum_a|\varepsilon_a|^2>0$, and a non-zero causal vector has non-zero time component.
+\item (Throat side) If $K$ is a Killing vector at the reflection-symmetric central sphere, where $\partial_sr=0$ (the derivative of an even function at $0$ vanishes), then $K^t\dot r=0$ forces $r$ to be constant in time. A central sphere that collapses therefore admits no Killing spinor. Combined with \cref{thm:centrecollapse}, whenever the central sphere obeys \eqref{eq:centre} with $2(rW)^2\ge\ell^2$, there is no Killing spinor.
+\item (Tolman side) The Tolman equation $a''=-a$ with $a(0)=\ell$, $a'(0)=0$ has the unique solution $\ell\cos\eta$, even if it is assumed only on $[0,\pi/2)$. The Kretschmann scalar $24\ell^4/a^8$ has $\partial_\eta K\ne0$ for $0<\eta<\pi/2$, while $\partial_\chi K=0$. A Killing vector with $K^\eta>0$ would require $K^\eta\partial_\eta K+K^\chi\partial_\chi K=0$, which fails at any interior point, for instance $(\eta,\chi)=(\pi/4,\pi/8)$. So the exact Tolman region admits no Killing spinor.
+\end{enumerate}
+\end{theorem}
+
+The glued spacetime is therefore non-supersymmetric on both sides, and the BPS-like inequality of \cref{thm:bogomolny} is a geometric, not a supersymmetric, bound. The extremal Reissner--Nordstr\"om solution, whose near-horizon geometry is the throat, is supersymmetric when embedded in $N=2$ supergravity \cite{GibbonsHull1982}; it is the time dependence of the glued configuration, not the throat itself, that breaks supersymmetry.
+
+\begin{litbox}
+Einstein--Yang--Mills--Higgs solutions are reviewed in \cite{VolkovGaltsov1999}; the sphaleron is due to Klinkhamer and Manton \cite{KlinkhamerManton1984}; the instanton to Belavin, Polyakov, Schwartz and Tyupkin \cite{BPST1975}; spin from isospin to Jackiw and Rebbi and to Hasenfratz and 't~Hooft \cite{JackiwRebbi1976}; Killing spinors and the BPS property of extremal RN to Gibbons and Hull \cite{GibbonsHull1982}. New here: the exact survival of the throat with a Higgs triplet, together with the sharp stability condition $v^2\ge3M_{\rm Pl}^2/(16\pi)$ and the Hardy inequality on the window (\cref{prop:higgsthroat,thm:higgsbf}); the cancellation of spin and gauge connections on the whole slice as a consequence of $w=r'$ (\cref{thm:zeromode}); and the proof that neither side of the glued spacetime admits a Killing spinor (\cref{thm:nokilling}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item With a Higgs triplet the throat is exact; it is BF-stable iff $v^2\ge3M_{\rm Pl}^2/(16\pi)$ (\cref{thm:higgsbf}).
+\item $w=0$ is the top of the barrier; the instanton action is $8\pi^2/g^2$ (\cref{prop:barrier,thm:instanton}).
+\item $w=r'$ makes spin and gauge connections cancel; localised zero modes (\cref{thm:zeromode}).
+\item No Killing spinors on either side (\cref{thm:nokilling}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show that $F=\tanh-\tanh^3/3$ has $F'=\operatorname{sech}^4$ and deduce $\int_{\mathbb R}\operatorname{sech}^4=\frac43$.
+\end{exercise}
+\begin{exercise}
+Verify $\epsilon(\hat x\cdot\boldsymbol\sigma)^T=-(\hat x\cdot\boldsymbol\sigma)\epsilon$ for $\epsilon=i\sigma_2$.
+\end{exercise}
+\begin{exercise}
+Show that $-\frac14\le-1+x$ iff $x\ge\frac34$, and compute $v/M_{\rm Pl}$ at the threshold.
+\end{exercise}
+\begin{exercise}
+For $H=Q^\dagger Q+QQ^\dagger$ show $\langle\psi,H\psi\rangle=\|Q\psi\|^2+\|Q^\dagger\psi\|^2$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaXI_HiggsNeck:neck_rho,AlphaXI_HiggsNeck:higgs_stress_zero,AlphaXI_HiggsNeck:neck_vacuum}{The throat with $H=v$: energy density, vanishing Higgs stress, vacuum (three statements).$^*$}
+\chk{AlphaXI_HiggsNeck:U_eq_rho,AlphaXI_HiggsNeck:poly_deriv}{The potential part $U$ and a derivative (two statements).}
+\chk{AlphaXI_HiggsNeck:force_W_zero,AlphaXI_HiggsNeck:force_H_zero}{Vanishing force terms (two statements).$^*$}
+\chk{AlphaOmega_Close:oc_higgs_vev,AlphaOmega_Close:oc_higgs_sym}{Uniform vacuum requires $w=0$; symmetric-phase energy $\lambda v^4/4$ (two statements).}
+\chk{AlphaXI_HiggsNeck:quad_expansion,AlphaXI_HiggsNeck:kinetic_coeff,AlphaXI_HiggsNeck:w_mass}{Quadratic expansion and $m^2=g^2v^2-1/r^2$ (three statements).$^*$}
+\chk{AlphaXI_HiggsNeck:w_mass_neck}{$m^2\ell^2=-1+m_W^2\ell^2$.$^*$}
+\chk{AlphaXI_HiggsNeck:bf_condition,AlphaXI_HiggsNeck:delta_real}{BF condition $m_W^2\ell^2\ge\frac34$; real weights (two statements).$^*$}
+\chk{AlphaXI_HiggsNeck:planck_condition}{$v^2\ge3M_{\rm Pl}^2/(16\pi)$.$^*$}
+\chk{AlphaXI_HiggsNeck:hardy_pointwise,AlphaXI_HiggsNeck:hardy_neck}{Hardy identity, pointwise and integrated (two statements).$^*$}
+\chk{AlphaXI_HiggsNeck:no_growing_mode}{No growing mode for $\mu\ge-\frac14$.$^*$}
+\chk{AlphaIX_Second:landau}{The double well $\frac12(1-w^2)^2$.}
+\chk{AlphaIX_Second:hedgehog_charge}{Hedgehog degree $1$.}
+\chk{AlphaVI_Sech:cosh_ne,AlphaVI_Sech:sinh_sq,AlphaVI_Sech:hasDerivAt_th,AlphaVI_Sech:th_sq,AlphaVI_Sech:th_eq,AlphaVI_Sech:th_neg}{Identities for $\tanh$ and $\cosh$ (six statements).}
+\chk{AlphaVI_Sech:th_top,AlphaVI_Sech:th_bot,AlphaVI_Sech:F_top,AlphaVI_Sech:F_bot}{Limits of $\tanh$ and $F$ (four statements).}
+\chk{AlphaVI_Sech:hasDerivAt_F}{$F'=\operatorname{sech}^4$.}
+\chk{AlphaVI_Sech:sech4_cont,AlphaVI_Sech:integrable_sech4}{Continuity and integrability of $\operatorname{sech}^4$ (two statements).}
+\chk{AlphaVI_Sech:integral_sech4,AlphaVI_Sech:integral_two_sech4}{$\int\operatorname{sech}^4=\frac43$, $\int2\operatorname{sech}^4=\frac83$ (two statements).$^*$}
+\chk{AlphaVI_Sech:instanton_action_integral}{$3\pi^2\cdot\frac83=8\pi^2$.$^*$}
+\chk{AlphaBridge_Twist:eps_eq,AlphaBridge_Twist:s1T,AlphaBridge_Twist:s2T,AlphaBridge_Twist:s3T,AlphaBridge_Twist:xsT,AlphaBridge_Twist:xs_sq}{Pauli-matrix identities (six statements).}
+\chk{AlphaBridge_Twist:eps_xsT}{$\epsilon(\hat x\cdot\boldsymbol\sigma)^T=-(\hat x\cdot\boldsymbol\sigma)\epsilon$.$^*$}
+\chk{AlphaBridge_Twist:gauge_singlet,AlphaBridge_Twist:pole_singlet}{Gauge term on the singlet; cancellation of frame and gauge transitions (two statements).$^*$}
+\chk{AlphaBridge_Twist:chi_deriv,AlphaBridge_Twist:conformal_transfer}{Conformal transfer of the radial residual (two statements).$^*$}
+\chk{AlphaBridge_Twist:twist_cancel}{$(r'-w)/r=0$ for $w=r'$.$^*$}
+\chk{AlphaBridge_Twist:system_reduce,AlphaBridge_Twist:zero_mode}{Reduction and the zero mode $e^{sM}$ (two statements).$^*$}
+\chk{AlphaBridge_Twist:localization}{Exponential localisation.$^*$}
+\chk{AlphaVIII_BPS:susy_posSemidef,AlphaVIII_BPS:energy_split}{$H=Q^\dagger Q+QQ^\dagger\ge0$ (two statements).$^*$}
+\chk{AlphaVIII_BPS:bps_iff}{Zero energy iff $Q\psi=Q^\dagger\psi=0$.$^*$}
+\chk{AlphaVIII_BPS:susy_energy_nonneg,AlphaVIII_BPS:no_bf_violating_mode}{No negative-energy eigenstates (two statements).$^*$}
+\chk{AlphaVIII_Z44:killing_time_pos,AlphaVIII_Z44:causal_time_ne_zero}{$K^t>0$; causal vectors have non-zero time component (two statements).}
+\chk{AlphaVIII_Z44:throat_static}{A Killing vector at the central sphere freezes its radius.$^*$}
+\chk{AlphaVIII_Z44:no_killing_spinor}{Collapse excludes Killing spinors.$^*$}
+\chk{AlphaVIII_Z44b:throat_ds_zero,AlphaVIII_Z44b:no_killing_spinor_sym}{Reflection symmetry; no Killing spinor for a collapsing symmetric throat (two statements).$^*$}
+\chk{AlphaIV_Z9:z44_from_z9,AlphaVIII_Z44b:z44_full}{Combination with the collapse theorem (two statements).$^*$}
+\chk{AlphaVIII_Z44Cap:cap_unique,AlphaFix_Geo:cap_unique_local}{Uniqueness of $\ell\cos\eta$, globally and on $[0,\pi/2)$ (two statements).}
+\chk{AlphaVIII_Z44Cap:kret_hasDeriv,AlphaVIII_Z44Cap:kret_deriv_ne}{$\partial_\eta K\ne0$ (two statements).}
+\chk{AlphaVIII_Z44Cap:no_killing_spinor_cap,AlphaFix_Geo:no_killing_spinor_local}{No Killing spinor on the Tolman side, globally and locally (two statements).$^*$}
+\end{checklist}
