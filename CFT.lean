@@ -11,6 +11,7 @@ import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
 import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
+import CFT.AlphaFamous
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
@@ -66,6 +67,7 @@ import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaPillar_Smooth
+import CFT.AlphaQuantumSpherical
 import CFT.AlphaReal_Junction
 import CFT.AlphaReal_Rest
 import CFT.AlphaRoot_Duality

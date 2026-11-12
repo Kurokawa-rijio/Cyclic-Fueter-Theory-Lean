@@ -10,6 +10,7 @@ import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
 import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
+import CFT.AlphaFamous
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
@@ -65,6 +66,7 @@ import CFT.AlphaPillar_Conformal
 import CFT.AlphaPillar_Polar
 import CFT.AlphaPillar_SelfDual
 import CFT.AlphaPillar_Smooth
+import CFT.AlphaQuantumSpherical
 import CFT.AlphaReal_Junction
 import CFT.AlphaReal_Rest
 import CFT.AlphaRoot_Duality
@@ -279,6 +281,20 @@ import CFT.ZeroModeL2
 #print axioms CFT.DS.ds_slope_disc
 #print axioms CFT.DS.ds_slope_real
 #print axioms CFT.DS.ds_branch
+#print axioms CFT.FAM.fam_birkhoff_u
+#print axioms CFT.FAM.fam_birkhoff_slice
+#print axioms CFT.FAM.fam_rn_mass
+#print axioms CFT.FAM.fam_jt_U0
+#print axioms CFT.FAM.fam_jt_slope
+#print axioms CFT.FAM.fam_jt_coeff
+#print axioms CFT.FAM.fam_jt_S0
+#print axioms CFT.FAM.fam_jt_Wmass
+#print axioms CFT.FAM.fam_no_real_dim
+#print axioms CFT.FAM.fam_hawking_slope
+#print axioms CFT.FAM.fam_schw_T
+#print axioms CFT.FAM.fam_extremal_T
+#print axioms CFT.FAM.fam_first_law
+#print axioms CFT.FAM.fam_hagedorn
 #print axioms CFT.FixDyn.micro_exact_deriv
 #print axioms CFT.FixDyn.coth_eq
 #print axioms CFT.FixDyn.micro_exact_inv_T
@@ -1238,6 +1254,30 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_12_can_mass_constraint
 #print axioms CFT.Index.XV_12_can_F
 #print axioms CFT.Index.XV_12_can_ks_match
+#print axioms CFT.Index.XV_13_qs_kuchar_Lambda
+#print axioms CFT.Index.XV_13_qs_kuchar_cross
+#print axioms CFT.Index.XV_13_qs_neck_F
+#print axioms CFT.Index.XV_13_qs_cap_H
+#print axioms CFT.Index.XV_13_qs_cap_Hx
+#print axioms CFT.Index.XV_13_qs_dtheta
+#print axioms CFT.Index.XV_13_qs_dsigma
+#print axioms CFT.Index.XV_13_qs_planewave_flat
+#print axioms CFT.Index.XV_13_qs_length_pair
+#print axioms CFT.Index.XV_13_qs_length_momentum
+#print axioms CFT.Index.XV_15_fam_birkhoff_u
+#print axioms CFT.Index.XV_15_fam_birkhoff_slice
+#print axioms CFT.Index.XV_15_fam_rn_mass
+#print axioms CFT.Index.XV_16_fam_jt_U0
+#print axioms CFT.Index.XV_16_fam_jt_slope
+#print axioms CFT.Index.XV_16_fam_jt_coeff
+#print axioms CFT.Index.XV_16_fam_jt_S0
+#print axioms CFT.Index.XV_16_fam_jt_Wmass
+#print axioms CFT.Index.XV_16_fam_no_real_dim
+#print axioms CFT.Index.XV_17_fam_hawking_slope
+#print axioms CFT.Index.XV_17_fam_schw_T
+#print axioms CFT.Index.XV_17_fam_extremal_T
+#print axioms CFT.Index.XV_17_fam_first_law
+#print axioms CFT.Index.XV_18_fam_hagedorn
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
@@ -1377,6 +1417,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.Smooth.bf_violation
 #print axioms CFT.Smooth.superpos_null
 #print axioms CFT.Smooth.cylinder_mode
+#print axioms CFT.QS.qs_kuchar_Lambda
+#print axioms CFT.QS.qs_kuchar_cross
+#print axioms CFT.QS.qs_neck_F
+#print axioms CFT.QS.qs_cap_H
+#print axioms CFT.QS.qs_cap_Hx
+#print axioms CFT.QS.qs_dtheta
+#print axioms CFT.QS.qs_dsigma
+#print axioms CFT.QS.qs_planewave_flat
+#print axioms CFT.QS.qs_length_pair
+#print axioms CFT.QS.qs_length_momentum
 #print axioms CFT.RJ.rj_weak_of_pieces
 #print axioms CFT.RJ.rj_delta_coeff_one
 #print axioms CFT.RJ.rj_capW_hasDeriv
