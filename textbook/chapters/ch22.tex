@@ -1,0 +1,132 @@
+\chapter{Linear Stability: the Breitenlohner--Freedman Bound and Long Throats}\markboth{\MakeUppercase{Chapter 22.\ Linear stability}}{}
+\label{ch:stability}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the throat mode and the static analysis (\cref{thm:throatmode}); the conformal frame, in which the throat is $\ell^2\sin^{-2}u\,(-\dd\eta^2+\dd u^2)+\ell^2\dd\Omega^2$ (\cref{thm:confwave}); the crunch at $\eta=\pi/2$ and the marginally trapped front (\cref{thm:crunch,thm:expansions}).\\
+\textbf{It provides:} the Breitenlohner--Freedman bound for $\mathrm{AdS}_2$ from a characteristic equation; the identification of the Yang--Mills perturbation of the throat as a principal-series representation of $SL(2,\mathbb R)$; and a proof that a throat longer than $(2\pi/\sqrt3+\log2)\,\ell\approx4.32\,\ell$ is linearly unstable, with an explicit lower bound on the growth rate that guarantees at least one $e$-fold before the Tolman side recollapses.
+\end{usesbox}
+
+Chapter~16 found that the Yang--Mills field $w=0$ inside the throat has an effective mass below the Breitenlohner--Freedman bound. In an infinite $\mathrm{AdS}_2$ this would be an instability with no intrinsic scale. In the glued spacetime the throat has a finite length, and the question becomes quantitative: how long must the throat be for the instability to fit inside it, and how fast does it grow? This chapter answers both questions with explicit test functions.
+
+\section{The Breitenlohner--Freedman bound}
+
+Consider the radial equation $\varphi''-d\,\varphi'-\mu\varphi=0$ in a logarithmic radial coordinate $t$, where $\mu=m_{\rm eff}^2L^2$ is the mass in units of the AdS radius and $d$ the boundary dimension.
+
+\begin{theorem}[BF bound]\label{thm:bf}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\varphi=e^{\alpha t}$ is a solution if and only if $\alpha^2-d\alpha-\mu=0$.
+\item Real exponents exist if and only if $\mu\ge-d^2/4$. For $\mathrm{AdS}_2$ ($d=1$) the bound is $\mu\ge-\frac14$.
+\item For $\mu<-d^2/4$ the function $e^{dt/2}\cos(\omega t)$ with $\omega^2=-(\mu+d^2/4)$ is a solution: the mode oscillates.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}[The throat's Yang--Mills mode]\label{prop:throatbf}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The Yang--Mills potential term $w(1-w^2)$ has slope $1$ at $w=0$, so the perturbation $\delta w$ in the throat has $\mu=m_{\rm eff}^2\ell^2=-1<-\frac14$, and $\alpha^2-\alpha+1=0$ has no real root.
+\item In the language of $SL(2,\mathbb R)$, the weight of a field with $\mu$ is $\Delta$ with $\Delta(\Delta-1)=\mu$. For real $\Delta$ (discrete series) $\Delta(\Delta-1)\ge-\frac14$, so $\mu=-1$ is impossible. Instead $\Delta=\frac12\pm i\nu$ with $\nu=\sqrt3/2$, since $-\frac14-\nu^2=-1$: the mode belongs to the principal series.
+\item The node spacing of $e^{-s/2}\cos(\sqrt3s/2)$ is $2\pi/\sqrt3$.
+\end{enumerate}
+\end{proposition}
+
+Unitary positive-energy representations of $SL(2,\mathbb R)$, the ones that describe stable fields on $\mathrm{AdS}_2$, belong to the discrete series. A field in the principal series is the representation-theoretic signature of an instability \cite{BreitenlohnerFreedman1982}.
+
+\section{The long-throat instability}
+
+In the conformal frame the throat is $\ell^2\sin^{-2}u\,(-\dd\eta^2+\dd u^2)+\ell^2\dd\Omega^2$, and the junctions with the Tolman regions sit at $u=u_c$ and $u=\pi-u_c$. Linearising the Yang--Mills equation about $w=0$ gives
+\[
+-\partial_\eta^2\delta w+\partial_u^2\delta w+\frac{\delta w}{\sin^2u}=0 .
+\]
+A mode $e^{\lambda\eta}f(u)$ grows if $-f''-f/\sin^2u=-\lambda^2f$ has a solution with $\lambda^2>0$. By the min--max principle this happens if the quadratic form
+\[
+Q[f]=\int\Bigl(f'^2-\frac{f^2}{\sin^2u}\Bigr)\dd u
+\]
+is negative for some $f$ vanishing at the ends of the window \ext. Near $u=0$ the potential $-1/\sin^2u\approx-1/u^2$ is below the Hardy constant $-1/(4u^2)$: this is the BF violation in the conformal frame.
+
+\begin{proposition}[No intrinsic rate]\label{prop:scale}\ver\
+For the scale-invariant comparison problem $(cr)^2f''+2(cr)f'+f-\ell^4\lambda^2f/(cr)^2=0$, if $f$ solves it with rate $\lambda$ then $g(r)=f(cr)$ solves it with rate $\lambda/c$. The comparison problem alone fixes no rate; the rate is set by the window, that is, by the length of the throat.
+\end{proposition}
+
+\begin{theorem}[Long throats are unstable]\label{thm:longthroat}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Comparison form) With the Liouville variable $y=\log(u/u_1)$ and $f=\sqrt u\,h(y)$, the test function $h=\sin(\pi y/Y)$ on $[0,Y]$ gives, for the comparison potential $1/u^2$, the value $\int_0^Y(h'^2-\frac34h^2)\dd y=\frac Y2\bigl((\pi/Y)^2-\frac34\bigr)$, which is negative if and only if $Y>2\pi/\sqrt3$.
+\item (Actual form) For the true potential $1/\sin^2u$ and the window $[u_1,u_1e^Y]$ with $u_1e^Y<\pi$, the substitution is exact: $\int(f'^2-f^2/\sin^2u)\,\dd u=\int_0^YG_2(y)\,\dd y$ and $\int f^2\dd u=\int_0^Y(u_1e^y)^2\sin^2(\pi y/Y)\,\dd y$, where $G_2\le G_1$ because $\sin u\le u$. Hence $Q[f]\le\frac Y2((\pi/Y)^2-\frac34)<0$ for $Y>2\pi/\sqrt3$. Such windows exist, e.g.\ $u_1=10^{-6}$, $Y=4$.
+\item (Throat length) If the junction is at $\sin u_c=\operatorname{sech}(L/\ell)$ with $0<u_c\le\pi/2$, then $u_c\le\pi e^{-L/\ell}$, and the window $[u_c,\pi/2]$ has $Y=\log(\pi/(2u_c))\ge L/\ell-\log2$. Therefore, if
+\[
+\frac L\ell>\frac{2\pi}{\sqrt3}+\log2\approx4.32,
+\]
+the quadratic form is negative on that window: the throat is linearly unstable.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Growth rate]\label{thm:growth}\ver\
+Assume the min--max characterisation of the largest growth rate, $-\lambda^2\int f^2\le Q[f]$ for the test function above \ext. Then for $L/\ell>4$,
+\[
+\lambda^2\ge\Bigl(\frac34-\frac{\pi^2}{16}\Bigr)\frac{e^{2(L/\ell-4)}}{\pi^2},
+\]
+and for $L/\ell\ge7$, $\lambda^2\ge1$. Since the Tolman side recollapses at $\eta=\pi/2$, after proper time $\int_0^{\pi/2}\ell\cos\eta\,\dd\eta=\ell$, a throat with $L\ge7\ell$ grows by at least one $e$-fold before the crunch.
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+The Liouville substitution turns the problem into one with a constant potential $-\frac34$ on an interval of length $Y$; the change of variables is exact, including the measure. The integrals $\int_0^Y\sin^2(\pi y/Y)=\int_0^Y\cos^2(\pi y/Y)=Y/2$ and $\int_0^Y\sin\cos=0$ give the value of the comparison form. For the growth rate one takes $Y=4$, where the form is at most $2\bigl((\pi/4)^2-\frac34\bigr)<0$, and bounds the norm $\int_0^4(u_ce^y)^2\sin^2(\pi y/4)\,\dd y$ from above using $u_c\le\pi e^{-L/\ell}$; dividing gives the stated bound.
+\end{proof}
+
+The growth rate increases exponentially with the length of the throat. This is because the junction moves exponentially close to the pole of $S^3$ in the conformal frame, where the BF-violating potential is strongest.
+
+\section{Trapping on both sides}
+
+\begin{proposition}\label{prop:bothtrapped}\ver\
+On the Tolman front $\chi=\pi/2-\eta$ ($0<\eta<\pi/2$), $\theta_+=0$ and $\theta_-<0$. On the throat every sphere has constant radius $\ell$, so $\theta_\pm=0$.
+\end{proposition}
+
+So at the moment the instability develops, the throat is a marginally trapped tube and the Tolman front is marginally trapped. Any growth of the Yang--Mills perturbation that decreases $r$ makes these spheres trapped, consistent with the collapse found in \cref{ch:collapse}.
+
+\begin{litbox}
+The BF bound is from \cite{BreitenlohnerFreedman1982}; its representation-theoretic form, with the principal series as the unstable case, is standard in $\mathrm{AdS}_2$ holography (see \cite{Spradlin1999} and references there). The instability of the throat region of colour black holes and the role of the BF bound in the Bartnik--McKinnon family are discussed in \cite{VolkovGaltsov1999}. What is new here is the quantitative long-throat instability of the glued spacetime: an explicit threshold $L/\ell>2\pi/\sqrt3+\log2$, proved with an exact Liouville substitution and a comparison of $1/\sin^2u$ with $1/u^2$ (\cref{thm:longthroat}), and a lower bound on the growth rate that is exponential in $L/\ell$ (\cref{thm:growth}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item BF bound $\mu\ge-\frac14$ for $\mathrm{AdS}_2$; the throat mode has $\mu=-1$ and is principal series (\cref{thm:bf,prop:throatbf}).
+\item Throats with $L/\ell>2\pi/\sqrt3+\log2$ are unstable (\cref{thm:longthroat}).
+\item Growth rate $\gtrsim e^{L/\ell}$; one $e$-fold before the crunch for $L\ge7\ell$ (\cref{thm:growth}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show that $e^{\alpha t}$ solves $\varphi''-d\varphi'-\mu\varphi=0$ iff $\alpha^2-d\alpha-\mu=0$, and that real roots exist iff $\mu\ge-d^2/4$.
+\end{exercise}
+\begin{exercise}
+Compute $\int_0^Y\bigl((\pi/Y)^2\cos^2(\pi y/Y)-\frac34\sin^2(\pi y/Y)\bigr)\dd y$ and find when it is negative.
+\end{exercise}
+\begin{exercise}
+Show that for real $h$, $h(h-1)\ge-\frac14$, and that $\Delta=\frac12+i\frac{\sqrt3}2$ has $\Delta(\Delta-1)=-1$.
+\end{exercise}
+\begin{exercise}
+Show $\int_0^{\pi/2}\ell\cos\eta\,\dd\eta=\ell$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaVIII_BF:exp_derivs}{Derivatives of $e^{\alpha t}$.}
+\chk{AlphaVIII_BF:char_root}{Characteristic equation.$^*$}
+\chk{AlphaVIII_BF:real_roots_iff,AlphaVIII_BF:bf_ads2}{BF bound, general and for $\mathrm{AdS}_2$ (two statements).$^*$}
+\chk{AlphaVIII_BF:oscillating_solution}{Oscillating solution below the bound.$^*$}
+\chk{AlphaII_EYM:neck_W_slope,AlphaII_EYM:neck_W_unstable}{Slope $1$ of $w(1-w^2)$ at $0$; $\mu=-1$ violates the bound (two statements).$^*$}
+\chk{AlphaOmega_Close:oc_discrete_casimir}{Discrete series: $h(h-1)\ge-\frac14$, never $-1$.$^*$}
+\chk{AlphaOmega_Close:oc_principal}{Principal series: $-\frac14-\nu^2=-1$ for $\nu=\sqrt3/2$.$^*$}
+\chk{AlphaOmega_Close:oc_node_spacing}{Node spacing $2\pi/\sqrt3$.}
+\chk{AlphaXI_NeckInstability:no_intrinsic_rate,AlphaXI_NeckInstability:scaled_deriv}{Scale symmetry: no intrinsic rate (two statements).$^*$}
+\chk{AlphaXI_NeckInstability:int_sin_sq,AlphaXI_NeckInstability:int_cos_sq,AlphaFix_Neck:int_sin_cos}{Elementary integrals (three statements).}
+\chk{AlphaXI_NeckInstability:Q_value,AlphaXI_NeckInstability:Q_neg_iff}{Comparison form and its sign (two statements).$^*$}
+\chk{AlphaFix_Neck:G1_integral}{The same in the $y$ variable.}
+\chk{AlphaXI_NeckInstability:Y_lower,AlphaFix_Neck:junction_near_boundary}{$Y\ge L/\ell-\log2$ and $u_c\le\pi e^{-L/\ell}$ (two statements).$^*$}
+\chk{AlphaXI_NeckInstability:long_neck_unstable}{Instability with the comparison potential.$^*$}
+\chk{AlphaFix_Neck:change_var,AlphaFix_Neck:test_deriv,AlphaFix_Neck:integrand_eq,AlphaFix_Neck:norm_integrand_eq,AlphaFix_Neck:G2_cont}{Exact Liouville substitution: change of variables, derivative of the test function, integrands, continuity (five statements).}
+\chk{AlphaFix_Neck:liouville_actual,AlphaFix_Neck:liouville_norm}{The quadratic form and the norm in the $y$ variable (two statements).$^*$}
+\chk{AlphaFix_Neck:G2_le_G1,AlphaFix_Neck:actual_le}{$G_2\le G_1$ and the resulting bound (two statements).$^*$}
+\chk{AlphaFix_Neck:actual_form_neg}{The true quadratic form is negative for $Y>2\pi/\sqrt3$.$^*$}
+\chk{AlphaFix_Neck:nonempty_window}{An admissible window exists.}
+\chk{AlphaFix_Neck:long_neck_unstable_actual}{Long-throat instability with the true potential.$^*$}
+\chk{AlphaFix_Neck:growth_rate_bound}{Growth-rate lower bound.$^*$}
+\chk{AlphaFix_Neck:one_efold_before_collapse,AlphaFix_Neck:cap_collapse_time}{One $e$-fold before the crunch for $L\ge7\ell$; crunch after proper time $\ell$ (two statements).$^*$}
+\chk{AlphaFix_Neck:front_marginally_trapped,AlphaFix_Neck:neck_marginal}{Marginal trapping on the front and on the throat (two statements).}
+\end{checklist}

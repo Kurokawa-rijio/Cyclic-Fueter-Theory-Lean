@@ -152,3 +152,17 @@ AlphaS5_Curvature:wgc_length	ch30
 AlphaIV_Z9:z44_from_z9	ch23
 AlphaPillar_Conformal:ground_state	ch26
 AlphaPillar_Conformal:quantized	ch26
+AlphaFix_Neck:jt_dt	ch25
+AlphaFix_Neck:jt_dtt	ch25
+AlphaFix_Neck:jt_dz	ch25
+AlphaFix_Neck:jt_dzz	ch25
+AlphaFix_Neck:jt_dtz	ch25
+AlphaFix_Neck:jt_neck_solution	ch25
+AlphaFix_Neck:no_static_dilaton	ch25
+AlphaFix_Neck:jt_gradient	ch25
+AlphaFix_Neck:jt_bifurcation	ch25
+AlphaFix_Neck:jt_normalization	ch25
+AlphaVIII_BF:z42_conditional	intB
+AlphaVIII_BF:z42_adopted	intB
+AlphaVIII_BF:one_eighth_not_integer	intB
+AlphaVIII_BF:one_quarter_not_integer	intB
