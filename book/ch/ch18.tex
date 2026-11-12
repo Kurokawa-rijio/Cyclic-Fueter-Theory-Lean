@@ -1,0 +1,49 @@
+\chapter{Time evolution}\label{ch:evolution}
+
+\begin{questionbox}
+Released from its initial slice, what does the dumbbell do? The caps collapse to a curvature singularity at proper time $\ell$. The neck does not collapse at all. Between them a wedge bounded by the two null fronts evolves by its own equations, and numerically it falls into a singularity of its own after about $1.27\,\ell$.
+\end{questionbox}
+
+\section{The constraints are preserved}
+
+Before evolving anything one must know that the constraints of Chapter~11, once satisfied, stay satisfied. In synchronous gauge with the full spherically symmetric Einstein--Yang--Mills system, the time derivatives of the Hamiltonian and momentum constraints are linear combinations of the constraints themselves (\lean{hamiltonian\_propagation}, \lean{momentum\_propagation}). In double null coordinates the same holds for the two focusing constraints, and in Chapter~25 we will see that it continues to hold when fermions are added.
+
+\section{The cap collapses}
+
+The cap is the closed radiation universe $a=\ell\cos\eta$. Its curvature can be measured by the Kretschmann invariant $K=R_{abcd}R^{abcd}$, computed in the repository from the Riemann tensor of the metric.
+
+\begin{theorem}\proved
+On the cap, $K=24\ell^4/a^8$. As $\eta\to\pi/2$, $a\to0$ and $K\to\infty$. Since $K$ is independent of position, this happens everywhere on the cap at once, including its centre, at central proper time $\tau=\ell$.
+\end{theorem}
+\noindent In the repository: \lean{kret\_cap}, \lean{kret\_blowup}, \lean{center\_limit}.
+
+Light emitted from the junction at $\chi=\pi/2$ travels inward along $\chi=\pi/2-\eta$ and reaches the centre exactly at the crunch (\lean{front\_hits\_center}). The centre never learns that a neck was attached.
+
+\section{The neck does not}
+
+On the neck the natural clock is the proper time $t$ of observers who start at rest on the initial slice. In these Gaussian coordinates the neck metric is $-dt^2+\cos^2(t/\ell)\,dz^2+\ell^2d\Omega^2$ (\lean{neck\_gaussian}). At $t=\pi\ell/2$ the factor $\cos^2(t/\ell)$ vanishes: neighbouring geodesics meet. This is a focal point of the time slicing, not a curvature singularity, since the neck's curvature is constant.
+
+For a while it was tempting to identify the cap's conformal time with the neck's time and see the crunch and the focusing as one event. That is wrong: in the common Gaussian clock the cap crunches at $\ell$ and the neck focuses at $\pi\ell/2$, two different events (\lean{two\_events}). \negative
+
+\section{The wedge}
+
+Between the two null fronts lies a region that is neither cap nor neck. Its evolution is a characteristic initial value problem: data on the two fronts determine the solution inside. Local existence and uniqueness for such problems are classical theorems \external. Numerically, with the equations in double null form, the following was found \numerical:
+\begin{itemize}[leftmargin=*]
+\item the constraints are preserved with second-order convergence;
+\item the jump $[W_u]$ along the fronts stays at $1/\sqrt2$ in units of $\ell$;
+\item the areal radius reaches zero on a spacelike curve; the region between the fronts survives for about $1.27\,\ell$ of proper time;
+\item the wedge is a trapped region: both null expansions are negative there (\lean{oc\_trapped}).
+\end{itemize}
+
+\section{The neck's throat under a source}
+
+If a transverse wave passes through the throat, the throat itself can collapse. With a source of strength $(rW)^2\ge\kappa>\ell^2/2$, starting from rest at radius $r_1$, the throat radius decreases monotonically and reaches zero before half the natural period (\lean{acc\_le}, \lean{rp\_nonpos}, \lean{z9\_collapse}, \lean{z9\_before\_half\_period}). The proof derives the monotonicity from the equation rather than assuming it.
+
+\begin{standsbox}
+The cap's collapse is that of Tolman's universe, and the constraint propagation is standard. The common-clock correction, the trapped wedge and the throat collapse theorem are part of the programme. The wedge's lifetime is a numerical result. Whether the singularity of the wedge is the endpoint of the dumbbell or the place where quantum gravity takes over is open. \open
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $K=24\ell^4/a^8$ on the cap. \emph{Answer:} \lean{kret\_cap}.\end{exercise}
+\begin{exercise}Show that the inward null front from $\chi=\pi/2$ reaches $\chi=0$ only at $\eta=\pi/2$. \emph{Answer:} \lean{front\_hits\_center}.\end{exercise}
+\begin{exercise}Show that the cap crunch and the neck focus are distinct events. \emph{Answer:} \lean{two\_events}.\end{exercise}

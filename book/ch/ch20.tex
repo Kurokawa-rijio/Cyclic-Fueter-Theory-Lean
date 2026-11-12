@@ -1,0 +1,50 @@
+\chapter{Stability}\label{ch:stability}
+
+\begin{questionbox}
+Is the dumbbell stable? Not as it stands. The neck carries a mode of the gauge field below the Breitenlohner--Freedman bound, and a long enough neck is certainly unstable. The cap sits on top of a potential barrier. An adjoint Higgs field heavy enough can cure the neck, and this gives the stability bound that will meet the weak gravity conjecture in Chapter~26.
+\end{questionbox}
+
+\section{The Breitenlohner--Freedman bound}
+
+In anti-de~Sitter space a field can have a negative mass squared and still be stable, as long as $m^2\ell^2\ge-1/4$ in two dimensions. Below that bound perturbations grow. For a mode $e^{-ks}$ the characteristic equation $k^2-k-m^2\ell^2=0$ has real roots exactly when $m^2\ell^2\ge-1/4$ (\lean{char\_root}, \lean{real\_roots\_iff}, \lean{bf\_ads2}).
+
+On the neck, the gauge-field mode $W$ has $m^2\ell^2=-1$. It violates the bound, and inside the throat its profile oscillates as $e^{-s/2}\cos(\sqrt3\,s/2)$ (\lean{throat\_mode}, \lean{bf\_violation}).
+
+\section{How long a neck is unstable}
+
+Pure $\mathrm{AdS}_2$ has no length scale, so the rate of growth must come from where the neck is cut off, at the junction (\lean{no\_intrinsic\_rate}). A Liouville transformation turns the quadratic form of the mode into $\int(h'^2-\tfrac34h^2)\,dy$ over an interval of length $Y$, which is negative for a suitable trial function when $Y>2\pi/\sqrt3$ (\lean{Q\_value}, \lean{Q\_neg\_iff}).
+
+\begin{theorem}\proved
+If the half-length $L$ of the neck exceeds $\ell\,(2\pi/\sqrt3+\log2)\approx4.32\,\ell$, the neck has a growing mode.
+\end{theorem}
+\noindent In the repository: \lean{Y\_lower}, \lean{long\_neck\_unstable}, and the sharper version with the actual potential \lean{long\_neck\_unstable\_actual}.
+
+This is a sufficient condition. Whether short necks are stable is open. \open
+
+\section{The cap is a sphaleron}
+
+On the cap the gauge field is homogeneous, $W=f(\eta)\cos\chi$ in a suitable sense, and the reduced dynamics is a double well $(1-f^2)^2$ with the cap sitting exactly on top of the barrier, at $f=0$. Small deviations grow at rate $\sqrt2$ (\lean{ol\_sphaleron\_rate}). The geometry does not notice: the conformal factor obeys $\Omega''=-\Omega$ whatever $f$ does, because the stress stays that of radiation (\lean{ol\_geometry\_rigid}). The field is unstable; the spacetime is rigid. This is the dynamical counterpart of the linear rigidity theorem.
+
+\section{Curing the neck with a Higgs field}
+
+Add an adjoint Higgs field with vacuum value $v$. The neck remains an exact solution with the same radius (\lean{neck\_vacuum}, \lean{force\_W\_zero}), and the $W$ mode acquires a mass from the Higgs mechanism, so that $m^2\ell^2=-1+m_W^2\ell^2$ (\lean{w\_mass\_neck}).
+
+\begin{theorem}\proved\label{thm:higgsneck}
+If $m_W^2\ell^2\ge3/4$, equivalently $v\ge\sqrt{3/(16\pi)}\,M_{\mathrm{Pl}}\approx0.244\,M_{\mathrm{Pl}}$, the $W$ mode has no growing mode on a neck of any length.
+\end{theorem}
+\noindent In the repository: \lean{bf\_condition}, \lean{planck\_condition}, \lean{hardy\_neck}, \lean{no\_growing\_mode}.
+
+The proof uses a Hardy-type inequality on the neck rather than the BF bound of the infinite throat, so it holds for finite necks too.
+
+\section{The smoothness map}
+
+What smooth static configurations exist at all? With a cosmological constant there is a family of cylinders of radius $R$ with $\Lambda=1/R^2-1/R^4\le1/(4\ell^2)$, the maximum at $R=\sqrt2\,\ell$ (\lean{cylinder\_family}, \lean{cylinder\_max}). At a static throat $r''=-2W'^2/r\le0$, so a static shape cannot have a waist (\lean{no\_static\_throat}). The Einstein static universe with a Yang--Mills field is an exact solution with radius $\sqrt2\,\ell$ and $\Lambda=3/(4\ell^2)$ (\lean{esu\_ym}). Numerically, the known smooth static sequences approach a smooth core joined to an infinitely long throat of radius $\ell$ \numerical: smooth solutions exist, but they are not dumbbells of finite length.
+
+\begin{standsbox}
+The BF bound and the instabilities of Yang--Mills fields in $\mathrm{AdS}_2$ are known. The length threshold, the sphaleron reading of the cap with its rigid geometry, and the Higgs stability bound with its Planck-scale vacuum value are results of the programme. The bound $m_W^2\ell^2\ge3/4$ reappears in Chapter~26 as one side of a window whose other side is the weak gravity conjecture.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $k^2-k-m^2\ell^2=0$ has real roots iff $m^2\ell^2\ge-1/4$. \emph{Answer:} \lean{real\_roots\_iff}.\end{exercise}
+\begin{exercise}Check that $e^{-s/2}\cos(\sqrt3 s/2)$ solves $W''+W'+W=0$. \emph{Answer:} \lean{throat\_mode}.\end{exercise}
+\begin{exercise}Show that $1/R^2-1/R^4\le1/4$ with equality at $R=\sqrt2$. \emph{Answer:} \lean{cylinder\_max}.\end{exercise}

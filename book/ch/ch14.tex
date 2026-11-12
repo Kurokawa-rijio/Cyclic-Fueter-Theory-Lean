@@ -1,0 +1,58 @@
+\chapter{Three phases}\label{ch:phases}
+
+\begin{questionbox}
+Chapter~11 ended with an equation, $R=(\ell^2/2)|Rm|^2$, that a slice must satisfy when its gauge field is its own spin connection. Which shapes satisfy it? Only three: a round three-sphere of radius $\ell$, flat space, and a cylinder of radius $\ell$. These are the three building blocks from which every dumbbell is made, and no static dumbbell exists.
+\end{questionbox}
+
+\section{The candidates}
+
+Among the homogeneous three-geometries there are five natural candidates: flat space, the round sphere $S^3(a)$, hyperbolic space $H^3(a)$, and the two products $S^2(a)\times\mathbb R$ and $H^2(a)\times\mathbb R$. Testing each against $R=(\ell^2/2)|Rm|^2$ is a matter of plugging in constant curvatures.
+
+\begin{proposition}\proved
+The equation holds for flat space, for $S^3(\ell)$ and for $S^2(\ell)\times\mathbb R$. It fails for every hyperbolic space and for $H^2\times\mathbb R$.
+\end{proposition}
+\noindent In the repository: \lean{satI\_flat}, \lean{satI\_sphere}, \lean{satI\_sphProd}, \lean{not\_satI\_hyp}, \lean{not\_satI\_hypProd}, \lean{three\_phases}.
+
+That these five are the only possibilities when the Ricci tensor is parallel is a classification theorem of Cheng, Ishikawa and Shiohama, which the repository quotes \external. For the spherically symmetric case, which is all the dumbbell needs, it proves the classification itself.
+
+\section{The spherical classification}
+
+For $ds^2=dx^2+r(x)^2d\Omega^2$ with $W=r'$, the requirement that $W=r'$ survive the first moment of time evolution splits into cases (\lean{sector\_geodesic}, \lean{phase\_neck}, \lean{phase\_form}). Combined with the Hamiltonian constraint, each case has a clean global solution.
+
+\begin{theorem}\proved\label{thm:phases}
+A spherically symmetric slice in one of the phases is, globally,
+\begin{enumerate}[label=(\alph*)]
+\item an $S^3$ phase, $r=r(0)\cos(x/\ell)+\ell r'(0)\sin(x/\ell)$ with $r(0)^2+\ell^2r'(0)^2=\ell^2$, closing smoothly at its poles;
+\item a flat phase, $r=r(0)\pm x$;
+\item the neck, $r=\ell$.
+\end{enumerate}
+\end{theorem}
+\noindent In the repository: \lean{s3\_global}, \lean{s3\_amplitude}, \lean{s3\_pole\_regular}, \lean{flat\_global}.
+
+The proof of (a) is the energy method for the harmonic oscillator: the quantity $r^2+\ell^2r'^2$ is conserved and fixes the amplitude to be $\ell$. At the poles $r'^2=1$, which is exactly the condition for no conical singularity.
+
+\section{No static dumbbell}
+
+Can the pieces be glued into something static? Take the full static equations with a lapse $N(x)$, the Hamiltonian constraint, the radial Einstein equation and the Yang--Mills equation, all with $W=r'$.
+
+\begin{theorem}\proved\negative\label{thm:nostatic}
+On any interval, a static solution has either $W\equiv0$ (and then $r\equiv\ell$, the neck) or $W\equiv\pm1$ (and then the slice is flat). In particular no static solution joins a cap to a neck.
+\end{theorem}
+\noindent In the repository: \lean{static\_W\_trichotomy}, \lean{static\_classification}.
+
+The proof deserves a word because it is unusual. On an open set where $W\ne0$ and $W^2\ne1$, one differentiates the constraint three times along the flow and finds four polynomial expressions that must all vanish. A certificate, found by a Gr\"obner basis computation and checked in Lean, writes the nonzero quantity $\ell^2(rW(W^2-1))^4$ as a combination of those four (\lean{cert}). So the open set is empty, and continuity does the rest.
+
+Since the dumbbell cannot stand still, it must move. Chapters~15 and 18 describe how.
+
+\begin{asidebox}{For the specialist}
+The general (non-spherical) problem of slices with harmonic curvature satisfying a quadratic Ricci constraint is treated in the repository through the class C2 of three distinct Ricci eigenvalues, with a two-stage compatibility computation (modules \lean{C2}, \lean{SS*}, \lean{Aligned}). It shows that the aligned C2 case has no solutions. This material is not needed for the rest of the book.
+\end{asidebox}
+
+\begin{standsbox}
+The candidate list is standard and the general classification is quoted. The spherical classification, the global solutions and the non-existence of static dumbbells with a polynomial certificate are proved here.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Check that $S^3(\ell)$ satisfies $R=(\ell^2/2)|Rm|^2$ and $H^3(a)$ does not. \emph{Answer:} \lean{satI\_sphere}, \lean{not\_satI\_hyp}.\end{exercise}
+\begin{exercise}Show that $r^2+\ell^2r'^2$ is constant when $r''=-r/\ell^2$. \emph{Answer:} \lean{s3\_amplitude}.\end{exercise}
+\begin{exercise}Show that $r'^2=1$ where $r=0$ on an $S^3$ phase. \emph{Answer:} \lean{s3\_pole\_regular}.\end{exercise}

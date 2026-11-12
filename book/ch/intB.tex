@@ -1,0 +1,40 @@
+\startinterlude{B}
+\chapter{Contact with string theory}\label{int:B}
+
+\begin{questionbox}
+Does the dumbbell know anything about string theory? A few things fit together surprisingly well: the three-sphere of the cap is a consistent string background, the gravitational corrections of heterotic string theory cancel on the dumbbell, and the neck is exactly an attractor geometry. One thing does not fit: the natural string level comes out fractional. This interlude reports both.
+\end{questionbox}
+
+This interlude can be skipped. It is placed after Part~IV because it uses the neck and its stability.
+
+\section{The three-sphere as a string background}
+
+A string can propagate consistently on $S^3=SU(2)$ if the curvature of space is balanced by a three-form flux $H$. The required condition at one loop is $\mathrm{Ric}_{ab}=\tfrac14H_{acd}H_b{}^{cd}$. On $SU(2)$ the parallelising torsion of the left-invariant frame supplies exactly such an $H$, and the identity holds term by term, using only the quaternion commutators $[i,j]=2k$ and their cyclic images (\lean{quat\_bracket}, \lean{eps\_contract}, \lean{s3\_ricci}, \lean{parallelizing\_torsion}). The total flux through a sphere of radius $R$ is $4\pi^2R^2$ (\lean{flux}).
+
+For the Wess--Zumino term to be well defined, the flux must be quantised in units of $\alpha'$: $R^2=k\alpha'$ with an integer level $k$ (\lean{level}, quoted \external). If one sets $R=\ell$ and uses the heterotic relation between $G$, $g$ and $\alpha'$, one finds $k=c$ with $c=1/8$ or $1/4$ depending on conventions. Neither is an integer (\lean{wzw\_level}, \lean{wzw\_obstruction}). \negative
+
+\section{The standard embedding}
+
+Heterotic string theory corrects Einstein's equations at order $\alpha'$ by terms involving $\operatorname{tr}R^2-\operatorname{tr}F^2$. If the gauge connection is set equal to the spin connection, the ``standard embedding'', these terms cancel. On the Euclidean dumbbell, where the spin connection lives in the compact algebra $\mathfrak{so}(4)$, the embedding is well defined and all $\alpha'$ terms in the equations of motion vanish (\lean{gs\_rhs\_vanishes}, \lean{all\_alpha\_terms\_vanish}). This is the stringy echo of $W=r'$: the gauge field is the spin connection.
+
+\section{The neck is an attractor}
+
+Sen's entropy function method finds the near-horizon geometry of an extremal black hole by extremising a function of the sizes $v_1$ of $\mathrm{AdS}_2$ and $v_2$ of $S^2$. For Einstein--Yang--Mills with magnetic charge $p$ it is
+\[
+\mathcal E(v_1,v_2)=\frac\pi G(v_2-v_1)+\frac{4\pi^2p^2}{g^2}\frac{v_1}{v_2},
+\]
+derived from the action (\lean{entropy\_from\_action}). Its only critical point is $v_1=v_2=p^2\ell^2$, the critical value equals the Bekenstein--Hawking entropy, and for $p=1$ the sphere has radius exactly $\ell$ (\lean{z41\_critical}, \lean{z41\_entropy}, \lean{z41\_neck}). The neck of the dumbbell is the attractor.
+
+\section{The dumbbell is not supersymmetric}
+
+If a Killing spinor existed, its bilinear would be a timelike Killing vector, and at the throat it would force $\partial_tr=0$. But the throat collapses under a source (Chapter~18). So the collapsing dumbbell admits no Killing spinor (\lean{killing\_time\_pos}, \lean{no\_killing\_spinor}, \lean{no\_killing\_spinor\_cap}). Consistently, supersymmetric fluctuation operators have the form $Q^\dagger Q+QQ^\dagger$ and no negative modes (\lean{susy\_posSemidef}, \lean{no\_bf\_violating\_mode}), while the neck has one.
+
+\begin{standsbox}
+WZW models, the standard embedding and the attractor mechanism are standard string theory. Their application to the dumbbell is checked here. The fractional level is a genuine obstruction to embedding the dumbbell with $R=\ell$ into an $SU(2)$ WZW model and is recorded as a negative result.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Verify $\sum_{cd}\varepsilon_{acd}\varepsilon_{bcd}=2\delta_{ab}$. \emph{Answer:} \lean{eps\_contract}.\end{exercise}
+\begin{exercise}Find the critical point of $\mathcal E$. \emph{Answer:} \lean{z41\_critical}.\end{exercise}
+\begin{exercise}Show that a level $k$ with $0<k<1$ is not a positive integer. \emph{Answer:} \lean{wzw\_obstruction}.\end{exercise}
+\stopinterlude{20}

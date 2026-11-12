@@ -1,0 +1,46 @@
+\chapter{Junctions}\label{ch:junctions}
+
+\begin{questionbox}
+When two different solutions of Einstein's equations meet along a surface, what must happen at the surface? In general a thin shell of matter has to sit there. For the dumbbell there are three kinds of surface, and the answer differs for each: a timelike junction needs both a gravitational shell and a colour current and is excluded, a junction inside a single slice needs a shell density, and a null front needs nothing at all. That is why the dumbbell evolves through null fronts.
+\end{questionbox}
+
+\section{Equations as distributions}
+
+A junction is a place where the metric is continuous but its derivatives jump. Einstein's equations then contain products like ``derivative of a jump'', which are delta functions. The clean way to handle them is to read the field equations as distributions: integrate against a smooth test function, move derivatives onto the test function by integrating by parts, and compare the coefficients of $\delta$ on both sides.
+
+The repository does this from scratch. If $r$ is continuous across $x_0$ and $r'$ jumps by $[r']$, then in the weak sense $r''$ equals its regular part plus $[r']\,\delta_{x_0}$ (\lean{weak\_second\_derivative}). The coefficient of $\delta$ is unique (\lean{delta\_coeff}, \lean{rj\_delta\_coeff\_one}), so one can read off what must sit on the surface.
+
+\section{Three kinds of surface}
+
+\begin{theorem}\proved\label{thm:junctions}
+For spherically symmetric Einstein--Yang--Mills fields joined across a sphere:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Within a slice.} A jump in $r'$ requires a shell of surface density $\sigma=-[r']/(4\pi Gr_0)$; there is no shell exactly when $r'$ is continuous.
+\item \emph{Timelike.} A timelike junction surface between a cap and a neck requires both a gravitational shell (a jump in extrinsic curvature) and a surface colour current. There is no shell-free timelike junction.
+\item \emph{Null.} A null front carries neither a shell nor a colour current, but $W_u$ may jump; the jump is constant along the front.
+\end{enumerate}
+\end{theorem}
+\noindent In the repository: \lean{shell\_density}, \lean{no\_shell\_iff}, \lean{timelike\_no\_go}, \lean{dumbbell\_no\_shellfree\_timelike}, \lean{dumbbell\_color\_current}, \lean{null\_front\_no\_shell}, \lean{jump\_transport}, and the real-function versions \lean{rj\_tube\_mismatch}, \lean{rj\_Wu\_transport}.
+
+Part (iii) is the reason the dumbbell has to be organised around light. The cap and the neck are glued at $x=\pi\ell/2$ on the initial slice. From there the influence of the junction travels outward along two null fronts, and on those fronts nothing singular sits: only the derivative of $W$ across the front is discontinuous, a weak discontinuity of the kind that hyperbolic equations always transport along characteristics.
+
+\section{The general Israel condition}
+
+For non-null surfaces without any symmetry, the jump in extrinsic curvature is tied to the surface stress by Israel's condition, $S_{ab}=-\frac1{8\pi G}([K_{ab}]-h_{ab}[K])$. It can be inverted, $[K_{ab}]=-8\pi G\bigl(S_{ab}-h_{ab}\operatorname{tr}S/(n-1)\bigr)$, and there is no shell exactly when the extrinsic curvature is continuous (\lean{israel\_trace}, \lean{israel\_inverse}, \lean{israel\_no\_shell}). For null shells the analogue is the Barrabès--Israel condition, derived in the repository from the distributional $uu$ equation (\lean{null\_shell\_from\_weak}, \lean{null\_no\_shell\_iff}).
+
+\section{The size of the jump}
+
+At the corner where the null front leaves the junction sphere, the cap has $W_u=1/(\sqrt2\ell)$ and the neck has $W_u=0$. Since the jump is constant along the front, it stays $1/(\sqrt2\ell)$ all the way (\lean{rj\_capWu\_corner}, \lean{ju\_jump\_fixed}). The focusing equation then forces a jump in $r_{uu}$ as well, $[r_{uu}]=-(2/r)[W_u^2]$ (\lean{ruu\_jump}, \lean{rj\_ruu\_corner}).
+
+\begin{asidebox}{A correction recorded honestly}
+An earlier version of these theorems passed from abstract derivations to real functions through a structure called \texttt{RealLine}. It turned out that its hypotheses could only be satisfied by constant functions, so the final theorems were vacuous. Version 0.6.0 proves them again directly for real functions with ordinary derivatives (\lean{CFT.RJ}). The episode is kept in the record because it is the kind of error a proof assistant makes visible.
+\end{asidebox}
+
+\begin{standsbox}
+The Israel and Barrabès--Israel conditions are classical. The analysis of the three junction types for the cap--neck pair, the impossibility of a shell-free timelike junction, and the transport of the jump $1/(\sqrt2\ell)$ along the null fronts are results of the programme, checked here from the distributional equations.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that $r''$ contains $[r']\delta$ in the weak sense. \emph{Answer:} \lean{weak\_second\_derivative}.\end{exercise}
+\begin{exercise}Invert Israel's condition. \emph{Answer:} \lean{israel\_inverse}.\end{exercise}
+\begin{exercise}Show that $[W_u]$ is constant along a null front. \emph{Answer:} \lean{rj\_Wu\_transport}.\end{exercise}

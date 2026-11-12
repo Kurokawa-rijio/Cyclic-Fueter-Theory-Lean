@@ -1,0 +1,60 @@
+\chapter{Cap and neck}\label{ch:capneck}
+
+\begin{questionbox}
+What do the three phases become once they are allowed to move? The $S^3$ phase becomes a closed universe filled with Yang--Mills radiation that expands and recollapses. The cylinder becomes the throat of an extremal magnetic black hole, $\mathrm{AdS}_2\times S^2$. Both have the size $\ell=\sqrt{4\pi G}/g$, for the same reason.
+\end{questionbox}
+
+\section{The stress of the field}
+
+For the Witten field of Chapter~12 the energy density and pressures are
+\[
+\rho=\frac1{g^2}\Bigl(\frac{W'^2}{r^2}+\frac{(1-W^2)^2}{2r^4}\Bigr),\qquad
+p_r=\frac1{g^2}\Bigl(\frac{W'^2}{r^2}-\frac{(1-W^2)^2}{2r^4}\Bigr),\qquad
+p_T=\frac{(1-W^2)^2}{2g^2r^4},
+\]
+and the trace $-\rho+p_r+2p_T$ vanishes (\lean{ym\_stress}). On the two special shapes the stress becomes very simple (\lean{cap\_stress}, \lean{neck\_stress}).
+\begin{itemize}[leftmargin=*]
+\item On the cap, $r=\ell\sin(x/\ell)$, $W=\cos(x/\ell)$: the stress is isotropic with $p=\rho/3$. It is radiation.
+\item On the neck, $r=\ell$, $W=0$: $p_r=-\rho$ and $p_T=\rho$. It is the stress of a pure radial magnetic field, a tension along the field lines and a pressure across them.
+\end{itemize}
+
+\section{One length for both}
+
+\begin{theorem}\proved\label{thm:ell}
+The Hamiltonian constraint holds on the cap if and only if $\ell^2=4\pi G/g^2$, and the same is true on the neck. On the neck all four components of the four-dimensional Einstein equations hold if and only if $\ell^2=4\pi G/g^2$.
+\end{theorem}
+\noindent In the repository: \lean{ell\_cap}, \lean{ell\_neck}, \lean{neck\_einstein}.
+
+So the cap and the neck do not merely happen to have the same size. The size is set by the ratio of gravitational to gauge coupling, and it is the same number on both. In Planck units $\ell=\sqrt{4\pi}/g$, a few Planck lengths for couplings of order one.
+
+The magnetic flux through the spheres of the cap is $4\pi\sin^2(x/\ell)$; at the equator it is $4\pi$, the flux through the neck (\lean{flux\_cap}). The field lines that enter the neck come from the cap; no magnetic charge is needed anywhere.
+
+\section{The cap moves: a closed radiation universe}
+
+A closed universe filled with radiation obeys the Friedmann equation. In conformal time $\eta$ and with the radiation density $\rho=3/(2g^2a^4)$ of the cap,
+\[
+a'^2+a^2=\frac{8\pi G}{3}\rho a^4=\ell^2 ,
+\]
+solved by $a=\ell\cos\eta$ (\lean{cap\_friedmann\_l}, \lean{frw\_exact}). The universe is momentarily static at $\eta=0$, where its radius is $\ell$, the neck's radius. It recollapses at $\eta=\pi/2$, at proper time $\ell$ for an observer at the centre, where the curvature diverges (Chapter~18). This is Tolman's radiation universe, here with the radiation being a homogeneous Yang--Mills field on $S^3=SU(2)$.
+
+\section{The neck moves: $\mathrm{AdS}_2\times S^2$}
+
+The neck is static in its own time. Its full spacetime is the product of a two-sphere of radius $\ell$ with two-dimensional anti-de~Sitter space of radius $\ell$, the Bertotti--Robinson solution. In static coordinates the lapse is $N=\cosh(x/\ell)$, which satisfies $N''=N/\ell^2$ (\lean{br\_lapse\_d1}, \lean{br\_lapse\_d2}). The neck can carry the $W=r'$ structure with any lapse (\lean{neck\_any\_lapse}), but it does not like perturbations of $W$: the mode $W$ has negative mass squared on the neck (\lean{neck\_W\_unstable}), a fact Chapter~20 makes precise.
+
+\begin{asidebox}{Why the neck is a black-hole throat}
+Take a magnetically charged Reissner--Nordstr\"om black hole and push it to extremality, mass equal to charge in Planck units. The region near its horizon becomes an infinitely long tube with constant cross-section, and its geometry is exactly $\mathrm{AdS}_2\times S^2$. The neck of the dumbbell is that tube, with the magnetic charge supplied by the $SU(2)$ field at $W=0$.
+\end{asidebox}
+
+\section{Gluing}
+
+If the cap is glued to the neck at a sphere, continuity of the radius and of its first derivative already forces the cap's radius to equal $\ell$ (\lean{glue\_C1}), consistently with the constraints (\lean{glue\_EYM}). The neck cannot open into flat space (\lean{no\_flat\_from\_constraints}). Chapter~16 explains the structure of this gluing in full.
+
+\begin{standsbox}
+Both solutions are classical: Tolman's closed radiation universe and the Bertotti--Robinson spacetime. Their joint description, with one length fixed by $G/g^2$ for both and the magnetic flux passing from one to the other, is the starting point of the dumbbell programme.
+\end{standsbox}
+
+\section*{Exercises}
+\begin{exercise}Show that the Yang--Mills stress is traceless. \emph{Answer:} \lean{ym\_stress}.\end{exercise}
+\begin{exercise}Compute $\rho$, $p_r$ and $p_T$ on the cap and on the neck. \emph{Answer:} \lean{cap\_stress}, \lean{neck\_stress}.\end{exercise}
+\begin{exercise}Show that $a=\ell\cos\eta$ solves $a'^2+a^2=\ell^2$. \emph{Answer:} \lean{cap\_friedmann\_l}.\end{exercise}
+\begin{exercise}Show that $\cosh(x/\ell)$ satisfies $N''=N/\ell^2$. \emph{Answer:} \lean{br\_lapse\_d2}.\end{exercise}
