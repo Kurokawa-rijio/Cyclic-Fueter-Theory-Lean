@@ -7,6 +7,7 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaDumbbell_Bogomolny
 import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
@@ -251,6 +252,13 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaCompleteD.other_chirality_empty
 #print axioms CFT.AlphaCompleteD.exponent_condition
 #print axioms CFT.AlphaCompleteD.one_generation_from_twist
+#print axioms CFT.DS.ds2_mass_prime
+#print axioms CFT.DS.ds2_bogomolny
+#print axioms CFT.DS.ds2_num
+#print axioms CFT.DS.ds2_W_ge
+#print axioms CFT.DS.ds2_saturated
+#print axioms CFT.DS.ds2_friedmann
+#print axioms CFT.DS.ds2_neck_action
 #print axioms CFT.DS.ds_weyl_mass
 #print axioms CFT.DS.ds_mass_u
 #print axioms CFT.DS.ds_N_u
@@ -1130,6 +1138,13 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIII_4C_ds_weyl_mass
 #print axioms CFT.Index.XIII_4C_ds_mass_u
 #print axioms CFT.Index.XIII_4C_ds_N_u
+#print axioms CFT.Index.XIII_4D_ds2_mass_prime
+#print axioms CFT.Index.XIII_4D_ds2_bogomolny
+#print axioms CFT.Index.XIII_4D_ds2_num
+#print axioms CFT.Index.XIII_4D_ds2_W_ge
+#print axioms CFT.Index.XIII_4D_ds2_saturated
+#print axioms CFT.Index.XIII_4D_ds2_friedmann
+#print axioms CFT.Index.XIII_4E_ds2_neck_action
 #print axioms CFT.Index.XIII_5_extremal_limit
 #print axioms CFT.Index.XIII_6_periodic
 #print axioms CFT.Index.XIII_6_cap_energy
