@@ -1,0 +1,98 @@
+\chapter{From complex numbers to quaternions}\label{ch:quaternions}
+
+\begin{questionbox}
+Complex numbers rotate the plane. Is there a number system that rotates space in the same way? There is, but it needs four components instead of three, and its multiplication is not commutative. That price turns out to be exactly what rotations demand.
+\end{questionbox}
+
+\section{Why the plane is easy}
+
+Multiplying a complex number by $e^{i\theta}$ turns it through the angle $\theta$ and leaves its length alone. Most of what makes complex numbers useful in physics follows from that one fact: phases, waves, the rotation group of the plane written as a single exponential. It is natural to ask for the same thing in three dimensions, and William Rowan Hamilton spent more than a decade trying to build it out of triples $a+bi+cj$.
+
+He could not, and there is a good reason. Rotations in space do not commute: turn a book a quarter turn about one axis and then about another, and you get a different result from doing it the other way round. A number system that rotates space must therefore have a non-commutative product. In October 1843 Hamilton saw that this can be done if one allows a fourth unit, and he scratched the rule into a bridge in Dublin:
+\begin{equation}\label{eq:hamilton}
+i^2=j^2=k^2=ijk=-1 .
+\end{equation}
+
+\section{The algebra}
+
+A \emph{quaternion} is an expression $q=a+bi+cj+dk$ with real $a,b,c,d$. Addition is componentwise. Multiplication is fixed by \eqref{eq:hamilton} and the distributive law, and from \eqref{eq:hamilton} alone one finds
+\[
+ij=k,\quad jk=i,\quad ki=j,\qquad ji=-k,\quad kj=-i,\quad ik=-j .
+\]
+The products go round the cycle $i\to j\to k\to i$ with a plus sign and the other way with a minus sign. You will meet this cycle again in Chapter~3, where it becomes the defining feature of the operators that give the theory its name.
+
+Lean checks the four relations of \eqref{eq:hamilton} directly in Mathlib's quaternions (\lean{i\_sq}, \lean{j\_sq}, \lean{k\_sq}, \lean{ijk}). Each proof is a line of arithmetic, which is reassuring: the whole edifice rests on four lines that nobody needs to take on trust.
+
+It helps to split a quaternion into a real part and a vector part, $q=a+\mathbf u$ with $\mathbf u=bi+cj+dk$. For two pure quaternions the product is
+\begin{equation}\label{eq:dotcross}
+\mathbf u\,\mathbf v=-\,\mathbf u\cdot\mathbf v+\mathbf u\times\mathbf v .
+\end{equation}
+So the quaternion product already contains the dot product and the cross product, glued together. Historically this is where vector analysis came from; Gibbs and Heaviside later pulled the two pieces apart.
+
+\section{Conjugate, norm and inverse}
+
+The \emph{conjugate} of $q=a+\mathbf u$ is $\bar q=a-\mathbf u$, and one checks that $q\bar q=\bar qq=a^2+b^2+c^2+d^2$. We write this as $|q|^2$. The crucial property is that the norm is multiplicative.
+
+\begin{theorem}\proved
+For all quaternions $p,q$, $\ |pq|^2=|p|^2\,|q|^2$.
+\end{theorem}
+\noindent In the repository this is \lean{normSq\_mul'}.
+
+Written out in components, the theorem says that a product of two sums of four squares is again a sum of four squares, an identity Euler had found a century before Hamilton. It also means that every nonzero quaternion has an inverse, $q^{-1}=\bar q/|q|^2$, so the quaternions form a division algebra: you can divide, as long as you remember on which side.
+
+\section{Quaternions as matrices}
+
+There is a second way to look at all of this, and it is the one physicists use most. Send the quaternion $q=a+bi+cj+dk$ to the complex matrix
+\begin{equation}\label{eq:rho}
+\rho(q)=\begin{pmatrix} a+ib & c+id\\ -c+id & a-ib\end{pmatrix}.
+\end{equation}
+
+\begin{proposition}\proved\label{prop:rho}
+The map $\rho$ respects products, $\rho(pq)=\rho(p)\rho(q)$, it sends the conjugate to the Hermitian adjoint, $\rho(\bar q)=\rho(q)^\dagger$, it is injective, and
+\[
+\det\rho(q)=|q|^2 .
+\]
+\end{proposition}
+\noindent Lean: \lean{rho\_mul}, \lean{rho\_star}, \lean{rho\_injective}, \lean{det\_rho}.
+
+The determinant formula is the matrix version of the multiplicative norm: determinants multiply, and so do norms. Under $\rho$ the units $i,j,k$ become $i$ times the Pauli matrices, up to ordering and sign. Quaternions and the spin matrices of quantum mechanics are the same object seen from two sides.
+
+\section{A second determinant}
+
+The matrix picture invites one more step. Take four real numbers $(t,x,y,z)$ and form the Hermitian matrix
+\[
+X=\begin{pmatrix} t+z & x-iy\\ x+iy & t-z\end{pmatrix}.
+\]
+Its determinant is
+\[
+\det X=t^2-x^2-y^2-z^2 ,
+\]
+which is the Minkowski interval of special relativity (\lean{det\_lorentz}). So the same $2\times2$ matrices carry two quadratic forms. When the matrix comes from a quaternion, the determinant is the Euclidean length $a^2+b^2+c^2+d^2$. When it is Hermitian, the determinant is the Lorentzian length $t^2-x^2-y^2-z^2$.
+
+This is the first appearance of an idea that runs through the whole book. The round sphere of Euclidean geometry and the hyperboloid of relativity are two real slices of one complex object. Chapter~4 makes this precise, and Chapter~19 shows that the dumbbell lives on both slices at once.
+
+\begin{standsbox}
+Everything in this chapter is classical and serves as the foundation. The only claim is that it has been checked: the four defining relations, the multiplicative norm, the matrix representation and both determinant formulas are theorems in the repository.
+\end{standsbox}
+
+\section*{Exercises}
+
+\begin{exercise}
+Use \eqref{eq:hamilton} to derive $ij=k$ and $ji=-k$. \emph{Answer:} the relations are checked in \lean{i\_sq}, \lean{j\_sq}, \lean{k\_sq}, \lean{ijk}.
+\end{exercise}
+
+\begin{exercise}
+Write out $|pq|^2=|p|^2|q|^2$ in components and recognise Euler's four-square identity. \emph{Answer:} \lean{normSq\_mul'}.
+\end{exercise}
+
+\begin{exercise}
+Compute $\det\rho(q)$ from \eqref{eq:rho}. \emph{Answer:} \lean{det\_rho}.
+\end{exercise}
+
+\begin{exercise}
+Show that $\rho(q)=0$ forces $q=0$. \emph{Answer:} \lean{rho\_injective}.
+\end{exercise}
+
+\begin{exercise}
+Compute the determinant of the Hermitian matrix $X$ above. \emph{Answer:} \lean{det\_lorentz}.
+\end{exercise}

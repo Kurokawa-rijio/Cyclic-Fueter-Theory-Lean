@@ -1,0 +1,90 @@
+\chapter{Fueter operators}\label{ch:fueter}
+
+\begin{questionbox}
+Complex analysis begins with the Cauchy--Riemann operator $\partial_x+i\partial_y$, whose square root of the Laplacian makes holomorphic functions harmonic. Is there a quaternionic version, and how many are there? There are several, and the theory takes its name from one particular family of four: the \emph{cyclic} Fueter operators. They are singled out by a simple requirement, that the four operators share a common solution.
+\end{questionbox}
+
+\section{Square roots of the Laplacian}
+
+In the plane, $(\partial_x-i\partial_y)(\partial_x+i\partial_y)=\partial_x^2+\partial_y^2$. The Cauchy--Riemann operator is a square root of the Laplacian, and that is why the real and imaginary parts of a holomorphic function are harmonic.
+
+Rudolf Fueter asked in the 1930s for the same thing in four dimensions with quaternion coefficients. With coordinates $x_0,\dots,x_3$ and $\partial_a=\partial/\partial x_a$, set
+\[
+D=\partial_0+i\partial_1+j\partial_2+k\partial_3,\qquad \bar D=\partial_0-i\partial_1-j\partial_2-k\partial_3 ,
+\]
+acting on quaternion-valued functions with coefficients multiplied from the left.
+
+\begin{theorem}\proved\label{thm:fueterlap}
+For commuting derivatives,
+\[
+\bar DD=D\bar D=\Delta_4=\partial_0^2+\partial_1^2+\partial_2^2+\partial_3^2 ,
+\]
+while $D^2=\Box+2\partial_0(i\partial_1+j\partial_2+k\partial_3)$ with $\Box=\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2$, and $D^2+\bar D^2=2\Box$.
+\end{theorem}
+\noindent Lean: \lean{conj\_product}, \lean{product\_conj}, \lean{square}, \lean{square\_sum}.
+
+The last two formulas are worth a second look. The Euclidean Laplacian comes from $\bar DD$, but the wave operator of relativity is already hiding in $D^2$. If we allow a complex unit $I$ that commutes with everything and replace the vector part by $I(i\partial_1+j\partial_2+k\partial_3)$, the hidden term disappears and $\bar D_ID_I=\Box$ exactly (\lean{biquaternion\_box}). This is the operator version of the observation at the end of Chapter~1: one algebra, two signatures.
+
+\section{Which coefficients work?}
+
+Any operator $\sum_a c_a\partial_a$ with quaternion coefficients can be tested in the same way. Its symbol is $\sum_ac_a\xi_a$, and the operator factorises the Laplacian when $\bigl(\sum_a\bar c_a\xi_a\bigr)\bigl(\sum_bc_b\xi_b\bigr)=|\xi|^2$ for every $\xi$.
+
+\begin{proposition}\proved
+The operator $\sum_a c_a\partial_a$ factorises the Laplacian in this sense if and only if
+\[
+\bar c_ac_b+\bar c_bc_a=2\delta_{ab}\qquad\text{for all }a,b,
+\]
+that is, if and only if $(c_0,c_1,c_2,c_3)$ is an orthonormal basis of the quaternions.
+\end{proposition}
+\noindent Lean: \lean{factorization\_iff}.
+
+So there is not one Fueter operator but many: one for every orthonormal frame. To make a definite choice one needs a further principle.
+
+\section{The cyclic family}
+
+Here is the principle used in this book. Instead of one operator, take a family of four, obtained from $D$ by shifting the units round the cycle $1\to i\to j\to k\to1$:
+\[
+D_m=\sum_{a=0}^3 e_{m+a}\,\partial_a,\qquad (e_0,e_1,e_2,e_3)=(1,i,j,k),
+\]
+with indices read modulo four. Each $D_m$ factorises the Laplacian (\lean{cyclic\_factorizes}). The coefficients form the $4\times4$ quaternion matrix $C_{ma}=e_{m+a}$, and one can recover it from the operators themselves by letting them act on the coordinate functions (\lean{coefficient\_extraction}, \lean{coefficient\_unique}).
+
+Why a cycle? Of the ways of shuffling four objects transitively with a group of order four, there are only two: the cyclic group and the Klein four-group. The two families behave very differently.
+
+\begin{theorem}\proved\label{thm:cyclic}
+The cyclic coefficient matrix $C$ is singular. Its right kernel is the line $\gamma(-k)\,\mathbb H$, where $\gamma(q)=(1,q,q^2,q^3)$, and its left kernel is $\mathbb H\,\gamma(i)$. Over the reals its image has dimension $12$, so its quaternionic rank is $3$. In contrast, the Klein family has trivial kernel.
+\end{theorem}
+\noindent Lean: \lean{right\_kernel}, \lean{left\_kernel}, \lean{rank\_three}, \lean{real\_rank\_twelve}, \lean{klein\_family\_regular}.
+
+The singularity has two readings, one for each kernel. The right kernel gives a common solution: for any constant quaternion $q$, the linear function $f=\sum_b x_b\,\gamma(-k)_b\,q$ is annihilated by all four operators at once (\lean{null\_solution}). The left kernel gives a relation among the operators themselves,
+\[
+\sum_m\gamma(i)_m\,D_mf=0\qquad\text{for every }f ,
+\]
+so only three of the four are independent (\lean{operator\_relation}).
+
+This is the precise sense in which the cyclic family is special: it is the minimal transitive family of Laplacian square roots that admits a common solution. Everything named ``cyclic Fueter'' in the rest of the book refers to it.
+
+\begin{standsbox}
+Fueter's operator and the factorisation of the Laplacian are classical. The derivation of the cyclic family from three requirements (factorise the Laplacian, permute the units transitively with the smallest group, share a common solution) and the computation of both kernels are part of the author's programme and are checked here. Whether the cyclic family has deeper meaning than this selection rule is an interpretation that the book does not rely on.
+\end{standsbox}
+
+\section*{Exercises}
+
+\begin{exercise}
+Verify $\bar DD=\Delta_4$ by expanding the product and using $i^2=j^2=k^2=-1$ and the anticommutation of distinct units. \emph{Answer:} \lean{conj\_product}.
+\end{exercise}
+
+\begin{exercise}
+Show that $D^2+\bar D^2=2\Box$. \emph{Answer:} \lean{square\_sum}.
+\end{exercise}
+
+\begin{exercise}
+Check that $\gamma(i)=(1,i,-1,-i)$ and $\gamma(-k)=(1,-k,-1,k)$. \emph{Answer:} \lean{gam\_i}, \lean{gam\_mk}.
+\end{exercise}
+
+\begin{exercise}
+Show that every row of $C$ annihilates $\gamma(-k)$ from the right. \emph{Answer:} \lean{right\_kernel\_rows}.
+\end{exercise}
+
+\begin{exercise}
+Show that the Klein family has no common solution. \emph{Answer:} \lean{klein\_family\_regular}.
+\end{exercise}

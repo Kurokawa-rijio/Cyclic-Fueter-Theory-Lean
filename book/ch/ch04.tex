@@ -1,0 +1,78 @@
+\chapter{Lorentz transformations: rotation times boost}\label{ch:polar}
+
+\begin{questionbox}
+Special relativity mixes space and time through boosts, while ordinary geometry only knows rotations. How are the two related? Every Lorentz transformation, written as a $2\times2$ complex matrix of determinant one, is a rotation followed by a boost, and in exactly one way. Rotations live on a three-sphere, boosts on a three-hyperboloid, and the two meet only at the identity.
+\end{questionbox}
+
+\section{Lorentz transformations as matrices}
+
+At the end of Chapter~1 we saw that a Hermitian $2\times2$ matrix $X$ encodes a spacetime point $(t,x,y,z)$ with $\det X=t^2-x^2-y^2-z^2$. Take any complex matrix $A$ with $\det A=1$ and form $AXA^\dagger$.
+
+\begin{proposition}\proved
+If $\det A=1$ and $X$ is Hermitian, then $AXA^\dagger$ is Hermitian and $\det(AXA^\dagger)=\det X$.
+\end{proposition}
+\noindent Lean: \lean{lorentz\_action}.
+
+So every $A$ in $SL(2,\mathbb C)$ moves spacetime points while keeping the interval: it is a Lorentz transformation. As with rotations, $A$ and $-A$ do the same thing, so $SL(2,\mathbb C)$ is the double cover of the Lorentz group, exactly as $SU(2)$ was the double cover of the rotations.
+
+\section{Polar decomposition}
+
+Inside $SL(2,\mathbb C)$ there are two kinds of special matrices. Unitary ones, $U^\dagger U=1$, are the rotations of Chapter~2. Positive Hermitian ones, $B=B^\dagger$ with positive eigenvalues, are pure boosts: they stretch time along one direction and leave the perpendicular directions alone.
+
+\begin{theorem}[polar decomposition]\proved\label{thm:polar}
+Every $M\in SL(2,\mathbb C)$ can be written as $M=UB$ with $U$ unitary and $B$ positive Hermitian, both of determinant one, and the two factors are unique.
+\end{theorem}
+\noindent Lean: \lean{polar\_exists}, \lean{polar\_unique}.
+
+The proof is pleasant because everything is $2\times2$. The matrix $M^\dagger M$ is Hermitian with determinant one (\lean{gram\_herm}, \lean{det\_gram}). For $2\times2$ matrices the Cayley--Hamilton theorem says $X^2=(\operatorname{tr}X)X-(\det X)\,1$ (\lean{ch2}), and from it one can write down the square root explicitly:
+\[
+B=\frac{M^\dagger M+1}{\sqrt{\operatorname{tr}(M^\dagger M)+2}} ,
+\]
+which squares to $M^\dagger M$ (\lean{boost\_from\_square}). Then $U=MB^{-1}$ is unitary. No spectral theorem is needed.
+
+\begin{proposition}\proved
+A matrix in $SL(2,\mathbb C)$ that is both unitary and Hermitian with positive eigenvalues is the identity.
+\end{proposition}
+\noindent Lean: \lean{sphere\_meets\_hyperboloid}.
+
+In geometric terms the rotations form a three-sphere, the boosts form a three-dimensional hyperboloid (the space of velocities), and the two touch at one point.
+
+\section{One matrix, two slices}
+
+There is a single formula behind all of this. For four complex numbers $z_0,\dots,z_3$ put
+\[
+M(z)=z_0+i\,(z_1\sigma_1+z_2\sigma_2+z_3\sigma_3),\qquad \det M(z)=z_0^2+z_1^2+z_2^2+z_3^2 .
+\]
+When all $z$'s are real, $M$ is a multiple of a unitary matrix and the determinant is the Euclidean length: this is the three-sphere of rotations (\lean{real\_slice\_unitary}). When $z_0$ is real and $z_1,z_2,z_3$ are imaginary, $M$ is Hermitian and the determinant is the Minkowski length: this is the hyperboloid (\lean{imag\_slice\_hermitian}). The step between them is multiplication of three components by $i$, the familiar Wick rotation (\lean{wick\_path}). It turns curvature $+1/R^2$ into $-1/R^2$ (\lean{curvature\_flip}).
+
+Chapter~6 will show this in a second form. The hyperboloid of velocities can be drawn as a hemisphere, with the equator at infinite speed (\lean{hemisphere\_on\_sphere}, \lean{hemisphere\_conformal}, \lean{equator\_at\_infinity}). The quantum sphere of that chapter is exactly this hemisphere.
+
+\begin{asidebox}{Why this matters for the dumbbell}
+The cap of the dumbbell is a round three-sphere (rotations) and the neck is $\mathrm{AdS}_2\times S^2$, a space that is round in two directions and hyperbolic in the other two (rotation $\times$ boost). Chapter~19 shows that the self-dual connection $\Gamma+iK$ of general relativity splits in the same way, into a rotation part and a boost part.
+\end{asidebox}
+
+\begin{standsbox}
+The polar decomposition is classical. What is particular here is the explicit $2\times2$ proof without the spectral theorem, and the organisation of the sphere and the hyperboloid as the real and imaginary slices of one determinant, which the book uses repeatedly.
+\end{standsbox}
+
+\section*{Exercises}
+
+\begin{exercise}
+Prove the Cayley--Hamilton identity $X^2=(\operatorname{tr}X)X-(\det X)1$ for $2\times2$ matrices. \emph{Answer:} \lean{ch2}.
+\end{exercise}
+
+\begin{exercise}
+Show that $\det(M^\dagger M)=1$ when $\det M=1$. \emph{Answer:} \lean{det\_gram}.
+\end{exercise}
+
+\begin{exercise}
+Check that $B=(M^\dagger M+1)/\sqrt{\operatorname{tr}(M^\dagger M)+2}$ squares to $M^\dagger M$. \emph{Answer:} \lean{boost\_from\_square}.
+\end{exercise}
+
+\begin{exercise}
+Compute $\det M(z)$ for the matrix above. \emph{Answer:} \lean{det\_M}.
+\end{exercise}
+
+\begin{exercise}
+Show that $1/\cosh\eta\le2/(\eta+1)$ for $\eta\ge0$, and explain why it puts the equator of the hemisphere at infinite rapidity. \emph{Answer:} \lean{equator\_at\_infinity}.
+\end{exercise}

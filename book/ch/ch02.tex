@@ -1,0 +1,66 @@
+\chapter{Rotations and the three-sphere}\label{ch:rotations}
+
+\begin{questionbox}
+How does a quaternion rotate a vector, and why does it take two quaternions to describe each rotation? The answer is a sandwich, $\mathbf v\mapsto q\mathbf v\bar q$, and the two quaternions are $q$ and $-q$, which give the same sandwich. The set of all such $q$ is a three-dimensional sphere, and that sphere will become the cap of the dumbbell.
+\end{questionbox}
+
+\section{The unit quaternions}
+
+A quaternion with $|q|=1$ is a \emph{unit quaternion}. Writing $q=a+bi+cj+dk$, the condition is $a^2+b^2+c^2+d^2=1$: the unit quaternions form the three-sphere $S^3$ sitting in four-dimensional space. Because the norm is multiplicative, the product of two unit quaternions is again a unit quaternion, and so is the inverse $\bar q$. The three-sphere is therefore not just a shape but a group.
+
+Through the matrix map of Chapter~1 we can say which group.
+
+\begin{proposition}\proved
+If $|q|=1$ then $\rho(q)$ is unitary with determinant one: $\rho(q)\rho(q)^\dagger=1$ and $\det\rho(q)=1$. In other words, unit quaternions are the elements of $SU(2)$.
+\end{proposition}
+\noindent Lean: \lean{rho\_SU2}.
+
+This is the identification $S^3=SU(2)$ that every course on quantum spin uses, usually without saying so.
+
+\section{The sandwich}
+
+Now take a pure quaternion $\mathbf v=xi+yj+zk$, which we think of as an ordinary vector, and a unit quaternion $q$. The product $q\mathbf v\bar q$ has two properties that make it a rotation.
+
+\begin{proposition}\proved
+For all quaternions $q$ and $x$,
+\[
+|q x\bar q|^2=|q|^4\,|x|^2,\qquad \operatorname{Re}(q x\bar q)=|q|^2\operatorname{Re}x .
+\]
+\end{proposition}
+\noindent Lean: \lean{hopf\_norm}, \lean{hopf\_re}.
+
+When $|q|=1$ the first identity says that lengths are kept, and the second says that a pure quaternion stays pure. So $\mathbf v\mapsto q\mathbf v\bar q$ is a length-preserving linear map of three-dimensional space. One checks that it also preserves orientation, so it is a rotation. If $q=\cos(\theta/2)+\sin(\theta/2)\,\mathbf n$ with a unit vector $\mathbf n$, the rotation is through the angle $\theta$ about $\mathbf n$.
+
+Notice the half-angle. As $\theta$ runs from $0$ to $2\pi$, the quaternion only gets from $1$ to $-1$. A full turn of space corresponds to half a trip round the sphere, and one needs a turn through $4\pi$ to bring $q$ back to itself. Since $q$ and $-q$ produce the same sandwich, each rotation corresponds to exactly two unit quaternions. This is the double cover $SU(2)\to SO(3)$, and it is the reason electrons have spin one half: their states transform under $q$, not under the rotation it produces.
+
+\section{The geometry of $S^3$}
+
+It is worth getting a feeling for the three-sphere itself, because it is the spatial shape of the cap. Fix the real part $a=\cos\chi$ with $0\le\chi\le\pi$. The remaining components then satisfy $b^2+c^2+d^2=\sin^2\chi$, which is an ordinary two-sphere of radius $\sin\chi$. So $S^3$ is a stack of two-spheres that start as a point at $\chi=0$, grow to radius one at the equator $\chi=\pi/2$, and shrink back to a point at $\chi=\pi$. Its metric is
+\[
+d\chi^2+\sin^2\chi\,d\Omega^2 ,
+\]
+and in Chapter~16 the areal radius $r=\ell\sin(x/\ell)$ of the cap will be exactly this function with $x=\ell\chi$. The cap of the dumbbell is the northern half of this stack, cut at the equator, where the spheres are largest.
+
+The map $q\mapsto q\,i\,\bar q$ goes further. It sends each unit quaternion to a unit pure quaternion, that is, to a point of the ordinary two-sphere, and the points that land on the same place form a circle. This is the Hopf fibration $S^3\to S^2$ with circles as fibres. We will meet it again in Chapter~12 as the bundle of a magnetic monopole.
+
+\begin{standsbox}
+All of this is classical. The chapter's role is to fix two facts that are used everywhere later: unit quaternions are $SU(2)$, and $S^3$ is a stack of two-spheres whose radius is $\sin\chi$.
+\end{standsbox}
+
+\section*{Exercises}
+
+\begin{exercise}
+Show that $\rho(q)$ is unitary with determinant one when $|q|=1$. \emph{Answer:} \lean{rho\_SU2}.
+\end{exercise}
+
+\begin{exercise}
+Show that $q x\bar q$ has real part $|q|^2\operatorname{Re}x$. Why does this mean that pure quaternions are mapped to pure quaternions when $|q|=1$? \emph{Answer:} \lean{hopf\_re}.
+\end{exercise}
+
+\begin{exercise}
+Show that $|qx\bar q|^2=|q|^4|x|^2$. \emph{Answer:} \lean{hopf\_norm}.
+\end{exercise}
+
+\begin{exercise}
+Check that $\rho(1)$ is the identity matrix and $\rho(\bar q)=\rho(q)^\dagger$. \emph{Answer:} \lean{rho\_one}, \lean{rho\_star}.
+\end{exercise}

@@ -6,7 +6,7 @@
 \usepackage{microtype}
 \usepackage{booktabs,longtable,array,enumitem}
 \usepackage{tikz,pgfplots}
-\pgfplotsset{compat=1.17}
+\pgfplotsset{compat=1.17,every axis/.append style={black},cycle list={{black,thick},{black,dashed},{black,dotted}}}
 \usepackage{fancyvrb}
 \usepackage[most]{tcolorbox}
 \usepackage[hidelinks]{hyperref}
@@ -23,22 +23,26 @@
 \newtheorem*{remark}{Remark}
 
 % status tags taken from the claim ledger
-\newcommand{\tagbox}[2]{\tcbox[on line,size=fbox,colback=#1!8,colframe=#1!60!black,boxrule=0.4pt,arc=1.5pt,fontupper=\scriptsize\sffamily]{#2}}
-\newcommand{\proved}{\tagbox{green}{proved in Lean}}
-\newcommand{\external}{\tagbox{blue}{external theorem}}
-\newcommand{\numerical}{\tagbox{orange}{numerical}}
-\newcommand{\negative}{\tagbox{red}{negative result}}
-\newcommand{\open}{\tagbox{gray}{open}}
+\newcommand{\tagbox}[2]{\tcbox[on line,size=fbox,colback=white,colframe=black,boxrule=0.4pt,arc=0pt,fontupper=\scriptsize\sffamily]{#2}}
+\newcommand{\proved}{\tagbox{80}{proved in Lean}}
+\newcommand{\external}{\tagbox{80}{external theorem}}
+\newcommand{\numerical}{\tagbox{55}{numerical}}
+\newcommand{\negative}{\tagbox{80}{negative result}}
+\newcommand{\open}{\tagbox{55}{open}}
 \newcommand{\lean}[1]{\texttt{#1}}
 
-\newtcolorbox{leanbox}[1][]{colback=black!3,colframe=black!35,boxrule=0.4pt,arc=1pt,left=2mm,right=2mm,top=1mm,bottom=1mm,fonttitle=\small\sffamily\bfseries,title={Lean: #1}}
-\newtcolorbox{questionbox}{colback=blue!3,colframe=blue!40!black,boxrule=0.5pt,arc=1pt,fonttitle=\sffamily\bfseries,title={The question of this chapter}}
-\newtcolorbox{standsbox}{colback=yellow!4,colframe=orange!60!black,boxrule=0.5pt,arc=1pt,fonttitle=\sffamily\bfseries,title={Where this stands}}
+\newtcolorbox{leanbox}[1][]{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.4pt,arc=0pt,left=2mm,right=2mm,top=1mm,bottom=1mm,fonttitle=\small\sffamily\bfseries,title={Lean: #1},titlerule=0.4pt}
+\newtcolorbox{questionbox}{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.6pt,arc=0pt,fonttitle=\sffamily\bfseries,title={The question},titlerule=0.4pt}
+\newtcolorbox{standsbox}{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.6pt,arc=0pt,fonttitle=\sffamily\bfseries,title={Where this stands},titlerule=0.4pt}
 
+\newtcolorbox{asidebox}[1]{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.4pt,arc=0pt,fonttitle=\sffamily\bfseries,title={#1},titlerule=0.4pt}
+\newcommand{\inc}[1]{\IfFileExists{#1.tex}{\input{#1}}{}}
+\newcommand{\startinterlude}[1]{\cleardoublepage\renewcommand{\chaptername}{Interlude}\renewcommand{\thechapter}{#1}\setcounter{chapter}{0}}
+\newcommand{\stopinterlude}[1]{\renewcommand{\chaptername}{Chapter}\renewcommand{\thechapter}{\arabic{chapter}}\setcounter{chapter}{#1}}
 \title{\textbf{Dynamics, the Action Principle,\\ and the Kinematics That Supports Them}\\[1em]
 \large From Quaternions to the Einstein--Yang--Mills Dumbbell,\\ Verified in Lean~4}
 \author{Ryojiro Kurokawa\\[0.5em]\small Department of Electrical Engineering, Graduate School of Science and Technology\\ \small Tokyo University of Science}
-\date{Preliminary draft, 12 November 2026}
+\date{Draft, November 2026}
 
 \begin{document}
 \frontmatter
@@ -47,8 +51,23 @@
 \tableofcontents
 \mainmatter
 \input{plan}
-\setcounter{chapter}{15}
-\input{ch16_shape}
+\newcommand{\chap}[1]{\IfFileExists{ch/#1.tex}{\input{ch/#1}}{}}
+\part{Quaternions and rotations}
+\chap{ch01}\chap{ch02}\chap{ch03}\chap{ch04}
+\part{The quantum sphere and the mass shell}
+\chap{ch05}\chap{ch06}\chap{ch07}\chap{ch08}\chap{ch09}
+\chap{intA}
+\part{Curved space and field equations}
+\chap{ch10}\chap{ch11}\chap{ch12}\chap{ch13}
+\part{The dumbbell}
+\chap{ch14}\chap{ch15}\chap{ch16}\chap{ch17}\chap{ch18}\chap{ch19}\chap{ch20}
+\chap{intB}
+\part{Heat and quanta}
+\chap{ch21}\chap{ch22}\chap{ch23}\chap{ch24}\chap{ch25}
+\part{Shape, swampland and open problems}
+\chap{ch26}\chap{ch27}
+\appendix
+\chap{appA}\chap{appB}\chap{appC}\chap{appD}\chap{appE}
 \backmatter
 \input{refs}
 \end{document}
