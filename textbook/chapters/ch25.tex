@@ -1,0 +1,168 @@
+\chapter{Jackiw--Teitelboim Gravity in the Throat}\markboth{\MakeUppercase{Chapter 25.\ JT gravity in the throat}}{}
+\label{ch:jt}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the spherical reduction of the action (\cref{ch:reduction}); the throat in synchronous coordinates (\cref{thm:throatevo}); the junction position $\sin u_c=\operatorname{sech}(L/\ell)$ (\cref{thm:longthroat}); the BF analysis (\cref{prop:throatbf}); the entropy of the throat and the Cardy-type density of states (\cref{thm:attractor,prop:cardy}); the instanton action (\cref{thm:instanton}).\\
+\textbf{It provides:} the reduction of spherically symmetric EYM to two-dimensional dilaton gravity with potential $U(\Phi)=2-2\ell^2/\Phi$; the throat as its constant-dilaton vacuum; the expansion around it, which is Jackiw--Teitelboim gravity with ground-state entropy $S_0=\pi\ell^2/G=4\pi^2/g^2$, exactly half the instanton action; the general dilaton in the throat and its three classes; the Unruh--Deser--Levin temperature; the Schwarzian thermodynamics with its exact density of states; and the status of the Yang--Mills mode in this two-dimensional description.
+\end{usesbox}
+
+Near-extremal black holes have a universal low-energy description: two-dimensional Jackiw--Teitelboim gravity on the $\mathrm{AdS}_2$ throat, whose boundary dynamics is governed by the Schwarzian action \cite{AlmheiriPolchinski2015,MaldacenaStanfordYang2016}. This chapter derives that description for our throat directly from the EYM action, with all coefficients fixed in terms of $G$ and $g$, and then uses it to describe the throat segment of the glued spacetime.
+
+\section{Reduction to dilaton gravity}
+
+For a metric $h_{ab}\dd x^a\dd x^b+R^2\dd\Omega^2$ in the diagonal gauge, write $\Phi=R^2$.
+
+\begin{theorem}[Dilaton gravity from EYM]\label{thm:dilatongravity}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The four-dimensional scalar curvature satisfies $NAR^2\,{}^{(4)}\!R=NA\bigl(\Phi\,{}^{(2)}\!R+2+(\nabla\Phi)^2/(2\Phi)\bigr)-2\,\mathrm{Div}$, where $\mathrm{Div}=\partial_t\bigl(-AN^{-1}\partial_t\Phi\bigr)+\partial_x\bigl(NA^{-1}\partial_x\Phi\bigr)$ is a total derivative.
+\item The magnetic Yang--Mills term is $F^a_{\mu\nu}F^{a\mu\nu}=2(1-w^2)^2/R^4$, which equals $2/\Phi^2$ for $w=0$.
+\item Integrating over the sphere, the potential term is $\frac1{16\pi G}4\pi\cdot2-\frac1{4g^2}4\pi\Phi\frac2{\Phi^2}=\frac1{4G}U(\Phi)$ with
+\[
+U(\Phi)=2-\frac{2\ell^2}\Phi,\qquad \ell^2=\frac{4\pi G}{g^2},
+\]
+and $U'(\Phi)=2\ell^2/\Phi^2$. With $w$ restored, $-2\ell^2(1-w^2)^2/\ell^2=-2+4w^2-2w^4$ at $\Phi=\ell^2$.
+\item On the throat the on-shell Lagrangian density has magnitude $F^2/(4g^2)=1/(2g^2\ell^4)=1/(8\pi G\ell^2)$; integrated over the sphere of area $4\pi\ell^2$ and a region of two-dimensional area $A$ it gives $\frac1{8\pi G\ell^2}\cdot4\pi\ell^2\cdot A=A/(2G)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}[The throat as a constant-dilaton vacuum]\label{prop:constdilaton}\ver\
+The equations for constant $\Phi$ are $U(\Phi)=0$ and ${}^{(2)}\!R+U'(\Phi)=0$. Their unique solution is $\Phi=\ell^2$, ${}^{(2)}\!R=-2/\ell^2$, and it is realised: in synchronous coordinates $a=\cos(t/\ell)$ has $\ddot a=-a/\ell^2$, so ${}^{(2)}\!R=2\ddot a/a=-2/\ell^2$, an $\mathrm{AdS}_2$ of radius $\ell$. Moreover $U'(\ell^2)\ell^2=2$.
+\end{proposition}
+
+\section{The Jackiw--Teitelboim expansion}
+
+\begin{theorem}[JT gravity]\label{thm:jt}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Put $\Phi=\ell^2(1+\varphi)$. Then, exactly,
+\[
+\Phi\,{}^{(2)}\!R+U(\Phi)=\ell^2\,{}^{(2)}\!R+\varphi\bigl(\ell^2\,{}^{(2)}\!R+2\bigr)-\frac{2\varphi^2}{1+\varphi},
+\]
+and the kinetic term is $(\nabla\Phi)^2/(2\Phi)=\ell^2(\nabla\varphi)^2/(2(1+\varphi))$, of second order in $\varphi$.
+\item To first order in $\varphi$ the action is the topological term $\ell^2\,{}^{(2)}\!R$ plus the JT term $\varphi(\ell^2\,{}^{(2)}\!R+2)$, whose equation for $\varphi$ fixes ${}^{(2)}\!R=-2/\ell^2$.
+\item The ground-state entropy is
+\[
+S_0=\frac{4\pi\ell^2}{4G}=\frac{\pi\ell^2}G=\frac{4\pi^2}{g^2}=\frac12\cdot\frac{8\pi^2}{g^2}.
+\]
+With the two-dimensional Newton constant $G_2=G/(4\pi)$: $1/(16\pi G_2)=1/(4G)$, $S_0=\ell^2/(4G_2)$, and the Schwarzian coupling is $C=\varphi_r/(8\pi G_2)=\varphi_r/(2G)$.
+\end{enumerate}
+\end{theorem}
+
+The ground-state entropy of the throat is exactly half the action of a Yang--Mills instanton, $S_0=\frac12\,S_{\rm inst}$. Both are $1/g^2$ effects with geometric coefficients: $4\pi\ell^2$ is the area of the throat, $8\pi^2$ the volume of a unit $S^3$ times $4$.
+
+\section{The dilaton in the throat}
+
+\begin{theorem}[General dilaton]\label{thm:dilaton}\ver\
+In synchronous coordinates $-\dd t^2+\cos^2(t/\ell)\dd z^2$ the dilaton equations ($tt$, $zz$, $tz$) are solved by
+\[
+\varphi=A\sin(t/\ell)+\cos(t/\ell)\bigl(B\cosh(z/\ell)+C\sinh(z/\ell)\bigr).
+\]
+\begin{enumerate}[label=(\roman*)]
+\item (No static dilaton) If $\varphi_t=0$ everywhere then $A=B=C=0$.
+\item (Invariant) $\varphi^2-\ell^2(\nabla\varphi)^2=A^2+B^2-C^2$. The vector $\xi^t=\varphi_z/\cos$, $\xi^z=-\varphi_t/\cos$ is a Killing vector with $\xi\cdot\xi=-(\nabla\varphi)^2$.
+\item (Three classes) With $I=(A^2+B^2-C^2)/\ell^2$: the symmetric solution $A=C=0$ has $I=B^2/\ell^2>0$ (thermal); $A=0$, $B=C$ has $I=0$ (extremal); $A=B=0$, $C\ne0$ has $I<0$.
+\item For the symmetric solution $\varphi=B\cos(t/\ell)\cosh(z/\ell)$, $(\nabla\varphi)^2=(B/\ell)^2(\sinh^2(z/\ell)-\sin^2(t/\ell)\cosh^2(z/\ell))$, which vanishes at the centre $(0,0)$: the bifurcation point of a Killing horizon.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Local temperature]\label{thm:deserlevin}\ver\
+Let $N^2=\varphi^2/\ell^2-I$ be the norm of the Killing vector. Then the proper acceleration of its orbits is $a^2=\varphi^2/(\ell^2(\varphi^2-I\ell^2))$, and
+\[
+a^2-\frac1{\ell^2}=\frac{I}{\varphi^2-I\ell^2}.
+\]
+The surface gravity at the horizon $\varphi^2=I\ell^2$ is $\kappa^2=I/\ell^2$, and the local temperature squared $\kappa^2/(-\xi\cdot\xi)$ equals $a^2-1/\ell^2$ (times $1/4\pi^2$).
+\end{theorem}
+
+This is the Deser--Levin form of the Unruh effect in anti-de Sitter space \cite{DeserLevin1997}: an observer in $\mathrm{AdS}_2$ detects a temperature only if $a>1/\ell$, and then $T_{\rm loc}=\sqrt{a^2-1/\ell^2}/(2\pi)$.
+
+\begin{proposition}[Rindler observers and the junction]\label{prop:rindler}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The normalised Rindler lapse $N=\sinh(\rho/\ell)$ satisfies $N'=\cosh(\rho/\ell)/\ell$, $N''=N/\ell^2$ and $N'(0)=1/\ell$. The observer with $N=1$ sits at $\rho=\ell\log(1+\sqrt2)$, where $\cosh=\sqrt2$ and $a=\sqrt2/\ell$.
+\item If the junction is at $\sin u_c=\operatorname{sech}(L/\ell)$ with $0<u_c<\pi/2$, then $\tan u_c=1/\sinh(L/\ell)$; and $u_c\le\pi e^{-L/\ell}$ (\cref{thm:longthroat}).
+\end{enumerate}
+\end{proposition}
+
+\section{Schwarzian thermodynamics}
+
+The boundary dynamics of JT gravity is the Schwarzian theory, whose one-loop exact partition function is $\log Z=S_0+\frac32\log C-\frac32\log\beta+2\pi^2C/\beta$ \cite{StanfordWitten2017} \ext.
+
+\begin{theorem}[Thermodynamics and density of states]\label{thm:schwarzian}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $E=-\partial_\beta\log Z=3/(2\beta)+2\pi^2C/\beta^2=\frac32T+2\pi^2CT^2$, with heat capacity $\frac32+4\pi^2CT>0$.
+\item $S=\log Z+\beta E=S_0+4\pi^2CT+\frac32\log T+\frac32(1+\log C)$.
+\item For the exact density of states $\rho(E)\propto\sinh\bigl(2\pi\sqrt{2CE}\bigr)$, the inverse temperature is $1/T=4\pi^2C\coth x/x$ with $x=2\pi\sqrt{2CE}$, and
+\[
+\frac{4\pi^2C}x\le\frac{4\pi^2C\coth x}x\le\frac{4\pi^2C}x\Bigl(1+\frac2{e^{2x}-1}\Bigr),
+\]
+using $\coth x=1+2/(e^{2x}-1)$: the corrections to the leading Cardy-type behaviour are exponentially small.
+\item The canonical energy $\frac32T+2\pi^2CT^2$ differs from the microcanonical leading term $2\pi^2CT^2$ by the relative amount $3/(4\pi^2CT)$.
+\end{enumerate}
+\end{theorem}
+
+\section{The Yang--Mills mode and the symmetry}
+
+\begin{proposition}\label{prop:jtmode}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\Delta(\Delta-1)=-1$ has the roots $\Delta=\frac12\pm i\frac{\sqrt3}2$ and no real root; the Yang--Mills mode has $m^2\ell^2=-1$, below the BF bound.
+\item For $a\ge0$, $e^{ax^2}$ is not integrable on $\mathbb R$: the Gaussian integral along a negative mode of the Euclidean action diverges.
+\item An $SL(2,\mathbb R)$-invariant configuration has $r=\Omega\sin\chi$ constant; if it vanishes at a pole, it vanishes identically. A regular closed universe cannot be $SL(2,\mathbb R)$-invariant.
+\end{enumerate}
+\end{proposition}
+
+The JT description therefore applies to the gravitational sector of the throat, but the Yang--Mills mode is not part of a stable two-dimensional theory: its Euclidean path integral has a divergent direction, which is the two-dimensional shadow of the instability of \cref{ch:stability}. And the glued spacetime as a whole, which closes off at the poles of the Tolman regions, necessarily breaks the $SL(2,\mathbb R)$ symmetry of the throat.
+
+\begin{litbox}
+Two-dimensional dilaton gravity from spherical reduction is reviewed in \cite{GrumillerKummerVassilevich2002}; JT gravity is due to Jackiw and Teitelboim \cite{Jackiw1985,Teitelboim1983}; its role for near-extremal black holes and the Schwarzian are due to Almheiri and Polchinski \cite{AlmheiriPolchinski2015} and Maldacena, Stanford and Yang \cite{MaldacenaStanfordYang2016}; the exact partition function to Stanford and Witten \cite{StanfordWitten2017}; the Unruh effect in AdS to Deser and Levin \cite{DeserLevin1997}. New here: the reduction of the EYM magnetic sector with $U(\Phi)=2-2\ell^2/\Phi$ and all coefficients fixed by $G$ and $g$ (\cref{thm:dilatongravity}); the identity $S_0=4\pi^2/g^2=\frac12\cdot8\pi^2/g^2$ relating the throat entropy to the instanton action (\cref{thm:jt}); and the explicit three-parameter dilaton of the throat segment with its classes and local temperature (\cref{thm:dilaton,thm:deserlevin}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $U(\Phi)=2-2\ell^2/\Phi$; throat $=$ constant-dilaton vacuum $\Phi=\ell^2$ (\cref{thm:dilatongravity,prop:constdilaton}).
+\item JT expansion; $S_0=4\pi^2/g^2=\frac12S_{\rm inst}$ (\cref{thm:jt}).
+\item Dilaton $A\sin+\cos(B\cosh+C\sinh)$ and its three classes; $T_{\rm loc}^2\propto a^2-1/\ell^2$ (\cref{thm:dilaton,thm:deserlevin}).
+\item Schwarzian thermodynamics and exact density of states (\cref{thm:schwarzian}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Solve $U(\Phi)=0$ and ${}^{(2)}\!R+U'(\Phi)=0$ for $U=2-2\ell^2/\Phi$.
+\end{exercise}
+\begin{exercise}
+Verify $\Phi R+U(\Phi)=\ell^2R+\varphi(\ell^2R+2)-2\varphi^2/(1+\varphi)$ for $\Phi=\ell^2(1+\varphi)$.
+\end{exercise}
+\begin{exercise}
+Show that $\varphi^2-\ell^2(\nabla\varphi)^2=A^2+B^2-C^2$ for the general dilaton.
+\end{exercise}
+\begin{exercise}
+From $\log Z=S_0+\frac32\log C-\frac32\log\beta+2\pi^2C/\beta$ compute $E$ and $S$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaIX_JT:reduction_identity,AlphaIX_JT:div_total}{Reduction of the scalar curvature; the divergence is total (two statements).$^*$}
+\chk{AlphaIX_JT:magnetic_F2}{$F^2=2(1-w^2)^2/R^4$.}
+\chk{AlphaIX_JT:potential_from_YM,AlphaIX_JT:U_deriv}{$U(\Phi)=2-2\ell^2/\Phi$ and $U'$ (two statements).$^*$}
+\chk{AlphaFamous:fam_jt_U0,AlphaFamous:fam_jt_slope,AlphaFamous:fam_jt_coeff}{$U(\ell^2)=0$, $U'(\ell^2)\ell^2=2$ (three statements).}
+\chk{AlphaFamous:fam_jt_Wmass}{The $w$-dependence of the potential at $\Phi=\ell^2$.}
+\chk{AlphaDumbbell_Bogomolny:ds2_neck_action}{On-shell action $A/(2G)$ of a throat region.}
+\chk{AlphaIX_JT:neck_exact,AlphaX_Unify:nonempty_neck}{The constant-dilaton vacuum $\Phi=\ell^2$, ${}^{(2)}\!R=-2/\ell^2$ (two statements).$^*$}
+\chk{AlphaIX_JT:neck_metric_curvature}{${}^{(2)}\!R=-2/\ell^2$ in synchronous coordinates.$^*$}
+\chk{AlphaIX_JT:jt_expansion,AlphaIX_JT:jt_kinetic}{Exact JT expansion and kinetic term (two statements).$^*$}
+\chk{AlphaIX_JT:ground_entropy,AlphaFamous:fam_jt_S0}{$S_0=\pi\ell^2/G=4\pi^2/g^2=\frac12\cdot8\pi^2/g^2$ (two statements).$^*$}
+\chk{AlphaFix_Neck:jt_normalization}{$G_2=G/4\pi$ and the couplings.}
+\chk{AlphaFix_Neck:jt_dt,AlphaFix_Neck:jt_dtt,AlphaFix_Neck:jt_dz,AlphaFix_Neck:jt_dzz,AlphaFix_Neck:jt_dtz}{Derivatives of the dilaton (five statements).}
+\chk{AlphaFix_Neck:jt_neck_solution}{The general dilaton solves the equations.$^*$}
+\chk{AlphaFix_Neck:no_static_dilaton}{No static dilaton.$^*$}
+\chk{AlphaFix_Neck:jt_gradient,AlphaFix_Neck:jt_bifurcation}{Gradient of the symmetric dilaton; bifurcation point (two statements).}
+\chk{AlphaBridge_Thermal:dilaton_invariant,AlphaBridge_Thermal:dilaton_grad,AlphaBridge_Thermal:xi_norm}{The invariant $A^2+B^2-C^2$ and the Killing vector (three statements).$^*$}
+\chk{AlphaBridge_Thermal:three_classes}{Three classes.$^*$}
+\chk{AlphaBridge_Thermal:accel_formula,AlphaBridge_Thermal:accel_identity}{Proper acceleration; $a^2-1/\ell^2=I/(\varphi^2-I\ell^2)$ (two statements).$^*$}
+\chk{AlphaBridge_Thermal:deser_levin}{Surface gravity and local temperature.$^*$}
+\chk{AlphaBridge_Thermal:rindler_lapse,AlphaBridge_Thermal:unit_observer}{Rindler lapse and the unit observer (two statements).}
+\chk{AlphaBridge_Thermal:junction_tan}{$\tan u_c=1/\sinh(L/\ell)$.}
+\chk{AlphaIX_JT:schwarzian_energy,AlphaIX_JT:schwarzian_entropy,AlphaIX_JT:schwarzian_heat_capacity}{Schwarzian energy, entropy and heat capacity (three statements).$^*$}
+\chk{AlphaFix_Dyn:micro_exact_deriv,AlphaFix_Dyn:micro_exact_inv_T}{Exact density of states: $1/T=4\pi^2C\coth x/x$ (two statements).$^*$}
+\chk{AlphaFix_Dyn:coth_eq,AlphaFix_Dyn:micro_exact_bound}{$\coth x=1+2/(e^{2x}-1)$ and the bound (two statements).$^*$}
+\chk{AlphaFix_Dyn:canonical_vs_micro,AlphaFix_Dyn:canonical_energy_T}{Canonical versus microcanonical energy (two statements).}
+\chk{AlphaIX_JT:delta_roots,AlphaIX_JT:neck_mode_below_BF,AlphaFamous:fam_no_real_dim}{$\Delta=\frac12\pm i\sqrt3/2$; below the BF bound (three statements).$^*$}
+\chk{AlphaIX_JT:gaussian_negative_mode}{Divergence along a negative mode.$^*$}
+\chk{AlphaOmega_Close:oc_invariant_not_regular}{An $SL(2,\mathbb R)$-invariant closed universe is not regular.$^*$}
+\end{checklist}

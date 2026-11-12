@@ -187,3 +187,13 @@ AlphaFamous:fam_hagedorn	intB
 AlphaIX_Thermo:mass_function	ch30
 AlphaIX_Thermo:horizon_iff	ch30
 AlphaIX_Thermo:lighter_extremal	ch30
+AlphaFix_Dyn:total_conserved	ch27
+AlphaFix_Dyn:cap_X	ch27
+AlphaFix_Dyn:cap_backreaction_ratio	ch27
+AlphaFix_Dyn:backreaction_grows	ch27
+AlphaFix_Dyn:mass_deriv	ch30
+AlphaFix_Dyn:extremal_iff_critical	ch30
+AlphaFix_Dyn:critical_radius	ch30
+AlphaFix_Dyn:extremal_mass	ch30
+AlphaFix_Dyn:extremal_lighter	ch30
+AlphaFix_Dyn:neck_shrinks	ch30
