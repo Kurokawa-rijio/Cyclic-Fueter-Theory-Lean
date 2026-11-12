@@ -1,0 +1,166 @@
+\chapter{The Tolman Universe and the Bertotti--Robinson Throat}\markboth{\MakeUppercase{Chapter 15.\ Tolman universe and Bertotti--Robinson throat}}{}
+\label{ch:tolmanbr}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the Einstein tensor in the diagonal gauge (\cref{thm:einD}); the homogeneous Yang--Mills fields on $S^3$ and the stress tensor of the magnetic ansatz (\cref{thm:merons,thm:ymstress}); $\ell=\sqrt{4\pi G}/g$ (\eqref{eq:elldef}); the three homogeneous solutions and the Misner--Sharp mass (\cref{thm:threesol,prop:massprime}).\\
+\textbf{It provides:} the two non-trivial homogeneous solutions as spacetimes. The closed radiation universe of Tolman is driven by the Yang--Mills field $w=\cos\chi$ on $S^3$; its scale factor in conformal time is $a(\eta)=\ell\cos\eta$, so that its moment of maximal expansion is the round $S^3(\ell)$. The Bertotti--Robinson throat $\mathrm{AdS}_2\times S^2$ is supported by the unit magnetic monopole $w=0$ and has both radii equal to $\ell$. The chapter also shows that both radii are fixed to the same $\ell$ by the field equations, that a cosmological constant is excluded, that no static closed universe exists, and that a Newtonian limit exists.
+\end{usesbox}
+
+The previous chapter found three homogeneous spatial geometries compatible with the EYM constraints. Flat space is the vacuum. This chapter turns the other two into four-dimensional solutions. Both are classical: one is a closed universe filled with radiation \cite{Tolman1934}, the other the product of anti-de Sitter space and a sphere found by Bertotti and by Robinson \cite{Bertotti1959,Robinson1959}. The new point is that in Einstein--Yang--Mills theory both arise from the same field with the same radius $\ell$. One is the Yang--Mills field $w=\cos\chi$, which interpolates between vacuum and monopole. The other is the monopole $w=0$ itself.
+
+\section{The Yang--Mills stress in spherical symmetry}
+
+For a static magnetic configuration with $w(r)$ the energy density, radial pressure and tangential pressure are
+\begin{equation}\label{eq:ymfluid}
+\rho=\frac{1}{g^2}\Bigl(\frac{w'^2}{r^2}+\frac{(1-w^2)^2}{2r^4}\Bigr),\quad
+p_r=\frac{1}{g^2}\Bigl(\frac{w'^2}{r^2}-\frac{(1-w^2)^2}{2r^4}\Bigr),\quad
+p_T=\frac{(1-w^2)^2}{2g^2r^4}.
+\end{equation}
+
+\begin{proposition}[Tracelessness]\label{prop:traceless}\ver\
+The quantities \eqref{eq:ymfluid} satisfy $-\rho+p_r+2p_T=0$. More generally, for any field strength in four dimensions and any diagonal metric, $\sum_mg^{mm}\hat T_{mm}=0$.
+\end{proposition}
+
+Yang--Mills radiation is therefore conformal matter, like electromagnetic radiation. This has two consequences. A homogeneous Yang--Mills field behaves like a radiation fluid. And the trace of the Einstein equation gives $R=0$ for every EYM solution.
+
+\section{The closed Tolman universe}
+
+On a round three-sphere of radius $a$, written as $r=a\sin\chi$, take $w=\cos\chi$. This is the spin connection of the sphere, as in \cref{thm:spinwitten}, written in a left-invariant frame it is the meron of \cref{thm:merons} (compare the last part of \cref{thm:spinwitten}).
+
+\begin{theorem}[Yang--Mills radiation on $S^3$]\label{thm:tolmanstress}\ver\
+For $r=a\sin\chi$ and $w=\cos\chi$:
+\begin{enumerate}[label=(\roman*)]
+\item $\rho=\dfrac{3}{2g^2a^4}$ and $p_r=p_T=\dfrac{1}{2g^2a^4}=\rho/3$, independently of $\chi$: a homogeneous radiation fluid.
+\item In conformal time, with $N=A=a$ and $R=a\sin\chi$, the Yang--Mills equation $\partial_\chi(Nw_\chi/A)+NAw(1-w^2)/R^2=0$ holds for every scale factor $a$, and $r'=\cos\chi=w$.
+\item The magnetic flux through the sphere at $\chi$ is $4\pi r^2B_r=4\pi(1-w^2)=4\pi\sin^2\chi$, which equals $4\pi$, one unit, at the equator $\chi=\pi/2$.
+\end{enumerate}
+\end{theorem}
+
+The Friedmann equation for a closed universe filled with radiation, $\rho\propto a^{-4}$, can be solved in closed form.
+
+\begin{theorem}[The Tolman universe]\label{thm:tolman}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item In conformal time, $a(\eta)=\ell\cos\eta$ satisfies $a'^2+a^2=\frac{8\pi G}3\rho a^4$ with $\rho=3/(2g^2a^4)$, if and only if $\ell^2=4\pi G/g^2$. The maximal radius is $\ell$.
+\item In cosmic time, $a=\sqrt{L-t^2}$ satisfies $\dot a^2+1=L/a^2$.
+\item At maximal expansion the slice is $S^3(\ell)$, and the Hamiltonian constraint ${}^{(3)}R=6/\ell^2=16\pi G\rho$ holds exactly when $\ell^2=4\pi G/g^2$.
+\item The Misner--Sharp mass inside the sphere $R=a\sin\chi$ is $m=\frac{4\pi}3\rho R^3$, as in Newtonian theory, and it obeys the first law $\dd m/\dd t=-\frac\rho3\cdot4\pi R^2\,\dd R/\dd t=-p\,\dd V/\dd t$ for $\rho=C/a^4$.
+\end{enumerate}
+\end{theorem}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.8]
+\draw[->] (-0.2,0) -- (3.4,0) node[right] {\small $\eta$};
+\draw[->] (0,-0.2) -- (0,1.3) node[above] {\small $a$};
+\draw[thick,domain=-1.5708:1.5708,samples=60,shift={(1.5708,0)}] plot (\x,{cos(\x r)});
+\draw[dashed] (1.5708,0) -- (1.5708,1) node[above] {\small $a=\ell$};
+\node[below] at (0,0) {\small $-\frac\pi2$};
+\node[below] at (3.1416,0) {\small $\frac\pi2$};
+\end{tikzpicture}
+\caption{The scale factor $a(\eta)=\ell\cos\eta$ of the Tolman universe in conformal time, shifted so that $\eta=0$ is the moment of maximal expansion. The universe begins and ends with $a=0$; at $\eta=0$ the spatial slice is the round $S^3(\ell)$.}
+\label{fig:tolman}
+\end{figure}
+
+This is Tolman's closed radiation universe \cite{Tolman1934}, here with Yang--Mills radiation as matter, in the spirit of the Yang--Mills cosmologies of Gal'tsov and Volkov \cite{GaltsovVolkov1991}. In conformal time it lasts exactly half a period, and at its moment of maximal expansion, the time-symmetric slice, it is the round sphere of \cref{thm:threesol}.
+
+There is no static version. Einstein's static universe needs dust and a cosmological constant; with conformal matter alone the trace of the field equations forbids it.
+
+\begin{proposition}[No static closed universe]\label{prop:nostatic}\ver\nogo\
+For a diagonal metric, $\sum_ag^{aa}G_{aa}=-R$. The ultrastatic $\RR\times S^3$ of radius $\ell$ has $R=6/\ell^2$. Since Yang--Mills stress is traceless for every field strength, $G_{aa}=\kappa_GT_{aa}$ would force $R=0$: the ultrastatic three-sphere is not a solution of the EYM equations for any Yang--Mills field.
+\end{proposition}
+
+\subsection*{A Newtonian limit}
+
+A closed universe looks very non-Newtonian. Still, its interior approaches Newtonian gravity in a suitable limit. Fix a density $\rho_0>0$ and let the radius $a\to\infty$ while $G(a)=3/(8\pi\rho_0a^2)\to0$, so that the constraint $6/a^2=16\pi G(a)\rho_0$ continues to hold.
+
+\begin{proposition}[Newtonian limit]\label{prop:newtonlimit}\ver\
+At fixed proper radius $s$, $r_a(s)=a\sin(s/a)\to s$, $r_a'(s)\to1$ and $G(a)\to0$. For every finite $a$ the mass is exactly $m_a=\frac{4\pi}3\rho_0r_a^3$ with $\dd m_a/\dd s=4\pi\rho_0r_a^2r_a'$, and as $a\to\infty$, $m_a\to\frac{4\pi}3\rho_0s^3$ and $\dd m_a/\dd s\to4\pi\rho_0s^2$.
+\end{proposition}
+
+If instead $G$ is kept fixed while $a\to\infty$, then $\rho\to0$ and the limit is the vacuum. A nonzero Newtonian density requires the combined limit.
+
+\section{The Bertotti--Robinson throat}
+
+The second homogeneous solution has $r=\ell$ constant and $w=0$, the unit magnetic monopole on every sphere. As a spacetime it is the product $\mathrm{AdS}_2\times S^2$,
+\[
+\dd s^2=-\cosh^2(x/\ell)\,\dd t^2+\dd x^2+\ell^2\dd\Omega^2,
+\]
+with lapse $N=\cosh(x/\ell)$, which satisfies $N''=N/\ell^2$.
+
+\begin{theorem}[The Bertotti--Robinson throat]\label{thm:br}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For $w=0$, $r=\ell$: $\rho=\dfrac1{2g^2\ell^4}$, $p_r=-\rho$, $p_T=\rho$.
+\item The Ricci eigenvalues of $\mathrm{AdS}_2(\ell)\times S^2(\ell)$ are $(-\frac1{\ell^2},-\frac1{\ell^2},\frac1{\ell^2},\frac1{\ell^2})$, so $R=0$, and the Einstein equations $G^\mu{}_\nu=8\pi GT^\mu{}_\nu$ hold if and only if $\ell^2=4\pi G/g^2$.
+\item $N=\cosh(x/\ell)$ satisfies $N'=\sinh(x/\ell)/\ell$ and $N''=N/\ell^2$.
+\item The Misner--Sharp mass of every sphere is $\ell/(2G)$, the minimal mass of \cref{thm:penrose}.
+\end{enumerate}
+\end{theorem}
+
+The throat is the near-horizon geometry of the extremal magnetically charged Reissner--Nordstr\"om black hole. It is the attractor geometry that reappears in Chapter~24.
+
+\section{One radius}
+
+The two solutions have been found separately, and each fixes its own radius. They fix the same one.
+
+\begin{theorem}[The same $\ell$]\label{thm:sameell}\ver\
+If a round $S^3$ of radius $a$ satisfies the Hamiltonian constraint with the Yang--Mills radiation of \cref{thm:tolmanstress}, and a cylinder of radius $l$ satisfies it with the monopole, then $a=l=\ell=\sqrt{4\pi G}/g$. If a cosmological constant $\Lambda$ were allowed, the two conditions $6/\ell^2=3k/\ell^4+2\Lambda$ and $2/\ell^2=k/\ell^4+2\Lambda$ (with $k=2\ell^2$ the Yang--Mills coefficient) would force $\Lambda=0$.
+\end{theorem}
+
+So the moment of maximal expansion of the Tolman universe and the spatial slice of the Bertotti--Robinson throat contain spheres of the same radius: the equator of $S^3(\ell)$ and every sphere of the cylinder. That is the observation on which the gluing of Chapters~17 and~18 is built.
+
+\begin{litbox}
+Tolman's closed radiation universe \cite{Tolman1934} and the Bertotti--Robinson solution \cite{Bertotti1959,Robinson1959} are classical, and homogeneous Yang--Mills cosmologies were studied by Gal'tsov and Volkov \cite{GaltsovVolkov1991}; the throat as the near-horizon geometry of extremal Reissner--Nordstr\"om is standard. What we add is a single EYM framework in which both arise from the Witten ansatz (spin connection $w=\cos\chi$, monopole $w=0$) with the same radius $\ell=\sqrt{4\pi G}/g$ (\cref{thm:sameell}), together with the exclusion of $\Lambda$ by the requirement that both exist, the trace argument against a static closed universe, and the combined Newtonian limit.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item Yang--Mills stress is traceless; on $S^3$ it is radiation, $\rho=3/(2g^2a^4)$ (\cref{prop:traceless,thm:tolmanstress}).
+\item The Tolman universe $a(\eta)=\ell\cos\eta$, with $S^3(\ell)$ at maximal expansion (\cref{thm:tolman}).
+\item The throat $\mathrm{AdS}_2(\ell)\times S^2(\ell)$ with $N=\cosh(x/\ell)$ and mass $\ell/(2G)$ (\cref{thm:br}).
+\item Both radii equal $\ell$; $\Lambda=0$ (\cref{thm:sameell}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Substitute $w=\cos\chi$, $r=a\sin\chi$ (so $w'=\dd w/\dd s=-\sin\chi/a$) into \eqref{eq:ymfluid} and confirm \cref{thm:tolmanstress}(i).
+\end{exercise}
+\begin{exercise}
+Check that $a=\ell\cos\eta$ satisfies $a'^2+a^2=\ell^2$, and show that this is the Friedmann equation with $\frac{8\pi G}3\rho a^4=\ell^2$.
+\end{exercise}
+\begin{exercise}
+Verify $N''=N/\ell^2$ for $N=\cosh(x/\ell)$ and explain why this makes $-N^2\dd t^2+\dd x^2$ a space of constant curvature $-1/\ell^2$.
+\end{exercise}
+\begin{exercise}
+Solve the two equations of \cref{thm:sameell} for $\Lambda$ and $k$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaII_EYM:ym_stress}{$\rho,p_r,p_T$ of the magnetic ansatz and $-\rho+p_r+2p_T=0$.$^*$}
+\chk{AlphaVI_Static:tym_traceless}{The Yang--Mills stress is traceless for every field strength.$^*$}
+\chk{AlphaII_EYM:cap_stress}{On $S^3(a)$ with $w=\cos\chi$: $\rho=3/(2g^2a^4)$, $p_r=p_T=1/(2g^2a^4)$.$^*$}
+\chk{AlphaFix_Geo:cap_rho}{The same density in the variables of the radiation fluid.$^*$}
+\chk{AlphaIX_Fluid:cap_radiation}{Radiation equation of state and $a=\sqrt{L-t^2}$ solving $\dot a^2+1=L/a^2$.$^*$}
+\chk{AlphaII_EYM:frw_exact}{The Yang--Mills equation holds on the closed FRW slice for every $a$, with $r'=\cos\chi$.$^*$}
+\chk{AlphaII_EYM:flux_cap}{Magnetic flux $4\pi\sin^2\chi$, one unit at the equator.$^*$}
+\chk{AlphaFix_Geo:cap_friedmann_l}{$a=\ell\cos\eta$ solves the Friedmann equation.$^*$}
+\chk{AlphaX_Unify:nonempty_cap}{$a=\ell\cos\eta$ satisfies the hypotheses of the closed-universe equation.$^*$}
+\chk{AlphaII_EYM:ell_cap}{The constraint on $S^3(\ell)$ holds iff $\ell^2=4\pi G/g^2$.$^*$}
+\chk{AlphaFix_Unify:cap_ms_mass}{Misner--Sharp mass $\frac{4\pi}3\rho R^3$ in the closed universe.$^*$}
+\chk{AlphaFix_Unify:cap_first_law}{First law $\dd m/\dd t=-\frac\rho3\,4\pi R^2\dd R/\dd t$.$^*$}
+\chk{AlphaVI_Static:trace_einD}{$\sum_ag^{aa}G_{aa}=-R$ for diagonal metrics.$^*$}
+\chk{AlphaVI_Static:rsc_static_S3}{The ultrastatic $S^3(\ell)$ has $R=6/\ell^2$.$^*$}
+\chk{AlphaVI_Static:static_S3_impossible}{It cannot support traceless matter.$^*$}
+\chk{AlphaVI_Static:static_S3_YM_impossible}{It is not an EYM solution for any Yang--Mills field.$^*$}
+\chk{AlphaS3_Closure:flat_r,AlphaS3_Closure:flat_rp,AlphaS3_Closure:flat_G}{$r_a\to s$, $r_a'\to1$, $G(a)\to0$ (three statements).$^*$}
+\chk{AlphaS3_Closure:cap_mass_exact}{$m_a=\frac{4\pi}3\rho_0r_a^3$ exactly.$^*$}
+\chk{AlphaS3_Closure:flat_mass}{$m_a\to\frac{4\pi}3\rho_0s^3$.$^*$}
+\chk{AlphaS3_Closure:cap_mass_rate}{$\dd m_a/\dd s=4\pi\rho_0r_a^2r_a'$.$^*$}
+\chk{AlphaS3_Closure:flat_mass_rate_limit}{$\dd m_a/\dd s\to4\pi\rho_0s^2$.$^*$}
+\chk{AlphaII_EYM:neck_stress}{Throat stress $\rho=1/(2g^2\ell^4)$, $p_r=-\rho$, $p_T=\rho$.$^*$}
+\chk{AlphaFix_Geo:neck_einstein}{Ricci eigenvalues of the throat and the Einstein equations iff $\ell^2=4\pi G/g^2$.$^*$}
+\chk{AlphaII_EYM:ell_neck}{The constraint on the cylinder holds iff $\ell^2=4\pi G/g^2$.$^*$}
+\chk{AlphaII:br_lapse_d1,AlphaII:br_lapse_d2}{$N=\cosh(x/\ell)$: $N'=\sinh(x/\ell)/\ell$, $N''=N/\ell^2$ (two statements).$^*$}
+\chk{AlphaFix_Unify:neck_ms_mass}{Mass $\ell/2$ (in units $G=1$) on every sphere of the throat.$^*$}
+\chk{AlphaIII_Glue:glue_EYM}{Both constraints force $a=l$.$^*$}
+\chk{AlphaII_Action:lambda_zero}{A cosmological constant is excluded: $\Lambda=0$, $k=2\ell^2$.$^*$}
+\end{checklist}

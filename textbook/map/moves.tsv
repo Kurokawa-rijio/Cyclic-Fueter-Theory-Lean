@@ -123,3 +123,6 @@ AlphaS3_Closure:cap_mass_exact	ch15
 AlphaS3_Closure:flat_mass	ch15
 AlphaS3_Closure:cap_mass_rate	ch15
 AlphaS3_Closure:flat_mass_rate_limit	ch15
+AlphaIII_Glue:glue_C1	ch17
+AlphaIII_Glue:no_flat_from_constraints	ch17
+AlphaIII_Glue:junction_marginal	ch17
