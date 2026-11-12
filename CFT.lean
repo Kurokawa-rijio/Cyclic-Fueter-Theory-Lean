@@ -140,6 +140,7 @@ import CFT.AlphaV_GaussMap
 import CFT.AlphaV_NeckQuantum
 import CFT.AlphaV_S3Dirac
 import CFT.AlphaV_Wigner
+import CFT.AlphaWGC
 import CFT.AlphaXI_HiggsNeck
 import CFT.AlphaXI_NeckInstability
 import CFT.AlphaX_Unify

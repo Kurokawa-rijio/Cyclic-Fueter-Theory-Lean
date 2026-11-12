@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software in academic work, cite the version archived by Zenodo and the relevant research documents."
 title: "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results"
-version: "0.5.0"
-date-released: "2026-11-06"
+version: "0.6.0"
+date-released: "2026-11-12"
 license: MIT
 repository-code: "https://github.com/Kurokawa-rijio/Cyclic-Fueter-Theory-Lean"
 authors:
@@ -18,8 +18,10 @@ abstract: >-
   constraint-propagation identities, zero-mode calculations, and
   selected Wess–Zumino–Witten (WZW)-related formulas, and consequences of the action
   principle for the Einstein–Yang–Mills dumbbell, including its junction, conformal
-  frame and smoothness. The repository includes an
-  author-maintained status ledger of 134 items in α-I–α-XIV, each recorded as
+  frame and smoothness, the shape of the dumbbell, a reduced action with canonical
+  constraints and a Wheeler–DeWitt equation for the spherically symmetric sector,
+  and a two-dimensional Dirac field. The repository includes an
+  author-maintained status ledger of 182 items in α-I–α-XV, each recorded as
   kinematics, action, and dynamics. Status labels
   describe the current formalization scope and are not independent certification or
   peer review of the corresponding research claims. Lean verifies theorem conclusions
@@ -45,3 +47,5 @@ keywords:
   - Self-dual connection
   - Bartnik–McKinnon solutions
   - Einstein static universe
+  - Dirac equation
+  - Wheeler–DeWitt equation

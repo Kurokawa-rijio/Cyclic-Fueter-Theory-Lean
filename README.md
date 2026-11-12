@@ -1,7 +1,7 @@
 # Cyclic Fueter Theory: Lean 4 Formalization of Selected Results
 
 **Author:** Ryojiro Kurokawa  
-**Version:** v0.5.0 (2026-11-06)  
+**Version:** v0.6.0 (2026-11-12)  
 **Lean toolchain:** `leanprover/lean4:v4.15.0`  
 **Mathlib dependency:** `v4.15.0`
 
@@ -9,9 +9,31 @@
 
 ## Overview
 
-This repository contains Lean 4 formalizations associated with the research program *Cyclic Fueter Theory* (CFT) and the author's claim ledger α-I–α-XIV. The code covers quaternionic algebra, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, the reduced Einstein–Yang–Mills (EYM) action and its field equations, curvature and stress tensors computed from metric and connection data, distributional junction conditions, characteristic evolution and constraint propagation, zero-mode calculations, and selected links to WZW and related geometric formulas.
+This repository contains Lean 4 formalizations associated with the research program *Cyclic Fueter Theory* (CFT) and the author's claim ledger α-I–α-XV. The code covers quaternionic algebra, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, the reduced Einstein–Yang–Mills (EYM) action and its field equations, curvature and stress tensors computed from metric and connection data, distributional junction conditions, characteristic evolution and constraint propagation, zero-mode calculations, and selected links to WZW and related geometric formulas.
 
-The current snapshot contains **1641 theorem declarations** in 150 Lean modules (v0.4.0: 1544 in 141; v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 340 aliases in the index module `CFT/AlphaIndex.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+The current snapshot contains **1873 theorem declarations** in 171 Lean modules (v0.5.0: 1641 in 150; v0.4.0: 1544 in 141; v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 556 aliases in the index module `CFT/AlphaIndex.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+
+## What changed in v0.6.0
+
+**Real-function versions (α-III, α-IV, α-X).** The earlier "RealLine" hypotheses asked for a ring homomorphism out of a field and were therefore vacuous; the affected junction, constraint and mass statements are now proved for real functions with `HasDerivAt` (`CFT.RJ`, `CFT.RR`), and the old theorems are marked as superseded. All formerly partial items are closed, some as negative statements.
+
+**Ω and its quantum geometry (α-XV).** In the conformal frame the area radius solves a flat two-dimensional wave equation and √g R = 6Ω² − 6Ω□̂Ω. Three conformal Killing vectors generate the residual gauge algebra sl(2,ℝ); the neck is the unique invariant configuration. Local constraints leave no local degree of freedom in the conformally flat, spherically symmetric, magnetic sector (one state); an earlier wording that overstated this as a statement about the full constraint algebra was corrected.
+
+**Shape of the dumbbell (α-XIII.4-A–E).** Time-symmetric, conformally flat slices satisfy r′² ≤ W², and in the saturating case W = ±r′ they obey r² + ℓ²r′² = ℓ². The cap r = ℓ sin(x/ℓ) is the regular solution and the neck r = ℓ is the singular solution (the envelope of the caps), so the junction is C¹ and never C². The junction is located by continuity alone, cannot be timelike, and carries a jump [W_u] = 1/(√2ℓ) transported unchanged along null fronts. The Weyl invariant equals 3(2m/r − ℓ²(1 − W²)²/r²) with m the Misner–Sharp mass.
+
+**One action for the spherically symmetric sector (α-XV.11–XV.29).** From S = (1/4G)∫√−h{r²R + 2(∇r)² + 2 − 4ℓ²(∇W)² − 2ℓ²(1 − W²)²/r²} the three field equations follow; the constraints take the mass form M′ = (r′/Λ)H_m + (P_Λ/(rΛ))P_W W′ for any matter; the same pair of constraints reduces to the Friedmann constraint on the cap and to a flat two-dimensional Klein–Gordon equation ∂_σ∂_θΨ = −4c²Ψ on the Kantowski–Sachs (neck) side, where r = ℓ is a fold of the minisuperspace. Limits checked: Birkhoff/Schwarzschild, Reissner–Nordström, JT gravity near the neck (topological coefficient πℓ²/G), the first law with S = A/4, T = F′/4π from smoothness of the Euclidean section, and a second law for the apparent horizon. A two-dimensional Dirac field with mass Wν is included: its sources satisfy the conservation law that makes the constraints propagate. On the cap the Dirac operator D_λ = 2σ·(K + λT) + 3/2 has a zero mode exactly at λ = 1/2 (the cap is the sphaleron), and the reduced problem gives E² = k² − 1. The general solution of the Wheeler–DeWitt equation with W and fermions is not obtained (α-XV.14, not started).
+
+**Volume, area and shape (α-XV.19, XV.24–XV.26).** The volume of a time-symmetric slice is 2π²ℓ³ + 4πℓ²L, so fixing it fixes the neck length; the volume rate is the dilation generator, and the neck length is conjugate to −rṙ. Area-preserving cross-section shapes (β, θ) are the two graviton polarisations, with shear² = β̇² + sinh²(2β)θ̇² entering the null constraint with the same sign as W_u². Constant area along a null direction forces β_u = θ_u = W_u = 0. Constant cross-section area on a slice admits W′² = (1 − ℓ²(1 − W²)²/r₀²)/(2ℓ²), including the lump W = √2/cosh(x/ℓ) at r₀ = ℓ, but only the neck keeps its area at the next instant.
+
+**Weak gravity conjecture (α-XI.8).** With an adjoint Higgs field the electric WGC for the W boson and the magnetic WGC for the BPS monopole are the same condition 4πGv² ≤ 1; with the neck-stability bound this gives 3/4 ≤ (m_W ℓ)² ≤ 1. The neck exists only for Λ ≤ 1/(4ℓ²) = g²/(16πG), and then stability implies the Festina Lente bound in the form (m_W ℓ)² ≥ √(Λℓ²). The conjectures themselves are external and are not derived; the Festina Lente coefficient is quoted from the literature and should be checked.
+
+**Ideas tested and rejected.** The ledger records negative results as well: Pati–Salam is not selected by the curvature of an ellipsoidal S⁹ (numerics), the fold at the neck is not an Airy turning point, a Regge-type quantisation of corner angles is ill-defined because the junction is null, a dynamically fixed volume is incompatible with the neck, and a static non-round cross-section is excluded (rotating necks are the exception, cited from the literature).
+
+**Scope of checking.** The additions since v0.5.0 were not audited by an independent reviewer. Formulas taken from the literature (the reduction of the four-dimensional Dirac field, the Raychaudhuri equation with shear, tensor-harmonic eigenvalues, Gauss–Bonnet, index theorems, the WGC and Festina Lente bounds, rigidity of extremal horizons) are marked external in the ledger. Numerical statements (growth of the Weyl invariant towards the crunch, wedge collapse, ellipsoid curvature) are not verified by Lean.
+
+**Remaining.** Partial: 0. Not started: 3 (α-X.10-D flux reduction for the shape modes; α-XV.14 general solution and regularisation of the Wheeler–DeWitt equation; α-XV.10 graviton–gauge mixing and quantisation beyond the linear level).
+
+The ledger (`docs/CLAIM_STATUS_JA.md`) now has 182 items in α-I–α-XV (103 complete, 67 complete using a named external theorem or literature, 9 complete in a differential field pending a bridge to real functions, 0 partial, 3 not started). The entry module `CFT/SphericalTheory.lean` imports the modules of the spherically symmetric sector.
 
 ## What changed in v0.5.0
 
@@ -122,6 +144,8 @@ To run the axiom audit and the dependency checks after building:
 lake env lean Audit.lean      # #print axioms for every theorem; output recorded in audit.txt
 lake env lean DepCheck.lean   # proof and statement dependencies; output recorded in review/depcheck.txt
 ```
+
+Recorded audit result for v0.6.0: AUDIT_V060_PLACEHOLDER
 
 Recorded audit result for v0.5.0 (CI run 42150846298, full `lake build` and `lake env lean Audit.lean`, success): 1973 entries (every public theorem and the 340 index aliases), of which 1954 depend only on Lean's standard axioms [propext, Classical.choice, Quot.sound], 12 on [propext, Quot.sound], 4 on [propext], and 3 on no axioms; no `sorryAx`. The workflow prints every line of the audit to the CI log, and `audit.txt` is copied from that log. All 97 theorems added since v0.4.0 depend only on the standard axioms.
 

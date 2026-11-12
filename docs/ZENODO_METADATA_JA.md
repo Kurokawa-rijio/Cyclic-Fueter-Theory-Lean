@@ -12,7 +12,7 @@ Version 0.2.0 contains 1074 theorem declarations in 101 modules, with no sorry a
 
 The project targets Lean 4.15.0 and Mathlib v4.15.0. To reproduce the build, install Elan and run `lake update`, `lake exe cache get`, and `lake build` from the repository root.
 
-The full description used on the Zenodo record is `docs/ZENODO_DESCRIPTION_v0.4.0.md` (earlier versions: v0.2.0, v0.3.0).
+The full description used on the Zenodo record is `docs/ZENODO_DESCRIPTION_v0.6.0.md` (earlier versions: v0.2.0–v0.5.0).
 
 ## Keywords
 

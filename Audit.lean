@@ -139,6 +139,7 @@ import CFT.AlphaV_GaussMap
 import CFT.AlphaV_NeckQuantum
 import CFT.AlphaV_S3Dirac
 import CFT.AlphaV_Wigner
+import CFT.AlphaWGC
 import CFT.AlphaXI_HiggsNeck
 import CFT.AlphaXI_NeckInstability
 import CFT.AlphaX_Unify
@@ -1160,6 +1161,15 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_7C_id_bog1_form
 #print axioms CFT.Index.XI_7C_id_bog2
 #print axioms CFT.Index.XI_7C_id_Z_sinh
+#print axioms CFT.Index.XI_8_wgc_W
+#print axioms CFT.Index.XI_8_wgc_monopole
+#print axioms CFT.Index.XI_8_wgc_window
+#print axioms CFT.Index.XI_8_wgc_window_nonempty
+#print axioms CFT.Index.XI_8_wgc_lambda_id
+#print axioms CFT.Index.XI_8_wgc_lambda
+#print axioms CFT.Index.XI_8_wgc_lambda_eq
+#print axioms CFT.Index.XI_8_wgc_lambda_g
+#print axioms CFT.Index.XI_8_wgc_fl
 #print axioms CFT.Index.XII_1_ch2
 #print axioms CFT.Index.XII_1_polar_exists
 #print axioms CFT.Index.XII_1_polar_unique
@@ -2304,6 +2314,15 @@ import CFT.ZeroModeL2
 #print axioms CFT.Wigner.half_rotation_sq
 #print axioms CFT.Wigner.berry_fueter_gauge
 #print axioms CFT.Wigner.gauge_form
+#print axioms CFT.WGC.wgc_W
+#print axioms CFT.WGC.wgc_monopole
+#print axioms CFT.WGC.wgc_window
+#print axioms CFT.WGC.wgc_window_nonempty
+#print axioms CFT.WGC.wgc_lambda_id
+#print axioms CFT.WGC.wgc_lambda
+#print axioms CFT.WGC.wgc_lambda_eq
+#print axioms CFT.WGC.wgc_lambda_g
+#print axioms CFT.WGC.wgc_fl
 #print axioms CFT.HiggsNeck.neck_rho
 #print axioms CFT.HiggsNeck.higgs_stress_zero
 #print axioms CFT.HiggsNeck.neck_vacuum
