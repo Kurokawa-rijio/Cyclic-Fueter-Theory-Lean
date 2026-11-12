@@ -1,0 +1,54 @@
+\documentclass[11pt,openany]{book}
+\usepackage{fontspec}
+\setmonofont{DejaVu Sans Mono}[Scale=0.82]
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,array,enumitem}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{fancyvrb}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% status tags taken from the claim ledger
+\newcommand{\tagbox}[2]{\tcbox[on line,size=fbox,colback=#1!8,colframe=#1!60!black,boxrule=0.4pt,arc=1.5pt,fontupper=\scriptsize\sffamily]{#2}}
+\newcommand{\proved}{\tagbox{green}{proved in Lean}}
+\newcommand{\external}{\tagbox{blue}{external theorem}}
+\newcommand{\numerical}{\tagbox{orange}{numerical}}
+\newcommand{\negative}{\tagbox{red}{negative result}}
+\newcommand{\open}{\tagbox{gray}{open}}
+\newcommand{\lean}[1]{\texttt{#1}}
+
+\newtcolorbox{leanbox}[1][]{colback=black!3,colframe=black!35,boxrule=0.4pt,arc=1pt,left=2mm,right=2mm,top=1mm,bottom=1mm,fonttitle=\small\sffamily\bfseries,title={Lean: #1}}
+\newtcolorbox{questionbox}{colback=blue!3,colframe=blue!40!black,boxrule=0.5pt,arc=1pt,fonttitle=\sffamily\bfseries,title={The question of this chapter}}
+\newtcolorbox{standsbox}{colback=yellow!4,colframe=orange!60!black,boxrule=0.5pt,arc=1pt,fonttitle=\sffamily\bfseries,title={Where this stands}}
+
+\title{\textbf{Dynamics, the Action Principle,\\ and the Kinematics That Supports Them}\\[1em]
+\large From Quaternions to the Einstein--Yang--Mills Dumbbell,\\ Verified in Lean~4}
+\author{Ryojiro Kurokawa\\[0.5em]\small Department of Electrical Engineering, Graduate School of Science and Technology\\ \small Tokyo University of Science}
+\date{Preliminary draft, 12 November 2026}
+
+\begin{document}
+\frontmatter
+\maketitle
+\input{front}
+\tableofcontents
+\mainmatter
+\input{plan}
+\setcounter{chapter}{15}
+\input{ch16_shape}
+\backmatter
+\input{refs}
+\end{document}
