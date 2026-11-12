@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software in academic work, cite the version archived by Zenodo and the relevant research documents."
-title: "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results"
+title: "Cyclic Fueter Theory: A Lean 4 Formalization of the Einstein–Yang–Mills Dumbbell and Related Results"
 version: "0.6.0"
 date-released: "2026-11-12"
 license: MIT
@@ -30,22 +30,19 @@ abstract: >-
 keywords:
   - Lean 4
   - Mathlib
-  - Formalization
   - Formal verification
   - Interactive theorem proving
-  - Quaternionic analysis
-  - Fueter equations
-  - Clifford algebra
-  - Differential geometry
-  - Mathematical physics
   - Einstein–Yang–Mills theory
-  - Constraint propagation
-  - Wess–Zumino–Witten model
-  - Anti-de Sitter space
-  - Jackiw–Teitelboim gravity
-  - Weak gravity conjecture
-  - Self-dual connection
-  - Bartnik–McKinnon solutions
-  - Einstein static universe
-  - Dirac equation
+  - Quantum gravity
   - Wheeler–DeWitt equation
+  - Minisuperspace
+  - Bertotti–Robinson spacetime
+  - Tolman universe
+  - Extremal black holes
+  - Jackiw–Teitelboim gravity
+  - Junction conditions
+  - Weak gravity conjecture
+  - Dirac equation
+  - Quaternionic analysis
+  - Fueter operators
+  - Spherical symmetry

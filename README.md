@@ -1,4 +1,4 @@
-# Cyclic Fueter Theory: Lean 4 Formalization of Selected Results
+# Cyclic Fueter Theory: A Lean 4 Formalization of the Einstein–Yang–Mills Dumbbell and Related Results
 
 **Author:** Ryojiro Kurokawa  
 **Version:** v0.6.0 (2026-11-12)  

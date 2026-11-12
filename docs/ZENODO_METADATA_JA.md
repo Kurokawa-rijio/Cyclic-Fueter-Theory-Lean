@@ -2,7 +2,9 @@
 
 ## Recommended title
 
-Cyclic Fueter Theory: Lean 4 Formalization of Selected Results
+Cyclic Fueter Theory: A Lean 4 Formalization of the Einstein–Yang–Mills Dumbbell and Related Results
+
+(v0.5.0 までは "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results")
 
 ## Description (.zenodo.json, short form)
 
@@ -42,3 +44,8 @@ Zenodo supports controlled terms from EuroSciVoc, MeSH, and GEMET as well as cus
 - License: MIT (declared on the Zenodo record and in `LICENSE`).
 - ORCID and affiliation: omitted rather than guessed.
 - Version: v0.2.0 (Git tag `v0.2.0`). The full Zenodo description for this version is `docs/ZENODO_DESCRIPTION_v0.2.0.md`.
+
+
+## v0.6.0 で設定した subjects(Zenodo の統制語彙 EuroSciVoc)
+
+Mathematical physics (euroscivoc:1053), Theoretical physics (euroscivoc:261), Quantum field theory (euroscivoc:30017), Physical cosmology (euroscivoc:775), Black holes (euroscivoc:1487), Mathematical logic (euroscivoc:53388279), Geometry (euroscivoc:1065)。キーワードは .zenodo.json と同じ。
