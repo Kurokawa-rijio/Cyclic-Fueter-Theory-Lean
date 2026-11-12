@@ -7,6 +7,7 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
@@ -250,6 +251,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.AlphaCompleteD.other_chirality_empty
 #print axioms CFT.AlphaCompleteD.exponent_condition
 #print axioms CFT.AlphaCompleteD.one_generation_from_twist
+#print axioms CFT.DS.ds_weyl_mass
+#print axioms CFT.DS.ds_mass_u
+#print axioms CFT.DS.ds_N_u
+#print axioms CFT.DS.ds_circle_of_flat
+#print axioms CFT.DS.ds_cap_on_circle
+#print axioms CFT.DS.ds_neck_on_circle
+#print axioms CFT.DS.ds_cap_disc
+#print axioms CFT.DS.ds_slope_disc
+#print axioms CFT.DS.ds_slope_real
+#print axioms CFT.DS.ds_branch
 #print axioms CFT.FixDyn.micro_exact_deriv
 #print axioms CFT.FixDyn.coth_eq
 #print axioms CFT.FixDyn.micro_exact_inv_T
@@ -998,6 +1009,7 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_11C_os_Q_eq
 #print axioms CFT.Index.X_11C_os_backreaction
 #print axioms CFT.Index.X_11C_os_backreaction_ne
+#print axioms CFT.Index.X_11D_ds_N_u
 #print axioms CFT.Index.X_12_gauge_singlet
 #print axioms CFT.Index.X_12_eps_xsT
 #print axioms CFT.Index.X_12_xs_sq
@@ -1108,6 +1120,16 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XIII_4A_ju_cap_second
 #print axioms CFT.Index.XIII_4A_ju_jump_fixed
 #print axioms CFT.Index.XIII_4A_ju_theorem_A
+#print axioms CFT.Index.XIII_4B_ds_circle_of_flat
+#print axioms CFT.Index.XIII_4B_ds_cap_on_circle
+#print axioms CFT.Index.XIII_4B_ds_neck_on_circle
+#print axioms CFT.Index.XIII_4B_ds_cap_disc
+#print axioms CFT.Index.XIII_4B_ds_slope_disc
+#print axioms CFT.Index.XIII_4B_ds_slope_real
+#print axioms CFT.Index.XIII_4B_ds_branch
+#print axioms CFT.Index.XIII_4C_ds_weyl_mass
+#print axioms CFT.Index.XIII_4C_ds_mass_u
+#print axioms CFT.Index.XIII_4C_ds_N_u
 #print axioms CFT.Index.XIII_5_extremal_limit
 #print axioms CFT.Index.XIII_6_periodic
 #print axioms CFT.Index.XIII_6_cap_energy

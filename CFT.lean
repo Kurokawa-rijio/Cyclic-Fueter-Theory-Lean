@@ -8,6 +8,7 @@ import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
 import CFT.AlphaCompleteC2
 import CFT.AlphaCompleteD
+import CFT.AlphaDumbbell_Shape
 import CFT.AlphaFix_Dyn
 import CFT.AlphaFix_FW
 import CFT.AlphaFix_Gauge
