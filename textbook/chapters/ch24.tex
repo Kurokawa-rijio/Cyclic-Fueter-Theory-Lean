@@ -1,0 +1,186 @@
+\chapter{Black-Hole Thermodynamics of the Throat}\markboth{\MakeUppercase{Chapter 24.\ Black-hole thermodynamics}}{}
+\label{ch:thermo}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the throat as the near-horizon geometry of extremal Reissner--Nordstr\"om (\cref{thm:br,prop:extremallimit}); the hemisphere height $m/E$ (\cref{ch:hemisphere}); the Euclidean action and the Gibbons--Hawking term (\cref{thm:ghy}); the Misner--Sharp mass and Birkhoff's theorem (\cref{ch:constraints}).\\
+\textbf{It provides:} the Hawking temperature from Euclidean regularity and its vanishing at extremality; the first law, Smarr formula, free energy and heat capacity of magnetic RN; the Euclidean action of the magnetic black hole in the canonical ensemble; Sen's entropy function, whose unique critical point for unit magnetic charge is a throat of radius exactly $\ell=\sqrt{4\pi G}/g$; Tolman's law and black-body radiation in the throat; and the KMS condition, the fluctuation--dissipation relation and the non-relativistic limit of the J\"uttner distribution.
+\end{usesbox}
+
+The throat is the near-horizon region of an extremal black hole. This chapter places it within black-hole thermodynamics. The main message is that the radius $\ell=\sqrt{4\pi G}/g$, which so far appeared as the unique scale of the EYM equations, is also the attractor value of the horizon radius for unit magnetic charge: whatever the asymptotic data, the near-horizon geometry of an extremal magnetic black hole flows to the throat of \cref{ch:tolmanbr}.
+
+\section{Temperature from Euclidean regularity}
+
+\begin{theorem}[Hawking temperature]\label{thm:hawkingT}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Near a non-degenerate horizon, $f(r)\approx f_1(r-r_+)$. With $r-r_+=f_1\rho^2/4$ one has $\dd r/\dd\rho=f_1\rho/2$ and $(\dd r/\dd\rho)^2/f=1$, so the Euclidean metric $f\,\dd\tau^2+\dd r^2/f$ becomes $\rho^2(f_1/2)^2\dd\tau^2+\dd\rho^2$. There is no conical singularity iff the period is $\beta=4\pi/f_1$, i.e.\ $T=f_1/(4\pi)=\kappa/(2\pi)$.
+\item For RN, $f=(r-r_+)(r-r_-)/r^2$ has $f'(r_+)=(r_+-r_-)/r_+^2$, so $T=(r_+-r_-)/(4\pi r_+^2)$. For Schwarzschild, $T=1/(8\pi M)$. At extremality $r_+=r_-$, $T=0$.
+\item The Euclidean throat, with lapse $N=\cosh(x/\ell)$, has $N''=N/\ell^2$ and Gaussian curvature $-N''/N=-1/\ell^2$: the Euclidean $\mathrm{AdS}_2$ is the hyperbolic plane. By Gauss--Bonnet a compact quotient of genus $g\ge2$ has area $4\pi(g-1)\ell^2$.
+\item Geodesics in the throat separate according to the Jacobi equation $J''=J/\ell^2$, with solution $J=\cosh(s/\ell)\ge e^{s/\ell}/2$: the Lyapunov exponent is $1/\ell$.
+\end{enumerate}
+\end{theorem}
+
+The Lyapunov exponent $1/\ell$ is $2\pi T$ for the Rindler temperature $T=1/(2\pi\ell)$ of the throat's accelerated observers, the value that saturates the chaos bound of Maldacena, Shenker and Stanford \cite{MSS2016}.
+
+\section{First law, Smarr formula and stability}
+
+Work in units $G=1$ and write $M(r_+,Q)=(r_+^2+Q^2)/(2r_+)$, which is equivalent to $f(r_+)=0$.
+
+\begin{theorem}[Laws of RN thermodynamics]\label{thm:rnlaws}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (First law) $\partial M/\partial r_+=T\,\partial S/\partial r_+$ with $S=\pi r_+^2$, and $\partial M/\partial Q=\Phi=Q/r_+$. In the form used for the throat, $\frac12(1-\ell^2/r_+^2)=T\cdot2\pi r_+$ with $T=(r_+-\ell^2/r_+)/(4\pi r_+^2)$.
+\item (Smarr) $M=2TS+\Phi Q$.
+\item (Free energy) $F=M-TS=r_+/4+3Q^2/(4r_+)$.
+\item (Heat capacity) $T\propto1/r_+-Q^2/r_+^3$, whose derivative is positive iff $r_+^2<3Q^2$: near-extremal black holes have positive heat capacity.
+\item (Two branches) If $r_1<r_2$ have the same temperature (for instance $r_1=1$, $r_2=2$, $Q^2=4/7$), then $r_1r_2>3Q^2$ and the small branch, which connects to the extremal throat, has the lower free energy.
+\item (Mass function) For the magnetic ansatz with $w=0$ the Misner--Sharp mass obeys $m_u=r_u\ell^2/(2r^2)$, the RN mass function. For $w^2=1$, $w_u=0$, the mass is constant: Birkhoff's theorem for the pure-gauge sector.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}[A Hawking--Page-type sign]\label{prop:hawkingpage}\ver\
+For $r_+,L>0$, $\frac{r_+}4\bigl(1-r_+^2/L^2\bigr)<0$ iff $r_+>L$.
+\end{proposition}
+
+This is the sign change of the free energy of AdS black holes found by Hawking and Page \cite{HawkingPage1983}, here only as an algebraic statement.
+
+\section{The Euclidean action of a magnetic black hole}
+
+\begin{theorem}[Magnetic versus electric]\label{thm:magaction}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $\int_{r_+}^\infty r^{-2}\dd r=1/r_+$, and the Maxwell term of the Euclidean action is $\frac1{16\pi}\beta\cdot4\pi\int_{r_+}^\infty\frac{2Q^2}{r^4}r^2\dd r=\beta\Phi Q/2$.
+\item (Magnetic) With $\beta T=1$, the action is $I=\beta(M-TS)$ and $S=\beta M-I=\pi r_+^2=A/4$: the magnetic black hole is naturally in the canonical ensemble at fixed charge. The hypotheses are satisfiable, e.g.\ $r_+=2$, $Q=1$, $\beta=32\pi/3$.
+\item (Electric) The sign of the Maxwell term is reversed, and $I=\beta(M-TS-\Phi Q)$: the grand canonical ensemble.
+\item In general, with the Gibbons--Hawking evaluation $I=\beta(M-\Phi Q)/2$ and Smarr's formula, $I=\beta(M-TS-\Phi Q)$ and $S=\beta(M-\Phi Q)-I$.
+\end{enumerate}
+\end{theorem}
+
+The difference between (ii) and (iii) is the electric--magnetic asymmetry of the Euclidean action noted by Hawking and Ross \cite{HawkingRoss1995}. For the throat, which carries magnetic charge, the relevant potential is the free energy at fixed charge.
+
+\begin{proposition}[Magnetic charge as degree]\label{prop:degree}\ver\
+For $\mathbf n=(\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta)$, $\mathbf n\cdot(\partial_\theta\mathbf n\times\partial_\varphi\mathbf n)=\sin\theta$, and $\frac1{4\pi}\int_0^{2\pi}\!\!\int_0^\pi\sin\theta\,\dd\theta\,\dd\varphi=1$: the hedgehog, and hence the throat, has unit magnetic charge.
+\end{proposition}
+
+\section{The entropy function and the attractor}
+
+Sen's entropy function \cite{Sen2005} computes the entropy of an extremal black hole from its near-horizon geometry alone. Take $\mathrm{AdS}_2\times S^2$ with radii$^2$ $v_1,v_2$, an electric field $e$ and magnetic charge $p$, let $f(v_1,v_2,e)$ be the Lagrangian density integrated over the sphere, and set $\mathcal E=2\pi(qe-f)$.
+
+\begin{theorem}[Attractor]\label{thm:attractor}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Maxwell, units $G=1$, unit coupling) For $f=\frac14\bigl(2v_1-2v_2+2e^2v_2/v_1-2p^2v_1/v_2\bigr)$, the critical point of $\mathcal E$ is unique: $v_1=v_2=q^2+p^2$, $e=q$. Its value is $\mathcal E=\pi(q^2+p^2)=A/4$.
+\item (Yang--Mills magnetic sector) For general $G$ and $g$ the entropy function derived from the action is $\mathcal E=\frac\pi G(v_2-v_1)+\frac{4\pi^2p^2}{g^2}\frac{v_1}{v_2}$. Its only critical point with $v_1,v_2>0$ is
+\[
+v_1=v_2=p^2\,\frac{4\pi G}{g^2}=p^2\ell^2,
+\]
+with value $\mathcal E=4\pi^2p^2/g^2=A/(4G)$.
+\item For $p=1$ the near-horizon radius is exactly $\ell$: the attractor geometry of a unit magnetic charge is the throat of \cref{ch:tolmanbr}.
+\end{enumerate}
+\end{theorem}
+
+The entropy of the throat is $\pi\ell^2/G=4\pi^2/g^2$, a pure number in units of the gauge coupling. The same value reappears as the ground-state entropy $S_0$ of the two-dimensional theory in the next chapter.
+
+\section{Radiation in the throat}
+
+\begin{theorem}[Tolman's law in the throat]\label{thm:tolmanlaw}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For a static diagonal metric with $g_{tt}=-N^2$, $g_{\theta\theta}=R^2$: $\Gamma^t{}_{tx}=N'/N$ and $\Gamma^\theta{}_{\theta x}=R'/R$. For $T^\mu{}_\nu=\mathrm{diag}(-\rho,p,p,p)$, $\nabla_\mu T^\mu{}_x=p'+(N'/N)(\rho+p)$.
+\item For radiation, $p=aT^4/3$, $\rho=aT^4$, hydrostatic equilibrium implies $(TN)'=0$, so $TN$ is constant.
+\item In the throat, $N=\cosh(x/\ell)$, the profile $T=T_0/\cosh(x/\ell)$ satisfies $p'+(N'/N)(\rho+p)=0$.
+\item (Black body) $\sum_{n\ge1}e^{-nt}=1/(e^t-1)$, $\int_0^\infty t^3/(e^t-1)\,\dd t=\pi^4/15$, and the energy density of a photon gas is $u=\frac{2}{2\pi^2}T^4\frac{\pi^4}{15}=\frac{\pi^2}{15}T^4$.
+\end{enumerate}
+\end{theorem}
+
+\section{Statistical mechanics: KMS and the J\"uttner distribution}
+
+\begin{theorem}[KMS and fluctuation--dissipation]\label{thm:kms}\ver\
+For a finite system with energies $E_k$ and Gibbs weights $e^{-\beta E_k}$:
+\begin{enumerate}[label=(\roman*)]
+\item the thermal correlation functions satisfy the KMS condition $G_{AB}(t)=H_{BA}(t+i\beta)$;
+\item detailed balance holds, $e^{-\beta E_k}=e^{\beta(E_m-E_k)}e^{-\beta E_m}$, and the spectral components satisfy $g(\omega)=e^{-\beta\omega}h(\omega)$;
+\item from this alone, $(h+g)\sinh(\beta\omega/2)=(h-g)\cosh(\beta\omega/2)$, which is the fluctuation--dissipation relation $S(\omega)=\coth(\beta\omega/2)\,\chi''(\omega)$ with $S=h+g$ and $\chi''=h-g$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}[Non-relativistic limit of the J\"uttner distribution]\label{prop:juttner}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For $m>0$ and $p^2\le8m^2$: $m+\frac{p^2}{2m}-\frac{p^4}{8m^3}\le\sqrt{m^2+p^2}\le m+\frac{p^2}{2m}$; and $\sqrt{1+t}\ge1+t/2-t^2/8$ for $0\le t\le8$.
+\item The hemisphere coordinate $m/E=m/\sqrt{m^2+p^2}$ lies in $(0,1]$.
+\item $m(\sqrt{1+x/m}-1)\to x/2$ as $m\to\infty$, monotonically for $m\ge1$; hence with $p^2=mq^2$, $e^{-\beta(E-m)}\to e^{-\beta q^2/2}$: the J\"uttner weight tends to the Maxwell weight.
+\end{enumerate}
+\end{proposition}
+
+The J\"uttner distribution is naturally a distribution on the hemisphere of \cref{ch:hemisphere}: it depends only on the height $m/E$, and its non-relativistic limit concentrates near the pole.
+
+\begin{proposition}[A Cardy-type density of states]\label{prop:cardy}\ver\
+If $S(E)=S_0+2\pi\sqrt{2CE}$, then $\dd S/\dd E=1/T$ at $E=2\pi^2CT^2$, where $S=S_0+4\pi^2CT$. The Laplace transform exponent is $a^2/(4\beta)=2\pi^2C/\beta$ for $a=2\pi\sqrt{2C}$.
+\end{proposition}
+
+Linear-in-$T$ entropy above a ground-state value $S_0$ is the thermodynamics of near-extremal black holes and of the Schwarzian theory of the next chapter.
+
+\begin{litbox}
+Euclidean methods are due to Gibbons and Hawking \cite{GibbonsHawking1977}; the magnetic--electric asymmetry of the action to Hawking and Ross \cite{HawkingRoss1995}; the entropy function and the attractor mechanism to Sen \cite{Sen2005} and to Ferrara, Kallosh and Strominger \cite{FKS1995}; the chaos bound to Maldacena, Shenker and Stanford \cite{MSS2016}; Tolman's law and the J\"uttner distribution are classical. New here are: the entropy function of the Einstein--Yang--Mills magnetic sector, whose unique critical point at unit charge is exactly the throat radius $\ell=\sqrt{4\pi G}/g$ (\cref{thm:attractor}); the explicit profile $T_0/\cosh(x/\ell)$ of radiation in the throat (\cref{thm:tolmanlaw}); and the reading of the J\"uttner distribution on the hemisphere of states (\cref{prop:juttner}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $T=(r_+-r_-)/(4\pi r_+^2)$, zero at extremality; Euclidean throat $=$ hyperbolic plane; Lyapunov exponent $1/\ell$ (\cref{thm:hawkingT}).
+\item First law, Smarr, $F=r_+/4+3Q^2/(4r_+)$, positive heat capacity near extremality (\cref{thm:rnlaws}).
+\item Magnetic action $I=\beta(M-TS)$ (\cref{thm:magaction}).
+\item Attractor: unit magnetic charge flows to radius $\ell$, entropy $4\pi^2/g^2$ (\cref{thm:attractor}).
+\item Tolman's law $T\propto1/\cosh(x/\ell)$; KMS; J\"uttner on the hemisphere (\cref{thm:tolmanlaw,thm:kms,prop:juttner}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show that $f'(r_+)=(r_+-r_-)/r_+^2$ for $f=(r-r_+)(r-r_-)/r^2$ and deduce $T=1/(8\pi M)$ for Schwarzschild.
+\end{exercise}
+\begin{exercise}
+Verify Smarr's formula $M=2TS+\Phi Q$ for RN.
+\end{exercise}
+\begin{exercise}
+Find the critical point of $\mathcal E=\frac\pi G(v_2-v_1)+\frac{4\pi^2p^2}{g^2}\frac{v_1}{v_2}$.
+\end{exercise}
+\begin{exercise}
+Show that $(TN)'=0$ follows from $p'+(N'/N)(\rho+p)=0$ for radiation.
+\end{exercise}
+\begin{exercise}
+Derive $(h+g)\sinh(\beta\omega/2)=(h-g)\cosh(\beta\omega/2)$ from $g=e^{-\beta\omega}h$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaIX_Thermo:horizon_polar,AlphaIX_Thermo:conical_period}{Polar coordinates near the horizon; regularity gives $\beta=4\pi/f_1$ (two statements).$^*$}
+\chk{AlphaIX_Thermo:rn_slope,AlphaFamous:fam_hawking_slope}{$f'(r_+)$ for RN (two statements).}
+\chk{AlphaIX_Thermo:extremal_cold,AlphaFamous:fam_extremal_T}{$T=0$ at extremality (two statements).}
+\chk{AlphaFamous:fam_schw_T}{$T=1/(8\pi M)$.}
+\chk{AlphaIX_Thermo:euclid_neck_curvature}{Euclidean throat has curvature $-1/\ell^2$.$^*$}
+\chk{AlphaIX_Second:hyperbolic_area}{Gauss--Bonnet area $4\pi(g-1)\ell^2$.}
+\chk{AlphaFix_Geo:jacobi_neck,AlphaFix_Geo:lyapunov_neck}{Jacobi fields and Lyapunov exponent $1/\ell$ (two statements).$^*$}
+\chk{AlphaIX_Thermo:horizon_mass}{$f(r_+)=0$ iff $M=(r_+^2+Q^2)/(2r_+)$.}
+\chk{AlphaIX_Thermo:first_law,AlphaFamous:fam_first_law}{First law (two statements).$^*$}
+\chk{AlphaIX_Thermo:smarr}{Smarr formula.$^*$}
+\chk{AlphaFix_Thermo:free_energy}{$F=r_+/4+3Q^2/(4r_+)$.$^*$}
+\chk{AlphaFix_Thermo:heat_capacity_sign}{Heat capacity positive iff $r_+^2<3Q^2$.$^*$}
+\chk{AlphaFix_Thermo:same_T_product,AlphaFix_Thermo:small_branch_preferred,AlphaFix_Thermo:nonempty_same_T}{Two branches at equal temperature (three statements).$^*$}
+\chk{AlphaFamous:fam_rn_mass,AlphaFamous:fam_birkhoff_u}{RN mass function; constant mass for $w^2=1$ (two statements).}
+\chk{AlphaIX_Second:hawking_page}{Hawking--Page-type sign.}
+\chk{AlphaIX_Thermo:euclid_action}{$I=\beta(M-TS-\Phi Q)$ from Smarr.$^*$}
+\chk{AlphaFix_Thermo:int_inv_sq,AlphaFix_Thermo:maxwell_magnetic}{Maxwell term $\beta\Phi Q/2$ (two statements).}
+\chk{AlphaFix_Thermo:magnetic_action,AlphaFix_Thermo:nonempty_magnetic}{Magnetic action $I=\beta(M-TS)$, $S=A/4$; satisfiable (two statements).$^*$}
+\chk{AlphaFix_Thermo:electric_action}{Electric action $I=\beta(M-TS-\Phi Q)$.$^*$}
+\chk{AlphaFix_Thermo:hedgehog_jacobian,AlphaFix_Thermo:hedgehog_degree}{Hedgehog Jacobian and degree $1$ (two statements).$^*$}
+\chk{AlphaVIII_Attractor:f_deriv_e,AlphaVIII_Attractor:f_deriv_v1,AlphaVIII_Attractor:f_deriv_v2}{Derivatives of $f$ (three statements).}
+\chk{AlphaVIII_Attractor:attractor_unique,AlphaVIII_Attractor:attractor_entropy}{Unique attractor and entropy $A/4$ (two statements).$^*$}
+\chk{AlphaVIII_Z41:entropy_from_action}{Entropy function from the action.$^*$}
+\chk{AlphaVIII_Z41:z41_deriv_v1,AlphaVIII_Z41:z41_deriv_v2}{Derivatives (two statements).}
+\chk{AlphaVIII_Z41:z41_critical}{Unique critical point $v_1=v_2=p^2\ell^2$.$^*$}
+\chk{AlphaVIII_Z41:z41_entropy,AlphaVIII_Z41:z41_neck}{Value $4\pi^2p^2/g^2=A/(4G)$; radius $\ell$ for $p=1$ (two statements).$^*$}
+\chk{AlphaFix_Geo:christoffel_static,AlphaFix_Geo:static_euler}{Christoffel symbols and hydrostatic equilibrium (two statements).}
+\chk{AlphaIX_Thermo:tolman,AlphaIX_Thermo:tolman_const}{Tolman's law $(TN)'=0$ (two statements).$^*$}
+\chk{AlphaFix_Geo:neck_tolman}{$T_0/\cosh(x/\ell)$ in the throat.$^*$}
+\chk{AlphaIX_Stat:bose_series,AlphaIX_Stat:bose_integral,AlphaIX_Stat:stefan_boltzmann}{Bose series, $\pi^4/15$, Stefan--Boltzmann (three statements).$^*$}
+\chk{AlphaIX_Stat:kms}{KMS condition.$^*$}
+\chk{AlphaIX_Stat:detailed_balance,AlphaFix_Thermo:kms_weights}{Detailed balance and spectral weights (two statements).}
+\chk{AlphaIX_Stat:fdt,AlphaFix_Thermo:fdt_from_kms,AlphaFix_Thermo:fdt_spectral}{Fluctuation--dissipation (three statements).$^*$}
+\chk{AlphaIX_Thermo:nr_bounds,AlphaFix_Thermo:sqrt_lower}{Bounds on $\sqrt{m^2+p^2}$ (two statements).}
+\chk{AlphaIX_Thermo:q_coordinate}{$m/E\in(0,1]$.}
+\chk{AlphaFix_Thermo:nr_limit,AlphaFix_Thermo:nr_monotone,AlphaFix_Thermo:juttner_to_maxwell}{J\"uttner to Maxwell (three statements).$^*$}
+\chk{AlphaIX_Thermo:laplace_exponent,AlphaIX_Thermo:micro_macro,AlphaIX_Thermo:micro_temperature}{Cardy-type density of states (three statements).}
+\end{checklist}
