@@ -1,0 +1,172 @@
+\chapter{Quantum Fields on the Glued Spacetime}\markboth{\MakeUppercase{Chapter 27.\ Quantum fields}}{}
+\label{ch:qft}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the conformal frame and the conformal wave equation (\cref{thm:confwave}); the minisuperspace energy balance (\cref{prop:minisuper}); the Tolman universe and the throat (\cref{thm:tolman,thm:br}); the level condition and its caveats (\cref{prop:levels}); the meron (\cref{thm:merons}).\\
+\textbf{It provides:} a proof that no superposition of the two conformal factors solves the field equations; the $SL(2,\mathbb R)$ conformal symmetry that singles out the throat; the spectrum of linear Yang--Mills perturbations on the Tolman sphere, which is stable; the trace anomaly and its backreaction on the Tolman universe and on the throat, with the conclusion that the throat shrinks by a factor controlled by $a_Eg^2/(4\pi^2)$; the running coupling as a conserved stress; and the closed computation of the heat-kernel coefficient $a_4$ of the twisted Dirac operator on $S^3$.
+\end{usesbox}
+
+So far the matter content has been classical. Quantum fields propagating on the glued spacetime change it in two ways: their renormalised stress tensor acts back on the geometry, and their spectrum reveals stability or instability. In conformally flat spacetimes, which both pieces are, the renormalised stress tensor of conformal fields is known in closed form up to the state-dependent part \cite{BirrellDavies}. This chapter uses that knowledge, with every external input labelled.
+
+\section{The conformal frame: what superposes and what does not}
+
+\begin{theorem}[No superposition]\label{thm:nosuperpos}\ver\nogo\
+Let $\Omega=A\cos\eta+B/\sin u$ on the Einstein static universe, with $AB\ne0$.
+\begin{enumerate}[label=(\roman*)]
+\item The relevant combination of the Einstein equations becomes $2A^2+4ABc/S^3+2B^2/S^4$ with $c=\cos\eta$, $S=\sin u$, and the Yang--Mills potential must satisfy $(1-w^2)^2=A^2S^4+2ABcS+B^2$.
+\item Combining this with the derivatives of $(1-w^2)^2$ in $\eta$ and $u$, one obtains at fixed $S$ a cubic relation of the form $kr^3+ar^2+e=0$ in $r=\sqrt{(1-w^2)^2}$, valid at every value of $c$.
+\item A cubic with only quadratic and constant terms ($k\ne0$) cannot vanish at four distinct points. Choosing four values of $\cos\eta$ that give distinct $r$ (possible when $AB\ne0$) yields a contradiction.
+\end{enumerate}
+Hence no Yang--Mills field $w$ makes $A\cos\eta+B/\sin u$ a solution: the two pieces cannot be superposed, even with a matching gauge field.
+\end{theorem}
+
+\begin{proposition}[The conformal frame]\label{prop:confframe}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For $g=\Omega^2\hat g$, $\sqrt g\,R=\Omega^4(6-6\hat\Box\Omega/\Omega)/\Omega^2=6\Omega^2-6\Omega\hat\Box\Omega$: the Einstein--Hilbert action is quadratic in $\Omega$. For a homogeneous mode the coefficient is $\frac1{16\pi G}\cdot6\cdot2\pi^2=\frac{3\pi}{4G}$.
+\item With $r=\Omega\sin\chi$, $r_{\eta\eta}-r_{\chi\chi}=-S(-\Omega_{\eta\eta}+\Omega_{\chi\chi}+2(C/S)\Omega_\chi-\Omega)$: the trace equation is equivalent to $r$ being a two-dimensional wave, $r=F(\eta+\chi)-F(\eta-\chi)$. The Tolman universe is $\ell\cos\eta\sin\chi=\frac\ell2\sin(\eta+\chi)-\frac\ell2\sin(\eta-\chi)$.
+\item If $r$ also vanishes at the second pole $\chi=\pi$, $F$ is $2\pi$-periodic, and the antipodal map $(\eta,\chi)\mapsto(\eta+\pi,\pi-\chi)$ sends $r\mapsto-r$, $\Omega\mapsto-\Omega$, leaving $\Omega^2\hat g$ invariant: beyond the surfaces $\Omega=0$ the universe continues as its antipodal image.
+\item Homogeneous solutions of $q''=-q$ are $q(0)\cos\eta+q'(0)\sin\eta$; a solution of $y''=-\kappa y$ ($\kappa>0$) with zero data vanishes; and if $f_{\chi\chi}\sin\chi=\cos\chi f_\chi$ then $f_\chi/\sin\chi$ is constant.
+\item The constraint (zero total energy) $\frac{3\pi}{4G}\ell^2=\frac{3\pi^2}{g^2}$ is equivalent to $\ell^2=4\pi G/g^2$. Imposing that \emph{both} energies equal $n+\frac12$ reproduces the level condition of \cref{prop:levels}, with the same caveats.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[$SL(2,\mathbb R)$ and the throat]\label{prop:sl2}\ver\
+The conformal Killing vectors $\xi_1=(sC,cS)$ and $\xi_2=(cC,-sS)$ of the $(\eta,\chi)$ plane ($c=\cos\eta$, $s=\sin\eta$, $C=\cos\chi$, $S=\sin\chi$), together with $\partial_\eta$, close into $\mathfrak{sl}(2,\mathbb R)$: $[\xi_1,\xi_2]=-\partial_\eta$, and so on. The throat $\Omega=\ell/\sin\chi$, $w=0$, is invariant under all three generators (with the conformal weights $\psi=cC$ and $-sC$). Conversely, a static configuration invariant under $\xi_1$ has $\Omega\sin\chi$ constant, so $\Omega=\mathrm{const}/\sin\chi$: only the throat.
+\end{proposition}
+
+\section{Yang--Mills perturbations on the Tolman sphere}
+
+\begin{theorem}[Stable spectrum]\label{thm:tolmanspectrum}\ver\
+Write a perturbation of $w=\cos\chi$ as $\delta w=\sin^2\chi\,u(x)$ with $x=\cos\chi$.
+\begin{enumerate}[label=(\roman*)]
+\item $\delta w_{\chi\chi}+(1-3C^2)u=S^2[(1-x^2)u''-5xu'-u]$.
+\item For Gegenbauer solutions of $(1-x^2)u''-5xu'+n(n+4)u=0$, the operator gives $-(n^2+4n+1)u$, and $n^2+4n+1>0$: every mode oscillates in time.
+\item The potential on the Tolman background equals the potential on a vacuum, $-2/\sin^2\chi$, plus the constant $3$: $(1-3C^2)/S^2=(1-3)/S^2+3$.
+\end{enumerate}
+\end{theorem}
+
+In contrast to the throat (\cref{ch:stability}), the Tolman side is linearly stable. The instability of the glued spacetime is entirely in the throat.
+
+\section{The trace anomaly and backreaction}
+
+For conformally invariant free fields in their conformal vacuum on a conformally flat spacetime, the renormalised stress tensor is $\langle T^\mu{}_\nu\rangle=\langle T^\mu{}_\nu\rangle_{\rm state}+\alpha\,{}^{(1)}\!H^\mu{}_\nu+\beta\,{}^{(3)}\!H^\mu{}_\nu$, where $\beta$ is fixed by the Euler coefficient $a_E$ of the trace anomaly and $\alpha$ is a renormalisation ambiguity, which we set to zero \cite{BirrellDavies,BrownCassidy1977} \ext.
+
+\begin{theorem}[Curvature of closed FRW and the tensor ${}^{(3)}\!H$]\label{thm:h3}\ver\
+For $-\dd t^2+a^2(\dd\chi^2+\sin^2\chi\,\dd\Omega^2)$ with $u=\ddot a/a$ and $X=(\dot a^2+1)/a^2$:
+\begin{enumerate}[label=(\roman*)]
+\item $R^0{}_0=3u$, $R^i{}_i=u+2X$ (each $i$), $R_{01}=0$, $R=6u+6X$, $G^0{}_0=-3X$.
+\item For diagonal Ricci tensors, $R_{\mu\nu}R^{\mu\nu}-R^2/3=-\sum_\mu{}^{(3)}\!H^\mu{}_\mu$. For closed FRW, ${}^{(3)}\!H^0{}_0=3X^2$, ${}^{(3)}\!H^i{}_i=4uX-X^2$, trace $12uX$. On the Einstein static universe ($u=0$) the trace vanishes.
+\item $\rho=-3X^2$, $p=4uX-X^2$ satisfy $\dot\rho+3(\dot a/a)(\rho+p)=0$.
+\item Matching the trace to the anomaly gives $\beta=-\hbar a_E/(8\pi^2)$, so $\rho_{\rm anom}=(3\hbar a_E/8\pi^2)X^2$ with $\kappa_2=3a_E/(8\pi^2)>0$ for $a_E>0$. The quantum density $\rho_q=\hbar\kappa_1/a^4+\hbar\kappa_2X^2$ satisfies $\dot\rho=-(\dot a/a)(4\rho+\mathrm{tr})$, and any isotropic conserved density with the same trace differs from it only by $\kappa/a^4$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Semiclassical Tolman universe]\label{thm:semitolman}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The semiclassical Friedmann equation $3X=8\pi G(\rho_{\rm cl}+\hbar\kappa_1/a^4+\hbar\kappa_2X^2)$ reads $X=L/a^4+\gamma X^2$, i.e.\ $\gamma x^2-a^2x+L=0$ for $x=a^2X$.
+\item It has real solutions iff $4\gamma L\le a^4$; the branch continuous at $\gamma=0$ is $x=2L/(a^2+\sqrt{a^4-4\gamma L})$.
+\item At leading order ($\gamma=0$), $a=\sqrt{L-t^2}$ solves $\dot a^2+1=L/a^2$, with $L=\ell^2$ plus renormalisation terms, and radiation $K/a^4$ is conserved.
+\item For the Tolman universe in conformal time, $X=\ell^2/a^4$; the ratio of the anomaly-type density $-3\beta_gX^2$ to the classical radiation $3/(2g^2a^4)$ is $-2g^2\beta_g\ell^4/a^4$, whose magnitude grows as $a$ decreases. The total of the two is conserved.
+\item (Propagation versus backreaction) On a fixed $\mathbb R\times S^3$, if $\langle T\rangle_{\rm ren}$ is traceless, as it is when the anomaly vanishes, then together with a traceless classical stress the static $S^3$ cannot solve the Einstein equations.
+\end{enumerate}
+\end{theorem}
+
+So the quantum correction to the Tolman universe is small at maximal expansion and grows towards the crunch, as one expects; the static Einstein universe is not rescued by the anomaly.
+
+\begin{theorem}[Backreaction on the throat]\label{thm:throatback}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For $-N^2\dd t^2+\dd x^2+\ell^2\dd\Omega^2$ with $N''=N/\ell^2$, the mixed Ricci components are $(-k,-k,k,k)$ with $k=1/\ell^2$; then ${}^{(3)}\!H^\mu{}_\mu=-k^2$ for each $\mu$, the Weyl invariant vanishes, and $E_4=-8k^2=2\,\mathrm{tr}\,{}^{(3)}\!H$. The trace $-4\beta k^2$ agrees with $-(\hbar a_E/16\pi^2)E_4$.
+\item Including the anomaly, the throat equation becomes $\ell^2x^2-x-\varepsilon/\ell^2=0$ for $x=1/r^2$, with root $x=(1+\sqrt{1+4\varepsilon})/(2\ell^2)$.
+\item Hence $\ell^2/(1+\varepsilon)\le r^2\le\ell^2$: the quantum-corrected throat is smaller.
+\item With $\ell^2=4\pi G\hbar/g^2$, $\varepsilon=G\hbar a_E/(\pi\ell^2)=a_Eg^2/(4\pi^2)$.
+\end{enumerate}
+\end{theorem}
+
+The shrinking factor is controlled by $g^2$ alone: for weak coupling the correction is small, and the classical throat is a good approximation.
+
+\begin{proposition}[Running coupling]\label{prop:running}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item On the Tolman side the field is purely magnetic, $F^2=4g^2\rho=6/a^4$.
+\item The density $\rho_\beta=(\kappa-6c\log a)/a^4$ satisfies $\dot\rho=-(\dot a/a)(4\rho+6c/a^4)$, and is unique up to $\kappa'/a^4$ among conserved densities with this trace.
+\item For $\kappa=0$ and $c=b_0/(32\pi^2)$, $\frac3{2g^2a^4}+\rho_\beta=\frac3{2a^4}\bigl(\frac1{g^2}+\frac{b_0}{8\pi^2}\log\frac1a\bigr)$: the classical radiation density with the one-loop running coupling $1/g^2(a)$.
+\end{enumerate}
+\end{proposition}
+
+\section{The heat-kernel coefficient \texorpdfstring{$a_4$}{a4} on \texorpdfstring{$S^3$}{S3}}
+
+On the unit $S^3$ consider the Dirac operator twisted by an $\SU(2)$ doublet, $D_\lambda=\sum_a2\sigma_a\otimes(L_a+\lambda s_a)+\frac32$, with left-invariant gauge field $A_a=2i\lambda s_a$, $s_a=\sigma_a/2$. For $\lambda=0$ and $\lambda=1$ the gauge field is pure gauge; for $\lambda=\frac12$ it is the meron.
+
+\begin{theorem}[Closed form of $a_4$]\label{thm:a4}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item The curvature is $F_{ab}=4i\lambda(1-\lambda)\sum_c\epsilon_{abc}s_c$, and it is traceless.
+\item $E_F=\frac12\sum\sigma_a\sigma_b\otimes F_{ab}=i\cdot4i\lambda(1-\lambda)\sum_c\sigma_c\otimes s_c$, with $\tr E_F^2=48\lambda^2(1-\lambda)^2$; $\sum\tr(1\otimes F_{ab})^2=-96\lambda^2(1-\lambda)^2$; $\tr(\sum\sigma_c\otimes s_c)^2=3$.
+\item $180\cdot48-30\cdot96=5760$, $(4\pi)^{3/2}=8\pi\sqrt\pi$, and $\frac1{360}(4\pi)^{-3/2}\cdot2\pi^2\cdot5760=4\sqrt\pi$.
+\item Therefore, with Gilkey's formula for $a_4$ and the Lichnerowicz formula \ext,
+\[
+a_4(\lambda)-a_4(0)=4\sqrt\pi\,\lambda^2(1-\lambda)^2 .
+\]
+It vanishes at the vacua $\lambda=0,1$ and equals $\sqrt\pi/4$ at the meron; the corresponding coefficient $2\lambda^2(1-\lambda)^2$ is $\frac18$ at $\lambda=\frac12$.
+\end{enumerate}
+\end{theorem}
+
+The coefficient $a_4$ multiplies the logarithmic divergence of the one-loop effective action and hence determines the running of the coupling in the meron background. A numerical fit of the heat-kernel trace had suggested $4\sqrt\pi\lambda^2(1-\lambda)^2$ \num; \cref{thm:a4} derives it in closed form.
+
+\begin{litbox}
+Renormalised stress tensors in conformally flat spacetimes and the tensor ${}^{(3)}\!H$ are standard \cite{BirrellDavies,BrownCassidy1977}; the heat-kernel coefficients are Gilkey's \cite{Gilkey1975}; the Einstein static universe and conformal compactification are classical. New here are: the impossibility of superposing the Tolman and throat conformal factors, even with a matching Yang--Mills field (\cref{thm:nosuperpos}); the $SL(2,\mathbb R)$ characterisation of the throat in the conformal frame (\cref{prop:sl2}); the stable spectrum of Yang--Mills perturbations on the Tolman sphere (\cref{thm:tolmanspectrum}); the anomaly-induced shrinking of the throat, $\ell^2/(1+a_Eg^2/4\pi^2)\le r^2\le\ell^2$ (\cref{thm:throatback}); and the closed form $a_4(\lambda)-a_4(0)=4\sqrt\pi\lambda^2(1-\lambda)^2$ (\cref{thm:a4}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item No superposition of the two conformal factors; $SL(2,\mathbb R)$ singles out the throat (\cref{thm:nosuperpos,prop:sl2}).
+\item The Tolman side is linearly stable (\cref{thm:tolmanspectrum}).
+\item Anomaly backreaction: growing towards the crunch; the throat shrinks by $1+a_Eg^2/4\pi^2$ at most (\cref{thm:semitolman,thm:throatback}).
+\item $a_4(\lambda)-a_4(0)=4\sqrt\pi\lambda^2(1-\lambda)^2$ (\cref{thm:a4}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show $\ell\cos\eta\sin\chi=\frac\ell2\sin(\eta+\chi)-\frac\ell2\sin(\eta-\chi)$.
+\end{exercise}
+\begin{exercise}
+Verify that $x=(1+\sqrt{1+4\varepsilon})/(2\ell^2)$ solves $\ell^2x^2-x-\varepsilon/\ell^2=0$ and that $1/x\le\ell^2$.
+\end{exercise}
+\begin{exercise}
+Compute $\frac1{360}(4\pi)^{-3/2}\cdot2\pi^2\cdot5760$.
+\end{exercise}
+\begin{exercise}
+Show that $\rho=K/a^4$ satisfies $\dot\rho=-4(\dot a/a)\rho$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaOmega_Quantum:oq_M_superpos,AlphaOmega_Quantum:oq_D,AlphaOmega_Quantum:oq_product}{The superposed conformal factor: Einstein combination, $(1-w^2)^2$, derivative relations (three statements).$^*$}
+\chk{AlphaOmega_Quantum:oq_cubic_no_four,AlphaOmega_Quantum:oq_no_superposition}{No superposition (two statements).$^*$}
+\chk{AlphaOmega_Quantum:oq_action_quadratic,AlphaOmega_Quantum:oq_energy_coeff}{$\sqrt gR$ quadratic in $\Omega$; coefficient $3\pi/4G$ (two statements).}
+\chk{AlphaOmega_Quantum:oq_radius_wave,AlphaOmega_Quantum:oq_cap_dalembert}{$r$ is a two-dimensional wave; d'Alembert form of the Tolman universe (two statements).$^*$}
+\chk{AlphaOmega_Quantum:oq_periodic,AlphaOmega_Quantum:oq_antipodal}{Periodicity and the antipodal continuation (two statements).$^*$}
+\chk{AlphaOmega_Quantum:oq_osc_solution,AlphaOmega_Quantum:oq_osc_unique,AlphaOmega_Quantum:oq_fc_over_sin}{Elementary ODE facts (three statements).}
+\chk{AlphaOmega_Quantum:oq_classical_scale,AlphaOmega_Quantum:oq_quantized_scale}{Zero total energy $\Leftrightarrow$ $\ell^2=4\pi G/g^2$; the level condition (two statements).}
+\chk{AlphaOmega_Quantum:oq_sl2_bracket}{$\mathfrak{sl}(2,\mathbb R)$ brackets.$^*$}
+\chk{AlphaOmega_Quantum:oq_neck_invariant,AlphaOmega_Quantum:oq_neck_unique}{The throat is invariant, and the only static invariant configuration (two statements).$^*$}
+\chk{AlphaOmega_Quantum:oq_testfield,AlphaOmega_Quantum:oq_spectrum}{Perturbations on the Tolman sphere; stable spectrum (two statements).$^*$}
+\chk{AlphaOmega_Quantum:oq_potential_shift}{Potential shift by $3$.}
+\chk{AlphaV_FRW:frw_subs,AlphaV_FRW:frw_r0,AlphaV_FRW:frw_r1,AlphaV_FRW:frw_r2,AlphaV_FRW:frw_r3,AlphaV_FRW:frw_ric01,AlphaV_FRW:frw_rsc,AlphaV_FRW:frw_G00}{Ricci and Einstein tensors of closed FRW (eight statements).$^*$}
+\chk{AlphaV_FRW:h3_frw,AlphaV_FRW:ricci_sq_identity,AlphaV_FRW:esu_trace_zero}{${}^{(3)}\!H$ for closed FRW; trace identity; ESU (three statements).$^*$}
+\chk{AlphaV_FRW:h3_conserved}{Conservation of the ${}^{(3)}\!H$ stress.$^*$}
+\chk{AlphaV_Anomaly:beta_from_anomaly,AlphaV_Anomaly:kappa2_pos}{$\beta=-\hbar a_E/8\pi^2$; $\kappa_2>0$ (two statements).$^*$}
+\chk{AlphaV_Anomaly:rho_q_conserved,AlphaV_Anomaly:rho_unique}{Conservation and uniqueness of $\rho_q$ (two statements).$^*$}
+\chk{AlphaV_FRW:friedmann_quadratic,AlphaV_FRW:cap_semiclassical}{Semiclassical Friedmann equation; leading order (two statements).$^*$}
+\chk{AlphaV_Backreaction:quad_solvable,AlphaV_Backreaction:small_branch}{Real solutions and the small branch (two statements).$^*$}
+\chk{AlphaV_Backreaction:cap_friedmann,AlphaV_Backreaction:continuity_radiation}{$a=\sqrt{L-t^2}$; radiation conserved (two statements).}
+\chk{AlphaFix_Dyn:cap_X,AlphaFix_Dyn:cap_backreaction_ratio,AlphaFix_Dyn:backreaction_grows,AlphaFix_Dyn:total_conserved}{Backreaction ratio on the Tolman side, its growth, and conservation of the total (four statements).$^*$}
+\chk{AlphaV_Backreaction:esu_backreaction}{A traceless renormalised stress cannot make the static $S^3$ a solution.$^*$}
+\chk{AlphaV_NeckQuantum:neck_ricci,AlphaV_NeckQuantum:neck_H3,AlphaV_NeckQuantum:neck_curvature_invariants,AlphaV_NeckQuantum:neck_trace_consistent}{Throat curvature, ${}^{(3)}\!H$, invariants, trace consistency (four statements).$^*$}
+\chk{AlphaV_NeckQuantum:neck_backreaction,AlphaV_NeckQuantum:neck_radius_bounds}{Corrected throat radius and bounds (two statements).$^*$}
+\chk{AlphaV_NeckQuantum:epsilon_value}{$\varepsilon=a_Eg^2/(4\pi^2)$.$^*$}
+\chk{AlphaV_NeckQuantum:cap_F2}{$F^2=6/a^4$ on the Tolman side.}
+\chk{AlphaV_NeckQuantum:rho_beta_conserved,AlphaV_NeckQuantum:rho_beta_unique}{Conservation and uniqueness of $\rho_\beta$ (two statements).$^*$}
+\chk{AlphaV_NeckQuantum:running_coupling}{Running coupling as a stress.$^*$}
+\chk{AlphaV_A4:I_cubed,AlphaV_A4:curvature_formula,AlphaV_A4:curvature_traceless}{$F_{ab}=4i\lambda(1-\lambda)\epsilon_{abc}s_c$, traceless (three statements).$^*$}
+\chk{AlphaV_A4:EF_eq,AlphaV_A4:trace_Msum_sq,AlphaV_A4:trace_EF_sq,AlphaV_A4:trace_Omega_sq}{Traces of $E_F^2$ and $\Omega^2$ (four statements).$^*$}
+\chk{AlphaV_A4:integrand,AlphaV_A4:a4_value,AlphaV_A4:four_pi_three_halves}{$5760$ and $4\sqrt\pi$ (three statements).$^*$}
+\chk{AlphaV:log_coeff_meron,AlphaV:a4_meron,AlphaV:a4_vacua}{Values at the meron and the vacua (three statements).}
+\end{checklist}
