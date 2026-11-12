@@ -1,0 +1,136 @@
+\chapter{Fermions}\markboth{\MakeUppercase{Chapter 28.\ Fermions}}{}
+\label{ch:fermions}
+
+\begin{usesbox}
+\textbf{This chapter uses:} unit quaternions and the Pauli matrices (\cref{ch:quaternions,ch:lorentz}); monopole harmonics and zero modes (\cref{ch:monopoles}); the conformal frame (\cref{thm:confwave}); the cancellation of spin and gauge connections and the zero mode (\cref{thm:zeromode}); the Goursat form and constraint propagation (\cref{thm:goursat,thm:constrprop}); the Euclidean temperature (\cref{thm:hawkingT}); the internal $S^9$ of \cref{ch:intA}.\\
+\textbf{It provides:} the Dirac operator on $S^3$ built from the quaternionic frame, and its exact spectrum in a homogeneous $\SU(2)$ background, with a zero mode exactly at the Tolman configuration; the two-dimensional reduction, where the fermion mass is $w/r$ and the problem factorises like supersymmetric quantum mechanics; the consistency of the Einstein--Yang--Mills--Dirac system (constraints propagate, fermion number is conserved); the area law for apparent horizons with fermionic matter; and the arithmetic behind the second-order coefficient of \cref{ch:intA}.
+\end{usesbox}
+
+Fermions enter the glued spacetime in three places. On the Tolman sphere the Yang--Mills field is homogeneous, and the Dirac operator can be diagonalised exactly using the quaternionic structure of $S^3$. On the slice as a whole, the condition $w=r'$ removes the angular connection (\cref{thm:zeromode}) and the radial problem becomes a one-dimensional Dirac equation with mass $w/r$. And in the dynamics, fermions act back on the geometry, so we must check that the constraints still propagate.
+
+\section{The Dirac operator on \texorpdfstring{$S^3$}{S3} from the quaternions}
+
+\begin{proposition}[The quaternionic frame]\label{prop:qframe}\ver\
+For a unit quaternion $q$ and $e_a\in\{i,j,k\}$:
+\begin{enumerate}[label=(\roman*)]
+\item $X_a(q)=q\,e_a$ is tangent to $S^3$, $\mathrm{Re}(\bar q\,q e_a)=0$, and the frame is orthonormal, $\mathrm{Re}(\overline{qe_a}\,qe_b)=|q|^2\delta_{ab}$;
+\item since $X_b$ is linear, its derivative in the direction $v$ is $v\,e_b$, and the Lie bracket is $[X_a,X_b](q)=(qe_a)e_b-(qe_b)e_a=\sum_c2\epsilon_{abc}X_c(q)$, the commutator $e_ae_b-e_be_a=\sum_c2\epsilon_{abc}e_c$;
+\item with structure constants $c_{abc}=2\epsilon_{abc}$, Koszul's formula gives the connection coefficients $\omega_{abc}=\frac12(c_{abc}-c_{bca}+c_{cab})=\epsilon_{abc}$, and the spin-connection term is $\frac14\sum\epsilon_{abc}\sigma_a\sigma_b\sigma_c=\frac{3i}2$.
+\end{enumerate}
+\end{proposition}
+
+Compare \cref{thm:s7soft}: for the octonions the same construction gives position-dependent structure functions, and there is no such constant spin term.
+
+\begin{theorem}[Spectrum in a homogeneous background]\label{thm:s3dirac}\ver\
+On a homogeneous section the Dirac operator twisted by an $\SU(2)$ doublet reduces to
+\[
+D=-i\bigl(\tfrac{3i}2\cdot1\otimes1+\text{gauge term}\bigr)=\tfrac32+\lambda\textstyle\sum_a\sigma_a\otimes\sigma_a .
+\]
+\begin{enumerate}[label=(\roman*)]
+\item $\sum\sigma_a\otimes\sigma_a$ has eigenvalue $-3$ on the singlet and $+1$ on the three triplet states; every vector decomposes into these.
+\item Hence $D=\frac32-3\lambda$ on the singlet and $\frac32+\lambda$ on the triplet, and the full spectrum is $(\frac32+\lambda)(v-c\cdot\text{singlet})+(\frac32-3\lambda)c\cdot\text{singlet}$ with $c=(v_{01}-v_{10})/2$.
+\item For $\lambda=0$ the free spectrum $2j+\frac32$ and $-(2j+\frac12)$ is recovered, i.e.\ $\pm(n+\frac32)$. On the hedgehog singlet the eigenvalue is $-\frac32(2\lambda-1)$, which vanishes exactly at $\lambda=\frac12$; on the triplet it is $\lambda+\frac32$. For $j=\frac12$ the $2\times2$ block $\begin{psmallmatrix}0&\sqrt3\\\sqrt3&0\end{psmallmatrix}$ has eigenvalues $\pm\sqrt3$.
+\end{enumerate}
+\end{theorem}
+
+The pure-gauge points are $\lambda=0$ and $\lambda=1$, and the Tolman configuration $w=\cos\chi$ corresponds to $\lambda=\frac12$, the top of the barrier (\cref{prop:barrier}). As $\lambda$ runs from $0$ to $1$ the singlet eigenvalue $\frac32-3\lambda$ crosses zero exactly once, at the Tolman configuration. This is spectral flow: a tunnelling event between the vacua changes the fermion number by one, the mechanism of anomalous fermion production in gravitational collapse \cite{GibbonsSteif1993} and the analogue of baryon-number violation through the sphaleron.
+
+\section{The two-dimensional reduction}
+
+With $w=r'$ the angular connection cancels and the radial Dirac equation in the conformal frame has mass $m=w/r$, which is $\cot\chi$ on the Tolman side and $0$ on the throat.
+
+\begin{proposition}[Factorisation and towers]\label{prop:susyqm}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $(-\partial+m)(\partial+m)\psi=-\psi''+(m^2-m')\psi$: the squared Dirac operator is a supersymmetric pair of Schr\"odinger operators.
+\item For $m=\cot\chi$, $m^2+m'=-1$: the partner potential is constant, and the partner problem is free.
+\item $\sin(k\chi)$ satisfies $-\psi''-\psi=(k^2-1)\psi$, so $E^2=k^2-1$: $k=1$ is a zero mode and $k=2$ gives $\pm\sqrt3$, in agreement with \cref{thm:s3dirac}(iii).
+\item The zero mode is $\psi=\sin\chi$ on the Tolman side ($\psi'=(\cot\chi)\psi$) and a constant on the throat.
+\item For a monopole of charge $q=\frac12$ the lowest angular momentum is $j=q-\frac12=0$ with degeneracy $2q=1$.
+\end{enumerate}
+\end{proposition}
+
+The zero mode of the glued slice is $\sin\chi$ on the Tolman side, continued by a constant along the throat. Its derivative is continuous at the equator ($\cos(\pi/2)=0$), so it is a $C^1$ zero mode, matching the regularity of the glued metric.
+
+\section{Consistency of the Einstein--Yang--Mills--Dirac system}
+
+In conformal gauge write the fermion as a right-mover $a=a_1+ia_2$ and a left-mover $b=b_1+ib_2$, with mass $\mu=w\nu$, $\nu=g_Fe^{\omega/2}/r$. The Dirac equations are $a_v=-i\mu b$, $b_u=-i\mu a$, and the bilinear $B=2\,\mathrm{Re}(\bar ab)$ enters the $r$, $w$ and $\omega$ equations, while $\tau=\frac12(a_2a_{1,u}-a_1a_{2,u})$ enters the constraint $r_{uu}-\omega_ur_u+2\ell^2w_u^2/r+\tau/r=0$.
+
+\begin{theorem}[Constraints and fermion number]\label{thm:ferconsist}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item (Fermion number) $\partial_v|a|^2+\partial_u|b|^2=0$.
+\item $B_u=2(a_{1,u}b_1+a_{2,u}b_2)$ and $\tau_v=(\mu_uB-\mu B_u)/4$.
+\item (General propagation) If the sources $A,B,D$ of the $r$, $\omega$, $w$ equations satisfy the conservation law $rB_v+Br_v+A_u-\omega_uA+rDr_u=0$, then the constraint $C_u$ is preserved. The Yang--Mills source satisfies it, and so does the Dirac source above.
+\item The three Euler--Lagrange equations of the action vanish together on solutions of the field equations.
+\end{enumerate}
+Hence the constraints propagate for the coupled system, and the coefficient $\frac12$ in $\tau$ is fixed uniquely by this consistency.
+\end{theorem}
+
+\begin{proposition}[Horizon thermodynamics with matter]\label{prop:secondlaw}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item Near a horizon with $r-r_+=\kappa\rho^2/2$, $\kappa=F'(r_+)/2$, one has $2\kappa(\kappa\rho^2/2)=(\kappa\rho)^2$, and the metric $F\dd\tau^2+\dd r^2/F$ becomes $\rho^2(\kappa\,\dd\tau)^2+\dd\rho^2$; smoothness requires $\kappa\beta=2\pi$, so $T=F'/(4\pi)$.
+\item (Area law) On an apparent horizon ($r_v=0$), if the energy influx is non-negative, $B\ge0$, and $r_{uv}<0$, $r_u<0$, then the radius changes along the horizon by $(B/r_{uv})\,r_u\ge0$: the area does not decrease.
+\end{enumerate}
+\end{proposition}
+
+\section{Endpoints and an arithmetic check}
+
+\begin{proposition}[Behaviour at an endpoint]\label{prop:endpoint}\ver\
+Near an endpoint where the mass behaves as $\kappa/s$, the radial equations $F'+(\kappa/s)F=0$ and $-G'+(\kappa/s)G=0$ are solved by $F=s^{-\kappa}$ and $G=s^\kappa$. For $\kappa\ge\frac12$, $s^{-\kappa}$ is not square integrable: $\int_\varepsilon^1s^{-1}\dd s=\log(1/\varepsilon)\to\infty$ and $\int_\varepsilon^1s^{-2\kappa}\dd s\to\infty$ for $\kappa>\frac12$.
+\end{proposition}
+
+So only one of the two local solutions is admissible at such an endpoint, and no boundary condition needs to be imposed there: the limit-point case of Weyl's alternative \cite{Weidmann}.
+
+\begin{proposition}[The coefficient $\frac{99}{250}$ of \cref{ch:intA}]\label{prop:ninetynine}\ver\
+For the Beta(2,3) density $12x(1-x)^2$ on $[0,1]$: $\int_0^1x(1-x)^2\dd x=\frac1{12}$, $E[X]=\frac25$, $E[X^2]=\frac15$, so $A=\mathrm{Var}X=\frac1{25}$. With $n=9$, $k=2$ and $L_k=k(k+n-1)=20$, the perturbation formula of \cref{ch:intA} (an input) gives $\lambda_2=-\frac{207}{500}$ and the coefficient $\frac{n(n-1)}4\bigl(1-\frac n{L_k}\bigr)A=\frac{99}{250}=\frac{n^2}4A+\lambda_2$.
+\end{proposition}
+
+\begin{litbox}
+Dirac operators on $S^3$ and their spectra are classical; the homogeneous instanton background and spectral flow were used by Gibbons and Steif for anomalous fermion production in collapsing universes \cite{GibbonsSteif1993}; supersymmetric quantum mechanics as a factorisation is due to Witten \cite{Witten1981}; Weyl's limit-point criterion is in \cite{Weidmann}. New here are: the derivation of the $S^3$ Dirac operator from the quaternionic frame with the constant spin term $\frac{3i}2$ and the exact homogeneous spectrum, with the zero crossing exactly at the Tolman configuration (\cref{prop:qframe,thm:s3dirac}); the zero mode $\sin\chi$ continued along the throat (\cref{prop:susyqm}); and the consistency of the spherically symmetric Einstein--Yang--Mills--Dirac system, with the coefficient of the fermionic constraint fixed by propagation (\cref{thm:ferconsist}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $D=\frac32+\lambda\sum\sigma_a\otimes\sigma_a$; singlet $\frac32-3\lambda$, zero at the Tolman configuration (\cref{thm:s3dirac}).
+\item Radial mass $w/r$; zero mode $\sin\chi$ continued along the throat (\cref{prop:susyqm}).
+\item EYM--Dirac constraints propagate; fermion number conserved; area law (\cref{thm:ferconsist,prop:secondlaw}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Verify $(qe_a)e_b-(qe_b)e_a=\sum_c2\epsilon_{abc}\,qe_c$.
+\end{exercise}
+\begin{exercise}
+Compute the eigenvalues of $\sum_a\sigma_a\otimes\sigma_a$ on the singlet and on $|{\uparrow\uparrow}\rangle$.
+\end{exercise}
+\begin{exercise}
+Show that $m=\cot\chi$ satisfies $m^2+m'=-1$.
+\end{exercise}
+\begin{exercise}
+Compute $\int_0^1x(1-x)^2\,\dd x$ and the first two moments of the Beta(2,3) distribution.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaV_S3Dirac:frame_tangent,AlphaV_S3Dirac:frame_orthonormal,AlphaV_S3Dirac:frame_deriv}{The quaternionic frame is tangent and orthonormal; its derivative (three statements).$^*$}
+\chk{AlphaV_S3Dirac:frame_bracket,AlphaV_S3Dirac:lie_bracket}{$[X_a,X_b]=2\epsilon_{abc}X_c$ (two statements).$^*$}
+\chk{AlphaV_S3Dirac:koszul,AlphaV_S3Dirac:spin_term}{Koszul formula; spin term $\frac{3i}2$ (two statements).$^*$}
+\chk{AlphaV_S3Dirac:reduced_dirac}{$D=\frac32+\lambda\sum\sigma\otimes\sigma$.$^*$}
+\chk{AlphaV_S3Dirac:SS_dndn,AlphaV_S3Dirac:SS_tsym,AlphaV:SS_singlet,AlphaV:SS_upup}{Eigenvalues of $\sum\sigma\otimes\sigma$ (four statements).}
+\chk{AlphaV_S3Dirac:decomp}{Singlet--triplet decomposition.}
+\chk{AlphaV_S3Dirac:level_singlet,AlphaV_S3Dirac:level_triplet',AlphaV_S3Dirac:level_of,AlphaV:level_shift,AlphaV:level_triplet}{Levels $\frac32-3\lambda$ and $\frac32+\lambda$ (five statements).$^*$}
+\chk{AlphaV_S3Dirac:reduced_dirac_spectrum}{Full spectrum.$^*$}
+\chk{AlphaFermion:fer_free_plus,AlphaFermion:fer_free_minus}{Free spectrum (two statements).}
+\chk{AlphaFermion:fer_hedgehog,AlphaFermion:fer_hedgehog_zero,AlphaFermion:fer_triplet}{Hedgehog singlet $-\frac32(2\lambda-1)$, zero at $\lambda=\frac12$; triplet (three statements).$^*$}
+\chk{AlphaFermion:fer_j_half}{$j=\frac12$ block with eigenvalues $\pm\sqrt3$.}
+\chk{AlphaFermion:fer_susy_factor,AlphaFermion:fer_cap_partner}{Factorisation; free partner for $m=\cot\chi$ (two statements).$^*$}
+\chk{AlphaFermion:fer_tower_d1,AlphaFermion:fer_tower_d2,AlphaFermion:fer_tower}{Tower $E^2=k^2-1$ (three statements).}
+\chk{AlphaFermion:fer_zero_mode_cap,AlphaFermion:fer_zero_mode_neck}{Zero modes on both sides (two statements).}
+\chk{AlphaFermion:fer_monopole_index}{Monopole $q=\frac12$: $j=0$, degeneracy $1$.}
+\chk{AlphaFermion:fer_constraint_prop,AlphaFermion:fer_ym_conservation}{General constraint propagation; the Yang--Mills source (two statements).$^*$}
+\chk{AlphaSphericalClose:sc_number,AlphaSphericalClose:sc_B_u,AlphaSphericalClose:sc_tau_v,AlphaSphericalClose:sc_conservation}{Fermion number, $B_u$, $\tau_v$, and the conservation law for the Dirac source (four statements).$^*$}
+\chk{SphericalTheory:spherical_field_equations}{The Euler--Lagrange equations vanish on solutions.$^*$}
+\chk{AlphaSphericalClose:sc_cone,AlphaSphericalClose:sc_cone_flat,AlphaSphericalClose:sc_temperature}{Smoothness at the horizon and $T=F'/4\pi$ (three statements).}
+\chk{AlphaSphericalClose:sc_second_law}{Area law on an apparent horizon.$^*$}
+\chk{AlphaIntegrals:endpoint_F,AlphaIntegrals:endpoint_G,AlphaIntegrals:not_L2_half,AlphaIntegrals:not_L2_gt}{Endpoint solutions and non-integrability (four statements).$^*$}
+\chk{AlphaIntegrals:ii,AlphaIntegrals:beta23,AlphaIntegrals:beta23_m1,AlphaIntegrals:beta23_m2}{Beta(2,3) integrals and moments (four statements).}
+\chk{AlphaIntegrals:z28d_coefficient}{$\lambda_2=-\frac{207}{500}$ and $\frac{99}{250}$.$^*$}
+\end{checklist}

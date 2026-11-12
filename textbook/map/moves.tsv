@@ -213,3 +213,8 @@ AlphaIntegrals:cap_rp_deriv	ch29
 AlphaIntegrals:junction_jumps	ch29
 AlphaIntegrals:cap_energy	ch29
 AlphaIntegrals:neck_energy	ch29
+AlphaFermion:vol_cap	ch29
+AlphaFermion:vol_total	ch29
+AlphaFermion:vol_neck_length	ch29
+AlphaFermion:vol_static_cap	ch29
+AlphaFermion:vol_no_neck	ch29
