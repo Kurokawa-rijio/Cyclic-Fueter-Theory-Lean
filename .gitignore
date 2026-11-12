@@ -14,3 +14,10 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+textbook/out/
+textbook/*.aux
+textbook/chapters/*.aux
+textbook/*.log
+textbook/*.pdf
+textbook/*.toc
+textbook/*.out

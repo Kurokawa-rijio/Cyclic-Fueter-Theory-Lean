@@ -1,0 +1,61 @@
+% ---------- theorem environments ----------
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+% ---------- status marks (monochrome) ----------
+\newcommand{\st}[1]{\textup{\textsf{\small[#1]}}}
+\newcommand{\ver}{\st{verified}}
+\newcommand{\ext}{\st{external input}}
+\newcommand{\num}{\st{numerical}}
+\newcommand{\nogo}{\st{negative result}}
+\newcommand{\opn}{\st{open}}
+% invisible record of the formal declarations a statement covers
+\newcommand{\covers}[1]{\ignorespaces}
+% ---------- boxes ----------
+\newtcolorbox{litbox}{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.5pt,arc=0pt,
+  fonttitle=\sffamily\bfseries,title={Relation to the literature},titlerule=0.4pt,breakable}
+\newtcolorbox{usesbox}{colback=white,colframe=black,boxrule=0.4pt,arc=0pt,left=2mm,right=2mm,top=1mm,bottom=1mm,
+  fontupper=\small,breakable}
+\newtcolorbox{asidebox}[1]{colback=white,colframe=black,colbacktitle=white,coltitle=black,boxrule=0.4pt,arc=0pt,
+  fonttitle=\sffamily\bfseries,title={#1},titlerule=0.4pt,breakable}
+% ---------- chapter checklist ----------
+\newcounter{chk}[chapter]
+\renewcommand{\thechk}{\thechapter.\arabic{chk}}
+\newenvironment{checklist}{\section*{Checklist of verified statements}\addcontentsline{toc}{section}{Checklist of verified statements}
+  \small\noindent Every formally verified statement belonging to this chapter is listed below, in the order of the chapter.
+  This chapter accounts for \textbf{\csname chkcount\thechapter\endcsname} of the \chkcounttotal\ verified statements of the book;
+  a line may group several closely related statements. Items marked with an asterisk are stated in the text.\par\medskip
+  \begin{list}{}{\setlength{\leftmargin}{3.2em}\setlength{\labelwidth}{3em}\setlength{\itemsep}{1pt}\setlength{\parsep}{0pt}}}
+  {\end{list}\normalsize}
+\newcommand{\chk}[2]{\refstepcounter{chk}\item[\textsf{\thechk}]\covers{#1}#2}
+% ---------- interludes ----------
+\newcommand{\startinterlude}[1]{\renewcommand{\chaptername}{Interlude}\renewcommand{\thechapter}{#1}}
+\newcommand{\stopinterlude}{\renewcommand{\chaptername}{Chapter}\renewcommand{\thechapter}{\arabic{chapter}}}
+% ---------- notation ----------
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\gd}{\operatorname{gd}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\Mat}{\mathrm{M}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\bs}{\boldsymbol{\sigma}}
+\newcommand{\qbar}[1]{\overline{#1}}

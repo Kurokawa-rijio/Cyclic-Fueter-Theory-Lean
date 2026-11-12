@@ -1,0 +1,184 @@
+\chapter{Fueter Operators}
+\label{ch:fueter}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the quaternion algebra and $q\qbar q=|q|^2$ (\cref{thm:hamilton,thm:normmul}); the idea that Euclidean and Lorentzian signatures are two real forms of one complex algebra (\cref{ch:lorentz}).\\
+\textbf{It provides:} the Fueter operator $D$ with $\bar DD=D\bar D=\Delta$; the wave operator as $\bar D_{\CC}D_{\CC}$ over the complexified quaternions; a criterion for a first-order operator with quaternionic coefficients to factorise the Laplacian; and the structure of the circulant matrix obtained by shifting the coefficients of $D$, whose rank is three.
+\end{usesbox}
+
+The Cauchy--Riemann operator $\partial_{\bar z}=\frac12(\partial_x+\ii\partial_y)$ is a square root of the Laplacian: $4\partial_z\partial_{\bar z}=\partial_x^2+\partial_y^2$. Holomorphic functions are the kernel of one of the two factors. In the 1930s Fueter asked what the four-dimensional analogue should be, and found that quaternions supply it \cite{Fueter1934}. His operator, and the class of quaternionic ``regular'' functions it defines, became the basis of quaternionic analysis, systematised by Sudbery \cite{Sudbery1979} and by Gürlebeck, Habetha and Spr\"o\ss ig \cite{GHS}. In this chapter we use it for a narrower purpose. It is the cleanest example of the book's recurring theme, a quadratic form (here the symbol of the Laplacian) written as a product of two linear factors, and the theme then extends to the wave operator by complexification.
+
+Throughout, functions are smooth quaternion-valued functions $f=f_0+f_1i+f_2j+f_3k$ of four real variables $x^0,\dots,x^3$, and $\partial_a$ acts componentwise. All that the proofs use is that the partial derivatives are derivations which commute with each other.
+
+\begin{lemma}[Commuting derivatives]\label{lem:commute}\ver\
+For a family of commuting derivations, $\partial_a\partial_b f=\partial_b\partial_a f$ for all six pairs $a>b$, so every second derivative can be written with the indices in increasing order.
+\end{lemma}
+
+\section{The Fueter operator and the Laplacian}
+
+Write $e_0=1$, $e_1=i$, $e_2=j$, $e_3=k$, and define
+\begin{equation}\label{eq:fueter}
+Df=\sum_{a=0}^{3}e_a\,\partial_af=\partial_0f+i\,\partial_1f+j\,\partial_2f+k\,\partial_3f,\qquad
+\bar Df=\sum_a\qbar{e_a}\,\partial_af .
+\end{equation}
+The coefficients multiply from the left, so $D$ is Sudbery's left Fueter operator \cite{Sudbery1979}; functions with $Df=0$ are called left regular.
+
+\begin{theorem}[Factorisation of the Laplacian]\label{thm:fueterlap}\ver\
+For every quaternion-valued function $f$,
+\[
+\bar D Df=D\bar Df=\Delta f,\qquad \Delta=\partial_0^2+\partial_1^2+\partial_2^2+\partial_3^2 .
+\]
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+$\bar DD=\sum_{a,b}\qbar{e_a}e_b\,\partial_a\partial_b$. The diagonal terms give $\sum_a|e_a|^2\partial_a^2=\Delta$. For $a\ne b$ the coefficient of $\partial_a\partial_b$ is $\qbar{e_a}e_b+\qbar{e_b}e_a=2\operatorname{Re}(\qbar{e_a}e_b)=0$, by \cref{lem:commute} and the orthogonality of the units. The second identity is the same computation with the factors exchanged.
+\end{proof}
+
+This is \eqref{eq:qqbar} with the vector $(x^0,\dots,x^3)$ replaced by the gradient $(\partial_0,\dots,\partial_3)$: in Fourier space the symbol of $D$ is the quaternion $\xi=\xi_0+\xi_1i+\xi_2j+\xi_3k$ (up to a factor $\ii$), and the symbol of $\bar DD$ is $\qbar\xi\,\xi=|\xi|^2$.
+
+\section{The wave operator hiding inside}
+
+The square of $D$ itself is not the Laplacian. Split $D=\partial_0+V$ with $V=i\partial_1+j\partial_2+k\partial_3$. Because $i^2=j^2=k^2=-1$ and the mixed terms cancel in pairs, $V^2=-(\partial_1^2+\partial_2^2+\partial_3^2)$, and so:
+
+\begin{theorem}[The square of $D$]\label{thm:dsquare}\ver\
+\[
+D^2f=(\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2)f+2\,\partial_0Vf,\qquad D^2f+\bar D^2f=2(\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2)f .
+\]
+\end{theorem}
+
+The Lorentzian operator $\partial_0^2-\nabla^2$ appears, but contaminated by the cross term $2\partial_0V$. The cure is the one we used in \cref{ch:lorentz}: pass to the complexified algebra $\HH\otimes\CC$ of biquaternions, in which there is a central element $I$ with $I^2=-1$ that commutes with $i,j,k$. Define
+\begin{equation}\label{eq:biquatD}
+D_{\CC}=\partial_0+I\,V,\qquad \bar D_{\CC}=\partial_0-I\,V .
+\end{equation}
+
+\begin{theorem}[Factorisation of the wave operator]\label{thm:biquatbox}\ver\
+Let $I$ be central with $I^2=-1$ and $\partial_aI=0$. Then
+\[
+\bar D_{\CC}D_{\CC}f=D_{\CC}\bar D_{\CC}f=(\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2)f .
+\]
+\end{theorem}
+
+Indeed $\bar D_{\CC}D_{\CC}=\partial_0^2-I^2V^2=\partial_0^2+V^2$, and $V^2=-\nabla^2$. The two theorems of this section therefore play the two real forms of \cref{ch:lorentz} against each other. Over the quaternions, the real form with the positive definite norm, the first-order operator squares to the Euclidean Laplacian. Over the biquaternions it can be arranged to square to the wave operator. Lanczos used exactly this device in 1929 to write the Dirac equation in biquaternionic form \cite{Lanczos1929}, and it is closely related to the Weyl factorisation $p_\mu\sigma^\mu\,p_\nu\bar\sigma^\nu=-p_\mu p^\mu$ of \cref{ch:lorentz}.
+
+\section{Which operators factorise the Laplacian?}
+
+It is natural to ask which first-order operators $\mathcal D_cf=\sum_ac_a\,\partial_af$ with constant quaternionic coefficients $c_0,\dots,c_3$ share the property of \cref{thm:fueterlap}. At the level of symbols the question is when
+\[
+\Bigl(\sum_a\xi_a\qbar{c_a}\Bigr)\Bigl(\sum_b\xi_bc_b\Bigr)=\sum_a\xi_a^2\qquad\text{for all real }\xi .
+\]
+
+\begin{theorem}[Factorisation criterion]\label{thm:factcrit}\ver\
+The product of symbols expands as $\sum_{a,b}\xi_a\xi_b\,\qbar{c_a}c_b$. It equals $|\xi|^2$ for all real $\xi$ if and only if
+\[
+\qbar{c_a}\,c_b+\qbar{c_b}\,c_a=2\,\delta_{ab}\qquad\text{for all }a,b .
+\]
+\end{theorem}
+
+In words: the coefficients must be unit quaternions that are pairwise orthogonal for the real inner product $\operatorname{Re}(\qbar pq)$. Any orthonormal basis of $\RR^4=\HH$ will do, and the Fueter choice $(1,i,j,k)$ is only one of them.
+
+\section{Shifting the coefficients: a quaternionic circulant}
+
+A particularly simple way to obtain new orthonormal coefficient sets is to shift the Fueter coefficients cyclically. For $m=0,1,2,3$ put
+\begin{equation}\label{eq:Dm}
+D_mf=\sum_{a=0}^3e_{m+a}\,\partial_af,
+\end{equation}
+indices taken modulo $4$. Thus $D_0=D$, $D_1=i\partial_0+j\partial_1+k\partial_2+\partial_3$, and so on. Each coefficient set $(e_m,e_{m+1},e_{m+2},e_{m+3})$ is a permutation of $(1,i,j,k)$, so by \cref{thm:factcrit} each $D_m$ factorises the Laplacian.
+
+\begin{proposition}\label{prop:shiftfact}\ver\
+For every $m$, $\qbar{e_{m+a}}\,e_{m+b}+\qbar{e_{m+b}}\,e_{m+a}=2\delta_{ab}$; hence $\bar D_mD_m=\Delta$.
+\end{proposition}
+
+The four operators are encoded in the coefficient matrix $C_{ma}=e_{m+a}$, a $4\times4$ circulant matrix with quaternion entries. The coefficients of a first-order operator are recovered from its action on the coordinate functions, $D_m(x^a)=e_{m+a}$, so the matrix and the family of operators determine each other.
+
+\begin{proposition}[Coefficients from the operators]\label{prop:coeffextract}\ver\
+$\partial_a x^b=\delta_{ab}$, and for any coefficient set $c$, $\mathcal D_c(x^b)=c_b$. In particular $D_m(x^a)=e_{m+a}$, and two first-order operators that agree on all functions have the same coefficients.
+\end{proposition}
+
+Over a commutative field, the eigenvectors of a circulant matrix are the geometric sequences $(1,\omega,\omega^2,\omega^3)$ with $\omega^4=1$, and the matrix is singular exactly when one of the corresponding Fourier sums vanishes \cite{Davis}. Quaternions have far more fourth roots of unity than $\CC$: every pure unit quaternion $u$ satisfies $u^4=1$. It turns out that one of them does annihilate $C$. Write $\gamma(u)=(1,u,u^2,u^3)$; thus $\gamma(i)=(1,i,-1,-i)$ and $\gamma(-k)=(1,-k,-1,k)$.
+
+\begin{theorem}[The shifted coefficient matrix has rank three]\label{thm:rank3}\ver\
+Regard $C$ as acting on columns $y\in\HH^4$ from the left, $(Cy)_m=\sum_aC_{ma}y_a$, and on rows $x$ from the right, $(xC)_a=\sum_mx_mC_{ma}$.
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Right kernel.} $Cy=0$ if and only if $y=\gamma(-k)\,q$ for some $q\in\HH$.
+\item \emph{Left kernel.} $xC=0$ if and only if $x=q\,\gamma(i)$ for some $q\in\HH$.
+\item \emph{Rank.} The first three columns are right linearly independent, and the fourth is the right combination $C_{\cdot3}=C_{\cdot0}\,k+C_{\cdot1}-C_{\cdot2}\,k$. As a real-linear map of $\HH^4\cong\RR^{16}$, $C$ has rank $12$ and its kernel is the four-dimensional image of $q\mapsto\gamma(-k)q$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+For (i) one checks the four identities $\sum_ae_{m+a}(-k)^a=0$; for $m=0$ this reads $1-ik-j+k^2=1+j-j-1=0$. The converse is linear algebra over $\HH$: eliminating $y_3$ leaves a $4\times3$ system whose only solution is $y=0$, which is (iii). The left kernel is handled in the same way with $\sum_m i^m e_{m+a}=0$.
+\end{proof}
+
+Two consequences translate the matrix statement back into statements about operators. A right kernel vector yields a function annihilated by all four operators at once, and a left kernel vector yields a linear relation among the operators.
+
+\begin{corollary}[A common solution and an operator relation]\label{cor:commonsol}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For every constant quaternion $q$, the linear function $f(x)=\sum_bx^b\,\gamma(-k)_b\,q=\bigl((x^0-x^2)+(x^3-x^1)k\bigr)q$ satisfies $D_mf=0$ for $m=0,1,2,3$.
+\item For every $f$, $\;D_0f+i\,D_1f-D_2f-i\,D_3f=0$.
+\end{enumerate}
+\end{corollary}
+
+The circulant pattern is essential. If instead the coefficients are arranged according to the Klein four-group, $C^{\mathrm K}_{ra}=e_{r\oplus a}$ with $\oplus$ the bitwise sum, the resulting matrix is nonsingular.
+
+\begin{proposition}[The Klein arrangement is regular]\label{prop:klein}\ver\
+If $\sum_aC^{\mathrm K}_{ra}y_a=0$ for all $r$, then $y=0$.
+\end{proposition}
+
+So whether a family of Fueter-type operators shares a solution is decided by a group-theoretic choice, the cyclic group $\ZZ_4$ versus $\ZZ_2\times\ZZ_2$, through the quaternionic version of the circulant determinant.
+
+\begin{litbox}
+The operator \eqref{eq:fueter} and \cref{thm:fueterlap} are due to Fueter \cite{Fueter1934}; Sudbery's review \cite{Sudbery1979} is the standard modern account, and the biquaternionic factorisation of the wave operator goes back at least to Lanczos \cite{Lanczos1929}. The criterion of \cref{thm:factcrit} is the quaternionic form of the familiar statement that the coefficients of a Dirac-type operator must generate a Clifford algebra. We have not found \cref{thm:rank3} and \cref{cor:commonsol} in the literature. They concern a specific quaternionic circulant matrix, built from the coefficients of the Fueter operator, which is singular although each of its rows defines an operator that factorises the Laplacian. Its kernels are geometric sequences in fourth roots of unity, as for ordinary circulants, but the roots involved ($-k$ on the right and $i$ on the left) are noncommutative. We record the result as a small piece of quaternionic linear algebra; nothing later in the book depends on its interpretation.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $\bar DD=D\bar D=\Delta$ (\cref{thm:fueterlap}) and the factorisation criterion (\cref{thm:factcrit}).
+\item The wave operator as $\bar D_{\CC}D_{\CC}$ over the biquaternions (\cref{thm:biquatbox}).
+\item The rank-three circulant and its kernels (\cref{thm:rank3,cor:commonsol}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Verify by hand that $\sum_ae_{1+a}(-k)^a=0$ and $\sum_ae_{2+a}(-k)^a=0$.
+\end{exercise}
+\begin{exercise}
+Apply $D=\partial_0+V$ twice to $f=x^0x^1$ and compare with \cref{thm:dsquare}.
+\end{exercise}
+\begin{exercise}
+Take $q=1$ in \cref{cor:commonsol}(i), so $f=(x^0-x^2)+(x^3-x^1)k$. Compute $D_1f=i\,\partial_0f+j\,\partial_1f+k\,\partial_2f+\partial_3f$ term by term and confirm that it vanishes.
+\end{exercise}
+\begin{exercise}
+Write out the Klein arrangement $C^{\mathrm K}_{ra}=e_{r\oplus a}$ as a $4\times4$ table and verify that each of its rows satisfies the criterion of \cref{thm:factcrit}.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaI_Operators:c10,AlphaI_Operators:c20,AlphaI_Operators:c30,AlphaI_Operators:c21,AlphaI_Operators:c31,AlphaI_Operators:c32}{Commuting derivatives brought to normal order (six statements).$^*$}
+\chk{AlphaI_Operators:conj_product}{$\bar DDf=\Delta f$.$^*$}
+\chk{AlphaI_Operators:product_conj}{$D\bar Df=\Delta f$.$^*$}
+\chk{AlphaI_Operators:square}{$D^2f=(\partial_0^2-\nabla^2)f+2\partial_0Vf$.$^*$}
+\chk{AlphaI_Operators:square_sum}{$D^2f+\bar D^2f=2(\partial_0^2-\nabla^2)f$.$^*$}
+\chk{AlphaI_Operators:biquaternion_box}{$\bar D_{\CC}D_{\CC}=D_{\CC}\bar D_{\CC}=\partial_0^2-\nabla^2$ over the biquaternions.$^*$}
+\chk{AlphaS1_Closure:symProd_expand}{Expansion of the product of symbols, $\sum_{a,b}\xi_a\xi_b\qbar{c_a}c_b$.$^*$}
+\chk{AlphaS1_Closure:factorization_iff}{The symbol product equals $|\xi|^2$ iff $\qbar{c_a}c_b+\qbar{c_b}c_a=2\delta_{ab}$.$^*$}
+\chk{AlphaS1_Closure:cyclic_factorizes}{Each shifted coefficient set $e_{m+a}$ is orthonormal, so $\bar D_mD_m=\Delta$.$^*$}
+\chk{AlphaI_CFamily:dq_coord}{$\partial_a x^b=\delta_{ab}$.$^*$}
+\chk{AlphaI_CFamily:op_coord}{$\mathcal D_c(x^b)=c_b$.$^*$}
+\chk{AlphaI_CFamily:coefficient_extraction}{$D_m(x^a)=e_{m+a}$.$^*$}
+\chk{AlphaI_CFamily:coefficient_unique}{Two first-order operators that agree on all functions have equal coefficients.$^*$}
+\chk{AlphaI_CFamily:dq_add}{The componentwise derivative is additive.}
+\chk{AlphaI_CFamily:dq_mul_const}{$\partial_a(fq)=(\partial_af)q$ for a constant quaternion $q$.}
+\chk{AlphaI_C:C_table}{The table of the coefficient matrix, $C_{ra}=e_{r+a}$.}
+\chk{AlphaI_C:gam_i,AlphaI_C:gam_mk}{$\gamma(i)=(1,i,-1,-i)$ and $\gamma(-k)=(1,-k,-1,k)$.}
+\chk{AlphaI_C:right_kernel}{Right kernel of $C$: $Cy=0\iff y=\gamma(-k)q$.$^*$}
+\chk{AlphaI_C:left_kernel}{Left kernel of $C$: $xC=0\iff x=q\gamma(i)$.$^*$}
+\chk{AlphaI_C:rank_three}{The first three columns are right independent and the fourth is their right combination.$^*$}
+\chk{AlphaI_C:singular}{$C$ has a nonzero right kernel vector.}
+\chk{AlphaI_C:kerParam_injective}{The parametrisation $q\mapsto\gamma(-k)q$ of the kernel is injective.}
+\chk{AlphaI_C:ker_eq_range}{The real kernel of $C$ equals the image of $q\mapsto\gamma(-k)q$.$^*$}
+\chk{AlphaI_C:real_rank_twelve}{As a real-linear map of $\RR^{16}$, $C$ has rank $12$.$^*$}
+\chk{AlphaI_CFamily:right_kernel_rows}{$\sum_ae_{m+a}\gamma(-k)_a=0$ for each row $m$, in the function algebra.}
+\chk{AlphaI_CFamily:left_kernel_cols}{$\sum_m\gamma(i)_me_{m+a}=0$ for each column $a$.}
+\chk{AlphaI_CFamily:null_solution}{The linear function $\sum_bx^b\gamma(-k)_bq$ is annihilated by every $D_m$.$^*$}
+\chk{AlphaI_CFamily:operator_relation}{$\sum_m\gamma(i)_mD_m=0$.$^*$}
+\chk{AlphaS1_Closure:klein_family_regular}{The Klein-four-group arrangement of the coefficients has trivial right kernel.$^*$}
+\end{checklist}

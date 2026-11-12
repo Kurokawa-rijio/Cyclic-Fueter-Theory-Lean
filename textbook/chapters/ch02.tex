@@ -1,0 +1,168 @@
+\chapter{\texorpdfstring{$\SL(2,\CC)$}{SL(2,C)}, Minkowski Space and the Dirac Algebra}
+\label{ch:lorentz}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the matrix model $\rho$ of $\HH$ and the identification $S^3\cong\SU(2)$ (\cref{thm:rho}); the two-sphere of pure spin states (\cref{fig:bloch}).\\
+\textbf{It provides:} Minkowski space as the Hermitian $2\times2$ matrices with $\det X=t^2-|\mathbf x|^2$; the action of $\SL(2,\CC)$ by Lorentz transformations; the polar decomposition $\SL(2,\CC)=\SU(2)\cdot\{\text{boosts}\}$ and the hyperboloid $\SL(2,\CC)/\SU(2)$; the Dirac algebra as the square root of $E^2=|\mathbf p|^2+m^2$ and the positive-energy projector.
+\end{usesbox}
+
+In \cref{ch:quaternions} we met the first of two real forms of the complex algebra $\Mat_2(\CC)$. Its unit sphere is the spin group $\SU(2)$, and its natural quadratic form, the determinant, is positive definite. The second real form consists of the Hermitian matrices. Here the determinant has Lorentzian signature, the invertible elements of determinant one act as Lorentz transformations, and the rank-one elements are light rays. Putting the two real forms side by side is the content of this chapter. The payoff is a single picture in which rotations, boosts, spin states and light rays all live inside one algebra of $2\times2$ complex matrices.
+
+\section{Hermitian matrices as Minkowski space}
+
+To an event $x^\mu=(t,x,y,z)$ we associate the Hermitian matrix
+\begin{equation}\label{eq:Xmatrix}
+X=t\,\mathbf 1+\mathbf x\cdot\bs=\begin{pmatrix} t+z & x-\ii y\\ x+\ii y & t-z\end{pmatrix}.
+\end{equation}
+Every Hermitian $2\times2$ matrix arises this way, for exactly one $x^\mu$.
+
+\begin{theorem}[The interval as a determinant]\label{thm:detlorentz}\ver\
+For real $t,x,y,z$ the matrix \eqref{eq:Xmatrix} satisfies $\det X=t^2-x^2-y^2-z^2$.
+\end{theorem}
+
+With the signature $(-,+,+,+)$ used throughout this book, $\det X=-\eta_{\mu\nu}x^\mu x^\nu$. Timelike vectors have $\det X>0$, null vectors $\det X=0$, and spacelike vectors $\det X<0$. Just as in \cref{ch:quaternions}, the quadratic form factorises. Put $X^\#=t\,\mathbf 1-\mathbf x\cdot\bs$, the adjugate matrix; then
+\begin{equation}\label{eq:adjugate}
+X\,X^\#=X^\#X=(\det X)\,\mathbf 1 .
+\end{equation}
+For $2\times2$ matrices the adjugate is $X^\#=(\tr X)\mathbf 1-X$, and \eqref{eq:adjugate} is nothing but the Cayley--Hamilton theorem.
+
+\begin{theorem}[Cayley--Hamilton for $2\times2$ matrices]\label{thm:cayleyhamilton}\ver\
+For every complex $2\times 2$ matrix $X$,
+\[
+X^2=(\tr X)\,X-(\det X)\,\mathbf 1,\qquad \tr(X^2)=(\tr X)^2-2\det X ,
+\]
+and $\det(X+\mathbf 1)=\det X+\tr X+1$, $\tr(X+\mathbf 1)=\tr X+2$.
+\end{theorem}
+
+These identities are elementary, but they will do a surprising amount of work. Here is the first example. The formula $\tr(X^2)=(\tr X)^2-2\det X$ says that the Minkowski norm can be read off from traces alone. That is why the invariants of a $2\times2$ matrix are only its trace and its determinant.
+
+\section{The Lorentz group as \texorpdfstring{$\SL(2,\CC)$}{SL(2,C)}}
+
+Let $A$ be a complex $2\times2$ matrix with $\det A=1$. The map
+\begin{equation}\label{eq:lorentzaction}
+X\longmapsto AXA^\dagger
+\end{equation}
+sends Hermitian matrices to Hermitian matrices, and since $\det(AXA^\dagger)=|\det A|^2\det X=\det X$ it preserves the interval.
+
+\begin{theorem}[$\SL(2,\CC)$ acts by Lorentz transformations]\label{thm:lorentzaction}\ver\
+If $\det A=1$ and $X^\dagger=X$, then $(AXA^\dagger)^\dagger=AXA^\dagger$ and $\det(AXA^\dagger)=\det X$.
+\end{theorem}
+
+Each $A$ therefore defines a linear map $\Lambda(A)$ of $\RR^{1,3}$ preserving $\eta$. It preserves the time orientation, because $\tr(AXA^\dagger)>0$ whenever $\tr X>0$ and $\det X>0$. It also has determinant one, since $\SL(2,\CC)$ is connected. The homomorphism $A\mapsto\Lambda(A)$ onto the proper orthochronous Lorentz group has kernel $\{\pm\mathbf 1\}$; this is the relativistic counterpart of the double cover $\SU(2)\to\SO(3)$, and it contains it, because for $A=\rho(q)$ unitary the map \eqref{eq:lorentzaction} is $X\mapsto\rho(q)X\rho(q)^{-1}$, which fixes $t$ and rotates $\mathbf x$ exactly as in \cref{thm:conj} \cite{PenroseRindler1,Wigner1939}.
+
+\section{Null vectors, the celestial sphere and pure states}
+
+A Hermitian matrix with $\det X=0$ and $\tr X>0$ has rank one, so it can be written $X=\xi\xi^\dagger$ for a spinor $\xi\in\CC^2$, unique up to a phase. The future null cone is thus the space of spinors modulo phase, and the set of future null \emph{directions} is the space of spinors modulo all of $\CC^\times$, the projective line $\CC P^1\cong S^2$. This is the celestial sphere: the sky as seen by an observer. A Lorentz transformation $A$ moves $\xi$ to $A\xi$, so it acts on the sky by a M\"obius transformation \cite{PenroseRindler1}.
+
+The same matrices describe a qubit. A density matrix of a spin-$\tfrac12$ system is a Hermitian matrix $\varrho=\tfrac12(\mathbf 1+\mathbf n\cdot\bs)$ with $\tr\varrho=1$ and $\varrho\ge0$, which means $|\mathbf n|\le1$. In the language of \eqref{eq:Xmatrix} it is the four-vector $(t,\mathbf x)=(\tfrac12,\tfrac12\mathbf n)$, which lies inside or on the future light cone. The state is pure exactly when $\varrho$ has rank one, that is, when $\det\varrho=\tfrac14(1-|\mathbf n|^2)=0$. So:
+\begin{center}
+\emph{rank one}\quad$=$\quad\emph{null}\quad$=$\quad\emph{pure}.
+\end{center}
+The Bloch ball is a spatial section of the solid future cone, and the Bloch sphere of \cref{fig:bloch} is that section of the null cone. In this sense the sphere of pure spin states and the celestial sphere are literally the same object, seen from two real forms of $\Mat_2(\CC)$. We shall return to this observation in Chapter~4, where giving the particle a mass will push the sphere into the interior of the cone and turn it into the boundary of a hemisphere.
+
+\section{Polar decomposition: rotations times boosts}
+
+Every invertible complex matrix is uniquely a unitary matrix times a positive Hermitian one. For $\SL(2,\CC)$ this says that every Lorentz transformation is a boost followed by a rotation, in a unique way. Since the decomposition is the algebraic heart of several later chapters, we record the steps that have been verified.
+
+\begin{proposition}[Gram matrix]\label{prop:gram}\ver\
+For every $M\in\Mat_2(\CC)$, $M^\dagger M$ is Hermitian and $\tr(M^\dagger M)=\sum_{ij}|M_{ij}|^2$. If $\det M=1$ then $\det(M^\dagger M)=1$.
+\end{proposition}
+
+So $M^\dagger M$ is a Hermitian matrix of determinant one with positive trace: a point of the unit hyperboloid $t^2-|\mathbf x|^2=1$, $t>0$, which is the space of four-velocities.
+
+\begin{theorem}[Polar decomposition of $\SL(2,\CC)$]\label{thm:polar}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Existence.} If $\det M=1$, there are $U\in\SU(2)$ and a Hermitian $B$ with $\det B=1$ and $\tr B>0$ such that $M=UB$.
+\item \emph{Square root.} A Hermitian $B$ with $\det B=1$ and $\tau=\tr B>0$ is determined by its square:
+\[
+B=\frac{B^2+\mathbf 1}{\tau},\qquad \tau^2=\tr(B^2)+2 .
+\]
+\item \emph{Uniqueness.} If $U_1B_1=U_2B_2$ with $U_a$ unitary and $B_a$ Hermitian of determinant one and positive trace, then $U_1=U_2$ and $B_1=B_2$.
+\item \emph{Rotations meet boosts only at the identity.} A matrix that is both unitary with determinant one and Hermitian with positive trace is the identity.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+For (ii), apply \cref{thm:cayleyhamilton} to $B$: $B^2=\tau B-\mathbf 1$. Solving for $B$ gives the first formula, and $\tr(B^2)=\tau^2-2$ gives the second. For (i), take $B$ to be the square root of the Gram matrix $M^\dagger M$ furnished by (ii), namely $B=(M^\dagger M+\mathbf 1)/\tau$ with $\tau=\sqrt{\tr(M^\dagger M)+2}$, and put $U=MB^{-1}$. For (iii), $B_a^2=M^\dagger M$ is common to both factorisations, and by (ii) $B_a$ is determined by $B_a^2$. Item (iv) follows from (iii) by comparing $U\cdot\mathbf 1$ with $\mathbf 1\cdot U$.
+\end{proof}
+
+The formula in (ii) is worth a second look. For a boost of rapidity $\zeta$ along the $z$-axis, $B=\operatorname{diag}(e^{\zeta/2},e^{-\zeta/2})$ and $B^2=\operatorname{diag}(e^{\zeta},e^{-\zeta})$. Then $\tau=2\cosh(\zeta/2)$ and $\tr(B^2)=2\cosh\zeta$, and $\tau^2=\tr(B^2)+2$ is the half-angle identity $4\cosh^2(\zeta/2)=2\cosh\zeta+2$. The matrix $B$ is the ``spinor'' square root of the vector boost $B^2$, just as a unit quaternion is the spinor square root of a rotation.
+
+Geometrically, \cref{thm:polar} identifies the coset space $\SL(2,\CC)/\SU(2)$ with the hyperboloid of positive Hermitian matrices of determinant one,
+\[
+\SL(2,\CC)/\SU(2)\;\cong\;\{B=B^\dagger:\ \det B=1,\ \tr B>0\}\;=\;H^3 ,
+\]
+the three-dimensional hyperbolic space of four-velocities. Item (iv) says that the sphere $\SU(2)$ and the hyperboloid $H^3$ meet in a single point, the identity, which represents the rest frame. Both sit inside the same group, and both are cut out of $\Mat_2(\CC)$ by the condition $\det=1$ in one of its two real forms. Chapter~4 turns this picture into a statement about states.
+
+\section{The Dirac algebra}
+
+Dirac looked for a Hamiltonian linear in momentum whose square is the relativistic energy \cite{Dirac1928}. Once again this means factorising a quadratic form, now $m^2+|\mathbf p|^2$.
+
+\begin{theorem}[Dirac's factorisation]\label{thm:diracsq}\ver\
+Let $\beta,\alpha_1,\alpha_2,\alpha_3$ be elements of an associative algebra with $\beta^2=\alpha_i^2=1$ and with any two distinct ones anticommuting. Then for real $m$ and $p_i$
+\[
+(m\beta+p_1\alpha_1+p_2\alpha_2+p_3\alpha_3)^2=(m^2+p_1^2+p_2^2+p_3^2)\,\mathbf 1 .
+\]
+\end{theorem}
+
+The algebra generated by four anticommuting square roots of unity is the real Clifford algebra $\mathrm{Cl}_{4,0}$, and its smallest faithful complex representation is four-dimensional. The usual Dirac representation is
+\[
+\beta=\begin{pmatrix}\mathbf 1&0\\0&-\mathbf 1\end{pmatrix},\qquad \alpha_i=\begin{pmatrix}0&\sigma_i\\ \sigma_i&0\end{pmatrix}.
+\]
+With $\gamma^0=\beta$ and $\gamma^i=\beta\alpha_i$ one finds $\{\gamma^\mu,\gamma^\nu\}=-2\eta^{\mu\nu}$ in our signature, which is the convention of Srednicki \cite{Srednicki}. In the chiral representation the massless Dirac operator splits into the two Weyl operators $p_\mu\sigma^\mu$ and $p_\mu\bar\sigma^\mu$, with $\sigma^\mu=(\mathbf 1,\bs)$ and $\bar\sigma^\mu=(\mathbf 1,-\bs)$; their product is $-p_\mu p^\mu\,\mathbf 1$. This is exactly the factorisation \eqref{eq:adjugate} with $X=p_\mu\bar\sigma^\mu$ and $X^\#=p_\mu\sigma^\mu$. So the Weyl equation and the determinant of a Hermitian matrix are the same identity.
+
+If $H$ squares to $E^2\mathbf 1$ with $E\neq0$, then $H/E$ is an involution and splits the space of states into its $\pm1$ eigenspaces.
+
+\begin{theorem}[Energy projectors]\label{thm:projidem}\ver\
+If $H^2=E^2\,\mathbf 1$ and $E\neq0$, then $P=\tfrac12(\mathbf 1+H/E)$ satisfies $P^2=P$.
+\end{theorem}
+
+For the free Dirac Hamiltonian with $E=\sqrt{m^2+|\mathbf p|^2}$, $P_+(\mathbf p)=\tfrac12(\mathbf 1+H(\mathbf p)/E)$ projects onto the positive-energy states of momentum $\mathbf p$. These projectors, regarded as functions of $\mathbf p$, are the main object of Chapter~4 and Chapter~5.
+
+\begin{litbox}
+The spinor description of Minkowski space and of the Lorentz group goes back to Cartan and is developed systematically by Penrose and Rindler \cite{PenroseRindler1}; the role of $\SL(2,\CC)$ in relativistic quantum mechanics is Wigner's \cite{Wigner1939}, and the Dirac algebra is Dirac's \cite{Dirac1928}. The identification of the Bloch ball with a section of the solid light cone is also known in quantum information. We have emphasised three points that are usually treated separately. Cayley--Hamilton, the adjugate and Dirac's square root are one identity, the factorisation of a quadratic form. The polar decomposition places the rotation sphere and the velocity hyperboloid inside one group, meeting only at the identity. And the rank-one condition simultaneously defines light rays and pure states. The statements displayed above have been checked in Lean.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item Minkowski space as Hermitian matrices with $\det X=t^2-|\mathbf x|^2$, and the factorisation $XX^\#=\det X$ (\cref{thm:detlorentz,thm:cayleyhamilton}).
+\item $\SL(2,\CC)$ acting by Lorentz transformations (\cref{thm:lorentzaction}).
+\item Polar decomposition and $\SL(2,\CC)/\SU(2)\cong H^3$, with $\SU(2)\cap H^3=\{\mathbf 1\}$ (\cref{thm:polar}).
+\item Rank one $=$ null $=$ pure.
+\item Dirac's factorisation and the energy projector (\cref{thm:diracsq,thm:projidem}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Verify \cref{thm:detlorentz} directly from \eqref{eq:Xmatrix}, and then check \eqref{eq:adjugate} for $X^\#=t\,\mathbf 1-\mathbf x\cdot\bs$.
+\end{exercise}
+\begin{exercise}
+Let $B=\operatorname{diag}(e^{\zeta/2},e^{-\zeta/2})$. Confirm both formulas in \cref{thm:polar}(ii), and show that $X\mapsto BXB^\dagger$ is a boost of rapidity $\zeta$ along $z$.
+\end{exercise}
+\begin{exercise}
+Using \cref{thm:projidem} for $P_\pm=\tfrac12(\mathbf 1\pm H/E)$, show that $P_++P_-=\mathbf 1$ and $P_+P_-=0$.
+\end{exercise}
+\begin{exercise}
+Let $M=\begin{psmallmatrix}1&1\\0&1\end{psmallmatrix}$. Compute $M^\dagger M$, its trace and determinant, and the matrix $B=(M^\dagger M+\mathbf 1)/\tau$ of \cref{thm:polar}. Check that $B^2=M^\dagger M$.
+\end{exercise}
+\begin{exercise}
+Show that the density matrix $\varrho=\tfrac12(\mathbf 1+\mathbf n\cdot\bs)$ has $\det\varrho=\tfrac14(1-|\mathbf n|^2)$, using \cref{thm:detlorentz}.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaI:det_lorentz}{$\det(t\mathbf 1+\mathbf x\cdot\bs)=t^2-|\mathbf x|^2$.$^*$}
+\chk{AlphaPillar_Polar:ch2}{Cayley--Hamilton for $2\times2$ matrices, $X^2=(\tr X)X-(\det X)\mathbf 1$.$^*$}
+\chk{AlphaPillar_Polar:trace_sq}{$\tr(X^2)=(\tr X)^2-2\det X$.$^*$}
+\chk{AlphaPillar_Polar:det_add_one}{$\det(X+\mathbf 1)=\det X+\tr X+1$.$^*$}
+\chk{AlphaPillar_Polar:trace_add_one}{$\tr(X+\mathbf 1)=\tr X+2$.$^*$}
+\chk{AlphaCompleteB:lorentz_action}{$X\mapsto AXA^\dagger$ with $\det A=1$ preserves Hermiticity and the determinant.$^*$}
+\chk{AlphaPillar_Polar:gram_herm}{$M^\dagger M$ is Hermitian.$^*$}
+\chk{AlphaPillar_Polar:trace_gram}{$\tr(M^\dagger M)=\sum|M_{ij}|^2$.$^*$}
+\chk{AlphaPillar_Polar:det_gram}{$\det M=1$ implies $\det(M^\dagger M)=1$.$^*$}
+\chk{AlphaPillar_Polar:polar_exists}{Existence of the polar decomposition $M=UB$ in $\SL(2,\CC)$.$^*$}
+\chk{AlphaPillar_Polar:boost_from_square}{A positive Hermitian $B$ of determinant one equals $(B^2+\mathbf 1)/\tr B$, with $(\tr B)^2=\tr B^2+2$.$^*$}
+\chk{AlphaPillar_Polar:polar_unique}{Uniqueness of the polar decomposition.$^*$}
+\chk{AlphaPillar_Polar:sphere_meets_hyperboloid}{A matrix that is both a rotation and a boost is the identity.$^*$}
+\chk{AlphaI:dirac_sq}{$(m\beta+\mathbf p\cdot\bm\alpha)^2=(m^2+|\mathbf p|^2)\mathbf 1$ for anticommuting square roots of unity.$^*$}
+\chk{AlphaI:proj_idem}{If $H^2=E^2\mathbf 1$, $E\ne0$, then $\tfrac12(\mathbf 1+H/E)$ is idempotent.$^*$}
+\end{checklist}

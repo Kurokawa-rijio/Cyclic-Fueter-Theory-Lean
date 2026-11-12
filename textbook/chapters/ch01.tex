@@ -1,0 +1,185 @@
+\part{The Algebra of Two-by-Two Matrices}
+
+\chapter{Quaternions and the Group \texorpdfstring{$\SU(2)$}{SU(2)}}
+\label{ch:quaternions}
+
+\begin{usesbox}
+\textbf{This chapter uses:} linear algebra and the complex numbers, nothing else.\\
+\textbf{It provides:} the quaternion algebra $\HH$, its matrix model inside $\Mat_2(\CC)$, the identification of unit quaternions with $\SU(2)$, the rotation action on $\RR^3$, the Hopf map onto the two-sphere, and the decomposition of $\SO(4)$ into left and right multiplications.
+\end{usesbox}
+
+Most of physics is written in terms of quadratic forms. The length of a vector, the interval between two events, the energy of a free particle, the Laplacian, the kinetic term of a field: each is a sum of squares, sometimes with signs. A recurring theme of this book is that such forms become far more transparent once they are written as a \emph{product} of two linear factors. The prototype is the factorisation of $x^2+y^2$ as $(x+\ii y)(x-\ii y)$, which is the whole reason complex numbers describe rotations of the plane so efficiently.
+
+Hamilton's discovery of 1843 was that the same trick works in four dimensions, at the price of giving up commutativity \cite{Hamilton1844}. This chapter develops the resulting algebra only as far as we shall need it later. Three facts will be used over and over again: the norm of a quaternion is multiplicative; quaternions are the same thing as a particular real subalgebra of the $2\times 2$ complex matrices; and the unit quaternions are the group $\SU(2)$, which acts on three-space by rotations and on the two-sphere through the Hopf map.
+
+\section{Hamilton's relations}
+
+A quaternion is an expression $q=a+b\,i+c\,j+d\,k$ with real $a,b,c,d$. Addition is componentwise, and multiplication is fixed by bilinearity together with Hamilton's relations
+\begin{equation}\label{eq:hamilton}
+i^2=j^2=k^2=ijk=-1 .
+\end{equation}
+From \eqref{eq:hamilton} one derives $ij=k=-ji$, $jk=i=-kj$ and $ki=j=-ik$, so the algebra is associative but not commutative. The real number $a$ is the \emph{real part} $\operatorname{Re}q$ and $b\,i+c\,j+d\,k$ the \emph{imaginary part}; quaternions with vanishing real part are called \emph{pure}. We identify the pure quaternions with $\RR^3$ by $b\,i+c\,j+d\,k\leftrightarrow(b,c,d)$. For two pure quaternions $x$ and $y$ the product packages both of the familiar vector products,
+\begin{equation}\label{eq:pureproduct}
+xy=-\,x\cdot y+x\times y ,
+\end{equation}
+which is often the quickest way to remember how quaternions multiply.
+
+\begin{theorem}[Hamilton's relations]\label{thm:hamilton}\ver\
+In the quaternion algebra over $\RR$ the elements $i=(0,1,0,0)$, $j=(0,0,1,0)$, $k=(0,0,0,1)$ satisfy $i^2=j^2=k^2=-1$ and $ijk=-1$.
+\end{theorem}
+
+The \emph{conjugate} of $q$ is $\qbar q=a-b\,i-c\,j-d\,k$. Conjugation reverses products, $\qbar{pq}=\qbar q\,\qbar p$, and the key identity is
+\begin{equation}\label{eq:qqbar}
+q\,\qbar q=\qbar q\,q=a^2+b^2+c^2+d^2=|q|^2 .
+\end{equation}
+Equation~\eqref{eq:qqbar} is the four-dimensional analogue of $z\bar z=|z|^2$: the Euclidean quadratic form on $\RR^4$ factorises into two linear factors. Every nonzero quaternion therefore has an inverse $q^{-1}=\qbar q/|q|^2$, and $\HH$ is a division algebra. Using \eqref{eq:qqbar} twice gives the multiplicativity of the norm.
+
+\begin{theorem}[Multiplicativity of the norm]\label{thm:normmul}\ver\
+For all $p,q\in\HH$, $|pq|^2=|p|^2\,|q|^2$.
+\end{theorem}
+
+\begin{proof}[Idea of proof]
+$|pq|^2=pq\,\qbar{pq}=p\,(q\qbar q)\,\qbar p=|q|^2\,p\qbar p=|p|^2|q|^2$, using that $|q|^2$ is real and therefore central.
+\end{proof}
+
+Written out in components, \cref{thm:normmul} is Euler's four-square identity: a product of two sums of four squares is again a sum of four squares. A consequence that we shall use constantly is that the unit quaternions
+\[
+S^3=\{q\in\HH:\ |q|=1\}
+\]
+form a group under multiplication. Topologically this group is the three-sphere.
+
+\section{Quaternions as complex matrices}
+
+Quaternions can be represented faithfully by $2\times2$ complex matrices. For $q=a+b\,i+c\,j+d\,k$ put
+\begin{equation}\label{eq:rho}
+\rho(q)=\begin{pmatrix} a+b\,\ii & c+d\,\ii\\ -c+d\,\ii & a-b\,\ii\end{pmatrix}.
+\end{equation}
+Here $\ii$ is the ordinary imaginary unit of $\CC$, which must not be confused with the quaternion $i$. In terms of the Pauli matrices $\sigma_1,\sigma_2,\sigma_3$ one has $\rho(1)=\mathbf 1$, $\rho(i)=\ii\sigma_3$, $\rho(j)=\ii\sigma_2$ and $\rho(k)=\ii\sigma_1$; the three imaginary units are represented by anti-Hermitian, traceless matrices.
+
+\begin{theorem}[The matrix model of $\HH$]\label{thm:rho}\ver\
+The map $\rho:\HH\to\Mat_2(\CC)$ of \eqref{eq:rho} has the following properties.
+\begin{enumerate}[label=(\roman*)]
+\item $\rho(pq)=\rho(p)\rho(q)$ and $\rho(1)=\mathbf 1$.
+\item $\rho$ is injective.
+\item $\rho(\qbar q)=\rho(q)^\dagger$.
+\item $\det\rho(q)=|q|^2$.
+\item If $|q|=1$ then $\rho(q)\rho(q)^\dagger=\mathbf 1$ and $\det\rho(q)=1$, that is, $\rho(q)\in\SU(2)$.
+\end{enumerate}
+\end{theorem}
+
+Property (iv) is the matrix version of \eqref{eq:qqbar}. Property (v) together with (i) and (ii) identifies the group of unit quaternions with a subgroup of $\SU(2)$; since every element of $\SU(2)$ has the form $\begin{psmallmatrix}\alpha&\beta\\-\bar\beta&\bar\alpha\end{psmallmatrix}$ with $|\alpha|^2+|\beta|^2=1$, which is exactly $\rho$ of a unit quaternion, the subgroup is all of $\SU(2)$:
+\[
+S^3\;\cong\;\SU(2).
+\]
+This is the identification that makes quaternions natural for spin. A unit quaternion is a normalised spinor $(\alpha,\beta)\in\CC^2$, written as the first row of a matrix.
+
+\subsection*{Two real forms of the same complex algebra}
+
+The image $\rho(\HH)$ is a real four-dimensional subspace of the complex four-dimensional algebra $\Mat_2(\CC)$. It is the fixed set of the antilinear map $X\mapsto\sigma_2\bar X\sigma_2$. Indeed one checks that $\Mat_2(\CC)=\rho(\HH)\oplus\ii\,\rho(\HH)$, so that $\Mat_2(\CC)$ is the complexification $\HH\otimes_\RR\CC$, the algebra Hamilton called the \emph{biquaternions}. This is the first appearance of a structure that organises the whole of Chapter~2: the same complex algebra $\Mat_2(\CC)$ contains two inequivalent real forms. One of them, studied here, is $\HH$, whose unit sphere is the group of rotations of spin. The other, studied in the next chapter, is the space of Hermitian matrices, which is Minkowski space. Both carry a quadratic form given by the determinant, and in both cases the determinant factorises as a matrix times its adjugate.
+
+\section{Rotations of three-space}
+
+The group $S^3$ acts on $\HH$ by conjugation, $x\mapsto qx\qbar q$. Two short computations show that this action preserves the decomposition into real and pure parts and preserves the norm.
+
+\begin{theorem}[Conjugation preserves the real part and the norm]\label{thm:conj}\ver\
+For all $q,x\in\HH$,
+\[
+\operatorname{Re}(q\,x\,\qbar q)=|q|^2\operatorname{Re}x,\qquad |q\,x\,\qbar q|^2=|q|^4\,|x|^2 .
+\]
+In particular, for a unit quaternion $q$ the map $x\mapsto qx\qbar q$ sends pure quaternions to pure quaternions and preserves their length.
+\end{theorem}
+
+So every unit quaternion gives an orthogonal transformation $R_q$ of $\RR^3$. The map $q\mapsto R_q$ is a homomorphism, and its kernel is $\{\pm1\}$, since only real quaternions commute with all of $i,j,k$. Writing $q=\cos(\theta/2)+\sin(\theta/2)\,\mathbf n$ with $\mathbf n$ a pure unit quaternion, $R_q$ is the rotation by the angle $\theta$ about the axis $\mathbf n$. This is the classical statement that $\SU(2)$ is the double cover of $\SO(3)$; the half angle $\theta/2$ is the reason spinors change sign under a rotation by $2\pi$.
+
+\section{The Hopf map and the Bloch sphere}
+
+Fix the pure unit quaternion $i$ and consider
+\begin{equation}\label{eq:hopf}
+\pi:S^3\to S^2,\qquad \pi(q)=q\,i\,\qbar q .
+\end{equation}
+By \cref{thm:conj}, $\pi(q)$ is a pure quaternion of unit length, so $\pi$ does land in the unit sphere of $\RR^3$. Two unit quaternions have the same image exactly when they differ by right multiplication by $e^{i\varphi}=\cos\varphi+i\sin\varphi$, so the fibres of $\pi$ are great circles. This is the Hopf fibration $S^1\to S^3\to S^2$ \cite{Hopf1931}.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.6]
+\draw[thick] (0,0) circle (1);
+\draw[dashed] (1,0) arc (0:180:1 and 0.3);
+\draw (-1,0) arc (180:360:1 and 0.3);
+\draw[-{Stealth}] (0,0) -- (0.55,0.62) node[above right] {$\mathbf n=\psi^\dagger\bs\psi$};
+\fill (0,1) circle (0.025) node[above] {$|{\uparrow}\rangle$};
+\fill (0,-1) circle (0.025) node[below] {$|{\downarrow}\rangle$};
+\draw[dotted] (0.55,0.62) -- (0.55,-0.12);
+\node at (1.55,0.2) {$S^2$};
+\end{tikzpicture}
+\caption{The two-sphere as the space of pure spin states. A normalised spinor $\psi$ (a point of $S^3$) is sent to the unit vector $\mathbf n=\psi^\dagger\bs\psi$; spinors differing by a phase give the same point.}
+\label{fig:bloch}
+\end{figure}
+
+In the language of quantum mechanics the Hopf map is the passage from a normalised spinor $\psi=(\alpha,\beta)\in\CC^2$ to its Bloch vector $\mathbf n=\psi^\dagger\bs\psi$. The fibre is the overall phase of $\psi$, which is unobservable, so the two-sphere of \cref{fig:bloch} is the space of pure states of a spin-$\frac12$ system, the Bloch sphere \cite{BengtssonZyczkowski}. The same sphere has two further meanings that will matter later. First, the pure unit quaternions are exactly the solutions of $I^2=-1$, and each such $I$ spans a copy $\CC_I=\RR+\RR I$ of the complex numbers inside $\HH$; every quaternion lies in at least one of these complex slices. This is the starting point of the theory of slice-regular functions \cite{GentiliStruppa2007}. Second, in Chapter~2 we shall see that the null directions of Minkowski space form a two-sphere, the celestial sphere, and that it is again the projective line $\CC P^1=S^2$ on which the Lorentz group acts by M\"obius transformations \cite{PenroseRindler1}. That one sphere plays the roles of the imaginary units, the pure spin states and the light rays is not a coincidence of notation. It is the geometric fact on which the first two parts of the book are built.
+
+\section{Left and right multiplication}
+
+Since $\HH$ is not commutative, left and right multiplication are different operators. For $a,b\in\HH$ let $L_a$ and $R_b$ be the real-linear maps $x\mapsto ax$ and $x\mapsto xb$ of $\HH\cong\RR^4$. In the basis $(1,i,j,k)$, for $a=a_0+a_1i+a_2j+a_3k$,
+\[
+L_a=\begin{pmatrix} a_0&-a_1&-a_2&-a_3\\ a_1&a_0&-a_3&a_2\\ a_2&a_3&a_0&-a_1\\ a_3&-a_2&a_1&a_0\end{pmatrix},\qquad
+R_b=\begin{pmatrix} b_0&-b_1&-b_2&-b_3\\ b_1&b_0&b_3&-b_2\\ b_2&-b_3&b_0&b_1\\ b_3&b_2&-b_1&b_0\end{pmatrix}.
+\]
+By associativity $(ax)b=a(xb)$, so every $L_a$ commutes with every $R_b$. For a pure quaternion $b$ the matrix $R_b$ is antisymmetric, so pure quaternions acting on the right span a copy of $\su(2)\cong\RR^3$ inside $\mathfrak{so}(4)$; the same is true on the left. The next theorem says that these two copies are each other's commutants.
+
+\begin{theorem}[Commutant of the left action]\label{thm:commutant}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For a pure quaternion $b$, the matrix $R_b$ is antisymmetric and commutes with $L_i$ and $L_j$.
+\item Conversely, every antisymmetric real $4\times4$ matrix $M$ that commutes with $L_i$ and $L_j$ is of the form $R_b$ for a pure quaternion $b$, namely $b=M_{10}\,i+M_{20}\,j+M_{30}\,k$.
+\end{enumerate}
+\end{theorem}
+
+Because $L_iL_j=L_k$, commuting with $L_i$ and $L_j$ is the same as commuting with all left multiplications. The theorem is the infinitesimal form of the classical isomorphism
+\[
+\SO(4)\cong\bigl(\SU(2)_L\times\SU(2)_R\bigr)/\{\pm1\},\qquad x\mapsto a\,x\,\qbar b ,
+\]
+and it is the algebraic reason that the Lie algebra $\mathfrak{so}(4)$ splits as $\su(2)\oplus\su(2)$. The splitting reappears in physics as the self-dual and anti-self-dual parts of a two-form, and as the left and right chiral halves of a Dirac spinor. For the octonions, which we meet in Interlude~A, left and right multiplications no longer commute, and the clean splitting above is replaced by triality.
+
+\begin{litbox}
+Everything in this chapter is classical: the relations \eqref{eq:hamilton} are Hamilton's \cite{Hamilton1844}, the isomorphism $S^3\cong\SU(2)$ and the double cover of $\SO(3)$ are standard \cite{ConwaySmith}, the fibration \eqref{eq:hopf} is due to Hopf \cite{Hopf1931}, and its many appearances in physics are surveyed by Urbantke \cite{Urbantke2003}. What the chapter adds is a point of view. We have stressed that $\Mat_2(\CC)$ carries two real forms with the determinant as a common quadratic form, and that the two-sphere of imaginary units is also the sphere of pure spin states. Both observations become load-bearing later, when the space of positive-energy states of a massive particle is identified with a hemisphere whose boundary is this sphere (Chapter~4). All theorems displayed above have been checked in the Lean proof assistant.
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item The norm identity $q\qbar q=|q|^2$ and its multiplicativity (\cref{thm:normmul}).
+\item The faithful matrix model $\rho$ and $S^3\cong\SU(2)$ (\cref{thm:rho}).
+\item Conjugation $x\mapsto qx\qbar q$ as rotations of $\RR^3$ (\cref{thm:conj}).
+\item The two-sphere of imaginary units, pure spin states and (soon) light rays.
+\item Left and right multiplications as commuting copies of $\su(2)$ in $\mathfrak{so}(4)$ (\cref{thm:commutant}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Using only \eqref{eq:hamilton} and associativity, show that $ij=k$, $jk=i$ and $ki=j$. Then verify that $\rho(i)\rho(j)=\rho(k)$ with the matrices of \eqref{eq:rho}, as \cref{thm:rho}(i) requires.
+\end{exercise}
+\begin{exercise}
+Write $p=a+b\,i+c\,j+d\,k$ and $q=e+f\,i+g\,j+h\,k$ and expand $|pq|^2=|p|^2|q|^2$ to obtain Euler's four-square identity.
+\end{exercise}
+\begin{exercise}
+Show from \cref{thm:rho}(iii) and (iv) that $\rho(q)^\dagger\rho(q)=|q|^2\mathbf 1$ for every quaternion, so that $\rho(q)/|q|$ is unitary whenever $q\neq0$.
+\end{exercise}
+\begin{exercise}
+Let $q=\cos(\theta/2)+\sin(\theta/2)\,k$. Compute $q\,i\,\qbar q$ and $q\,j\,\qbar q$ and confirm that $x\mapsto qx\qbar q$ rotates the $(i,j)$-plane by the angle $\theta$. Check the result against \cref{thm:conj}.
+\end{exercise}
+\begin{exercise}
+Verify directly from the matrices above that $R_i$ commutes with $L_i$ and with $L_j$, and that $R_i^{\mathsf T}=-R_i$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaI:i_sq,AlphaI:j_sq,AlphaI:k_sq,AlphaI:ijk}{Hamilton's relations $i^2=j^2=k^2=ijk=-1$ (four statements).$^*$}
+\chk{AlphaI:normSq_mul'}{Multiplicativity of the quaternion norm, $|pq|^2=|p|^2|q|^2$.$^*$}
+\chk{AlphaI:rho_mul}{The matrix model preserves products: $\rho(pq)=\rho(p)\rho(q)$.$^*$}
+\chk{AlphaCompleteB:rho_one}{$\rho(1)=\mathbf 1$.$^*$}
+\chk{AlphaCompleteB:rho_injective}{$\rho(q)=0$ implies $q=0$, so $\rho$ is injective.$^*$}
+\chk{AlphaCompleteB:rho_star}{$\rho(\qbar q)=\rho(q)^\dagger$.$^*$}
+\chk{AlphaI:det_rho}{$\det\rho(q)=|q|^2$.$^*$}
+\chk{AlphaCompleteB:rho_SU2}{A unit quaternion is sent to $\SU(2)$: $\rho(q)\rho(q)^\dagger=\mathbf 1$ and $\det\rho(q)=1$.$^*$}
+\chk{AlphaI:hopf_re}{$\operatorname{Re}(qx\qbar q)=|q|^2\operatorname{Re}x$; conjugation preserves pure quaternions.$^*$}
+\chk{AlphaI:hopf_norm}{$|qx\qbar q|^2=|q|^4|x|^2$.$^*$}
+\chk{AlphaVII_Commutant:Rm_mem}{For pure $b$, $R_b$ is antisymmetric and commutes with $L_i$ and $L_j$.$^*$}
+\chk{AlphaVII_Commutant:commutant_so4}{An antisymmetric $4\times4$ matrix commuting with $L_i$ and $L_j$ equals $R_b$ with $b$ read off from its first column.$^*$}
+\end{checklist}

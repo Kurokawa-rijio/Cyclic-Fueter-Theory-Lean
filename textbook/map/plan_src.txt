@@ -1,0 +1,33 @@
+ch01: AlphaI AlphaCompleteB
+ch02: AlphaPillar_Polar
+ch03: AlphaI_Operators AlphaI_C AlphaI_CFamily AlphaS1_Closure
+ch04: AlphaB_QH AlphaI_QBij AlphaRoot_Duality AlphaI_H3 AlphaV
+ch05: AlphaV_FW AlphaV_FWOrder AlphaFix_FW
+ch06: AlphaI_AW AlphaV_Wigner AlphaCompleteC AlphaCompleteC2
+ch07: AlphaVII_Bundle AlphaVII_Tangent AlphaCompleteD ZeroModeL2 AlphaVII AlphaVII_Abelian AlphaVII_Thooft AlphaV_Endpoint
+ch08: Cartan.Frame
+ch09: AlphaS4_Curv AlphaIII_Codazzi
+ch10: AlphaVII_Maxwell AlphaIX_Classical AlphaIX_YM GaugeCovariance AlphaIX_Fluid
+ch11: AlphaS1_Derivation AlphaII_Action AlphaX_Unify AlphaFix_Unify
+ch12: AlphaS2_Action AlphaS2_Match AlphaS2_4DMatch AlphaIV_Minisuperspace AlphaIV_Reduction
+intA: AlphaVII_N1 AlphaVII_BL AlphaVII_Charge AlphaVII_SO10 AlphaVII_Commutant AlphaVII_Chirality AlphaVII_Lichnerowicz AlphaVII_Z28d AlphaVII_Z28Input AlphaVII_Perturb AlphaVII_RSGeneral AlphaFix_Z28 AlphaFix_Gauge
+ch13: AlphaII AlphaII_EYM AlphaFix_Geo AlphaS3_Mass AlphaDumbbell_Bogomolny
+ch14: Cartan.C2 Cartan.SSCoefBj Cartan.SSCoefK0 Cartan.SSCoefK1 Cartan.SSCoefK2 Cartan.SSCoefK3 Cartan.SSCoefR3 Cartan.SSCoefR6 Cartan.SSFirst Cartan.SSK Cartan.SSRank Cartan.SSRows0 Cartan.SSRows1a Cartan.SSRows1b Cartan.SSRows2a Cartan.SSRows2b Cartan.SSRows3 Cartan.SecondStage Cartan.Aligned Cartan.BochnerSign AlphaII_Diagonal AlphaS3_Closure
+ch15: AlphaIII_Glue AlphaVI_Static
+ch16: AlphaII_Z5 AlphaPillar_Smooth
+ch17: AlphaS4_Distrib AlphaS4_Junction AlphaIII_Israel AlphaIII_Null AlphaIII_P1 AlphaIII_Junction AlphaRoot_Junction AlphaS4_Final AlphaReal_Junction AlphaIII
+ch18: AlphaDumbbell_Shape AlphaJunction_Unique AlphaIII_Shape
+ch19: AlphaIV_Propagation AlphaS5_Evolution AlphaIV
+ch20: AlphaIV_Z9 AlphaS5_Curvature AlphaS5_Final AlphaBridge_Clock AlphaIX_Second AlphaOmega_Close
+ch21: AlphaPillar_Conformal AlphaPillar_SelfDual AlphaV_Gauss AlphaV_GaussMap
+ch22: AlphaVIII_BF AlphaXI_NeckInstability AlphaFix_Neck
+ch23: AlphaXI_HiggsNeck AlphaVI_Sech AlphaBridge_Twist AlphaVIII_BPS AlphaVIII_Z44 AlphaVIII_Z44Cap AlphaVIII_Z44b
+ch24: AlphaIX_Thermo AlphaIX_Stat AlphaFix_Thermo AlphaBridge_Thermal AlphaVIII_Attractor AlphaVIII_Z41 AlphaFamous
+ch25: AlphaIX_JT AlphaFix_Dyn
+intB: AlphaVIII_Embedding AlphaVIII_EOM AlphaVIII_StringAttractor AlphaVIII_WZW AlphaVIII_Z38
+ch26: AlphaCanonical AlphaQuantumSpherical AlphaKS_WDW AlphaIV_WKB AlphaIV_WKB2 AlphaVI AlphaVI_Physical AlphaVI_Physical2 AlphaVI_Affine AlphaVI_Semiclassical
+ch27: AlphaV_FRW AlphaV_Anomaly AlphaV_Backreaction AlphaV_NeckQuantum AlphaV_A4 AlphaIntegrals AlphaOmega_Quantum
+ch28: AlphaV_S3Dirac AlphaFermion AlphaSphericalClose SphericalTheory
+ch29: AlphaGeneral AlphaShapeFluct AlphaConstArea
+ch30: AlphaWGC
+ch31: AlphaReal_Rest AlphaOmega_Last AlphaOpen_Split AlphaIdeas_Check AlphaCompleteA
