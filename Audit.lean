@@ -2,6 +2,7 @@ import CFT.AlphaB_QH
 import CFT.AlphaBridge_Clock
 import CFT.AlphaBridge_Thermal
 import CFT.AlphaBridge_Twist
+import CFT.AlphaCanonical
 import CFT.AlphaCompleteA
 import CFT.AlphaCompleteB
 import CFT.AlphaCompleteC
@@ -213,6 +214,13 @@ import CFT.ZeroModeL2
 #print axioms CFT.BridgeTwist.system_reduce
 #print axioms CFT.BridgeTwist.zero_mode
 #print axioms CFT.BridgeTwist.localization
+#print axioms CFT.CAN.can_el_Om_of
+#print axioms CFT.CAN.can_el_W_of
+#print axioms CFT.CAN.can_el_r_of
+#print axioms CFT.CAN.can_mass_identity
+#print axioms CFT.CAN.can_mass_constraint
+#print axioms CFT.CAN.can_F
+#print axioms CFT.CAN.can_ks_match
 #print axioms CFT.AlphaCompleteA.H_a
 #print axioms CFT.AlphaCompleteA.H_pb
 #print axioms CFT.AlphaCompleteA.H_pa
@@ -1223,6 +1231,13 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_10T_id_tt_count
 #print axioms CFT.Index.XV_10T_id_parity
 #print axioms CFT.Index.XV_10T_id_even
+#print axioms CFT.Index.XV_11_can_el_Om_of
+#print axioms CFT.Index.XV_11_can_el_W_of
+#print axioms CFT.Index.XV_11_can_el_r_of
+#print axioms CFT.Index.XV_12_can_mass_identity
+#print axioms CFT.Index.XV_12_can_mass_constraint
+#print axioms CFT.Index.XV_12_can_F
+#print axioms CFT.Index.XV_12_can_ks_match
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
