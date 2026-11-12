@@ -153,7 +153,7 @@ lake env lean Audit.lean      # #print axioms for every theorem; output recorded
 lake env lean DepCheck.lean   # proof and statement dependencies; output recorded in review/depcheck.txt
 ```
 
-Recorded audit result for v0.6.0: AUDIT_V060_PLACEHOLDER
+Recorded audit result for v0.6.0: CI run 43169895622 (full `lake build` and `lake env lean Audit.lean`, success): 2421 entries (every public theorem and the 556 index aliases), of which 2396 depend only on Lean's standard axioms [propext, Classical.choice, Quot.sound], 12 on [propext, Quot.sound], 10 on [propext], and 3 on no axioms; no `sorryAx`.
 
 Recorded audit result for v0.5.0 (CI run 42150846298, full `lake build` and `lake env lean Audit.lean`, success): 1973 entries (every public theorem and the 340 index aliases), of which 1954 depend only on Lean's standard axioms [propext, Classical.choice, Quot.sound], 12 on [propext, Quot.sound], 4 on [propext], and 3 on no axioms; no `sorryAx`. The workflow prints every line of the audit to the CI log, and `audit.txt` is copied from that log. All 97 theorems added since v0.4.0 depend only on the standard axioms.
 
