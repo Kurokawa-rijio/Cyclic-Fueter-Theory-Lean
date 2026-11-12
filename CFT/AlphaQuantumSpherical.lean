@@ -29,6 +29,7 @@ theorem qs_kuchar_Lambda (r r1 L PL F PM : ℝ) (hr : r ≠ 0) (hL : L ≠ 0) (h
   have h1 : r1 ^ 2 - L ^ 2 * PL ^ 2 / r ^ 2 = L ^ 2 * F := by
     rw [hF]
     field_simp
+    ring
   have h2 : r1 ^ 2 / F - F * PM ^ 2 = (r1 ^ 2 - L ^ 2 * PL ^ 2 / r ^ 2) / F := by
     rw [hPM]
     field_simp
@@ -72,8 +73,10 @@ theorem qs_planewave_flat (k κ σ θ : ℝ) :
 
 theorem qs_length_pair (pa a Lx : ℝ) (hLx : Lx ≠ 0) : pa / Lx * (a * Lx) = pa * a := by
   field_simp
+  ring
 
 theorem qs_length_momentum (r rd Lx : ℝ) (hLx : Lx ≠ 0) : -2 * (Lx / 2) * r * rd / Lx = -(r * rd) := by
   field_simp
+  ring
 
 end CFT.QS
