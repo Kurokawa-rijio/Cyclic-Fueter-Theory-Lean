@@ -52,6 +52,7 @@ import CFT.AlphaI_CFamily
 import CFT.AlphaI_H3
 import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
+import CFT.AlphaIdeas_Check
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
 import CFT.AlphaJunction_Unique

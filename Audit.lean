@@ -51,6 +51,7 @@ import CFT.AlphaI_CFamily
 import CFT.AlphaI_H3
 import CFT.AlphaI_Operators
 import CFT.AlphaI_QBij
+import CFT.AlphaIdeas_Check
 import CFT.AlphaIndex
 import CFT.AlphaIntegrals
 import CFT.AlphaJunction_Unique
@@ -743,6 +744,17 @@ import CFT.ZeroModeL2
 #print axioms CFT.QBij.qinv_right
 #print axioms CFT.QBij.qmap_surj
 #print axioms CFT.QBij.qmap_bij
+#print axioms CFT.ID.id_bog1
+#print axioms CFT.ID.id_bog1_form
+#print axioms CFT.ID.id_bog2
+#print axioms CFT.ID.id_Z_sinh
+#print axioms CFT.ID.id_tt_count
+#print axioms CFT.ID.id_parity
+#print axioms CFT.ID.id_even
+#print axioms CFT.ID.id_inv_kinetic
+#print axioms CFT.ID.id_inv_potential
+#print axioms CFT.ID.id_yamabe_k0
+#print axioms CFT.ID.id_Z_integral
 #print axioms CFT.Index.I_1_i_sq
 #print axioms CFT.Index.I_1_ijk
 #print axioms CFT.Index.I_1_conj_product
@@ -1002,6 +1014,8 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.X_10B_os_yamabe_l1
 #print axioms CFT.Index.X_10B_os_yamabe_l2
 #print axioms CFT.Index.X_10B_os_shape_S9
+#print axioms CFT.Index.X_10B_id_yamabe_k0
+#print axioms CFT.Index.X_10C_os_yamabe_factor
 #print axioms CFT.Index.X_11_rr_mode1
 #print axioms CFT.Index.X_11_rr_eta_integrability
 #print axioms CFT.Index.X_11_rr_cos_mode_excluded
@@ -1077,6 +1091,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XI_7_oc_higgs_sym
 #print axioms CFT.Index.XI_7B_ol_ps_W
 #print axioms CFT.Index.XI_7B_ol_ps_h
+#print axioms CFT.Index.XI_7C_id_Z_integral
+#print axioms CFT.Index.XI_7C_id_bog1
+#print axioms CFT.Index.XI_7C_id_bog1_form
+#print axioms CFT.Index.XI_7C_id_bog2
+#print axioms CFT.Index.XI_7C_id_Z_sinh
 #print axioms CFT.Index.XII_1_ch2
 #print axioms CFT.Index.XII_1_polar_exists
 #print axioms CFT.Index.XII_1_polar_unique
@@ -1199,6 +1218,11 @@ import CFT.ZeroModeL2
 #print axioms CFT.Index.XV_9K_ks_fold_le
 #print axioms CFT.Index.XV_9K_ks_fold_eq
 #print axioms CFT.Index.XV_9K_ks_inverted
+#print axioms CFT.Index.XV_9I_id_inv_kinetic
+#print axioms CFT.Index.XV_9I_id_inv_potential
+#print axioms CFT.Index.XV_10T_id_tt_count
+#print axioms CFT.Index.XV_10T_id_parity
+#print axioms CFT.Index.XV_10T_id_even
 #print axioms CFT.AlphaIntegrals.cap_constraint
 #print axioms CFT.AlphaIntegrals.neck_constraint
 #print axioms CFT.AlphaIntegrals.cap_r_deriv
