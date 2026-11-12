@@ -21,3 +21,4 @@ textbook/*.log
 textbook/*.pdf
 textbook/*.toc
 textbook/*.out
+__pycache__/
