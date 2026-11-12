@@ -1,0 +1,107 @@
+\chapter{The Weak Gravity Conjecture}\markboth{\MakeUppercase{Chapter 30.\ The weak gravity conjecture}}{}
+\label{ch:wgc}
+
+\begin{usesbox}
+\textbf{This chapter uses:} the scale $\ell=\sqrt{4\pi G}/g$ (\cref{eq:elldef}); the curvature length of the Tolman universe (\cref{thm:crunch}); cylinders and the bound $\Lambda\le1/(4\ell^2)$ (\cref{thm:cylinders}); the Higgs mass and the BF window (\cref{thm:higgsbf}); the extremal throat and its entropy (\cref{ch:thermo}).\\
+\textbf{It provides:} the identification of $\ell$ with the length scale of the weak gravity conjecture; the equality of the electric and magnetic conditions for the $W$ boson and the monopole; a window $3/(16\pi G)\le v^2\le1/(4\pi G)$ in which the throat is stable and the conjecture holds; the bound $\Lambda\le g^2/(16\pi G)$ for the existence of a throat, which implies the Festina Lente bound; and the effect of higher-derivative corrections, which make extremal throats lighter than their charge.
+\end{usesbox}
+
+The weak gravity conjecture of Arkani-Hamed, Motl, Nicolis and Vafa \cite{AMNV2007} states that in a consistent theory of quantum gravity with a $U(1)$ gauge field of coupling $g$ there must be a state with charge $gq$ and mass $m\le gq/\sqrt{4\pi G}$, so that extremal black holes can decay. Its magnetic version requires an ultraviolet cutoff $\Lambda_{\rm UV}\lesssim gM_{\rm Pl}$. Both are conjectures \ext. This chapter does not argue for or against them. It records how the quantities of this book fit into their statements, which turns out to be closely.
+
+\section{The scale \texorpdfstring{$\ell$}{l} is the weak-gravity length}
+
+The electric condition $m\le gq/\sqrt{4\pi G}$ reads, in terms of $\ell=\sqrt{4\pi G}/g$,
+\[
+m\le\frac q\ell .
+\]
+So $\ell$ is the length at which the conjecture is formulated: a particle of unit charge must have a Compton wavelength at least $\ell$.
+
+\begin{proposition}[Magnetic cutoff]\label{prop:magcutoff}\ver\
+With $\ell^2=4\pi G/g^2$ and the magnetic cutoff $\Lambda_{\rm UV}=g/\sqrt G$, one has $(1/\Lambda_{\rm UV})^2=G/g^2=\ell^2/(4\pi)$. The curvature length of the Tolman universe on its initial slice is $\ell/24^{1/4}$ (\cref{thm:crunch}): both are of order $\ell$.
+\end{proposition}
+
+The glued configuration is therefore born at the cutoff scale of the magnetic weak gravity conjecture. This is consistent with \cref{thm:wzwobstruction}, where we found the curvature to be of string scale.
+
+\section{\texorpdfstring{$W$}{W} bosons and monopoles}
+
+With an adjoint Higgs field of vacuum value $v$, the $W$ boson has mass $m_W=gv$ and unit charge, and the BPS monopole has mass $4\pi v/g$ and magnetic charge $4\pi/g$.
+
+\begin{theorem}[One condition for both]\label{thm:wgcboth}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item $(m_W\ell)^2=4\pi Gv^2$, independently of $g$.
+\item The ratio of the monopole mass to the extremal mass for its magnetic charge satisfies $\bigl(M_{\rm mon}/M_{\rm ext}\bigr)^2=4\pi Gv^2$.
+\end{enumerate}
+Hence the electric condition for the $W$ boson and the magnetic condition for the monopole are the same inequality, $4\pi Gv^2\le1$.
+\end{theorem}
+
+\begin{theorem}[A window]\label{thm:wgcwindow}\ver\
+The throat is BF-stable iff $(m_W\ell)^2\ge\frac34$ (\cref{thm:higgsbf}), and the conjecture for the $W$ boson requires $(m_W\ell)^2\le1$. For $k>0$, $\frac3{4k}\le v^2\le\frac1k$ iff $\frac34\le kv^2\le1$; with $k=4\pi G$,
+\[
+\frac3{16\pi G}\le v^2\le\frac1{4\pi G}.
+\]
+The window is non-empty.
+\end{theorem}
+
+In words: a Higgs field that stabilises the throat must have a vacuum value within a factor $2/\sqrt3$ of the largest value allowed by the weak gravity conjecture. Both ends are of Planck size, which is again the negative statement of \cref{ch:higgs} about the electroweak scale.
+
+\section{The cosmological constant}
+
+\begin{theorem}[Existence of a throat bounds $\Lambda$]\label{thm:wgclambda}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item For a cylinder of radius $R$, $\frac1{4\ell^2}-\bigl(\frac1{R^2}-\frac{\ell^2}{R^4}\bigr)=\bigl(\frac\ell{R^2}-\frac1{2\ell}\bigr)^2\ge0$, so $\Lambda=\frac1{R^2}-\frac{\ell^2}{R^4}\le\frac1{4\ell^2}$, with equality iff $R^2=2\ell^2$.
+\item $\frac1{4\ell^2}=\frac{g^2}{16\pi G}$: a throat exists only if $\Lambda\le g^2/(16\pi G)$.
+\item (Festina Lente) If $\Lambda\ell^2\le\frac14$ and $(m_W\ell)^2\ge\frac34$, then $\sqrt{\Lambda\ell^2}\le(m_W\ell)^2$: the Festina Lente bound $m_W^2\gtrsim\sqrt{\Lambda}\,g\,M_{\rm Pl}$ \cite{Montero2020} holds automatically for a stable throat \ext.
+\end{enumerate}
+\end{theorem}
+
+\section{Higher-derivative corrections}
+
+Higher-derivative terms modify the metric function of a magnetic black hole to $f=1-2M/r+p^2/r^2-k/r^6$ for a constant $k$, whose sign is fixed by unitarity and causality in many settings ($k>0$) \cite{KatsMotlPadi2007,CheungLiuRemmen2018} \ext.
+
+\begin{theorem}[Extremal throats become lighter]\label{thm:lighter}\ver\
+\begin{enumerate}[label=(\roman*)]
+\item With $M(r)=\frac r2\bigl(1+p^2/r^2-k/r^6\bigr)$: $f(r)=0$ iff $M=M(r)$, and the mass function $m(r)=M-p^2/(2r)+4\pi\beta p^4/(5r^5)$ has $m'=4\pi r^2\rho$ with $\rho=p^2/(8\pi r^4)-\beta p^4/r^8$.
+\item Extremality, $f=f'=0$, is equivalent to $M=M(r)$ and $M'(r)=\frac12-\frac{p^2}{2r^2}+\frac{5k}{2r^6}=0$, i.e.\ $p^2=r^2+5k/r^4$.
+\item At extremality $M=r+2k/r^5$; for $k>0$ and $4k<r^6$ this is less than $p$, and the throat radius satisfies $r<p$.
+\item At $r=p$ directly, $M(p)=p-k/(2p^5)<p$.
+\end{enumerate}
+\end{theorem}
+
+With $k>0$ the extremal black hole has $M<p$: it can decay into smaller extremal black holes, and the conjecture is satisfied by the black holes themselves (the ``mild'' form). Its throat is narrower than the classical value. For our throat, with $p=\ell$ in units $G=1$, this means the corrected throat radius lies below $\ell$, the same direction as the anomaly correction of \cref{thm:throatback}.
+
+\begin{litbox}
+The weak gravity conjecture is from \cite{AMNV2007}; Festina Lente from \cite{Montero2020}; the higher-derivative correction to extremality from \cite{KatsMotlPadi2007,CheungLiuRemmen2018}. What this chapter adds is not evidence for the conjecture but a set of exact relations: $\ell$ is the electric weak-gravity length and, up to $\sqrt{4\pi}$, the magnetic cutoff length (\cref{prop:magcutoff}); the electric and magnetic conditions coincide as $4\pi Gv^2\le1$ (\cref{thm:wgcboth}); throat stability and the conjecture leave the window $\frac34\le4\pi Gv^2\le1$ (\cref{thm:wgcwindow}); the existence of a throat bounds $\Lambda\le g^2/(16\pi G)$ and implies Festina Lente for a stable throat (\cref{thm:wgclambda}).
+\end{litbox}
+
+\section*{What this chapter passes on}
+\begin{itemize}[nosep]
+\item $\ell$ is the weak-gravity length; the glued configuration starts at the magnetic cutoff scale (\cref{prop:magcutoff}).
+\item $4\pi Gv^2\le1$ for both $W$ and monopole; window $\frac34\le4\pi Gv^2\le1$ (\cref{thm:wgcboth,thm:wgcwindow}).
+\item $\Lambda\le g^2/(16\pi G)$; Festina Lente automatic (\cref{thm:wgclambda}).
+\item Higher-derivative corrections: $M<p$, $r<p$ (\cref{thm:lighter}).
+\end{itemize}
+
+\section*{Exercises}
+\begin{exercise}
+Show $(gv)^2\ell^2=4\pi Gv^2$ for $\ell^2=4\pi G/g^2$.
+\end{exercise}
+\begin{exercise}
+Prove $\frac1{R^2}-\frac{\ell^2}{R^4}\le\frac1{4\ell^2}$ by completing the square.
+\end{exercise}
+\begin{exercise}
+For $p^2=r^2+5k/r^4$ compute $M(r)$ and show $M<p$ when $0<4k<r^6$.
+\end{exercise}
+
+\begin{checklist}
+\chk{AlphaS5_Curvature:wgc_length}{Magnetic cutoff length $\ell/\sqrt{4\pi}$.$^*$}
+\chk{AlphaWGC:wgc_W}{$(m_W\ell)^2=4\pi Gv^2$.$^*$}
+\chk{AlphaWGC:wgc_monopole}{Monopole ratio $4\pi Gv^2$.$^*$}
+\chk{AlphaWGC:wgc_window,AlphaWGC:wgc_window_nonempty}{The window and its non-emptiness (two statements).$^*$}
+\chk{AlphaWGC:wgc_lambda_id,AlphaWGC:wgc_lambda,AlphaWGC:wgc_lambda_eq}{$\Lambda\le1/(4\ell^2)$, equality at $R^2=2\ell^2$ (three statements).$^*$}
+\chk{AlphaWGC:wgc_lambda_g}{$1/(4\ell^2)=g^2/(16\pi G)$.}
+\chk{AlphaWGC:wgc_fl}{Festina Lente is automatic.$^*$}
+\chk{AlphaIX_Thermo:mass_function,AlphaIX_Thermo:horizon_iff}{Corrected mass function and horizon condition (two statements).}
+\chk{AlphaFix_Dyn:mass_deriv,AlphaFix_Dyn:extremal_iff_critical,AlphaFix_Dyn:critical_radius}{Extremality as a critical point; $p^2=r^2+5k/r^4$ (three statements).$^*$}
+\chk{AlphaFix_Dyn:extremal_mass,AlphaFix_Dyn:extremal_lighter,AlphaFix_Dyn:neck_shrinks}{$M=r+2k/r^5<p$; $r<p$ (three statements).$^*$}
+\chk{AlphaIX_Thermo:lighter_extremal}{$M(p)=p-k/(2p^5)<p$.$^*$}
+\end{checklist}
