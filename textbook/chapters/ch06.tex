@@ -23,6 +23,35 @@ Write $\mathcal A=\mathcal A_k\,\dd p^k$. Its curvature $\mathcal F_{jk}=\partia
 \item $\tr\bigl((gXg^{-1})(gXg^{-1})\bigr)=\tr(XX)$ for every invertible $g$, so the quantity in (ii) is invariant under gauge transformations $\mathcal A\mapsto g\mathcal Ag^{-1}+g\,\dd g^{-1}$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+Throughout we use $(\bs\cdot\mathbf u)(\bs\cdot\mathbf w)=\mathbf u\cdot\mathbf w+\ii\bs\cdot(\mathbf u\times\mathbf w)$, which gives $[\ii\bs\cdot\mathbf u,\ii\bs\cdot\mathbf w]=-2\ii\,\bs\cdot(\mathbf u\times\mathbf w)$.
+
+(i) The coefficient of $\dd p^j$ in \eqref{eq:connfamily} is $\mathcal A_j=\ii\bs\cdot\mathbf u_j$ with $\mathbf u_j=a\,\mathbf p\times\hat{\mathbf e}_j+b\,\hat{\mathbf e}_j$. Since $\partial_ia=2p_ia'$ and $\partial_ib=2p_ib'$,
+\[
+\partial_i\mathbf u_j=2a'p_i\,\mathbf p\times\hat{\mathbf e}_j+a\,\hat{\mathbf e}_i\times\hat{\mathbf e}_j+2b'p_i\,\hat{\mathbf e}_j .
+\]
+Take $(i,j,k)$ cyclic, so $\hat{\mathbf e}_i\times\hat{\mathbf e}_j=\hat{\mathbf e}_k$ and $p_i\hat{\mathbf e}_j-p_j\hat{\mathbf e}_i=\hat{\mathbf e}_k\times\mathbf p$. Then $\mathcal F_{ij}=\ii\bs\cdot\mathbf v$ with
+\[
+\mathbf v=2a'\,\mathbf p\times(\hat{\mathbf e}_k\times\mathbf p)+2a\,\hat{\mathbf e}_k+2b'\,\hat{\mathbf e}_k\times\mathbf p-2\,\mathbf u_i\times\mathbf u_j .
+\]
+Here $\mathbf p\times(\hat{\mathbf e}_k\times\mathbf p)=s\,\hat{\mathbf e}_k-p_k\mathbf p$. For the last term, the vector identities $(\mathbf p\times\hat{\mathbf e}_i)\times(\mathbf p\times\hat{\mathbf e}_j)=p_k\mathbf p$, $(\mathbf p\times\hat{\mathbf e}_i)\times\hat{\mathbf e}_j=p_j\hat{\mathbf e}_i$ and $\hat{\mathbf e}_i\times(\mathbf p\times\hat{\mathbf e}_j)=-p_i\hat{\mathbf e}_j$ give
+\[
+\mathbf u_i\times\mathbf u_j=a^2p_k\,\mathbf p-ab\,\hat{\mathbf e}_k\times\mathbf p+b^2\hat{\mathbf e}_k .
+\]
+Collecting, and using $\bs\cdot(\hat{\mathbf e}_k\times\mathbf p)=(\mathbf p\times\bs)_k$,
+\[
+\alpha=2(a+a's-b^2),\qquad \beta=-2(a^2+a'),\qquad \gamma=2(ab+b').
+\]
+
+(ii) With $\mathcal F_k=\ii\bs\cdot\mathbf v_k$, $\mathbf v_k=\alpha\hat{\mathbf e}_k+\beta p_k\mathbf p+\gamma\,\hat{\mathbf e}_k\times\mathbf p$, we have $-2\tr(\mathcal F_k\mathcal F_k)=-2\tr\bigl(-(\bs\cdot\mathbf v_k)^2\bigr)=4|\mathbf v_k|^2$. The vector $\hat{\mathbf e}_k\times\mathbf p$ is orthogonal to both $\hat{\mathbf e}_k$ and $\mathbf p$, so
+\[
+|\mathbf v_k|^2=\alpha^2+2\alpha\beta p_k^2+\beta^2p_k^2s+\gamma^2(s-p_k^2),
+\]
+and summing over $k$, $\mathrm{tr}G=4\bigl(3\alpha^2+2\alpha\beta s+\beta^2s^2+2\gamma^2s\bigr)$.
+
+(iii) $\tr(gXg^{-1}gXg^{-1})=\tr(gX^2g^{-1})=\tr(X^2)$ by cyclicity. Under a gauge transformation the curvature transforms as $\mathcal F\mapsto g\mathcal Fg^{-1}$ (a standard computation), so each $\tr(\mathcal F_k\mathcal F_k)$ is unchanged.
+\end{proof}
+
 
 Pointwise gauge invariants such as this one are what decide whether two connections can be gauge equivalent.
 
@@ -36,6 +65,14 @@ L(\mathbf p)=\frac{(E+m)\mathbf 1+\bs\cdot\mathbf p}{\sqrt{2m(E+m)}} .
 \begin{proposition}[The standard boost]\label{prop:stdboost}\ver\
 With $s_m=\sqrt{2m(E+m)}$: $L(\mathbf p)^{-1}=((E+m)\mathbf 1-\bs\cdot\mathbf p)/s_m$; $L(\mathbf p)^2=(E\mathbf 1+\bs\cdot\mathbf p)/m$; $\det L(\mathbf p)=1$; and for real $\mathbf p$ both $L$ and $L^{-1}$ are Hermitian.
 \end{proposition}
+\begin{proof}
+Put $c=E+m$ and use $(\bs\cdot\mathbf p)^2=s=E^2-m^2$. Then $(c+\bs\cdot\mathbf p)(c-\bs\cdot\mathbf p)=c^2-s=2m(E+m)=s_m^2$, which gives $L^{-1}$. Next
+\[
+(c+\bs\cdot\mathbf p)^2=c^2+s+2c\,\bs\cdot\mathbf p=2E(E+m)+2(E+m)\,\bs\cdot\mathbf p,
+\]
+and dividing by $s_m^2=2m(E+m)$ gives $L^2=(E+\bs\cdot\mathbf p)/m$. Since $\det(c+\bs\cdot\mathbf p)=c^2-s$ (\cref{thm:detlorentz}), $\det L=(c^2-s)/s_m^2=1$. For real $\mathbf p$, $\bs\cdot\mathbf p$ is Hermitian, hence so are $L$ and $L^{-1}$.
+\end{proof}
+
 
 So $L(\mathbf p)$ is the positive square root of the Hermitian matrix $(E+\bs\cdot\mathbf p)/m$ that represents the four-velocity, exactly as in \cref{thm:polar}(ii). For a Lorentz transformation $\Lambda\in\SL(2,\CC)$ the \emph{Wigner rotation} is $W(\Lambda,\mathbf p)=L(\Lambda\mathbf p)^{-1}\,\Lambda\,L(\mathbf p)$.
 
@@ -46,6 +83,19 @@ So $L(\mathbf p)$ is the positive square root of the Hermitian matrix $(E+\bs\cd
 \item For a closed path, $\Lambda\mathbf p=\mathbf p$, the transformation $\Lambda=L\,W\,L^{-1}$ is conjugate to an element of the little group $\SU(2)$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Write $L_1=L(\mathbf p)$ and $L_2=L(\Lambda\mathbf p)$; both are Hermitian.
+
+(i) $WW^\dagger=L_2^{-1}\Lambda L_1L_1^\dagger\Lambda^\dagger(L_2^{-1})^\dagger=L_2^{-1}\Lambda L_1^2\Lambda^\dagger L_2^{-1}=L_2^{-1}L_2^2L_2^{-1}=\mathbf 1$, using the hypothesis. The determinant is multiplicative, so $\det W=1$.
+
+(ii) With $L_3=L(\Lambda_2\Lambda_1\mathbf p)$:
+\[
+W(\Lambda_2,\Lambda_1\mathbf p)\,W(\Lambda_1,\mathbf p)=L_3^{-1}\Lambda_2L_2\,L_2^{-1}\Lambda_1L_1=L_3^{-1}\Lambda_2\Lambda_1L_1=W(\Lambda_2\Lambda_1,\mathbf p).
+\]
+
+(iii) If $\Lambda\mathbf p=\mathbf p$ then $L_2=L_1=L$, and $W=L^{-1}\Lambda L$ gives $\Lambda=LWL^{-1}$.
+\end{proof}
+
 
 Infinitesimally, $L^{-1}\dd L$ splits into a Hermitian part, the infinitesimal boost, and an anti-Hermitian part, the infinitesimal rotation. The latter is the Wigner connection.
 
@@ -56,6 +106,24 @@ The anti-Hermitian part of $L(\mathbf p)^{-1}\partial_vL(\mathbf p)$ is
 \]
 i.e.\ \eqref{eq:connfamily} with $a_{\mathrm W}=-1/(2m(E+m))$ and $b_{\mathrm W}=0$. Along a curve of pure boosts $g'=LZL^{-1}g$ with $Z$ Hermitian, the matrix $W(t)=L(\mathbf p(t))^{-1}g(t)L(\mathbf p_0)$ satisfies the transport equation $W'W^\dagger=-\mathcal A^{\mathrm W}(\dot{\mathbf p})$.
 \end{theorem}
+\begin{proof}
+Write $c=E+m$ and $\partial_vE=\mathbf p\cdot v/E$. Since $L=(c+\bs\cdot\mathbf p)/s_m$ with $s_m$ depending on $\mathbf p$ only through $E$,
+\[
+L^{-1}\partial_vL=\frac{(c-\bs\cdot\mathbf p)(\partial_vE+\bs\cdot v)}{s_m^2}-\frac{\partial_vs_m}{s_m}.
+\]
+The last term is real, hence Hermitian. In the product,
+\[
+(c-\bs\cdot\mathbf p)(\partial_vE+\bs\cdot v)=c\,\partial_vE+c\,\bs\cdot v-\partial_vE\,\bs\cdot\mathbf p-\mathbf p\cdot v-\ii\bs\cdot(\mathbf p\times v),
+\]
+every term is Hermitian except the last, which is anti-Hermitian. So the anti-Hermitian part of $L^{-1}\partial_vL$ is $-\ii\bs\cdot(\mathbf p\times v)/s_m^2=-\ii\bs\cdot(\mathbf p\times v)/(2m(E+m))$.
+
+For the transport equation, differentiate $W=L^{-1}gL_0$ using $(L^{-1})'=-L^{-1}L'L^{-1}$:
+\[
+W'=-L^{-1}L'L^{-1}gL_0+L^{-1}(LZL^{-1}g)L_0=(Z-L^{-1}L')\,W .
+\]
+By \cref{thm:wigner}(i), $W$ is unitary for all $t$, so differentiating $WW^\dagger=\mathbf 1$ shows that $W'W^\dagger=Z-L^{-1}L'$ is anti-Hermitian. It therefore equals its own anti-Hermitian part. $Z$ is Hermitian, so this is minus the anti-Hermitian part of $L^{-1}L'=L^{-1}\partial_{\dot{\mathbf p}}L$, that is, $-\mathcal A^{\mathrm W}(\dot{\mathbf p})$.
+\end{proof}
+
 
 By uniqueness of solutions of linear ordinary differential equations \ext, $W(t)$ is the parallel transport of $\mathcal A^{\mathrm W}$, and for a closed curve the Wigner rotation is its holonomy. For a small loop the holonomy is determined by the curvature \ext\ (Ambrose--Singer). This is the geometric content of Thomas precession.
 
@@ -71,6 +139,14 @@ With $a_{\mathrm B}=1/(2E(E+m))$,
 \]
 and $a_{\mathrm B}=-(m/E)\,a_{\mathrm W}$.
 \end{theorem}
+\begin{proof}
+With $\mathbf p=\rho\mathbf n$, $\dd\mathbf p=\dd\rho\,\mathbf n+\rho\,\dd\mathbf n$ and $\mathbf n\times\mathbf n=0$, so $\mathbf p\times\dd\mathbf p=\rho^2\,\mathbf n\times\dd\mathbf n$. The coefficients become, using $\rho^2=E^2-m^2=(E-m)(E+m)$,
+\[
+\frac{\rho^2}{2E(E+m)}=\frac{E-m}{2E}=\frac12\Bigl(1-\frac mE\Bigr),\qquad -\frac{\rho^2}{2m(E+m)}=-\frac{E-m}{2m}=-\frac12\Bigl(\frac Em-1\Bigr).
+\]
+Finally $-\frac mE\,a_{\mathrm W}=\frac m E\cdot\frac1{2m(E+m)}=\frac1{2E(E+m)}=a_{\mathrm B}$.
+\end{proof}
+
 
 In the language of \cref{ch:hemisphere}, $1-m/E=1-\cos\chi$ and $E/m-1=\cosh\zeta-1$: the Berry coefficient is governed by the circular angle of the hemisphere and the Wigner coefficient by the hyperbolic angle of the mass shell. In the massless limit $m/E\to0$ the Berry connection becomes the monopole connection $\frac12\ii\bs\cdot(\mathbf n\times\dd\mathbf n)$ of a Weyl point, as expected.
 
@@ -90,6 +166,39 @@ The third connection is the one carried by the hemisphere map itself, $\mathcal 
 \emph{the Berry connection and the half Maurer--Cartan connection are gauge equivalent}, and the gauge transformation is the square root of the hemisphere map.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+(i) Insert the coefficients into \cref{prop:curvinv}, using $s=E^2-m^2$, $\dd E/\dd s=1/(2E)$ and the derivatives of \cref{lem:awderivs}.
+
+\emph{Wigner} ($a=-\frac1{2m(E+m)}$, $b=0$): since $s/(E+m)^2=(E-m)/(E+m)$,
+\[
+\begin{aligned}
+\alpha&=2\Bigl(-\frac1{2m(E+m)}+\frac{E-m}{4mE(E+m)}\Bigr)=-\frac1{2mE},\\
+\beta&=-2\Bigl(\frac1{4m^2(E+m)^2}+\frac1{4mE(E+m)^2}\Bigr)=-\frac1{2m^2E(E+m)},
+\end{aligned}
+\]
+and $\gamma=0$. Then $\alpha^2=\frac1{4m^2E^2}$, $\alpha\beta s=\frac{E-m}{4m^3E^2}$, $\beta^2s^2=\frac{(E-m)^2}{4m^4E^2}$, and
+\[
+\mathrm{tr}G_{\mathrm W}=\frac{3m^2+2m(E-m)+(E-m)^2}{m^4E^2}=\frac{E^2+2m^2}{m^4E^2}=\frac2{m^2E^2}+\frac1{m^4}.
+\]
+\emph{Berry} ($a=\frac1{2E(E+m)}$, $b=0$): $\alpha=\frac{2E^2-(2E+m)(E-m)}{2E^3(E+m)}=\frac m{2E^3}$, $\beta=\frac1{2E^3(E+m)}$, $\gamma=0$, and the same steps give $\mathrm{tr}G_{\mathrm B}=\frac{3m^2+2m(E-m)+(E-m)^2}{E^6}=\frac{E^2+2m^2}{E^6}$.
+
+\emph{Half Maurer--Cartan} ($a=\frac1{2E^2}$, $b=-\frac m{2E^2}$, so $a'=-\frac1{2E^4}$, $b'=\frac m{2E^4}$): $\alpha=\frac{m^2}{2E^4}$, $\beta=\frac1{2E^4}$, $\gamma=\frac m{2E^4}$, and $\mathrm{tr}G_{\mathrm F}=\frac{3m^4+4m^2s+s^2}{E^8}=\frac{(m^2+s)(3m^2+s)}{E^8}=\frac{E^2+2m^2}{E^6}$.
+
+(ii) $\mathrm{tr}G_{\mathrm B}=(m/E)^4\,\mathrm{tr}G_{\mathrm W}$ and $\mathrm{tr}G_{\mathrm W}>0$; for $E>m$ the factor is less than one. If a gauge transformation carried one connection into the other, then $\mathcal F_{\mathrm B}=g\mathcal F_{\mathrm W}g^{-1}$ and the invariants would agree by \cref{prop:curvinv}(iii).
+
+(iii) With $c=E+m$ and $n=(2Ec)^{-1/2}$: $V^2=n^2(c^2-s-2\ii c\,\bs\cdot\mathbf p)$, and $c^2-s=2mc$, so $V^2=(m-\ii\bs\cdot\mathbf p)/E=U$. Also $(c-\ii\bs\cdot\mathbf p)(c+\ii\bs\cdot\mathbf p)=c^2+s=2Ec=n^{-2}$, so $V^{-1}=n(c+\ii\bs\cdot\mathbf p)$.
+
+Now $\mathcal A^{\mathrm F}=\frac12U^{-1}\dd U=\frac12V^{-2}(\dd V\,V+V\dd V)$. Using $V\dd V^{-1}=-\dd V\,V^{-1}$,
+\[
+V\mathcal A^{\mathrm F}V^{-1}+V\dd V^{-1}=\tfrac12\bigl(V^{-1}\dd V+\dd V\,V^{-1}\bigr)-\dd V\,V^{-1}=\tfrac12\bigl(V^{-1}\dd V-\dd V\,V^{-1}\bigr).
+\]
+In $V^{-1}\dd V-\dd V\,V^{-1}$, all terms containing $\dd n$ or $\dd E$ cancel, because they involve only $\mathbf 1$ and $\bs\cdot\mathbf p$, which commute. What remains is
+\[
+-\ii n^2\bigl[(c+\ii\bs\cdot\mathbf p)\,\bs\cdot\dd\mathbf p-\bs\cdot\dd\mathbf p\,(c+\ii\bs\cdot\mathbf p)\bigr]=n^2\bigl[(\bs\cdot\mathbf p)(\bs\cdot\dd\mathbf p)-(\bs\cdot\dd\mathbf p)(\bs\cdot\mathbf p)\bigr]=2\ii n^2\,\bs\cdot(\mathbf p\times\dd\mathbf p).
+\]
+Half of it is $\ii\bs\cdot(\mathbf p\times\dd\mathbf p)/(2E(E+m))=\mathcal A^{\mathrm B}$.
+\end{proof}
+
 
 The matrix $V$ in (iii) has the same form as the normalised FW operator $\hat U$ of \cref{thm:fwexact}, now in two-component form: it is the half-rotation by $\chi/2$. So the FW transformation, which rotates the moving state back to the pole of the hemisphere, is also the gauge transformation that turns the geometric connection of the hemisphere into the Berry connection. The Wigner connection is genuinely different, and the difference is measured by the factor $(m/E)^4$ in the invariant.
 
@@ -98,6 +207,14 @@ The derivatives used in these computations are elementary but easy to get wrong,
 \begin{lemma}[Derivatives]\label{lem:awderivs}\ver\
 As functions of $s=|\mathbf p|^2$ with $E=\sqrt{m^2+s}$: $\dd a_{\mathrm W}/\dd s=1/(4mE(E+m)^2)$ and $\dd a_{\mathrm B}/\dd s=-(2E+m)/(4E^3(E+m)^2)$. Along a curve, $\dd E/\dd t=\dot s/(2E)$, and the derivatives of $\sqrt{2m(E+m)}$ and $(2E(E+m))^{-1/2}$ follow by the chain rule.
 \end{lemma}
+\begin{proof}
+$\dd E/\dd s=1/(2E)$. For $a_{\mathrm W}=-\frac1{2m}(E+m)^{-1}$: $\frac{\dd a_{\mathrm W}}{\dd s}=\frac1{2m}(E+m)^{-2}\cdot\frac1{2E}$. For $a_{\mathrm B}=\frac12E^{-1}(E+m)^{-1}$:
+\[
+\frac{\dd a_{\mathrm B}}{\dd s}=-\frac12\Bigl(\frac1{E^2(E+m)}+\frac1{E(E+m)^2}\Bigr)\frac1{2E}=-\frac{(E+m)+E}{4E^3(E+m)^2}.
+\]
+The remaining statements are the chain rule.
+\end{proof}
+
 
 \section{The state metric and the hyperbolic metric}
 
@@ -109,6 +226,14 @@ The conformal relation of \cref{thm:hemiconformal} can be restated with the quan
 \item $\gd$ is strictly increasing, $0\le\gd\rho<\pi/2$ for $\rho\ge0$, every $\chi\in[0,\pi/2)$ is attained, and $\gd\rho\to\pi/2$ as $\rho\to\infty$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+(i) By \cref{thm:gudermann}, $\dd\chi=\operatorname{sech}\rho\,\dd\rho$, $\sin\chi=\tanh\rho$ and $\cos\chi=\operatorname{sech}\rho$. Hence
+\[
+\frac2{\cos^2\chi}\cdot\frac12\bigl(\dd\chi^2+\sin^2\chi\,\dd\Omega^2\bigr)=\cosh^2\rho\bigl(\operatorname{sech}^2\rho\,\dd\rho^2+\tanh^2\rho\,\dd\Omega^2\bigr)=\dd\rho^2+\sinh^2\rho\,\dd\Omega^2 .
+\]
+(ii) $\gd'=\operatorname{sech}>0$, so $\gd$ is strictly increasing, and $\gd0=0$. Since $\gd\rho=\arctan(\sinh\rho)$ and $\arctan<\pi/2$, we get $0\le\gd\rho<\pi/2$ for $\rho\ge0$. Given $\chi\in[0,\pi/2)$, $\rho=\operatorname{arsinh}(\tan\chi)\ge0$ has $\gd\rho=\arctan(\tan\chi)=\chi$. As $\rho\to\infty$, $\sinh\rho\to\infty$ and $\arctan\to\pi/2$.
+\end{proof}
+
 
 The conformal factor $2\cosh^2\rho$ blows up at the equator, as it must for a conformal map from a complete hyperbolic space to a bounded region. Conformal maps preserve neither the spectrum of the Laplacian nor general geodesics. What they preserve are conformally covariant operators: the conformal Laplacian $-\Delta+R/8$ and the Dirac operator in three dimensions transform with definite weights \ext\ \cite{Hitchin1974}, so zero modes and their weighted counterparts correspond between the two pictures.
 
@@ -119,6 +244,10 @@ In \cref{ch:hemisphere} we saw that the height of the hemisphere is $m/E=\operat
 \begin{lemma}\label{lem:sechtanh}\ver\
 $k=\operatorname{sech}\zeta$ and $f=\tanh\zeta$ satisfy $k'=-fk$ and $f'=k^2$.
 \end{lemma}
+\begin{proof}
+$(\cosh^{-1})'=-\sinh/\cosh^2=-\tanh\cdot\operatorname{sech}$, and $\tanh'=1/\cosh^2=\operatorname{sech}^2$.
+\end{proof}
+
 
 Equip momentum space with the hyperbolic metric $h_{ij}=(\delta_{ij}-p_ip_j/E^2)/m^2$ of \cref{prop:shellmetric}, whose curvature is $-1$, and let $\star$ be its Hodge star. Take the Berry connection $\mathcal A^{\mathrm B}$ and the Higgs field $\Phi=(\mathbf p/E)\cdot T$ with $T=-\frac{\ii}{2}\bs$.
 
@@ -133,6 +262,25 @@ D_{\mathcal A^{\mathrm B}}\Phi=-\star\mathcal F^{\mathrm B}.
 \item The coefficient used, $a=(1-m/E)/(2s)$, equals $1/(2E(E+m))$, and its $s$-derivative agrees with \cref{lem:awderivs}.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+In the radial coordinate $\zeta$ the metric $h$ is $\dd\zeta^2+\sinh^2\zeta\,\dd\Omega^2$ (\cref{prop:shellmetric}), and by \cref{thm:halfangle} the pair $(\mathcal A^{\mathrm B},\Phi)$ has the hedgehog form
+\[
+\mathcal A^{\mathrm B}=\tfrac12\bigl(1-K\bigr)\,\ii\bs\cdot(\mathbf n\times\dd\mathbf n),\qquad \Phi=-\tfrac\ii2\,H\,\bs\cdot\mathbf n,\qquad K=\frac mE=\operatorname{sech}\zeta,\quad H=\frac{|\mathbf p|}E=\tanh\zeta .
+\]
+For this ansatz the computation of $D\Phi$ and $\mathcal F$ is the same as for the 't~Hooft--Polyakov monopole in flat space, with the flat radius $r$ replaced by the area radius $\sinh\zeta$, because only the angular part of the metric enters the angular components. One finds, in an orthonormal frame,
+\[
+(D\Phi)_{\rm radial}=-\tfrac\ii2H'\,\bs\cdot\mathbf n,\qquad (D\Phi)_{\rm angular}=-\tfrac\ii2\frac{HK}{\sinh\zeta}\,\bs\cdot\mathbf t,
+\]
+\[
+(\star\mathcal F)_{\rm radial}=\tfrac\ii2\frac{1-K^2}{\sinh^2\zeta}\,\bs\cdot\mathbf n,\qquad (\star\mathcal F)_{\rm angular}=-\tfrac\ii2\frac{K'}{\sinh\zeta}\,\bs\cdot\mathbf t,
+\]
+where $\mathbf t$ is the corresponding unit tangent vector \cite{tHooft1974,Atiyah1984}. The Bogomolny equation $D\Phi=-\star\mathcal F$ is therefore equivalent to the two ordinary differential equations
+\[
+H'=\frac{1-K^2}{\sinh^2\zeta},\qquad K'=-HK .
+\]
+By \cref{lem:sechtanh}, $K'=-HK$ holds, and $H'=\operatorname{sech}^2\zeta=\frac{\tanh^2\zeta}{\sinh^2\zeta}=\frac{1-\operatorname{sech}^2\zeta}{\sinh^2\zeta}=\frac{1-K^2}{\sinh^2\zeta}$. This proves (iii). Parts (i) and (ii) are the component form of the same computation in the coordinates $\mathbf p$, with $\sqrt{\det h}=1/(m^2E)$ and $h^{ij}=m^2\delta_{ij}+p_ip_j$ (the inverse of $h_{ij}$, as one checks by multiplying), which is how it was checked in Lean. For (iv), $(1-m/E)/(2s)=\frac{E-m}{2E(E-m)(E+m)}=\frac1{2E(E+m)}$.
+\end{proof}
+
 
 Monopoles on hyperbolic space were introduced by Atiyah \cite{Atiyah1984}, who showed that they are particularly well behaved, their moduli being described by holomorphic data on the sphere at infinity. \Cref{thm:bps} says that one of them is already present in the kinematics of a free massive Dirac particle: the Berry connection of the positive-energy states, together with the velocity $\mathbf p/E$ as Higgs field, is a spherically symmetric BPS monopole on the mass shell. Its asymptotic value $|\Phi|\to\frac12$ is reached at the celestial sphere, where the Berry connection becomes the Dirac monopole of a massless particle.
 

@@ -47,3 +47,15 @@ Dirac Hamiltonian H = α·p + βm. Fueter operator D = ∂₀ + i∂₁ + j∂�
 YM: action S = ∫√−g [R/(16πG) − F^a_{μν}F^{aμν}/(4g²)]; magnetic ansatz with w(t,r); ℓ ≡ √(4πG)/g (natural EYM length).
 Spherical metric: ds² = h_ab dx^a dx^b + r² dΩ²; Misner–Sharp mass m. Tolman: closed radiation FRW a(η) (η conformal time).
 Bertotti–Robinson AdS₂×S² radius ℓ. Junction (Poisson): [K_ab] − h_ab[K] = −8πG S_ab. Berry connection 𝒜, Wigner rotation W. Λ only cosmological constant.
+
+## Phase 2 instruction, verbatim (2026-11-13 08:46 JST)
+
+> ほぼ完璧。あとこれに人間らしいわかりやすい証明を付け加えて欲しい。今は定理の一覧だから。手書きで計算できるくらいの証明をお願いしたい。学部生2-4年生が。このできた文章に付け加えて欲しい。
+
+Rules for phase 2:
+P1. Add a proof after EVERY theorem/proposition/lemma/corollary in the existing text (keep the text, only add). Undergraduate years 2-4 must be able to redo it by hand: write the key intermediate lines, not "by computation".
+P2. Where the Lean proof is a `linear_combination`/`field_simp; ring`, read the Lean source and turn the coefficients into the hand calculation.
+P3. [external input] statements: give the idea and the reference instead of a proof; [numerical]: say how to check it.
+P4. Long multi-part theorems: prove each part, labelled (i), (ii), ...
+P5. Same workflow as before: one chapter at a time, build, send that chapter's PDF, at the end send the merged book. Lint must stay OK, coverage 1873/1873.
+P6. Honest: if a step is only sketched, say "sketch".

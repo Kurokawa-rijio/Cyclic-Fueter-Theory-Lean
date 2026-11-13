@@ -19,6 +19,10 @@ Every Hermitian $2\times2$ matrix arises this way, for exactly one $x^\mu$.
 \begin{theorem}[The interval as a determinant]\label{thm:detlorentz}\ver\
 For real $t,x,y,z$ the matrix \eqref{eq:Xmatrix} satisfies $\det X=t^2-x^2-y^2-z^2$.
 \end{theorem}
+\begin{proof}
+$\det X=(t+z)(t-z)-(x-\ii y)(x+\ii y)=(t^2-z^2)-(x^2+y^2)$, since $(x-\ii y)(x+\ii y)=x^2-\ii^2y^2=x^2+y^2$.
+\end{proof}
+
 
 With the signature $(-,+,+,+)$ used throughout this book, $\det X=-\eta_{\mu\nu}x^\mu x^\nu$. Timelike vectors have $\det X>0$, null vectors $\det X=0$, and spacelike vectors $\det X<0$. Just as in \cref{ch:quaternions}, the quadratic form factorises. Put $X^\#=t\,\mathbf 1-\mathbf x\cdot\bs$, the adjugate matrix; then
 \begin{equation}\label{eq:adjugate}
@@ -33,6 +37,15 @@ X^2=(\tr X)\,X-(\det X)\,\mathbf 1,\qquad \tr(X^2)=(\tr X)^2-2\det X ,
 \]
 and $\det(X+\mathbf 1)=\det X+\tr X+1$, $\tr(X+\mathbf 1)=\tr X+2$.
 \end{theorem}
+\begin{proof}
+Write $X=\begin{psmallmatrix}a&b\\c&d\end{psmallmatrix}$, so $\tr X=a+d$ and $\det X=ad-bc$. Then
+\[
+X^2=\begin{pmatrix}a^2+bc&(a+d)b\\(a+d)c&d^2+bc\end{pmatrix},\qquad
+(a+d)X-(ad-bc)\mathbf 1=\begin{pmatrix}a^2+bc&(a+d)b\\(a+d)c&d^2+bc\end{pmatrix},
+\]
+because $(a+d)a-(ad-bc)=a^2+bc$ and $(a+d)d-(ad-bc)=d^2+bc$. Taking the trace of the first identity, $\tr(X^2)=(\tr X)^2-2\det X$. Finally $\det(X+\mathbf 1)=(a+1)(d+1)-bc=(ad-bc)+(a+d)+1$ and $\tr(X+\mathbf 1)=(a+1)+(d+1)$.
+\end{proof}
+
 
 These identities are elementary, but they will do a surprising amount of work. Here is the first example. The formula $\tr(X^2)=(\tr X)^2-2\det X$ says that the Minkowski norm can be read off from traces alone. That is why the invariants of a $2\times2$ matrix are only its trace and its determinant.
 
@@ -47,6 +60,10 @@ sends Hermitian matrices to Hermitian matrices, and since $\det(AXA^\dagger)=|\d
 \begin{theorem}[$\SL(2,\CC)$ acts by Lorentz transformations]\label{thm:lorentzaction}\ver\
 If $\det A=1$ and $X^\dagger=X$, then $(AXA^\dagger)^\dagger=AXA^\dagger$ and $\det(AXA^\dagger)=\det X$.
 \end{theorem}
+\begin{proof}
+The adjoint reverses products, so $(AXA^\dagger)^\dagger=(A^\dagger)^\dagger X^\dagger A^\dagger=AXA^\dagger$. The determinant is multiplicative and $\det A^\dagger=\overline{\det A}$, so $\det(AXA^\dagger)=\det A\,\det X\,\overline{\det A}=|\det A|^2\det X=\det X$.
+\end{proof}
+
 
 Each $A$ therefore defines a linear map $\Lambda(A)$ of $\RR^{1,3}$ preserving $\eta$. It preserves the time orientation, because $\tr(AXA^\dagger)>0$ whenever $\tr X>0$ and $\det X>0$. It also has determinant one, since $\SL(2,\CC)$ is connected. The homomorphism $A\mapsto\Lambda(A)$ onto the proper orthochronous Lorentz group has kernel $\{\pm\mathbf 1\}$; this is the relativistic counterpart of the double cover $\SU(2)\to\SO(3)$, and it contains it, because for $A=\rho(q)$ unitary the map \eqref{eq:lorentzaction} is $X\mapsto\rho(q)X\rho(q)^{-1}$, which fixes $t$ and rotates $\mathbf x$ exactly as in \cref{thm:conj} \cite{PenroseRindler1,Wigner1939}.
 
@@ -67,6 +84,10 @@ Every invertible complex matrix is uniquely a unitary matrix times a positive He
 \begin{proposition}[Gram matrix]\label{prop:gram}\ver\
 For every $M\in\Mat_2(\CC)$, $M^\dagger M$ is Hermitian and $\tr(M^\dagger M)=\sum_{ij}|M_{ij}|^2$. If $\det M=1$ then $\det(M^\dagger M)=1$.
 \end{proposition}
+\begin{proof}
+$(M^\dagger M)^\dagger=M^\dagger(M^\dagger)^\dagger=M^\dagger M$. The diagonal entries are $(M^\dagger M)_{jj}=\sum_i\overline{M_{ij}}M_{ij}=\sum_i|M_{ij}|^2$; summing over $j$ gives the trace. Finally $\det(M^\dagger M)=\overline{\det M}\,\det M=|\det M|^2=1$.
+\end{proof}
+
 
 So $M^\dagger M$ is a Hermitian matrix of determinant one with positive trace: a point of the unit hyperboloid $t^2-|\mathbf x|^2=1$, $t>0$, which is the space of four-velocities.
 
@@ -82,8 +103,25 @@ B=\frac{B^2+\mathbf 1}{\tau},\qquad \tau^2=\tr(B^2)+2 .
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}[Idea of proof]
-For (ii), apply \cref{thm:cayleyhamilton} to $B$: $B^2=\tau B-\mathbf 1$. Solving for $B$ gives the first formula, and $\tr(B^2)=\tau^2-2$ gives the second. For (i), take $B$ to be the square root of the Gram matrix $M^\dagger M$ furnished by (ii), namely $B=(M^\dagger M+\mathbf 1)/\tau$ with $\tau=\sqrt{\tr(M^\dagger M)+2}$, and put $U=MB^{-1}$. For (iii), $B_a^2=M^\dagger M$ is common to both factorisations, and by (ii) $B_a$ is determined by $B_a^2$. Item (iv) follows from (iii) by comparing $U\cdot\mathbf 1$ with $\mathbf 1\cdot U$.
+\begin{proof}
+(ii) By \cref{thm:cayleyhamilton} with $\det B=1$, $B^2=\tau B-\mathbf 1$. Since $\tau\ne0$ we can solve for $B$: $B=(B^2+\mathbf 1)/\tau$. Taking the trace of $B^2=\tau B-\mathbf 1$ gives $\tr(B^2)=\tau^2-2$.
+
+(i) Let $G=M^\dagger M$. By \cref{prop:gram}, $G$ is Hermitian with $\det G=1$, and $g=\tr G=\sum|M_{ij}|^2>0$ (it cannot vanish, since $M\ne0$). Motivated by (ii), define
+\[
+\tau=\sqrt{g+2},\qquad B=\frac{G+\mathbf 1}{\tau},\qquad U=MB^{-1}.
+\]
+We check the required properties one by one.
+\begin{itemize}[nosep]
+\item $B$ is Hermitian, because $G$ is.
+\item $B^2=G$: by Cayley--Hamilton $G^2=gG-\mathbf 1$, so $(G+\mathbf 1)^2=G^2+2G+\mathbf 1=(g+2)G$, and dividing by $\tau^2=g+2$ gives $B^2=G$.
+\item $\det B=1$: by \cref{thm:cayleyhamilton}, $\det(G+\mathbf 1)=\det G+\tr G+1=g+2=\tau^2$, and for a $2\times2$ matrix $\det(cY)=c^2\det Y$, so $\det B=\tau^2/\tau^2=1$.
+\item $\tr B=(g+2)/\tau=\tau>0$.
+\item $U$ is unitary: $B^{-1}$ is Hermitian, so $U^\dagger U=B^{-1}M^\dagger MB^{-1}=B^{-1}B^2B^{-1}=\mathbf 1$; and $\det U=\det M/\det B=1$.
+\end{itemize}
+
+(iii) If $M=U_1B_1=U_2B_2$, then $M^\dagger M=B_1U_1^\dagger U_1B_1=B_1^2$ and likewise $M^\dagger M=B_2^2$. By (ii), $\tr B_a=\sqrt{\tr(B_a^2)+2}$ is determined by $B_a^2$, and then $B_a=(B_a^2+\mathbf 1)/\tr B_a$ is determined as well. So $B_1=B_2$, and $U_1=MB_1^{-1}=U_2$.
+
+(iv) If $X$ is unitary with determinant one and also Hermitian with positive trace, then $X=X\cdot\mathbf 1$ and $X=\mathbf 1\cdot X$ are two polar decompositions. By (iii) the unitary factors agree, $X=\mathbf 1$.
 \end{proof}
 
 The formula in (ii) is worth a second look. For a boost of rapidity $\zeta$ along the $z$-axis, $B=\operatorname{diag}(e^{\zeta/2},e^{-\zeta/2})$ and $B^2=\operatorname{diag}(e^{\zeta},e^{-\zeta})$. Then $\tau=2\cosh(\zeta/2)$ and $\tr(B^2)=2\cosh\zeta$, and $\tau^2=\tr(B^2)+2$ is the half-angle identity $4\cosh^2(\zeta/2)=2\cosh\zeta+2$. The matrix $B$ is the ``spinor'' square root of the vector boost $B^2$, just as a unit quaternion is the spinor square root of a rotation.
@@ -104,6 +142,14 @@ Let $\beta,\alpha_1,\alpha_2,\alpha_3$ be elements of an associative algebra wit
 (m\beta+p_1\alpha_1+p_2\alpha_2+p_3\alpha_3)^2=(m^2+p_1^2+p_2^2+p_3^2)\,\mathbf 1 .
 \]
 \end{theorem}
+\begin{proof}
+Write $e_0=\beta$, $e_i=\alpha_i$ and $c_0=m$, $c_i=p_i$. Then
+\[
+\Bigl(\sum_ac_ae_a\Bigr)^2=\sum_ac_a^2e_a^2+\sum_{a<b}c_ac_b\,(e_ae_b+e_be_a).
+\]
+Each $e_a^2=\mathbf 1$, and each bracket $e_ae_b+e_be_a$ vanishes because distinct generators anticommute. Only $\sum_ac_a^2\,\mathbf 1$ remains.
+\end{proof}
+
 
 The algebra generated by four anticommuting square roots of unity is the real Clifford algebra $\mathrm{Cl}_{4,0}$, and its smallest faithful complex representation is four-dimensional. The usual Dirac representation is
 \[
@@ -116,6 +162,10 @@ If $H$ squares to $E^2\mathbf 1$ with $E\neq0$, then $H/E$ is an involution and 
 \begin{theorem}[Energy projectors]\label{thm:projidem}\ver\
 If $H^2=E^2\,\mathbf 1$ and $E\neq0$, then $P=\tfrac12(\mathbf 1+H/E)$ satisfies $P^2=P$.
 \end{theorem}
+\begin{proof}
+$P^2=\tfrac14\bigl(\mathbf 1+2H/E+H^2/E^2\bigr)=\tfrac14\bigl(\mathbf 1+2H/E+\mathbf 1\bigr)=\tfrac12(\mathbf 1+H/E)=P$.
+\end{proof}
+
 
 For the free Dirac Hamiltonian with $E=\sqrt{m^2+|\mathbf p|^2}$, $P_+(\mathbf p)=\tfrac12(\mathbf 1+H(\mathbf p)/E)$ projects onto the positive-energy states of momentum $\mathbf p$. These projectors, regarded as functions of $\mathbf p$, are the main object of Chapter~4 and Chapter~5.
 

@@ -18,6 +18,10 @@ has odd part $\mathcal O$ and even part $\mathcal E$. Two algebraic facts drive 
 \begin{lemma}\label{lem:fwgen}\ver\
 If $\beta^2=n^2=1$ and $n\beta=-\beta n$, then $(\beta n)^2=-1$. Hence $\exp(\tfrac\theta2\beta n)=\cos\tfrac\theta2+\beta n\sin\tfrac\theta2$.
 \end{lemma}
+\begin{proof}
+$(\beta n)^2=\beta n\beta n=-\beta\beta nn=-1$. In the exponential series the even powers of $\beta n$ are $(-1)^k$ and the odd powers are $(-1)^k\beta n$, so the series splits into the series of $\cos(\theta/2)$ and $\beta n$ times the series of $\sin(\theta/2)$, exactly as for $e^{\ii\theta/2}$.
+\end{proof}
+
 Second, conjugating an odd operator by $\beta$ flips its sign, so products of two odd operators are even.
 
 \section{The free particle: an exact rotation}
@@ -30,6 +34,22 @@ In the Dirac representation put $U=(E+m)\mathbf 1+\beta\,\bm\alpha\cdot\mathbf p
 UHV=2E^2(E+m)\,\beta,\qquad UV=2E(E+m)\,\mathbf 1 .
 \]
 \end{theorem}
+\begin{proof}
+Write $A=\bm\alpha\cdot\mathbf p$ and $N=\beta A$. By \cref{thm:diracsq}, $A^2=|\mathbf p|^2$, and $\beta A=-A\beta$. Hence $N^2=\beta A\beta A=-\beta^2A^2=-|\mathbf p|^2$ and
+\[
+UV=(E+m)^2-N^2=(E+m)^2+|\mathbf p|^2=2E^2+2Em=2E(E+m),
+\]
+using $m^2+|\mathbf p|^2=E^2$. For the other product, first
+\[
+UH=\bigl((E+m)+\beta A\bigr)(m\beta+A)=(E+m)m\beta+(E+m)A+m\beta A\beta+\beta A^2 .
+\]
+Here $\beta A\beta=-A$ and $\beta A^2=|\mathbf p|^2\beta$, so $UH=(mE+m^2+|\mathbf p|^2)\beta+EA=E\bigl((E+m)\beta+A\bigr)$. Then
+\[
+UHV=E\bigl((E+m)\beta+A\bigr)\bigl((E+m)-\beta A\bigr)=E\bigl[(E+m)^2\beta-(E+m)A+(E+m)A-A\beta A\bigr].
+\]
+Since $A\beta A=-\beta A^2=-|\mathbf p|^2\beta$, this is $E\bigl((E+m)^2+|\mathbf p|^2\bigr)\beta=2E^2(E+m)\beta$.
+\end{proof}
+
 
 For real $\mathbf p$ the operator $\beta\bm\alpha\cdot\mathbf p$ is anti-Hermitian, so $V=U^\dagger$, and the normalised operator $\hat U=U/\sqrt{2E(E+m)}$ is unitary with $\hat UH\hat U^\dagger=\beta E$. The free Hamiltonian has been diagonalised: the upper components carry energy $+E$ and the lower ones $-E$.
 
@@ -53,6 +73,15 @@ Let $b$ satisfy $b^2=1$, let $X$ be odd and $Y$ even with respect to $b$, and pu
 \operatorname{ad}_T(mb)=-2mc\,X,\qquad \operatorname{ad}_TX=2c\,bX^2,\qquad \operatorname{ad}_TY=c\,b[X,Y].
 \]
 \end{lemma}
+\begin{proof}
+We use $bX=-Xb$, $bY=Yb$ and $b^2=1$. Then
+\begin{align*}
+\operatorname{ad}_T(mb)&=cm(bXb-b\,bX)=cm(-X-X)=-2cmX,\\
+\operatorname{ad}_TX&=c(bXX-XbX)=c(bX^2+bX^2)=2cbX^2,\\
+\operatorname{ad}_TY&=c(bXY-YbX)=c(bXY-bYX)=cb[X,Y].\qedhere
+\end{align*}
+\end{proof}
+
 
 \begin{theorem}[FW expansion to order $1/m^2$]\label{thm:fworder}\ver\
 With the notation of \cref{lem:fwad}, the Hadamard sum through third order is an explicit polynomial in $c$, $m$, $X$, $Y$ and $b$. For $c=1/(2m)$ it reorganises as
@@ -61,6 +90,31 @@ H'=\underbrace{mb+Y+c\,X^2b-\tfrac{c^2}{2}[X,[X,Y]]}_{\text{even}}\;+\;\underbra
 \]
 that is, $H'=\beta\bigl(m+\mathcal O^2/2m\bigr)+\mathcal E-[\mathcal O,[\mathcal O,\mathcal E]]/8m^2+(\text{odd terms of order }1/m)+O(1/m^3)$.
 \end{theorem}
+\begin{proof}
+Write $H=mb+X+Y$. Besides \cref{lem:fwad} we need how $\operatorname{ad}_T$ acts on general even and odd operators. If $Z$ is even, the computation of $\operatorname{ad}_TY$ gives $\operatorname{ad}_TZ=cb[X,Z]$. If $W$ is odd, $\operatorname{ad}_TW=c(bXW-WbX)=cb(XW+WX)=cb\{X,W\}$. Note also that $bZ$ is odd when $Z$ is odd, and even when $Z$ is even.
+
+\emph{First order.} By \cref{lem:fwad}, $[T,H]=-2cmX+2cbX^2+cb[X,Y]$.
+
+\emph{Second order.} Apply $\operatorname{ad}_T$ to each term. First, $\operatorname{ad}_T(-2cmX)=-4c^2m\,bX^2$. Second, $bX^2$ is even, so $\operatorname{ad}_T(bX^2)=cb[X,bX^2]=cb(XbX^2-bX^3)=cb(-2bX^3)=-2cX^3$. Third, $b[X,Y]$ is odd, and
+\[
+\{X,b[X,Y]\}=Xb[X,Y]+b[X,Y]X=-bX[X,Y]+b[X,Y]X=-b[X,[X,Y]],
+\]
+so $\operatorname{ad}_T(b[X,Y])=cb\cdot(-b[X,[X,Y]])=-c[X,[X,Y]]$. Altogether
+\[
+[T,[T,H]]=-4c^2m\,bX^2-4c^2X^3-c^2[X,[X,Y]].
+\]
+
+\emph{Third order.} $\operatorname{ad}_T(bX^2)=-2cX^3$ gives $-4c^2m\cdot(-2cX^3)=8c^3mX^3$. The other two terms give $\operatorname{ad}_T(X^3)=cb\{X,X^3\}=2cbX^4$ and $\operatorname{ad}_T[X,[X,Y]]=cb[X,[X,[X,Y]]]$, both multiplied by $c^2$, hence of order $c^3$.
+
+\emph{Collecting with $c=1/(2m)$,} so that $cm=\frac12$:
+\begin{align*}
+H+[T,H]&=mb+Y+2cbX^2+cb[X,Y],\\
+\tfrac12[T,[T,H]]&=-cbX^2-2c^2X^3-\tfrac12c^2[X,[X,Y]],\\
+\tfrac16[T,[T,[T,H]]]&=\tfrac23c^2X^3+O(c^3).
+\end{align*}
+The sum is $mb+Y+cbX^2-\frac12c^2[X,[X,Y]]+cb[X,Y]-\frac43c^2X^3+O(c^3)$. Finally $bX^2=X^2b$ ($X^2$ is even) and $b[X,Y]=-[X,Y]b=(YX-XY)b$ ($[X,Y]$ is odd). With $b=\beta$, $X=\mathcal O$, $Y=\mathcal E$ and $c=1/2m$ the even part is $\beta(m+\mathcal O^2/2m)+\mathcal E-[\mathcal O,[\mathcal O,\mathcal E]]/8m^2$.
+\end{proof}
+
 
 The odd terms that survive are of order $1/m$, so a second transformation is needed to push them to higher order. It is the same construction applied to the new odd part.
 
@@ -71,6 +125,14 @@ The odd terms that survive are of order $1/m$, so a second transformation is nee
 \item Applying the expansion with generator $c\,b\,(c\mathcal O_1')$ gives $mb+Y+c^2(Y\mathcal O_1'b-\mathcal O_1'Yb)+c^3(\cdots)$, so the even part changes only at order $c^3=1/(8m^3)$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+(i) $(YX-XY)b=b[X,Y]$ is odd, as shown in the proof of \cref{thm:fworder}, and $X^3$ is odd because $bX^3=-XbX^2=X^2bX=-X^3b$.
+
+(ii) $Y$ is even; $X^2b$ is even since $X^2$ is; and $[X,[X,Y]]$ is even because the commutator of the odd $X$ with the odd $[X,Y]$ is even.
+
+(iii) Apply \cref{thm:fworder} with $X$ replaced by the new odd part $c\mathcal O_1'$. Every occurrence of $X$ now carries an extra factor $c$. The even correction $cX^2b$ becomes $c\,(c\mathcal O_1')^2b=c^3\mathcal O_1'^2b$, and the double commutator becomes of order $c^4$. The odd term $c(YX-XY)b$ becomes $c^2(Y\mathcal O_1'-\mathcal O_1'Y)b$. So, compared with the first transformation, the even part is changed only at order $c^3$.
+\end{proof}
+
 
 Consequently the even Hamiltonian to order $1/m^2$ is already fixed by the first transformation. This is the point that is often left implicit in textbook treatments; here it is a theorem.
 
@@ -85,6 +147,17 @@ For noncommuting components $\pi_k$,
 \]
 If $[\pi_j,\pi_k]=\ii e\,\epsilon_{jkl}B_l$, as for $\bm\pi=\mathbf p-e\mathbf A$ with $\mathbf B=\nabla\times\mathbf A$, then $(\bs\cdot\bm\pi)^2=\bm\pi^2-e\,\bs\cdot\mathbf B$.
 \end{theorem}
+\begin{proof}
+The Pauli matrices commute with the $\pi_k$, and $\sigma_j\sigma_k=\delta_{jk}+\ii\epsilon_{jkl}\sigma_l$. Hence
+\[
+(\bs\cdot\bm\pi)^2=\sum_{j,k}\sigma_j\sigma_k\pi_j\pi_k=\sum_j\pi_j^2+\ii\sum_l\sigma_l\sum_{j,k}\epsilon_{jkl}\pi_j\pi_k=\bm\pi^2+\ii\,\bs\cdot(\bm\pi\times\bm\pi),
+\]
+with $(\bm\pi\times\bm\pi)_l=\sum\epsilon_{ljk}\pi_j\pi_k=\frac12\sum\epsilon_{ljk}[\pi_j,\pi_k]$. If $[\pi_j,\pi_k]=\ii e\epsilon_{jkm}B_m$, then, using $\sum_{j,k}\epsilon_{ljk}\epsilon_{jkm}=2\delta_{lm}$, $(\bm\pi\times\bm\pi)_l=\ii eB_l$ and $\ii\bs\cdot(\bm\pi\times\bm\pi)=-e\,\bs\cdot\mathbf B$. For $\pi_j=p_j-eA_j$ with $p_j=-\ii\partial_j$,
+\[
+[\pi_j,\pi_k]=-e[p_j,A_k]-e[A_j,p_k]=\ii e(\partial_jA_k-\partial_kA_j)=\ii e\,\epsilon_{jkm}B_m .\qedhere
+\]
+\end{proof}
+
 
 The term $-e\bs\cdot\mathbf B/(2m)$ in $\beta\mathcal O^2/2m$ is the magnetic moment with gyromagnetic ratio $g=2$, which is therefore a consequence of the Dirac factorisation.
 
@@ -98,6 +171,18 @@ where $f_{jk}=\pi_j\pi_k\varphi-2\pi_j\varphi\pi_k+\varphi\pi_j\pi_k$, which sat
 [\pi_k,\varphi]=-\ii\,\partial_k\varphi,\qquad [\pi_k,[\pi_k,\varphi]]=-\partial_k^2\varphi,\qquad [\pi_j,\pi_k]=\ii(\partial_ja_k-\partial_ka_j),\qquad [[\pi_j,\pi_k],\varphi]=0 .
 \]
 \end{theorem}
+\begin{proof}
+Expanding the double commutator, $[S,[S,\varphi]]=S^2\varphi-2S\varphi S+\varphi S^2=\sum_{j,k}\sigma_j\sigma_kf_{jk}$. The terms $j=k$ give $\sum_kf_{kk}$, and $f_{kk}=\pi_k^2\varphi-2\pi_k\varphi\pi_k+\varphi\pi_k^2=[\pi_k,[\pi_k,\varphi]]$. For $j\ne k$, $\sigma_j\sigma_k=\ii\epsilon_{jkl}\sigma_l$, and pairing $(j,k)$ with $(k,j)$ gives $\ii\sigma_l(f_{jk}-f_{kj})$ for $(j,k,l)$ cyclic.
+
+For the formula for $f_{jk}-f_{kj}$, write $\pi_j\varphi\pi_k=\pi_j(\pi_k\varphi-g_k)=\pi_j\pi_k\varphi-\pi_jg_k$. Then
+\begin{align*}
+f_{jk}-f_{kj}&=[\pi_j,\pi_k]\varphi-2\pi_j\varphi\pi_k+2\pi_k\varphi\pi_j+\varphi[\pi_j,\pi_k]\\
+&=[\pi_j,\pi_k]\varphi-2[\pi_j,\pi_k]\varphi+2(\pi_jg_k-\pi_kg_j)+\varphi[\pi_j,\pi_k]\\
+&=-[[\pi_j,\pi_k],\varphi]+2(\pi_jg_k-\pi_kg_j).
+\end{align*}
+For $\pi_k=-\ii\partial_k-a_k$ acting on a function $\psi$: $[\pi_k,\varphi]\psi=-\ii\partial_k(\varphi\psi)+\ii\varphi\partial_k\psi=-\ii(\partial_k\varphi)\psi$. Applying this twice, $[\pi_k,-\ii\partial_k\varphi]=-\ii\cdot(-\ii\partial_k^2\varphi)=-\partial_k^2\varphi$. Next, $[\pi_j,\pi_k]=\ii[\partial_j,a_k]+\ii[a_j,\partial_k]=\ii(\partial_ja_k-\partial_ka_j)$, which is a function, and functions commute with $\varphi$.
+\end{proof}
+
 
 Inserting these into \cref{thm:fworder}, the term $-[\mathcal O,[\mathcal O,e\Phi]]/8m^2$ becomes the Darwin term $(e/8m^2)\nabla\cdot\mathbf E$ (with $\mathbf E=-\nabla\Phi$) plus the spin--orbit term. The final assembly is the standard one \cite{BjorkenDrell}, and gives the familiar Hamiltonian for the upper components,
 \[

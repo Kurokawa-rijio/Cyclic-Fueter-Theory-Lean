@@ -13,6 +13,10 @@ Throughout, functions are smooth quaternion-valued functions $f=f_0+f_1i+f_2j+f_
 \begin{lemma}[Commuting derivatives]\label{lem:commute}\ver\
 For a family of commuting derivations, $\partial_a\partial_b f=\partial_b\partial_a f$ for all six pairs $a>b$, so every second derivative can be written with the indices in increasing order.
 \end{lemma}
+\begin{proof}
+For smooth functions this is Schwarz's theorem on mixed partial derivatives, applied to each real component $f_0,\dots,f_3$. In the abstract setting it is the hypothesis that the derivations commute. Of the sixteen ordered pairs $(a,b)$, the four with $a=b$ need nothing, and the twelve with $a\ne b$ fall into six pairs $\{a,b\}$; in each pair we may use the order $a<b$.
+\end{proof}
+
 
 \section{The Fueter operator and the Laplacian}
 
@@ -30,8 +34,16 @@ For every quaternion-valued function $f$,
 \]
 \end{theorem}
 
-\begin{proof}[Idea of proof]
-$\bar DD=\sum_{a,b}\qbar{e_a}e_b\,\partial_a\partial_b$. The diagonal terms give $\sum_a|e_a|^2\partial_a^2=\Delta$. For $a\ne b$ the coefficient of $\partial_a\partial_b$ is $\qbar{e_a}e_b+\qbar{e_b}e_a=2\operatorname{Re}(\qbar{e_a}e_b)=0$, by \cref{lem:commute} and the orthogonality of the units. The second identity is the same computation with the factors exchanged.
+\begin{proof}
+The coefficients $e_a$ are constant, so $\partial_b(e_af)=e_a\,\partial_bf$ and
+\[
+\bar DDf=\sum_a\qbar{e_a}\,\partial_a\Bigl(\sum_be_b\,\partial_bf\Bigr)=\sum_{a,b}\qbar{e_a}e_b\,\partial_a\partial_bf .
+\]
+Split the double sum into $a=b$ and $a\ne b$. For $a=b$, $\qbar{e_a}e_a=|e_a|^2=1$, which gives $\sum_a\partial_a^2f=\Delta f$. For $a\ne b$, group the terms $(a,b)$ and $(b,a)$ using \cref{lem:commute}:
+\[
+\bigl(\qbar{e_a}e_b+\qbar{e_b}e_a\bigr)\partial_a\partial_bf .
+\]
+Since $\overline{\qbar{e_a}e_b}=\qbar{e_b}e_a$, the bracket is $u+\bar u=2\operatorname{Re}u$ with $u=\qbar{e_a}e_b$. And $\operatorname{Re}(\qbar{e_a}e_b)$ is the Euclidean inner product of the basis vectors $e_a,e_b$ of $\RR^4$, which is $0$. For example $\qbar ij+\qbar ji=-ij-ji=-k+k=0$. So all mixed terms cancel. The computation of $D\bar D$ is the same with $e_a\qbar{e_b}+e_b\qbar{e_a}=2\operatorname{Re}(e_a\qbar{e_b})=0$.
 \end{proof}
 
 This is \eqref{eq:qqbar} with the vector $(x^0,\dots,x^3)$ replaced by the gradient $(\partial_0,\dots,\partial_3)$: in Fourier space the symbol of $D$ is the quaternion $\xi=\xi_0+\xi_1i+\xi_2j+\xi_3k$ (up to a factor $\ii$), and the symbol of $\bar DD$ is $\qbar\xi\,\xi=|\xi|^2$.
@@ -45,6 +57,14 @@ The square of $D$ itself is not the Laplacian. Split $D=\partial_0+V$ with $V=i\
 D^2f=(\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2)f+2\,\partial_0Vf,\qquad D^2f+\bar D^2f=2(\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2)f .
 \]
 \end{theorem}
+\begin{proof}
+Since the coefficients are constant, $\partial_0$ commutes with $V$, so $D^2=(\partial_0+V)^2=\partial_0^2+2\partial_0V+V^2$. For $V^2$, with $a,b\in\{1,2,3\}$,
+\[
+V^2f=\sum_{a,b}e_ae_b\,\partial_a\partial_bf=\sum_ae_a^2\,\partial_a^2f+\sum_{a<b}(e_ae_b+e_be_a)\,\partial_a\partial_bf=-(\partial_1^2+\partial_2^2+\partial_3^2)f,
+\]
+because $e_a^2=-1$ and $ij+ji=jk+kj=ki+ik=0$. This gives the first identity. Since $\bar D=\partial_0-V$, the same computation gives $\bar D^2=\partial_0^2-2\partial_0V+V^2$, and adding the two the cross terms cancel.
+\end{proof}
+
 
 The Lorentzian operator $\partial_0^2-\nabla^2$ appears, but contaminated by the cross term $2\partial_0V$. The cure is the one we used in \cref{ch:lorentz}: pass to the complexified algebra $\HH\otimes\CC$ of biquaternions, in which there is a central element $I$ with $I^2=-1$ that commutes with $i,j,k$. Define
 \begin{equation}\label{eq:biquatD}
@@ -57,6 +77,14 @@ Let $I$ be central with $I^2=-1$ and $\partial_aI=0$. Then
 \bar D_{\CC}D_{\CC}f=D_{\CC}\bar D_{\CC}f=(\partial_0^2-\partial_1^2-\partial_2^2-\partial_3^2)f .
 \]
 \end{theorem}
+\begin{proof}
+Because $I$ is central and constant, it commutes with $\partial_0$ and with $V$. Hence
+\[
+\bar D_{\CC}D_{\CC}=(\partial_0-IV)(\partial_0+IV)=\partial_0^2+\partial_0IV-IV\partial_0-I^2V^2=\partial_0^2+V^2,
+\]
+the middle terms cancelling. By the computation in the proof of \cref{thm:dsquare}, $V^2=-(\partial_1^2+\partial_2^2+\partial_3^2)$. The product in the other order is the same with $I$ replaced by $-I$.
+\end{proof}
+
 
 Indeed $\bar D_{\CC}D_{\CC}=\partial_0^2-I^2V^2=\partial_0^2+V^2$, and $V^2=-\nabla^2$. The two theorems of this section therefore play the two real forms of \cref{ch:lorentz} against each other. Over the quaternions, the real form with the positive definite norm, the first-order operator squares to the Euclidean Laplacian. Over the biquaternions it can be arranged to square to the wave operator. Lanczos used exactly this device in 1929 to write the Dirac equation in biquaternionic form \cite{Lanczos1929}, and it is closely related to the Weyl factorisation $p_\mu\sigma^\mu\,p_\nu\bar\sigma^\nu=-p_\mu p^\mu$ of \cref{ch:lorentz}.
 
@@ -73,6 +101,14 @@ The product of symbols expands as $\sum_{a,b}\xi_a\xi_b\,\qbar{c_a}c_b$. It equa
 \qbar{c_a}\,c_b+\qbar{c_b}\,c_a=2\,\delta_{ab}\qquad\text{for all }a,b .
 \]
 \end{theorem}
+\begin{proof}
+Since the $\xi_a$ are real they commute with quaternions, and
+\[
+\Bigl(\sum_a\xi_a\qbar{c_a}\Bigr)\Bigl(\sum_b\xi_bc_b\Bigr)=\sum_a\xi_a^2\,\qbar{c_a}c_a+\sum_{a<b}\xi_a\xi_b\,\bigl(\qbar{c_a}c_b+\qbar{c_b}c_a\bigr).
+\]
+If the stated condition holds, the first sum is $\sum\xi_a^2$ and the second vanishes. Conversely, suppose the product equals $\sum_a\xi_a^2$ for all real $\xi$. Choosing $\xi$ equal to the $a$-th unit vector gives $\qbar{c_a}c_a=1$, i.e.\ the condition for $a=b$. Choosing $\xi=e_a+e_b$ with $a\ne b$ then gives $1+1+(\qbar{c_a}c_b+\qbar{c_b}c_a)=2$, i.e.\ the condition for $a\ne b$.
+\end{proof}
+
 
 In words: the coefficients must be unit quaternions that are pairwise orthogonal for the real inner product $\operatorname{Re}(\qbar pq)$. Any orthonormal basis of $\RR^4=\HH$ will do, and the Fueter choice $(1,i,j,k)$ is only one of them.
 
@@ -87,12 +123,20 @@ indices taken modulo $4$. Thus $D_0=D$, $D_1=i\partial_0+j\partial_1+k\partial_2
 \begin{proposition}\label{prop:shiftfact}\ver\
 For every $m$, $\qbar{e_{m+a}}\,e_{m+b}+\qbar{e_{m+b}}\,e_{m+a}=2\delta_{ab}$; hence $\bar D_mD_m=\Delta$.
 \end{proposition}
+\begin{proof}
+As in the proof of \cref{thm:fueterlap}, $\qbar{u}v+\qbar vu=2\operatorname{Re}(\qbar uv)$ is twice the Euclidean inner product of $u$ and $v$. For $u=e_{m+a}$, $v=e_{m+b}$ this is $2$ if $a=b$ and $0$ if $a\ne b$, because $a\mapsto m+a$ is a bijection of $\{0,1,2,3\}$ and $1,i,j,k$ are orthonormal. Now apply \cref{thm:factcrit}, with symbols replaced by derivatives exactly as in the proof of \cref{thm:fueterlap}.
+\end{proof}
+
 
 The four operators are encoded in the coefficient matrix $C_{ma}=e_{m+a}$, a $4\times4$ circulant matrix with quaternion entries. The coefficients of a first-order operator are recovered from its action on the coordinate functions, $D_m(x^a)=e_{m+a}$, so the matrix and the family of operators determine each other.
 
 \begin{proposition}[Coefficients from the operators]\label{prop:coeffextract}\ver\
 $\partial_a x^b=\delta_{ab}$, and for any coefficient set $c$, $\mathcal D_c(x^b)=c_b$. In particular $D_m(x^a)=e_{m+a}$, and two first-order operators that agree on all functions have the same coefficients.
 \end{proposition}
+\begin{proof}
+$\partial_ax^b=\delta_{ab}$ is the definition of the coordinate functions. Then $\mathcal D_c(x^b)=\sum_ac_a\,\partial_ax^b=\sum_ac_a\delta_{ab}=c_b$. If $\mathcal D_c f=\mathcal D_{c'}f$ for all $f$, apply both to $f=x^b$ to get $c_b=c'_b$.
+\end{proof}
+
 
 Over a commutative field, the eigenvectors of a circulant matrix are the geometric sequences $(1,\omega,\omega^2,\omega^3)$ with $\omega^4=1$, and the matrix is singular exactly when one of the corresponding Fourier sums vanishes \cite{Davis}. Quaternions have far more fourth roots of unity than $\CC$: every pure unit quaternion $u$ satisfies $u^4=1$. It turns out that one of them does annihilate $C$. Write $\gamma(u)=(1,u,u^2,u^3)$; thus $\gamma(i)=(1,i,-1,-i)$ and $\gamma(-k)=(1,-k,-1,k)$.
 
@@ -105,8 +149,38 @@ Regard $C$ as acting on columns $y\in\HH^4$ from the left, $(Cy)_m=\sum_aC_{ma}y
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}[Idea of proof]
-For (i) one checks the four identities $\sum_ae_{m+a}(-k)^a=0$; for $m=0$ this reads $1-ik-j+k^2=1+j-j-1=0$. The converse is linear algebra over $\HH$: eliminating $y_3$ leaves a $4\times3$ system whose only solution is $y=0$, which is (iii). The left kernel is handled in the same way with $\sum_m i^m e_{m+a}=0$.
+\begin{proof}
+Explicitly, the rows of $C$ are $(1,i,j,k)$, $(i,j,k,1)$, $(j,k,1,i)$, $(k,1,i,j)$. We use $ij=k$, $jk=i$, $ki=j$ and their negatives $ji=-k$, $kj=-i$, $ik=-j$.
+
+(i) \emph{The vectors $\gamma(-k)q$ lie in the kernel.} For $y=(1,-k,-1,k)$ the four rows give
+\begin{align*}
+&1-ik-j+k^2=1+j-j-1=0, && i-jk-k+k=i-i=0,\\
+&j-k^2-1+ik=j+1-1-j=0, && k-k-i+jk=-i+i=0 .
+\end{align*}
+Since the coefficients multiply from the left, $C(yq)=(Cy)q=0$ for every $q$.
+
+\emph{Nothing else lies in the kernel.} Let $Cy=0$ and put $z=y-\gamma(-k)y_0$. Then $Cz=0$ and $z_0=0$, so the rows give
+\[
+iz_1+jz_2+kz_3=0,\quad jz_1+kz_2+z_3=0,\quad kz_1+z_2+iz_3=0,\quad z_1+iz_2+jz_3=0 .
+\]
+The last equation gives $z_1=-iz_2-jz_3$. Inserting this into the first,
+\[
+i(-iz_2-jz_3)+jz_2+kz_3=z_2-kz_3+jz_2+kz_3=(1+j)z_2=0,
+\]
+and $1+j\ne0$ is invertible, so $z_2=0$ and $z_1=-jz_3$. The second equation becomes $j(-jz_3)+z_3=2z_3=0$. Hence $z=0$ and $y=\gamma(-k)y_0$.
+
+(ii) The columns of $C$ are the same four vectors as the rows. For $x=(1,i,-1,-i)$,
+\begin{align*}
+&1+i^2-j-ik=1-1-j+j=0, && i+ij-k-i=k-k=0,\\
+&j+ik-1-i^2=j-j-1+1=0, && k+i-i-ij=k-k=0,
+\end{align*}
+and $(qx)C=q(xC)=0$. Conversely, if $xC=0$ put $w=x-x_0\gamma(i)$, so $w_0=0$ and
+\[
+w_1i+w_2j+w_3k=0,\quad w_1j+w_2k+w_3=0,\quad w_1k+w_2+w_3i=0,\quad w_1+w_2i+w_3j=0 .
+\]
+The last gives $w_1=-w_2i-w_3j$; then the second becomes $-w_2ij-w_3j^2+w_2k+w_3=2w_3=0$, and the first becomes $w_2(1+j)=0$. So $w=0$.
+
+(iii) By (i), $C\gamma(-k)=0$ reads $C_{\cdot0}-C_{\cdot1}k-C_{\cdot2}+C_{\cdot3}k=0$. Multiplying on the right by $-k$ and using $k^2=-1$ gives $C_{\cdot3}=C_{\cdot0}k+C_{\cdot1}-C_{\cdot2}k$. If $C_{\cdot0}a+C_{\cdot1}b+C_{\cdot2}c=0$, then $(a,b,c,0)$ lies in the right kernel, so it equals $\gamma(-k)q$; its last component is $kq=0$, so $q=0$ and $a=b=c=0$. Finally, $q\mapsto\gamma(-k)q$ is injective and real-linear from $\HH\cong\RR^4$, so the real kernel is four-dimensional and the real rank is $16-4=12$.
 \end{proof}
 
 Two consequences translate the matrix statement back into statements about operators. A right kernel vector yields a function annihilated by all four operators at once, and a left kernel vector yields a linear relation among the operators.
@@ -117,12 +191,33 @@ Two consequences translate the matrix statement back into statements about opera
 \item For every $f$, $\;D_0f+i\,D_1f-D_2f-i\,D_3f=0$.
 \end{enumerate}
 \end{corollary}
+\begin{proof}
+(i) With $y=\gamma(-k)q$, $f=\sum_bx^by_b$, so $\partial_af=y_a$ and $D_mf=\sum_ae_{m+a}y_a=(Cy)_m=0$ by \cref{thm:rank3}(i). Expanding, $\sum_bx^b\gamma(-k)_b=x^0-x^1k-x^2+x^3k$.
+
+(ii) With $x=\gamma(i)=(1,i,-1,-i)$,
+\[
+\sum_mx_mD_mf=\sum_a\Bigl(\sum_mx_me_{m+a}\Bigr)\partial_af=\sum_a(xC)_a\,\partial_af=0
+\]
+by \cref{thm:rank3}(ii).
+\end{proof}
+
 
 The circulant pattern is essential. If instead the coefficients are arranged according to the Klein four-group, $C^{\mathrm K}_{ra}=e_{r\oplus a}$ with $\oplus$ the bitwise sum, the resulting matrix is nonsingular.
 
 \begin{proposition}[The Klein arrangement is regular]\label{prop:klein}\ver\
 If $\sum_aC^{\mathrm K}_{ra}y_a=0$ for all $r$, then $y=0$.
 \end{proposition}
+\begin{proof}
+The rows of $C^{\mathrm K}$ are $(1,i,j,k)$, $(i,1,k,j)$, $(j,k,1,i)$, $(k,j,i,1)$, so
+\[
+\begin{aligned}
+&y_0+iy_1+jy_2+ky_3=0, &&iy_0+y_1+ky_2+jy_3=0,\\
+&jy_0+ky_1+y_2+iy_3=0, &&ky_0+jy_1+iy_2+y_3=0 .
+\end{aligned}
+\]
+Multiply the second equation on the left by $-i$: $y_0-iy_1+jy_2-ky_3=0$. Adding and subtracting this from the first equation gives $y_0=-jy_2$ and $iy_1=-ky_3$, i.e.\ $y_1=-jy_3$. Substituting into the third equation, $j(-jy_2)+k(-jy_3)+y_2+iy_3=2y_2+2iy_3=0$, so $y_2=-iy_3$. Substituting into the fourth, $k(-jy_2)+j(-jy_3)+iy_2+y_3=2(iy_2+y_3)=2(y_3+y_3)=4y_3=0$. Hence $y_3=0$, and then $y_2=y_1=y_0=0$.
+\end{proof}
+
 
 So whether a family of Fueter-type operators shares a solution is decided by a group-theoretic choice, the cyclic group $\ZZ_4$ versus $\ZZ_2\times\ZZ_2$, through the quaternionic version of the circulant determinant.
 

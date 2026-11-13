@@ -24,6 +24,16 @@ regular on the northern and southern patches respectively \cite{WuYang1975}.
 \item The first Chern number is $c_1=\frac1{2\pi}\int_{S^2}f=N$; for a monopole of charge $q=N/2$, $c_1=2q$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+(i) $a_N-a_S=\frac N2\bigl((1-\cos\theta)+(1+\cos\theta)\bigr)\dd\phi=N\,\dd\phi=\dd(N\phi)$, so the two potentials differ by the gauge transformation $e^{\ii N\phi}$.
+
+(ii) $e^{\ii N(\phi+2\pi)}=e^{\ii N\phi}e^{2\pi\ii N}$, and $e^{2\pi\ii N}=1$ exactly for integer $N$.
+
+(iii) $\dd a_N=\frac N2\sin\theta\,\dd\theta\wedge\dd\phi$, and $\dd a_S=-\frac N2(-\sin\theta)\,\dd\theta\wedge\dd\phi$, the same.
+
+(iv) $\int_{S^2}f=\frac N2\int_0^{2\pi}\dd\phi\int_0^\pi\sin\theta\,\dd\theta=\frac N2\cdot2\pi\cdot2=2\pi N$.
+\end{proof}
+
 
 Integrality of $N$ is Dirac's quantisation condition \cite{Dirac1931}: the product of electric and magnetic charges is quantised because the bundle has to close up.
 
@@ -39,12 +49,26 @@ The most familiar non-trivial bundle over $S^2$ is its own tangent bundle. In th
 \item Hence $c_1(TS^2)=\chi(S^2)$: the tangent bundle is the monopole bundle with $|N|=2$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+(i) $\frac{\dd}{\dd z}z^{-1}=-z^{-2}$. On $|z|=1$, $z=e^{\ii\phi}$, so $-z^{-2}=e^{\ii\pi}e^{-2\ii\phi}$, whose phase $\pi-2\phi$ decreases by $4\pi$, i.e.\ winds $-2$ times, as $\phi$ increases by $2\pi$.
+
+(ii) This is \cref{thm:dirac} with $N=2$.
+
+(iii) A round sphere of radius $R$ has $K=1/R^2$ and area $4\pi R^2$, so $\int K\,\dd A=4\pi$.
+
+(iv) The winding number of the transition function is the Chern number up to sign (\cref{thm:dirac}(i)), so $|c_1(TS^2)|=2=\chi(S^2)$.
+\end{proof}
+
 
 There is a gauge-theoretic way to see the same thing. Let $\mathbf n$ be a unit vector in $\RR^3$, thought of as an element of $\su(2)$ in the adjoint representation. The operator $J=\mathbf n\times\cdot$ generates the $U(1)$ of rotations about $\mathbf n$.
 
 \begin{proposition}[The unbroken $U(1)$ acts as a complex structure]\label{prop:J}\ver\
 If $|\mathbf n|=1$ and $\mathbf n\cdot\mathbf v=0$, then $\mathbf n\cdot(\mathbf n\times\mathbf v)=0$, $|\mathbf n\times\mathbf v|^2=|\mathbf v|^2$, and $\mathbf n\times(\mathbf n\times\mathbf v)=-\mathbf v$.
 \end{proposition}
+\begin{proof}
+A triple product with a repeated vector vanishes. Lagrange's identity gives $|\mathbf n\times\mathbf v|^2=|\mathbf n|^2|\mathbf v|^2-(\mathbf n\cdot\mathbf v)^2=|\mathbf v|^2$. The ``BAC--CAB'' rule gives $\mathbf n\times(\mathbf n\times\mathbf v)=\mathbf n(\mathbf n\cdot\mathbf v)-\mathbf v(\mathbf n\cdot\mathbf n)=-\mathbf v$.
+\end{proof}
+
 
 So $J$ is a rotation by $90^\circ$ in the plane $\mathbf n^\perp$, i.e.\ a complex structure. For the hedgehog $\mathbf n(\mathbf x)=\mathbf x$ on the unit sphere, $\mathbf n^\perp$ is the tangent plane $T_{\mathbf x}S^2$, and the components of an $\su(2)$ field orthogonal to $\mathbf n$, the charged $W$ bosons of the broken theory, become sections of the tangent bundle. This is why $|N|=2$ is the natural charge of a hedgehog configuration.
 
@@ -55,6 +79,10 @@ Let $\mathbf A_\mu$ be an $\su(2)$ gauge field in the adjoint notation, with cov
 \begin{proposition}[Stabiliser and decomposition]\label{prop:stab}\ver\
 For $|\mathbf n|=1$: every vector decomposes as $\mathbf F=(\mathbf F\cdot\mathbf n)\mathbf n+\mathbf n\times(\mathbf F\times\mathbf n)$; $\mathbf F\times\mathbf n=0$ implies $\mathbf F\parallel\mathbf n$; an infinitesimal rotation $\bm\omega$ fixes $\mathbf n$ if and only if $\bm\omega=(\bm\omega\cdot\mathbf n)\mathbf n$; and two such generators commute. The stabiliser of $\mathbf n$ is the Abelian $\mathfrak u(1)$.
 \end{proposition}
+\begin{proof}
+By BAC--CAB, $\mathbf n\times(\mathbf F\times\mathbf n)=\mathbf F(\mathbf n\cdot\mathbf n)-\mathbf n(\mathbf n\cdot\mathbf F)=\mathbf F-(\mathbf F\cdot\mathbf n)\mathbf n$, which is the decomposition. If $\mathbf F\times\mathbf n=0$ the second term vanishes and $\mathbf F=(\mathbf F\cdot\mathbf n)\mathbf n$. An infinitesimal rotation $\bm\omega$ acts by $\mathbf n\mapsto\bm\omega\times\mathbf n$, so it fixes $\mathbf n$ iff $\bm\omega\times\mathbf n=0$, iff $\bm\omega\parallel\mathbf n$. The bracket of two generators is their cross product, and $(\lambda\mathbf n)\times(\mu\mathbf n)=0$.
+\end{proof}
+
 
 \begin{theorem}[Abelian projection and 't Hooft's identity]\label{thm:thooft}\ver\
 Assume the derivatives commute and $g$ is constant.
@@ -67,6 +95,32 @@ g\,\mathbf n\cdot\mathbf F_{\mu\nu}-\mathbf n\cdot(D_\mu\mathbf n\times D_\nu\ma
 \]
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+(i) Expanding,
+\[
+D_\mu D_\nu\mathbf n=\partial_\mu\partial_\nu\mathbf n+g\,\partial_\mu\mathbf A_\nu\times\mathbf n+g\,\mathbf A_\nu\times\partial_\mu\mathbf n+g\,\mathbf A_\mu\times\partial_\nu\mathbf n+g^2\mathbf A_\mu\times(\mathbf A_\nu\times\mathbf n).
+\]
+In $D_\mu D_\nu\mathbf n-D_\nu D_\mu\mathbf n$ the first term cancels (derivatives commute) and so does the symmetric pair $g\mathbf A_\nu\times\partial_\mu\mathbf n+g\mathbf A_\mu\times\partial_\nu\mathbf n$. By the Jacobi identity, $\mathbf A_\mu\times(\mathbf A_\nu\times\mathbf n)-\mathbf A_\nu\times(\mathbf A_\mu\times\mathbf n)=(\mathbf A_\mu\times\mathbf A_\nu)\times\mathbf n$. What remains is $g\mathbf F_{\mu\nu}\times\mathbf n$. Also $\mathbf n\cdot\partial_\mu\mathbf n=\frac12\partial_\mu(\mathbf n\cdot\mathbf n)=0$.
+
+(ii) $D_\mu\mathbf n=0$ means $\partial_\mu\mathbf n=-g\mathbf A_\mu\times\mathbf n$, so by \cref{prop:stab}
+\[
+\mathbf n\times\partial_\mu\mathbf n=-g\,\mathbf n\times(\mathbf A_\mu\times\mathbf n)=-g\bigl(\mathbf A_\mu-(\mathbf A_\mu\cdot\mathbf n)\mathbf n\bigr),
+\]
+which rearranges to the formula for $g\mathbf A_\mu$. By (i), $g\mathbf F_{\mu\nu}\times\mathbf n=[D_\mu,D_\nu]\mathbf n=0$, so $\mathbf F_{\mu\nu}\parallel\mathbf n$ by \cref{prop:stab}.
+
+(iii) Expand both terms on the left. First,
+\[
+\mathbf n\cdot\mathbf F_{\mu\nu}=\partial_\mu(\mathbf n\cdot\mathbf A_\nu)-\partial_\mu\mathbf n\cdot\mathbf A_\nu-\partial_\nu(\mathbf n\cdot\mathbf A_\mu)+\partial_\nu\mathbf n\cdot\mathbf A_\mu+g\,\mathbf n\cdot(\mathbf A_\mu\times\mathbf A_\nu).
+\]
+Second, with $D_\mu\mathbf n=\partial_\mu\mathbf n+g\mathbf A_\mu\times\mathbf n$, the product $\mathbf n\cdot(D_\mu\mathbf n\times D_\nu\mathbf n)$ has four terms. Using $\mathbf n\cdot\partial\mathbf n=0$ and BAC--CAB:
+\begin{align*}
+\mathbf n\cdot\bigl(\partial_\mu\mathbf n\times(\mathbf A_\nu\times\mathbf n)\bigr)&=-\partial_\mu\mathbf n\cdot\mathbf A_\nu, &
+\mathbf n\cdot\bigl((\mathbf A_\mu\times\mathbf n)\times\partial_\nu\mathbf n\bigr)&=\partial_\nu\mathbf n\cdot\mathbf A_\mu,\\
+\mathbf n\cdot\bigl((\mathbf A_\mu\times\mathbf n)\times(\mathbf A_\nu\times\mathbf n)\bigr)&=\mathbf n\cdot(\mathbf A_\mu\times\mathbf A_\nu).
+\end{align*}
+So $\mathbf n\cdot(D_\mu\mathbf n\times D_\nu\mathbf n)=\mathbf n\cdot(\partial_\mu\mathbf n\times\partial_\nu\mathbf n)-g\,\partial_\mu\mathbf n\cdot\mathbf A_\nu+g\,\partial_\nu\mathbf n\cdot\mathbf A_\mu+g^2\mathbf n\cdot(\mathbf A_\mu\times\mathbf A_\nu)$. Subtracting this from $g\,\mathbf n\cdot\mathbf F_{\mu\nu}$, all terms containing $\mathbf A$ without a derivative cancel, leaving the right-hand side.
+\end{proof}
+
 
 The left side of (iii) is 't Hooft's gauge-invariant electromagnetic field strength. The right side is a Maxwell field $\partial_\mu a_\nu-\partial_\nu a_\mu$ plus a term that depends only on $\mathbf n$, whose flux through a sphere counts how many times $\mathbf n$ wraps it: the magnetic charge is topological.
 
@@ -81,6 +135,10 @@ with multiplicity $2j+1$ \cite{KazamaYangGoldhaber1977}.
 \begin{proposition}[Zero modes and the gap]\label{prop:monopolespec}\ver\
 At $j=|q|-\frac12$ the value $(j+\frac12)^2-q^2$ vanishes and the multiplicity is $2j+1=2|q|$. For $j\ge|q|+\frac12$ it is strictly positive.
 \end{proposition}
+\begin{proof}
+At $j=|q|-\frac12$, $(j+\frac12)^2=q^2$ and $2j+1=2|q|$. For $j\ge|q|+\frac12$, $(j+\frac12)^2\ge(|q|+1)^2>q^2$.
+\end{proof}
+
 
 The zero modes can be written down. After separating the azimuthal dependence $e^{\ii m\phi}$, a zero mode satisfies a first-order equation $u'=V(\theta)u$ with $V=(m+q\cos\theta)/\sin\theta$, and the other chirality satisfies $v'=-Vv$.
 
@@ -96,6 +154,22 @@ The zero modes can be written down. After separating the azimuthal dependence $e
 \item Counting: for integer $q=n$ the admissible $m$ are the half-integers $k+\frac12$ with $-n\le k<n$, which are $2n$ in number; for $q=n+\frac12$ they are the integers $-n\le m\le n$, which are $2n+1$. In both cases the count is $2q$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+(i) Take the logarithmic derivative. Since $\frac{\dd}{\dd\theta}\log\tan\frac\theta2=\frac{1}{2\sin\frac\theta2\cos\frac\theta2}=\frac1{\sin\theta}$ and $\frac{\dd}{\dd\theta}\log\sin\theta=\frac{\cos\theta}{\sin\theta}$,
+\[
+\frac{u'}u=\frac m{\sin\theta}+\frac{q\cos\theta}{\sin\theta}=\frac{m+q\cos\theta}{\sin\theta}.
+\]
+For $v=1/u$, $v'/v=-u'/u$.
+
+(ii) On $(0,\frac\pi2]$ we have $\frac\theta2\le\tan\frac\theta2\le\theta$ and $\frac{2\theta}\pi\le\sin\theta\le\theta$, so $u^2=\tan^{2m}\frac\theta2\,\sin^{2q}\theta$ lies between constant multiples of $\theta^{2m}\theta^{2q}$. Near $\pi$ put $\epsilon=\pi-\theta$: $\tan\frac\theta2=\cot\frac\epsilon2$ behaves like $2/\epsilon$ and $\sin\theta=\sin\epsilon$ like $\epsilon$, so $u^2$ behaves like $\epsilon^{-2m}\epsilon^{2q}$. Finally $\int_0^1\theta^a\,\dd\theta<\infty$ iff $a>-1$.
+
+(iii) By (ii), $u\in L^2$ near $0$ iff $2(m+q)>-1$, and near $\pi$ iff $2(q-m)>-1$. Together: $-q-\frac12<m<q+\frac12$.
+
+(iv) For $v$ the exponents change sign: we need $-2(m+q)>-1$ and $-2(q-m)>-1$, i.e.\ $q-\frac12<m<\frac12-q$. For $q\ge\frac12$, $q-\frac12\ge\frac12-q$, so no $m$ qualifies.
+
+(v) For $q=n$, write $m=k+\frac12$: $-n-\frac12<k+\frac12<n+\frac12$ gives $-n-1<k<n$, i.e.\ $k=-n,\dots,n-1$, which is $2n$ values. For $q=n+\frac12$, integer $m$ with $|m|<n+1$ are $-n,\dots,n$, which is $2n+1$ values.
+\end{proof}
+
 
 The count $2q$ of zero modes, all of one chirality, is the index of the twisted Dirac operator, and it equals the Chern number $c_1=2q$ of \cref{thm:dirac}. This is the simplest instance of the Atiyah--Singer index theorem \cite{AtiyahSinger}, and here every step is elementary.
 
@@ -104,6 +178,10 @@ Two special cases deserve mention. Since $\chi(S^2)=2$, the index $\chi/2=1$. An
 \begin{proposition}\label{prop:onezeromode}\ver\
 $\chi(S^2)/2=1$, and twisting by half the spin connection gives $q=\frac12$ with $2q=1$ zero mode.
 \end{proposition}
+\begin{proof}
+$\chi(S^2)=2$ by \cref{thm:tangent}. The spin connection is the connection on $TS^2$, which has $c_1=2$, i.e.\ charge $q=1$ in the normalisation $c_1=2q$; half of it has $q=\frac12$, and \cref{thm:zeromodes}(v) gives $2q=1$ zero mode.
+\end{proof}
+
 
 \section{Singular endpoints of radial Dirac systems}
 
@@ -122,6 +200,19 @@ Let $0<s\le\delta\le1$ and $\kappa\ge0$, and put $x=s^\kappa F$, $y=s^\kappa G$.
 \item If $\kappa\ge\frac12$, this solution is not square integrable: $\int_\varepsilon^\delta F^2\,\dd s\to\infty$ as $\varepsilon\to0^+$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+(i) $F=s^{-\kappa}x$ gives $F'+\frac\kappa sF=s^{-\kappa}x'$, so the first equation reads $s^{-\kappa}x'=p\,s^{-\kappa}y$. Similarly $G=s^{-\kappa}y$ gives $-G'+\frac\kappa sG=s^{-\kappa}\bigl(\frac{2\kappa}sy-y'\bigr)$, and the second equation becomes $y'=\frac{2\kappa}sy-qx$.
+
+(ii) $N'=2xx'+2yy'=2pxy-2qxy+\frac{4\kappa}sy^2\ge-2(|p|+|q|)|xy|\ge-2B\,N$, using $\kappa\ge0$ and $2|xy|\le x^2+y^2$. Hence $\frac{\dd}{\dd s}\bigl(e^{2Bs}N\bigr)=e^{2Bs}(N'+2BN)\ge0$, so for $s\le\delta$, $e^{2Bs}N(s)\le e^{2B\delta}N(\delta)$. Then $|F|=s^{-\kappa}|x|\le s^{-\kappa}\sqrt{N}$, and likewise for $G$.
+
+(iii) With $N(\delta)=1$ and $B\delta\le\frac18$, (ii) gives $|y|\le\sqrt N\le e^{B\delta}\le e^{1/8}$. Integrating $x'=py$ from $s$ to $\delta$,
+\[
+x(s)=1-\int_s^\delta p\,y\ \ge\ 1-B\delta\,e^{1/8}\ \ge\ 1-\tfrac{e^{1/8}}8>\tfrac34 .
+\]
+
+(iv) For $0<s\le1$ and $\kappa\ge\frac12$, $s^{-2\kappa}\ge s^{-1}$, so $\int_\varepsilon^\delta F^2\,\dd s\ge\frac9{16}\int_\varepsilon^\delta\frac{\dd s}s=\frac9{16}\log\frac\delta\varepsilon\to\infty$.
+\end{proof}
+
 
 By Weyl's alternative \ext\ \cite{Weidmann}, an endpoint at which some solution fails to be $L^2$ is in the limit-point case, so the Dirac operator is essentially self-adjoint there and no boundary condition has to be imposed. The existence of the solution with prescribed data at $\delta$ is the standard existence theorem for linear systems \ext.
 

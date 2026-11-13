@@ -34,6 +34,39 @@ G_{tx}&=\frac2R\Bigl(\frac{A_t}{A}R_x+\frac{N_x}{N}R_t-R_{tx}\Bigr),\\
 \end{align*}
 together with explicit expressions for $R_{tt},R_{xx},R_{\theta\theta},R_{\phi\phi},R_{tx}$, the scalar curvature and $G_{\theta\theta}=G_{\phi\phi}/\sin^2\theta$.
 \end{theorem}
+\begin{proof}
+\emph{Christoffel symbols.} For a diagonal metric the formula reduces to $\Gamma^a{}_{aa}=\partial_ag_{aa}/(2g_{aa})$, $\Gamma^a{}_{ab}=\partial_bg_{aa}/(2g_{aa})$ and $\Gamma^a{}_{bb}=-\partial_ag_{bb}/(2g_{aa})$ for $a\ne b$. With $g=\operatorname{diag}(-N^2,A^2,R^2,R^2\sin^2\theta)$ the non-zero symbols are
+\begin{align*}
+&\Gamma^t{}_{tt}=\tfrac{N_t}N,\quad \Gamma^t{}_{tx}=\tfrac{N_x}N,\quad \Gamma^t{}_{xx}=\tfrac{AA_t}{N^2},\\
+&\Gamma^x{}_{tt}=\tfrac{NN_x}{A^2},\quad \Gamma^x{}_{tx}=\tfrac{A_t}A,\quad \Gamma^x{}_{xx}=\tfrac{A_x}A,\\
+&\Gamma^t{}_{\theta\theta}=\tfrac{RR_t}{N^2},\quad \Gamma^x{}_{\theta\theta}=-\tfrac{RR_x}{A^2},\quad \Gamma^\theta{}_{t\theta}=\Gamma^\phi{}_{t\phi}=\tfrac{R_t}R,\\
+&\Gamma^\theta{}_{x\theta}=\Gamma^\phi{}_{x\phi}=\tfrac{R_x}R,\quad \Gamma^t{}_{\phi\phi}=\sin^2\theta\,\Gamma^t{}_{\theta\theta},\quad \Gamma^x{}_{\phi\phi}=\sin^2\theta\,\Gamma^x{}_{\theta\theta},\\
+&\Gamma^\theta{}_{\phi\phi}=-\sin\theta\cos\theta,\quad \Gamma^\phi{}_{\theta\phi}=\cot\theta .
+\end{align*}
+
+\emph{A covariant shortcut.} Inserting these symbols into the Ricci formula, and organising the result with the two-dimensional covariant derivative $\nabla$ of $h=-N^2\dd t^2+A^2\dd x^2$, gives the standard formulae for any metric $h_{ab}\dd x^a\dd x^b+R^2\dd\Omega^2$ \cite{MTW}:
+\[
+G_{ab}=-\frac2R\bigl(\nabla_a\nabla_bR-h_{ab}\Box R\bigr)-\frac{h_{ab}}{R^2}\bigl(1-(\nabla R)^2\bigr),\qquad
+G^\theta{}_\theta=G^\phi{}_\phi=\frac{\Box R}R-\frac12\,{}^{(2)}\!R .
+\]
+(One may check them on Schwarzschild, $h=-f\dd t^2+\dd r^2/f$ with $f=1-2M/r$: then $\Box r=f'$, $(\nabla r)^2=f$, ${}^{(2)}\!R=-f''$, and all components vanish.)
+
+\emph{The diagonal gauge.} With the symbols above,
+\[
+\begin{aligned}
+&\nabla_t\nabla_tR=R_{tt}-\tfrac{N_t}NR_t-\tfrac{NN_x}{A^2}R_x,\qquad \nabla_x\nabla_xR=R_{xx}-\tfrac{AA_t}{N^2}R_t-\tfrac{A_x}AR_x,\\
+&\nabla_t\nabla_xR=R_{tx}-\tfrac{N_x}NR_t-\tfrac{A_t}AR_x,
+\end{aligned}
+\]
+$\Box R=-N^{-2}\nabla_t\nabla_tR+A^{-2}\nabla_x\nabla_xR$ and $(\nabla R)^2=-R_t^2/N^2+R_x^2/A^2$. Then
+\[
+\nabla_t\nabla_tR+N^2\Box R=\frac{N^2}{A^2}\Bigl(R_{xx}-\frac{A_xR_x}A\Bigr)-\frac{A_tR_t}A,
+\]
+and $G_{tt}=-\frac2R(\nabla_t\nabla_tR+N^2\Box R)+\frac{N^2}{R^2}(1-(\nabla R)^2)$ gives the stated $G_{tt}/N^2$. Similarly $\nabla_x\nabla_xR-A^2\Box R=\frac{A^2}{N^2}(R_{tt}-\frac{N_t}NR_t)-\frac{N_x}NR_x$ gives $G_{xx}/A^2$, and $G_{tx}=-\frac2R\nabla_t\nabla_xR$ gives the mixed component.
+
+For the Schwarzschild check: $N=A^{-1}=\sqrt f$, $R=x$, no $t$-dependence. Then $G_{tx}=0$, and $G_{tt}/N^2=\frac{1-f}{x^2}+\frac{2A_x}{A^3x}=\frac{1-f}{x^2}-\frac{f'}x=\frac{2M}{x^3}-\frac{2M}{x^3}=0$; $G_{xx}$ vanishes in the same way.
+\end{proof}
+
 
 Two special cases are worth reading off at once. On a time-symmetric slice, where all $t$-derivatives vanish, $G_{tt}/N^2$ equals one half of the scalar curvature of the spatial metric $A^2\dd x^2+R^2\dd\Omega^2$. In proper-distance gauge $A=1$ this is
 \begin{equation}\label{eq:3R}
@@ -58,6 +91,18 @@ G_{\theta\theta}&=r^2\Bigl(\frac{\Omega_u\Omega_v}{\Omega^3}-\frac{\Omega_{uv}}{
 \end{align*}
 with the corresponding Christoffel symbols, Ricci components (including $R_{uv}=R_{vu}$) and scalar curvature.
 \end{theorem}
+\begin{proof}
+For $h=-2\Omega\,\dd u\,\dd v$ the only non-zero two-dimensional Christoffel symbols are $\Gamma^u{}_{uu}=\Omega_u/\Omega$ and $\Gamma^v{}_{vv}=\Omega_v/\Omega$, and $h^{uv}=-1/\Omega$. Hence
+\[
+\nabla_u\nabla_ur=r_{uu}-\frac{\Omega_u}\Omega r_u,\qquad \nabla_u\nabla_vr=r_{uv},\qquad \Box r=2h^{uv}r_{uv}=-\frac{2r_{uv}}\Omega,\qquad (\nabla r)^2=-\frac{2r_ur_v}\Omega .
+\]
+The formulae of the previous proof give $G_{uu}=-\frac2r\nabla_u\nabla_ur$, the same for $v$, and
+\[
+G_{uv}=-\frac2r\bigl(r_{uv}-(-\Omega)\Box r\bigr)+\frac\Omega{r^2}\bigl(1-(\nabla r)^2\bigr)=\frac{2r_{uv}}r+\frac\Omega{r^2}+\frac{2r_ur_v}{r^2}.
+\]
+For the angular component we need the curvature of $h$. Writing $\Omega=e^{2\sigma}$, $h$ is conformal to the flat metric $-2\,\dd u\,\dd v$, and ${}^{(2)}\!R=4e^{-2\sigma}\sigma_{uv}=\frac2\Omega\bigl(\frac{\Omega_{uv}}\Omega-\frac{\Omega_u\Omega_v}{\Omega^2}\bigr)$. Then $G_{\theta\theta}=r^2\bigl(\Box r/r-\frac12{}^{(2)}\!R\bigr)$ is the stated expression.
+\end{proof}
+
 
 The equations $G_{uu}=8\pi GT_{uu}$ and $G_{vv}=8\pi GT_{vv}$ are the Raychaudhuri equations for the two families of radial null geodesics; with $\Omega=e^{2\sigma}$ they read $r_{uu}-2\sigma_ur_u=-4\pi Gr\,T_{uu}$. They play the central role in the analysis of null junctions in Chapter~17 and of collapse in Chapter~20.
 
@@ -72,6 +117,16 @@ With Christoffel symbols computed from $\dd s^2+r^2\dd\Omega^2$:
 \item $K^2-K^i{}_jK^j{}_i=4ab+2b^2$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+(i) For $\dd s^2+r^2\dd\Omega^2$ the relevant Christoffel symbols are $\Gamma^\theta{}_{s\theta}=\Gamma^\phi{}_{s\phi}=r'/r$, $\Gamma^s{}_{\theta\theta}=-rr'$, $\Gamma^s{}_{\phi\phi}=-rr'\sin^2\theta$ and $\Gamma^\phi{}_{\theta\phi}=\cot\theta$. For the $s$-component,
+\[
+\nabla_jK^j{}_s=\partial_sK^s{}_s+\Gamma^j{}_{js}K^s{}_s-\Gamma^k{}_{js}K^j{}_k=a'+\frac{2r'}ra-\frac{2r'}rb,
+\]
+and $\partial_sK=a'+2b'$; subtracting gives $2\frac{r'}r(a-b)-2b'$. For the $\theta$-component, $\partial_\theta K^\theta{}_\theta=0$, and the two Christoffel terms are both $\cot\theta\,b$ and cancel; $\partial_\theta K=0$. The $\phi$-component is similar.
+
+(ii) $K=a+2b$ and $K^i{}_jK^j{}_i=a^2+2b^2$, so $K^2-K^i{}_jK^j{}_i=(a+2b)^2-a^2-2b^2=4ab+2b^2$.
+\end{proof}
+
 
 So in spherical symmetry the momentum constraint is the single equation $2(r'/r)(a-b)-2b'=8\pi G\,j_s$, and the Hamiltonian constraint is ${}^{(3)}R+4ab+2b^2=16\pi G\rho$ with ${}^{(3)}R$ from \eqref{eq:3R}.
 

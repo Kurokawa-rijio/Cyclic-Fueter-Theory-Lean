@@ -35,6 +35,16 @@ Because the proofs below are purely algebraic, they hold over any commutative al
 \item $R_{njkm}=-R_{jnkm}$ and $R_{njkm}=-R_{njmk}$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+(i) Axiom (1) with $j=i$ gives $\Gamma_{iik}=-\Gamma_{iik}$, so $2\Gamma_{iik}=0$, and $2$ is invertible.
+
+(ii) Exchanging $k$ and $m$ in the formula for $R_{njkm}$ changes the sign of each group: $e_k(\Gamma_{njm})-e_m(\Gamma_{njk})$, the quadratic sum, and $c_{km}{}^x=-c_{mk}{}^x$. For the first pair, use axiom (1) on every $\Gamma$. The derivative terms change sign. The quadratic terms become
+\[
+\Gamma_{xnm}\Gamma_{jxk}-\Gamma_{xnk}\Gamma_{jxm}=(-\Gamma_{nxm})(-\Gamma_{xjk})-(-\Gamma_{nxk})(-\Gamma_{xjm})=-\bigl(\Gamma_{xjm}\Gamma_{nxk}-\Gamma_{xjk}\Gamma_{nxm}\bigr),
+\]
+and the last term changes sign because $\Gamma_{jnx}=-\Gamma_{njx}$.
+\end{proof}
+
 
 The antisymmetry in the last pair is built into the definition; the antisymmetry in the first pair is metric compatibility. We have not needed the first Bianchi identity, and in three dimensions we shall not need it for the next result either.
 
@@ -49,6 +59,18 @@ K_{km}=T_{kmkm}=\lambda_k+\lambda_m-\frac{R}{2},\qquad R=\lambda_0+\lambda_1+\la
 \]
 and all components with three distinct indices vanish.
 \end{theorem}
+\begin{proof}
+By the antisymmetries, $T_{njkm}=0$ whenever $n=j$ or $k=m$. So a non-zero component has $\{n,j\}$ and $\{k,m\}$ both among the three pairs $\{0,1\},\{0,2\},\{1,2\}$.
+
+\emph{Equal pairs.} Put $K_{nj}=T_{njnj}$; by the two antisymmetries $T_{jnjn}=K_{nj}$ and $T_{njjn}=-K_{nj}$. The diagonal Ricci entries are
+\[
+\lambda_0=K_{01}+K_{02},\qquad \lambda_1=K_{01}+K_{12},\qquad \lambda_2=K_{02}+K_{12},
+\]
+so $R=2(K_{01}+K_{02}+K_{12})$ and, for example, $\lambda_0+\lambda_1-\frac R2=K_{01}$. The same works for the other pairs.
+
+\emph{Different pairs.} Two different pairs share exactly one index; for instance $T_{0102}$. The off-diagonal Ricci entry $\mathrm{Ric}_{12}=\sum_nT_{n1n2}$ has only the term $n=0$ (for $n=1,2$ an antisymmetric pair repeats an index), so $T_{0102}=\mathrm{Ric}_{12}=0$. In the same way every component with three distinct indices equals $\pm$ an off-diagonal Ricci entry, which vanishes by hypothesis.
+\end{proof}
+
 
 This is the frame version of the statement that the Weyl tensor vanishes identically in three dimensions, so that $R_{ijkl}$ is a linear combination of $\mathrm{Ric}$ and $R$ with the metric. It has two uses. Physically, the Einstein equations in three dimensions have no local degrees of freedom. Technically, a three-dimensional geometry is determined pointwise by its Ricci eigenvalues, which reduces the classification of Chapter~14 to a question about three functions.
 

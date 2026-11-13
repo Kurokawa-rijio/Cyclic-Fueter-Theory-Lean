@@ -27,6 +27,17 @@ which is often the quickest way to remember how quaternions multiply.
 \begin{theorem}[Hamilton's relations]\label{thm:hamilton}\ver\
 In the quaternion algebra over $\RR$ the elements $i=(0,1,0,0)$, $j=(0,0,1,0)$, $k=(0,0,0,1)$ satisfy $i^2=j^2=k^2=-1$ and $ijk=-1$.
 \end{theorem}
+\begin{proof}
+Write $p=a+b\,i+c\,j+d\,k$ and $q=e+f\,i+g\,j+h\,k$. The product in the quaternion algebra is defined componentwise by
+\[
+\begin{aligned}
+pq={}&(ae-bf-cg-dh)+(af+be+ch-dg)\,i\\
+&+(ag-bh+ce+df)\,j+(ah+bg-cf+de)\,k .
+\end{aligned}
+\]
+For $p=q=i$ we have $b=f=1$ and all other components $0$, so only the term $-bf=-1$ survives: $i^2=-1$. In the same way $j^2=-cg=-1$ and $k^2=-dh=-1$. For $p=i$, $q=j$ ($b=1$, $g=1$) the only non-zero term is $bg$ in the $k$-component, so $ij=k$. Then $ijk=(ij)k=k\cdot k=-1$.
+\end{proof}
+
 
 The \emph{conjugate} of $q$ is $\qbar q=a-b\,i-c\,j-d\,k$. Conjugation reverses products, $\qbar{pq}=\qbar q\,\qbar p$, and the key identity is
 \begin{equation}\label{eq:qqbar}
@@ -38,8 +49,23 @@ Equation~\eqref{eq:qqbar} is the four-dimensional analogue of $z\bar z=|z|^2$: t
 For all $p,q\in\HH$, $|pq|^2=|p|^2\,|q|^2$.
 \end{theorem}
 
-\begin{proof}[Idea of proof]
-$|pq|^2=pq\,\qbar{pq}=p\,(q\qbar q)\,\qbar p=|q|^2\,p\qbar p=|p|^2|q|^2$, using that $|q|^2$ is real and therefore central.
+\begin{proof}
+Write $q=a+x$ with $a$ real and $x$ pure. By \eqref{eq:pureproduct}, $x^2=-x\cdot x+x\times x=-|x|^2$, hence
+\[
+q\qbar q=(a+x)(a-x)=a^2-ax+xa-x^2=a^2+|x|^2=|q|^2,
+\]
+because the real number $a$ commutes with $x$. This proves \eqref{eq:qqbar}.
+
+Next, conjugation reverses products. It is real-linear, so it suffices to check $\qbar{pq}=\qbar q\,\qbar p$ for $p=a+x$, $q=b+y$. The real parts commute with everything, and for the pure parts \eqref{eq:pureproduct} gives
+\[
+\qbar{xy}=\overline{-x\cdot y+x\times y}=-x\cdot y-x\times y=-y\cdot x+y\times x=yx=(-y)(-x)=\qbar y\,\qbar x .
+\]
+Expanding $(a+x)(b+y)$ and conjugating term by term then gives $\qbar{pq}=\qbar q\,\qbar p$.
+
+Finally, using associativity and the fact that the real number $|q|^2$ commutes with $p$,
+\[
+|pq|^2=(pq)\,\qbar{pq}=p\,q\,\qbar q\,\qbar p=p\,|q|^2\,\qbar p=|q|^2\,p\qbar p=|p|^2|q|^2 .\qedhere
+\]
 \end{proof}
 
 Written out in components, \cref{thm:normmul} is Euler's four-square identity: a product of two sums of four squares is again a sum of four squares. A consequence that we shall use constantly is that the unit quaternions
@@ -66,6 +92,28 @@ The map $\rho:\HH\to\Mat_2(\CC)$ of \eqref{eq:rho} has the following properties.
 \item If $|q|=1$ then $\rho(q)\rho(q)^\dagger=\mathbf 1$ and $\det\rho(q)=1$, that is, $\rho(q)\in\SU(2)$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Write $\rho(q)=a\mathbf 1+b\,(\ii\sigma_3)+c\,(\ii\sigma_2)+d\,(\ii\sigma_1)$, which is \eqref{eq:rho} written out.
+
+(i) $\rho$ is real-linear, so it suffices to check products of basis elements. The images $I=\ii\sigma_3$, $J=\ii\sigma_2$, $K=\ii\sigma_1$ satisfy $I^2=-\sigma_3^2=-\mathbf 1$, and likewise $J^2=K^2=-\mathbf 1$. Moreover $\sigma_3\sigma_2=-\ii\sigma_1$, so
+\[
+IJK=\ii^3\sigma_3\sigma_2\sigma_1=-\ii\,(-\ii\sigma_1)\sigma_1=-\mathbf 1 .
+\]
+So $I,J,K$ obey Hamilton's relations, the products of basis elements are preserved, and by bilinearity $\rho(pq)=\rho(p)\rho(q)$. Clearly $\rho(1)=\mathbf 1$.
+
+(ii) If $\rho(q)=0$ then $a+b\ii=0$ and $c+d\ii=0$, so $a=b=c=d=0$. Since $\rho$ is linear, $\rho(p)=\rho(q)$ implies $\rho(p-q)=0$, hence $p=q$.
+
+(iii) Taking the conjugate transpose of \eqref{eq:rho},
+\[
+\rho(q)^\dagger=\begin{pmatrix}a-b\ii&-c-d\ii\\ c-d\ii&a+b\ii\end{pmatrix},
+\]
+which is \eqref{eq:rho} with $b,c,d$ replaced by $-b,-c,-d$, i.e.\ $\rho(\qbar q)$.
+
+(iv) $\det\rho(q)=(a+b\ii)(a-b\ii)-(c+d\ii)(-c+d\ii)=(a^2+b^2)-(-c^2-d^2)=a^2+b^2+c^2+d^2$.
+
+(v) By (i), (iii) and \eqref{eq:qqbar}, $\rho(q)\rho(q)^\dagger=\rho(q)\rho(\qbar q)=\rho(q\qbar q)=|q|^2\mathbf 1$, which is $\mathbf 1$ for $|q|=1$; and $\det\rho(q)=|q|^2=1$ by (iv).
+\end{proof}
+
 
 Property (iv) is the matrix version of \eqref{eq:qqbar}. Property (v) together with (i) and (ii) identifies the group of unit quaternions with a subgroup of $\SU(2)$; since every element of $\SU(2)$ has the form $\begin{psmallmatrix}\alpha&\beta\\-\bar\beta&\bar\alpha\end{psmallmatrix}$ with $|\alpha|^2+|\beta|^2=1$, which is exactly $\rho$ of a unit quaternion, the subgroup is all of $\SU(2)$:
 \[
@@ -88,6 +136,14 @@ For all $q,x\in\HH$,
 \]
 In particular, for a unit quaternion $q$ the map $x\mapsto qx\qbar q$ sends pure quaternions to pure quaternions and preserves their length.
 \end{theorem}
+\begin{proof}
+For $u=u_0+\mathbf u$ and $v=v_0+\mathbf v$, \eqref{eq:pureproduct} gives $\operatorname{Re}(uv)=u_0v_0-\mathbf u\cdot\mathbf v$, which is symmetric in $u$ and $v$. Hence $\operatorname{Re}(uv)=\operatorname{Re}(vu)$. Applying this with $u=q$ and $v=x\qbar q$,
+\[
+\operatorname{Re}(q\,x\,\qbar q)=\operatorname{Re}(x\,\qbar q\,q)=\operatorname{Re}(x\,|q|^2)=|q|^2\operatorname{Re}x .
+\]
+For the norm, \cref{thm:normmul} applied twice gives $|qx\qbar q|^2=|q|^2|x|^2|\qbar q|^2=|q|^4|x|^2$, since $|\qbar q|=|q|$. If $|q|=1$ and $\operatorname{Re}x=0$, then $\operatorname{Re}(qx\qbar q)=0$ and $|qx\qbar q|=|x|$.
+\end{proof}
+
 
 So every unit quaternion gives an orthogonal transformation $R_q$ of $\RR^3$. The map $q\mapsto R_q$ is a homomorphism, and its kernel is $\{\pm1\}$, since only real quaternions commute with all of $i,j,k$. Writing $q=\cos(\theta/2)+\sin(\theta/2)\,\mathbf n$ with $\mathbf n$ a pure unit quaternion, $R_q$ is the rotation by the angle $\theta$ about the axis $\mathbf n$. This is the classical statement that $\SU(2)$ is the double cover of $\SO(3)$; the half angle $\theta/2$ is the reason spinors change sign under a rotation by $2\pi$.
 
@@ -132,6 +188,18 @@ By associativity $(ax)b=a(xb)$, so every $L_a$ commutes with every $R_b$. For a 
 \item Conversely, every antisymmetric real $4\times4$ matrix $M$ that commutes with $L_i$ and $L_j$ is of the form $R_b$ for a pure quaternion $b$, namely $b=M_{10}\,i+M_{20}\,j+M_{30}\,k$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Use the Euclidean inner product $\langle u,v\rangle=\operatorname{Re}(u\,\qbar v)$ on $\HH=\RR^4$.
+
+(i) For all $x,y$, $\langle xb,y\rangle=\operatorname{Re}(xb\,\qbar y)$ and $\langle x,y\qbar b\rangle=\operatorname{Re}(x\,\overline{y\qbar b})=\operatorname{Re}(x\,b\,\qbar y)$. So the transpose of $R_b$ is $R_{\qbar b}$. For pure $b$, $\qbar b=-b$ and therefore $R_b^{\mathsf T}=-R_b$. Associativity gives $L_aR_bx=a(xb)=(ax)b=R_bL_ax$ for every $a$, in particular for $a=i,j$.
+
+(ii) Since $M$ is antisymmetric, $M_{00}=0$, so the first column of $M$ is $Me_0=(0,M_{10},M_{20},M_{30})$, which is the pure quaternion $b$ of the statement. Put $N=M-R_b$. Then $N$ commutes with $L_i$ and $L_j$, hence also with $L_k=L_iL_j$ and with $L_1=\mathbf 1$, and so with every $L_a$ by linearity. Moreover $R_be_0=1\cdot b=b=Me_0$, so $Ne_0=0$. For any quaternion $a$, $a=L_ae_0$, hence
+\[
+N a=N L_a e_0=L_a N e_0=0 .
+\]
+So $N=0$, i.e.\ $M=R_b$.
+\end{proof}
+
 
 Because $L_iL_j=L_k$, commuting with $L_i$ and $L_j$ is the same as commuting with all left multiplications. The theorem is the infinitesimal form of the classical isomorphism
 \[
