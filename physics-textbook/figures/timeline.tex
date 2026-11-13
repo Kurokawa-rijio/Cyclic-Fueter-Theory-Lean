@@ -1,0 +1,15 @@
+% Timeline of the discovery
+\begin{tikzpicture}[x=1mm,y=1mm,font=\scriptsize]
+  \draw[black!50,line width=0.8pt] (0,0) -- (119,0);
+  \foreach \yr in {1750,1800,1850,1900} {\draw[black!50] ({(\yr-1742)*0.70},-0.9) -- ({(\yr-1742)*0.70},0.9);}
+  \node[anchor=east,text=quiet] at (0,0) {1742};
+  \node[anchor=west,text=quiet] at (119,0) {1912};
+  \newcommand{\ev}[5]{\fill[#3] ({(#1-1742)*0.70},0) circle (1.1); \draw[#3] ({(#1-1742)*0.70},0) -- ({(#1-1742)*0.70},#4); \node[anchor=#5,align=center,font=\scriptsize,inner sep=1pt] at ({(#1-1742)*0.70},#4) {#2};}
+  \ev{1748}{Euler 1748:\\four-square\\identity}{uone}{5}{south west}
+  \ev{1799}{Wessel 1799:\\complex numbers\\as arrows}{uone}{5}{south}
+  \ev{1806}{Argand 1806}{uone}{-5}{north}
+  \ev{1843}{Hamilton 1843:\\$i^2=j^2=k^2=ijk=-1$}{ui}{19}{south}
+  \ev{1845}{Cayley 1845:\\octonions}{uk}{-5}{north}
+  \ev{1878}{Frobenius 1878:\\only $\RR,\CC,\HH$}{uj}{5}{south}
+  \ev{1898}{Hurwitz 1898:\\dimensions\\1, 2, 4, 8}{uj}{19}{south}
+\end{tikzpicture}

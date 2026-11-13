@@ -1,0 +1,234 @@
+\chapter{In Search of Three-Dimensional Numbers}
+\label{ch:three}
+
+\begin{question}
+Complex numbers turn the rotations of the plane into multiplication. Is there a number system that does the same for three-dimensional space? Concretely: can the points $a+bi+cj$ of space be multiplied so that lengths multiply, $|pq|=|p|\,|q|$?
+\end{question}
+
+\section{Why ask it}
+
+Around 1800 complex numbers acquired a picture. Wessel (1799) and Argand (1806) drew $z=x+iy$ as an arrow in the plane, and the picture explained the rule of multiplication: writing $z=r_1e^{i\theta_1}$ and $w=r_2e^{i\theta_2}$,
+\[
+  zw=r_1r_2\,e^{i(\theta_1+\theta_2)} ,
+\]
+so lengths multiply and angles add (\cref{fig:three-complex}). Multiplying by a number of length one is a rotation. A whole branch of geometry, the rotations of the plane, became arithmetic.
+
+\begin{figure}[htbp]
+  \centering\input{figures/complexmult}
+  \caption{Multiplying complex numbers multiplies their lengths and adds their angles.}
+  \label{fig:three-complex}
+\end{figure}
+
+Physics happens in three dimensions. Rigid bodies turn about axes that point anywhere in space, and the composition of two such turns is again a turn about some new axis. A number system for space, with a multiplication that multiplies lengths, would do for these rotations what complex numbers do for the plane. William Rowan Hamilton in Dublin searched for such numbers for many years. He took points of space to be \emph{triples} $a+bi+cj$, with two imaginary units $i$ and $j$, and he held on to one test, which he called the law of the moduli: the length of a product must be the product of the lengths. \Cref{fig:three-timeline} places the story in time.
+
+\begin{figure}[htbp]
+  \centering\input{figures/timeline}
+  \caption{From complex numbers to the classification of number systems.}
+  \label{fig:three-timeline}
+\end{figure}
+
+\section{A first computation: why triples fail}
+
+Here is a quick experiment with whole numbers. Both $3=1^2+1^2+1^2$ and $5=2^2+1^2+0^2$ are sums of three squares. Suppose triples could be multiplied by a formula whose coefficients are integers and which obeyed the law of the moduli. Multiplying $1+i+j$ by $2+i$ would give a triple of integers whose squared length is $3\cdot5=15$. So $15$ would be a sum of three squares of integers.
+
+It is not. The squares not exceeding $15$ are $0,1,4,9$. If $9$ is used, the other two squares must add up to $6$, and no two of $0,1,4$ do. If $9$ is not used, three squares from $0,1,4$ add up to at most $12$. So no such formula with integer coefficients exists.
+
+The experiment is suggestive but limited, because a multiplication rule could have non-integer coefficients. The following argument closes the gap for every rule that behaves like ordinary multiplication: it is associative and has a unit, and it contains the complex numbers.
+
+\begin{toolbox}{two facts about determinants}
+For $n\times n$ real matrices, $\det(AB)=\det A\,\det B$, and $\det(-I_n)=(-1)^n$ because $-I_n$ is diagonal with $n$ entries equal to $-1$.
+\end{toolbox}
+
+\begin{theorem}[no square root of $-1$ in odd dimension]\label{thm:three-odd}
+Let $A$ be a real vector space of finite dimension $n$ with an associative bilinear multiplication and a unit $1$. If $A$ contains an element $i$ with $i^2=-1$, then $n$ is even.
+\end{theorem}
+
+\begin{proof}
+Let $L_i\colon A\to A$ be left multiplication by $i$, $L_i(x)=ix$. It is linear because the multiplication is bilinear. By associativity,
+\[
+  L_i\bigl(L_i(x)\bigr)=i(ix)=(ii)x=-x\qquad\text{for every }x\in A ,
+\]
+so $L_i^2=-I_n$. Taking determinants, $(\det L_i)^2=\det(-I_n)=(-1)^n$. The left-hand side is the square of a real number, hence not negative. So $(-1)^n=+1$ and $n$ is even.
+\end{proof}
+
+\begin{corollary}\label{cor:three-triples}
+There is no associative multiplication with unit on the triples $a+bi+cj$ which contains the complex numbers, that is, in which $i^2=-1$.
+\end{corollary}
+
+\begin{proof}
+The triples form a real vector space of dimension $3$, which is odd.
+\end{proof}
+
+\Cref{fig:three-pairing} shows what goes wrong. Multiplication by $i$ turns the plane spanned by $1$ and $i$ through a right angle: $1\mapsto i\mapsto-1$. A map whose square is $-1$ must do this to every vector, so it has to pair up the axes. With three axes one is left over: the product $ij$ has nowhere to go. With four axes the pairing works.
+
+\begin{figure}[htbp]
+  \centering\scalebox{1.25}{\input{figures/pairing}}
+  \caption{Multiplication by $i$ must turn every vector through a right angle, so it pairs the axes. Three axes cannot be paired; four can.}
+  \label{fig:three-pairing}
+\end{figure}
+
+\section{The leap to four: Hamilton's rule}
+
+On 16 October 1843, walking with his wife along the Royal Canal in Dublin, Hamilton saw the way out: the product $ij$ need not be a triple at all. It could be a new, fourth unit $k$. He cut the rule into the stone of Broom Bridge, which he passed on the walk:
+\begin{equation}\label{eq:three-rule}
+  i^2=j^2=k^2=ijk=-1 .
+\end{equation}
+Everything else follows from this line together with associativity.
+
+\begin{proposition}\label{prop:three-six}
+If the multiplication is associative and real numbers commute with $i,j,k$, then \eqref{eq:three-rule} implies
+\[
+  ij=k,\quad jk=i,\quad ki=j,\qquad ji=-k,\quad kj=-i,\quad ik=-j .
+\]
+\end{proposition}
+
+\begin{proof}
+Multiply $ijk=-1$ on the right by $k$. Since $k^2=-1$, the left side becomes $ij(k^2)=-ij$, and the right side becomes $-k$; so $ij=k$.
+Multiply $ijk=-1$ on the left by $i$: $(i^2)jk=-i$, so $-jk=-i$ and $jk=i$.
+Multiply $ij=k$ on the left by $i$: $i^2j=ik$, so $ik=-j$.
+Multiply $jk=i$ on the left by $j$: $j^2k=ji$, so $ji=-k$.
+Finally $ki=(ij)i=i(ji)=i(-k)=-ik=j$ and $kj=(ij)j=i(j^2)=-i$.
+\end{proof}
+
+The six products are easy to remember with \cref{fig:three-cycle}: going around the circle in the direction of the arrows gives a plus sign, going against them a minus sign. \Cref{tab:three-units} collects all sixteen products of units. It is the prototype of every multiplication table in this book.
+
+\begin{figure}[htbp]
+  \centering\input{figures/cycle}
+  \caption{The cyclic rule. Following the arrows gives the product with a plus sign, going against them gives a minus sign.}
+  \label{fig:three-cycle}
+\end{figure}
+
+\multable{units}{Hamilton's multiplication table. Row times column; the colour of a cell is the unit of the product. The table is not symmetric: $ij=k$ but $ji=-k$.}{tab:three-units}
+
+Two features of the table matter later. Its diagonal is $1,-1,-1,-1$, which is where the minus signs of \cref{tab:pro-qqbar,tab:pro-mink} come from. And it is antisymmetric off the diagonal among $i,j,k$, which is where the cancellations come from.
+
+\section{Quaternions and their product}
+
+\begin{definition}\label{def:three-H}
+A \emph{quaternion} is an expression $q=q_0+q_1i+q_2j+q_3k$ with real $q_0,\dots,q_3$. The set of quaternions is denoted $\HH$. The number $q_0=\Real q$ is the \emph{real part} of $q$, and $\vect q=q_1i+q_2j+q_3k$ is its \emph{vector part}, which we identify with the vector $(q_1,q_2,q_3)\in\RR^3$. A quaternion with $q_0=0$ is called \emph{pure}. Quaternions are added componentwise and multiplied by expanding, using \cref{tab:three-units} for the units and letting real numbers commute with everything.
+\end{definition}
+
+The product of $p=p_0+p_1i+p_2j+p_3k$ and $q=q_0+q_1i+q_2j+q_3k$ has sixteen terms, one for each cell of \cref{tab:three-pq}.
+
+\multable{pq}{The product of two general quaternions. The lines under the table are the four components of $pq$.}{tab:three-pq}
+
+\begin{theorem}[scalar--vector form of the product]\label{thm:three-sv}
+For $p=p_0+\vect p$ and $q=q_0+\vect q$,
+\begin{equation}\label{eq:three-sv}
+  pq=\bigl(p_0q_0-\vect p\cdot\vect q\bigr)+\bigl(p_0\vect q+q_0\vect p+\vect p\times\vect q\bigr).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Read the four lines under \cref{tab:three-pq}. The real line is $p_0q_0-p_1q_1-p_2q_2-p_3q_3=p_0q_0-\vect p\cdot\vect q$. The $i$ line is $p_0q_1+p_1q_0+(p_2q_3-p_3q_2)$, which is the first component of $p_0\vect q+q_0\vect p$ plus the first component of $\vect p\times\vect q$. The $j$ and $k$ lines are the second and third components in the same way.
+\end{proof}
+
+So the quaternion product contains both products of vector algebra: the dot product in its real part and the cross product in its vector part. (Historically the order was the reverse: vector algebra was cut out of Hamilton's quaternions later in the nineteenth century.) For pure quaternions the formula is short enough to remember.
+
+\begin{corollary}\label{cor:three-pure}
+For pure quaternions $u$ and $v$,
+\begin{equation}\label{eq:three-uv}
+  uv=-\,u\cdot v+u\times v .
+\end{equation}
+In particular $u^2=-|u|^2$, and $uv=-vu$ exactly when $u\perp v$.
+\end{corollary}
+
+\begin{proof}
+Put $p_0=q_0=0$ in \eqref{eq:three-sv}. For $v=u$ the cross product vanishes. Exchanging $u$ and $v$ keeps $u\cdot v$ and reverses $u\times v$, so $uv=-vu$ holds exactly when $u\cdot v=0$.
+\end{proof}
+
+\multable{uv}{The product of two pure quaternions: the diagonal gives $-u\cdot v$, the six off-diagonal cells give $u\times v$.}{tab:three-uv}
+
+\begin{figure}[htbp]
+  \centering\input{figures/crossproduct}
+  \caption{For pure quaternions, $uv=-u\cdot v+u\times v$: the real part measures how parallel $u$ and $v$ are, the vector part is perpendicular to both.}
+  \label{fig:three-cross}
+\end{figure}
+
+\begin{example}\label{ex:three-numeric}
+Let $p=1+i+j$ and $q=2+i$. \Cref{tab:three-numeric} multiplies them term by term, and adding the cells of each colour gives
+\[
+  (1+i+j)(2+i)=1+3i+2j-k .
+\]
+Theorem~\ref{thm:three-sv} gives the same answer: with $\vect p=(1,1,0)$ and $\vect q=(1,0,0)$, the real part is $1\cdot2-\vect p\cdot\vect q=2-1=1$, and the vector part is $1\cdot(1,0,0)+2\cdot(1,1,0)+(1,1,0)\times(1,0,0)=(1,0,0)+(2,2,0)+(0,0,-1)=(3,2,-1)$. We meet this product again in Chapter~2, where its length explains the failure of the experiment with $15$.
+\end{example}
+
+\multable{numeric}{A product of two particular quaternions, cell by cell.}{tab:three-numeric}
+
+\section{Associativity}
+
+Hamilton's rule was designed to be associative, but that has to be checked.
+
+\begin{toolbox}{two identities of vector algebra}
+For vectors $u,v,w\in\RR^3$:
+$u\cdot(v\times w)=(u\times v)\cdot w$ (the triple product), and
+$u\times(v\times w)=v\,(u\cdot w)-w\,(u\cdot v)$ (the ``BAC--CAB'' rule).
+\end{toolbox}
+
+\begin{theorem}\label{thm:three-assoc}
+The multiplication of quaternions is associative: $(pq)r=p(qr)$ for all $p,q,r\in\HH$.
+\end{theorem}
+
+\begin{proof}
+Both sides are linear in each of $p$, $q$ and $r$ separately. Writing each factor as a real part plus a vector part, it is enough to prove the identity when each factor is either a real number or a pure quaternion. If one factor is a real number $\lambda$, both sides equal $\lambda$ times the product of the other two factors, because real numbers commute with everything. So let $u$, $v$, $w$ be pure. By \eqref{eq:three-uv}, applied twice,
+\begin{align*}
+  (uv)w&=\bigl(-u\cdot v+u\times v\bigr)w=-(u\cdot v)\,w-(u\times v)\cdot w+(u\times v)\times w ,\\
+  u(vw)&=u\bigl(-v\cdot w+v\times w\bigr)=-(v\cdot w)\,u-u\cdot(v\times w)+u\times(v\times w).
+\end{align*}
+The real parts $-(u\times v)\cdot w$ and $-u\cdot(v\times w)$ agree by the triple product identity. For the vector parts, the BAC--CAB rule gives
+\begin{gather*}
+  (u\times v)\times w=-w\times(u\times v)=-u\,(w\cdot v)+v\,(w\cdot u),\\
+  u\times(v\times w)=v\,(u\cdot w)-w\,(u\cdot v).
+\end{gather*}
+So the vector part of $(uv)w$ is $-(u\cdot v)w-(v\cdot w)u+(u\cdot w)v$, and that of $u(vw)$ is $-(v\cdot w)u+(u\cdot w)v-(u\cdot v)w$. They are equal.
+\end{proof}
+
+\section{Order matters}
+
+\begin{proposition}\label{prop:three-comm}
+For all $p,q\in\HH$, $\;pq-qp=2\,\vect p\times\vect q$.
+\end{proposition}
+
+\begin{proof}
+In \eqref{eq:three-sv}, exchanging $p$ and $q$ changes only the sign of $\vect p\times\vect q$.
+\end{proof}
+
+\begin{corollary}\label{cor:three-centre}
+Two quaternions commute exactly when their vector parts are parallel (one of them may be zero). The only quaternions that commute with every quaternion are the real numbers.
+\end{corollary}
+
+\begin{proof}
+The first statement is \cref{prop:three-comm}, since $\vect p\times\vect q=0$ means the vectors are parallel. If $p$ commutes with $i$ and with $j$, then $\vect p$ is parallel to $(1,0,0)$ and to $(0,1,0)$, so $\vect p=0$.
+\end{proof}
+
+The commutator of two quaternions is twice the cross product of their vector parts. This small formula will return in Chapter~3, where it becomes the rule for composing small rotations, and in Part~VII, where the same rule governs the components of spin.
+
+\section{What Frobenius and Hurwitz settled}
+
+Two theorems of the late nineteenth century explain why Hamilton's search had to end in four dimensions. We state them without proof; Chapter~19 returns to them.
+
+\begin{itemize}[itemsep=0.3ex]
+\item \textbf{Frobenius (1878).} Every finite-dimensional real associative algebra in which every nonzero element has an inverse is isomorphic to $\RR$, $\CC$ or $\HH$.
+\item \textbf{Hurwitz (1898).} If $\RR^n$ carries a bilinear multiplication with a unit and $|xy|=|x|\,|y|$ for all $x,y$, then $n$ is $1$, $2$, $4$ or $8$. The case $n=8$ is the algebra of octonions, found by Graves in 1843 and by Cayley in 1845; it is not associative.
+\end{itemize}
+
+\Cref{thm:three-odd} is the simplest piece of these results: it already rules out every odd dimension for associative algebras that contain $\CC$.
+
+\begin{learned}
+Three-dimensional numbers that contain $\CC$ cannot be associative, because multiplication by $i$ would square to $-I_3$. Hamilton's rule $i^2=j^2=k^2=ijk=-1$ gives a four-dimensional associative algebra $\HH$ whose product contains both the dot product and the cross product. But Hamilton's real test was the law of the moduli. Does $|pq|=|p|\,|q|$ hold in $\HH$, and why does a fourth square rescue the experiment with $15$? That is the question of Chapter~2.
+\end{learned}
+
+\begin{exercises}
+\item Show that a sum of three squares of integers is never $\equiv7\pmod 8$. (The squares modulo $8$ are $0$, $1$ and $4$.) Deduce again that $15$ is not a sum of three squares.
+\item Using only \eqref{eq:three-rule} and associativity, compute $(i+j)^2$ and $(i+j)(i-j)$. \emph{Answer:} $-2$ and $-2k$.
+\item Write $L_i$, left multiplication by $i$ on $\HH$, as a $4\times4$ matrix in the basis $1,i,j,k$. Check that $L_i^2=-I_4$ and $\det L_i=1$.
+\item Compute $(1+2i)(3-j+k)$ with \cref{tab:three-pq} and with \eqref{eq:three-sv}. \emph{Answer:} $3+6i-3j-k$.
+\item Show that $u^2=-1$ for every pure quaternion of length one. So $-1$ has infinitely many square roots in $\HH$; Chapter~3 is about them.
+\item Show that a quaternion commutes with $i$ if and only if it has the form $a+bi$.
+\item Hamilton also tried rules with $ij=0$. Take the triples with $i^2=j^2=-1$ and $ij=ji=0$. Compute $(ij)j$ and $i(jj)$, and conclude that this multiplication is not associative.
+\item Use \cref{prop:three-comm} to show that $ij-ji=2k$, and check it against \cref{tab:three-units}.
+\end{exercises}
+
+\begin{sources}
+Everything in this chapter is classical. Hamilton announced the quaternions in 1843 and published them from 1844 on. The geometric picture of complex numbers is due to Wessel (1799) and Argand (1806); the octonions to Graves (1843) and Cayley (1845). The classification theorems are those of Frobenius (1878) and Hurwitz (1898). The proof of \cref{thm:three-odd} by determinants is standard. The multiplication tables are generated by the program described in the Prologue.
+\end{sources}

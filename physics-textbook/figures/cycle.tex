@@ -1,0 +1,14 @@
+% The cyclic rule for i, j, k
+\begin{tikzpicture}[>=Stealth,font=\large]
+  \def\R{1.35}
+  \node[circle,draw=ui,fill=ui!13,line width=0.9pt,minimum size=9mm] (i) at (90:\R) {$i$};
+  \node[circle,draw=uj,fill=uj!13,line width=0.9pt,minimum size=9mm] (j) at (-30:\R) {$j$};
+  \node[circle,draw=uk,fill=uk!13,line width=0.9pt,minimum size=9mm] (k) at (210:\R) {$k$};
+  \draw[->,very thick,accent] (i) to[bend left=28] (j);
+  \draw[->,very thick,accent] (j) to[bend left=28] (k);
+  \draw[->,very thick,accent] (k) to[bend left=28] (i);
+  \node[font=\small,align=center,text=quiet] at (0,0) {with the\\arrow: $+$};
+  \node[font=\small,align=left,anchor=west] at (2.2,0.55) {$ij=k,\quad jk=i,\quad ki=j$};
+  \node[font=\small,align=left,anchor=west] at (2.2,-0.25) {$ji=-k,\quad kj=-i,\quad ik=-j$};
+  \node[font=\small,align=left,anchor=west,text=quiet] at (2.2,-1.0) {against the arrow: $-$};
+\end{tikzpicture}

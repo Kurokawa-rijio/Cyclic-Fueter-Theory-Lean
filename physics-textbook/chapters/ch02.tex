@@ -1,0 +1,168 @@
+\chapter{Multiplication That Preserves Length}
+\label{ch:length}
+
+\begin{question}
+Hamilton's test for a number system of space was the law of the moduli, $|pq|=|p|\,|q|$. Triples could not be made to pass it. Does it hold for quaternions? And why does a fourth square rescue the experiment with $15=3\cdot5$?
+\end{question}
+
+\section{Why ask it}
+
+For complex numbers the law of the moduli is the source of almost everything else. It makes multiplication by a number of length one a rotation. It makes division possible, through $z^{-1}=\bar z/|z|^2$. And it rests on one identity, $z\bar z=|z|^2$, together with the rule $\overline{zw}=\bar z\,\bar w$.
+
+For quaternions the first ingredient has already appeared in the Prologue: \cref{tab:pro-qqbar} showed $q\bar q=a^2+b^2+c^2+d^2$. The second ingredient needs care, because quaternions do not commute. This chapter checks both and draws the consequences.
+
+\section{The conjugate}
+
+\begin{definition}\label{def:length-conj}
+The \emph{conjugate} of $q=q_0+\vect q$ is $\bar q=q_0-\vect q$. The \emph{length} (or norm) of $q$ is $|q|=\sqrt{q_0^2+q_1^2+q_2^2+q_3^2}$.
+\end{definition}
+
+Conjugation keeps the real part and reverses the vector part, so $\bar q$ is the mirror image of $q$ in the real axis (\cref{fig:length-conj}). Two formulas follow at once: $q+\bar q=2\Real q$, and $\bar{\bar q}=q$.
+
+\begin{figure}[htbp]
+  \centering\input{figures/conjugation}
+  \caption{Conjugation reflects the vector part and keeps the real part.}
+  \label{fig:length-conj}
+\end{figure}
+
+With complex numbers, the conjugate of a product is the product of the conjugates. With quaternions the order of the factors has to be reversed.
+
+\begin{proposition}\label{prop:length-reverse}
+For all $p,q\in\HH$, $\;\overline{pq}=\bar q\,\bar p$.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:three-sv},
+$\overline{pq}=\bigl(p_0q_0-\vect p\cdot\vect q\bigr)-\bigl(p_0\vect q+q_0\vect p+\vect p\times\vect q\bigr)$.
+Apply \eqref{eq:three-sv} to $\bar q=q_0+(-\vect q)$ and $\bar p=p_0+(-\vect p)$:
+\[
+  \bar q\,\bar p=\bigl(q_0p_0-(-\vect q)\cdot(-\vect p)\bigr)+\bigl(q_0(-\vect p)+p_0(-\vect q)+(-\vect q)\times(-\vect p)\bigr).
+\]
+The real parts agree. The vector part is $-q_0\vect p-p_0\vect q+\vect q\times\vect p$, and $\vect q\times\vect p=-\vect p\times\vect q$, so the vector parts agree as well.
+\end{proof}
+
+For example $\overline{ij}=\bar k=-k$, while $\bar i\,\bar j=(-i)(-j)=ij=k$ and $\bar j\,\bar i=(-j)(-i)=ji=-k$. Only the reversed order gives the right answer.
+
+\section{A first computation in a table}
+
+The product $q\bar q$ was computed in \cref{tab:pro-qqbar}. Here is the reason why its twelve off-diagonal cells cancel. Take the cell in row $bi$ and column $-cj$: it is $(bi)(-cj)=-bc\,ij=-bc\,k$. Its partner sits in row $cj$ and column $-bi$: it is $(cj)(-bi)=-bc\,ji=+bc\,k$. The two cells contain the same real numbers, and their units are $ij$ and $ji$, which differ only by a sign. The cells in the first row and first column cancel for a similar reason: $a(-bi)=-ab\,i$ and $(bi)a=+ab\,i$. On the diagonal, each unit meets its own negative, and $(bi)(-bi)=-b^2i^2=+b^2$. So:
+
+\begin{proposition}\label{prop:length-qqbar}
+For every quaternion $q$, $\;q\bar q=\bar q q=|q|^2$.
+\end{proposition}
+
+\begin{proof}
+The equation $q\bar q=|q|^2$ is \cref{tab:pro-qqbar}, read as above. Applying it to $\bar q$ in place of $q$ gives $\bar q\,\bar{\bar q}=|\bar q|^2$, which is $\bar q q=|q|^2$.
+\end{proof}
+
+\section{The law of the moduli}
+
+\begin{theorem}[Hamilton's law of the moduli]\label{thm:length-moduli}
+For all $p,q\in\HH$, $\;|pq|=|p|\,|q|$.
+\end{theorem}
+
+\begin{proof}
+By \cref{prop:length-qqbar,prop:length-reverse} and associativity (\cref{thm:three-assoc}),
+\[
+  |pq|^2=(pq)\,\overline{(pq)}=(pq)(\bar q\,\bar p)=p\,(q\bar q)\,\bar p=p\,|q|^2\,\bar p .
+\]
+The real number $|q|^2$ commutes with $p$, so the last expression equals $|q|^2\,p\bar p=|q|^2|p|^2$. Take square roots.
+\end{proof}
+
+All three ingredients are used: the conjugate of a product reverses the order, the product $q\bar q$ is a real number, and the multiplication is associative. Triples lacked the last one (\cref{cor:three-triples}).
+
+Writing the law of the moduli out in components gives an identity between polynomials. The components of $pq$ are the four lines under \cref{tab:three-pq}.
+
+\begin{corollary}[Euler's four-square identity]\label{cor:length-euler}
+For all real numbers $p_0,\dots,p_3,q_0,\dots,q_3$,
+\begin{align*}
+  &(p_0^2+p_1^2+p_2^2+p_3^2)(q_0^2+q_1^2+q_2^2+q_3^2)\\
+  &\quad=(p_0q_0-p_1q_1-p_2q_2-p_3q_3)^2+(p_0q_1+p_1q_0+p_2q_3-p_3q_2)^2\\
+  &\qquad+(p_0q_2-p_1q_3+p_2q_0+p_3q_1)^2+(p_0q_3+p_1q_2-p_2q_1+p_3q_0)^2 .
+\end{align*}
+\end{corollary}
+
+\begin{proof}
+The left side is $|p|^2|q|^2$, the right side is $|pq|^2$ written in the components of \cref{tab:three-pq}.
+\end{proof}
+
+Euler had found this identity in 1748, long before quaternions, in a letter about sums of four squares. Now we can return to the experiment of Chapter~1. In \cref{ex:three-numeric} we computed
+\[
+  (1+i+j)(2+i)=1+3i+2j-k ,
+\]
+and indeed $1^2+3^2+2^2+(-1)^2=15=3\cdot5$. With three squares the product $15$ could not be written; with four it can. The fourth component, the $-k$, is exactly the product $ji$ that triples had no room for. The fourth square is not a luxury: it is where the cross product lives.
+
+\section{Division}
+
+\begin{corollary}\label{cor:length-inverse}
+Every nonzero quaternion $q$ has an inverse,
+\[
+  q^{-1}=\frac{\bar q}{|q|^2},\qquad qq^{-1}=q^{-1}q=1 .
+\]
+Consequently $pq=0$ implies $p=0$ or $q=0$.
+\end{corollary}
+
+\begin{proof}
+The two products equal $q\bar q/|q|^2$ and $\bar q q/|q|^2$, both $1$ by \cref{prop:length-qqbar}. If $pq=0$ then $|p|\,|q|=|pq|=0$ by \cref{thm:length-moduli}.
+\end{proof}
+
+Since multiplication is not commutative, there are two kinds of division. The equation $ax=b$ is solved by $x=a^{-1}b$, and $xa=b$ by $x=ba^{-1}$, and the two answers are different in general. For $a=i$ and $b=j$:
+\[
+  ax=b:\ x=i^{-1}j=(-i)j=-k ,\qquad xa=b:\ x=j\,i^{-1}=j(-i)=k .
+\]
+So the fraction $b/a$ has no meaning in $\HH$; one must say on which side one divides.
+
+\begin{example}\label{ex:length-inverse}
+For $q=1+i+j$, $|q|^2=3$ and $q^{-1}=\tfrac13(1-i-j)$. Check: $(1+i+j)(1-i-j)=1-i-j+i-i^2-ij+j-ji-j^2=1+1-k+k+1=3$.
+\end{example}
+
+\section{Quaternions of length one}
+
+By \cref{thm:length-moduli}, the product of two quaternions of length one has length one, and so does the inverse $q^{-1}=\bar q$. The quaternions of length one therefore form a group under multiplication. As a set it is the unit sphere
+\[
+  S^3=\{\,q\in\HH:\ q_0^2+q_1^2+q_2^2+q_3^2=1\,\}
+\]
+in four-dimensional space. A three-dimensional sphere cannot be drawn directly, but it can be sliced. Fixing the real part $q_0=a$ with $-1\le a\le1$ leaves the vector parts with $|\vect q|^2=1-a^2$: an ordinary two-dimensional sphere of radius $\sqrt{1-a^2}$, which shrinks to a point at $a=\pm1$ (\cref{fig:length-s3}).
+
+\begin{figure}[htbp]
+  \centering\input{figures/s3slices}
+  \caption{The unit quaternions $S^3$, sliced by the real part. Each slice is a sphere of radius $\sqrt{1-a^2}$; the end slices are the points $q=\pm1$.}
+  \label{fig:length-s3}
+\end{figure}
+
+The middle slice, $a=0$, consists of the pure quaternions of length one. By \cref{cor:three-pure} each of them satisfies $u^2=-|u|^2=-1$. So the equation $x^2=-1$, which has two solutions in $\CC$, has a whole sphere of solutions in $\HH$ (\cref{fig:length-imag}).
+
+\begin{proposition}\label{prop:length-roots}
+The solutions of $x^2=-1$ in $\HH$ are exactly the pure quaternions of length one.
+\end{proposition}
+
+\begin{proof}
+Pure quaternions of length one are solutions, as just shown. Conversely, let $x=x_0+\vect x$ with $x^2=-1$. By \eqref{eq:three-sv}, $x^2=x_0^2-|\vect x|^2+2x_0\vect x$. The vector part gives $2x_0\vect x=0$. If $\vect x=0$ then $x^2=x_0^2\ge0$, which is not $-1$; so $\vect x\neq0$ and $x_0=0$. The real part then gives $-|\vect x|^2=-1$.
+\end{proof}
+
+\begin{figure}[htbp]
+  \centering\input{figures/imagsphere}
+  \caption{The sphere of imaginary units: every pure quaternion $I$ of length one satisfies $I^2=-1$. Each such $I$, together with $1$, spans a copy of the complex plane inside $\HH$.}
+  \label{fig:length-imag}
+\end{figure}
+
+Each imaginary unit $I$ gives a copy $\{x+yI\}$ of the complex numbers inside $\HH$, because $I^2=-1$ is the only rule complex arithmetic needs. These copies are the \emph{slices} of $\HH$, and they will organise much of the book: the sphere of imaginary units reappears as the space of spin states in Part~VII and as the sky of directions of light in Part~VIII.
+
+\begin{learned}
+The law of the moduli holds in $\HH$ because $q\bar q=|q|^2$, because conjugation reverses products, and because the product is associative. Writing it in components gives Euler's four-square identity, and the fourth square is where the cross product lives. Every nonzero quaternion can be inverted, from either side. The unit quaternions form a group, the three-sphere $S^3$, and the square roots of $-1$ fill a two-sphere. What does a unit quaternion \emph{do} to the space around it? Chapter~3 shows that it rotates it, and that every rotation is obtained twice.
+\end{learned}
+
+\begin{exercises}
+\item Check \cref{prop:length-reverse} for $p=i$ and $q=j+k$ by computing both sides.
+\item Show that $\Real(pq)=\Real(qp)$ for all $p,q\in\HH$, although $pq\neq qp$ in general.
+\item Use the four-square identity to write $7\cdot 15=105$ as a sum of four squares, starting from $7=2^2+1^2+1^2+1^2$ and $15=3^2+2^2+1^2+1^2$.
+\item Solve $(1+i)x=j$ and $x(1+i)=j$. \emph{Answer:} $x=\tfrac12(j-k)$ and $x=\tfrac12(j+k)$.
+\item Show that $|q^{-1}|=|q|^{-1}$ and $(pq)^{-1}=q^{-1}p^{-1}$.
+\item Show that the map $q\mapsto\bar q$ is not a multiplicative homomorphism of $\HH$, but that $q\mapsto |q|$ is one from the nonzero quaternions to the positive reals.
+\item Find all quaternions $x$ with $x^2=-4$.
+\item (The slices.) Show that for a fixed imaginary unit $I$ the set $\{x+yI:\ x,y\in\RR\}$ is closed under multiplication and inversion, and that $x+yI\mapsto x+iy$ is an isomorphism onto $\CC$.
+\end{exercises}
+
+\begin{sources}
+The law of the moduli for quaternions is Hamilton's (1843). The four-square identity appears in a letter of Euler to Goldbach of 1748. The description of the square roots of $-1$ and of the slices $\{x+yI\}$ is classical; slices are the starting point of the slice analysis of Chapter~15.
+\end{sources}

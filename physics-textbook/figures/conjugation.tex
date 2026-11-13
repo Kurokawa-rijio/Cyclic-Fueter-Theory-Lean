@@ -1,0 +1,12 @@
+% Conjugation keeps the real part and reverses the vector part
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\small]
+  \draw[->,black!60] (-2.6,0) -- (2.8,0) node[right] {$\Imag\HH\cong\RR^3$};
+  \draw[->,black!60] (0,-0.3) -- (0,2.6) node[above] {$\Real\HH$};
+  \draw[black!30,dashed] (-2.0,1.6) -- (2.0,1.6);
+  \fill[accent] (1.7,1.6) circle (1.8pt) node[above right] {$q=a+\mathbf v$};
+  \fill[ui] (-1.7,1.6) circle (1.8pt) node[above left] {$\bar q=a-\mathbf v$};
+  \draw[->,thick,accent] (0,1.6) -- (1.65,1.6) node[midway,below,font=\scriptsize] {$\mathbf v$};
+  \draw[->,thick,ui] (0,1.6) -- (-1.65,1.6) node[midway,below,font=\scriptsize] {$-\mathbf v$};
+  \fill[black] (0,1.6) circle (1.5pt) node[above left,font=\scriptsize] {$a$};
+  \node[font=\scriptsize,text=quiet,align=center] at (0,-0.75) {$\bar q$ is the mirror image of $q$ in the real axis:\\$q+\bar q=2a,\qquad q\bar q=|q|^2$};
+\end{tikzpicture}

@@ -1,0 +1,20 @@
+% The sphere of imaginary units inside Im H (oblique view)
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\small]
+  \shade[ball color=uone!12] (0,0) circle (2);
+  \draw[uone!70!black,line width=0.6pt] (0,0) circle (2);
+  \draw[black!40] (2,0) arc (0:-180:2 and 0.55);
+  \draw[black!25,dashed] (2,0) arc (0:180:2 and 0.55);
+  \draw[black!40] (0,2) arc (90:-90:0.7 and 2);
+  \draw[black!25,dashed] (0,2) arc (90:270:0.7 and 2);
+  \draw[->,black!55] (0,0) -- (-1.55,-1.35) node[below left] {$i$};
+  \draw[->,black!55] (0,0) -- (2.7,0) node[right] {$j$};
+  \draw[->,black!55] (0,0) -- (0,2.7) node[above] {$k$};
+  \fill[black!70] (-1.13,-0.98) circle (1.4pt);
+  \fill[black!70] (2,0) circle (1.4pt);
+  \fill[black!70] (0,2) circle (1.4pt);
+  \coordinate (I) at (1.15,1.25);
+  \draw[ui,thick] ($-1*(I)$) -- (I);
+  \fill[ui] (I) circle (2pt) node[above right] {$I$};
+  \fill[ui] ($-1*(I)$) circle (2pt) node[below left] {$-I$};
+  \node[font=\scriptsize,text=quiet,align=left,anchor=west] at (2.4,-1.2) {every point $I$ of this sphere\\satisfies $I^2=-1$};
+\end{tikzpicture}

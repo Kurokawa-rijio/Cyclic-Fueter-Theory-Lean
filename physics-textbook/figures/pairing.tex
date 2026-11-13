@@ -1,0 +1,26 @@
+% Left multiplication by i pairs the axes; an odd number leaves one axis unpaired
+\begin{tikzpicture}[>=Stealth,font=\small]
+  \tikzset{ax/.style={circle,draw=black!60,fill=white,minimum size=7mm,inner sep=0pt}}
+  \begin{scope}
+    \node[font=\sffamily\bfseries\small,text=accent] at (1.1,1.55) {three axes: $1,\ i,\ j$};
+    \node[ax] (a1) at (0,0) {$1$};
+    \node[ax] (a2) at (1.2,0) {$i$};
+    \node[ax,draw=ui,line width=1pt] (a3) at (2.4,0) {$j$};
+    \draw[->,thick,uone] (a1) to[bend left=50] node[above,font=\scriptsize] {$\times i$} (a2);
+    \draw[->,thick,uone] (a2) to[bend left=50] node[below,font=\scriptsize] {$\times i$: $-1$} (a1);
+    \draw[->,thick,ui,dashed] (a3) to[out=60,in=120,looseness=6] node[above,font=\scriptsize] {?} (a3);
+    \node[font=\scriptsize,text=quiet,align=center] at (1.2,-1.35) {$ij$ has nowhere to go:\\$\det(L_i)^2=\det(-I_3)=-1$};
+  \end{scope}
+  \begin{scope}[xshift=5.4cm]
+    \node[font=\sffamily\bfseries\small,text=accent] at (1.8,1.55) {four axes: $1,\ i,\ j,\ k$};
+    \node[ax] (b1) at (0,0) {$1$};
+    \node[ax] (b2) at (1.2,0) {$i$};
+    \node[ax] (b3) at (2.4,0) {$j$};
+    \node[ax] (b4) at (3.6,0) {$k$};
+    \draw[->,thick,uone] (b1) to[bend left=50] node[above,font=\scriptsize] {$\times i$} (b2);
+    \draw[->,thick,uone] (b2) to[bend left=50] node[below,font=\scriptsize] {$-1$} (b1);
+    \draw[->,thick,uj] (b3) to[bend left=50] node[above,font=\scriptsize] {$\times i$} (b4);
+    \draw[->,thick,uj] (b4) to[bend left=50] node[below,font=\scriptsize] {$-j$} (b3);
+    \node[font=\scriptsize,text=quiet,align=center] at (1.8,-1.35) {two pairs, each turned by $90^\circ$:\\$\det(L_i)=1$, $\ L_i^2=-I_4$};
+  \end{scope}
+\end{tikzpicture}

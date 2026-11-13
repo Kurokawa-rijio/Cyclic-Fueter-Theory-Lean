@@ -1,0 +1,15 @@
+% Multiplying complex numbers multiplies lengths and adds angles
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\small]
+  \draw[->,black!60] (-0.5,0) -- (4.2,0) node[below left] {$\Real$};
+  \draw[->,black!60] (0,-0.4) -- (0,3.4) node[below left] {$\Imag$};
+  \coordinate (O) at (0,0);
+  \draw[->,very thick,uone] (O) -- ({2.2*cos(15)},{2.2*sin(15)}) node[right] {$z=r_1e^{i\theta_1}$};
+  \draw[->,very thick,uj] (O) -- ({1.5*cos(45)},{1.5*sin(45)}) node[above left] {$w=r_2e^{i\theta_2}$};
+  \draw[->,very thick,ui] (O) -- ({3.3*cos(60)},{3.3*sin(60)}) node[above] {$zw=r_1r_2\,e^{i(\theta_1+\theta_2)}$};
+  \draw[uone] (0.7,0) arc (0:15:0.7);
+  \node[uone,font=\scriptsize] at ({0.98*cos(8)},{0.98*sin(8)}) {$\theta_1$};
+  \draw[uj] (1.25,0) arc (0:45:1.25);
+  \node[uj,font=\scriptsize] at ({1.5*cos(31)},{1.5*sin(31)}) {$\theta_2$};
+  \draw[ui] (2.1,0) arc (0:60:2.1);
+  \node[ui,font=\scriptsize,anchor=west] at ({2.15*cos(42)},{2.15*sin(42)}) {$\theta_1+\theta_2$};
+\end{tikzpicture}

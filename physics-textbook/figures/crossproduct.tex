@@ -1,0 +1,18 @@
+% Product of two pure quaternions (oblique view)
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\small]
+  \coordinate (O) at (0,0);
+  \coordinate (u) at (3.0,-0.5);
+  \coordinate (v) at (1.3,0.9);
+  \fill[uone!10] (O) -- (u) -- ($(u)+(v)$) -- (v) -- cycle;
+  \draw[black!35] (u) -- ($(u)+(v)$) -- (v);
+  \draw[->,very thick,uone] (O) -- (u) node[below right] {$u$};
+  \draw[->,very thick,uj] (O) -- (v) node[above left] {$v$};
+  \draw[->,very thick,ui] (O) -- (0,2.4) node[above] {$u\times v$};
+  \draw[black!50] (0,0.28) -- (0.25,0.32) -- (0.25,0.04);
+  \node[font=\scriptsize,text=quiet] at (2.2,0.15) {area $=|u\times v|$};
+  \draw[uone!70,thin] (0.75,-0.125) arc (-9.5:34.7:0.76);
+  \node[font=\scriptsize,uone!80!black] at (1.05,0.25) {$\phi$};
+  \node[font=\scriptsize,align=left,anchor=west] at (3.6,1.6) {$uv=-u\cdot v+u\times v$};
+  \node[font=\scriptsize,align=left,anchor=west,text=quiet] at (3.6,1.05) {$u\cdot v=|u||v|\cos\phi$};
+  \node[font=\scriptsize,align=left,anchor=west,text=quiet] at (3.6,0.6) {$|u\times v|=|u||v|\sin\phi$};
+\end{tikzpicture}

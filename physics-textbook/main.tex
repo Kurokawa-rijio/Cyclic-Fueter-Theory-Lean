@@ -1,0 +1,51 @@
+\documentclass[11pt,twoside,openany]{book}
+\usepackage{textbook}
+\input{generated/compassstrip}
+
+\newcommand{\bookpart}[6]{% numeral, title, first q, last q, volume line, intro
+  \cleardoublepage\thispagestyle{empty}\refstepcounter{part}%
+  \addcontentsline{toc}{part}{Part #1\quad #2}%
+  \vspace*{28mm}
+  {\centering\sffamily
+   {\color{accent}\large #5\par}\vspace{6mm}
+   {\color{accent}\fontsize{14}{16}\selectfont PART #1\par}\vspace{4mm}
+   {\fontsize{26}{31}\selectfont\bfseries #2\par}\vspace{12mm}
+   \compassstrip{#3}{#4}\par\vspace{3mm}
+   {\small\color{quiet} The questions this part answers are shown in colour.\par}}
+  \vspace{12mm}
+  \noindent\begin{minipage}{\textwidth}\small #6\end{minipage}
+  \clearpage}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+  \centering\sffamily
+  \vspace*{30mm}
+  {\fontsize{30}{36}\selectfont\bfseries A Textbook of Physics\par}
+  \vspace{5mm}
+  {\Large From Quaternions to the Action Principle\par}
+  \vspace{18mm}
+  {\color{accent}\rule{60mm}{1pt}\par}
+  \vspace{8mm}
+  {\large Volume 1\par}\vspace{2mm}
+  {\LARGE\bfseries Numbers and Equations\par}
+  \vspace{30mm}
+  {\large Ryojiro Kurokawa\par}
+  \vfill
+  {\small\color{quiet} Sample for layout review: Prologue and Part I, Chapters 1--2\\
+   Draft of 13 November 2026\par}
+\end{titlepage}
+
+\tableofcontents
+
+\mainmatter
+\setcounter{chapter}{-1}
+\input{chapters/ch00}
+
+\bookpart{I}{The Discovery of Quaternions and Their Foundations}{1}{3}{Volume 1 \textperiodcentered\ Numbers and Equations}{%
+Part I asks three questions. Why could Hamilton build a number system in four dimensions after years of failure in three (Chapters 1 and 2)? What does a quaternion of length one do to space (Chapter 3)? And how does one compute with numbers whose products depend on the order of the factors (Chapters 4 to 6)? The answers set up everything that follows: the factorisation $q\bar q=|q|^2$, the sphere of imaginary units, and, at the end of the part, the first nonzero numbers whose length is zero.}
+
+\input{chapters/ch01}
+\input{chapters/ch02}
+
+\end{document}

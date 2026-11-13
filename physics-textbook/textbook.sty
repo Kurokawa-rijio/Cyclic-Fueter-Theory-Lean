@@ -1,0 +1,125 @@
+% textbook.sty -- house style for "A Textbook of Physics"
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{textbook}[2026/11/13 house style]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathpazo}
+\RequirePackage[scaled=0.90]{helvet}
+\RequirePackage[paperwidth=182mm,paperheight=257mm,inner=21mm,outer=21mm,top=24mm,bottom=26mm,headsep=8mm]{geometry}
+\RequirePackage{amsmath,amssymb,amsthm,mathtools,bm}
+\RequirePackage{microtype}
+\RequirePackage{booktabs,array,enumitem}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{tikz}
+\RequirePackage{tikz-3dplot}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,patterns,shapes.geometric,positioning,backgrounds}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{titlesec,titletoc}
+\RequirePackage{fancyhdr}
+\RequirePackage[font=small,labelfont={sf,bf},format=plain,labelsep=period]{caption}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[capitalise,noabbrev]{cleveref}
+
+% ---------- colours ----------
+\definecolor{accent}{HTML}{1F5F8B}
+\definecolor{accentlight}{HTML}{E8F0F7}
+\definecolor{uone}{HTML}{3566B0}
+\definecolor{ui}{HTML}{D2691E}
+\definecolor{uj}{HTML}{2E9468}
+\definecolor{uk}{HTML}{7A55A8}
+\definecolor{quiet}{HTML}{5A5A5A}
+
+% ---------- headings ----------
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\raggedright}
+  {\color{accent}\fontsize{13}{15}\selectfont\MakeUppercase{\chaptertitlename}\ \fontsize{44}{44}\selectfont\thechapter}
+  {4pt}
+  {\fontsize{24}{28}\selectfont}
+  [\vspace{2pt}{\color{accent}\titlerule[1.2pt]}]
+\titlespacing*{\chapter}{0pt}{-6mm}{9mm}
+\titleformat{\section}{\sffamily\bfseries\large\color{accent}}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\sffamily\bfseries}{\thesubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{4.2ex plus 1ex minus .2ex}{1.6ex plus .2ex}
+
+\titlecontents{part}[0pt]{\addvspace{8pt}\sffamily\bfseries\color{accent}}{\thecontentslabel\quad}{}{\hfill\contentspage}
+\titlecontents{chapter}[2.4em]{\addvspace{4pt}\sffamily\bfseries}{\contentslabel{2.4em}}{}{\titlerule*[.6pc]{.}\contentspage}
+\titlecontents{section}[5.6em]{\small}{\contentslabel{3.2em}}{}{\titlerule*[.6pc]{.}\contentspage}
+
+% ---------- running heads ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[LE]{\sffamily\small\thepage\quad\leftmark}
+\fancyhead[RO]{\sffamily\small\rightmark\quad\thepage}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\sffamily\small\thepage}}
+
+% ---------- theorems ----------
+\newtheoremstyle{tbplain}{1.2ex}{1.2ex}{\itshape}{}{\sffamily\bfseries}{.}{0.6em}{}
+\newtheoremstyle{tbdef}{1.2ex}{1.2ex}{}{}{\sffamily\bfseries}{.}{0.6em}{}
+\theoremstyle{tbplain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{tbdef}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{exampleinner}[theorem]{Example}
+\renewcommand{\qedsymbol}{\textcolor{accent}{$\blacksquare$}}
+\newenvironment{example}{\begin{tcolorbox}[enhanced,breakable,colback=white,colframe=accent!35,boxrule=0.5pt,arc=1.5pt,left=2mm,right=2mm,top=1mm,bottom=1mm]\begin{exampleinner}}{\end{exampleinner}\end{tcolorbox}}
+
+% ---------- boxes ----------
+\newtcolorbox{question}{enhanced,colback=accentlight,colframe=accent,boxrule=0pt,leftrule=3pt,arc=0pt,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,fonttitle=\sffamily\bfseries,coltitle=accent,colbacktitle=accentlight,
+  title={The question},attach title to upper={\par\smallskip}}
+\newtcolorbox{learned}{enhanced,colback=white,colframe=accent,boxrule=0.6pt,arc=2pt,
+  left=3mm,right=3mm,top=2mm,bottom=2mm,fonttitle=\sffamily\bfseries,colbacktitle=accent,coltitle=white,
+  title={What we learned, and what comes next}}
+\newtcolorbox{toolbox}[1]{enhanced,breakable,colback=black!3,colframe=black!45,boxrule=0.4pt,arc=2pt,
+  left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,fonttitle=\sffamily\bfseries\small,coltitle=black,colbacktitle=black!10,
+  title={Toolbox: #1}}
+\newtcolorbox{tableread}{enhanced,colback=white,colframe=uone!40,boxrule=0.4pt,arc=2pt,left=2.5mm,right=2.5mm,top=1mm,bottom=1mm,
+  fontupper=\small,fonttitle=\sffamily\bfseries\small,coltitle=black,colbacktitle=uone!8,title={How to read a multiplication table}}
+
+% ---------- multiplication tables ----------
+\tikzset{
+  mtcell/.style={rounded corners=1.6pt,line width=0.9pt},
+  uonestyle/.style={mtcell,draw=uone,fill=uone!13},
+  uistyle/.style={mtcell,draw=ui,fill=ui!13,dash pattern=on 2.6pt off 1.4pt},
+  ujstyle/.style={mtcell,draw=uj,fill=uj!13,dash pattern=on 0.9pt off 1.1pt},
+  ukstyle/.style={mtcell,draw=uk,fill=uk!13,dash pattern=on 3pt off 1.2pt on 0.8pt off 1.2pt},
+  mthead/.style={font=\sffamily\bfseries\small},
+  mtcorner/.style={font=\sffamily\bfseries\small,text=accent},
+  mtmark/.style={circle,draw=black!60,fill=white,inner sep=0.5pt,font=\sffamily\tiny,minimum size=3mm},
+}
+\newcommand{\mtswatch}[1]{\tikz[baseline=-0.4ex]\draw[#1] (0,-1.1mm) rectangle (3.4mm,1.6mm);}
+\newcommand{\multable}[3]{% file, caption, label
+  \begin{table}[htbp]\centering\input{generated/#1}\vspace{-2mm}\caption{#2}\label{#3}\end{table}}
+\newcommand{\multablehere}[3]{%
+  \begin{table}[!h]\centering\input{generated/#1}\vspace{-2mm}\caption{#2}\label{#3}\end{table}}
+
+% ---------- notation ----------
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\Real}{\operatorname{Re}}
+\newcommand{\Imag}{\operatorname{Im}}
+\newcommand{\ip}{\iota}
+
+% ---------- exercises ----------
+\newcounter{exercise}[chapter]
+\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
+\newenvironment{exercises}{\section*{Exercises}\addcontentsline{toc}{section}{\protect\numberline{}Exercises}\markright{Exercises}\small
+  \begin{list}{\sffamily\bfseries\color{accent}\refstepcounter{exercise}\theexercise}{\setlength{\leftmargin}{3em}\setlength{\labelwidth}{2.6em}\setlength{\itemsep}{0.8ex}}}{\end{list}}
+\newenvironment{sources}{\section*{Where this comes from}\addcontentsline{toc}{section}{\protect\numberline{}Where this comes from}\markright{Where this comes from}\small}{}
+
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+\setlength{\parindent}{1.2em}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\endinput

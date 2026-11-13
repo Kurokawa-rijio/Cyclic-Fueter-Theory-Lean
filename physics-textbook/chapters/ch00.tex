@@ -1,0 +1,140 @@
+\chapter[Prologue: Three Formulas Side by Side]{Prologue:\\ Three Formulas Side by Side}
+\label{ch:prologue}
+
+\begin{question}
+Some sums of squares can be written as the product of two simpler factors. Which ones? And what happens when such a product is zero although neither factor is zero? This book follows that single question from Hamilton's quaternions to the dynamics of spacetime.
+\end{question}
+
+\section{A pattern from complex numbers}
+
+Every reader of this book has met the identity
+\begin{equation}\label{eq:pro-complex}
+  x^2+y^2=(x+iy)(x-iy)=z\bar z ,\qquad z=x+iy .
+\end{equation}
+It looks like a small piece of algebra, but two large consequences follow from it.
+
+The first is that lengths can be multiplied. Since $\overline{zw}=\bar z\,\bar w$ and complex numbers commute,
+\[
+  |zw|^2=(zw)(\overline{zw})=(z\bar z)(w\bar w)=|z|^2|w|^2 .
+\]
+So $|zw|=|z|\,|w|$: multiplying by a complex number of length one does not change lengths. It is a rotation of the plane. Division is possible too, because $z^{-1}=\bar z/|z|^2$ whenever $z\neq0$.
+
+The second consequence concerns derivatives. The same factorisation applied to $\partial_x$ and $\partial_y$ gives
+\begin{equation}\label{eq:pro-laplace2}
+  \partial_x^2+\partial_y^2=(\partial_x-i\partial_y)(\partial_x+i\partial_y).
+\end{equation}
+The Cauchy--Riemann equations of a complex function $f=u+iv$ say exactly that $(\partial_x+i\partial_y)f=0$. Applying the other factor shows at once that $u$ and $v$ satisfy Laplace's equation. A second-order equation has been reduced to a first-order one, and the first-order equation carries the whole theory of complex functions.
+
+The question of this book is what happens when we try the same trick with more than two squares.
+
+\section{Three formulas}
+
+Here are three factorisations that the book will establish in turn. The first is Hamilton's: for a quaternion $q=a+bi+cj+dk$ and its conjugate $\bar q=a-bi-cj-dk$,
+\begin{equation}\label{eq:pro-qqbar}
+  q\bar q=a^2+b^2+c^2+d^2 .
+\end{equation}
+The second is Fueter's: the operator $D=\partial_t+i\partial_x+j\partial_y+k\partial_z$ and its conjugate $\bar D$ factor the four-dimensional Laplacian,
+\begin{equation}\label{eq:pro-dbard}
+  \bar D D=\partial_t^2+\partial_x^2+\partial_y^2+\partial_z^2 .
+\end{equation}
+The third gives the length of special relativity. Let $\iota$ be a second imaginary unit with $\iota^2=-1$ which commutes with $i$, $j$ and $k$ (we meet it properly in Chapter~6), and put $X=t+\iota(xi+yj+zk)$. Then
+\begin{equation}\label{eq:pro-mink}
+  X\bar X=t^2-x^2-y^2-z^2 .
+\end{equation}
+The same number is the determinant of the $2\times2$ matrix $t+x\sigma_1+y\sigma_2+z\sigma_3$ built from the Pauli matrices, which is the form in which physicists usually meet it.
+
+Each of the three identities is a product of two sums of four terms, so each can be computed by filling in a $4\times4$ table. \Cref{tab:pro-qqbar,tab:pro-dbard,tab:pro-mink} show the three tables. Every cell was computed from Hamilton's rule $i^2=j^2=k^2=ijk=-1$ (Chapter~1); the box below explains how the tables are read.
+
+\begin{tableread}
+\begin{enumerate}[leftmargin=1.4em,itemsep=0.2ex,topsep=0.2ex]
+\item Rows hold the \emph{left} factor, columns the \emph{right} factor. With quaternions the order matters ($ij=k$ but $ji=-k$), and this convention never changes in the book.
+\item Each cell shows the product of the two units, then the product of the two entries.
+\item The colour and the border of a cell show the unit of the result: \mtswatch{uonestyle}\,$1$, \mtswatch{uistyle}\,$i$, \mtswatch{ujstyle}\,$j$, \mtswatch{ukstyle}\,$k$.
+\item To read off the product, add the cells of each colour. The lines under the table do exactly this.
+\item Two cells carrying the same small letter cancel each other.
+\end{enumerate}
+\end{tableread}
+
+\multable{qqbar}{The product $q\bar q$. The twelve off-diagonal cells cancel in pairs, and only the diagonal survives: $q\bar q=a^2+b^2+c^2+d^2$.}{tab:pro-qqbar}
+
+\multable{dbard}{The product $\bar D D$. The table has the same pattern as \cref{tab:pro-qqbar}: mixed derivatives cancel in pairs because $\partial_x\partial_y=\partial_y\partial_x$ while $(-i)(j)=-k$ and $(-j)(i)=+k$.}{tab:pro-dbard}
+
+\multable{minkowski}{The product $X\bar X$ for $X=t+\iota(xi+yj+zk)$. The pattern is again that of \cref{tab:pro-qqbar}, but the factor $\iota$ in the headers turns three diagonal cells negative: $X\bar X=t^2-x^2-y^2-z^2$.}{tab:pro-mink}
+
+Put side by side, the three tables say one thing. In each of them the off-diagonal cells cancel in pairs and only the diagonal is left; that is what it means for a sum of squares to factor. The tables differ only in their headers. Replacing numbers by derivatives turns \cref{tab:pro-qqbar} into \cref{tab:pro-dbard}. Adding $\iota$ to three of the headers turns Euclidean length into the length of special relativity, \cref{tab:pro-mink}. The whole of this book can be read as the story of what these three tables, and their relatives, imply.
+
+\section{When a product of nonzero factors vanishes}
+
+For complex numbers, $z\bar z=0$ forces $z=0$, because a sum of squares of real numbers vanishes only when every square does. The same holds for quaternions and \eqref{eq:pro-qqbar}. It fails for \eqref{eq:pro-mink}: the number $X=1+\iota i$ has $t=x=1$ and $y=z=0$, so $X\bar X=1-1=0$ although $X\neq0$. The nonzero $X$ with $X\bar X=0$ are exactly the points of the light cone $t=|\mathbf x|$ (\cref{fig:pro-cone}). In physical terms they are the directions of light rays.
+
+\begin{figure}[htbp]
+  \centering\input{figures/lightcone}
+  \caption{The light cone. Inside it $X\bar X>0$, outside it $X\bar X<0$. On the cone a nonzero $X$ has $X\bar X=0$: a factor of a sum of squares vanishes without being zero.}
+  \label{fig:pro-cone}
+\end{figure}
+
+In the language of matrices, a nonzero element of length zero is a matrix that is not invertible; its rank has dropped. This one event, a factor of a quadratic form that vanishes without being zero, comes back again and again in the book, and in each place it means something different:
+\begin{itemize}[itemsep=0.2ex]
+\item in Part~II, four Fueter operators with cycled coefficients share a solution, because a $4\times4$ quaternion matrix is singular;
+\item in Part~III, that singularity is explained by numbers of length zero in a Clifford algebra;
+\item in Part~V, the set of all singular configurations is studied as a geometric object, the central topic of the book;
+\item in Part~VII, a quantum state is pure exactly when a determinant vanishes;
+\item in Part~VIII, light rays and spinors are the elements of rank one.
+\end{itemize}
+
+\section{Derivatives and fields in one table}
+
+The tables are not limited to products that cancel. \Cref{tab:pro-dq} applies $D$ to a quaternion-valued field $q=q_t+q_x i+q_y j+q_z k$, for instance the velocity of a fluid together with a fourth quantity $q_t$.
+
+\multable{dq}{The product $Dq$. Nothing cancels, and the four colours sort the sixteen derivatives into the familiar operations of vector calculus.}{tab:pro-dq}
+
+Write $\mathbf q=(q_x,q_y,q_z)$ for the vector part. The four lines under the table combine into
+\begin{equation}\label{eq:pro-dq}
+  Dq=\bigl(\partial_t q_t-\nabla\!\cdot\mathbf q\bigr)+\bigl(\partial_t\mathbf q+\nabla q_t+\nabla\times\mathbf q\bigr),
+\end{equation}
+where the second bracket is read as the quaternion with vector part $\partial_t\mathbf q+\nabla q_t+\nabla\times\mathbf q$. The positions in the table tell the story: the diagonal gives the divergence, the first row the time derivative, the first column the gradient, and the remaining six cells, which come in pairs with opposite signs, give the curl. If $\mathbf q$ is the velocity of a fluid, $\nabla\cdot\mathbf q$ measures compression and $\nabla\times\mathbf q$ measures rotation (Exercise~\ref{ex:pro-vortex}). In Chapter~43 the same table, with one $\iota$ added to the first row, will produce all four of Maxwell's equations at once.
+
+\section{Fourteen questions}
+
+The book is organised as a chain of questions. Each chapter begins with the question left open by the previous one and ends by handing on the next. \Cref{fig:pro-compass} shows the whole chain. The fourteen questions are grouped into four volumes:
+\emph{Numbers and Equations} (questions 1--6), \emph{Algebra and Rank} (7--9), \emph{States and Spacetime} (10--12) and \emph{Action and Dynamics} (13--14). Question~8, the shape of the set of singular configurations, is the axis on which the book turns; it is drawn with a heavy frame. A smaller version of the figure opens every part and shows where we are.
+
+\begin{figure}[p]
+  \centering\resizebox{\textwidth}{!}{\input{generated/compass}}
+  \caption{The chain of fourteen questions. Each box gives a question and, after the arrow, the short form of its answer; the answer raises the next question.}
+  \label{fig:pro-compass}
+\end{figure}
+
+\section{How each chapter is built}
+
+Every chapter follows the same plan, so that a reader always knows where she is.
+\begin{enumerate}[itemsep=0.2ex]
+\item \textbf{The question}, in a shaded box, repeats the question left by the previous chapter.
+\item The first section explains \textbf{why one would ask it}: the history, the physics that needs it, or something odd in the previous computation.
+\item Next comes \textbf{a first computation}, small enough to do completely by hand.
+\item Where a product sits at the centre of the chapter, it is shown in \textbf{a multiplication table}.
+\item Then the general statements follow, as definitions, theorems and \textbf{proofs written to be checked by hand}. Tools from outside the main line are given in grey \textbf{toolbox} frames at the moment they are needed.
+\item \textbf{Figures} are referred to in the text and are not decorative.
+\item A framed box at the end says \textbf{what we learned and what comes next}.
+\item \textbf{Exercises} and a short section \textbf{where this comes from} close the chapter. That section separates classical results, results of the author's research, and interpretation.
+\end{enumerate}
+
+\paragraph{What the book does not do.} The book does not derive the value of the fine-structure constant $\alpha$, and no chapter claims to. Where a result is a conjecture, or a check of a conjecture in a special case, the text says so.
+
+\paragraph{What the reader needs.} For Volume~1: linear algebra (matrices, determinants, eigenvalues), calculus in several variables, and complex numbers. Later volumes say at their start what they add.
+
+\begin{learned}
+A sum of squares that factors gives two things: lengths that multiply, and first-order equations whose solutions are harmonic. The three formulas $q\bar q=|q|^2$, $\bar DD=\Delta$ and $X\bar X=t^2-|\mathbf x|^2$ share one multiplication table, and in the third a nonzero factor can have length zero. The first formula is the oldest. Chapter~1 asks why Hamilton needed four dimensions to obtain it.
+\end{learned}
+
+\begin{exercises}
+\item Fill in the $2\times2$ multiplication table of $(\partial_x-i\partial_y)(\partial_x+i\partial_y)$ and check \eqref{eq:pro-laplace2}.
+\item Check the cell in row $\iota y\,j$ and column $-\iota z\,k$ of \cref{tab:pro-mink}, and the cell with which it cancels.
+\item Show that $\det(t+x\sigma_1+y\sigma_2+z\sigma_3)=t^2-x^2-y^2-z^2$, where $\sigma_1=\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}$, $\sigma_2=\begin{psmallmatrix}0&-i\\i&0\end{psmallmatrix}$, $\sigma_3=\begin{psmallmatrix}1&0\\0&-1\end{psmallmatrix}$.
+\item Use \cref{tab:pro-dq} to compute $Dq$ for $q=t+xi+yj+zk$. \emph{Answer:} $Dq=-2$.
+\item\label{ex:pro-vortex} A fluid turns rigidly about the $z$-axis with velocity $\mathbf q=(-y,x,0)$, and $q_t=0$. Compute $Dq$ from the table and interpret each nonzero cell. \emph{Answer:} $Dq=2k$; the only contribution is the curl, and $2$ is twice the angular velocity.
+\end{exercises}
+
+\begin{sources}
+Identity \eqref{eq:pro-complex} and the Cauchy--Riemann equations are classical. Formula \eqref{eq:pro-qqbar} is due to Hamilton (1843), formula \eqref{eq:pro-dbard} to Fueter (1934--35), and the matrix form of \eqref{eq:pro-mink} goes back to Pauli's spin matrices (1927). The tables are a device of this book; every cell is computed by a short program from Hamilton's rules, so that no sign is typed by hand.
+\end{sources}

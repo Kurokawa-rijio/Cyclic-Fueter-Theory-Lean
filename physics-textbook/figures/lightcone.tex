@@ -1,0 +1,19 @@
+% The light cone: X Xbar = 0 with X nonzero
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,font=\small]
+  \fill[ui!10] (-1.6,1.6) -- (0,0) -- (1.6,1.6) arc (0:-180:1.6 and 0.32) -- cycle;
+  \fill[ui!10] (-1.6,-1.6) -- (0,0) -- (1.6,-1.6) arc (0:180:1.6 and 0.32) -- cycle;
+  \draw[ui,thick] (-1.6,1.6) -- (1.6,-1.6);
+  \draw[ui,thick] (1.6,1.6) -- (-1.6,-1.6);
+  \draw[ui,thick] (0,1.6) ellipse (1.6 and 0.32);
+  \draw[ui,thick] (1.6,-1.6) arc (0:-180:1.6 and 0.32);
+  \draw[ui,thick,dashed] (1.6,-1.6) arc (0:180:1.6 and 0.32);
+  \draw[->,black!60] (0,-2.2) -- (0,2.4) node[above] {$t$};
+  \draw[->,black!60] (-2.3,0) -- (2.4,0) node[right] {$\mathbf x$};
+  \fill[uj] (1.9,0.5) circle (1.6pt) node[right,font=\scriptsize] {$X\bar X<0$};
+  \fill[accent] (-1.1,1.1) circle (1.6pt);
+  \draw[accent,thin] (-1.1,1.1) -- (-2.0,2.05);
+  \node[anchor=east,align=right,font=\scriptsize,text=accent] at (-2.0,2.1) {$X\neq0$ with $X\bar X=0$:\\a light ray, $t=|\mathbf x|$};
+  \fill[uone] (0.3,0.95) circle (1.6pt);
+  \draw[uone,thin] (0.3,0.95) -- (2.0,2.3);
+  \node[anchor=west,font=\scriptsize,text=uone] at (2.0,2.3) {$X\bar X>0$};
+\end{tikzpicture}
