@@ -19,6 +19,16 @@ The throat is the near-horizon region of an extremal black hole. This chapter pl
 \item Geodesics in the throat separate according to the Jacobi equation $J''=J/\ell^2$, with solution $J=\cosh(s/\ell)\ge e^{s/\ell}/2$: the Lyapunov exponent is $1/\ell$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} With $r-r_+=f_1\rho^2/4$ we get $f\approx f_1^2\rho^2/4$ and $\dd r=\frac{f_1\rho}2\dd\rho$. So $\dd r^2/f=\dd\rho^2$ and $f\,\dd\tau^2=\rho^2(f_1/2)^2\dd\tau^2$. This is the flat metric in polar coordinates with angle $\vartheta=f_1\tau/2$. It is smooth at $\rho=0$ exactly when $\vartheta$ has period $2\pi$; otherwise there is a cone of angle $f_1\beta/2\ne2\pi$. This gives $\beta=4\pi/f_1$.
+
+\emph{(ii)} By the product rule only the derivative of $r-r_+$ survives at $r_+$, so $f'(r_+)=(r_+-r_-)/r_+^2$. For Schwarzschild, $r_-=0$ and $r_+=2M$, so $T=2M/(4\pi\cdot4M^2)=1/(8\pi M)$. At extremality $r_+-r_-=0$.
+
+\emph{(iii)} $\cosh''=\cosh$, so $N''=N/\ell^2$. For a metric $N^2\dd\tau^2+\dd x^2$ the Gaussian curvature is $-N''/N$. By Gauss--Bonnet, $-A/\ell^2=\int K\,\dd A=2\pi(2-2g)$, which gives $A=4\pi(g-1)\ell^2$.
+
+\emph{(iv)} The Jacobi equation $J''+KJ=0$ with $K=-1/\ell^2$ is $J''=J/\ell^2$. The solution with $J(0)=1$, $J'(0)=0$ is $\cosh(s/\ell)=\frac12(e^{s/\ell}+e^{-s/\ell})\ge\frac12e^{s/\ell}$.
+\end{proof}
+
 
 The Lyapunov exponent $1/\ell$ is $2\pi T$ for the Rindler temperature $T=1/(2\pi\ell)$ of the throat's accelerated observers, the value that saturates the chaos bound of Maldacena, Shenker and Stanford \cite{MSS2016}.
 
@@ -36,10 +46,39 @@ Work in units $G=1$ and write $M(r_+,Q)=(r_+^2+Q^2)/(2r_+)$, which is equivalent
 \item (Mass function) For the magnetic ansatz with $w=0$ the Misner--Sharp mass obeys $m_u=r_u\ell^2/(2r^2)$, the RN mass function. For $w^2=1$, $w_u=0$, the mass is constant: Birkhoff's theorem for the pure-gauge sector.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Differentiating $M=(r_+^2+Q^2)/(2r_+)$ gives
+\[
+\frac{\partial M}{\partial r_+}=\frac{r_+^2-Q^2}{2r_+^2}=\frac12\Bigl(1-\frac{Q^2}{r_+^2}\Bigr),\qquad\frac{\partial M}{\partial Q}=\frac Q{r_+}.
+\]
+Since $r_+r_-=Q^2$, \cref{thm:hawkingT}(ii) gives $T=(r_+-Q^2/r_+)/(4\pi r_+^2)$. Then $T\cdot\partial S/\partial r_+=T\cdot2\pi r_+=(1-Q^2/r_+^2)/2$. The throat form is the case $Q^2=\ell^2$.
+
+\emph{(ii)} $TS=(r_+-Q^2/r_+)/4$, so $2TS+\Phi Q=\frac{r_+}2-\frac{Q^2}{2r_+}+\frac{Q^2}{r_+}=M$.
+
+\emph{(iii)} $M-TS=\frac{r_+}2+\frac{Q^2}{2r_+}-\frac{r_+}4+\frac{Q^2}{4r_+}$.
+
+\emph{(iv)} $\frac{\dd}{\dd r}\bigl(\frac1r-\frac{Q^2}{r^3}\bigr)=-\frac1{r^2}+\frac{3Q^2}{r^4}$, which is positive exactly when $r^2<3Q^2$. The heat capacity is $\frac{\dd M/\dd r_+}{\dd T/\dd r_+}$, and $\dd M/\dd r_+>0$ off extremality, so it has the sign of $\dd T/\dd r_+$.
+
+\emph{(v)} Equal temperatures mean $\frac{r_2-r_1}{r_1r_2}=Q^2\frac{r_2^3-r_1^3}{r_1^3r_2^3}$. Dividing by $r_2-r_1$ gives
+\[
+r_1^2r_2^2=Q^2(r_1^2+r_1r_2+r_2^2)>3Q^2r_1r_2 ,
+\]
+using $r_1^2+r_2^2>2r_1r_2$ for $r_1\ne r_2$. So $r_1r_2>3Q^2$. For $r_1=1$, $r_2=2$ the equation reads $4=7Q^2$. By (iii),
+\[
+F(r_2)-F(r_1)=\frac{r_2-r_1}4\Bigl(1-\frac{3Q^2}{r_1r_2}\Bigr)>0 .
+\]
+
+\emph{(vi)} This is \cref{thm:weyl}(ii) with $w=0$, so that $w_u=0$ and $(1-w^2)^2=1$, which gives $m_u=r_u\ell^2/(2r^2)$. With $w^2=1$ both terms vanish.
+\end{proof}
+
 
 \begin{proposition}[A Hawking--Page-type sign]\label{prop:hawkingpage}\ver\
 For $r_+,L>0$, $\frac{r_+}4\bigl(1-r_+^2/L^2\bigr)<0$ iff $r_+>L$.
 \end{proposition}
+\begin{proof}
+$r_+/4>0$, so the sign is that of $1-r_+^2/L^2$, which is negative exactly when $r_+^2>L^2$.
+\end{proof}
+
 
 This is the sign change of the free energy of AdS black holes found by Hawking and Page \cite{HawkingPage1983}, here only as an algebraic statement.
 
@@ -53,12 +92,30 @@ This is the sign change of the free energy of AdS black holes found by Hawking a
 \item In general, with the Gibbons--Hawking evaluation $I=\beta(M-\Phi Q)/2$ and Smarr's formula, $I=\beta(M-TS-\Phi Q)$ and $S=\beta(M-\Phi Q)-I$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $\int_{r_+}^\infty r^{-2}\dd r=[-1/r]_{r_+}^\infty=1/r_+$. Then $\frac{\beta\cdot4\pi}{16\pi}\cdot\frac{2Q^2}{r_+}=\frac{\beta Q^2}{2r_+}=\frac{\beta\Phi Q}2$.
+
+\emph{(iv)} The Gibbons--Hawking evaluation $I=\beta(M-\Phi Q)/2$ is standard \ext. By Smarr's formula, $M-\Phi Q=2TS$, so $I=\beta TS$. Also $M-TS-\Phi Q=TS$. Hence $I=\beta(M-TS-\Phi Q)$, and $\beta(M-\Phi Q)-I=2\beta TS-\beta TS=S$ when $\beta T=1$.
+
+\emph{(iii)} This is (iv), the electric case.
+
+\emph{(ii)} For magnetic charge the Maxwell term of (i) enters with the opposite sign. That changes $I$ by $2\cdot\beta\Phi Q/2=\beta\Phi Q$, so $I=\beta(M-TS)$ and $\beta M-I=\beta TS=S$. For the example: $T=(2-\frac12)/(4\pi\cdot4)=3/(32\pi)$, so $\beta=32\pi/3$.
+\end{proof}
+
 
 The difference between (ii) and (iii) is the electric--magnetic asymmetry of the Euclidean action noted by Hawking and Ross \cite{HawkingRoss1995}. For the throat, which carries magnetic charge, the relevant potential is the free energy at fixed charge.
 
 \begin{proposition}[Magnetic charge as degree]\label{prop:degree}\ver\
 For $\mathbf n=(\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta)$, $\mathbf n\cdot(\partial_\theta\mathbf n\times\partial_\varphi\mathbf n)=\sin\theta$, and $\frac1{4\pi}\int_0^{2\pi}\!\!\int_0^\pi\sin\theta\,\dd\theta\,\dd\varphi=1$: the hedgehog, and hence the throat, has unit magnetic charge.
 \end{proposition}
+\begin{proof}
+$\partial_\theta\mathbf n=(\cos\theta\cos\varphi,\cos\theta\sin\varphi,-\sin\theta)$ and $\partial_\varphi\mathbf n=(-\sin\theta\sin\varphi,\sin\theta\cos\varphi,0)$. Their cross product is
+\[
+(\sin^2\theta\cos\varphi,\ \sin^2\theta\sin\varphi,\ \sin\theta\cos\theta)=\sin\theta\,\mathbf n ,
+\]
+and its inner product with $\mathbf n$ is $\sin\theta$. The integral is $2\pi\cdot2/(4\pi)=1$.
+\end{proof}
+
 
 \section{The entropy function and the attractor}
 
@@ -75,6 +132,20 @@ with value $\mathcal E=4\pi^2p^2/g^2=A/(4G)$.
 \item For $p=1$ the near-horizon radius is exactly $\ell$: the attractor geometry of a unit magnetic charge is the throat of \cref{ch:tolmanbr}.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} With $f=\frac12(v_1-v_2+e^2v_2/v_1-p^2v_1/v_2)$ and $x=v_1/v_2$, the three conditions are:
+\begin{itemize}[nosep]
+\item $\partial_e$: $q-ev_2/v_1=0$, so $e=qx$.
+\item $\partial_{v_1}$: $1=e^2v_2/v_1^2+p^2/v_2$. Inserting $e=qx$ makes this $1=(q^2+p^2)/v_2$.
+\item $\partial_{v_2}$: $1=e^2/v_1+p^2v_1/v_2^2=x(q^2+p^2)/v_2$, so $x=1$.
+\end{itemize}
+Hence $v_1=v_2=q^2+p^2$ and $e=q$, and this is the only solution. At this point $f=\frac12(q^2-p^2)$, so $\mathcal E=2\pi(q^2-f)=\pi(q^2+p^2)$. The sphere has area $4\pi v_2$, and $A/4=\pi(q^2+p^2)$.
+
+\emph{(ii)} $\partial_{v_1}\mathcal E=-\frac\pi G+\frac{4\pi^2p^2}{g^2v_2}=0$ gives $v_2=4\pi Gp^2/g^2=p^2\ell^2$. Then $\partial_{v_2}\mathcal E=\frac\pi G-\frac{4\pi^2p^2v_1}{g^2v_2^2}=0$ gives $v_1=v_2^2/(p^2\ell^2)=v_2$. The value is $0+4\pi^2p^2/g^2$. On the other hand $A/(4G)=\pi p^2\ell^2/G=4\pi^2p^2/g^2$.
+
+\emph{(iii)} Put $p=1$.
+\end{proof}
+
 
 The entropy of the throat is $\pi\ell^2/G=4\pi^2/g^2$, a pure number in units of the gauge coupling. The same value reappears as the ground-state entropy $S_0$ of the two-dimensional theory in the next chapter.
 
@@ -88,6 +159,24 @@ The entropy of the throat is $\pi\ell^2/G=4\pi^2/g^2$, a pure number in units of
 \item (Black body) $\sum_{n\ge1}e^{-nt}=1/(e^t-1)$, $\int_0^\infty t^3/(e^t-1)\,\dd t=\pi^4/15$, and the energy density of a photon gas is $u=\frac{2}{2\pi^2}T^4\frac{\pi^4}{15}=\frac{\pi^2}{15}T^4$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $\Gamma^t{}_{tx}=\frac12g^{tt}\partial_xg_{tt}=\frac12(-N^{-2})(-2NN')=N'/N$. In the same way $\Gamma^\theta{}_{\theta x}=R'/R$ and $\Gamma^x{}_{xx}=A'/A$. For diagonal $T$,
+\[
+\nabla_\mu T^\mu{}_x=\partial_xT^x{}_x+\Gamma^\mu{}_{\mu x}T^x{}_x-\Gamma^\lambda{}_{\mu x}T^\mu{}_\lambda .
+\]
+The middle term is $(N'/N+A'/A+2R'/R)p$. The last is $-\bigl(-(N'/N)\rho+(A'/A)p+2(R'/R)p\bigr)$. Adding, the result is $p'+(N'/N)(\rho+p)$.
+
+\emph{(ii)} $p'=\frac43aT^3T'$ and $\rho+p=\frac43aT^4$. So equilibrium reads $\frac43aT^3(T'+TN'/N)=0$, that is, $(TN)'=0$.
+
+\emph{(iii)} $TN=T_0$ is constant, so (ii) applies.
+
+\emph{(iv)} The geometric series gives $\sum_{n\ge1}e^{-nt}=e^{-t}/(1-e^{-t})=1/(e^t-1)$. By monotone convergence,
+\[
+\int_0^\infty\frac{t^3}{e^t-1}\dd t=\sum_n\frac{3!}{n^4}=6\zeta(4)=\frac{6\pi^4}{90}.
+\]
+With two polarisations, $u=2\int\frac{\dd^3k}{(2\pi)^3}\frac k{e^{k/T}-1}=\frac{2}{2\pi^2}T^4\frac{\pi^4}{15}$.
+\end{proof}
+
 
 \section{Statistical mechanics: KMS and the J\"uttner distribution}
 
@@ -99,6 +188,22 @@ For a finite system with energies $E_k$ and Gibbs weights $e^{-\beta E_k}$:
 \item from this alone, $(h+g)\sinh(\beta\omega/2)=(h-g)\cosh(\beta\omega/2)$, which is the fluctuation--dissipation relation $S(\omega)=\coth(\beta\omega/2)\,\chi''(\omega)$ with $S=h+g$ and $\chi''=h-g$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Write $\rho=e^{-\beta H}/Z$ and $A(t)=e^{\ii Ht}Ae^{-\ii Ht}$, so $A(t+\ii\beta)=e^{-\beta H}A(t)e^{\beta H}$. Let $G_{AB}(t)=\Tr(\rho A(t)B)$ and $H_{BA}(t)=\Tr(\rho BA(t))$.
+
+\emph{(i)} By cyclicity of the trace,
+\[
+Z\,H_{BA}(t+\ii\beta)=\Tr\bigl(e^{-\beta H}Be^{-\beta H}A(t)e^{\beta H}\bigr)=\Tr\bigl(A(t)Be^{-\beta H}\bigr)=Z\,G_{AB}(t).
+\]
+
+\emph{(ii)} The exponents add: $\beta(E_m-E_k)-\beta E_m=-\beta E_k$. In an eigenbasis, $G$ and $H$ are sums of $e^{\ii\omega t}$ with $\omega=E_m-E_k$. Their weights at the same $\omega$ differ by the factor $e^{-\beta E_k}/e^{-\beta E_m}=e^{-\beta\omega}$ (up to the sign convention for $\omega$).
+
+\emph{(iii)} With $g=e^{-\beta\omega}h$ and $x=\beta\omega$,
+\[
+(h+g)\sinh\frac x2=h\,e^{-x/2}\cdot2\cosh\frac x2\sinh\frac x2=(h-g)\cosh\frac x2 .\qedhere
+\]
+\end{proof}
+
 
 \begin{proposition}[Non-relativistic limit of the J\"uttner distribution]\label{prop:juttner}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -107,12 +212,34 @@ For a finite system with energies $E_k$ and Gibbs weights $e^{-\beta E_k}$:
 \item $m(\sqrt{1+x/m}-1)\to x/2$ as $m\to\infty$, monotonically for $m\ge1$; hence with $p^2=mq^2$, $e^{-\beta(E-m)}\to e^{-\beta q^2/2}$: the J\"uttner weight tends to the Maxwell weight.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} Upper bound: $(m+\frac{p^2}{2m})^2=m^2+p^2+\frac{p^4}{4m^2}\ge m^2+p^2$.
+
+Lower bound: put $t=p^2/m^2\in[0,8]$. If $1+t/2-t^2/8<0$ there is nothing to prove. Otherwise square it:
+\[
+\Bigl(1+\frac t2-\frac{t^2}8\Bigr)^2=1+t-\frac{t^3}8+\frac{t^4}{64}=1+t+\frac{t^3(t-8)}{64}\le1+t .
+\]
+Multiplying by $m$ gives the inequality for $\sqrt{m^2+p^2}$.
+
+\emph{(ii)} $0<m\le\sqrt{m^2+p^2}$.
+
+\emph{(iii)} Rationalise:
+\[
+m\Bigl(\sqrt{1+x/m}-1\Bigr)=\frac x{\sqrt{1+x/m}+1}\to\frac x2 .
+\]
+For $x\ge0$ the denominator decreases in $m$, so the expression increases. With $p^2=mq^2$, $E-m=m(\sqrt{1+q^2/m}-1)\to q^2/2$.
+\end{proof}
+
 
 The J\"uttner distribution is naturally a distribution on the hemisphere of \cref{ch:hemisphere}: it depends only on the height $m/E$, and its non-relativistic limit concentrates near the pole.
 
 \begin{proposition}[A Cardy-type density of states]\label{prop:cardy}\ver\
 If $S(E)=S_0+2\pi\sqrt{2CE}$, then $\dd S/\dd E=1/T$ at $E=2\pi^2CT^2$, where $S=S_0+4\pi^2CT$. The Laplace transform exponent is $a^2/(4\beta)=2\pi^2C/\beta$ for $a=2\pi\sqrt{2C}$.
 \end{proposition}
+\begin{proof}
+$\dd S/\dd E=2\pi\sqrt{2C}/(2\sqrt E)=\pi\sqrt{2C/E}$. At $E=2\pi^2CT^2$ this is $\pi/(\pi T)=1/T$. Then $S=S_0+2\pi\sqrt{4\pi^2C^2T^2}=S_0+4\pi^2CT$. The exponent $a\sqrt E-\beta E$ is maximal at $\sqrt E=a/(2\beta)$, with value $a^2/(4\beta)=8\pi^2C/(4\beta)$.
+\end{proof}
+
 
 Linear-in-$T$ entropy above a ground-state value $S_0$ is the thermodynamics of near-extremal black holes and of the Schwarzian theory of the next chapter.
 

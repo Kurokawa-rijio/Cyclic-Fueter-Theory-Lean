@@ -20,6 +20,22 @@ In conformal gauge $h=-2\Omega\,\dd u\,\dd v$, the Euler--Lagrange equations for
 \end{align*}
 and all three hold whenever the Goursat equations of \cref{thm:goursat} hold. (The variational calculus itself is standard \ext.)
 \end{proposition}
+\begin{proof}
+\emph{The Lagrangian in conformal gauge.} For $h=-2\Omega\,\dd u\,\dd v$ we have $\sqrt{-h}=\Omega$ and $h^{uv}=-1/\Omega$. By the proof of \cref{thm:goursat}, $\sqrt{-h}R_h=2(\log\Omega)_{uv}$, and $\sqrt{-h}(\nabla f)^2=-2f_uf_v$. With $\lambda=\log\Omega$ and $P=(1-w^2)^2$ the Lagrangian is
+\[
+\tfrac14\bigl\{2r^2\lambda_{uv}-4r_ur_v+2e^\lambda+8\ell^2w_uw_v-2\ell^2e^\lambda P/r^2\bigr\}.
+\]
+
+\emph{The three Euler--Lagrange equations}, each multiplied by $4$:
+\begin{itemize}[nosep]
+\item $\lambda$ (the term $r^2\lambda_{uv}$ is differentiated twice): $2(r^2)_{uv}+2\Omega-2\ell^2\Omega P/r^2$.
+\item $w$: $\partial L/\partial w=2\ell^2\Omega w(1-w^2)/r^2$ and $\partial_u(2\ell^2w_v)+\partial_v(2\ell^2w_u)=4\ell^2w_{uv}$, which gives $8\ell^2\Omega w(1-w^2)/r^2-16\ell^2w_{uv}$.
+\item $r$: $\partial L/\partial r=r\lambda_{uv}+\ell^2\Omega P/r^3$, and the $r_ur_v$ term contributes $+2r_{uv}$, which gives $4r\lambda_{uv}+8r_{uv}+4\ell^2\Omega P/r^3$.
+\end{itemize}
+
+\emph{Consistency with the Goursat equations.} The first follows from $(r^2)_{uv}=2(rr_{uv}+r_ur_v)$ and the mixed equation. The second is \cref{thm:ymnull} multiplied by $-16\ell^2$. The third follows from the $\theta\theta$ equation divided by $\Omega$, which reads $\lambda_{uv}=-2r_{uv}/r-\Omega\ell^2P/r^4$.
+\end{proof}
+
 
 With $h=-N^2\dd t^2+\Lambda^2(\dd x+N^x\dd t)^2$ the Hamiltonian and momentum constraints are
 \[
@@ -35,6 +51,31 @@ Let $M=P_\Lambda^2/(2r)+\frac r2(1-r'^2/\Lambda^2)$.
 \item On the throat, $r'=0$ and $P_\Lambda=0$, so $F=0$: Kucha\v{r}'s variables \cite{Kuchar1994} are not available exactly there.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Write $P=P_\Lambda$, and let $H_g$, $H_{x,g}$ be the gravitational parts of the constraints.
+
+\emph{(i)} Differentiate $M$:
+\[
+M'=-\frac{P^2r'}{2r^2}+\frac{PP'}r+\frac{r'}2\Bigl(1-\frac{r'^2}{\Lambda^2}\Bigr)-\frac{rr'r''}{\Lambda^2}+\frac{rr'^2\Lambda'}{\Lambda^3}.
+\]
+On the other hand,
+\begin{align*}
+-\frac{r'}\Lambda H_g&=\frac{P_rPr'}{r\Lambda}-\frac{r'P^2}{2r^2}-\frac{rr'r''}{\Lambda^2}+\frac{rr'^2\Lambda'}{\Lambda^3}-\frac{r'^3}{2\Lambda^2}+\frac{r'}2,\\
+-\frac P{r\Lambda}H_{x,g}&=-\frac{PP_rr'}{r\Lambda}+\frac{PP'}r .
+\end{align*}
+The $P_r$ terms cancel, and the rest matches $M'$ term by term. On the constraint surface $H_g=-H_m$ and $H_{x,g}=-P_ww'$, which gives the second form.
+
+\emph{(ii)} $1-\frac{2M}r=1-\frac{P^2}{r^2}-1+\frac{r'^2}{\Lambda^2}$.
+
+\emph{(iii)} With $P_M=\Lambda P/(rF)$,
+\[
+\frac{r'^2}F-FP_M^2=\frac{\Lambda^2}F\Bigl(\frac{r'^2}{\Lambda^2}-\frac{P^2}{r^2}\Bigr)=\Lambda^2 ,
+\]
+and $FP_M/\Lambda^2=P/(r\Lambda)$.
+
+\emph{(iv)} $F=0-0$.
+\end{proof}
+
 
 \begin{proposition}[One constraint system for both pieces]\label{prop:bothconstraints}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -42,6 +83,18 @@ Let $M=P_\Lambda^2/(2r)+\frac r2(1-r'^2/\Lambda^2)$.
 \item For fields independent of $x$, $H$ is twice the Kantowski--Sachs constraint of the throat side (below).
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} Here $r'=\Omega\cos\chi$, $r''=-\Omega\sin\chi$ and $\Lambda'=0$. Term by term:
+\begin{itemize}[nosep]
+\item $-P_rP_\Lambda/r=-2\Omega_\eta^2\sin^2\chi/\Omega$ and $\Lambda P_\Lambda^2/(2r^2)=\Omega_\eta^2\sin^2\chi/(2\Omega)$, together $-\frac32\Omega_\eta^2\sin^2\chi/\Omega$;
+\item $rr''/\Lambda+r'^2/(2\Lambda)-\Lambda/2=-\Omega\sin^2\chi+\frac\Omega2(\cos^2\chi-1)=-\frac32\Omega\sin^2\chi$;
+\item with $P_w=0$ the Yang--Mills part is $H_m=\ell^2w'^2/\Lambda+\ell^2\Lambda(1-w^2)^2/(2r^2)=\frac32\ell^2\sin^2\chi/\Omega$.
+\end{itemize}
+The sum is the stated $H$. For the momentum constraint, $H_x=-2\Omega_\eta\Omega\sin\chi\cos\chi+\Omega\cdot2\Omega_\eta\sin\chi\cos\chi+0=0$.
+
+\emph{(ii)} For $x$-independent fields, $H=-P_rP_\Lambda/r+\Lambda P_\Lambda^2/(2r^2)-\Lambda/2+P_w^2/(4\ell^2\Lambda)+\ell^2\Lambda(1-w^2)^2/(2r^2)$. Compare with the Kantowski--Sachs constraint of \cref{thm:ks}, with $c=\frac12$ and potential $-c^2a(1-\ell^2(1-w^2)^2/r^2)$. Every term is exactly half the corresponding term of $H$.
+\end{proof}
+
 
 \section{The throat as a Kantowski--Sachs minisuperspace}
 
@@ -58,6 +111,32 @@ In synchronous coordinates the throat is homogeneous along $z$: $-N^2\dd t^2+a(t
 \item The proper length $L=aL_x$ of the throat and $p_L=p_a/L_x=-r\dot r$ are canonically conjugate, $p_LL=p_aa$; consequently $\Delta L\,\Delta(r\dot r)\ge\hbar/2$ \ext.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Insert the momenta:
+\begin{align*}
+-\frac{p_ap_r}{2r}&=-2c^2a\dot r^2-2c^2r\dot a\dot r,\\
+\frac{ap_a^2}{4r^2}&=c^2a\dot r^2,\\
+\frac{p_w^2}{8\ell^2a}&=2c^2\ell^2a\dot w^2 .
+\end{align*}
+The sum is $c^2(-a\dot r^2-2r\dot a\dot r+2\ell^2a\dot w^2)$. Only the first term contains $p_r$, and it does so linearly.
+
+\emph{(ii)} $rf'=2M/r-2\ell^2/r^2$, so in $f+rf'$ the $M$ terms cancel and $1-\ell^2/r^2$ remains.
+
+\emph{(iii)} With $S=k\sigma+\kappa\theta$: $p_a=\partial_aS=kar$ and $p_r=\partial_rS=\frac k2a^2-\frac\kappa2(1-\ell^2/r^2)$. Then
+\[
+-\frac{p_ap_r}{2r}+\frac{ap_a^2}{4r^2}=-\frac{k^2a^3}4+\frac{k\kappa a}4\Bigl(1-\frac{\ell^2}{r^2}\Bigr)+\frac{k^2a^3}4 .
+\]
+The constraint $\frac{k\kappa}4a(1-\ell^2/r^2)-c^2a(1-\ell^2/r^2)=0$ holds exactly when $k\kappa=4c^2$. For the plane waves, $\partial_\sigma\partial_\theta\cos(k\sigma+\kappa\theta)=-k\kappa\cos(\cdot)$, and $|e^{\ii x}|=1$ for real $x$.
+
+\emph{(iv)} $\sigma\mapsto\frac12\frac{a^2r^2}{\ell^2}\cdot\frac{\ell^2}r=\sigma$, and $\theta\mapsto-\frac12(\ell^2/r+r)=\theta$.
+
+\emph{(v)} $(r-\ell)^2/r=(r^2-2r\ell+\ell^2)/r$. This is $\ge0$ for $r>0$, with equality only at $r=\ell$.
+
+\emph{(vi)} Expand the square. In the potential energy $+\ell^2a(1-w^2)^2/r^2$ the coefficient of $w^2$ is $-2\ell^2a/r^2<0$.
+
+\emph{(vii)} With $L=aL_x$, $\dot a=\dot L/L_x$, so $p_L=\partial L/\partial\dot L=p_a/L_x$, and $p_LL=p_aa$. With $c=L_x/2$ (in units $G=1$), $p_L=-r\dot r$. The uncertainty relation is the Robertson inequality for $[\hat L,\hat p_L]=\ii\hbar$ \ext.
+\end{proof}
+
 
 Part (vii) makes precise the remark of \cref{ch:envelope}: the free length $L$ of the glued slice is conjugate to the rate $-r\dot r=-\frac12\,\dd(r^2)/\dd t$ at which the throat's area changes.
 
@@ -79,6 +158,32 @@ Let $Q_C(b)=Cb-4c^2(b^2+\ell^2)$.
 \item The throat front $S=z-\ell\operatorname{arsinh}\tan(t/\ell)$ has $S_t=-1/\cos(t/\ell)$, $S_z=1$ and satisfies the eikonal equation $-S_t^2+S_z^2/\cos^2(t/\ell)=0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Write $e=e^{\ii a\sigma/\hbar}$. Then $\Psi_a=\frac{\ii\sigma}\hbar\Psi$ and $\Psi_{aa}=-\frac{\sigma^2}{\hbar^2}\Psi$. Differentiating $\Psi_b=(A'+\ii a\sigma'A/\hbar)e$ in $a$,
+\[
+\Psi_{ab}=e\Bigl(\frac{\ii\sigma'A}\hbar+\frac{\ii\sigma A'}\hbar-\frac{a\sigma\sigma'A}{\hbar^2}\Bigr).
+\]
+Insert these into $\hat H$. The terms without $\hbar$ form $A\cdot\mathrm{HJ}$ with
+\[
+\mathrm{HJ}=\frac a{4c}(\sigma^2-2b\sigma\sigma')-ca(b^2-\ell^2),
+\]
+and the terms with one $\hbar$ are $\frac{\ii\hbar b}{2c}(\sigma'A+\sigma A')$. There are no further terms.
+
+\emph{(ii)} If $\sigma^2=Q_C$, then $2\sigma\sigma'=Q_C'$, and
+\[
+Q_C-bQ_C'=Cb-4c^2b^2-4c^2\ell^2-Cb+8c^2b^2=4c^2(b^2-\ell^2).
+\]
+So $\mathrm{HJ}=\frac a{4c}\cdot4c^2(b^2-\ell^2)-ca(b^2-\ell^2)=0$. With $A=1/\sigma$ the transport term $(\sigma A)'$ vanishes. Both signs of $\sigma$ work.
+
+\emph{(iii)} The Laplace--Beltrami operator (\cref{thm:kslegendre}(v)) has the extra term $-\frac{\hbar^2}{4c}\Psi_a=-\frac{\ii\hbar\sigma A}{4c}e$. The transport condition becomes $b(\sigma A)'=\frac12\sigma A$. With $\sigma A=\sqrt b$ both sides equal $\frac12\sqrt b$.
+
+\emph{(iv)} $\hat H$ is linear. $|e|=1$ for real $\sigma$, so $|\Psi|=|A|=1/|\sigma|$, which diverges as $Q_C\to0$.
+
+\emph{(v)} Apply the product rule twice, using $D\psi_0=\ii k\,DS\,\psi_0$. In two dimensions with $\Box=-\partial_t^2+w\,\partial_z^2$ the $(\ii k)^2$ terms are $A(-S_t^2+wS_z^2)$.
+
+\emph{(vi)} By the derivative computed in \cref{thm:fronts}(i), $S_t=-\ell\cdot\frac1\ell\sec(t/\ell)$, and $S_z=1$. Then $-\sec^2+\sec^2=0$.
+\end{proof}
+
 
 Part (vi) connects the characteristic fronts of \cref{thm:fronts} with the eikonal of the wave equation: the Mercator lines are the rays of the semiclassical wave functions.
 
@@ -94,6 +199,35 @@ Let $K=(p_a^2+4c^2(b^2+\ell^2))/b$ and $T=ab/(2p_a)$.
 \item For $a,b>0$ the sign of $T$ is the sign of $p_a$: the two sectors are expanding and contracting throats.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+The classical constraint read off from $\hat H$ is
+\[
+H=\frac a{4c}p_a^2-\frac b{2c}p_ap_b-ca(b^2-\ell^2).
+\]
+
+\emph{(i)} $T$ and $K$ do not involve $p_b$, and $K$ does not involve $a$. So
+\[
+\{T,K\}=\partial_aT\,\partial_{p_a}K=\frac b{2p_a}\cdot\frac{2p_a}b=1 .
+\]
+For $\{K,H\}$, with $K=p_a^2/b+4c^2b+4c^2\ell^2/b$:
+\[
+\{K,H\}=-\partial_{p_a}K\,\partial_aH+\partial_bK\,\partial_{p_b}H=-\frac{2p_a}b\Bigl(\frac{p_a^2}{4c}-c(b^2-\ell^2)\Bigr)-\frac{bp_a}{2c}\Bigl(-\frac{p_a^2}{b^2}+4c^2-\frac{4c^2\ell^2}{b^2}\Bigr).
+\]
+The two brackets cancel term by term. For $\{T,H\}$, the same bookkeeping gives
+\[
+\frac{ab}{8c}-\frac{b^2p_b}{4cp_a}-\frac{abc(b^2-\ell^2)}{2p_a^2},
+\]
+which is $\frac b{2p_a^2}H$.
+
+\emph{(ii)} $-\hbar^2\partial_a^2$ acting on $\Psi_C$ gives $\sigma^2\Psi_C=Q_C\Psi_C$, and $Q_C+4c^2(b^2+\ell^2)=Cb$.
+
+\emph{(iii)} $K-8c^2\ell=(p_a^2+4c^2(b^2-2b\ell+\ell^2))/b$. This is $\ge0$ for $b>0$, and $>0$ unless $p_a=0$ and $b=\ell$.
+
+\emph{(iv)} $Q_C$ is a downward parabola in $b$ with vertex at $b=C/(8c^2)$ and maximum $C^2/(16c^2)-4c^2\ell^2$. This maximum is positive exactly when $C^2>64c^4\ell^2$. The positive point can be chosen with $b>0$ exactly when the vertex is at $b>0$, that is, $C>0$, so $C>8c^2\ell$.
+
+\emph{(v)} $a,b>0$, so $T=ab/(2p_a)$ has the sign of $p_a$.
+\end{proof}
+
 
 \section{Affine quantisation}
 
@@ -107,6 +241,22 @@ On $L^2((0,\infty),\dd k)$ let $\hat K=K_0+k$ and $\hat D=i\hbar(k\partial_k+\fr
 \item The physical inner product is positive definite: $\langle f,f\rangle\ge0$ with equality iff $f=0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} For a test function $\psi$,
+\[
+[\hat D,\hat K]\psi=\ii\hbar\bigl((k\partial_k+\tfrac12)(k\psi)-k(k\partial_k+\tfrac12)\psi\bigr)=\ii\hbar\,k\psi=\ii\hbar(\hat K-K_0)\psi .
+\]
+Also $\int k|\psi|^2\ge0$ because $k>0$.
+
+\emph{(ii)} Define $(U(\alpha,\tau)\psi)(k)=e^{\ii\tau k/\hbar}\sqrt\alpha\,\psi(\alpha k)$. Then
+\[
+U(\alpha,\tau)U(\beta,\sigma)\psi(k)=e^{\ii\tau k/\hbar}\sqrt\alpha\,e^{\ii\sigma\alpha k/\hbar}\sqrt\beta\,\psi(\beta\alpha k)=U(\alpha\beta,\tau+\alpha\sigma)\psi(k).
+\]
+The substitution $k'=\alpha k$ shows $\int\alpha|\psi(\alpha k)|^2\dd k=\int|\psi|^2$.
+
+\emph{(iii)} $\langle f,f\rangle=\int|f|^2\ge0$, and it vanishes only for $f=0$ in $L^2$.
+\end{proof}
+
 
 \section{Time from stationary phase}
 
@@ -120,6 +270,16 @@ Superpose the exact solutions, $\Psi=\int\dd C\,\phi(C)\Psi_C$. The phase $S_C=a
 \item For every $T_0>0$ the stationary point exists: $C_*=C_{\min}(b)+a^2b/(4T_0^2)$ gives $Q=(ab/(2T_0))^2$ and $\partial_C(a\sqrt Q)=T_0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $Q_C$ is linear in $C$ with coefficient $b$, and the chain rule gives $\partial_C\sqrt{Q_C}=b/(2\sqrt{Q_C})$.
+
+\emph{(ii)} $Q_C>0$ means $Cb>4c^2(b^2+\ell^2)$, that is, $C>C_{\min}$ when $b>0$. By the inequality between arithmetic and geometric means, $(b^2+\ell^2)/b\ge2\ell$.
+
+\emph{(iii)} $Q_C$ increases in $C$, so $T(C)=ab/(2\sqrt{Q_C})$ decreases. Explicitly, $\partial_CT=-ab\cdot b/(4Q_C^{3/2})=-ab^2/(4\sigma^3)\ne0$.
+
+\emph{(iv)} $Q_{C_*}=(C_*-C_{\min})b=a^2b^2/(4T_0^2)$. So $\sqrt{Q}=ab/(2T_0)$, and by (i) $\partial_C(a\sqrt Q)=T_0$.
+\end{proof}
+
 
 Time is not an external parameter here: it is the variable conjugate to the Dirac observable $K$, and a wave packet in $K$ is peaked, by stationary phase, on the classical trajectory with clock reading $T_0$.
 
@@ -132,6 +292,18 @@ Time is not an external parameter here: it is the variable conjugate to the Dira
 \item The homogeneous Yang--Mills potential $V=K(1-f^2)^2$ has $V=K$ at the top $f=0$ and, with mass $2K$, oscillation frequency $2$ at the bottom $f=1$, where $V''=8K$. The instanton action is $3\pi^2\cdot\frac83=8\pi^2$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} For traceless $T$, $R_{tt}=8\pi G(T_{tt}-\frac12Tg_{tt})=8\pi G\rho>0$. For an ultrastatic metric $-\dd t^2+g_{S^3}$, $R_{tt}=0$.
+
+\emph{(ii)} Differentiate the constraint:
+\[
+2a'(a''+a)-2\ell^2w'\bigl(w''-2w(1-w^2)\bigr)=0
+\]
+by the two equations of motion.
+
+\emph{(iii)} $V(0)=K$. Next, $V'=-4Kf(1-f^2)$ and $V''=-4K(1-f^2)+8Kf^2$, which is $8K$ at $f=1$. The frequency is $\sqrt{V''/m}=\sqrt{8K/(2K)}=2$. Finally $3\pi^2\cdot\frac83=8\pi^2$.
+\end{proof}
+
 
 The gravitational part of the constraint is a harmonic oscillator of negative energy (\cref{prop:minisuper}), $H_\Omega=-\frac{3\pi}{4G}(\dot\Omega^2+\Omega^2)$.
 
@@ -143,6 +315,22 @@ The gravitational part of the constraint is a harmonic oscillator of negative en
 \item The weak-coupling Yang--Mills levels $2m+1$ never equal $n+\frac12$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} $\psi'=-M\Omega\psi$ and $\psi''=(M^2\Omega^2-M)\psi$. So
+\[
+-\frac{\psi''}{2M}+\frac M2\Omega^2\psi=\Bigl(\frac12-\frac{M\Omega^2}2+\frac{M\Omega^2}2\Bigr)\psi=\frac12\psi .
+\]
+$H_\Omega$ is minus an oscillator, so its levels are the negatives of the usual ones \ext.
+
+\emph{(ii)} Solve $\frac M2\ell^2=n+\frac12$ for $\ell^2$.
+
+\emph{(iii)} $1/g^2=(n+\frac12)/(3\pi^2)$. Then $\ell^2=4\pi G(n+\frac12)/(3\pi^2)$ and $g^2/(4\pi)=3\pi^2/(4\pi(n+\frac12))$.
+
+\emph{(iv)} $2m+1$ is an integer and $n+\frac12$ is not.
+
+\emph{The number in the text.} $4n+2=3\pi\cdot137.036\approx1291.5$, so $n\approx322.38$.
+\end{proof}
+
 
 We stress what (iii) is and is not. It is the formal consequence of identifying the classical Yang--Mills energy with a level of the gravitational oscillator. It is \emph{not} a derivation of a coupling constant: the identification is not justified by a consistent quantisation of the constrained system; part (iv) shows that the two natural level sets do not even coincide; and $g$ is the $\SU(2)$ coupling of this model, not the electromagnetic coupling. If one nevertheless inserted the measured value $1/137.036$ for $g^2/4\pi$, one would need $n\approx322.38$, which is not an integer. We record the condition only as an example of the kind of statement the formalism produces, and as a warning \nogo.
 

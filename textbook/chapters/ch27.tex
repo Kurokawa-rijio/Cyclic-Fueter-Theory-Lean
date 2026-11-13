@@ -19,6 +19,35 @@ Let $\Omega=A\cos\eta+B/\sin u$ on the Einstein static universe, with $AB\ne0$.
 \end{enumerate}
 Hence no Yang--Mills field $w$ makes $A\cos\eta+B/\sin u$ a solution: the two pieces cannot be superposed, even with a matching gauge field.
 \end{theorem}
+\begin{proof}
+Write $c=\cos\eta$, $s=\sin\eta$, $S=\sin u$, $C=\cos u$.
+
+\emph{(i)} The combination in question is $M=2(\Omega_\eta^2-\Omega_u^2)-2\Omega(\Omega_{\eta\eta}-\Omega_{uu})$. We need the derivatives
+\[
+\Omega_\eta=-As,\qquad\Omega_u=-\frac{BC}{S^2},\qquad\Omega_{\eta\eta}=-Ac,\qquad\Omega_{uu}=\frac{B(1+C^2)}{S^3}=\frac{B(2-S^2)}{S^3}.
+\]
+Expanding $-2\Omega(\Omega_{\eta\eta}-\Omega_{uu})$ gives
+\[
+2A^2c^2+\frac{4ABc}{S^3}-\frac{2ABc}S+\frac{2ABc}S+\frac{4B^2}{S^4}-\frac{2B^2}{S^2}.
+\]
+Adding $2(\Omega_\eta^2-\Omega_u^2)=2A^2s^2-\frac{2B^2}{S^4}+\frac{2B^2}{S^2}$ leaves $2A^2+4ABc/S^3+2B^2/S^4$. The Yang--Mills side of the same component is $2(1-w^2)^2/S^4$; for $A=0$ this is the throat. Multiplying by $S^4/2$ gives $(1-w^2)^2=D$ with $D=A^2S^4+2ABcS+B^2$.
+
+\emph{(ii)} Differentiate $(1-w^2)^2=D$ in $\eta$ and in $u$:
+\[
+-4w(1-w^2)w_\eta=-2ABsS,\qquad-4w(1-w^2)w_u=4A^2S^3C+2ABcC .
+\]
+The $\eta u$ component of the field equations, whose matter side is proportional to $w_\eta w_u$, gives $w_\eta w_uS=ABsC$. Multiply the two derivative equations and substitute this:
+\[
+ABsC\bigl(4w^2D+S^2(2A^2S^3+ABc)\bigr)=0 .
+\]
+At a point with $ABsC\ne0$ the bracket vanishes. Now put $r=\sqrt D$ and $w^2=1-\sigma r$ with $\sigma=\pm1$, and eliminate $ABc=(r^2-A^2S^4-B^2)/(2S)$ using the definition of $D$. The result is
+\[
+4\sigma r^3-\Bigl(4+\frac S2\Bigr)r^2-\frac32A^2S^5+\frac{B^2S}2=0 .
+\]
+
+\emph{(iii)} This is a nonzero polynomial of degree $3$ in $r$ (its leading coefficient is $4\sigma\ne0$), so it has at most three roots. At fixed $S$, $r^2=D$ is affine in $c$ with slope $2ABS\ne0$. So four values of $\cos\eta$ give four distinct $r\ge0$, and the cubic would vanish at all four, which is impossible.
+\end{proof}
+
 
 \begin{proposition}[The conformal frame]\label{prop:confframe}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -29,10 +58,50 @@ Hence no Yang--Mills field $w$ makes $A\cos\eta+B/\sin u$ a solution: the two pi
 \item The constraint (zero total energy) $\frac{3\pi}{4G}\ell^2=\frac{3\pi^2}{g^2}$ is equivalent to $\ell^2=4\pi G/g^2$. Imposing that \emph{both} energies equal $n+\frac12$ reproduces the level condition of \cref{prop:levels}, with the same caveats.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} In four dimensions, $R[\Omega^2\hat g]=\Omega^{-2}(\hat R-6\hat\Box\Omega/\Omega)$ and $\sqrt g=\Omega^4\sqrt{\hat g}$. With $\hat R=6$ this gives $\sqrt gR=(6\Omega^2-6\Omega\hat\Box\Omega)\sqrt{\hat g}$. The volume of the unit $S^3$ is $2\pi^2$.
+
+\emph{(ii)} With $S=\sin\chi$, $C=\cos\chi$ and $r=\Omega S$:
+\[
+r_{\eta\eta}=S\Omega_{\eta\eta},\qquad r_{\chi\chi}=S\Omega_{\chi\chi}+2C\Omega_\chi-S\Omega .
+\]
+Subtracting gives the identity. The bracket is $\hat\Box\Omega-\Omega$ for radial $\Omega$, so \eqref{eq:confwave} is equivalent to $r_{\eta\eta}=r_{\chi\chi}$. By d'Alembert, $r=F(\eta+\chi)+G(\eta-\chi)$, and $r=0$ at $\chi=0$ forces $G=-F$. For the Tolman universe, $\cos\eta\sin\chi=\frac12(\sin(\eta+\chi)-\sin(\eta-\chi))$.
+
+\emph{(iii)} $r=0$ at $\chi=\pi$ means $F(\eta+\pi)=F(\eta-\pi)$ for all $\eta$, so $F$ has period $2\pi$. Then
+\[
+r(\eta+\pi,\pi-\chi)=F(\eta+2\pi-\chi)-F(\eta+\chi)=-r(\eta,\chi).
+\]
+Since $\sin(\pi-\chi)=\sin\chi$, $\Omega=r/\sin\chi$ also changes sign. The map preserves $\hat g$, and $\Omega^2$ is unchanged.
+
+\emph{(iv)} $E=\kappa y^2+y'^2$ has $E'=2y'(\kappa y+y'')=0$. So $E\equiv0$, and hence $y\equiv0$. For $q''=-q$, the difference between $q$ and $q(0)\cos\eta+q'(0)\sin\eta$ has zero data, so it vanishes. Finally $(f_\chi/\sin\chi)'=(f_{\chi\chi}\sin\chi-f_\chi\cos\chi)/\sin^2\chi=0$.
+
+\emph{(v)} This is \cref{prop:minisuper}, and then \cref{prop:levels}(iii).
+\end{proof}
+
 
 \begin{proposition}[$SL(2,\mathbb R)$ and the throat]\label{prop:sl2}\ver\
 The conformal Killing vectors $\xi_1=(sC,cS)$ and $\xi_2=(cC,-sS)$ of the $(\eta,\chi)$ plane ($c=\cos\eta$, $s=\sin\eta$, $C=\cos\chi$, $S=\sin\chi$), together with $\partial_\eta$, close into $\mathfrak{sl}(2,\mathbb R)$: $[\xi_1,\xi_2]=-\partial_\eta$, and so on. The throat $\Omega=\ell/\sin\chi$, $w=0$, is invariant under all three generators (with the conformal weights $\psi=cC$ and $-sC$). Conversely, a static configuration invariant under $\xi_1$ has $\Omega\sin\chi$ constant, so $\Omega=\mathrm{const}/\sin\chi$: only the throat.
 \end{proposition}
+\begin{proof}
+\emph{Conformal Killing vectors.} In null coordinates $x^\pm=\eta\pm\chi$, the components of $\xi_1$ are $\xi^\pm=\xi^\eta\pm\xi^\chi=\sin(\eta\pm\chi)$, and those of $\xi_2$ are $\cos(\eta\pm\chi)$. Each component depends on its own null coordinate only, which is the condition for a conformal Killing vector of $-\dd\eta^2+\dd\chi^2$.
+
+\emph{The algebra.} On each null line the vector fields $\sin x\,\partial_x$, $\cos x\,\partial_x$ and $\partial_x$ satisfy
+\[
+[\sin x\,\partial_x,\cos x\,\partial_x]=(-\sin^2x-\cos^2x)\partial_x=-\partial_x ,
+\]
+together with $[\partial_x,\sin x\,\partial_x]=\cos x\,\partial_x$ and $[\partial_x,\cos x\,\partial_x]=-\sin x\,\partial_x$.
+
+\emph{Invariance of the throat.} A conformal Killing vector with $\mathcal L_\xi\hat g=2\psi\hat g$ preserves $\Omega^2\hat g$ exactly when $\xi(\Omega)=-\psi\Omega$, where $\psi=\frac12(\partial_\eta\xi^\eta+\partial_\chi\xi^\chi)$. This gives $\psi_1=cC$ and $\psi_2=-sC$. For $\Omega=\ell/S$:
+\begin{itemize}[nosep]
+\item $\xi_1(\Omega)=cS\cdot(-\ell C/S^2)=-cC\,\Omega$;
+\item $\xi_2(\Omega)=-sS\cdot(-\ell C/S^2)=sC\,\Omega$;
+\item $\partial_\eta\Omega=0$.
+\end{itemize}
+The sphere factor $\ell^2\dd\Omega^2$ and $w=0$ are untouched.
+
+\emph{Uniqueness.} For static $\Omega(\chi)$, invariance under $\xi_1$ reads $cS\Omega_\chi=-cC\Omega$ for all $\eta$, that is, $(S\Omega)_\chi=0$.
+\end{proof}
+
 
 \section{Yang--Mills perturbations on the Tolman sphere}
 
@@ -44,6 +113,21 @@ Write a perturbation of $w=\cos\chi$ as $\delta w=\sin^2\chi\,u(x)$ with $x=\cos
 \item The potential on the Tolman background equals the potential on a vacuum, $-2/\sin^2\chi$, plus the constant $3$: $(1-3C^2)/S^2=(1-3)/S^2+3$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+The linearised static operator comes from $\frac{\dd}{\dd w}w(1-w^2)=1-3w^2$ at $w=\cos\chi$.
+
+\emph{(i)} With $x=C$ and $\dd x/\dd\chi=-S$:
+\begin{align*}
+\delta w_\chi&=2SCu-S^3u',\\
+\delta w_{\chi\chi}&=2(C^2-S^2)u-5S^2Cu'+S^4u'' .
+\end{align*}
+Adding $(1-3C^2)u$, the coefficient of $u$ becomes $2C^2-2S^2+1-3C^2=-S^2$. Hence the sum is $S^2(S^2u''-5xu'-u)$, with $S^2=1-x^2$.
+
+\emph{(ii)} For a Gegenbauer solution $(1-x^2)u''-5xu'=-n(n+4)u$, so the bracket is $-(n^2+4n+1)u$. The time equation is $\delta w_{\eta\eta}=-(n^2+4n+1)\delta w$, and $n^2+4n+1=(n+2)^2-3>0$ for $n\ge0$.
+
+\emph{(iii)} $(1-3C^2)/S^2=(1-3+3S^2)/S^2=-2/S^2+3$.
+\end{proof}
+
 
 In contrast to the throat (\cref{ch:stability}), the Tolman side is linearly stable. The instability of the glued spacetime is entirely in the throat.
 
@@ -60,6 +144,21 @@ For $-\dd t^2+a^2(\dd\chi^2+\sin^2\chi\,\dd\Omega^2)$ with $u=\ddot a/a$ and $X=
 \item Matching the trace to the anomaly gives $\beta=-\hbar a_E/(8\pi^2)$, so $\rho_{\rm anom}=(3\hbar a_E/8\pi^2)X^2$ with $\kappa_2=3a_E/(8\pi^2)>0$ for $a_E>0$. The quantum density $\rho_q=\hbar\kappa_1/a^4+\hbar\kappa_2X^2$ satisfies $\dot\rho=-(\dot a/a)(4\rho+\mathrm{tr})$, and any isotropic conserved density with the same trace differs from it only by $\kappa/a^4$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} These are the standard closed FRW formulas. The combinations are $R=3u+3(u+2X)$ and $G^0{}_0=3u-\frac12R=-3X$.
+
+\emph{(ii)} With ${}^{(3)}\!H^\mu{}_\nu=R^\mu{}_\lambda R^\lambda{}_\nu-\frac23RR^\mu{}_\nu-\frac12\delta^\mu{}_\nu(R_{\alpha\beta}R^{\alpha\beta}-\frac12R^2)$, the trace is $R\cdot R-\frac23R^2-2R\cdot R+R^2=-(R\cdot R-\frac13R^2)$. For FRW, $R\cdot R=12u^2+12uX+12X^2$ and $R^2=36(u+X)^2$. Then:
+\begin{itemize}[nosep]
+\item ${}^{(3)}\!H^0{}_0=9u^2-12u(u+X)-6(u^2+uX+X^2)+9(u+X)^2=3X^2$;
+\item ${}^{(3)}\!H^i{}_i=(u+2X)^2-4(u+X)(u+2X)-6(u^2+uX+X^2)+9(u+X)^2=4uX-X^2$.
+\end{itemize}
+The trace is $3X^2+3(4uX-X^2)=12uX$, which is $0$ for $u=0$.
+
+\emph{(iii)} $\dot X=2\frac{\dot a}a(u-X)$. So $\dot\rho=-6X\dot X=-12\frac{\dot a}aX(u-X)$, while $3\frac{\dot a}a(\rho+p)=3\frac{\dot a}a(4uX-4X^2)$.
+
+\emph{(iv)} For FRW, $E_4=24uX$. Matching $\beta\cdot12uX=-\frac{\hbar a_E}{16\pi^2}\cdot24uX$ gives $\beta=-\hbar a_E/(8\pi^2)$. Then $\rho_{\rm anom}=-\beta\,{}^{(3)}\!H^0{}_0=3\hbar a_EX^2/(8\pi^2)$. For an isotropic density with trace $-\rho+3p=\mathrm{tr}$, conservation reads $\dot\rho=-\frac{\dot a}a(3\rho+3p)=-\frac{\dot a}a(4\rho+\mathrm{tr})$. The difference $\delta$ of two such densities satisfies $\dot\delta=-4(\dot a/a)\delta$, so $\delta a^4$ is constant.
+\end{proof}
+
 
 \begin{theorem}[Semiclassical Tolman universe]\label{thm:semitolman}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -70,6 +169,22 @@ For $-\dd t^2+a^2(\dd\chi^2+\sin^2\chi\,\dd\Omega^2)$ with $u=\ddot a/a$ and $X=
 \item (Propagation versus backreaction) On a fixed $\mathbb R\times S^3$, if $\langle T\rangle_{\rm ren}$ is traceless, as it is when the anomaly vanishes, then together with a traceless classical stress the static $S^3$ cannot solve the Einstein equations.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Divide by $3$, absorb the constants into $L$ and $\gamma$, and multiply $X=L/a^4+\gamma X^2$ by $a^4$, writing $x=a^2X$.
+
+\emph{(ii)} The discriminant of $\gamma x^2-a^2x+L$ is $a^4-4\gamma L$. Rationalising the smaller root,
+\[
+\frac{a^2-\sqrt{a^4-4\gamma L}}{2\gamma}=\frac{2L}{a^2+\sqrt{a^4-4\gamma L}},
+\]
+which tends to $L/a^2$ as $\gamma\to0$.
+
+\emph{(iii)} $\dot a=-t/a$, so $\dot a^2+1=(t^2+a^2)/a^2=L/a^2$. For $\rho=K/a^4$, $\dot\rho=-4(\dot a/a)\rho$, which is conservation with $p=\rho/3$.
+
+\emph{(iv)} By the Friedmann equation, $X=\ell^2/a^4$. The ratio is $(-3\beta_g\ell^4/a^8)\big/(3/(2g^2a^4))$. Each density is conserved with its own trace (\cref{thm:h3}(iii)), so their sum is conserved.
+
+\emph{(v)} If the total stress is traceless, then $R=0$. But $R=6/\ell^2$ on $\mathbb R\times S^3(\ell)$, as in \cref{prop:nostatic}.
+\end{proof}
+
 
 So the quantum correction to the Tolman universe is small at maximal expansion and grows towards the crunch, as one expects; the static Einstein universe is not rescued by the anomaly.
 
@@ -81,6 +196,20 @@ So the quantum correction to the Tolman universe is small at maximal expansion a
 \item With $\ell^2=4\pi G\hbar/g^2$, $\varepsilon=G\hbar a_E/(\pi\ell^2)=a_Eg^2/(4\pi^2)$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} On $\mathrm{AdS}_2(\ell)\times S^2(\ell)$ the mixed Ricci tensor is $\operatorname{diag}(-k,-k,k,k)$ and $R=0$. For each $\mu$, ${}^{(3)}\!H^\mu{}_\mu=k^2-\frac12\cdot4k^2=-k^2$. Equal radii make the product conformally flat. Each factor contributes $({}^{(2)}\!R)^2=4k^2$ to $|\mathrm{Riem}|^2$, so
+\[
+E_4=8k^2-4\cdot4k^2+0=-8k^2=2(-4k^2).
+\]
+With $\beta=-\hbar a_E/(8\pi^2)$, $-4\beta k^2=\hbar a_Ek^2/(2\pi^2)=-\frac{\hbar a_E}{16\pi^2}(-8k^2)$.
+
+\emph{(ii)} The classical throat condition of \cref{thm:br} is $1/r^2=\ell^2/r^4$, that is, $\ell^2x^2-x=0$. The anomaly adds the constant $\varepsilon/\ell^2$, its value on the classical background, to the matter side. The positive root of the quadratic is the one stated.
+
+\emph{(iii)} $1\le\sqrt{1+4\varepsilon}\le1+2\varepsilon$, so $1/\ell^2\le x\le(1+\varepsilon)/\ell^2$.
+
+\emph{(iv)} $\frac{G\hbar a_E}{\pi}\cdot\frac{g^2}{4\pi G\hbar}=\frac{a_Eg^2}{4\pi^2}$.
+\end{proof}
+
 
 The shrinking factor is controlled by $g^2$ alone: for weak coupling the correction is small, and the classical throat is a good approximation.
 
@@ -91,6 +220,14 @@ The shrinking factor is controlled by $g^2$ alone: for weak coupling the correct
 \item For $\kappa=0$ and $c=b_0/(32\pi^2)$, $\frac3{2g^2a^4}+\rho_\beta=\frac3{2a^4}\bigl(\frac1{g^2}+\frac{b_0}{8\pi^2}\log\frac1a\bigr)$: the classical radiation density with the one-loop running coupling $1/g^2(a)$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} With $\dot w=0$, $F^2=2\bigl(2w'^2/r^2+(1-w^2)^2/r^4\bigr)$. On the Tolman slice $w'^2/r^2=(1-w^2)^2/r^4=1/a^4$ (\cref{thm:tolmanstress}), so $F^2=6/a^4$. Also $4g^2\rho=4g^2\cdot3/(2g^2a^4)$.
+
+\emph{(ii)} $\dot\rho=-\frac{6c}{a^4}\frac{\dot a}a-\frac{4\dot a}a\cdot\frac{\kappa-6c\log a}{a^4}=-\frac{\dot a}a(4\rho+6c/a^4)$. Uniqueness is as in \cref{thm:h3}(iv).
+
+\emph{(iii)} $6c=3b_0/(16\pi^2)$, so $-\frac{6c\log a}{a^4}=\frac3{2a^4}\cdot\frac{b_0}{8\pi^2}\log\frac1a$.
+\end{proof}
+
 
 \section{The heat-kernel coefficient \texorpdfstring{$a_4$}{a4} on \texorpdfstring{$S^3$}{S3}}
 
@@ -108,6 +245,23 @@ a_4(\lambda)-a_4(0)=4\sqrt\pi\,\lambda^2(1-\lambda)^2 .
 It vanishes at the vacua $\lambda=0,1$ and equals $\sqrt\pi/4$ at the meron; the corresponding coefficient $2\lambda^2(1-\lambda)^2$ is $\frac18$ at $\lambda=\frac12$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} This is Step 2 of the proof of \cref{thm:merons}. Each $s_c$ is traceless.
+
+\emph{(ii)} $F_{aa}=0$, and for $a\ne b$, $\sigma_a\sigma_b=\ii\epsilon_{abd}\sigma_d$. With $\sum_{a,b}\epsilon_{abd}\epsilon_{abc}=2\delta_{dc}$,
+\[
+E_F=\tfrac12\cdot\ii\cdot4\ii\lambda(1-\lambda)\cdot2\sum_c\sigma_c\otimes s_c .
+\]
+Using $\tr(\sigma_c\sigma_d)=2\delta_{cd}$ and $\tr(s_cs_d)=\frac12\delta_{cd}$ gives $\tr(\sum\sigma_c\otimes s_c)^2=\sum_c2\cdot\frac12=3$, and so $\tr E_F^2=16\lambda^2(1-\lambda)^2\cdot3$. For the curvature term, the spinor factor contributes $2$:
+\[
+\sum_{a,b}\tr(1\otimes F_{ab})^2=2\cdot(4\ii\lambda(1-\lambda))^2\sum_{a,b,c}\epsilon_{abc}^2\cdot\tfrac12=2\cdot(-16)\cdot3\,\lambda^2(1-\lambda)^2 .
+\]
+
+\emph{(iii)} $8640-2880=5760$. Then $(4\pi)^{3/2}=8\pi^{3/2}$, and $\frac{2\pi^2\cdot5760}{360\cdot8\pi^{3/2}}=4\sqrt\pi$.
+
+\emph{(iv)} Write $D_\lambda^2=\nabla^*\nabla-E$ with $E=-\frac R4-E_F$ (Lichnerowicz). The $\lambda$-dependent part of Gilkey's $a_4$ is $\frac{(4\pi)^{-3/2}}{360}\mathrm{Vol}\,(180\tr E_F^2+30\tr\Omega_{ab}\Omega^{ab})$. The cross terms with $R$ and with the spin curvature vanish because $\tr E_F=0$ and $F$ is traceless \ext. With $\mathrm{Vol}(S^3)=2\pi^2$ and (ii), (iii), this is $4\sqrt\pi\lambda^2(1-\lambda)^2$. At $\lambda=\frac12$, $\lambda^2(1-\lambda)^2=\frac1{16}$.
+\end{proof}
+
 
 The coefficient $a_4$ multiplies the logarithmic divergence of the one-loop effective action and hence determines the running of the coupling in the meron background. A numerical fit of the heat-kernel trace had suggested $4\sqrt\pi\lambda^2(1-\lambda)^2$ \num; \cref{thm:a4} derives it in closed form.
 

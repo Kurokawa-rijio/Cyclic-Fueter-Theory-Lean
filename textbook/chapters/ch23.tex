@@ -19,6 +19,24 @@ Add a Higgs field $\Phi$ in the adjoint with potential $V=\frac\lambda4(|\Phi|^2
 \item Conversely, a uniform Higgs vacuum $H=v\ne0$ is compatible with the $H$ equation only if $w=0$; in the symmetric phase $H=0$ the potential contributes $\lambda v^4/4$, a cosmological constant.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+With the ansatz, the static energy density is
+\[
+\frac1{g^2}\Bigl(\frac{w'^2}{r^2}+\frac{(1-w^2)^2}{2r^4}\Bigr)+\frac12H'^2+\frac{w^2H^2}{r^2}+V(H),
+\]
+because each of the two angular directions contributes $\frac12(wH/r)^2$.
+
+\emph{(i)} At $w=0$ and $H=v$ we have $D_r\Phi=H'=0$, $D_\theta\Phi=wH/r=0$ and $V(v)=0$. So the Higgs terms of the energy and of the stress tensor all vanish.
+
+\emph{(ii)} The force terms are the derivatives of the non-kinetic part:
+\[
+\partial_w:\ -\frac{2w(1-w^2)}{g^2r^4}+\frac{2wH^2}{r^2},\qquad\partial_H:\ \frac{2w^2H}{r^2}+\lambda H(H^2-v^2).
+\]
+Both vanish at $w=0$, $H=v$. The kinetic terms vanish because $w$ and $H$ are constant.
+
+\emph{(iii)} If $H=v\ne0$ is constant, the $H$ equation reduces to $2w^2v/r^2=0$, so $w=0$. If $H=0$, then $V=\lambda v^4/4$ is a constant term in the energy density, which acts as a cosmological constant.
+\end{proof}
+
 
 \begin{theorem}[Higgs mass and the BF bound]\label{thm:higgsbf}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -37,6 +55,31 @@ and the kinetic coefficient is $w'^2/(g^2r^2)$. The effective mass is $m^2=g^2v^
 There is no growing mode of the form used in \cref{thm:longthroat}, for any length of the throat.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} At $H=v$ the potential part is $U(w)=\frac{(1-w^2)^2}{2g^2r^4}+\frac{w^2v^2}{r^2}$. Then
+\[
+U(w)-U(0)=\frac{-2w^2+w^4}{2g^2r^4}+\frac{v^2w^2}{r^2},
+\]
+which is the stated expression. Writing the quadratic part as $\frac1{g^2r^2}(w'^2+m^2w^2)$ gives
+\[
+m^2=g^2r^2\Bigl(\frac{v^2}{r^2}-\frac1{g^2r^4}\Bigr)=g^2v^2-\frac1{r^2}.
+\]
+
+\emph{(ii)} Multiply by $\ell^2$ and put $r=\ell$.
+
+\emph{(iii)} $-1+m_W^2\ell^2\ge-\frac14$ is equivalent to $m_W^2\ell^2\ge\frac34$. Under this condition $\frac14+m^2\ell^2\ge0$, so the square root is real.
+
+\emph{(iv)} $m_W^2\ell^2=g^2v^2\cdot4\pi G/g^2=4\pi v^2/M_{\rm Pl}^2$. This is at least $\frac34$ exactly when $v^2\ge3M_{\rm Pl}^2/(16\pi)$. Numerically, $\sqrt{3/(16\pi)}\approx0.244$.
+
+\emph{(v)} Since $\mu\ge-\frac14$, the first inequality holds pointwise. For the identity, write $s=\sin u$ and $c=\cos u$. Then $f'=\frac c{2\sqrt s}h+\sqrt s\,h'$, so
+\[
+f'^2-\frac{f^2}{4s^2}=s\,h'^2+c\,hh'+\frac{c^2-1}{4s}h^2=s\,h'^2+c\,hh'-\frac s4h^2 .
+\]
+Integrate the middle term by parts, using that $h$ vanishes at the ends: $\int c\,hh'=\int\frac c2(h^2)'=\int\frac s2h^2$. Adding gives $\int s(h'^2+\frac14h^2)$, which is nonnegative since $s>0$ on the window.
+
+\emph{The electroweak number.} $(246/1.22\times10^{19})^2\approx4.1\times10^{-34}$, and multiplying by $4\pi$ gives $\approx5\times10^{-33}$.
+\end{proof}
+
 
 So a Higgs mechanism can stabilise the throat, but only with a vacuum expectation value of order $0.24\,M_{\rm Pl}$. For the electroweak scale $v\approx246$\,GeV and $M_{\rm Pl}\approx1.22\times10^{19}$\,GeV one finds $m_W^2\ell^2\approx5\times10^{-33}$, short of $\frac34$ by about thirty-two orders of magnitude: the throat remains BF-unstable. This is a sharp, negative statement about the relevance of the electroweak Higgs to the glued spacetime.
 
@@ -48,6 +91,12 @@ So a Higgs mechanism can stabilise the throat, but only with a vacuum expectatio
 \item At the equator of the round $S^3$ the magnetic flux through the sphere is $4\pi\sin^2(\pi/2)=4\pi$: the hedgehog has degree $1$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} We have $F'(w)=-2w(1-w^2)$ and $F''(w)=-2(1-w^2)+4w^2$. At $w=0$ these are $0$ and $-2$. Also $F(\pm1)=0$ and $F(0)=\frac12$.
+
+\emph{(ii)} By \cref{thm:tolmanstress}(iii), the flux is $4\pi\sin^2\chi$, which equals $4\pi$ at $\chi=\pi/2$. Divided by $4\pi$ this is the degree, $1$.
+\end{proof}
+
 
 The configuration $w=0$ on a two-sphere is the magnetic monopole of unit charge embedded in $SU(2)$; on $S^3$ the homogeneous configuration $w=0$ is the top of the barrier between topologically distinct vacua, the analogue of the electroweak sphaleron \cite{KlinkhamerManton1984}. Tunnelling through the barrier is described by an instanton.
 
@@ -58,6 +107,18 @@ The configuration $w=0$ on a two-sphere is the magnetic monopole of unit charge 
 \item Hence $3\pi^2\int_{\mathbb R}2\operatorname{sech}^4x\,\dd x=8\pi^2$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $\tanh'=\operatorname{sech}^2$ by the quotient rule, and $\cosh^2-\sinh^2=1$ gives $\tanh^2+\operatorname{sech}^2=1$. Next,
+\[
+F'=\operatorname{sech}^2-\tanh^2\operatorname{sech}^2=\operatorname{sech}^2(1-\tanh^2)=\operatorname{sech}^4 .
+\]
+As $x\to\pm\infty$, $F\to\pm(1-\frac13)=\pm\frac23$.
+
+\emph{(ii)} $\operatorname{sech}^4$ is continuous, positive and bounded by $16e^{-4|x|}$, so it is integrable. By (i), $\int_{\mathbb R}\operatorname{sech}^4=\frac23-(-\frac23)=\frac43$.
+
+\emph{(iii)} $3\pi^2\cdot2\cdot\frac43=8\pi^2$.
+\end{proof}
+
 
 In Euclidean conformal time $\tau$ on $\mathbb R\times S^3$, the homogeneous Yang--Mills field $w=\tanh\tau$ interpolates between the vacua $w=-1$ and $w=+1$; its action density is $2\operatorname{sech}^4\tau$ in units of $3\pi^2/g^2$, so \cref{thm:instanton}(iii) is the statement that its action is $8\pi^2/g^2$, the action of the BPST instanton \cite{BPST1975}. This is the instanton mapped conformally to the cylinder; the throat sits at its midpoint $\tau=0$.
 
@@ -68,6 +129,25 @@ Consider a Dirac fermion in the fundamental of $SU(2)$, in the hedgehog backgrou
 \begin{proposition}[Matrix identities]\label{prop:twistmatrices}\ver\
 $\epsilon=i\sigma_2$; $\sigma_1^T=\sigma_1$, $\sigma_2^T=-\sigma_2$, $\sigma_3^T=\sigma_3$; for $\hat x\cdot\boldsymbol\sigma$ with real components, $(\hat x\cdot\boldsymbol\sigma)^2=|\hat x|^2$ and $\epsilon(\hat x\cdot\boldsymbol\sigma)^T=-(\hat x\cdot\boldsymbol\sigma)\epsilon$. The gauge term of the hedgehog acting on the singlet is $-\frac i2\sum\epsilon_{akj}\hat x_j\sigma_k\epsilon\sigma_a^T=(\hat x\cdot\boldsymbol\sigma)\epsilon$, and for $|\hat x|=1$, $(\hat x\cdot\boldsymbol\sigma)\epsilon(i\hat x\cdot\boldsymbol\sigma)^T=-i\epsilon$: the spin frame and the gauge transition cancel on the singlet.
 \end{proposition}
+\begin{proof}
+\emph{Transposes.} $\sigma_1$ and $\sigma_3$ are real and symmetric. The matrix $\sigma_2$ is purely imaginary and antisymmetric, so $\sigma_2^T=-\sigma_2$. The identity $(\hat x\cdot\bs)^2=|\hat x|^2$ is the Pauli identity with $\hat x\times\hat x=0$.
+
+\emph{Moving $\epsilon$ past $\sigma_k^T$.} We claim $\epsilon\sigma_k^T=-\sigma_k\epsilon$ for each $k$, which by linearity gives the identity for $\hat x\cdot\bs$. Using $\sigma_2\sigma_1=-\ii\sigma_3$ and its cyclic versions:
+\begin{itemize}[nosep]
+\item $k=1$: $\ii\sigma_2\sigma_1=\sigma_3$ and $-\sigma_1\ii\sigma_2=\sigma_3$;
+\item $k=2$: $\ii\sigma_2(-\sigma_2)=-\ii$ and $-\sigma_2\ii\sigma_2=-\ii$;
+\item $k=3$: $\ii\sigma_2\sigma_3=-\sigma_1$ and $-\sigma_3\ii\sigma_2=-\sigma_1$.
+\end{itemize}
+
+\emph{The gauge term.} By the previous identity, $\sigma_k\epsilon\sigma_a^T=-\sigma_k\sigma_a\epsilon$. The product is $\sigma_k\sigma_a=\delta_{ka}+\ii\epsilon_{kab}\sigma_b$. The $\delta$ part drops out against $\epsilon_{akj}$, and
+\[
+\sum_{a,k}\epsilon_{akj}\epsilon_{kab}=\sum_{a,k}\epsilon_{kja}\epsilon_{kab}=\sum_a(\delta_{ja}\delta_{ab}-\delta_{jb}\delta_{aa})=-2\delta_{jb}.
+\]
+So the gauge term is $-\frac\ii2\cdot(-1)\cdot\ii\cdot(-2)\,\hat x_j\sigma_j\epsilon=(\hat x\cdot\bs)\epsilon$.
+
+\emph{The last identity.} $(\hat x\cdot\bs)\epsilon(\ii\hat x\cdot\bs)^T=\ii(\hat x\cdot\bs)\bigl(-(\hat x\cdot\bs)\epsilon\bigr)=-\ii|\hat x|^2\epsilon$.
+\end{proof}
+
 
 \begin{theorem}[Cancellation and the zero mode]\label{thm:zeromode}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -80,6 +160,20 @@ f'+\frac{r'-w}r\,f+mf .
 \item (Localisation) If $m\ge m_0>0$ on an interval $[a,b]$, then $|f(b)/f(a)|^2=e^{-2(M(b)-M(a))}\le e^{-2m_0(b-a)}$ for $s=-1$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Since $\dd R/\dd\rho=R/r$, we have $\dd\rho/\dd R=r/R$. Differentiate $\chi=(r/R)f$ in $\rho$:
+\[
+\frac{\dd\chi}{\dd\rho}=\Bigl(\frac{r'}R-\frac r{R^2}\cdot\frac Rr\Bigr)f+\frac rRf'=\frac rR\Bigl(f'+\frac{r'-1}rf\Bigr).
+\]
+Hence $\dd\chi/\dd R=(r/R)^2(f'+\frac{r'-1}rf)$. The other two terms are $\frac{1-w}R\chi=(r/R)^2\frac{1-w}rf$ and $\frac rRm\chi=(r/R)^2mf$. Adding the three, $-1$ and $+1$ cancel and the coefficient of $f/r$ becomes $r'-w$.
+
+\emph{(ii)} If $w=r'$, then $r'-w=0$.
+
+\emph{(iii)} Substituting $g=s\ii f$: $f'=-\ii m\,s\ii f=smf$, and $g'=s\ii f'=s^2\ii mf=\ii mf$, which is the second equation. Then $(e^{sM})'=sM'e^{sM}=sm\,e^{sM}$.
+
+\emph{(iv)} For $s=-1$, $|f(b)/f(a)|^2=e^{-2(M(b)-M(a))}$, and $M(b)-M(a)=\int_a^bm\ge m_0(b-a)$.
+\end{proof}
+
 
 The cancellation in (ii) is the curved-space version of the classic observation of Jackiw and Rebbi and of Hasenfratz and 't~Hooft that in a hedgehog background isospin turns into spin \cite{JackiwRebbi1976}. In flat space the cancellation holds asymptotically, where $w\to1$ and $r'=1$. In the glued spacetime it holds \emph{everywhere}, because $w=r'$ throughout the slice: the spin-connection condition of \cref{ch:action} is exactly the condition for fermions to see no net connection in the angular directions. A fermion mass $m$ that is positive on the throat then produces a zero mode localised there, exponentially in the length of the throat.
 
@@ -88,6 +182,10 @@ The cancellation in (ii) is the curved-space version of the classic observation 
 \begin{theorem}[BPS bound for a supercharge]\label{thm:susybps}\ver\
 For any complex matrix $Q$, the operator $H=Q^\dagger Q+QQ^\dagger$ is positive semi-definite, with $\langle\psi,H\psi\rangle=\|Q\psi\|^2+\|Q^\dagger\psi\|^2$. A state has zero energy if and only if $Q\psi=Q^\dagger\psi=0$. Every eigenvalue is non-negative; in particular there is no eigenstate with negative energy.
 \end{theorem}
+\begin{proof}
+$\langle\psi,H\psi\rangle=\langle\psi,Q^\dagger Q\psi\rangle+\langle\psi,QQ^\dagger\psi\rangle=\|Q\psi\|^2+\|Q^\dagger\psi\|^2\ge0$. This is zero exactly when both norms vanish. If $H\psi=E\psi$ with $\psi\ne0$, then $E\|\psi\|^2=\langle\psi,H\psi\rangle\ge0$.
+\end{proof}
+
 
 A mode that violates the BF bound is a negative-energy mode in this sense, so the throat with its Yang--Mills mode $\mu=-1$ cannot be the bosonic part of a supersymmetric vacuum. A more geometric version uses Killing spinors.
 
@@ -99,6 +197,18 @@ Suppose that $\varepsilon$ is a nowhere-vanishing Killing spinor, so that $K^\mu
 \item (Tolman side) The Tolman equation $a''=-a$ with $a(0)=\ell$, $a'(0)=0$ has the unique solution $\ell\cos\eta$, even if it is assumed only on $[0,\pi/2)$. The Kretschmann scalar $24\ell^4/a^8$ has $\partial_\eta K\ne0$ for $0<\eta<\pi/2$, while $\partial_\chi K=0$. A Killing vector with $K^\eta>0$ would require $K^\eta\partial_\eta K+K^\chi\partial_\chi K=0$, which fails at any interior point, for instance $(\eta,\chi)=(\pi/4,\pi/8)$. So the exact Tolman region admits no Killing spinor.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $\varepsilon^\dagger\varepsilon=\sum|\varepsilon_a|^2>0$, since $\varepsilon\ne0$. For a causal vector, $(K^t)^2\ge|\mathbf K|^2$. So $K^t=0$ forces $\mathbf K=0$.
+
+\emph{(ii)} A Killing vector of a spherically symmetric metric preserves the areal radius, which is built from the metric alone. So $K(r)=K^t\partial_tr+K^s\partial_sr=0$. At the centre $\partial_sr=0$, because $r$ is even in $s$, so $K^t\dot r=0$. By (i), $K^t>0$, hence $\dot r=0$ for all time. But by \cref{thm:centrecollapse}, $\dot r<0$ after the moment of rest, which is a contradiction.
+
+\emph{(iii)} The initial value problem for $a''=-a$ has a unique solution on any interval containing $0$, and $\ell\cos\eta$ is one. A Killing vector preserves every curvature invariant, so $K^\eta\partial_\eta\mathcal K+K^\chi\partial_\chi\mathcal K=0$, where $\mathcal K=24\ell^4/a^8$ is the Kretschmann scalar. Here $\partial_\chi\mathcal K=0$ and
+\[
+\partial_\eta\mathcal K=-\frac{192\ell^4a'}{a^9}=\frac{192\ell^5\sin\eta}{a^9}>0\qquad(0<\eta<\tfrac\pi2).
+\]
+So $K^\eta\partial_\eta\mathcal K>0$ at $(\pi/4,\pi/8)$, a contradiction.
+\end{proof}
+
 
 The glued spacetime is therefore non-supersymmetric on both sides, and the BPS-like inequality of \cref{thm:bogomolny} is a geometric, not a supersymmetric, bound. The extremal Reissner--Nordstr\"om solution, whose near-horizon geometry is the throat, is supersymmetric when embedded in $N=2$ supergravity \cite{GibbonsHull1982}; it is the time dependence of the glued configuration, not the throat itself, that breaks supersymmetry.
 
