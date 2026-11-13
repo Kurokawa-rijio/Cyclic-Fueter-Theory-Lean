@@ -19,6 +19,14 @@ Consider the radial equation $\varphi''-d\,\varphi'-\mu\varphi=0$ in a logarithm
 \item For $\mu<-d^2/4$ the function $e^{dt/2}\cos(\omega t)$ with $\omega^2=-(\mu+d^2/4)$ is a solution: the mode oscillates.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} For $\varphi=e^{\alpha t}$, $\varphi''-d\varphi'-\mu\varphi=(\alpha^2-d\alpha-\mu)e^{\alpha t}$, and $e^{\alpha t}\ne0$.
+
+\emph{(ii)} The quadratic $\alpha^2-d\alpha-\mu$ has discriminant $d^2+4\mu$, so it has real roots exactly when $\mu\ge-d^2/4$.
+
+\emph{(iii)} Below the bound the roots are $\frac d2\pm\ii\omega$. The equation is linear with real coefficients, so the real part $e^{dt/2}\cos(\omega t)$ of the complex solution $e^{(d/2+\ii\omega)t}$ is a real solution.
+\end{proof}
+
 
 \begin{proposition}[The throat's Yang--Mills mode]\label{prop:throatbf}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -27,6 +35,14 @@ Consider the radial equation $\varphi''-d\,\varphi'-\mu\varphi=0$ in a logarithm
 \item The node spacing of $e^{-s/2}\cos(\sqrt3s/2)$ is $2\pi/\sqrt3$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} We have $\frac{\dd}{\dd w}\,w(1-w^2)=1-3w^2$, which is $1$ at $w=0$. So the linearised throat equation is $w''+w'+w=0$ (\cref{thm:throatmode}). After reversing the direction of $s$ it has the form of \cref{thm:bf} with $d=1$ and $\mu=-1$. The quadratic $\alpha^2-\alpha+1$ has discriminant $1-4<0$.
+
+\emph{(ii)} $\Delta(\Delta-1)=(\Delta-\frac12)^2-\frac14\ge-\frac14$ for real $\Delta$. For $\Delta=\frac12\pm\ii\nu$ we get $(\pm\ii\nu)^2-\frac14=-\nu^2-\frac14$, which equals $-1$ for $\nu^2=\frac34$.
+
+\emph{(iii)} Consecutive zeros of $\cos(\sqrt3s/2)$ are $\pi/(\sqrt3/2)=2\pi/\sqrt3$ apart.
+\end{proof}
+
 
 Unitary positive-energy representations of $SL(2,\mathbb R)$, the ones that describe stable fields on $\mathrm{AdS}_2$, belong to the discrete series. A field in the principal series is the representation-theoretic signature of an instability \cite{BreitenlohnerFreedman1982}.
 
@@ -45,6 +61,10 @@ is negative for some $f$ vanishing at the ends of the window \ext. Near $u=0$ th
 \begin{proposition}[No intrinsic rate]\label{prop:scale}\ver\
 For the scale-invariant comparison problem $(cr)^2f''+2(cr)f'+f-\ell^4\lambda^2f/(cr)^2=0$, if $f$ solves it with rate $\lambda$ then $g(r)=f(cr)$ solves it with rate $\lambda/c$. The comparison problem alone fixes no rate; the rate is set by the window, that is, by the length of the throat.
 \end{proposition}
+\begin{proof}
+Put $x=cr$ and $g(r)=f(cr)$. Then $r^2g''(r)=x^2f''(x)$ and $2rg'(r)=2xf'(x)$. Also $\ell^4\mu^2g(r)/r^2=\ell^4(c\mu)^2f(x)/x^2$. So $g$ solves the equation with rate $\mu$ exactly when $f$ solves it with rate $c\mu$. Taking $\mu=\lambda/c$ gives the claim.
+\end{proof}
+
 
 \begin{theorem}[Long throats are unstable]\label{thm:longthroat}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -57,6 +77,26 @@ For the scale-invariant comparison problem $(cr)^2f''+2(cr)f'+f-\ell^4\lambda^2f
 the quadratic form is negative on that window: the throat is linearly unstable.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Write $h=\sin(\pi y/Y)$. The comparison integrand, in the $y$ variable (see (ii)), is $G_1=(h/2+h')^2-h^2$. Expanding,
+\[
+\int_0^YG_1\,\dd y=\int_0^Y\Bigl(h'^2+hh'+\frac{h^2}4-h^2\Bigr)\dd y .
+\]
+Here $\int hh'=[h^2/2]_0^Y=0$, $\int h^2=Y/2$ and $\int h'^2=(\pi/Y)^2\,Y/2$. So the integral is $\frac Y2((\pi/Y)^2-\frac34)$, which is negative exactly when $(\pi/Y)^2<\frac34$.
+
+\emph{(ii)} Let $u=u_1e^y$, so $\dd u=u\,\dd y$, and $f=\sqrt u\,h(y)$. Then
+\[
+\frac{\dd f}{\dd u}=\frac1{\sqrt u}\Bigl(\frac h2+h'\Bigr),\qquad\Bigl(\frac{\dd f}{\dd u}\Bigr)^2\dd u=\Bigl(\frac h2+h'\Bigr)^2\dd y,\qquad\frac{f^2}{\sin^2u}\,\dd u=h^2\Bigl(\frac u{\sin u}\Bigr)^2\dd y .
+\]
+So the form is $\int_0^YG_2\,\dd y$ with $G_2=(h/2+h')^2-h^2(u/\sin u)^2$, and $\int f^2\dd u=\int(u_1e^y)^2h^2\,\dd y$. On $(0,\pi)$ we have $0<\sin u\le u$, so $u/\sin u\ge1$ and $G_2\le G_1$. Hence $Q[f]\le\int G_1<0$. For the example, $10^{-6}e^4\approx5.5\cdot10^{-5}<\pi$, and $4>2\pi/\sqrt3\approx3.63$.
+
+\emph{(iii)} On $[0,\pi/2]$, Jordan's inequality gives $\sin u\ge\frac2\pi u$, and $\operatorname{sech}x\le2e^{-x}$. So $\frac2\pi u_c\le2e^{-L/\ell}$, that is, $u_c\le\pi e^{-L/\ell}$. Then
+\[
+Y=\log\frac\pi{2u_c}\ge\log\frac{e^{L/\ell}}2=\frac L\ell-\log2 .
+\]
+If $L/\ell-\log2>2\pi/\sqrt3$, then (ii) applies on $[u_c,\pi/2]$.
+\end{proof}
+
 
 \begin{theorem}[Growth rate]\label{thm:growth}\ver\
 Assume the min--max characterisation of the largest growth rate, $-\lambda^2\int f^2\le Q[f]$ for the test function above \ext. Then for $L/\ell>4$,
@@ -65,10 +105,25 @@ Assume the min--max characterisation of the largest growth rate, $-\lambda^2\int
 \]
 and for $L/\ell\ge7$, $\lambda^2\ge1$. Since the Tolman side recollapses at $\eta=\pi/2$, after proper time $\int_0^{\pi/2}\ell\cos\eta\,\dd\eta=\ell$, a throat with $L\ge7\ell$ grows by at least one $e$-fold before the crunch.
 \end{theorem}
+\begin{proof}
+Take the window $[u_c,u_ce^4]$, so $Y=4$. It is admissible because $u_ce^4\le\pi e^{4-L/\ell}<\pi$.
 
-\begin{proof}[Idea of proof]
-The Liouville substitution turns the problem into one with a constant potential $-\frac34$ on an interval of length $Y$; the change of variables is exact, including the measure. The integrals $\int_0^Y\sin^2(\pi y/Y)=\int_0^Y\cos^2(\pi y/Y)=Y/2$ and $\int_0^Y\sin\cos=0$ give the value of the comparison form. For the growth rate one takes $Y=4$, where the form is at most $2\bigl((\pi/4)^2-\frac34\bigr)<0$, and bounds the norm $\int_0^4(u_ce^y)^2\sin^2(\pi y/4)\,\dd y$ from above using $u_c\le\pi e^{-L/\ell}$; dividing gives the stated bound.
+\emph{The form.} By (ii) of \cref{thm:longthroat},
+\[
+Q[f]\le2\Bigl(\frac{\pi^2}{16}-\frac34\Bigr)=-2c_0,\qquad c_0=\frac34-\frac{\pi^2}{16}>0 .
+\]
+
+\emph{The norm.} $\int_0^4(u_ce^y)^2\sin^2(\pi y/4)\,\dd y\le u_c^2\int_0^4e^{2y}\dd y<\frac{u_c^2e^8}2$.
+
+\emph{The bound.} The assumption $-\lambda^2\int f^2\le Q[f]$ gives
+\[
+\lambda^2\ge\frac{2c_0}{u_c^2e^8/2}=\frac{4c_0}{u_c^2e^8}\ge\frac{4c_0\,e^{2L/\ell}}{\pi^2e^8},
+\]
+using $u_c\le\pi e^{-L/\ell}$. This is four times the stated bound.
+
+\emph{Numbers.} $\pi^2<9.93$ gives $c_0>0.12$. For $L/\ell\ge7$, $e^{2(L/\ell-4)}\ge e^6>2.7^6>387$. So the stated bound is at least $0.12\cdot387/9.93>4>1$. Finally, $\int_0^{\pi/2}\ell\cos\eta\,\dd\eta=\ell$.
 \end{proof}
+
 
 The growth rate increases exponentially with the length of the throat. This is because the junction moves exponentially close to the pole of $S^3$ in the conformal frame, where the BF-violating potential is strongest.
 
@@ -77,6 +132,10 @@ The growth rate increases exponentially with the length of the throat. This is b
 \begin{proposition}\label{prop:bothtrapped}\ver\
 On the Tolman front $\chi=\pi/2-\eta$ ($0<\eta<\pi/2$), $\theta_+=0$ and $\theta_-<0$. On the throat every sphere has constant radius $\ell$, so $\theta_\pm=0$.
 \end{proposition}
+\begin{proof}
+On the front, $\cot(\frac\pi2-\eta)=\tan\eta$, so by \cref{thm:expansions}(i), $\theta_+\propto\tan\eta-\tan\eta=0$ and $\theta_-\propto-2\tan\eta<0$. On the throat $r=\ell$ is constant, so every derivative of $r$ vanishes, and the expansions $\propto\partial_\pm r$ are zero.
+\end{proof}
+
 
 So at the moment the instability develops, the throat is a marginally trapped tube and the Tolman front is marginally trapped. Any growth of the Yang--Mills perturbation that decreases $r$ makes these spheres trapped, consistent with the collapse found in \cref{ch:collapse}.
 

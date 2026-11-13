@@ -24,6 +24,22 @@ where $m$ is the Misner--Sharp mass of the time-symmetric slice. In particular $
 \item On the Tolman side $\cos\chi=\cos(s/\ell)$, so $\chi=s/\ell$ for $0\le s\le\pi\ell/2$: the Gauss map is the identity of the hemisphere. On the throat $\chi=\pi/2$ throughout: the throat maps to the equator. The junction $s=\pi\ell/2$ is on the equator from both sides.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} The integrand $\sqrt{1-r'^2}$ is continuous, so by the fundamental theorem of calculus $z'=\sqrt{1-r'^2}$, and $r'^2+z'^2=1$. The tangent vectors are $X_s=(r'\mathbf n,z')$ and $X_\alpha=(r\,\partial_\alpha\mathbf n,0)$ for the angular coordinates $\alpha$. Their inner products are
+\[
+|X_s|^2=r'^2+z'^2=1,\qquad X_s\cdot X_\alpha=r'r\,\mathbf n\cdot\partial_\alpha\mathbf n=0,\qquad X_\alpha\cdot X_\beta=r^2\,\partial_\alpha\mathbf n\cdot\partial_\beta\mathbf n ,
+\]
+using $\mathbf n\cdot\partial_\alpha\mathbf n=\frac12\partial_\alpha|\mathbf n|^2=0$. The last expression is $r^2$ times the round metric.
+
+For injectivity: points with different $s$ have different heights $z$, and at the same $s$ the map $\mathbf n\mapsto r\mathbf n$ is injective when $r\ne0$.
+
+\emph{(ii)} $|N|^2=z'^2+r'^2=1$. The inner products with the tangent vectors are $N\cdot X_s=-z'r'+r'z'=0$ and $N\cdot X_\alpha=-z'r\,\mathbf n\cdot\partial_\alpha\mathbf n=0$. The tangent space has dimension $3$ in $\mathbb R^4$, so its orthogonal complement is a line, and its unit vectors are $\pm N$.
+
+\emph{(iii)} $\cos\chi=N\cdot e_4=r'$. Then $\sin^2\chi=1-r'^2$. On a time-symmetric slice $(\nabla r)^2=r'^2$, so $2Gm/r=1-r'^2$. For Schwarzschild, $r'=\sqrt{1-2m/r}$.
+
+\emph{(iv)} On the Tolman side $r'=\cos(s/\ell)$, and $\chi\in[0,\pi/2]$ forces $\chi=s/\ell$. On the throat $r'=0$, so $\chi=\pi/2$.
+\end{proof}
+
 
 \begin{proposition}[Principal curvatures]\label{prop:principal}\ver\
 Let $k_r$ and $k_\perp$ be the principal curvatures of the embedded slice in the radial and angular directions. The time-symmetric Hamiltonian constraint ${}^{(3)}R=16\pi G\rho$ reads $2\sigma_2=16\pi G\rho$ with $\sigma_2=2k_rk_\perp+k_\perp^2$.
@@ -32,6 +48,17 @@ Let $k_r$ and $k_\perp$ be the principal curvatures of the embedded slice in the
 \item For a star of uniform density, $k_r=k_\perp=c$ with $c^2=2M/R^3$ gives $\rho=3M/(4\pi R^3)$ (in units $G=1$): the interior is a piece of a round $S^3$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+Parametrise the profile curve by arc length with direction $(r',z')=(\cos\psi,\sin\psi)$. The principal curvatures of the hypersurface of revolution are $k_r=\psi'$ along the profile and $k_\perp=z'/r$, twice, along the spheres. The Gauss equation for a hypersurface of flat space says that the scalar curvature is twice the second elementary symmetric function of the principal curvatures. The three pairs of directions give
+\[
+\sigma_2=k_rk_\perp+k_rk_\perp+k_\perp^2 .
+\]
+
+\emph{(i)} $\sigma_2=k_\perp(2k_r+k_\perp)=0$ with $k_\perp\ne0$ gives $k_r=-\frac12k_\perp$.
+
+\emph{(ii)} $\sigma_2=3c^2$, so $6c^2=16\pi\rho$, and $\rho=\frac{3c^2}{8\pi}=\frac{3\cdot2M}{8\pi R^3}=\frac{3M}{4\pi R^3}$.
+\end{proof}
+
 
 \begin{figure}[t]
 \centering
@@ -78,18 +105,66 @@ This general fact is standard \ext; we verify it directly for the solutions at h
 \item The sum $\Omega=A\cos\eta+B/\sin u$ solves \eqref{eq:confwave}, but its null--null Einstein components acquire cross terms: they equal $4A^2+ABc(8-4w^2)w\pm8ABswt$ with $c=\cos\eta$, $s=\sin\eta$, $w=1/\sin u$, $t=\cot u$. The linear superposition is therefore not a solution unless $AB=0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+We use the standard formula for the Einstein tensor of $g=\Omega^2\hat g$ in four dimensions:
+\[
+G_{ab}=\hat G_{ab}-\frac2\Omega\bigl(\hat\nabla_a\hat\nabla_b\Omega-\hat g_{ab}\hat\Box\Omega\bigr)+\frac1{\Omega^2}\bigl(4\hat\nabla_a\Omega\hat\nabla_b\Omega-\hat g_{ab}|\hat\nabla\Omega|^2\bigr).
+\]
+On the unit Einstein static universe, $\hat G_{\eta\eta}=3$.
+
+\emph{(i)} $(\ell\cos\eta)''=-\ell\cos\eta$. The general solution of $\ddot\Omega=-\Omega$ is $A\cos\eta+B\sin\eta$.
+
+\emph{(ii)} For $\Omega=g(u)/\sin u$ a direct computation gives
+\[
+\Omega''+2\cot u\,\Omega'=\frac{g''}{\sin u}+\Omega .
+\]
+So $\Delta_{S^3}\Omega=\Omega$ holds exactly when $g''=0$, that is, $g=A+Bu$. The throat is $A=\ell$, $B=0$.
+
+\emph{(iii)} \emph{Throat.} $\Omega$ is static and $\hat\Box\Omega=\Delta\Omega=\Omega$. The formula gives
+\[
+G_{\eta\eta}=3-2+\frac{\Omega'^2}{\Omega^2}=\frac{\Omega^2+\Omega'^2}{\Omega^2}.
+\]
+With $\rho=1/(2g^2r^4)$ and $r=\Omega\sin u$, we get $8\pi GT_{\eta\eta}=8\pi G\rho\,\Omega^2=\frac{8\pi G}{2g^2\Omega^2\sin^4u}$. Also $\Omega^2+\Omega'^2=\ell^2(\sin^2u+\cos^2u)/\sin^4u$.
+
+\emph{Tolman.} The second-derivative terms cancel, because $\hat\nabla_\eta\hat\nabla_\eta\Omega=\ddot\Omega=\hat g_{\eta\eta}\hat\Box\Omega$. The gradient terms give $3\dot\Omega^2/\Omega^2$. So $G_{\eta\eta}=3(\Omega^2+\dot\Omega^2)/\Omega^2$, while $8\pi GT_{\eta\eta}=8\pi G\cdot\frac3{2g^2\Omega^2}$.
+
+In both cases the equation reduces to $\ell^2=4\pi G/g^2$.
+
+\emph{(iv)} We have $\Omega'=-\ell\cos u/\sin^2u$ and $\Omega''=\ell(1+\cos^2u)/\sin^3u$, which at $u=\pi/2$ give $0$ and $\ell$.
+
+\emph{(v)} $w=r'=\Omega^{-1}\partial_u(\Omega\sin u)$. On the throat $\Omega\sin u=\ell$, so $w=0$. On the time-symmetric Tolman slice $\Omega$ does not depend on $u$, so $w=\cos u$.
+
+\emph{(vi)} \eqref{eq:confwave} is linear, so the sum solves it. The Einstein equations are quadratic in $\Omega$ through the gradient terms, so their null--null components acquire terms proportional to $AB$. Lean computes them explicitly. At $\eta=0$, $u=\pi/2$ the coefficient of $AB$ is $(8-4)\cdot1=4\ne0$, so the cross terms do not vanish identically.
+\end{proof}
+
 
 In the conformal frame the two pieces are the simplest possible solutions of \eqref{eq:confwave}: a homogeneous oscillation in time, and a static mode concentrated around the equator of $S^3$. The polar angle $u$ on $S^3$ plays the same role on both sides, and the junction is at $u=\pi/2$. The coordinate $x=\ell\log\tan(u/2)$ is again a Mercator coordinate: $\log\tan(u/2)$ is the inverse Gudermannian of $u-\pi/2$.
 
 \begin{proposition}[Minisuperspace energy balance]\label{prop:minisuper}\ver\
 For a homogeneous $\Omega(\eta)$ on $S^3$, the gravitational energy is $H_\Omega=-\frac{3\pi}{4G}(\dot\Omega^2+\Omega^2)$, which equals $-\frac{3\pi}{4G}\ell^2$ along the Tolman solution. The Yang--Mills energy on the unit $S^3$ is $E_{\rm YM}=3\pi^2/g^2$, and the Hamiltonian constraint $H_\Omega+E_{\rm YM}=0$ holds if and only if $\ell^2=4\pi G/g^2$.
 \end{proposition}
+\begin{proof}
+\emph{The gravitational energy.} For a closed FRW universe in conformal time, $\sqrt{-g}\,R=6\,\Omega(\ddot\Omega+\Omega)\sin^2\!u\,\sin\theta$. Integrating over the unit $S^3$ (volume $2\pi^2$) and by parts in $\eta$, the Einstein--Hilbert action becomes $\frac{6\cdot2\pi^2}{16\pi G}\int(-\dot\Omega^2+\Omega^2)\,\dd\eta=\frac{3\pi}{4G}\int(-\dot\Omega^2+\Omega^2)\,\dd\eta$. The momentum is $p=-\frac{3\pi}{2G}\dot\Omega$, and
+\[
+H_\Omega=p\dot\Omega-L=-\frac{3\pi}{4G}(\dot\Omega^2+\Omega^2).
+\]
+Along $\Omega=\ell\cos\eta$ the bracket equals $\ell^2$.
+
+\emph{The matter energy.} By \cref{thm:tolmanstress} at $a=1$, the Yang--Mills energy density on the unit $S^3$ is $3/(2g^2)$. The volume is $2\pi^2$, so $E_{\rm YM}=3\pi^2/g^2$.
+
+\emph{The constraint.} $H_\Omega+E_{\rm YM}=0$ reads $\frac{3\pi\ell^2}{4G}=\frac{3\pi^2}{g^2}$, that is, $\ell^2=4\pi G/g^2$.
+\end{proof}
+
 
 The gravitational part is an oscillator with negative energy, the matter part a positive constant. This is the starting point for the canonical quantisation of Chapter~26.
 
 \begin{proposition}[Where smooth static solutions go]\label{prop:extremallimit}\ver\
 For $w=0$ and unit magnetic charge, $m(r)=1-1/(2r)$ satisfies $m'=(1-w^2)^2/(2r^2)$, and $N=1-2m/r=(1-1/r)^2$: the extremal Reissner--Nordstr\"om solution, with a degenerate horizon at $r=1=\ell$ whose near-horizon geometry is the throat.
 \end{proposition}
+\begin{proof}
+$m'=\frac1{2r^2}=\frac{(1-0)^2}{2r^2}$. Then $1-\frac{2m}r=1-\frac2r+\frac1{r^2}=\bigl(1-\frac1r\bigr)^2$. This has a double zero at $r=1$, which is the extremal Reissner--Nordstr\"om function with unit charge. Its near-horizon limit is $\mathrm{AdS}_2\times S^2$ with both radii $1$, the throat.
+\end{proof}
+
 
 The Bartnik--McKinnon solutions with $n$ nodes approach this extremal solution as $n\to\infty$ \cite{BFM1994} \ext. So the throat is also the limit of the smooth static family; we met the rate $e^{-\pi/\sqrt3}$ in \cref{thm:throatmode}.
 
@@ -107,6 +182,20 @@ For a closed FRW universe with scale factor $a$ and cosmic-time derivative $\dot
 \item For the throat in synchronous coordinates, $K^z{}_z=-\tan(t/\ell)/\ell$; since only one component of $K$ is non-zero, $K^2-K_{ab}K^{ab}=0$ and the Hamiltonian constraint reduces to ${}^{(3)}R=16\pi G\rho$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $c^2-2c=c(c-2)=(1+\ii\dot a)(-1+\ii\dot a)=-1-\dot a^2$, and $|c|^2=1+\dot a^2$. Substituting into the Friedmann equation gives the self-dual form.
+
+\emph{(ii)} With $\dd\tau=a\,\dd\eta$, $\dot a=a^{-1}\dd a/\dd\eta=-\tan\eta$. So $|c|^2=1+\tan^2\eta=1/\cos^2\eta=\ell^2/a^2$. On the other side, $\frac{8\pi G}3\cdot\frac3{2g^2a^4}\cdot a^2=\frac{4\pi G}{g^2a^2}$.
+
+\emph{(iii)} $(1-\ii\tan\eta)\cos\eta=\cos\eta-\ii\sin\eta=e^{-\ii\eta}$.
+
+\emph{(iv)} $|c|^2=1+\sinh^2\zeta=\cosh^2\zeta$, so $c/|c|=(1-\ii\sinh\zeta)/\cosh\zeta$. We have $\operatorname{sech}^2+\tanh^2=1$ and $\cosh^2-\sinh^2=1$. If $\tan\theta=\sinh\zeta$ and $\cos\theta>0$, then $\cos\theta=1/\sqrt{1+\sinh^2\zeta}=\operatorname{sech}\zeta$, which is the definition of $\theta=\gd\zeta$ (\cref{thm:fronts}(ii)).
+
+\emph{(v)} $r'=a^{-1}\partial_\chi(a\sin\chi)=\cos\chi$. The factor $a$ cancels.
+
+\emph{(vi)} With $A=\cos(t/\ell)$, $K^z{}_z=\dot A/A=-\tan(t/\ell)/\ell$, and $K^\theta{}_\theta=\dot R/R=0$. Then $K^2-K_{ab}K^{ab}=(K^z{}_z)^2-(K^z{}_z)^2=0$.
+\end{proof}
+
 
 Part (iv) is the dictionary of \cref{ch:hemisphere} read in cosmology. The real part of the connection, $\Gamma=1$, plays the role of the mass; the imaginary part, $\dot a$, plays the role of the momentum; $|c|$ is the energy. The hemisphere point $(m/E,p/E)$ becomes $(\cos\eta,-\sin\eta)$ and the Gudermannian relates the conformal time $\eta$ to the ``rapidity'' $\zeta$ of the expansion. The life of the Tolman universe, from maximal expansion to the crunch, is the passage along a meridian of the hemisphere from the pole, where the particle is at rest, to the equator, where it moves at the speed of light. The Yang--Mills field is the real part of the self-dual connection and stays fixed, $w=\cos\chi$, during the whole passage.
 

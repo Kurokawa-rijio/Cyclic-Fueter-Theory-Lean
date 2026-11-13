@@ -20,6 +20,17 @@ w_{uv}=\frac{\Omega\,w(1-w^2)}{2r^2}.
 \]
 In the conformal gauge $\Omega=e^{2\sigma}$ the right-hand side is $e^{2\sigma}w(1-w^2)/(2r^2)$.
 \end{theorem}
+\begin{proof}
+We use the densitised form $\partial_\mu(\sqrt{-g}F^{a\mu\nu})+\sqrt{-g}\,\epsilon_{abc}A^b_\mu F^{c\mu\nu}$, as in the proof of \cref{thm:4dcheck}, with $\sqrt{-g}=\Omega r^2s$ ($s=\sin\theta$) and $g^{uv}=-1/\Omega$. The field strength is the list of \cref{thm:ymstress}(i) with $(t,x)$ replaced by $(u,v)$.
+
+\emph{The component $(a,\nu)=(1,\theta)$.} Raising indices, $\sqrt{-g}F^{1u\theta}=-s\,w_v$ and $\sqrt{-g}F^{1v\theta}=-s\,w_u$. Their divergence is $-2s\,w_{uv}$. The only colour term is $\epsilon_{123}A^2_\phi\sqrt{-g}F^{3\phi\theta}$. With $A^2_\phi=ws$ and $F^{3\phi\theta}=(1-w^2)/(r^4s)$, it equals $\Omega sw(1-w^2)/r^2$. Setting the sum to zero gives
+\[
+-2s\,w_{uv}+\frac{\Omega sw(1-w^2)}{r^2}=0 .
+\]
+
+\emph{The other components.} The component $(2,\phi)$ is the same equation without the factor $s$. The remaining components vanish identically for the reasons listed in the proof of \cref{thm:4dcheck}: either a $\partial_\theta$ of $\sin\theta$ cancels against the $\cos\theta$ in $A^3$, or every term contains a vanishing field component.
+\end{proof}
+
 
 There is no $w_u$ or $w_v$ on the right-hand side. This will be important: the $uv$-derivative of $w$ is determined by quantities that are continuous across a null front.
 
@@ -42,6 +53,25 @@ and the $\theta\theta$ component, given this, to
 \item Together with \cref{thm:ymnull}, these three equations express $r_{uv}$, $\Omega_{uv}$, $w_{uv}$ through the fields and their first derivatives.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} By the proof of \cref{thm:null}(ii), $G_{uu}=-\frac2r(r_{uu}-\frac{\Omega_u}\Omega r_u)$. By \cref{thm:ymstress}(iii), $8\pi GT_{uu}=2\ell^2\hat T_{uu}=4\ell^2w_u^2/r^2$. Subtracting,
+\[
+G_{uu}-8\pi GT_{uu}=-\frac2r\Bigl(r_{uu}-\frac{\Omega_u}\Omega r_u+\frac{2\ell^2w_u^2}r\Bigr)=-\frac2rC_u .
+\]
+
+\emph{(ii)} The $uv$ equation is the mixed equation of \cref{thm:null}(iii), solved for $r_{uv}$. For the $\theta\theta$ equation we need the curvature of $h=-2\Omega\,\dd u\,\dd v$, which is conformal to the flat metric with conformal factor $\Omega$:
+\[
+{}^{(2)}\!R=\frac2\Omega(\log\Omega)_{uv}=\frac{2\Omega_{uv}}{\Omega^2}-\frac{2\Omega_u\Omega_v}{\Omega^3}.
+\]
+Then
+\[
+G^\theta{}_\theta=\frac{\Box r}r-\frac12{}^{(2)}\!R=-\frac{2r_{uv}}{\Omega r}-\frac{\Omega_{uv}}{\Omega^2}+\frac{\Omega_u\Omega_v}{\Omega^3}.
+\]
+Set this equal to $8\pi GT^\theta{}_\theta=\ell^2(1-w^2)^2/r^4$ and multiply by $\Omega^2$.
+
+\emph{(iii)} The three equations are solved for $r_{uv}$, $\Omega_{uv}$ and $w_{uv}$. Their right sides contain only the fields and their first derivatives.
+\end{proof}
+
 
 Equations of the form $f_{uv}=F(f,f_u,f_v)$ define a Goursat problem: one prescribes $f$ on two intersecting null lines $u=u_0$ and $v=v_0$, and the solution exists and is unique in a neighbourhood of the corner \cite{Goursat}. The constraints restrict the data on the two lines.
 
@@ -60,10 +90,29 @@ The same conclusion holds starting directly from the $uv$ and $\theta\theta$ Ein
 with $D=A^{-1}\partial_x$ and $K=K^x{}_x+2K^\theta{}_\theta$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Write $P=(1-w^2)^2$ and $F=\frac\Omega{2r}\bigl(\frac{\ell^2P}{r^2}-1\bigr)-\frac{r_ur_v}r$, so that $r_{uv}=F$. Differentiate
+\[
+C_u=r_{uu}-\frac{\Omega_u}\Omega r_u+\frac{2\ell^2w_u^2}r
+\]
+in $v$. Replace $r_{uuv}$ by $\partial_uF$, $(\Omega_u/\Omega)_v=\Omega_{uv}/\Omega-\Omega_u\Omega_v/\Omega^2$ by $-2r_{uv}/r-\Omega\ell^2P/r^4$ (the $\theta\theta$ equation), and $w_{uv}$ by \cref{thm:ymnull}. Then four groups of terms cancel.
+\begin{itemize}[nosep]
+\item The Yang--Mills terms: $\partial_u$ of $P$ inside $F$ gives $-2\Omega\ell^2ww_u(1-w^2)/r^3$. The term $4\ell^2w_uw_{uv}/r$ gives the opposite.
+\item The terms $\pm\Omega\ell^2Pr_u/r^4$.
+\item From $-r_ur_{uv}/r+2r_ur_{uv}/r=r_uF/r$: this cancels the terms of $\partial_uF$ that contain $\Omega r_u/(2r^2)$ and $r_u^2r_v/r^2$.
+\item From $-\frac{\Omega_u}\Omega r_{uv}=-\frac{\Omega_u}\Omega F$: its first part cancels the $\Omega_u$ term of $\partial_uF$.
+\end{itemize}
+What survives is
+\[
+-\frac{r_vr_{uu}}r+\frac{\Omega_u}\Omega\frac{r_ur_v}r-\frac{2\ell^2w_u^2r_v}{r^2}=-\frac{r_v}rC_u .
+\]
+The equation for $C_v$ follows by symmetry.
 
-\begin{proof}[Comments on the proof]
-Parts (i) and (iii) are identities in a differential field: the fields are treated as elements of a field with commuting derivations $\partial_u,\partial_v$ (or $\partial_t,\partial_x$), and the identities follow by expanding. Two elementary lemmas are used, $\partial(a^{-1})=-a^{-2}\partial a$ and $\partial n=0$ for integers $n$. Part (ii) is the uniqueness of solutions of a linear ODE on an interval. The ADM system in (iii) is linear and homogeneous in $(\mathcal H,\mathcal M)$, so vanishing initial constraints remain zero by the standard energy estimate for symmetric hyperbolic systems \ext.
+\emph{(ii)} By (i), $\partial_v(rC_u)=r_vC_u+r\,\partial_vC_u=0$. So $rC_u$ is constant along each line of constant $u$, and it vanishes because it vanishes on $v=v_0$. Since $r>0$, $C_u=0$.
+
+\emph{(iii)} Outline. The contracted Bianchi identity, together with $\nabla_\mu T^{\mu\nu}=0$ (which holds by the Yang--Mills equation), gives $\nabla_\mu(G^{\mu\nu}-8\pi GT^{\mu\nu})=0$. When the evolution equations hold, only the components $\mathcal H$ and $\mathcal M$ of $G-8\pi GT$ can be nonzero. The $t$ and $x$ components of the identity then become a linear system for them. Its coefficients are Christoffel symbols of the metric, which are $K^x{}_x$, $K^\theta{}_\theta$ and $DR/R$. Writing it out gives the two stated equations; Lean checks them by expansion. The conclusion that zero constraints stay zero is the standard uniqueness for such linear symmetric hyperbolic systems \ext.
 \end{proof}
+
 
 \Cref{thm:constrprop} is the spherical form of the contracted Bianchi identity $\nabla_\mu G^{\mu\nu}=0$, which we proved in general in \cref{ch:fields}. Here it appears as an explicit, checkable statement for the reduced equations. The existence and uniqueness of solutions to the full non-linear system are external input \ext; the classical reference is Choquet-Bruhat's theorem \cite{ChoquetBruhat1952}, and for data with a jump in second derivatives one needs the low-regularity theory, which in spherical symmetry is due to Christodoulou \cite{Christodoulou1993}.
 
@@ -76,10 +125,26 @@ Take conformal time $\eta$ and polar angle $\chi$, $N=A=a(\eta)$, $R=a(\eta)\sin
 \begin{enumerate}[label=(\roman*)]
 \item The $tt$ component of the field equations is equivalent to the Friedmann equation $a'^2+a^2=\ell^2$; the $\chi\chi$ and $\theta\theta$ components are both equivalent to $2aa''-a'^2+a^2+\ell^2=0$; the $t\chi$ component holds identically.
 \item Together these give $a''=-a$, and the time-symmetric solution with $a(0)=\ell$ is $a=\ell\cos\eta$.
-\item The proper time at the centre is $\tau=\ell\sin\eta$, so the universe recollapses at $\eta=\pi/2$ after proper time $\ell$. The Yang--Mills energy density in units of $1/(8\pi G)$ is $3/(2a^4)$, which diverges as $\eta\to\pi/2$.
+\item The proper time at the centre is $\tau=\ell\sin\eta$, so the universe recollapses at $\eta=\pi/2$ after proper time $\ell$. The Yang--Mills energy density is $\rho=3/(2g^2a^4)$, which diverges as $\eta\to\pi/2$.
 \item $\ell<\pi\ell/2$: the crunch occurs before the time $\pi\ell/2$ at which the throat's synchronous coordinates (below) break down.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+For the metric $a^2(-\dd\eta^2+\dd\chi^2+\sin^2\chi\,\dd\Omega^2)$ the standard closed FRW expressions in conformal time are
+\[
+G_{\eta\eta}=\frac{3(a'^2+a^2)}{a^2},\qquad G^\chi{}_\chi=G^\theta{}_\theta=-\frac1{a^2}\Bigl(\frac{2a''}a-\frac{a'^2}{a^2}+1\Bigr),\qquad G_{\eta\chi}=0 .
+\]
+By \cref{thm:tolmanstress}, $8\pi G\rho=8\pi G\cdot\frac3{2g^2a^4}=\frac{3\ell^2}{a^4}$, and $p=\rho/3$ in every direction. Also $T_{\eta\chi}=0$, since $w$ does not depend on $\eta$.
+
+\emph{(i)} The $\eta\eta$ equation is $3(a'^2+a^2)/a^2=8\pi G\rho\,a^2=3\ell^2/a^2$. The spatial equations are $-(2a''/a-a'^2/a^2+1)/a^2=\ell^2/a^4$, that is, $2aa''-a'^2+a^2+\ell^2=0$.
+
+\emph{(ii)} Insert $a'^2=\ell^2-a^2$ into the spatial equation: $2aa''+2a^2=0$. The solution with $a(0)=\ell$ and $a'(0)=0$ is $\ell\cos\eta$.
+
+\emph{(iii)} $\dd\tau=a\,\dd\eta=\ell\cos\eta\,\dd\eta$, so $\tau=\ell\sin\eta$, which is $\ell$ at $\eta=\pi/2$. The density $3/(2g^2\ell^4\cos^4\eta)$ tends to infinity there.
+
+\emph{(iv)} $\ell<\frac\pi2\ell$, since $\pi>2$.
+\end{proof}
+
 
 \begin{theorem}[Throat side]\label{thm:throatevo}\ver\
 Take $N=1$, $A=\cos(t/\ell)$, $R=\ell$, $w=0$, i.e.\ the metric
@@ -88,6 +153,16 @@ Take $N=1$, $A=\cos(t/\ell)$, $R=\ell$, $w=0$, i.e.\ the metric
 \]
 All components of the EYM equations hold. This is $\mathrm{AdS}_2\times S^2$ in Gaussian normal coordinates adapted to the time-symmetric slice $t=0$; the coordinates are valid for $|t|<\pi\ell/2$.
 \end{theorem}
+\begin{proof}
+The two-dimensional part $-\dd t^2+A^2\dd z^2$ with $A=\cos(t/\ell)$ has ${}^{(2)}\!R=2\ddot A/A=-2/\ell^2$, so it is $\mathrm{AdS}_2$ of radius $\ell$. Since $R=\ell$ is constant, every derivative of $R$ vanishes in the $2+2$ formulas of \cref{thm:einD}. They give
+\[
+G^a{}_b=-\frac{\delta^a{}_b}{\ell^2},\qquad G^\theta{}_\theta=-\frac12{}^{(2)}\!R=\frac1{\ell^2}.
+\]
+With $w=0$ the stress is $\rho\operatorname{diag}(-1,-1,1,1)$ with $8\pi G\rho=1/\ell^2$ (\cref{thm:br}). So all components agree. The Yang--Mills equation holds trivially for $w=0$.
+
+The lapse is $1$, so $t$ is proper time along the normals, and $\dot A(0)=0$, so the slice $t=0$ is time symmetric. The metric degenerates where $\cos(t/\ell)=0$.
+\end{proof}
+
 
 \section{Characteristic fronts in the throat}
 
@@ -111,6 +186,24 @@ The same Gudermann map that makes the sphere $\dd\varphi^2+\cos^2\varphi\,\dd\la
 \item As $\ell\to\infty$: $\ell\gd(z/\ell)\to z$, $\ell\operatorname{arsinh}\tan(t/\ell)\to t$, $\cos^2(t/\ell)\to1$ and $\operatorname{sech}(z/\ell)\to1$, the flat light cone.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} We must solve $\dd z/\dd t=\sec(t/\ell)$ with $z(0)=0$. For $\cos x>0$,
+\[
+\frac{\dd}{\dd x}\operatorname{arsinh}(\tan x)=\frac{\sec^2x}{\sqrt{1+\tan^2x}}=\sec x .
+\]
+So $z=\ell\operatorname{arsinh}\tan(t/\ell)$, and by uniqueness for this ODE it is the only solution. Solving for $t$ gives $\tan(t/\ell)=\sinh(z/\ell)$, that is, $t=\ell\arctan\sinh(z/\ell)=\ell\gd(z/\ell)$.
+
+\emph{(ii)} By definition $\gd y=\arctan\sinh y$, so $\tan\gd y=\sinh y$. Then $\cos\gd y=1/\sqrt{1+\sinh^2y}=\operatorname{sech}y$. Finally $\gd'y=\cosh y/(1+\sinh^2y)=\operatorname{sech}y$.
+
+\emph{(iii)} By (ii), $\dd t/\dd y=\gd'(y/\ell)=\cos\gd(y/\ell)=\cos(t/\ell)$. So $\dd t^2=\cos^2(t/\ell)\,\dd y^2$.
+
+\emph{(iv)} The fronts from $z=0$ and $z=L$ are mirror images in $z=L/2$, so they meet there, at time $\ell\gd(L/(2\ell))$. Since $\gd<\pi/2$, every arrival time is less than $\pi\ell/2$.
+
+\emph{(v)} In conformal coordinates the null curves are $\chi\pm\eta=$ const. The inward one through $(\eta,\chi)=(0,\pi/2)$ is $\chi=\pi/2-\eta$, which reaches $\chi=0$ at $\eta=\pi/2$.
+
+\emph{(vi)} Each function is $x+O(x^3)$, or $1+O(x^2)$ for the last two, with $x=z/\ell$ or $t/\ell$. Multiplying by $\ell$ and letting $\ell\to\infty$ gives the limits.
+\end{proof}
+
 
 \begin{figure}[t]
 \centering
@@ -139,6 +232,12 @@ The same Gudermann map that makes the sphere $\dd\varphi^2+\cos^2\varphi\,\dd\la
 \item If the constraint $r_{uu}=2\sigma_ur_u-2\ell^2w_u^2/r$ holds on both sides with $r,\sigma_u,r_u$ continuous, then $[r_{uu}]=-(2\ell^2/r)[w_u^2]$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} $\partial_v(w_u^+-w_u^-)=0$, because both sides equal the same continuous function. So the jump is constant in $v$.
+
+\emph{(ii)} Subtract the two constraints. The term $2\sigma_ur_u$ is continuous and drops out, leaving $[r_{uu}]=-\frac{2\ell^2}r[w_u^2]$.
+\end{proof}
+
 
 With the corner values from \cref{thm:nullfront} this gives $[w_u]=1/(\sqrt2\ell)$ and $[r_{uu}]=-1/\ell$ along the whole front. The glued spacetime is therefore smooth except across two null hypersurfaces, on which second derivatives jump by fixed amounts. This is a weak discontinuity in the sense of hyperbolic PDE \cite{CourantHilbert2}, the gravitational analogue of a sound front.
 

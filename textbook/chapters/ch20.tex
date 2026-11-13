@@ -18,6 +18,30 @@ The glued slice evolves into a spacetime with three regions: an exact Tolman reg
 \item The curvature length $L_K=K^{-1/4}$ satisfies $L_K^4=a^8/(24\ell^4)$; already on the initial slice $L_K^4=\ell^4/24$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} For a warped product $h_{ab}\,\dd x^a\dd x^b+R^2\dd\Omega^2$ the Riemann tensor has three kinds of component.
+\begin{itemize}[nosep]
+\item The curvature of $h$. In two dimensions this contributes $({}^{(2)}\!R)^2$ to $K$.
+\item The mixed components $R_{a\theta b\theta}\propto-R\,\nabla_a\nabla_bR$. Counting $\theta$ and $\phi$, these contribute $8\nabla_a\nabla_bR\,\nabla^a\nabla^bR/R^2$.
+\item The angular component $R_{\theta\phi\theta\phi}\propto R^2(1-(\nabla R)^2)$, which contributes $4(1-(\nabla R)^2)^2/R^4$.
+\end{itemize}
+So
+\[
+K=({}^{(2)}\!R)^2+\frac{8\,\nabla_a\nabla_bR\,\nabla^a\nabla^bR}{R^2}+\frac{4\bigl(1-(\nabla R)^2\bigr)^2}{R^4}.
+\]
+Inserting the Christoffel symbols of $h=\operatorname{diag}(-N^2,A^2)$ gives the explicit polynomial. As a check, Schwarzschild has ${}^{(2)}\!R=-f''$, $\nabla\nabla r=\frac{f'}2h$ and $(\nabla r)^2=f$. With $f=1-2M/r$ the three terms are each $16M^2/r^6$, which gives the familiar $48M^2/r^6$.
+
+\emph{(ii)} The Tolman universe is conformally flat, so the Weyl part of $K$ is zero. In four dimensions this leaves $K=2R_{\mu\nu}R^{\mu\nu}-\frac13R^2$. Since the stress is traceless, $R=0$ and $R_{\mu\nu}=8\pi GT_{\mu\nu}$. Hence
+\[
+K=2(8\pi G)^2(\rho^2+3p^2)=\frac83(8\pi G\rho)^2=\frac83\cdot\frac{9\ell^4}{a^8}=\frac{24\ell^4}{a^8}.
+\]
+With $\tau=\ell\sin\eta$, $a^2=\ell^2\cos^2\eta=\ell^2-\tau^2$.
+
+\emph{(iii)} $a\to0$ as $\eta\to\pi/2$, and neither $K$ nor $\rho$ depends on $\chi$.
+
+\emph{(iv)} $L_K^4=1/K$. At $a=\ell$ this is $\ell^4/24$.
+\end{proof}
+
 
 The curvature on the initial slice is set by $\ell$ itself: the glued configuration lives at the scale $\ell=\sqrt{4\pi G}/g$ from the start. We come back to the meaning of this scale in Chapter~30.
 
@@ -36,6 +60,17 @@ so the outgoing expansion $\theta_+\propto\cot\chi-\tan\eta$ and the ingoing $\t
 \item On the inward front $\chi=\pi/2-\eta$ (which is null, and stays inward-moving), $\theta_+=0$: every sphere on the front is marginally trapped. The front reaches $\chi=0$ only at $\eta=\pi/2$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} We have $\partial_\pm(a\sin\chi)=a'\sin\chi\pm a\cos\chi$, and dividing by $a\sin\chi$ gives $a'/a\pm\cot\chi$. For $a=\ell\cos\eta$, $a'/a=-\tan\eta$. Finally,
+\[
+\cot\chi-\tan\eta=\frac{\cos\chi\cos\eta-\sin\chi\sin\eta}{\sin\chi\cos\eta}=\frac{\cos(\chi+\eta)}{\sin\chi\cos\eta}.
+\]
+
+\emph{(ii)} If $0<\chi$, $0\le\eta$ and $\chi+\eta<\frac\pi2$, then $\cos(\chi+\eta)$, $\sin\chi$ and $\cos\eta$ are all positive, so $\theta_+>0$. Also $\cot\chi>0$ and $\tan\eta\ge0$, so $\theta_-<0$.
+
+\emph{(iii)} On $\chi=\frac\pi2-\eta$ we have $\cos(\chi+\eta)=0$. The curve has $\dd\chi/\dd\eta=-1$, so it is null and moves inward. It reaches $\chi=0$ when $\eta=\frac\pi2$.
+\end{proof}
+
 
 Behind the front we no longer have an exact solution, but the null constraint controls the sign of the expansion.
 
@@ -49,6 +84,20 @@ Behind the front we no longer have an exact solution, but the null constraint co
 \item (Focusing) If an expansion satisfies $\theta'\le-\theta^2/2$ and $\theta<0$ on an affine interval $[0,\Lambda]$, then $\Lambda<-2/\theta(0)$. The hypotheses are not empty: $\theta(s)=2/(s-2)$ satisfies them on $[0,1]$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} By the quotient rule,
+\[
+\partial_u\Bigl(\frac{r_u}\Omega\Bigr)=\frac1\Omega\Bigl(r_{uu}-\frac{\Omega_u}\Omega r_u\Bigr)=\frac1\Omega\Bigl(C_u-\frac{2\ell^2w_u^2}r\Bigr).
+\]
+With $C_u=0$ this is the stated equation.
+
+\emph{(ii)} By (i), $r_u/\Omega$ is non-increasing in $u$ along each ray. It starts at $0$, so it stays $\le0$.
+
+\emph{(iii)} Since $\theta<0$, we can differentiate $1/\theta$: $(1/\theta)'=-\theta'/\theta^2\ge\frac12$. Integrating, $1/\theta(s)\ge1/\theta(0)+s/2$. The left side is negative, so $s<-2/\theta(0)$ for every $s$ in the interval, in particular for $s=\Lambda$.
+
+For the example, $\theta=2/(s-2)$ gives $\theta'=-2/(s-2)^2=-\theta^2/2$, and $\theta<0$ for $s<2$.
+\end{proof}
+
 
 Part (iii) is the elementary core of the Penrose singularity theorem \cite{Penrose1965,HawkingEllis}: a trapped null congruence reaches a focal point within finite affine parameter. We use it only as an estimate; the global theorem is not needed here.
 
@@ -65,6 +114,29 @@ The throat region is a piece of $\mathrm{AdS}_2\times S^2$. Embed $\mathrm{AdS}_
 \item In proper time the two events differ: the Tolman crunch occurs at $\tau=\ell$ (with $\dd\tau/\dd\eta=a$), before the synchronous focal time $\pi\ell/2$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+Throughout we write $c,s$ for $\cos(t/\ell),\sin(t/\ell)$ and $C,S$ for $\cosh(z/\ell),\sinh(z/\ell)$.
+
+\emph{(i)} On the hyperboloid: $-\ell^2c^2C^2-\ell^2s^2+\ell^2c^2S^2=-\ell^2(c^2+s^2)=-\ell^2$. The differentials are
+\[
+\dd X_0=-sC\,\dd t+cS\,\dd z,\qquad\dd X_1=c\,\dd t,\qquad\dd X_2=-sS\,\dd t+cC\,\dd z .
+\]
+In $-\dd X_0^2-\dd X_1^2+\dd X_2^2$:
+\begin{itemize}[nosep]
+\item the $\dd t^2$ coefficient is $-s^2C^2-c^2+s^2S^2=-1$;
+\item the $\dd z^2$ coefficient is $-c^2S^2+c^2C^2=c^2$;
+\item the cross terms $2scCS-2scSC$ cancel.
+\end{itemize}
+
+\emph{(ii)} Equate the $X_1$ and $X_2$ components of the two parametrisations. At a static position $\cosh(x/\ell)=1/\sin u$, so $\sin\tau=\sin(t/\ell)\sin u$. At $z=0$ we get $\sinh(x/\ell)=0$, so $x=0$ and $\sin\tau=\sin(t/\ell)$.
+
+\emph{(iii)} On the hyperboloid: $(-\cos^2\eta-\sin^2\eta+\cos^2\chi)/\sin^2\chi=-1$. Differentiating, the $\dd\eta^2$ coefficient is $-1/\sin^2\chi$ and the $\dd\chi^2$ coefficient is $(1-\cos^2\chi)/\sin^4\chi=1/\sin^2\chi$. The cross terms cancel.
+
+\emph{(iv)} At $t=\pi\ell/2$, $c=0$, so $X_0=X_2=0$ and $X_1=\ell$. In global coordinates, $X_2=0$ forces $\chi=\pi/2$, then $X_0=0$ forces $\eta=\pi/2$, and indeed $X_1=1$. At that conformal time $\ell\cos\eta=0$.
+
+\emph{(v)} By \cref{thm:tolmanevo}(iii) the crunch occurs at $\tau=\ell$, and $\ell<\pi\ell/2$.
+\end{proof}
+
 
 So the Tolman universe and the throat share a conformal clock normalised at the junction sphere (where $a=\ell$ and $\ell/\sin\chi=\ell$), and the crunch on one side and the coordinate focus on the other happen at the same conformal time $\eta=\pi/2$. In proper time the crunch comes first.
 
@@ -84,6 +156,20 @@ where $W^2\ge0$ is the Yang--Mills gradient energy across the sphere, fed by the
 \item At the centre, $2Gm/r=1+\dot r^2\ge1$, and both null expansions equal $(2/r)\dot r$. A collapsing central sphere is trapped.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} We have $(\nabla r)^2=h^{tt}(\partial_tr)^2+(\partial_sr)^2=-\dot r^2$. So $2Gm/r=1-(\nabla r)^2=1+\dot r^2$.
+
+\emph{(ii)} $r(1-f)+\ell^2/r=r(E/r-\ell^2/r^2)+\ell^2/r=E$. For the throat, $r=\ell$ and $\dot r=0$, so $E=2\ell$, and then $f=1-2\ell/r+\ell^2/r^2=(1-\ell/r)^2$.
+
+\emph{(iii)} Differentiate $E$:
+\[
+\frac{\dd E}{\dd\tau}=\dot r(1+\dot r^2)+2r\dot r\ddot r-\frac{\ell^2\dot r}{r^2}.
+\]
+By \eqref{eq:centre}, $2r\dot r\ddot r=-\dot r(\dot r^2+1-\ell^2/r^2)-2W^2\dot r$. The other terms cancel and $\dd E/\dd\tau=-2W^2\dot r$. Since $2Gm=E-\ell^2/r$, its derivative is $-2W^2\dot r+\ell^2\dot r/r^2$. The sign statements follow from $\dot r\le0$.
+
+\emph{(iv)} $1+\dot r^2\ge1$. The null expansions are $\frac2r(\partial_\pm r)$ with $\partial_\pm=N^{-1}\partial_t\pm\partial_s$, which gives $\frac2r\dot r$ for both. If $\dot r<0$ both are negative.
+\end{proof}
+
 
 \begin{proposition}[Static centres and small oscillations]\label{prop:centrestatic}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -91,6 +177,16 @@ where $W^2\ge0$ is the Yang--Mills gradient energy across the sphere, fed by the
 \item If $(rW)^2=\kappa$ is constant, a static central sphere exists if and only if $r^2=\ell^2-2\kappa$. Hence for $2\kappa\ge\ell^2$ there is no static centre, while for $2\kappa<\ell^2$ the sphere of radius $\sqrt{\ell^2-2\kappa}$ is static.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} For $W=0$ write the right side of \eqref{eq:centre} as $f(r,\dot r)$. Then $f(\ell,0)=0$, and $\dot r^2$ is of second order. With $g=1-\ell^2/r^2$ and $f=-g/(2r)$,
+\[
+\partial_rf=-\frac{g'}{2r}+\frac g{2r^2}=-\frac{2\ell^2/r^3}{2r}+\frac g{2r^2},
+\]
+which equals $-1/\ell^2$ at $r=\ell$. So $\ddot r=-(r-\ell)/\ell^2$, with angular frequency $1/\ell$ and period $2\pi\ell$.
+
+\emph{(ii)} A static sphere has $\dot r=\ddot r=0$ and $W^2=\kappa/r^2$. Then $0=-(1-\ell^2/r^2)/(2r)-\kappa/r^3$. Multiplying by $-2r^3$ gives $r^2-\ell^2+2\kappa=0$. This has a positive solution exactly when $\ell^2-2\kappa>0$.
+\end{proof}
+
 
 The threshold $2\kappa=\ell^2$ is sharp, and the main result of this chapter shows that above it collapse is unavoidable.
 
@@ -101,18 +197,34 @@ Suppose that $r,\dot r$ solve \eqref{eq:centre} with $r>0$ on $[\tau_1,\tau_2]$,
 \]
 In particular, if $r_1\le\ell$, the central sphere collapses within proper time $\pi\ell/2$. Equivalently, the maximal interval $[\tau_1,T)$ on which a positive solution exists has $T-\tau_1\le\pi r_1/2$.
 \end{theorem}
-
 \begin{proof}
-\emph{Step 1.} Writing the right-hand side of \eqref{eq:centre} as $\mathrm{acc}$,
+\emph{Step 1: the sphere only falls.} Write the right side of \eqref{eq:centre} as $\mathrm{acc}$. Then
 \[
-\mathrm{acc}+\frac1{2r}=-\frac{\dot r^2}{2r}+\frac{\ell^2-2(rW)^2}{2r^3}\le0,
+\mathrm{acc}+\frac1{2r}=-\frac{\dot r^2}{2r}+\frac{\ell^2-2(rW)^2}{2r^3}\le0 ,
 \]
-so $\ddot r\le-1/(2r)<0$. Since $\dot r(\tau_1)=0$, a comparison argument gives $\dot r\le0$ on the interval, hence $r\le r_1$, and in fact $\dot r\le-(\tau-\tau_1)/(4r_1)$ and $r<r_1$ for $\tau>\tau_1$.
+because $(rW)^2\ge\kappa\ge\ell^2/2$. So $\ddot r\le-1/(2r)<0$. Since $\dot r(\tau_1)=0$, we get $\dot r<0$ for $\tau>\tau_1$, hence $r<r_1$. Then $\ddot r\le-1/(2r_1)$, and integrating gives $\dot r\le-(\tau-\tau_1)/(2r_1)$. In particular the weaker bound $-(\tau-\tau_1)/(4r_1)$ recorded in the checklist holds.
 
-\emph{Step 2.} The quantity $E$ of \cref{prop:centremass} is non-decreasing while $\dot r\le0$, which yields the energy inequality $r\dot r^2\ge r_1-r$.
+\emph{Step 2: an energy inequality.} Let $F=r(1+\dot r^2)+(\ell^2-2\kappa)/r$. By the computation in \cref{prop:centremass}(iii),
+\[
+\frac{\dd F}{\dd\tau}=\dot r\Bigl(\frac{\ell^2}{r^2}-2W^2\Bigr)-\frac{(\ell^2-2\kappa)\dot r}{r^2}=\frac{2\dot r\bigl(\kappa-(rW)^2\bigr)}{r^2}\ge0 ,
+\]
+since both factors are $\le0$. So $F(\tau)\ge F(\tau_1)=r_1+(\ell^2-2\kappa)/r_1$, which rearranges to
+\[
+r\dot r^2\ge(r_1-r)\Bigl(1-\frac{\ell^2-2\kappa}{rr_1}\Bigr)\ge r_1-r ,
+\]
+the last step because $\ell^2-2\kappa\le0$.
 
-\emph{Step 3.} Let $\Psi(x)=r_1\arccos\sqrt{x/r_1}+\sqrt{x(r_1-x)}$. Then $\Psi(r_1)=0$, $\Psi'(x)=-\sqrt x/\sqrt{r_1-x}$ for $0<x<r_1$, and $\Psi(x)<\pi r_1/2$ for $0<x\le r_1$. By Step 2, $\dd\Psi(r(\tau))/\dd\tau=-\dot r\sqrt r/\sqrt{r_1-r}\ge1$, so $\tau_2-\tau_1\le\Psi(r(\tau_2))<\pi r_1/2$.
+\emph{Step 3: comparison with free fall.} Let $\Psi(x)=r_1\arccos\sqrt{x/r_1}+\sqrt{x(r_1-x)}$. Then $\Psi(r_1)=0$, and for $0<x<r_1$,
+\[
+\Psi'(x)=-\frac{r_1}{2\sqrt x\sqrt{r_1-x}}+\frac{r_1-2x}{2\sqrt x\sqrt{r_1-x}}=-\frac{\sqrt x}{\sqrt{r_1-x}} .
+\]
+Since $\Psi$ is decreasing with $\Psi(0)=\pi r_1/2$, we have $\Psi(x)<\pi r_1/2$ for $0<x\le r_1$. By Step 2, $-\dot r\ge\sqrt{(r_1-r)/r}$, so
+\[
+\frac{\dd}{\dd\tau}\Psi(r(\tau))=-\dot r\frac{\sqrt r}{\sqrt{r_1-r}}\ge1 .
+\]
+Integrating from $\tau_1$ to $\tau_2$ gives $\tau_2-\tau_1\le\Psi(r(\tau_2))<\pi r_1/2$.
 \end{proof}
+
 
 $\Psi$ is the cycloid of Newtonian free fall: a dust ball released from rest at radius $r_1$ with $2GM=r_1$ reaches the centre after proper time $\pi r_1/2$, as in the Oppenheimer--Snyder model \cite{OppenheimerSnyder1939}. \Cref{thm:centrecollapse} says the central sphere of the throat falls at least as fast as that dust ball.
 

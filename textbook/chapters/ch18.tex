@@ -23,6 +23,39 @@ so the spacetime is conformally flat exactly where $2Gm\,r=\ell^2(1-w^2)^2$.
 \item The quantity $\mathcal N=2mr-\ell^2(1-w^2)^2$, which measures the Weyl curvature, obeys a linear transport equation $\mathcal N_u-(r_u/r)\mathcal N=\Sigma_u$ with an explicit source.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} In spherical symmetry the Weyl tensor has a single independent component $E$, the Coulomb part. The Einstein equations relate it to the mass by the standard identity
+\[
+E=\frac{Gm}{r^3}-\frac{4\pi G}3(\rho-p_r+p_T).
+\]
+We normalise $\mathcal C=6r^2E$. For the magnetic Yang--Mills stress \eqref{eq:ymfluid} the gradient terms cancel in the combination:
+\[
+\rho-p_r+p_T=\frac{3(1-w^2)^2}{2g^2r^4},
+\]
+so $\frac{4\pi G}3(\rho-p_r+p_T)=\frac{\ell^2(1-w^2)^2}{2r^4}$. Hence $6r^2E=3\bigl(2Gm/r-\ell^2(1-w^2)^2/r^2\bigr)$. In double-null form, with $2Gm/r=1+2r_ur_v/\Omega$, this is the identity proved in Lean.
+
+\emph{(ii)} Write $P=(1-w^2)^2$ and use units $2G=1$, so that $m=\frac r2(1+2r_ur_v/\Omega)$. Then
+\[
+m_u=\frac{r_u}2\Bigl(1+\frac{2r_ur_v}\Omega\Bigr)+\frac r\Omega(r_{uu}r_v+r_ur_{uv})-\frac{rr_ur_v\Omega_u}{\Omega^2}.
+\]
+Substitute the $uu$ constraint $r_{uu}=\frac{\Omega_u}\Omega r_u-\frac{2\ell^2w_u^2}r$ and the mixed equation $r_{uv}=\frac\Omega{2r}\bigl(\frac{\ell^2P}{r^2}-1\bigr)-\frac{r_ur_v}r$ (\cref{thm:null}). Then three pairs cancel:
+\begin{itemize}[nosep]
+\item the $\Omega_u$ terms;
+\item the terms $\pm r_u^2r_v/\Omega$;
+\item the terms $\pm\frac{r_u}2$.
+\end{itemize}
+What is left is $-2\ell^2w_u^2r_v/\Omega+r_u\ell^2P/(2r^2)$.
+
+\emph{(iii)} Differentiate $\mathcal N=2mr-\ell^2P$, using $P_u=-4ww_u(1-w^2)$:
+\[
+\mathcal N_u-\frac{r_u}r\mathcal N=2rm_u+4\ell^2ww_u(1-w^2)+\frac{\ell^2Pr_u}r .
+\]
+The terms $\pm2mr_u$ have cancelled. Inserting (ii) gives the source
+\[
+\Sigma_u=\frac{2\ell^2Pr_u}r+4\ell^2ww_u(1-w^2)-\frac{4\ell^2rr_vw_u^2}\Omega .\qedhere
+\]
+\end{proof}
+
 
 Mass curves spacetime in the Weyl sense, and the magnetic self-energy curves it in the opposite sense. Where the two balance, the spacetime is conformally flat. For the Tolman universe and the throat this balance holds exactly: both are conformally flat, as a closed FRW universe and $\mathrm{AdS}_2\times S^2$ with equal radii must be.
 
@@ -45,6 +78,26 @@ r'^2\le w^2,
 \]
 with equality if and only if the first-order (Bogomolny) equation $rr'w'+w(1-w^2)=0$ holds.
 \end{theorem}
+\begin{proof}
+\emph{Deriving $Q=0$.} On a time-symmetric slice $M=2Gm=r(1-r'^2)$, and conformal flatness says $Mr=\ell^2P$ with $P=(1-w^2)^2$. Differentiate:
+\[
+M'r+Mr'=\ell^2P'=-4\ell^2ww'(1-w^2).
+\]
+By \cref{prop:massprime}(ii), $M'=2\ell^2r'w'^2+\ell^2r'P/r^2$, and $M=\ell^2P/r$. Inserting both and dividing by $2\ell^2$ gives
+\[
+rr'w'^2+\frac{r'P}{2r}+\frac{r'P}{2r}+2ww'(1-w^2)=0 ,
+\]
+which is $Q=0$.
+
+\emph{The identity.} Expand the right side times $r$:
+\[
+r^2r'^2w'^2+2rr'ww'(1-w^2)+w^2P+Pr'^2-Pw^2 .
+\]
+The $w^2P$ terms cancel, and what remains is $r'(r\cdot Q)$.
+
+\emph{The inequality.} If $Q=0$, then $P(r'^2-w^2)=-(rr'w'+w(1-w^2))^2\le0$. When $w^2\ne1$ we have $P>0$, so $r'^2\le w^2$. Equality holds exactly when the square vanishes.
+\end{proof}
+
 
 So the spin-connection condition $w=\pm r'$ of Part~III is not an extra assumption for conformally flat data. It is the equality case of an inequality, the analogue of the BPS bound.
 
@@ -64,6 +117,30 @@ r^2+\ell^2r'^2=\ell^2 .
 \item (Envelope) Every twice differentiable solution of $r^2+\ell^2r'^2=\ell^2$ satisfies, at each point, $r'=0$ or $r''=-r/\ell^2$. The second alternative gives the family $r=\ell\sin((s-s_0)/\ell)$; the first gives $r=\ell$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} With $w=r'$ the two relations are $2Gm=r(1-r'^2)$ and $2Gm\,r=\ell^2(1-r'^2)^2$. Multiply the first by $r$ and compare: $r^2(1-r'^2)=\ell^2(1-r'^2)^2$. Divide by $1-r'^2\ne0$ to get $r^2=\ell^2(1-r'^2)$.
+
+\emph{(ii)} On the Tolman slice, $\ell^2\sin^2+\ell^2\cos^2=\ell^2$. Over one period of $\sin(s/\ell)$ the point $(\ell\sin,\cos)$ runs once round the circle. The throat point satisfies $\ell^2+0=\ell^2$. During the evolution,
+\[
+r^2+\ell^2w^2=\ell^2\cos^2\eta\sin^2\chi+\ell^2\cos^2\chi\le\ell^2 ,
+\]
+with equality exactly when $\cos^2\eta=1$ or $\sin\chi=0$.
+
+\emph{(iii)} For conformally flat solutions, $1-2Gm/r=(r^2-\ell^2P)/r^2$. Replacing $r'^2$ by this quantity in $Q$ of \cref{thm:bogomolny}, and writing $w'=X\,r'$, gives the slope equation
+\[
+\frac{r^2-\ell^2P}rX^2+2w(1-w^2)X+\frac Pr=0 .
+\]
+Its discriminant is
+\[
+4w^2P-\frac{4P(r^2-\ell^2P)}{r^2}=\frac{4P}{r^2}\bigl(-(1-w^2)r^2+\ell^2(1-w^2)^2\bigr)=\frac{4(1-w^2)^3\bigl(\ell^2(1-w^2)-r^2\bigr)}{r^2}.
+\]
+For $1-w^2>0$ it is nonnegative exactly when $r^2\le\ell^2(1-w^2)$, that is, $r^2+\ell^2w^2\le\ell^2$. It vanishes on the circle, where the roots coincide.
+
+\emph{(iv)} $\ell^2\cos^2\eta+\ell^2\sin^2\eta=\ell^2$.
+
+\emph{(v)} Differentiate $r^2+\ell^2r'^2=\ell^2$: $2r'(r+\ell^2r'')=0$, so at each point $r'=0$ or $r''=-r/\ell^2$. On an interval where $r'\ne0$, the second equation holds. Its solutions are $A\sin(s/\ell)+B\cos(s/\ell)$, and the first-order equation forces the amplitude to be $\ell$, which gives the family. Where $r'\equiv0$, the equation gives $r^2=\ell^2$.
+\end{proof}
+
 
 \begin{figure}[t]
 \centering
@@ -91,6 +168,18 @@ Within spherically symmetric, magnetic EYM data on a time-symmetric slice with $
 \item along each null front from the junction the jump $[w_u]=1/(\sqrt2\,\ell)$ is fixed by the corner value.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} On $[0,\pi\ell]$, $\ell\sin(s/\ell)=\ell$ exactly when $\sin(s/\ell)=1$, that is, at $s=\pi\ell/2$.
+
+\emph{(ii)} At that point $r'=\cos(\pi/2)=0$, as on the throat.
+
+\emph{(iii)} $r''=-\sin(s/\ell)/\ell=-1/\ell$ there. The two roots of the constraint are given by \cref{thm:c1notc2}(iii).
+
+\emph{(iv)} This is \cref{thm:timelikejoin}.
+
+\emph{(v)} By \cref{thm:nullfront}, $[w_u]$ is constant along each front, and at the corner it equals $1/(\sqrt2\,\ell)-0$.
+\end{proof}
+
 
 \Cref{thm:joinunique} answers ``how'': if the two pieces are joined, there is exactly one way. It does not answer ``why'' they should be joined; that question is taken up dynamically in Part~V and quantum mechanically in Part~VI.
 
@@ -100,13 +189,32 @@ Insert a cylinder of proper length $L$ between the two hemispheres of $S^3(\ell)
 
 \begin{proposition}[Invariants of the glued slice]\label{prop:gluedslice}\ver\
 \begin{enumerate}[label=(\roman*)]
-\item On the Tolman side the profile $r=\ell\sin(s/\ell)$ has slope $r'=\cos(s/\ell)$, equal to $1$ at the pole and $0$ at the equator; a band of the hemisphere between $s_1$ and $s_2$ has area $4\pi\int r^2\,\dd s$, and a band of the cylinder of length $L$ has area $4\pi\ell^2L$.
+\item On the Tolman side the profile $r=\ell\sin(s/\ell)$ has slope $r'=\cos(s/\ell)$, equal to $1$ at the pole and $0$ at the equator; in the two-dimensional surface obtained by rotating the profile curve, a band of a hemisphere between $s_1$ and $s_2$ has area $2\pi\int_{s_1}^{s_2}r\,\dd s=2\pi\ell^2\bigl(\cos(s_1/\ell)-\cos(s_2/\ell)\bigr)$, and a band of the cylinder between $s_1$ and $s_2$ has area $2\pi\ell(s_2-s_1)$.
 \item Each half of $S^3(\ell)$ has volume $\pi^2\ell^3$, so the glued slice has volume $V=2\pi^2\ell^3+4\pi\ell^2L$.
-\item The geodesic curvature of the profile curve integrates to the Gauss--Bonnet value $4\pi$ for the closed slice, independently of $L$.
+\item For this two-dimensional profile surface, the Gaussian curvature integrates to $4\pi$ (each hemisphere contributes $2\pi$, the cylinder $0$) and the junction circles have zero geodesic curvature, so the Gauss--Bonnet total is $4\pi=2\pi\chi(S^2)$, independently of $L$.
 \item The junction sphere is a marginally outer trapped surface; the Schwarzschild mass with horizon radius $\ell$ is $\ell/(2G)$, the minimal mass of \cref{thm:penrose}; and the Bekenstein--Hawking entropy of a sphere of radius $\ell$ is $A/(4G)=\pi\ell^2/G$.
 \item The normal stress jumps at the junction sphere by $[T_{nn}]=-1/(4\pi G\ell^2)$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} The slope is $r'=\cos(s/\ell)$, which is $1$ at $s=0$ and $0$ at $s=\pi\ell/2$. Rotating the profile curve gives circles of circumference $2\pi r$, so the band areas are $\int2\pi r\,\dd s$:
+\[
+\int_{s_1}^{s_2}2\pi\ell\sin(s/\ell)\,\dd s=2\pi\ell^2\bigl(\cos(s_1/\ell)-\cos(s_2/\ell)\bigr),\qquad\int_{s_1}^{s_2}2\pi\ell\,\dd s=2\pi\ell(s_2-s_1).
+\]
+
+\emph{(ii)} The spheres have area $4\pi r^2$, so the volume of a hemisphere is
+\[
+\int_0^{\pi\ell/2}4\pi\ell^2\sin^2(s/\ell)\,\dd s=4\pi\ell^2\Bigl[\frac s2-\frac{\ell\sin(2s/\ell)}4\Bigr]_0^{\pi\ell/2}=\pi^2\ell^3 .
+\]
+The throat contributes $4\pi\ell^2L$.
+
+\emph{(iii)} On the hemispheres the profile surface is a round sphere of radius $\ell$, with Gaussian curvature $1/\ell^2$. By (i) each hemisphere has area $2\pi\ell^2$, so it contributes $\frac1{\ell^2}\cdot2\pi\ell^2=2\pi$. The cylinder is flat. The junction circle is a great circle of each hemisphere, and its geodesic curvature $\cot(\pi/2)/\ell=0$ vanishes. The total is $4\pi$, and $L$ does not enter.
+
+\emph{(iv)} The null expansions of a sphere on a slice are proportional to $\pm r'+rK_T$. At the junction $r'=0$ and $K_T=0$, so both vanish. The mass is given by $2Gm=r(1-r'^2)=\ell$, which is the horizon relation of a Schwarzschild black hole of mass $\ell/(2G)$. The area is $4\pi\ell^2$, so $A/(4G)=\pi\ell^2/G$.
+
+\emph{(v)} This is \cref{thm:timelikejoin}(i).
+\end{proof}
+
 
 The length $L$ of the throat is the only free parameter of the glued slice. It does not appear in the Gauss--Bonnet integral, and it enters the volume linearly. In Chapter~26 it will turn out to be conjugate to the rate of change of the throat's area.
 
