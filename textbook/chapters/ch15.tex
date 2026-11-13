@@ -20,6 +20,14 @@ p_T=\frac{(1-w^2)^2}{2g^2r^4}.
 \begin{proposition}[Tracelessness]\label{prop:traceless}\ver\
 The quantities \eqref{eq:ymfluid} satisfy $-\rho+p_r+2p_T=0$. More generally, for any field strength in four dimensions and any diagonal metric, $\sum_mg^{mm}\hat T_{mm}=0$.
 \end{proposition}
+\begin{proof}
+Write $P=(1-w^2)^2$. Then
+\[
+g^2(-\rho+p_r+2p_T)=-\frac{w'^2}{r^2}-\frac P{2r^4}+\frac{w'^2}{r^2}-\frac P{2r^4}+\frac{2P}{2r^4}=0 .
+\]
+In general, $\sum_mg^{mm}\hat T_{mm}=g^{\mu\nu}\hat T_{\mu\nu}=F^a_{\mu\lambda}F^{a\mu\lambda}-\frac14\,g^{\mu\nu}g_{\mu\nu}\,F^2=F^2-\frac44F^2=0$, because $g^{\mu\nu}g_{\mu\nu}=4$ in four dimensions.
+\end{proof}
+
 
 Yang--Mills radiation is therefore conformal matter, like electromagnetic radiation. This has two consequences. A homogeneous Yang--Mills field behaves like a radiation fluid. And the trace of the Einstein equation gives $R=0$ for every EYM solution.
 
@@ -35,6 +43,18 @@ For $r=a\sin\chi$ and $w=\cos\chi$:
 \item The magnetic flux through the sphere at $\chi$ is $4\pi r^2B_r=4\pi(1-w^2)=4\pi\sin^2\chi$, which equals $4\pi$, one unit, at the equator $\chi=\pi/2$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} The proper radial coordinate is $s=a\chi$, so $w'=\dd w/\dd s=-\sin\chi/a$. Then
+\[
+\frac{w'^2}{r^2}=\frac{\sin^2\chi}{a^2\cdot a^2\sin^2\chi}=\frac1{a^4},\qquad\frac{(1-w^2)^2}{2r^4}=\frac{\sin^4\chi}{2a^4\sin^4\chi}=\frac1{2a^4}.
+\]
+Insert these into \eqref{eq:ymfluid}: $\rho=\frac1{g^2}(1+\frac12)a^{-4}$, $p_r=\frac1{g^2}(1-\frac12)a^{-4}$ and $p_T=\frac1{2g^2a^4}$.
+
+\emph{(ii)} With $N=A=a$, the first term is $\partial_\chi(w_\chi)=-\cos\chi$. The second is $a^2\cos\chi\sin^2\chi/(a^2\sin^2\chi)=\cos\chi$. Their sum is zero whatever $a$ is. Also $r'=A^{-1}\partial_\chi(a\sin\chi)=\cos\chi$.
+
+\emph{(iii)} The radial magnetic field is $B_r=(1-w^2)/r^2$, which is $F^3_{\theta\phi}$ divided by the area element. So $4\pi r^2B_r=4\pi(1-\cos^2\chi)=4\pi\sin^2\chi$, which is $4\pi$ at $\chi=\frac\pi2$.
+\end{proof}
+
 
 The Friedmann equation for a closed universe filled with radiation, $\rho\propto a^{-4}$, can be solved in closed form.
 
@@ -46,6 +66,26 @@ The Friedmann equation for a closed universe filled with radiation, $\rho\propto
 \item The Misner--Sharp mass inside the sphere $R=a\sin\chi$ is $m=\frac{4\pi}3\rho R^3$, as in Newtonian theory, and it obeys the first law $\dd m/\dd t=-\frac\rho3\cdot4\pi R^2\,\dd R/\dd t=-p\,\dd V/\dd t$ for $\rho=C/a^4$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} For $a=\ell\cos\eta$ the left side is $a'^2+a^2=\ell^2\sin^2\eta+\ell^2\cos^2\eta=\ell^2$. The right side is $\frac{8\pi G}3\cdot\frac3{2g^2a^4}\cdot a^4=\frac{4\pi G}{g^2}$. They agree exactly when $\ell^2=4\pi G/g^2$, and the maximum of $\ell\cos\eta$ is $\ell$.
+
+\emph{(ii)} $\dot a=-t/a$, so $\dot a^2+1=(t^2+a^2)/a^2=L/a^2$.
+
+\emph{(iii)} For $S^3(\ell)$, ${}^{(3)}R=6/\ell^2$. On the other side, $16\pi G\rho=16\pi G\cdot\frac3{2g^2\ell^4}=\frac{24\pi G}{g^2\ell^4}$. These are equal exactly when $\ell^2=4\pi G/g^2$.
+
+\emph{(iv)} For $R=a\sin\chi$ we have $\nabla R\cdot\nabla R=\cos^2\chi-\dot a^2\sin^2\chi$, so
+\[
+\frac{2Gm}R=1-\cos^2\chi+\dot a^2\sin^2\chi=\sin^2\chi\,(1+\dot a^2).
+\]
+The Friedmann equation in cosmic time, $\dot a^2+1=\frac{8\pi G}3\rho a^2$, turns this into $2Gm=\frac{8\pi G}3\rho R^3$.
+
+For $\rho=C/a^4$ at fixed $\chi$, $m=\frac{4\pi}3C\sin^3\chi/a$, so $\dot m=-\frac{4\pi}3C\sin^3\chi\,\dot a/a^2$. On the other side,
+\[
+-\frac\rho3\cdot4\pi R^2\dot R=-\frac C{3a^4}\cdot4\pi a^2\sin^2\chi\cdot\dot a\sin\chi ,
+\]
+which is the same.
+\end{proof}
+
 
 \begin{figure}[t]
 \centering
@@ -68,6 +108,10 @@ There is no static version. Einstein's static universe needs dust and a cosmolog
 \begin{proposition}[No static closed universe]\label{prop:nostatic}\ver\nogo\
 For a diagonal metric, $\sum_ag^{aa}G_{aa}=-R$. The ultrastatic $\RR\times S^3$ of radius $\ell$ has $R=6/\ell^2$. Since Yang--Mills stress is traceless for every field strength, $G_{aa}=\kappa_GT_{aa}$ would force $R=0$: the ultrastatic three-sphere is not a solution of the EYM equations for any Yang--Mills field.
 \end{proposition}
+\begin{proof}
+$G=\mathrm{Ric}-\frac12Rg$ has trace $R-\frac42R=-R$. For a diagonal metric this trace is $\sum_ag^{aa}G_{aa}$. On $\RR\times S^3(\ell)$ only the sphere is curved, so $R=6/\ell^2$. If $G_{aa}=\kappa_GT_{aa}$, then taking the trace and using \cref{prop:traceless} gives $-R=0$, which contradicts $R=6/\ell^2$.
+\end{proof}
+
 
 \subsection*{A Newtonian limit}
 
@@ -76,6 +120,16 @@ A closed universe looks very non-Newtonian. Still, its interior approaches Newto
 \begin{proposition}[Newtonian limit]\label{prop:newtonlimit}\ver\
 At fixed proper radius $s$, $r_a(s)=a\sin(s/a)\to s$, $r_a'(s)\to1$ and $G(a)\to0$. For every finite $a$ the mass is exactly $m_a=\frac{4\pi}3\rho_0r_a^3$ with $\dd m_a/\dd s=4\pi\rho_0r_a^2r_a'$, and as $a\to\infty$, $m_a\to\frac{4\pi}3\rho_0s^3$ and $\dd m_a/\dd s\to4\pi\rho_0s^2$.
 \end{proposition}
+\begin{proof}
+\emph{Limits of the slice.} Since $\sin x/x\to1$ as $x\to0$, we have $a\sin(s/a)=s\cdot\frac{\sin(s/a)}{s/a}\to s$. Also $r_a'=\cos(s/a)\to1$, and $G(a)\propto a^{-2}\to0$.
+
+\emph{The mass.} On the time-symmetric slice, $2Gm=M=r(1-r'^2)=a\sin^3(s/a)$. Dividing by $2G(a)=3/(4\pi\rho_0a^2)$ gives
+\[
+m_a=\frac{4\pi}3\rho_0a^3\sin^3(s/a)=\frac{4\pi}3\rho_0r_a^3 .
+\]
+Differentiating, $\dd m_a/\dd s=4\pi\rho_0r_a^2r_a'$. The limits follow from those of $r_a$ and $r_a'$.
+\end{proof}
+
 
 If instead $G$ is kept fixed while $a\to\infty$, then $\rho\to0$ and the limit is the vacuum. A nonzero Newtonian density requires the combined limit.
 
@@ -95,6 +149,20 @@ with lapse $N=\cosh(x/\ell)$, which satisfies $N''=N/\ell^2$.
 \item The Misner--Sharp mass of every sphere is $\ell/(2G)$, the minimal mass of \cref{thm:penrose}.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Put $w=w'=0$ and $r=\ell$ in \eqref{eq:ymfluid}.
+
+\emph{(ii)} For a two-dimensional metric $-N^2\dd t^2+\dd x^2$ the Gaussian curvature is $-N''/N$, which is $-1/\ell^2$ here by (iii). In two dimensions $\mathrm{Ric}=Kg$. On $S^2(\ell)$, $\mathrm{Ric}=\ell^{-2}g$. This gives the four eigenvalues, and $R=-\frac2{\ell^2}+\frac2{\ell^2}=0$, so $G^\mu{}_\nu=R^\mu{}_\nu$. The stress tensor in mixed form is $\operatorname{diag}(-\rho,p_r,p_T,p_T)=\rho\,\operatorname{diag}(-1,-1,1,1)$. Hence the Einstein equations reduce to the single equation
+\[
+\frac1{\ell^2}=8\pi G\rho=\frac{4\pi G}{g^2\ell^4},
+\]
+that is, $\ell^2=4\pi G/g^2$.
+
+\emph{(iii)} $(\cosh(x/\ell))'=\sinh(x/\ell)/\ell$ and $(\sinh(x/\ell)/\ell)'=\cosh(x/\ell)/\ell^2$.
+
+\emph{(iv)} The slices $t=$ const are time symmetric, so $K_T=0$, and $r'=0$. Hence $M=\ell(1-0+0)=\ell$ and $m=\ell/(2G)$.
+\end{proof}
+
 
 The throat is the near-horizon geometry of the extremal magnetically charged Reissner--Nordstr\"om black hole. It is the attractor geometry that reappears in Chapter~24.
 
@@ -105,6 +173,12 @@ The two solutions have been found separately, and each fixes its own radius. The
 \begin{theorem}[The same $\ell$]\label{thm:sameell}\ver\
 If a round $S^3$ of radius $a$ satisfies the Hamiltonian constraint with the Yang--Mills radiation of \cref{thm:tolmanstress}, and a cylinder of radius $l$ satisfies it with the monopole, then $a=l=\ell=\sqrt{4\pi G}/g$. If a cosmological constant $\Lambda$ were allowed, the two conditions $6/\ell^2=3k/\ell^4+2\Lambda$ and $2/\ell^2=k/\ell^4+2\Lambda$ (with $k=2\ell^2$ the Yang--Mills coefficient) would force $\Lambda=0$.
 \end{theorem}
+\begin{proof}
+For the sphere, $6/a^2=16\pi G\cdot\frac3{2g^2a^4}$ gives $a^2=4\pi G/g^2$. For the cylinder, ${}^{(3)}R=2/l^2$ and $16\pi G\rho=16\pi G\cdot\frac1{2g^2l^4}$, so $l^2=4\pi G/g^2$.
+
+With $\Lambda$, subtract three times the second equation from the first: $0=-4\Lambda$, so $\Lambda=0$. Then either equation gives $k=2\ell^2$, which is $8\pi G/g^2$, consistent with \eqref{eq:elldef}.
+\end{proof}
+
 
 So the moment of maximal expansion of the Tolman universe and the spatial slice of the Bertotti--Robinson throat contain spheres of the same radius: the equator of $S^3(\ell)$ and every sphere of the cylinder. That is the observation on which the gluing of Chapters~17 and~18 is built.
 

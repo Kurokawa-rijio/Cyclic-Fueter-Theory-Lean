@@ -24,14 +24,32 @@ the static field equations used are
 \begin{theorem}[Static classification]\label{thm:staticclass}\ver\nogo\
 On an interval where $r$ and $N$ do not vanish, every solution of (a), (b), (d) with $w=r'$ has either $w\equiv0$, in which case $r^2\equiv\ell^2$ (the Bertotti--Robinson throat), or $w\equiv\pm1$, in which case $V\equiv0$ and $\rho\equiv0$ (flat space). In particular no static solution joins the throat to anything else.
 \end{theorem}
+\begin{proof}
+This proof is a sketch: the final polynomial identity is too long to verify by hand.
 
-\begin{proof}[Idea of proof]
-From (b) and (d) one solves for $V'$; the lapse drops out. Multiply (a) by $r^4$ to get a polynomial $E_0(\ell,r,w,V)=0$. On any open set where $w\ne0$ and $w^2\ne1$, differentiate $E_0=0$ three times along the flow, obtaining $E_1=E_2=E_3=0$. An explicit certificate
+\emph{A flow without the lapse.} With $w=r'$ and $V=w'$, equation (d) reads $N'V+NV'=Nw(w^2-1)/r^2$. Where $w\ne0$, equation (b) gives
 \[
-\ell^2\bigl(rw(w^2-1)\bigr)^4=k_0E_0+k_1E_1+k_2E_2+k_3E_3
+\frac{N'}N=\frac r{2w}\Bigl(p_r+\frac{1-w^2}{r^2}\Bigr).
 \]
-then shows that this open set is empty. Hence $w(s)\in\{0,\pm1\}$ everywhere, and a continuous function with values in a discrete set is constant on an interval. The certificate was found from a Gr\"obner-basis computation and a Macaulay matrix of degree $16$; Lean verifies the identity.
+Dividing (d) by $N$ and inserting this,
+\[
+V'=\frac{w(w^2-1)}{r^2}-\frac{rV}{2w}\Bigl(p_r+\frac{1-w^2}{r^2}\Bigr),
+\]
+in which $N$ no longer appears. Together with $r'=w$ and $w'=V$ this is a vector field on the space of $(r,w,V)$.
+
+\emph{The certificate.} Multiply (a) by $r^4$ to obtain the polynomial
+\[
+E_0=r^2(1-w^2-2rV)-2\ell^2\bigl(r^2V^2+\tfrac12(1-w^2)^2\bigr).
+\]
+On an open set where (a) holds and $w(w^2-1)\ne0$, the derivatives $E_1=E_0'$, $E_2=E_1'$ and $E_3=E_2'$ along the flow vanish too. After clearing the denominator $w$, each is a polynomial in $(\ell,r,w,V)$. The identity
+\[
+\ell^2\bigl(rw(w^2-1)\bigr)^4=k_0E_0+k_1E_1+k_2E_2+k_3E_3 ,
+\]
+with explicit polynomial coefficients $k_i$, is checked in Lean by expanding both sides. It was found with a Gr\"obner basis and a Macaulay matrix of degree $16$, and it is too long to check by hand. It shows that the open set is empty.
+
+\emph{Conclusion.} So at every point $w\in\{0,1,-1\}$. Since $w$ is continuous on an interval, it is constant. If $w\equiv0$, then $V=0$ and (a) gives $1/r^2=\ell^2/r^4$, that is, $r^2=\ell^2$. If $w\equiv\pm1$, then $V=w'=0$ and $\rho=0$.
 \end{proof}
+
 
 \section{A cosmological constant: the map of smoothness}
 
@@ -40,6 +58,18 @@ Now relax the spin-connection condition and add a cosmological constant $\Lambda
 \begin{theorem}[No static waist]\label{thm:nowaist}\ver\nogo\
 At a point where $r'=0$, the $tt$ and $ss$ components of the field equations give $r''=-2w'^2/r\le0$. A static configuration cannot have a minimal sphere (a waist); the limiting case $r''=0$ is a cylinder.
 \end{theorem}
+\begin{proof}
+At a point with $r'=0$ the two equations are
+\[
+2rr''=1-r^2(\kappa\rho+\Lambda),\qquad-\frac1{r^2}+\Lambda-\kappa p_s=0 .
+\]
+The second gives $\Lambda=1/r^2+\kappa p_s$. Insert it into the first:
+\[
+2rr''=-r^2\kappa(\rho+p_s)=-r^2\cdot\frac{4w'^2}{r^2}=-4w'^2 .
+\]
+So $r''=-2w'^2/r\le0$, and the sphere cannot be a strict local minimum of $r$.
+\end{proof}
+
 
 This is the static form of the statement that a throat requires a violation of the null energy condition, and Yang--Mills fields do not provide one.
 
@@ -50,6 +80,30 @@ This is the static form of the statement that a throat requires a violation of t
 \item On the critical cylinder $R^2=2$, $\Lambda=\frac14$, the linearised Yang--Mills equation is $w''+w/2=0$, solved by $w=\cos(s/\sqrt2)$, the same function as in (ii).
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} For $w=0$ and $r=R$ we have $\kappa\rho=\kappa p_\perp=1/R^4$ and $\kappa p_s=-1/R^4$, and $r'=r''=0$.
+\begin{itemize}[nosep]
+\item The $tt$ equation reads $0=1-R^2(1/R^4+\Lambda)$, so $\Lambda=1/R^2-1/R^4$. The $ss$ equation gives the same condition.
+\item The $\theta\theta$ equation reads $\nu''+\nu'^2=\kappa p_\perp-\Lambda$, that is, $k^2=1/R^4-\Lambda=(2-R^2)/R^4$.
+\item The Yang--Mills equation is satisfied trivially by $w=0$.
+\end{itemize}
+With $u=1/R^2$, $\Lambda=u-u^2=\frac14-(u-\frac12)^2\le\frac14$, with equality exactly at $u=\frac12$, that is, $R^2=2$. At $\Lambda=0$, $u=1$, so $R=1$ and $k=1$.
+
+\emph{(ii)} Put $x=s/\sqrt2$. Then $r=\sqrt2\sin x$, $r'=\cos x$ and $r''=-\sin x/\sqrt2$, while $w=\cos x$ and $w'=-\sin x/\sqrt2$. From these,
+\[
+\frac{2w'^2}{r^2}=\frac12,\qquad\frac{(1-w^2)^2}{r^4}=\frac14,
+\]
+so $\kappa\rho=\frac34$, $\kappa p_s=\frac14$ and $\kappa p_\perp=\frac14$. Each equation is now one line.
+\begin{itemize}[nosep]
+\item $tt$: $2rr''=-2\sin^2x$, and $1-r'^2-r^2(\frac34+\frac34)=\sin^2x-3\sin^2x$.
+\item $ss$: $-\frac{1-r'^2}{r^2}+\frac34-\frac14=-\frac12+\frac12=0$.
+\item $\theta\theta$: with $\nu=0$ it reads $\frac{r''}r=\kappa p_\perp-\Lambda$, and both sides equal $-\frac12$.
+\item Yang--Mills: $w''=-\frac{\cos x}2$, and $\frac{w(w^2-1)}{r^2}=\frac{-\cos x\sin^2x}{2\sin^2x}$ is the same.
+\end{itemize}
+
+\emph{(iii)} On the critical cylinder $k=0$, so $\nu$ is constant. The Yang--Mills equation is $w''=w(w^2-1)/R^2$, and its linear part at $w=0$ is $w''=-w/2$. Then $(\cos(s/\sqrt2))''=-\frac12\cos(s/\sqrt2)$.
+\end{proof}
+
 
 The critical cylinder is the ultracold limit of the magnetically charged Reissner--Nordstr\"om--de Sitter solution, in which three horizons coincide; it is the Plebański--Hacyan spacetime \cite{PlebanskiHacyan1979}. Between the static universe at $\Lambda=\frac34$ and the critical cylinder at $\Lambda=\frac14$ there is a sequence of static closed solutions found numerically by Volkov and collaborators \cite{Volkov1996} \ext.
 
@@ -63,6 +117,18 @@ The throat itself is stable as a geometry, but the Yang--Mills field inside it i
 \item The effective mass squared is $-1$, below the Breitenlohner--Freedman bound $-\frac14$ of $\mathrm{AdS}_2$, and the oscillation frequency is $\sqrt{1-\frac14}=\sqrt3/2$. Between consecutive nodes, a distance $2\pi/\sqrt3$ apart, the amplitude decreases by $e^{-\pi/\sqrt3}$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} In the throat $R=1$ and $\nu'=k=1$. The static Yang--Mills equation is $e^{-\nu}(e^\nu w')'=w(w^2-1)/R^2$, that is, $w''+w'=w(w^2-1)$. Its linear part at $w=0$ is $w''+w'+w=0$. The characteristic equation $\lambda^2+\lambda+1=0$ has roots $-\frac12\pm\frac{\sqrt3}2\ii$, which gives the stated solution.
+
+To check it directly, write $c=\cos(\sqrt3s/2)$ and $\sigma=\sin(\sqrt3s/2)$. Then
+\[
+w'=e^{-s/2}\Bigl(-\tfrac12c-\tfrac{\sqrt3}2\sigma\Bigr),\qquad w''=e^{-s/2}\Bigl(-\tfrac12c+\tfrac{\sqrt3}2\sigma\Bigr),
+\]
+and $w''+w'+w=e^{-s/2}(-\frac12-\frac12+1)c=0$.
+
+\emph{(ii)} Write the linear equation as $w''+w'-m^2w=0$; comparing with (i) gives $m^2=-1$. Substituting $w=e^{-s/2}u$ removes the first-derivative term and leaves $u''-(m^2+\frac14)u=0$. The solutions oscillate, rather than grow or decay exponentially, exactly when $m^2<-\frac14$, which is the Breitenlohner--Freedman criterion. Here $-(m^2+\frac14)=\frac34$. The angular frequency is $\sqrt{3/4}$, so consecutive zeros of the cosine are $\pi/(\sqrt3/2)=2\pi/\sqrt3$ apart. Over this distance the factor $e^{-s/2}$ decreases by $e^{-\pi/\sqrt3}$.
+\end{proof}
+
 
 The same number $e^{-\pi/\sqrt3}$ governs the approach of the Bartnik--McKinnon solutions to the extremal Reissner--Nordstr\"om geometry: each further node of the gauge field adds a throat segment and reduces the mass deficit by this factor \cite{BFM1994} \num. The instability of $w=0$ in the throat is the reason the throat alone is not a stable Yang--Mills configuration; we return to it in Chapter~22.
 

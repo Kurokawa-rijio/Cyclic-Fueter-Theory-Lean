@@ -17,6 +17,10 @@ The ansatz \eqref{eq:magansatz} has no $A_t$ or $A_r$ components. More generally
 \begin{proposition}[No colour-electric field]\label{prop:nocolour}\ver\
 If $A_t=a_0T$ and $A_r=a_1T$ then $F_{tr}=(\partial_ta_1-\partial_ra_0)T$. For $a_0=a_1=0$ the radial colour-electric field vanishes and the colour charge $Q^a(r)=4\pi r^2E^a_r$ is zero on every sphere.
 \end{proposition}
+\begin{proof}
+$F_{tr}=\partial_tA_r-\partial_rA_t+[A_t,A_r]=(\partial_ta_1)T-(\partial_ra_0)T+a_0a_1[T,T]$, and $[T,T]=0$. For $a_0=a_1=0$ we get $F_{tr}=0$, hence $E^a_r=0$ and $Q^a(r)=0$.
+\end{proof}
+
 
 So the solutions considered in this Part are purely magnetic, with unit magnetic charge where $w=0$, and carry no non-Abelian electric charge. This is consistent with the theorem of Ershov and Gal'tsov that static EYM solitons cannot carry colour charge \cite{VolkovGaltsov1999}.
 
@@ -35,6 +39,45 @@ so that $m$ is the Misner--Sharp mass \cite{MisnerSharp1964}: $1-2Gm/r=\nabla_\m
 \item Examples: for a round $S^3$ of radius $a$ written as $r=a\sin\chi$, $M=a\sin^3\chi$, equal to $a$ at the equator; for a cylinder $r=\ell$, $M=\ell$ on every sphere; for flat space $M=0$. With $\rho=3/(8\pi Ga^2)$ for the round sphere, $\frac{4\pi}3\rho r^3=M/(2G)$, and in general $\dd m/\dd s=4\pi r^2\rho\,r'$ for $K_T=0$: the Newtonian expressions.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+Write $K=K_T$. We take the constraints in the form of \cref{prop:codazzi}:
+\[
+\frac{2(1-r'^2-2rr'')}{r^2}+4aK+2K^2=2\rho,\qquad 2\frac{r'}r(a-K)-2K'=J .
+\]
+
+\emph{(i)} Differentiate $M=r(1-r'^2+r^2K^2)$:
+\[
+M'=r'(1-r'^2)+r'r^2K^2-2rr'r''+2r^2r'K^2+2r^3KK' .
+\]
+Now eliminate $r''$ and $K'$.
+\begin{itemize}[nosep]
+\item The Hamiltonian constraint, multiplied by $r^2r'/2$, gives
+\[
+-2rr'r''=r'r^2\rho-r'(1-r'^2)-2r'r^2aK-r'r^2K^2 .
+\]
+\item The momentum constraint, multiplied by $r^3K$, gives
+\[
+2r^3KK'=2r^2r'aK-2r^2r'K^2-r^3KJ .
+\]
+\end{itemize}
+Substitute both. The terms $r'(1-r'^2)$, $r'r^2K^2$ and $r^2r'aK$ all cancel, and what remains is $r^2\rho\,r'-r^3KJ$.
+
+\emph{(ii)} With $K=0$ and $w$ magnetic, the Hamiltonian constraint reads
+\[
+-4rr''+2(1-r'^2)=4\ell^2\bigl(w'^2+(1-w^2)^2/(2r^2)\bigr).
+\]
+Multiply by $r'/4$. The left side becomes $\frac12M'=Gm'$.
+
+\emph{(iii)} The examples:
+\begin{itemize}[nosep]
+\item Round sphere: $s=a\chi$, $r=a\sin\chi$ and $r'=\cos\chi$, so $M=a\sin\chi(1-\cos^2\chi)=a\sin^3\chi$. This is $a$ at $\chi=\frac\pi2$.
+\item Cylinder: $r'=0$, so $M=\ell$.
+\item Flat space: $r'=1$, so $M=0$.
+\item Newtonian mass: $\frac{4\pi}3\cdot\frac3{8\pi Ga^2}\cdot a^3\sin^3\chi=\frac{a\sin^3\chi}{2G}$.
+\item Mass rate: for $K=0$, (i) gives $M'=r^2r'\cdot8\pi G\rho_{\mathrm{phys}}$, so $m'=M'/(2G)=4\pi r^2\rho_{\mathrm{phys}}r'$.
+\end{itemize}
+\end{proof}
+
 
 \begin{theorem}[A Penrose-type inequality]\label{thm:penrose}\ver\
 Suppose that on $[s_0,s_1]$ the dominant energy condition $|J|\le\rho$ holds and the spheres are untrapped, $|rK_T|\le r'$. Then $\rho r'-J\,rK_T\ge0$, so $M$ is nondecreasing. If the sphere at $s_0$ is marginal, $r'(s_0)^2=r(s_0)^2K_T(s_0)^2$, then $M(s)\ge r(s_0)$ for all $s\in[s_0,s_1]$; in particular there is no flat point ($M=0$) outside a marginal sphere of positive radius. If the marginal sphere is a throat of radius $\ell$, then
@@ -42,6 +85,21 @@ Suppose that on $[s_0,s_1]$ the dominant energy condition $|J|\le\rho$ holds and
 m(s)\ \ge\ \frac{\ell}{2G}=\frac{\sqrt\pi}{\sqrt G\,g}\qquad\text{on }[s_0,s_1].
 \]
 \end{theorem}
+\begin{proof}
+The hypotheses give $\rho\ge|J|\ge0$ and $r'\ge|rK_T|\ge0$. Hence
+\[
+\rho r'-JrK_T\ge\rho r'-|J|\,|rK_T|\ge\rho r'-\rho r'=0 ,
+\]
+and by \cref{prop:massprime}(i), $M'\ge0$. By the mean value theorem, $M$ is nondecreasing on $[s_0,s_1]$.
+
+At a marginal sphere, $r'^2=r^2K_T^2$, so $M(s_0)=r(s_0)(1-r'^2+r'^2)=r(s_0)$. Hence $M(s)\ge r(s_0)>0$, and $M$ cannot vanish.
+
+For a throat, $r(s_0)=\ell$, which gives $2Gm\ge\ell$. With \eqref{eq:elldef},
+\[
+\frac\ell{2G}=\frac{2\sqrt{\pi G}}{2Gg}=\frac{\sqrt\pi}{\sqrt G\,g}.\qedhere
+\]
+\end{proof}
+
 
 The bound is attained by the cylinder of radius $\ell$, which is the spatial section of the Bertotti--Robinson throat of Chapter~15. In words: a spherically symmetric configuration that contains such a throat has at least the throat's mass.
 
@@ -64,21 +122,71 @@ For $w=r'$ on a time-symmetric slice:
 By the contracted Bianchi identity its trace is $-\frac12\nabla_bR$. More precisely, (II) holds if and only if $\nabla R=0$ and the Cotton tensor vanishes.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} The metric $\dd s^2+r^2\dd\Omega^2$ has diagonal curvature operator in the frame of \cref{thm:spinwitten}. Its sectional curvatures are $-r''/r$ for the two radial planes and $(1-r'^2)/r^2$ for the tangential plane. Hence
+\[
+|\mathrm{Riem}_3|^2=4\sum_{a<b}K_{ab}^2=4\Bigl(2\frac{r''^2}{r^2}+\frac{(1-r'^2)^2}{r^4}\Bigr).
+\]
+On a time-symmetric slice the Yang--Mills energy density is $g^2\rho=w'^2/r^2+(1-w^2)^2/(2r^4)$ (\cref{thm:ymstress} with $\dot w=0$, $A=1$). For $w=r'$ this is
+\[
+g^2\rho=\frac{r''^2}{r^2}+\frac{(1-r'^2)^2}{2r^4}=\frac18|\mathrm{Riem}_3|^2 .
+\]
+Then $16\pi G\rho=\frac{16\pi G}{8g^2}|\mathrm{Riem}_3|^2=\frac{\ell^2}2|\mathrm{Riem}_3|^2$.
+
+\emph{(ii)} In three dimensions the curvature operator is diagonal in an eigenbasis of Ricci, with eigenvalues $\rho_1,\rho_2,\rho_3$. Since $\rho_1=K_{12}+K_{13}$, and so on, each sectional curvature is $K_{ij}=\frac R2-\rho_k$ with $\{i,j,k\}=\{1,2,3\}$. Therefore
+\[
+|\mathrm{Riem}|^2=4\sum_k\Bigl(\frac R2-\rho_k\Bigr)^2=4\Bigl(\frac34R^2-R^2+|\mathrm{Ric}|^2\Bigr)=4|\mathrm{Ric}|^2-R^2 .
+\]
+Insert this into (I) and divide by $2\ell^2$.
+
+\emph{(iii)} The Yang--Mills equation for the spin connection is $D^aF_{ab}=0$ with $F=\mathrm{Riem}$, that is, $\nabla^aR_{abcd}=0$. The second Bianchi identity, contracted once, gives
+\[
+\nabla^aR_{abcd}=\nabla_cR_{bd}-\nabla_dR_{bc} ,
+\]
+which is (II) up to the names of the indices. Tracing over $b,d$ and using the contracted Bianchi identity $\nabla^bR_{bc}=\frac12\nabla_cR$ gives $\nabla_cR-\frac12\nabla_cR=\frac12\nabla_cR$, so (II) implies $\nabla R=0$.
+
+In three dimensions the Cotton tensor is $\nabla_cP_{bd}-\nabla_bP_{cd}$ with $P=\mathrm{Ric}-\frac R4g$. When $\nabla R=0$ this is exactly the left side of (II). Conversely, $\nabla R=0$ together with vanishing Cotton tensor gives (II).
+\end{proof}
+
 
 So under the standard embedding the constraint equations of EYM theory become two conditions on the Riemannian geometry of the slice. (II) says that the slice has constant scalar curvature and is locally conformally flat, since the Cotton tensor is the obstruction to conformal flatness in three dimensions. Then (I) says $|\mathrm{Ric}|^2$ is constant too. Complete locally conformally flat three-manifolds with these properties have been classified by Cheng, Ishikawa and Shiohama \cite{CIS1999} \ext: the candidates are flat space, $S^3(a)$, $H^3(a)$, $S^2(a)\times\RR$ and $H^2(a)\times\RR$.
 
 \begin{theorem}[The three homogeneous solutions]\label{thm:threesol}\ver\
 Among the candidates above, (I) holds exactly for flat space, for the round three-sphere $S^3(\ell)$ of radius $\ell$, and for the cylinder $S^2(\ell)\times\RR$ of radius $\ell$. The hyperbolic candidates never satisfy (I), and the spatial Schwarzschild slice, with Ricci eigenvalues $(-2\mu,\mu,\mu)$, $R=0$ and $|\mathrm{Rm}|^2=24\mu^2$, does not satisfy (I) unless $\mu=0$.
 \end{theorem}
+\begin{proof}
+We use the form $|\mathrm{Ric}|^2=R/(2\ell^2)+R^2/4$ of (I) from \cref{thm:geomconstraint}(ii), and go through the candidates.
+\begin{itemize}
+\item \emph{Flat space:} $0=0$.
+\item \emph{$S^3(a)$:} $\mathrm{Ric}=\frac2{a^2}g$, so $R=\frac6{a^2}$ and $|\mathrm{Ric}|^2=\frac{12}{a^4}$. Then (I) reads $\frac{12}{a^4}=\frac3{\ell^2a^2}+\frac9{a^4}$, that is, $a^2=\ell^2$.
+\item \emph{$H^3(a)$:} the signs of $\mathrm{Ric}$ and $R$ flip, so $|\mathrm{Ric}|^2=\frac{12}{a^4}$ while the right side is $-\frac3{\ell^2a^2}+\frac9{a^4}<\frac{12}{a^4}$. No solution.
+\item \emph{$S^2(a)\times\RR$:} the Ricci eigenvalues are $(\frac1{a^2},\frac1{a^2},0)$, so $R=\frac2{a^2}$ and $|\mathrm{Ric}|^2=\frac2{a^4}$. Then (I) reads $\frac2{a^4}=\frac1{\ell^2a^2}+\frac1{a^4}$, that is, $a=\ell$.
+\item \emph{$H^2(a)\times\RR$:} the right side is $-\frac1{\ell^2a^2}+\frac1{a^4}<\frac2{a^4}$. No solution.
+\item \emph{Schwarzschild slice:} $R=-2\mu+\mu+\mu=0$ and $|\mathrm{Ric}|^2=6\mu^2$, so $|\mathrm{Rm}|^2=4\cdot6\mu^2-0=24\mu^2$. Then (I) reads $6\mu^2=0$.\qedhere
+\end{itemize}
+\end{proof}
+
 
 The radius is not chosen; it is forced by the constraint to be the EYM length $\ell$. In terms of the slice functions: flat space has $r=s$ and $w=r'=1$, the vacuum. The round sphere has $r=\ell\sin(s/\ell)$ and $w=\cos(s/\ell)$, which runs from the vacuum at the poles to the monopole $w=0$ at the equator. The cylinder has $r=\ell$ and $w=0$, the unit magnetic monopole on every sphere.
 
 \begin{proposition}[Global form of the solutions]\label{prop:globalform}\ver\
 \begin{enumerate}[label=(\roman*)]
 \item If $r''=-r/\ell^2$ then $r=r(0)\cos(s/\ell)+\ell r'(0)\sin(s/\ell)$; with the constraint $1-r'^2=r^2/\ell^2$ the amplitude is $r(0)^2+\ell^2r'(0)^2=\ell^2$, so $r\le\ell$; at a pole $r=0$ the constraint forces $r'^2=1$, so the slice closes smoothly without a conical singularity.
-\item If $r''=0$ then $r=r(0)+r'(0)s$, and the constraint forces $r'(0)^2=1$.
+\item If $r''=0$ then $r=r(0)+r'(0)s$, and the constraint forces $r'(0)^2=1$ unless $r$ is constant, in which case $r=\ell$ (the cylinder).
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} The equation $r''=-r/\ell^2$ is linear with constant coefficients, and the formula is its unique solution with the given $r(0)$ and $r'(0)$. At $s=0$ the constraint reads $\ell^2(1-r'(0)^2)=r(0)^2$, so $r(0)^2+\ell^2r'(0)^2=\ell^2$.
+
+Write the solution as $\ell\cos(s/\ell-\varphi)$, using the angle-addition formula, or bound it by the Cauchy--Schwarz inequality $(A\cos+B\sin)^2\le A^2+B^2$. Either way $r\le\ell$. At a pole $r=0$ the constraint gives $1-r'^2=0$. So $r\approx\pm(s-s_p)$ near the pole, and the cone angle is $2\pi$.
+
+\emph{(ii)} If $r''=0$, then $r'$ is constant and $r-r'(0)s$ has zero derivative, which gives the formula. With $r''=0$ and $X=1-r'^2$ constant, (I) reads
+\[
+\frac{2X}{r^2}=\frac{\kappa X^2}{r^4}\qquad(\kappa=2\ell^2),
+\]
+so $X=0$ or $X=r^2/\ell^2$. If $r'(0)\ne0$, then $r$ is not constant, and $X=r^2/\ell^2$ is impossible; hence $X=0$, that is, $r'(0)^2=1$. If $r'(0)=0$, then $X=1$ and $r=\ell$.
+\end{proof}
+
 
 \section{Which solutions survive evolution}
 
@@ -91,6 +199,50 @@ The standard embedding is a condition on a slice. It survives time evolution onl
 \item If $rr''+1-r'^2=0$ (a space form), the constraint gives either $1-r'^2=0$ (flat) or $1-r'^2=r^2/\ell^2$ (the round $S^3(\ell)$); the hyperbolic branch $1-r'^2<0$ is excluded.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+At a time-symmetric instant with $w=r'$ (so $w'=r''$ and $w''=r'''$) we use three standard inputs.
+\begin{itemize}
+\item The Yang--Mills equation: $w_{tt}=N(Nw')'+N^2w(1-w^2)/r^2$.
+\item The ADM equation $\partial_tK_{ij}=-D_iD_jN+N\bigl({}^{(3)}R_{ij}-8\pi G(S_{ij}-\frac12\gamma_{ij}(S-\rho))\bigr)$ with $\partial_t\gamma_{ij}=-2NK_{ij}$. Here
+\[
+{}^{(3)}R_{\theta\theta}=1-r'^2-rr'',\qquad D_\theta D_\theta N=rr'N',\qquad S=\rho ,
+\]
+the last because the Yang--Mills stress is traceless. Also $8\pi GS_{\theta\theta}=\kappa(1-r'^2)^2/(2r^2)$.
+\item From these, $r_{tt}$ and $A_{tt}$ follow, and $(r')_{tt}=(r_{tt})'-r'A_{tt}$, because $r'=A^{-1}\partial_xr$ and $A=1$, $\dot A=\dot r=0$ at the instant.
+\end{itemize}
+
+\emph{(i), geodesic slicing $N=1$.} Write $X=1-r'^2$, so $X'=-2r'r''$. Then
+\[
+r_{tt}=-\frac Xr+r''+\frac{\kappa X^2}{2r^3},\qquad A_{tt}=\frac{2r''}r+\kappa\Bigl(\frac{r''^2}{r^2}-\frac{X^2}{2r^4}\Bigr).
+\]
+Differentiate the first in $s$:
+\[
+(r_{tt})'=\frac{2r'r''}r+\frac{Xr'}{r^2}+r'''-\frac{2\kappa Xr'r''}{r^3}-\frac{3\kappa X^2r'}{2r^4}.
+\]
+Subtracting $r'A_{tt}$, the $2r'r''/r$ terms cancel and
+\[
+(r')_{tt}=r'''+\frac{Xr'}{r^2}-\kappa r'\Bigl(\frac{r''^2}{r^2}+\frac{2Xr''}{r^3}+\frac{X^2}{r^4}\Bigr).
+\]
+Since $w_{tt}=r'''+r'X/r^2$, the difference is
+\[
+w_{tt}-(r')_{tt}=\kappa r'\frac{(rr''+X)^2}{r^4}.
+\]
+This is a product, so it vanishes exactly when $r'=0$ or $rr''+X=0$.
+
+For a general lapse the same computation, with $N$ kept inside the Leibniz rule, produces the additional terms
+\[
+-N'\bigl(\kappa NrX^2+Nr^3(2rr''-2X)+r^4N'r'\bigr)/r^4 .
+\]
+
+\emph{(ii)} With $w=r'$ the Hamiltonian constraint is
+\[
+\frac{2(X-2rr'')}{r^2}=2\kappa\Bigl(\frac{r''^2}{r^2}+\frac{X^2}{2r^4}\Bigr).
+\]
+For $r'=r''=0$ it gives $2/r^2=\kappa/r^4$, that is, $r^2=\kappa/2=\ell^2$. In the general-lapse formula, $r'=r''=0$ and $X=1$ leave $-N'N(\kappa-2r^2)/r^3$, which is $0$.
+
+\emph{(iii)} If $rr''=-X$, the constraint becomes $\frac{6X}{r^2}=\frac{3\kappa X^2}{r^4}$, that is, $X(2r^2-\kappa X)=0$. So either $X=0$ or $X=2r^2/\kappa=r^2/\ell^2>0$. In both cases $X\ge0$, which excludes the hyperbolic branch.
+\end{proof}
+
 
 So the standard embedding is preserved, at least to second order in time, exactly on the three homogeneous solutions, and on the throat for any choice of lapse. The next chapter shows that the classification is complete, by excluding all non-homogeneous possibilities with a different method. The two chapters after that study the round sphere and the cylinder as spacetimes.
 

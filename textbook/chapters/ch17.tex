@@ -13,12 +13,26 @@ At its moment of maximal expansion the Tolman universe is a round $S^3(\ell)$, w
 The basic tool is one-dimensional. A function $p$ that is $C^1$ on each side of $x_0$ has a distributional derivative equal to its pointwise derivative plus $[p]\,\delta_{x_0}$, where $[p]=p_+(x_0)-p_-(x_0)$ is the jump.
 
 \begin{lemma}[The coefficient of $\delta$]\label{lem:deltacoeff}\ver\
-Let $p_\pm$ be $C^1$ on $[a,x_0]$ and $[x_0,b]$ with $p_\pm'=S_\pm$ there, and let $\kappa$ be continuous and $C^1$ on each side. If
+Let $p_\pm$ be $C^1$ on $[a,x_0]$ and $[x_0,b]$ with $\kappa\,p_\pm'=S_\pm$ there, and let $\kappa$ be continuous and $C^1$ on each side. If
 \[
 -\int_a^b\,p\,(\kappa\varphi)'\,\dd x=\int_a^bS\,\varphi\,\dd x+m\,\varphi(x_0)
 \]
 for all test functions $\varphi$ vanishing at $a$ and $b$, then $m=\kappa(x_0)[p]$. Conversely, piecewise $C^1$ data always satisfy such a weak equation, with $m=[p]$ for $\kappa=1$. If two functions agree along a surface, so do their tangential derivatives.
 \end{lemma}
+\begin{proof}
+Split the integral at $x_0$ and integrate by parts on each side. On $[a,x_0]$, using $\varphi(a)=0$ and $\kappa p_-'=S_-$,
+\[
+-\int_a^{x_0}p_-(\kappa\varphi)'\,\dd x=-p_-(x_0)\kappa(x_0)\varphi(x_0)+\int_a^{x_0}S_-\varphi\,\dd x .
+\]
+On $[x_0,b]$ the boundary term has the opposite sign: $+p_+(x_0)\kappa(x_0)\varphi(x_0)+\int_{x_0}^bS_+\varphi\,\dd x$. Adding the two,
+\[
+-\int_a^bp\,(\kappa\varphi)'\,\dd x=\int_a^bS\varphi\,\dd x+\kappa(x_0)[p]\,\varphi(x_0).
+\]
+Subtracting the assumed weak equation gives $(m-\kappa(x_0)[p])\varphi(x_0)=0$ for every test function. A tent function with $\varphi(x_0)=1$ shows $m=\kappa(x_0)[p]$. The same computation read forwards is the converse.
+
+For the last statement: if $f=g$ on a surface and $X$ is tangent to it, then $f-g$ vanishes identically along the integral curves of $X$, so $X(f-g)=0$ there.
+\end{proof}
+
 
 Every junction condition below is an instance of this lemma: write the relevant field equation as $\kappa\,\partial_x(\text{something})=\text{source}$ with no other second transverse derivatives, read off the coefficient of $\delta$, and identify it with a surface source.
 
@@ -33,6 +47,12 @@ A distributional Hamiltonian constraint with a surface energy density $\sigma$ a
 \]
 so there is no shell if and only if $R_x$ is continuous. The same coefficient appears in the general Israel formula for a sphere.
 \end{proposition}
+\begin{proof}
+Use proper distance across the shell, so that $A=1$ there; otherwise read $R_x$ as $D_xR$. The constraint $\frac12{}^{(3)}R=8\pi G\rho$ contains $R_{xx}$ only in the term $-\frac2R\,\partial_x(R_x)$. Every other term is at most first order and stays bounded. With a surface density $\sigma$, the source is $8\pi G(\rho+\sigma\delta_{x_0})$.
+
+By \cref{lem:deltacoeff} with $p=R_x$ and $\kappa=-2/R$, the coefficient of $\delta$ on the left is $-\frac2{R_0}[R_x]$. Hence $-\frac2{R_0}[R_x]=8\pi G\sigma$, which is the formula. In Israel's language $[K_{\theta\theta}]=R_0[R_x]$, and the formula of \cref{prop:israel} gives the same coefficient.
+\end{proof}
+
 
 \section{Timelike surfaces}
 
@@ -41,6 +61,14 @@ For a timelike hypersurface with induced metric $h_{ab}$ and extrinsic curvature
 \begin{proposition}[Israel's conditions, inverted]\label{prop:israel}\ver\
 For an $n$-dimensional surface with $\det h\ne0$ and $n\ne1$, the trace of the surface stress is $\tr_hS=(n-1)\tr_h[K]/(8\pi G)$, the relation can be inverted as $[K_{ab}]=-8\pi G\bigl(S_{ab}-\frac{\tr_hS}{n-1}h_{ab}\bigr)$, and $S_{ab}=0$ if and only if $[K_{ab}]=0$. For $n=3$, $[K_{ab}]=-8\pi G(S_{ab}-\frac12\tr_hS\,h_{ab})$.
 \end{proposition}
+\begin{proof}
+Take the trace of $[K_{ab}]-h_{ab}[K]=-8\pi GS_{ab}$ with $h^{ab}$. Since $h^{ab}h_{ab}=n$,
+\[
+[K]-n[K]=-8\pi G\tr_hS ,
+\]
+so $\tr_hS=(n-1)[K]/(8\pi G)$. Substitute $[K]=8\pi G\tr_hS/(n-1)$ back into the original equation to get the inverse formula. Both formulas are linear and invertible, so $S=0$ exactly when $[K]=0$. For $n=3$ the factor is $\frac12$.
+\end{proof}
+
 
 In spherical symmetry everything is explicit.
 
@@ -54,6 +82,34 @@ For the tube $x=x_0$ in the metric \eqref{eq:diagmetric}, with unit normal $n=A\
 \item If there is no shell and the $nn$ Einstein equation holds on both sides at a time-symmetric moment, then $[w_x^2/A^2]=0$. For a tube moving with speed $\beta$, $[T(n,n)]=\gamma^2(1+\beta^2)[w^2]/R^2$ with $w=w_x/A$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} The unit normal vector is $n=A^{-1}\partial_x$. Because $g_{xa}=0$ for the tangential directions $a$, the extrinsic curvature is $K_{ab}=\frac12(\mathcal L_ng)_{ab}=\frac1{2A}\partial_xg_{ab}$. This gives
+\[
+K_{tt}=\frac1{2A}\partial_x(-N^2)=-\frac{NN_x}A,\qquad K_{\theta\theta}=\frac1{2A}\partial_x(R^2)=\frac{RR_x}A ,
+\]
+and zero for the off-diagonal components.
+
+\emph{(ii)} By the Gauss equation, $2G_{nn}$ is minus the scalar curvature of the tube plus the quadratic expression $K^2-K_{ab}K^{ab}$, up to sign conventions. The tube metric $-N^2\dd t^2+R^2\dd\Omega^2$ involves only $N$, $R$ and their $t$-derivatives, and $K$ involves $N_x/A$ and $R_x/A$.
+
+For the second derivatives, use the $2+2$ formulas of \cref{thm:einD}.
+\begin{itemize}
+\item In $G_{tt}=-\frac2R(\nabla_t\nabla_tR+N^2\Box R)+\dots$, the box contains $A^{-2}R_{xx}$. This gives $-\frac{2N^2}{A^2R}R_{xx}$, and there is no other $xx$ derivative.
+\item In $G_{\theta\theta}=R^2(\Box R/R-\frac12{}^{(2)}\!R)$, there are two $xx$ derivatives. The first is $RR_{xx}/A^2$, which cancels against $\frac{R^2}{2N^2}G_{tt}$. The second comes from ${}^{(2)}\!R=-\frac2{NA^2}N_{xx}+\dots$ and gives $+\frac{R^2}{A^2N}N_{xx}$.
+\end{itemize}
+
+\emph{(iii)} Apply \cref{lem:deltacoeff} to the $tt$ equation with $p=R_x$, and to the angular combination with $p=N_x$. The surface stress is a fixed nonzero multiple of $[R_x]$ and of $[N_x]$. If $N$, $A$ and $R$ are continuous, (i) shows that $[K_{tt}]\propto[N_x]$ and $[K_{\theta\theta}]\propto[R_x]$.
+
+\emph{(iv)} The flux of the Yang--Mills field across the tube is $\sqrt{-g}\,F^{1x\theta}=NAR^2s\cdot A^{-2}R^{-2}\,w_x=Ns\,w_x/A$. This is the only term with a transverse derivative. \Cref{lem:deltacoeff} gives the coefficient $Ns[w_x/A]$.
+
+\emph{(v)} If there is no shell, every quantity in (ii) is continuous, so $[G_{nn}]=0$, and hence $[T_{nn}]=0$. At a time-symmetric moment $\dot w=0$. Then, from \cref{thm:ymstress},
+\[
+g^2T_{nn}=\frac{w_x^2}{A^2R^2}-\frac{(1-w^2)^2}{2R^4} ,
+\]
+where the second term is continuous. So $[w_x^2/A^2]=0$.
+
+For a tube moving with speed $\beta$, the new normal is $\gamma(n+\beta u)$. Then $T(n',n')=\gamma^2(T_{nn}+2\beta T_{nu}+\beta^2T_{uu})$. Here $T_{nu}\propto\dot w\,w_x=0$, while $[T_{nn}]=[T_{uu}]=[w^2]/R^2$.
+\end{proof}
+
 
 \section{Null surfaces}
 
@@ -68,6 +124,37 @@ In the double-null gauge \eqref{eq:nullmetric}, the transverse second derivative
 \item If $r$, $r_u$, $r_v$ and $\Omega$ are continuous, the Misner--Sharp mass is continuous: weak discontinuities carry no mass.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Let $J_{\mu\nu}=k_\mu a_\nu-a_\mu k_\nu$ with $k\cdot k=0$ and $a\cdot k=0$. We show that $k^\mu(T(F+J)-T(F))_{\mu\nu}=0$ for every $F$: adding $J$ produces no flux of stress along $k$. Three contractions do the work:
+\[
+J_{\mu\nu}J^{\mu\nu}=2\bigl((k\cdot k)(a\cdot a)-(k\cdot a)^2\bigr)=0,\qquad k^\mu J_{\mu\lambda}=0,\qquad (JJ)_{\mu\nu}=(a\cdot a)k_\mu k_\nu .
+\]
+The change $\Delta T=FJ+JF+JJ-\frac14\eta(2F\cdot J+J\cdot J)$, contracted with $k$, has four pieces:
+\begin{itemize}[nosep]
+\item $k\cdot FJ=k_\nu\,(kFa)$, since $kFk=0$;
+\item $k\cdot JF=0$;
+\item $k\cdot JJ=0$;
+\item $-\frac14k_\nu\cdot2F\cdot J=-k_\nu\,(kFa)$, since $F\cdot J=2kFa$.
+\end{itemize}
+They cancel.
+
+\emph{(ii)} With $\Gamma^u_{uu}=\Omega_u/\Omega$, the $2+2$ formula gives $G_{uu}=-\frac2r(r_{uu}-\frac{\Omega_u}\Omega r_u)$. The only transverse second derivative is $r_{uu}$. \Cref{lem:deltacoeff} with $p=r_u$ and $\kappa=-2/r$ gives $-\frac2{r_0}[r_u]=8\pi G\mu$.
+
+If $[r_u]=0$, the regular parts satisfy $-\frac2{r_0}[r_{uu}]=8\pi G[T_{uu}]$. For Yang--Mills in units $\ell=1$, $4\pi GT_{uu}=2w_u^2/r^2$, which gives $[r_{uu}]=-\frac2{r_0}[w_u^2]$.
+
+\emph{(iii)} For $h=-2\Omega\,\dd u\,\dd v$ we have $h^{uv}=-1/\Omega$ and $\Gamma^c_{uv}=0$. Hence
+\[
+\Box r=-\frac{2r_{uv}}\Omega,\qquad(\nabla r)^2=-\frac{2r_ur_v}\Omega,\qquad G_{uv}=\frac{2r_{uv}}r+\frac{2r_ur_v}{r^2}+\frac\Omega{r^2}.
+\]
+Equating $G_{uv}$ with $2\ell^2\hat T_{uv}=\ell^2\Omega(1-w^2)^2/r^4$ and multiplying by $r^2/2$ gives the mixed equation.
+
+Across the front, $r$, $r_v$, $\Omega$ and $w$ are continuous, so the right side has no jump. The left side jumps by $r[r_{uv}]+r_v[r_u]$. Along the front $[r_{uv}]=\partial_v[r_u]$, so with $q=[r_u]$ this is $rq'+r_vq=(rq)'=0$. Hence $rq$ is constant along the front, and it vanishes everywhere if it vanishes at one point.
+
+\emph{(iv)} We have $\sqrt{-g}\,F^{1u\theta}=\Omega r^2s\cdot g^{uv}g^{\theta\theta}F^1_{v\theta}=-s\,w_v$. This contains only the tangential derivative $w_v$, which is continuous when $w$ is. The stress components are \cref{thm:ymstress}(iii).
+
+\emph{(v)} In double-null form the Misner--Sharp mass satisfies $2Gm/r=1-(\nabla r)^2=1+2r_ur_v/\Omega$. It involves only $r$, $r_u$, $r_v$ and $\Omega$.
+\end{proof}
+
 
 \section{Gluing the Tolman universe to the throat}
 
@@ -81,6 +168,20 @@ We now apply these results at the equator of $S^3(\ell)$, where $r=\ell$ and $r'
 \item Hence $r''$ jumps from $-1/\ell$ to $0$: the scalar curvature jumps from $6/\ell^2$ to $2/\ell^2$, the energy density from $3/(2g^2\ell^4)$ to $1/(2g^2\ell^4)$, and the radial pressure changes sign. If $r''=-r/\ell^2$ on one side and $r''=0$ on the other, $r''$ cannot be continuous at the join: there is no $C^2$ junction.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} At the equator of a round sphere of radius $a$ we have $r=a$ and $r'=0$, while every sphere of the cylinder has $r=\ell$ and $r'=0$. Continuity of $r$ forces $a=\ell$. Alternatively, the masses are $M=a$ (\cref{prop:massprime}) and $M=\ell$, and these must agree.
+
+\emph{(ii)} By \cref{prop:sliceshell}, $\sigma\propto[r']=0$. Since $r'=0$ and $K_T=0$, the junction sphere satisfies $r'^2=r^2K_T^2$, so it is marginal. By \cref{thm:penrose}, $M\ge\ell>0$ on the throat side, so no flat point can follow.
+
+\emph{(iii)} From the proof of \cref{thm:sector}, the constraint with $w=r'$ reads $\frac{2(X-2rr'')}{r^2}=2\kappa\bigl(\frac{r''^2}{r^2}+\frac{X^2}{2r^4}\bigr)$ with $X=1-r'^2$. Multiplying by $r^2/2$ and rearranging gives the quadratic. At $r=\ell$, $X=1$ and $\kappa=2\ell^2$ it becomes
+\[
+2\ell^2r''^2+2\ell r''=2\ell r''(\ell r''+1)=0 ,
+\]
+with roots $r''=0$ and $r''=-1/\ell$.
+
+\emph{(iv)} The values of ${}^{(3)}R$ and of the stress are those of \cref{thm:tolmanstress,thm:br} at $a=\ell$. The radial pressure is $+\frac1{2g^2\ell^4}$ on the sphere side and $-\frac1{2g^2\ell^4}$ on the throat side. On the sphere side $r''=-r/\ell^2=-1/\ell$ at the junction, and on the throat side $r''=0$. These differ.
+\end{proof}
+
 
 The two branches of the quadratic are separated by a positive discriminant, so passing from one to the other requires a jump. The join is as smooth as it can be without being $C^2$. Why that is so, and why it is nevertheless canonical, is the subject of the next chapter.
 
@@ -93,10 +194,37 @@ Consider a timelike tube through the junction sphere.
 \end{enumerate}
 Hence a timelike surface through the junction sphere requires both a gravitational shell and a Yang--Mills surface current. (This does not exclude timelike thin shells in general.)
 \end{theorem}
+\begin{proof}
+\emph{(i)} At a time-symmetric moment the normal stress is the radial pressure. On the Tolman side $16\pi G\rho=6/\ell^2$, so $p=\rho/3=1/(8\pi G\ell^2)$. On the throat side $p_r=-\rho=-1/(8\pi G\ell^2)$. Hence
+\[
+[T_{nn}]=-\frac1{8\pi G\ell^2}-\frac1{8\pi G\ell^2}=-\frac1{4\pi G\ell^2}.
+\]
+With $S_{ab}=0$, \cref{prop:israel} gives $[K_{ab}]=0$. Then $G_{nn}$, which depends only on intrinsic data and $K$ (\cref{thm:tube}(ii)), would be continuous, and so would $T_{nn}$. This contradicts the jump just computed.
+
+\emph{(ii)} The equator of the Tolman universe has areal radius $a(\tau)$. In cosmic time with $L=\ell^2$, \cref{thm:tolman}(ii) gives $a(\tau)=\sqrt{\ell^2-\tau^2}$. Every sphere of the throat has radius $\ell$ for all time.
+
+\emph{(iii)} On the Tolman side $w=\cos(s/\ell)$, so $w'=-\sin(s/\ell)/\ell$, which is $-1/\ell$ at $s=\pi\ell/2$. On the throat side $w=0$. With $N=A=1$, \cref{thm:tube}(iv) gives $j=s\,(0-(-1/\ell))=s/\ell$.
+\end{proof}
+
 
 \begin{theorem}[Null fronts from the corner carry no shell]\label{thm:nullfront}\ver\
 Let null fronts leave the junction sphere at the time-symmetric moment. Since $r_t=0$ there and the spacelike join is $C^1$, $[r_u]=0$ at the corner, and by \cref{thm:null}(iii) $[r_u]=0$ along the whole front: no null shell. Continuity of $w$ along the front gives $[\hat T_{vv}]\propto[w_v^2]=0$ and no colour current. The jump $[w_u]$ is transported unchanged along the front; at the corner $w_u=1/(\sqrt2\,\ell)$ on the Tolman side and $0$ on the throat side, and the constraint then gives $[r_{uu}]=-1/\ell$.
 \end{theorem}
+\begin{proof}
+\emph{No shell.} The derivative $r_u$ is a fixed combination of $r_t$ and $r_x$. At the corner $r_t=0$ on both sides, and $r_x$ is continuous by \cref{thm:c1notc2}(ii), so $[r_u]=0$ there. By \cref{thm:null}(iii), $[r_u]=0$ along the whole front.
+
+\emph{No colour current.} $w$ is continuous across the front, so $w_v$ is continuous too, and \cref{thm:null}(iv) applies.
+
+\emph{Transport of $[w_u]$.} In double-null form the Yang--Mills equation expresses $w_{uv}$ through $w$, $r$ and $\Omega$, all of which are continuous across the front. So $\partial_v[w_u]=0$.
+
+\emph{The corner values.} Normalise $u=\ell(\eta-\chi)/\sqrt2$ and $v=\ell(\eta+\chi)/\sqrt2$, so that $\Omega=a^2/\ell^2=1$ at the corner. On the Tolman side $w=\cos\chi$ and $\partial_u\chi=-1/(\sqrt2\,\ell)$, so $w_u=\sin\chi/(\sqrt2\,\ell)=1/(\sqrt2\,\ell)$. On the throat side $w_u=0$.
+
+\emph{The jump of $r_{uu}$.} The $uu$ equation reads $r_{uu}-\frac{\Omega_u}\Omega r_u+2\ell^2w_u^2/r=0$. At the corner $r_u=0$ and $r=\ell$, so
+\[
+[r_{uu}]=-2\ell\Bigl(\frac1{2\ell^2}-0\Bigr)=-\frac1\ell .\qedhere
+\]
+\end{proof}
+
 
 So the gluing is consistent as initial data, and its evolution is free of shells along the null directions. What propagates is a discontinuity in second derivatives, a gravitational and Yang--Mills ``wave front'', whose evolution is studied in Chapters~19 and~20.
 

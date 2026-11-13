@@ -30,12 +30,45 @@ everything is polynomial. Moreover the Bochner identity for a Codazzi tensor hol
 \kappa:=\sum_{i<j}\Bigl(\lambda_i+\lambda_j-\frac R2\Bigr)(\lambda_i-\lambda_j)^2=-|\nabla\mathrm{Ric}|^2 .
 \]
 \end{theorem}
+\begin{proof}
+\emph{The Codazzi equations in the eigenframe.} Put $\omega_{kij}=\langle\nabla_{e_k}e_i,e_j\rangle$, which is antisymmetric in $i,j$. For $\mathrm{Ric}=\sum\lambda_ie^i\otimes e^i$,
+\[
+(\nabla_k\mathrm{Ric})_{ij}=e_k(\mathrm{Ric}_{ij})-\mathrm{Ric}(\nabla_ke_i,e_j)-\mathrm{Ric}(e_i,\nabla_ke_j)=\delta_{ij}\,e_k\lambda_i+(\lambda_i-\lambda_j)\,\omega_{kij}.
+\]
+The Codazzi condition $(\nabla_k\mathrm{Ric})_{ij}=(\nabla_i\mathrm{Ric})_{kj}$ splits into three kinds of equation.
+\begin{itemize}
+\item $i=j\ne k$: $e_k\lambda_i=(\lambda_k-\lambda_i)\,\omega_{iki}$. Each derivative of an eigenvalue in a transverse direction is a connection coefficient times an eigenvalue difference.
+\item $i,j,k$ distinct: $(\lambda_i-\lambda_j)\,\omega_{kij}=(\lambda_k-\lambda_j)\,\omega_{ikj}$. Since the differences are invertible, these determine two of the three coefficients $\omega_{kij}$ with all indices distinct in terms of the third, called $h$.
+\item The derivatives $e_k\lambda_k$ along the own direction: they follow from $\sigma_1$ and $\sigma_2$ being constant, which gives $\sum_ie_k\lambda_i=0$ and $\sum_i\lambda_i\,e_k\lambda_i=0$.
+\end{itemize}
+
+\emph{The remaining equations.} The torsion and curvature equations are Cartan's structure equations with $\omega$, and with the Riemann tensor written through Ricci (\cref{thm:riemricci}). Substituting the expressions above, the eigenvalue differences become denominators. They disappear after the rescaling to $\alpha,\beta,\gamma,\eta$. The resulting explicit list of formulas is long but mechanical, and each formula is recorded in the checklist.
+
+\emph{Bochner identity.} Write $h=\mathrm{Ric}$. By Codazzi, $\nabla_k\nabla_kh_{ij}=\nabla_k\nabla_ih_{kj}$. Commuting the derivatives,
+\[
+\nabla_k\nabla_ih_{kj}=\nabla_i\nabla_kh_{kj}+(\text{curvature}\cdot h).
+\]
+By Codazzi again, $\nabla_kh_{kj}=\nabla_j(\tr h)$, which is zero because $\sigma_1$ is constant. Contract with $h_{ij}$ in the eigenframe. The curvature terms become
+\[
+\sum_i\mathrm{Ric}_{ii}\lambda_i^2-\sum_{i\ne j}K_{ij}\lambda_i\lambda_j=\sum_{i<j}K_{ij}(\lambda_i-\lambda_j)^2 ,
+\]
+using $\mathrm{Ric}_{ii}=\sum_{j\ne i}K_{ij}$. Now $|h|^2=\sigma_1^2-2\sigma_2$ is constant, so
+\[
+0=\tfrac12\Delta|h|^2=|\nabla h|^2+\langle h,\Delta h\rangle=|\nabla h|^2+\sum_{i<j}K_{ij}(\lambda_i-\lambda_j)^2 .
+\]
+In three dimensions $K_{ij}=\frac R2-\lambda_k=\lambda_i+\lambda_j-\frac R2$, which gives $\kappa=-|\nabla\mathrm{Ric}|^2$.
+\end{proof}
+
 
 The Bochner identity has an immediate pointwise consequence. Evaluating at a point,
 
 \begin{corollary}[Bochner sign]\label{cor:kappasign}\ver\
 $\kappa\le0$ at every point of a C2 geometry.
 \end{corollary}
+\begin{proof}
+$|\nabla\mathrm{Ric}|^2$ is a sum of squares, so $\kappa=-|\nabla\mathrm{Ric}|^2\le0$.
+\end{proof}
+
 
 \section{The window}
 
@@ -56,6 +89,40 @@ The constraint (I) and the sign of $\kappa$ together confine the scalar curvatur
 The bracket is negative exactly when $C<-\sqrt{2x/(6-x)}$ with $x=R\ell^2$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Both sides are symmetric polynomials of degree three in the $\lambda_i$. So $\kappa=A\sigma_1^3+B\sigma_1\sigma_2+C'\sigma_3$ for some constants, and three test points fix them.
+\begin{itemize}[nosep]
+\item $\lambda=(1,0,0)$: here $\sigma=(1,0,0)$, and the definition gives $\kappa=\frac12+\frac12+0=1$. So $A=1$.
+\item $\lambda=(1,1,0)$: here $\sigma=(2,1,0)$ and $\kappa=0$. So $8A+2B=0$, that is, $B=-4$.
+\item $\lambda=(1,1,1)$: here $\sigma=(3,3,1)$ and $\kappa=0$. So $27A+9B+C'=0$, that is, $C'=9$.
+\end{itemize}
+
+\emph{(ii)} The $c_i$ are the roots of $x^3+px+r_0$ with $p=\sum_{i<j}c_ic_j=-\frac34$ and $r_0=-c_1c_2c_3=-\frac C4$. The discriminant of this cubic is
+\[
+\prod_{i<j}(c_i-c_j)^2=-4p^3-27r_0^2=\frac{27}{16}-\frac{27C^2}{16}.
+\]
+Distinct roots make it positive, so $C^2<1$.
+
+\emph{(iii)} From $\sum c_i=0$ and $\sum_{i<j}c_ic_j=-\frac34$ we get $\sum c_i^2=\frac32$. Hence
+\[
+|\mathrm{Ric}|^2=\frac{R^2}3+\frac32q^2 .
+\]
+Equating this with the right side of (I) in the form $|\mathrm{Ric}|^2=R/(2\ell^2)+R^2/4$ gives
+\[
+q^2=\frac{R(6-R\ell^2)}{18\ell^2}=\frac{R(12-2R\ell^2)}{36\ell^2}.
+\]
+Next we need the symmetric functions:
+\[
+\sigma_1=R,\qquad\sigma_2=\frac{R^2}3-\frac34q^2,\qquad\sigma_3=\frac{R^3}{27}-\frac R4q^2+\frac C4q^3 .
+\]
+Insert them into (i). The $R^3$ terms cancel, and $\kappa=\frac34q^2(R+3qC)$. With $s=\sqrt{12-2R\ell^2}$ we have $q=\sqrt R\,s/(6\ell)$ and $R+3qC=\frac{\sqrt R}{2\ell}(2\ell\sqrt R+sC)$. Since $s^2=2(6-R\ell^2)$, this gives the displayed formula.
+
+\emph{(iv)} Distinct eigenvalues mean $q>0$. So $R(6-R\ell^2)>0$, that is, $0<R\ell^2<6$, and the prefactor of $\kappa$ is positive. Then $\kappa\le0$ forces the bracket to be $\le0$: $C\le-2\ell\sqrt R/s$. Together with $C>-1$ from (ii), $2\ell\sqrt R<s$. Squaring gives $4R\ell^2<12-2R\ell^2$, that is, $R\ell^2<2$. Finally,
+\[
+\frac{2\ell\sqrt R}s=\sqrt{\frac{4x}{12-2x}}=\sqrt{\frac{2x}{6-x}} .\qedhere
+\]
+\end{proof}
+
 
 Compare with the homogeneous solutions: $S^3(\ell)$ has $R\ell^2=6$ and $S^2(\ell)\times\RR$ has $R\ell^2=2$. A C2 geometry, if it exists, would have to sit strictly below the cylinder.
 
@@ -69,12 +136,46 @@ For $\dd t^2+a(t)^2\dd x^2+b(t)^2\dd y^2$, with $\alpha=a'/a$, $\beta=b'/b$, the
 \Delta=\alpha(\lambda_t-\lambda_x)(\lambda_t-\lambda_y)(\lambda_x-\lambda_y)=0 .
 \]
 \end{theorem}
+\begin{proof}
+This proof is a sketch: the final polynomial identity is too long to verify by hand.
+
+\emph{The eigenvalues.} For the frame $e^0=\dd t$, $e^1=a\,\dd x$, $e^2=b\,\dd y$, Cartan's equations give $\omega^1{}_0=\alpha e^1$, $\omega^2{}_0=\beta e^2$ and $\omega^1{}_2=0$. The curvatures are
+\[
+\Omega^1{}_0=\frac{a''}ae^0\wedge e^1,\qquad\Omega^2{}_0=\frac{b''}be^0\wedge e^2,\qquad\Omega^1{}_2=\omega^1{}_0\wedge\omega^0{}_2=-\alpha\beta\,e^1\wedge e^2 .
+\]
+So the sectional curvatures are $K_{01}=-a''/a=-(\alpha'+\alpha^2)$, $K_{02}=-(\beta'+\beta^2)$ and $K_{12}=-\alpha\beta$. The Ricci eigenvalues are the sums of the two sectional curvatures through each axis, as stated.
+
+\emph{The flow.} Everything depends on $t$ only, so the Codazzi equations of the proof of \cref{thm:c2first} reduce to
+\[
+\lambda_x'=\alpha(\lambda_t-\lambda_x),\qquad\lambda_y'=\beta(\lambda_t-\lambda_y),
+\]
+because $\omega_{101}=\alpha$ and $\omega_{202}=\beta$. These two equations express $\alpha''$ and $\beta''$ through $(\alpha,\beta,\alpha',\beta')$, which defines a vector field on that four-dimensional space. The trace of the Codazzi condition gives $\nabla R=0$ (as in \cref{thm:geomconstraint}), so $\sigma_1$ is conserved along the flow.
+
+\emph{The certificate.} If $\sigma_2$ is constant on an interval, then its first four derivatives along the flow vanish there. These derivatives are explicit polynomials $e_1,\dots,e_4$ in $(\alpha,\beta,\alpha',\beta')$. The Lean file exhibits polynomials $c_1,\dots,c_4$ with
+\[
+\Delta^2=c_1e_1+c_2e_2+c_3e_3+c_4e_4 .
+\]
+This identity can be checked by expanding both sides; it was found by solving a linear system for the unknown coefficients and is too long to verify by hand. It forces $\Delta^2=0$ on the interval.
+\end{proof}
+
 
 The proof writes the Codazzi conditions as a flow for $(\alpha,\beta,\alpha',\beta')$, shows that $\sigma_1$ is then automatically conserved, differentiates $\sigma_2$ four times along the flow, and exhibits an explicit certificate expressing $\Delta^2$ as a combination of these four derivatives. The certificate was found by solving a linear system of 195 unknowns in a weighted-homogeneous ansatz; Lean checks the resulting identity.
 
 \begin{theorem}[No aligned C2 geometry]\label{thm:aligned}\ver\nogo\
 There is no C2 geometry in which the eigenvalue gradients point along $e_0$, i.e.\ $e_1\lambda_i=e_2\lambda_i=0$ with $e_0\lambda_0$ invertible.
 \end{theorem}
+\begin{proof}
+This proof is a sketch: the final elimination is too long to verify by hand.
+
+\emph{The connection.} If $e_1\lambda_i=e_2\lambda_i=0$, the Codazzi relations $e_k\lambda_i=(\lambda_k-\lambda_i)\omega_{iki}$ for $k=1,2$ make the corresponding coefficients $\omega_{iki}$ vanish, since the differences are invertible. Then the relations among the coefficients with distinct indices make $h$ vanish as well. In the normalised variables this is $\beta=\gamma=\eta=0$.
+
+\emph{The elimination.} Three of the curvature equations are then linear in $e_0\alpha$ and $\alpha^2$. Eliminating these two quantities leaves a cubic relation $g(\lambda_0,\lambda_1,\lambda_2)=0$. Differentiating $g$ along $e_0$, with the known $e_0\lambda_i$, gives two further polynomial relations. The Lean file exhibits an explicit combination of the three relations that equals
+\[
+\bigl((\lambda_0-\lambda_1)(\lambda_0-\lambda_2)(\lambda_1-\lambda_2)\bigr)^3 .
+\]
+On a C2 geometry this quantity is nonzero, which is a contradiction. The combination is a polynomial identity checked by expansion.
+\end{proof}
+
 
 Here the first-stage equations force $\beta=\gamma=\eta=0$. Eliminating $e_0\alpha$ and $\alpha^2$ from three curvature equations leaves a cubic relation $g(\lambda)=0$ among the eigenvalues. Differentiating it along $e_0$ gives two more relations, and $\bigl((\lambda_0-\lambda_1)(\lambda_0-\lambda_2)(\lambda_1-\lambda_2)\bigr)^3$ is an explicit combination of the three, which contradicts distinctness.
 
@@ -91,6 +192,16 @@ For a general C2 geometry the first-stage solution leaves the derivatives $e_2(\
 \end{enumerate}
 Consequently the left kernel is generically nine-dimensional, seven of its directions are automatic, and at most two independent compatibility conditions remain at the second stage.
 \end{theorem}
+\begin{proof}
+This proof is a sketch: all four parts are mechanical but large computations.
+\begin{itemize}
+\item \emph{(i) and (ii).} Substitute the first-stage solution (\cref{thm:c2first}) into the torsion equations $[e_i,e_j]=\sum(\omega_{ijk}-\omega_{jik})e_k$, applied to $\alpha,\beta,\gamma,\eta$, and into the Bochner identity. Each resulting polynomial reduces to zero by the first-stage relations.
+\item \emph{(iii).} The four combinations $K_0,\dots,K_3$ are written in Lean as explicit polynomial multiples of $B$ and $e_0B$. These identities are coefficient comparisons, which is why the checklist lists their coefficients separately.
+\item \emph{(iv).} The $21\times12$ matrix at $x^*$ has rational entries, and its rank can be computed by Gaussian elimination. Lean shows that the homogeneous system in the twelve unknowns $E_{kj}$ has only the zero solution, which means that the twelve columns are independent. One also checks directly that $B(x^*)=0$.
+\end{itemize}
+The consequence uses only linear algebra. A $21\times12$ matrix of rank $12$ has a left kernel of dimension $21-12=9$. Seven of the nine directions are accounted for by (iii), which leaves at most two.
+\end{proof}
+
 
 The step from ``rank 12 at one point'' to ``rank 12 generically on the component of $\{B=0\}$ through that point'' is the lower semicontinuity of rank, a standard fact. Whether the two remaining conditions, together with (I), exclude C2 geometries altogether is \opn. If they did, \cref{thm:threesol} would hold locally, without completeness.
 
