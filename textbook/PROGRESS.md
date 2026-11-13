@@ -1,6 +1,7 @@
 # Progress (update after each chapter)
 
 Done (sent): front, ch01-ch31, intA, intB, full book (194 pp). Coverage 1873/1873.
+Phase 2 done (sent): hand-computable proofs after every theorem/proposition/lemma/corollary in ch01-ch31, intA, intB; full book 267 pp, no overfull boxes, no undefined refs. Certificate-based results (ch14 diagonal/aligned/second stage, ch16 static classification) are marked as sketches. Statement fixes made while proving: intA Higgs label (6Q,6Y); ch13 globalform(ii) cylinder case; ch17 deltacoeff hypothesis kappa p'=S; ch18 gluedslice (i),(iii) 2D profile surface; ch19 Tolman density 3/(2g^2a^4); ch20 collapse step 2 uses F=r(1+rdot^2)+(l^2-2kappa)/r.
 Coverage after intB: 1545/1873.
 
 Workflow per chapter:

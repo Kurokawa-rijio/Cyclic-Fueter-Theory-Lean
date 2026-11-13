@@ -23,6 +23,20 @@ Let $\iota:\Mat_k(R)\to\Mat_m(R)$ be a block embedding. Then:
 \item consequently all $O(\alpha')$ terms vanish together: in the metric equation, the dilaton equation, the $H$ Bianchi identity and the gauge-field equation. In particular the term $-\frac{\alpha'}4(\Tr F^2-\tr R^2)$ of the truncated effective action vanishes identically on $A=\iota(\omega)$, for every $\omega$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Take $\iota(X)=\begin{psmallmatrix}X&0\\0&0\end{psmallmatrix}$. Block multiplication gives $\iota(X)\iota(Y)=\iota(XY)$, and additivity, linearity and injectivity are clear. Derivatives act entrywise, so they commute with $\iota$. The product $\iota X\,\iota Y$ has the single non-zero block $XY$, so the traces agree.
+
+\emph{(ii)} By (i),
+\[
+F(\iota\omega)=\dd(\iota\omega)+\iota\omega\wedge\iota\omega=\iota(\dd\omega+\omega\wedge\omega)=\iota(R(\omega)).
+\]
+In the same way $D_{\iota\omega}(\iota X)=\dd(\iota X)+[\iota\omega,\iota X]=\iota(D_\omega X)$, and the Yang--Mills operator is built from these. Since $\iota$ is injective, $\iota(Y)=0$ exactly when $Y=0$.
+
+\emph{(iii)} Each component of $\Tr F\wedge F$ is a sum of traces of products of two components of $F=\iota R$. By (i) it equals the corresponding component of $\tr R\wedge R$. The squared densities and the stress tensors are built the same way from traces of products.
+
+\emph{(iv)} Every $O(\alpha')$ term listed is a difference of a gauge expression and the corresponding curvature expression of the kind compared in (iii). So each vanishes identically on $A=\iota(\omega)$.
+\end{proof}
+
 
 Part (iv) is a negative statement for our purposes. The Yang--Mills term that produces the scale $\ell$ in the Einstein--Yang--Mills equations is cancelled, in this truncation, by the curvature-squared term on the standard embedding. So the four-dimensional relation $w=r'$ cannot be obtained as the standard embedding of a heterotic compactification at this order with the Yang--Mills dynamics intact. The cancellation is the reason the standard embedding solves the string equations to $O(\alpha')$; it is also the reason it carries no independent Yang--Mills stress.
 
@@ -39,6 +53,18 @@ The unit quaternions form the group $\SU(2)\cong S^3$. On a group manifold there
 \item The flux is quantised, $\int H/(4\pi^2\alpha')=k\in\ZZ$, if and only if $R^2=k\alpha'$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} $ij-ji=k-(-k)$, and cyclically. For $a=b$ the sum $\sum_{c,d}\epsilon_{acd}^2$ has two non-zero terms; for $a\ne b$ every term vanishes.
+
+\emph{(ii)} For the profile $f$ the radial sectional curvature is $-f''/f=1/R^2$, and the tangential one is $(1-f'^2)/f^2=(1-\cos^2)/(R^2\sin^2)=1/R^2$. The Ricci curvature in each direction is the sum of two sectional curvatures.
+
+\emph{(iii)} $\frac14\cdot\frac4{R^2}\sum_{c,d}\epsilon_{acd}\epsilon_{bcd}=\frac2{R^2}\delta_{ab}$ by (i). For a connection with totally antisymmetric torsion $T$, the Ricci tensor is $\mathrm{Ric}-\frac14\sum T_{acd}T_{bcd}$, which therefore vanishes. In fact the full curvature vanishes, because the invariant frame is parallel for this connection by construction.
+
+\emph{(iv)} $4\pi R^2\int_0^{\pi R}\sin^2(s/R)\,\dd s=4\pi R^3\cdot\frac\pi2$. The flux is $\frac2R\cdot2\pi^2R^3$.
+
+\emph{(v)} $\frac{4\pi^2R^2}{4\pi^2\alpha'}=\frac{R^2}{\alpha'}$.
+\end{proof}
+
 
 \section{The string scale and the obstruction}
 
@@ -51,10 +77,21 @@ Express $\ell$ in string units. If $G=c\,\frac{g^2}{4\pi}\alpha'$ for a constant
 \item If the round $S^3(\ell)$ were the target of an $\SU(2)$ WZW model, its level would be $k=c$. For $0<c<1$ this is not a positive integer; in particular neither $\frac18$ nor $\frac14$ is an integer.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} From $\kappa^2=8\pi G$ and $g^2=4\kappa^2/\alpha'$ we get $G=\frac{g^2\alpha'}{32\pi}=\frac18\cdot\frac{g^2}{4\pi}\alpha'$. Witten's relation is $G=\frac14\cdot\frac{g^2}{4\pi}\alpha'$ directly.
+
+\emph{(ii)} $\alpha'/\ell^2=1/c$. The scalar curvatures are $R(S^3(\ell))=6/\ell^2$ and $R(S^4(\ell))=12/\ell^2$. Multiply them by $1/c=8$ or $4$.
+
+\emph{(iii)} By \cref{prop:s3group}(v), $k=R^2/\alpha'$, which for $R=\ell$ is $\ell^2/\alpha'=c$. A number strictly between $0$ and $1$ is not an integer.
+\end{proof}
+
 
 \begin{corollary}[Smallest WZW sphere]\txt\
 The smallest WZW three-sphere has $k=1$ and radius $R=\sqrt{\alpha'}$, which is $2\sqrt2\,\ell$ for $c=\frac18$ and $2\ell$ for $c=\frac14$. The Tolman universe at maximal expansion is smaller than the smallest WZW sphere by these factors.
 \end{corollary}
+\begin{proof}
+By \cref{thm:wzwobstruction}(iii) the level is $k=R^2/\alpha'$, and the smallest positive integer is $1$, so $R=\sqrt{\alpha'}$. Since $\ell^2=c\,\alpha'$, $\sqrt{\alpha'}/\ell=1/\sqrt c$, which is $\sqrt8$ for $c=\frac18$ and $2$ for $c=\frac14$.
+\end{proof}
 
 \section{The dilaton attractor}
 
@@ -71,6 +108,27 @@ Let $f=\frac14\bigl(2v_1-2v_2+w(2e^2v_2/v_1-2p^2v_1/v_2)\bigr)$ and $\mathcal E=
 \item The horizon radius equals $\ell$ iff $2pq=\ell^2$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $\partial_u=\frac{\dd w}{\dd u}\partial_w=-2w\,\partial_w$, and $w>0$.
+
+\emph{(ii)} Write $x=v_1/v_2$ and $f=\frac12\bigl(v_1-v_2+w(e^2v_2/v_1-p^2v_1/v_2)\bigr)$. The four conditions are:
+\begin{itemize}[nosep]
+\item $\partial_w$: $e^2/x=p^2x$, so $e=px$; the sign is fixed by $q>0$ in the next condition.
+\item $\partial_e$: $q=we/x=wp$, so $w=q/p$.
+\item $\partial_{v_1}$: $1=w(e^2v_2/v_1^2+p^2/v_2)=2wp^2/v_2$, so $v_2=2wp^2=2pq$.
+\item $\partial_{v_2}$: $1=w(e^2/v_1+p^2x/v_2)=2wp^2x/v_2=x$.
+\end{itemize}
+At this point $e^2-p^2=0$, so $f=0$ and $\mathcal E=2\pi qe=2\pi pq$. The example satisfies all four conditions.
+
+\emph{(iii)} $V-2pq=(w^2p^2-2wpq+q^2)/w=(wp-q)^2/w$. Also $V''=2q^2/w^3$. With $x=1/w$ this is the stated inequality.
+
+\emph{(iv)} For $q=0$, $V'=p^2\ne0$, so there is no critical point. $V=wp^2$ decreases to $0$ as $w\to0$.
+
+\emph{(v)} The electric field is proportional to $q/r^2$ and the magnetic field to $p/r^2$, both radial.
+
+\emph{(vi)} The horizon radius squared is $v_2=2pq$.
+\end{proof}
+
 
 So the purely magnetic throat of this book, which in Einstein--Yang--Mills theory is an attractor (\cref{thm:attractor}), is not one once a string dilaton is added: the dilaton runs away, and a stable attractor requires both electric and magnetic charge. This is a second negative result.
 
@@ -81,6 +139,14 @@ Free Yang--Mills theory on $S^3$ of radius $R$ has a Hagedorn transition at larg
 \begin{theorem}[Hagedorn point]\label{thm:hagedorn}\ver\
 $6(2-\sqrt3)^2-2(2-\sqrt3)^3=(1-(2-\sqrt3))^3$, i.e.\ $z_V(2-\sqrt3)=1$.
 \end{theorem}
+\begin{proof}
+Let $x=2-\sqrt3$. Then $x^2=7-4\sqrt3$ and $x^3=(2-\sqrt3)(7-4\sqrt3)=26-15\sqrt3$. The left side is
+\[
+6(7-4\sqrt3)-2(26-15\sqrt3)=-10+6\sqrt3 .
+\]
+The right side is $(\sqrt3-1)^3=3\sqrt3-9+3\sqrt3-1=6\sqrt3-10$.
+\end{proof}
+
 
 \begin{proposition}[Uniqueness of the Hagedorn point]\txt\
 The equation $z_V(x)=1$ is equivalent, for $x\ne1$, to $x^3-3x^2-3x+1=0$, and

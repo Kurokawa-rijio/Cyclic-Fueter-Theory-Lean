@@ -19,6 +19,10 @@ So $\ell$ is the length at which the conjecture is formulated: a particle of uni
 \begin{proposition}[Magnetic cutoff]\label{prop:magcutoff}\ver\
 With $\ell^2=4\pi G/g^2$ and the magnetic cutoff $\Lambda_{\rm UV}=g/\sqrt G$, one has $(1/\Lambda_{\rm UV})^2=G/g^2=\ell^2/(4\pi)$. The curvature length of the Tolman universe on its initial slice is $\ell/24^{1/4}$ (\cref{thm:crunch}): both are of order $\ell$.
 \end{proposition}
+\begin{proof}
+$(1/\Lambda_{\rm UV})^2=G/g^2$, and $\ell^2/(4\pi)=G/g^2$ by \eqref{eq:elldef}. By \cref{thm:crunch}(iv), $L_K^4=\ell^4/24$, so $L_K=\ell/24^{1/4}$.
+\end{proof}
+
 
 The glued configuration is therefore born at the cutoff scale of the magnetic weak gravity conjecture. This is consistent with \cref{thm:wzwobstruction}, where we found the curvature to be of string scale.
 
@@ -33,6 +37,16 @@ With an adjoint Higgs field of vacuum value $v$, the $W$ boson has mass $m_W=gv$
 \end{enumerate}
 Hence the electric condition for the $W$ boson and the magnetic condition for the monopole are the same inequality, $4\pi Gv^2\le1$.
 \end{theorem}
+\begin{proof}
+\emph{(i)} $(m_W\ell)^2=g^2v^2\cdot4\pi G/g^2$.
+
+\emph{(ii)} The electric condition says that a charge $Q$ (in units where the $W$ has $Q=g$) is extremal at mass $Q/\sqrt{4\pi G}$. By duality the same holds for magnetic charge, so the monopole with $Q_m=4\pi/g$ has $M_{\rm ext}=4\pi/(g\sqrt{4\pi G})$. Then
+\[
+\frac{M_{\rm mon}}{M_{\rm ext}}=\frac{4\pi v}g\cdot\frac{g\sqrt{4\pi G}}{4\pi}=\sqrt{4\pi G}\,v .
+\]
+Both conditions say that a ratio is at most $1$, and both ratios equal $\sqrt{4\pi G}\,v$.
+\end{proof}
+
 
 \begin{theorem}[A window]\label{thm:wgcwindow}\ver\
 The throat is BF-stable iff $(m_W\ell)^2\ge\frac34$ (\cref{thm:higgsbf}), and the conjecture for the $W$ boson requires $(m_W\ell)^2\le1$. For $k>0$, $\frac3{4k}\le v^2\le\frac1k$ iff $\frac34\le kv^2\le1$; with $k=4\pi G$,
@@ -41,6 +55,10 @@ The throat is BF-stable iff $(m_W\ell)^2\ge\frac34$ (\cref{thm:higgsbf}), and th
 \]
 The window is non-empty.
 \end{theorem}
+\begin{proof}
+Multiplying an inequality by $k>0$ preserves it, and dividing by $k$ reverses the step. With $k=4\pi G$ and $(m_W\ell)^2=kv^2$ (\cref{thm:wgcboth}), the two conditions are $\frac34\le kv^2\le1$. The window is non-empty because $\frac34<1$.
+\end{proof}
+
 
 In words: a Higgs field that stabilises the throat must have a vacuum value within a factor $2/\sqrt3$ of the largest value allowed by the weak gravity conjecture. Both ends are of Planck size, which is again the negative statement of \cref{ch:higgs} about the electroweak scale.
 
@@ -53,6 +71,14 @@ In words: a Higgs field that stabilises the throat must have a vacuum value with
 \item (Festina Lente) If $\Lambda\ell^2\le\frac14$ and $(m_W\ell)^2\ge\frac34$, then $\sqrt{\Lambda\ell^2}\le(m_W\ell)^2$: the Festina Lente bound $m_W^2\gtrsim\sqrt{\Lambda}\,g\,M_{\rm Pl}$ \cite{Montero2020} holds automatically for a stable throat \ext.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Expand: $\bigl(\frac\ell{R^2}-\frac1{2\ell}\bigr)^2=\frac{\ell^2}{R^4}-\frac1{R^2}+\frac1{4\ell^2}$. The formula $\Lambda=1/R^2-\ell^2/R^4$ is \cref{thm:cylinders}(i) with $\ell$ restored. The square vanishes exactly when $R^2=2\ell^2$.
+
+\emph{(ii)} $\frac1{4\ell^2}=\frac{g^2}{4\cdot4\pi G}$.
+
+\emph{(iii)} $\sqrt{\Lambda\ell^2}\le\frac12<\frac34\le(m_W\ell)^2$. Dividing by $\ell^2$ gives $m_W^2\ge\sqrt\Lambda/\ell=\sqrt\Lambda\,g/\sqrt{4\pi G}$, which is the Festina Lente form up to the constant.
+\end{proof}
+
 
 \section{Higher-derivative corrections}
 
@@ -66,6 +92,27 @@ Higher-derivative terms modify the metric function of a magnetic black hole to $
 \item At $r=p$ directly, $M(p)=p-k/(2p^5)<p$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $f=\frac2r(M(r)-M)$, because $\frac2rM(r)=1+p^2/r^2-k/r^6$. Differentiating $m$,
+\[
+m'=\frac{p^2}{2r^2}-\frac{4\pi\beta p^4}{r^6}=4\pi r^2\Bigl(\frac{p^2}{8\pi r^4}-\frac{\beta p^4}{r^8}\Bigr).
+\]
+
+\emph{(ii)} From $f=\frac2r(M(r)-M)$: at a zero of $f$, $f'=\frac2rM'(r)$. So $f=f'=0$ exactly when $M=M(r)$ and $M'(r)=0$. With $M(r)=\frac r2+\frac{p^2}{2r}-\frac k{2r^5}$,
+\[
+M'(r)=\frac12-\frac{p^2}{2r^2}+\frac{5k}{2r^6},
+\]
+which vanishes exactly when $p^2=r^2+5k/r^4$.
+
+\emph{(iii)} Insert $p^2$ into $M(r)$: $M=\frac r2+\frac r2+\frac{5k}{2r^5}-\frac k{2r^5}=r+\frac{2k}{r^5}$. Both $M$ and $p$ are positive, so $M<p$ is equivalent to
+\[
+\Bigl(r+\frac{2k}{r^5}\Bigr)^2=r^2+\frac{4k}{r^4}+\frac{4k^2}{r^{10}}<r^2+\frac{5k}{r^4},
+\]
+that is, $4k^2/r^{10}<k/r^4$, or $4k<r^6$. Also $p^2-r^2=5k/r^4>0$.
+
+\emph{(iv)} $M(p)=\frac p2\bigl(1+1-k/p^6\bigr)$.
+\end{proof}
+
 
 With $k>0$ the extremal black hole has $M<p$: it can decay into smaller extremal black holes, and the conjecture is satisfied by the black holes themselves (the ``mild'' form). Its throat is narrower than the classical value. For our throat, with $p=\ell$ in units $G=1$, this means the corrected throat radius lies below $\ell$, the same direction as the anomaly correction of \cref{thm:throatback}.
 

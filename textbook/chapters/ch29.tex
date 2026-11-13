@@ -19,6 +19,16 @@ On the time-symmetric slice, with $w=r'$:
 \item in units of $4\pi/g^2$ the Yang--Mills energy of a Tolman half is $\int_0^{\pi\ell/2}\bigl[r''^2+\frac{(1-r'^2)^2}{2r^2}\bigr]\dd s=\frac{3\pi}{8\ell}$, and that of a throat of length $L$ is $L/(2\ell^2)$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} \emph{Tolman side.} $1-r'^2=\sin^2(s/\ell)$ and $-2rr''=2\sin^2(s/\ell)$, so the left side is $\frac{2\cdot3\sin^2}{\ell^2\sin^2}=\frac6{\ell^2}$. With $w=\cos(s/\ell)$, $w'^2/r^2=1/\ell^4$ and $(1-w^2)^2/(2r^4)=1/(2\ell^4)$, so the right side is $4\ell^2\cdot\frac3{2\ell^4}$.
+
+\emph{Throat.} The left side is $2/\ell^2$. The right side is $4\ell^2\cdot\frac1{2\ell^4}$.
+
+\emph{(ii)} At $s=\pi\ell/2$, $r=\ell$ and $r'=0$ on both sides. The second derivative is $-1/\ell$ on the Tolman side and $0$ on the throat. So $r'$ is continuous and piecewise $C^1$, hence Lipschitz.
+
+\emph{(iii)} The energy density integrated over the sphere is $\frac{4\pi}{g^2}\bigl(w'^2+\frac{(1-w^2)^2}{2r^2}\bigr)$, and $w'=r''$. On the Tolman side the integrand is $\frac{\sin^2}{\ell^2}+\frac{\sin^4}{2\ell^2\sin^2}=\frac3{2\ell^2}\sin^2(s/\ell)$. Its integral over $[0,\pi\ell/2]$ is $\frac3{2\ell^2}\cdot\frac{\pi\ell}4$. On the throat the integrand is the constant $\frac1{2\ell^2}$.
+\end{proof}
+
 
 \begin{proposition}[Fixing the volume]\label{prop:fixvolume}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -27,6 +37,18 @@ On the time-symmetric slice, with $w=r'$:
 \item At that value of $\Lambda$ there is no throat: the throat equation $1/r^2=\Lambda+\ell^2/r^4$ becomes $3x^2-4x+4=0$ for $x=r^2/\ell^2$, which has no real root.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} $\int_0^\pi\sin^2=\int_0^\pi\frac{1-\cos2x}2=\frac\pi2$. Substituting $x=s/\ell$, each Tolman half has volume $4\pi\ell^3\int_0^{\pi/2}\sin^2x\,\dd x=\pi^2\ell^3$. The throat adds $4\pi\ell^2L$. Solve for $L$.
+
+\emph{(ii)} A static closed universe with radiation ($p=\rho/3$) and $\Lambda$ needs $\dot a=0$ and $\ddot a=0$:
+\[
+\frac3{a^2}=8\pi G\rho+\Lambda,\qquad0=-\frac{8\pi G}3\rho+\frac\Lambda3 .
+\]
+So $\Lambda=8\pi G\rho$ and $3/a^2=2\Lambda$. With $8\pi G\rho=3\ell^2/a^4$ the first gives $\Lambda=3/(2a^2)$, and equating, $a^2=2\ell^2$ and $\Lambda=3/(4\ell^2)$.
+
+\emph{(iii)} With $x=r^2/\ell^2$, $1/r^2=\Lambda+\ell^2/r^4$ reads $\frac1x=\frac34+\frac1{x^2}$. Multiplying by $4x^2$ gives $3x^2-4x+4=0$. Its discriminant is $16-48<0$.
+\end{proof}
+
 
 So a volume constraint cannot make the glued configuration static: the two pieces need incompatible values of the multiplier. The throat length $L$ remains the one free modulus of the spherical data, and its conjugate is the rate of change of area (\cref{thm:ks}).
 
@@ -49,6 +71,20 @@ q=\begin{pmatrix}C+Sc&Ss\\Ss&C-Sc\end{pmatrix},\qquad C=\cosh2\beta,\ S=\sinh2\b
 \item (Focusing) The null constraint takes the form $r_{uu}-\omega_ur_u+B=0$ with $B=r(\beta_u^2+S^2\theta_u^2)+2\ell^2w_u^2/r\ge0$, so $r_{uu}-\omega_ur_u\le0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} $\det q=C^2-S^2(c^2+s^2)=\cosh^22\beta-\sinh^22\beta=1$.
+
+\emph{(ii)} By Jacobi's formula, $\tr(q^{-1}\dot q)=\frac{\dd}{\dd t}\log\det q=0$.
+
+\emph{(iii)} The derivatives are $\dot C=2S\dot\beta$, $\dot S=2C\dot\beta$, $\dot c=-2s\dot\theta$ and $\dot s=2c\dot\theta$. Then
+\[
+\det\dot q=\dot C^2-(\dot Sc+S\dot c)^2-(\dot Ss+S\dot s)^2=\dot C^2-\dot S^2-S^2(\dot c^2+\dot s^2)-2S\dot S(c\dot c+s\dot s).
+\]
+The last bracket is $\frac12\frac{\dd}{\dd t}(c^2+s^2)=0$, and $\dot c^2+\dot s^2=4\dot\theta^2$. So $\det\dot q=4\dot\beta^2(S^2-C^2)-4S^2\dot\theta^2=-4(\dot\beta^2+S^2\dot\theta^2)$. The quadratic form $\dot\beta^2+\sinh^2(2\beta)\dot\theta^2$ is the hyperbolic metric in polar coordinates, with radius $\beta$ and angle $2\theta$ (curvature $-4$).
+
+\emph{(iv)} In the $2+2$ form the $uu$ component of the Einstein equations is the Raychaudhuri equation. In it the shear of the cross-sections enters as $r\sigma_u^2$, next to the Yang--Mills term $2\ell^2w_u^2/r$ of \cref{thm:goursat} (standard). By (iii), $\sigma_u^2=\beta_u^2+S^2\theta_u^2$. Every term of $B$ is a square times a positive factor.
+\end{proof}
+
 
 The pair $(\beta,\theta)$ is the two polarisations of a gravitational wave. Part (iii) is the hyperbolic polar form of \cref{ch:hemisphere} in a new role: there, a momentum on the mass shell was written with a rapidity and a direction; here the shape of a cross-section is written with a ``rapidity'' $2\beta$ and an angle $2\theta$, and the shape space carries the same hyperbolic metric. Part (iv) shows that gravitational waves enter the Raychaudhuri equation at the same place and with the same sign as the Yang--Mills field: both focus.
 
@@ -57,6 +93,10 @@ The pair $(\beta,\theta)$ is the two polarisations of a gravitational wave. Part
 \begin{proposition}[Extremal Kerr--Newman horizon]\label{prop:kn}\ver\
 For $M^2=a^2+Q^2$ the horizon area is $4\pi(M^2+a^2)=4\pi(Q^2+2a^2)\ge4\pi Q^2$, with equality iff $a=0$.
 \end{proposition}
+\begin{proof}
+At extremality $r_+=M$, and the Kerr--Newman horizon area is $4\pi(r_+^2+a^2)$. With $M^2=a^2+Q^2$ this is $4\pi(Q^2+2a^2)$. The excess over $4\pi Q^2$ is $8\pi a^2$.
+\end{proof}
+
 
 Among extremal throats of given charge, the round one has the smallest area. Rotation deforms the cross-section away from the round sphere and increases the area.
 
@@ -72,6 +112,19 @@ With $h=-N^2\dd t^2+\Lambda^2\dd x^2$ and no shift, $P_\Lambda=-r\dot r/N$ and $
 \item If the expectation value $e$ of the squared shape rate is positive, then $-re<0$: as long as there are zero-point fluctuations, the area cannot stay exactly constant.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} Insert the momenta:
+\[
+-N(rP_r+\Lambda P_\Lambda)=r(\Lambda\dot r+r\dot\Lambda)+\Lambda r\dot r=\dot\Lambda r^2+2\Lambda r\dot r=\frac{\dd}{\dd t}(\Lambda r^2).
+\]
+
+\emph{(ii)} For a function $f(r,\Lambda)$, $\{f,D\}=r\partial_rf+\Lambda\partial_\Lambda f$. A homogeneous function of degree $k$ in $(r,\Lambda)$ therefore has weight $k$. Here $\Lambda r^2$ has degree $3$ and $r^2$ has degree $2$.
+
+\emph{(iii)} With $r_u=r_{uu}=0$, \cref{thm:shapespace}(iv) gives $B=0$. $B$ is a sum of non-negative terms with positive coefficients, so each term vanishes.
+
+\emph{(iv)} Taking expectation values in the same equation with $r_u=0$ gives $\langle r_{uu}\rangle\le-r\,e<0$.
+\end{proof}
+
 
 \section{Initial data of constant cross-sectional area}
 
@@ -84,6 +137,18 @@ Impose only $r(x)=r_0$ on a time-symmetric slice, without assuming the throat fo
 \item The quantity that determines the sign of $\ddot r$ is $-(1-\ell^2(1-w^2)^2/r^2)=-2\ell^2w'^2\le0$: wherever $w$ varies along the axis, the area begins to shrink. Only the throat, with $w'=0$, can stay at constant area.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} With $r'=r''=0$ the constraint reads $\frac2{r_0^2}=4\ell^2\bigl(\frac{w'^2}{r_0^2}+\frac{(1-w^2)^2}{2r_0^4}\bigr)$. Multiplying by $r_0^2/2$ gives $1=2\ell^2w'^2+\ell^2(1-w^2)^2/r_0^2$. Then $w'=0$ exactly when $1-w^2=\pm r_0/\ell$. The branch $w^2=1+r_0/\ell$ is the turning point stated. The other branch, $w^2=1-r_0/\ell$, is the rest point, which for $r_0=\ell$ is $w=0$.
+
+\emph{(ii)} For $r_0=\ell$, $1-(1-w^2)^2=2w^2-w^4$. For $w=\sqrt2\operatorname{sech}(x/\ell)$,
+\[
+w'^2=\frac{2\operatorname{sech}^2\tanh^2}{\ell^2},\qquad\frac{w^2(2-w^2)}{2\ell^2}=\frac{2\operatorname{sech}^2(2-2\operatorname{sech}^2)}{2\ell^2},
+\]
+and these agree because $1-\operatorname{sech}^2=\tanh^2$.
+
+\emph{(iii)} By the ADM equation of the proof of \cref{thm:sector}, with $r'=r''=0$ and $N=1$, we have $r_{tt}=-\frac1r\bigl(1-8\pi G\,S_{\theta\theta}\bigr)$. Here $8\pi G\,S_{\theta\theta}=\ell^2(1-w^2)^2/r^2$ comes from the tangential pressure, which does not depend on $w'$. So the sign of $r_{tt}$ is that of $-(1-\ell^2(1-w^2)^2/r^2)$, which by (i) equals $-2\ell^2w'^2$.
+\end{proof}
+
 
 So the throat is the only constant-area configuration that is not immediately driven to collapse, and any Yang--Mills ``bump'' along it, such as the soliton of (ii), starts the collapse described in \cref{ch:collapse}.
 
