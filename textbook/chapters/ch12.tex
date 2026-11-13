@@ -27,6 +27,19 @@ For any variation $\delta$ commuting with $\partial_t$ and $\partial_x$, with $\
 \]
 with explicit Euler--Lagrange expressions $E_N,\dots,E_w$ and boundary currents $\Theta^t,\Theta^x$.
 \end{theorem}
+\begin{proof}
+Write $q=(N,A,R,\beta,w)$ for the five fields. The Lagrangian \eqref{eq:reducedL} depends on the fields and on their first derivatives $\dot q$ and $q'$, but on no higher derivatives. For example, $v=\dot A-A'\beta-A\beta'$ is first order. By the chain rule,
+\[
+\delta L=\sum_q\Bigl(\frac{\partial L}{\partial q}\delta q+\frac{\partial L}{\partial\dot q}\,\partial_t\delta q+\frac{\partial L}{\partial q'}\,\partial_x\delta q\Bigr),
+\]
+where we used that $\delta$ commutes with $\partial_t$ and $\partial_x$. Rewrite the last two terms with the product rule, $f\,\partial_t\delta q=\partial_t(f\,\delta q)-(\partial_tf)\delta q$. This gives the stated form with
+\[
+E_q=\frac{\partial L}{\partial q}-\partial_t\frac{\partial L}{\partial\dot q}-\partial_x\frac{\partial L}{\partial q'},\qquad
+\Theta^t=\sum_q\frac{\partial L}{\partial\dot q}\,\delta q,\qquad\Theta^x=\sum_q\frac{\partial L}{\partial q'}\,\delta q .
+\]
+The coupling $\ell$ is constant, so it is not varied. The explicit expressions in synchronous gauge are worked out in the proof of \cref{thm:redEL}.
+\end{proof}
+
 
 \section{The five field equations}
 
@@ -48,6 +61,69 @@ In synchronous gauge,
 \]
 Since $A,R,\ell\ne0$ these relations are invertible, so all five Euler--Lagrange equations hold if and only if $\mathcal H=\mathcal M=\mathcal W=\mathcal K_x=\mathcal K_T=0$.
 \end{theorem}
+\begin{proof}
+Each $E_q$ is computed from the formula in the proof of \cref{thm:redvar}. The derivatives are taken first, and then $N=1$, $\beta=0$ is set (so also $N'=\dot N=0$, $u=\dot R$, $v=\dot A$). We use
+\[
+D_xR=\frac{R'}A,\qquad D_xD_xR=\frac{R''}{A^2}-\frac{A'R'}{A^3},\qquad K_x=-\frac{\dot A}A,\qquad K_T=-\frac{\dot R}R ,
+\]
+and write $Y=\dot w^2+w'^2/A^2$ and $P=(1-w^2)^2$.
+
+\emph{Expanding the residuals.} Multiplying out the definitions gives
+\begin{align*}
+R^2\mathcal H&=2\Bigl(1-\frac{R'^2}{A^2}\Bigr)-4R\,D_xD_xR+\frac{4R\dot A\dot R}A+2\dot R^2-4\ell^2\Bigl(Y+\frac P{2R^2}\Bigr),\\
+\mathcal M&=-\frac{2R'\dot A}{A^2R}+\frac{2\dot R'}{AR}+\frac{4\ell^2\dot w\,w'}{AR^2},\\
+\mathcal K_T&=-\frac{\ddot R}R-\frac{\dot R^2}{R^2}-\frac{1-R'^2/A^2}{R^2}+\frac{D_xD_xR}R-\frac{\dot A\dot R}{AR}+\frac{\ell^2P}{R^4},\\
+\mathcal K_x&=-\frac{\ddot A}A+\frac{2D_xD_xR}R-\frac{2\dot A\dot R}{AR}+\frac{2\ell^2Y}{R^2}-\frac{\ell^2P}{R^4}.
+\end{align*}
+In $\mathcal M$ the two terms $\pm2R'\dot R/(AR^2)$ have cancelled. In $\mathcal K_x$ and $\mathcal K_T$ the squares $\dot A^2/A^2$ and $\dot R^2/R^2$ coming from $\dot K$ have partly cancelled against $(K_x+2K_T)K$.
+
+\emph{$E_N$.} $N$ appears undifferentiated and through $N'$ in $4RN'R'/A$, so $E_N=\partial L/\partial N-\partial_x(4RR'/A)$:
+\[
+\begin{aligned}
+E_N={}&2A+\frac{2R'^2}A+2A\dot R^2+4R\dot R\dot A-\Bigl(\frac{4R'^2}A+\frac{4RR''}A-\frac{4RR'A'}{A^2}\Bigr)\\
+&-4\ell^2\Bigl(\frac{w'^2}A+A\dot w^2+\frac{AP}{2R^2}\Bigr).
+\end{aligned}
+\]
+Since $-4R\,D_xD_xR\cdot A=-4RR''/A+4RR'A'/A^2$, this is $A\cdot R^2\mathcal H$.
+
+\emph{$E_\beta$.} $\beta$ enters through $u$, $v$ and $\dot w_\beta$, with $\partial u/\partial\beta=-R'$, $\partial v/\partial\beta=-A'$, $\partial v/\partial\beta'=-A$ and $\partial\dot w_\beta/\partial\beta=-w'$. Hence
+\[
+\frac{\partial L}{\partial\beta}=4A\dot RR'+4RR'\dot A+4R\dot RA'-8\ell^2A\dot w\,w',\qquad\frac{\partial L}{\partial\beta'}=4AR\dot R .
+\]
+Subtract $\partial_x(4AR\dot R)=4A'R\dot R+4AR'\dot R+4AR\dot R'$:
+\[
+E_\beta=4RR'\dot A-4AR\dot R'-8\ell^2A\dot w\,w'=-2A^2R^2\mathcal M .
+\]
+
+\emph{$E_w$.} We have $\partial L/\partial w=8\ell^2Aw(1-w^2)/R^2$, $\partial L/\partial\dot w=8\ell^2A\dot w$ and $\partial L/\partial w'=-8\ell^2w'/A$. So
+\[
+E_w=\frac{8\ell^2Aw(1-w^2)}{R^2}-8\ell^2\partial_t(A\dot w)+8\ell^2\partial_x\Bigl(\frac{w'}A\Bigr)=-8\ell^2\mathcal W .
+\]
+
+\emph{$E_A$.} With $\partial L/\partial A'=0$ at $\beta=0$ and $\partial L/\partial\dot A=-4R\dot R$:
+\[
+E_A=2-\frac{2R'^2}{A^2}-2\dot R^2+4\ell^2\Bigl(Y-\frac P{2R^2}\Bigr)+\partial_t(4R\dot R)=2\Bigl(1-\frac{R'^2}{A^2}\Bigr)+2\dot R^2+4R\ddot R+4\ell^2\Bigl(Y-\frac P{2R^2}\Bigr).
+\]
+From the expansions above, $-4R^2\mathcal K_T-R^2\mathcal H$ is the same expression. In this sum the terms $R\,D_xD_xR$ and $R\dot A\dot R/A$ cancel between the two pieces.
+
+\emph{$E_R$.} We have $\partial L/\partial R=-4\dot R\dot A+4\ell^2AP/R^3$, $\partial L/\partial\dot R=-4A\dot R-4R\dot A$ and $\partial L/\partial R'=4R'/A$. Hence
+\[
+E_R=4\dot A\dot R+4A\ddot R+4R\ddot A-4A\,D_xD_xR+\frac{4\ell^2AP}{R^3}.
+\]
+On the other side, $-4AR(\mathcal K_x+\mathcal K_T)-2AR\,\mathcal H$ is computed term by term:
+\begin{itemize}[nosep]
+\item $\ddot A$, $\ddot R$: $4R\ddot A+4A\ddot R$;
+\item $\dot R^2$ and $1-R'^2/A^2$: each cancels;
+\item $D_xD_xR$: $(-12+8)A\,D_xD_xR$;
+\item $\dot A\dot R$: $(12-8)\dot A\dot R$;
+\item $Y$: cancels;
+\item $P$: $4\ell^2AP/R^3$.
+\end{itemize}
+This agrees with $E_R$.
+
+\emph{Equivalence.} The five relations form a triangular system. $E_N$ determines $\mathcal H$, then $E_A$ determines $\mathcal K_T$, then $E_R$ determines $\mathcal K_x$, while $E_\beta$ and $E_w$ determine $\mathcal M$ and $\mathcal W$. All the coefficients involved are nonzero.
+\end{proof}
+
 
 \section{The full four-dimensional check}
 
@@ -64,6 +140,49 @@ with all other ten components of $E_{\mu\nu}$ identically zero. Of the Yang--Mil
 \item combined with \cref{thm:redEL}, the full four-dimensional equations hold if and only if the five Euler--Lagrange equations of the reduced action hold.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+The Einstein part comes from the $2+2$ formulas of \cref{thm:einD} with $h=-\dd t^2+A^2\dd x^2$; the stress tensor comes from \cref{thm:ymstress} with $N=1$. We first collect the ingredients.
+
+\emph{Ingredients.} For $h$, the nonzero Christoffel symbols are $\Gamma^t_{xx}=A\dot A$, $\Gamma^x_{tx}=\dot A/A$ and $\Gamma^x_{xx}=A'/A$. Hence
+\[
+\nabla_t\nabla_tR=\ddot R,\qquad\nabla_t\nabla_xR=\dot R'-\frac{\dot A}AR',\qquad A^{-2}\nabla_x\nabla_xR=D_xD_xR-\frac{\dot A\dot R}A ,
+\]
+and so
+\[
+\Box R=-\ddot R+D_xD_xR-\frac{\dot A\dot R}A,\qquad(\nabla R)^2=-\dot R^2+\frac{R'^2}{A^2},\qquad{}^{(2)}\!R=\frac{2\ddot A}A .
+\]
+We use the expansions of $\mathcal H,\mathcal M,\mathcal K_x,\mathcal K_T$ written out in the proof of \cref{thm:redEL}, again with $Y=\dot w^2+w'^2/A^2$ and $P=(1-w^2)^2$.
+
+\emph{The five nonzero Einstein components.}
+\begin{itemize}
+\item $tt$: $G_{tt}=-\frac2R(\nabla_t\nabla_tR+\Box R)+\frac{1-(\nabla R)^2}{R^2}$. Inserting the ingredients gives
+\[
+G_{tt}=-\frac{2D_xD_xR}R+\frac{2\dot A\dot R}{AR}+\frac{1+\dot R^2-R'^2/A^2}{R^2}.
+\]
+With $2\ell^2\hat T_{tt}=2\ell^2\bigl(Y/R^2+P/(2R^4)\bigr)$, this gives $E_{tt}=\frac12\mathcal H$.
+\item $tx$: $G_{tx}=-\frac2R\nabla_t\nabla_xR=-\frac{2\dot R'}R+\frac{2\dot AR'}{AR}$. With $2\ell^2\hat T_{tx}=4\ell^2\dot w\,w'/R^2$, this gives $E_{tx}=-A\mathcal M$.
+\item $xx$: $\nabla_x\nabla_xR-A^2\Box R=A^2\ddot R$, so
+\[
+G_{xx}=-\frac{2A^2\ddot R}R-\frac{A^2(1+\dot R^2-R'^2/A^2)}{R^2}.
+\]
+Subtracting $2\ell^2\hat T_{xx}=2\ell^2A^2\bigl(Y/R^2-P/(2R^4)\bigr)$ and comparing with $A^2(2\mathcal K_T+\frac12\mathcal H)$ term by term shows that they agree.
+\item $\theta\theta$: $G_{\theta\theta}/R^2=\Box R/R-\frac12{}^{(2)}\!R=-\ddot R/R+D_xD_xR/R-\dot A\dot R/(AR)-\ddot A/A$. With $2\ell^2\hat T_{\theta\theta}/R^2=\ell^2P/R^4$, this is $\mathcal K_x+\mathcal K_T+\frac12\mathcal H$, whose $Y$ terms cancel.
+\item $\phi\phi$: the sphere metric gives $G_{\phi\phi}=\sin^2\theta\,G_{\theta\theta}$. In $\hat T_{\phi\phi}$ every term carries one more factor $\sin^2\theta$ than the corresponding term of $\hat T_{\theta\theta}$.
+\end{itemize}
+
+\emph{The ten vanishing Einstein components.} The warped-product formulas have no components mixing $(t,x)$ with an angle, and no $\theta\phi$ component. For $\hat T$, each mixed component is a sum of products $F^a_{\mu\lambda}F^a_{\nu\lambda'}g^{\lambda\lambda'}$ in which one factor is zero by the list in \cref{thm:ymstress}(i). For example, $\hat T_{t\theta}$ contains $F^1_{t\theta}F^1_{\theta\theta}=0$ and $F^2_{t\phi}F^2_{\theta\phi}=0$.
+
+\emph{The Yang--Mills components.} We use the densitised form $\partial_\mu(\sqrt{-g}F^{a\mu\nu})+\sqrt{-g}\,\epsilon_{abc}A^b_\mu F^{c\mu\nu}$ with $\sqrt{-g}=AR^2\sin\theta$. This is the normalisation in which the stated relations hold.
+\begin{itemize}
+\item $(1,\theta)$: $\sqrt{-g}F^{1t\theta}=-A\dot w\sin\theta$ and $\sqrt{-g}F^{1x\theta}=w'\sin\theta/A$. The only colour term is $\epsilon_{123}A^2_\phi\,\sqrt{-g}F^{3\phi\theta}=Aw(1-w^2)\sin\theta/R^2$. The sum is $-\sin\theta\,\mathcal W$.
+\item $(2,\phi)$: the same computation without the factor $\sin\theta$ gives $-\mathcal W$.
+\item $(1,t)$: $\partial_\theta(\sqrt{-g}F^{1\theta t})=\partial_\theta(A\dot w\sin\theta)=A\dot w\cos\theta$. The colour term is $\epsilon_{132}A^3_\phi\sqrt{-g}F^{2\phi t}=-\cos\theta\cdot A\dot w$. They cancel. The component $(1,x)$ is the same with $\dot w$ replaced by $w'$.
+\item $(1,\phi)$, $(2,\theta)$, $(2,t)$, $(2,x)$, and all four $(3,\nu)$: in each case either the densitised field has no dependence on the variable being differentiated, or every colour term contains a component that is zero in \cref{thm:ymstress}(i).
+\end{itemize}
+
+\emph{Conclusion.} (i) The five nonzero Einstein components are invertible combinations of $\mathcal H,\mathcal M,\mathcal K_x,\mathcal K_T$, and the two nonzero Yang--Mills components are multiples of $\mathcal W$. (ii) Combine (i) with \cref{thm:redEL}.
+\end{proof}
+
 
 Item (ii) is the statement that reduction commutes with variation for this ansatz, proved without using Palais's principle. The price is a computation with thirty-two curvature and stress components, which is exactly what formal verification is good at. The identically vanishing components are not a formality. They show that the magnetic ansatz is consistent, in the sense that it does not force any further condition on $N,A,R,w$.
 
@@ -86,6 +205,35 @@ L=c\Bigl[-\frac{a\dot b^2+2b\dot a\dot b}{N}+Na\Bigl(1-\frac{\ell^2}{b^2}\Bigr)\
 \item With a coordinate length $L_x$ in $x$, $\int_0^\pi\sin\theta\,\dd\theta=2$ and the normalisation is $c=L_x/(2G)$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} At $w=0$ the only nonzero field component is $F^3_{\theta\phi}=-\sin\theta$ (\cref{thm:ymstress}(i)). Hence
+\[
+\hat F^2=2g^{\theta\theta}g^{\phi\phi}\sin^2\theta=\frac2{b^4}.
+\]
+
+\emph{(ii)} This is \cref{thm:ghy} with $A=a(t)$, $R=b(t)$ and $N(t)$, so that all $x$-derivatives vanish:
+\[
+\frac{\sqrt{-g}\,R}{\sin\theta}=2aN-\frac{2a\dot b^2+4b\dot a\dot b}N+\partial_t\Bigl(\frac{2(\dot ab^2+2ab\dot b)}N\Bigr).
+\]
+The Yang--Mills term is
+\[
+-\frac{\sqrt{-g}\,\ell^2\hat F^2}{\sin\theta}=-Nab^2\cdot\frac{2\ell^2}{b^4}=-\frac{2Na\ell^2}{b^2}.
+\]
+The non-derivative part of the sum is $2\bigl[-(a\dot b^2+2b\dot a\dot b)/N+Na(1-\ell^2/b^2)\bigr]=2L/c$.
+
+\emph{(iii)} The unit normal is $n=N^{-1}\partial_t$. Using $\sqrt{-g}/N=ab^2\sin\theta$,
+\[
+K=\frac1{\sqrt{-g}}\partial_t\Bigl(\frac{\sqrt{-g}}N\Bigr)=\frac{\partial_t(ab^2)}{Nab^2}.
+\]
+Hence $\sqrt h\,K=\sin\theta\,(\dot ab^2+2ab\dot b)/N$, and $2\sqrt h\,K$ is exactly the quantity differentiated in (ii).
+
+\emph{(iv)} The action is $\frac1{16\pi G}\int\sqrt{-g}(R-\ell^2\hat F^2)$, since $\frac{16\pi G}{4g^2}=\ell^2$. After the boundary term is removed it equals
+\[
+\frac1{16\pi G}\int\dd t\cdot L_x\cdot2\pi\cdot2\cdot\frac{2L}c=\frac{L_x}{2Gc}\int L\,\dd t .
+\]
+This is $\int L\,\dd t$ exactly when $c=L_x/(2G)$.
+\end{proof}
+
 
 \begin{theorem}[Legendre transform and supermetric]\label{thm:kslegendre}\ver\
 \begin{enumerate}[label=(\roman*)]
@@ -96,6 +244,47 @@ L=c\Bigl[-\frac{a\dot b^2+2b\dot a\dot b}{N}+Na\Bigl(1-\frac{\ell^2}{b^2}\Bigr)\
 \item In the Laplace--Beltrami ordering, $b^2\cdot(-\frac{\hbar^2}2)\Delta_G\Psi=\frac1{4c}\bigl(-\hbar^2(a\Psi_{aa}+\Psi_a)+2\hbar^2b\Psi_{ab}\bigr)$; the first-order term comes from $\partial_a(\sqrt{G}G^{aa})=1/b$, and $\partial_b(\sqrt GG^{ab})=0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Differentiate $L=c\bigl[-(a\dot b^2+2b\dot a\dot b)/N+Na(1-\ell^2/b^2)\bigr]$ with respect to $\dot a$ and to $\dot b$.
+
+\emph{(ii)} First invert (i):
+\[
+\dot b=-\frac{Np_a}{2cb},\qquad\dot a=\frac{N(ap_a-bp_b)}{2cb^2}.
+\]
+Then
+\[
+a\dot b^2+2b\dot a\dot b=\frac{N^2}{4c^2b^2}\bigl(ap_a^2-2ap_a^2+2bp_ap_b\bigr)=-\frac{N^2(ap_a^2-2bp_ap_b)}{4c^2b^2}.
+\]
+Since $L$ is quadratic in the velocities, $p_a\dot a+p_b\dot b$ is twice its kinetic part. Therefore
+\[
+p_a\dot a+p_b\dot b-L=-\frac cN(a\dot b^2+2b\dot a\dot b)-cNa\Bigl(1-\frac{\ell^2}{b^2}\Bigr)
+=N\Bigl[\frac{ap_a^2-2bp_ap_b}{4cb^2}-ca\Bigl(1-\frac{\ell^2}{b^2}\Bigr)\Bigr]=N\mathcal H_{\mathrm{KS}} .
+\]
+Differentiating $L$ in $N$ gives $c(a\dot b^2+2b\dot a\dot b)/N^2+ca(1-\ell^2/b^2)$. By the line above this is $-\mathcal H_{\mathrm{KS}}$.
+
+\emph{(iii)} The second derivatives are $L_{\dot a\dot a}=0$, $L_{\dot a\dot b}=-2cb/N$ and $L_{\dot b\dot b}=-2ca/N$. The determinant is $0-(2cb/N)^2$. The inverse map is the formula at the start of (ii).
+
+\emph{(iv)} With the given $G$,
+\[
+\tfrac12G_{AB}\dot q^A\dot q^B=\tfrac12\bigl(-4cb\,\dot a\dot b-2ca\,\dot b^2\bigr)=-c(2b\dot a\dot b+a\dot b^2),
+\]
+which matches $L$ after division by $N$. Since $\det G=-4c^2b^2$,
+\[
+G^{-1}=\frac1{-4c^2b^2}\begin{pmatrix}-2ca&2cb\\2cb&0\end{pmatrix}=\begin{pmatrix}a/(2cb^2)&-1/(2cb)\\-1/(2cb)&0\end{pmatrix},
+\]
+and $\frac12G^{AB}p_Ap_B=\frac12\bigl(ap_a^2/(2cb^2)-p_ap_b/(cb)\bigr)$, as claimed.
+
+\emph{(v)} We have $\sqrt{|\det G|}=2cb$, so
+\[
+\sqrt G\,G^{aa}=\frac ab,\qquad\sqrt G\,G^{ab}=-1,\qquad\sqrt G\,G^{bb}=0 .
+\]
+Hence $\partial_a(\sqrt GG^{aa})=1/b$ and $\partial_b(\sqrt GG^{ab})=0$. The Laplace--Beltrami operator $\Delta_G\Psi=\frac1{\sqrt G}\partial_A(\sqrt GG^{AB}\partial_B\Psi)$ becomes
+\[
+\Delta_G\Psi=\frac1{2cb}\Bigl(\frac{\Psi_a}b+\frac ab\Psi_{aa}-2\Psi_{ab}\Bigr).
+\]
+Multiplying by $-\frac{\hbar^2}2b^2$ gives the stated operator.
+\end{proof}
+
 
 The supermetric has signature $(+,-)$, as for every minisuperspace model of gravity: one direction is timelike in the space of geometries. The Laplace--Beltrami ordering of (v) is the one we shall adopt when this model is quantised in Chapter~26.
 

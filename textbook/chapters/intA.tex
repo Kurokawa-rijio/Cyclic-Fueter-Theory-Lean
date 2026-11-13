@@ -25,6 +25,35 @@ with the subscript the hypercharge $Y$ and $Q=T_{3L}+Y$.
 \item $\sin^2\theta_W=\Tr T_{3L}^2/\Tr Q^2=\frac38$ for a complete generation, but $\frac14$ for the leptons alone.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Use $Q=T_3+Y$. The leptons:
+\begin{itemize}[nosep]
+\item $\nu_L$: $\frac12-\frac12=0$; \quad $e_L$: $-\frac12-\frac12=-1$;
+\item the right-handed partners are singlets, so $Q=Y$: $\nu_R$ has $Y=0$ and $e_R$ has $Y=-1$.
+\end{itemize}
+The quarks:
+\begin{itemize}[nosep]
+\item $u_L$: $\frac12+\frac16=\frac23$; \quad $d_L$: $-\frac12+\frac16=-\frac13$;
+\item $u_R$ and $d_R$ are the conjugates of $u^c$ and $d^c$, so their hypercharges are $\frac23$ and $-\frac13$, and these are also their charges.
+\end{itemize}
+
+\emph{(ii)} Weight each hypercharge by its multiplicity, which is $6,3,3,2,1$ for $Q_L,u^c,d^c,L,e^c$.
+\begin{align*}
+\textstyle\sum Y&=6\cdot\tfrac16+3\cdot(-\tfrac23)+3\cdot\tfrac13+2\cdot(-\tfrac12)+1=1-2+1-1+1=0,\\
+\textstyle\sum Y^3&=\tfrac{6}{216}-\tfrac{24}{27}+\tfrac{3}{27}-\tfrac{2}{8}+1=\tfrac{1-32+4-9+36}{36}=0 .
+\end{align*}
+For $\SU(2)^2U(1)$, sum $Y$ over doublets, counting each doublet once per colour: $3\cdot\frac16+(-\frac12)=0$. For $\SU(3)^2U(1)$, sum $Y$ over triplets, counting each triplet once per isospin component: $2\cdot\frac16-\frac23+\frac13=0$. The doublets are the three colours of $Q_L$ and the one $L$, four in all.
+
+\emph{(iii)} $T_3=\pm\frac12$ on each member of the four doublets and $0$ elsewhere, so $\Tr T_3^2=8\cdot\frac14=2$. For $\Tr Q^2$, add the squared charges of all states:
+\begin{itemize}[nosep]
+\item $u_L$ and $u^c$: $3\cdot\frac49$ each;
+\item $d_L$ and $d^c$: $3\cdot\frac19$ each;
+\item $e_L$ and $e^c$: $1$ each;
+\item the neutrinos: $0$.
+\end{itemize}
+The total is $\frac83+\frac23+2=\frac{16}3$, so $\sin^2\theta_W=2/\frac{16}3=\frac38$. For the leptons alone, $\Tr T_3^2=\frac12$ and $\Tr Q^2=2$, giving $\frac14$.
+\end{proof}
+
 
 The value $\frac38$ is the prediction of grand unification at the unification scale \cite{GeorgiGlashow1974}. It requires the quarks: it is a statement about the whole generation, not about any part of it.
 
@@ -39,6 +68,14 @@ Suppose the only internal symmetry were the $\SU(2)$ of unit quaternions acting 
 \item Then $Q=T_3$ and $\sin^2\theta_W=\Tr T_3^2/\Tr Q^2=1$, whatever the representation: no mixing.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} For pure quaternions $x$ and $a$, $ax-xa=2\,a\times x$, the vector cross product. So $x$ commutes with $i$ exactly when $x$ is parallel to $i$, and with $j$ exactly when $x$ is parallel to $j$. Both hold only for $x=0$.
+
+\emph{(ii)} By associativity $L_aL_b=L_{ab}$, so $[L_x,L_i]=L_{xi-ix}$. This vanishes exactly when $xi=ix$, and (i) applies.
+
+\emph{(iii)} With no hypercharge generator, $Q=T_3$. Then $\Tr T_3^2/\Tr Q^2=1$ in every representation.
+\end{proof}
+
 
 The missing generator is supplied by the right action. By \cref{thm:commutant} the right multiplications commute with the left ones and form a second $\su(2)$.
 
@@ -49,6 +86,22 @@ The missing generator is supplied by the right action. By \cref{thm:commutant} t
 \item With $M(\mathbf p)=m-\ii\bs\cdot\mathbf p$, $M(-\mathbf p)M(\mathbf p)=(m^2+|\mathbf p|^2)\mathbf 1$; hence $U(\mathbf p)=M(\mathbf p)/E$ satisfies $U(-\mathbf p)U(\mathbf p)=\mathbf 1$ and $\det U(\mathbf p)=1$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} This is associativity.
+
+\emph{(ii)} $(g_LXg_R^{-1})^{-1}=(g_R^{-1})^{-1}X^{-1}g_L^{-1}=g_RX^{-1}g_L^{-1}$.
+
+\emph{(iii)} Multiply out:
+\[
+M(-\mathbf p)M(\mathbf p)=(m+\ii\bs\cdot\mathbf p)(m-\ii\bs\cdot\mathbf p)=m^2+(\bs\cdot\mathbf p)^2=m^2+|\mathbf p|^2 ,
+\]
+since the cross terms cancel and $(\bs\cdot\mathbf p)^2=|\mathbf p|^2$. Divide by $E^2=m^2+|\mathbf p|^2$ to get $U(-\mathbf p)U(\mathbf p)=\mathbf 1$. For the determinant, write $M(\mathbf p)$ as a $2\times2$ matrix:
+\[
+\det M(\mathbf p)=(m-\ii p_3)(m+\ii p_3)-(-\ii)^2(p_1-\ii p_2)(p_1+\ii p_2)=m^2+p_3^2+p_1^2+p_2^2 .
+\]
+Hence $\det U=1$.
+\end{proof}
+
 
 Item (iii) shows that parity $\mathbf p\mapsto-\mathbf p$ acts on the hemisphere point $U(\mathbf p)$ of \cref{ch:hemisphere} by inversion. By (ii), inversion exchanges left and right. So parity exchanges $\SU(2)_L$ and $\SU(2)_R$, which is the left--right symmetric structure of Pati and Salam \cite{PatiSalam1974}.
 
@@ -63,6 +116,26 @@ Pati and Salam treat lepton number as a fourth colour, $\SU(4)_C\supset\SU(3)_c$
 \item $U(1)_{B-L}$ is anomaly free, $\sum(B-L)=\sum(B-L)^3=0$ over the sixteen states of a generation, but only if the right-handed neutrino is included; without it both sums equal $-1$ per generation and $-3$ for three generations.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Conjugating $D=\operatorname{diag}(d_1,d_2,d_3,d_4)$ by the permutation matrix of $(12)$ swaps $d_1$ and $d_2$. Commuting with it therefore forces $d_1=d_2$. Similarly $d_2=d_3$; call the common value $a$. Tracelessness gives $3a+d_4=0$.
+
+\emph{(ii)} For $\nu_L$ we have $T_{3L}=\frac12$, $T_{3R}=0$ and $B-L=-3a$, so $Q=\frac12-\frac{3a}2=0$ gives $a=\frac13$. Then:
+\begin{itemize}[nosep]
+\item $e_L$: $-\frac12-\frac12=-1$;
+\item $u_L$: $\frac12+\frac16=\frac23$;
+\item $d_L$: $-\frac12+\frac16=-\frac13$.
+\end{itemize}
+
+\emph{(iii)} In left-handed notation the sixteen states are:
+\begin{itemize}[nosep]
+\item $6$ states of $Q_L$ with $B-L=\frac13$;
+\item $6$ states of $u^c,d^c$ with $-\frac13$;
+\item $2$ states of $L$ with $-1$;
+\item $e^c$ and $\nu^c$ with $+1$.
+\end{itemize}
+The linear sum is $2-2-2+2=0$. The cubic sum is $\frac6{27}-\frac6{27}-2+2=0$. Removing $\nu^c$ subtracts $1$ from each sum, so each becomes $-1$, and $-3$ for three generations.
+\end{proof}
+
 
 \section{The sixteen of Spin(10)}
 
@@ -73,9 +146,40 @@ The Pati--Salam group $\SU(4)_C\times\SU(2)_L\times\SU(2)_R$ is locally $\SO(6)\
 \item There are sixteen weights. With $3(B-L)=-(e_0+e_1+e_2)$, $4T_{3L}=e_3+e_4$, $4T_{3R}=e_3-e_4$ and $Q=T_{3L}+T_{3R}+\frac12(B-L)$, so that $6Q=3e_3-(e_0+e_1+e_2)$, the charges $(6Q,3(B-L),4T_{3L},4T_{3R})$ of the sixteen weights are, up to order, those of one generation of left-handed Weyl fermions. The weights of the $\overline{\mathbf{16}}$ carry the opposite charges.
 \item Among the Cartan generators, those commuting with $\SU(3)_C\times\SU(2)_L$ are exactly the combinations of $T_{3R}$ and $B-L$.
 \item The charge operator $Q=T_{3L}+a\,T_{3R}+b\,(B-L)$ is fixed to $a=1$, $b=\frac12$ by requiring $\nu_L$ and $\nu^c$ to be neutral. If one only asks that each lepton doublet contain a neutral member, there are exactly four solutions, $(a,b)=(\pm1,\pm\frac12)$, related by relabelling.
-\item In the vector representation $\mathbf{10}$, the four $\SO(4)$ weights form the Higgs bidoublet $(1,2,2)$ with $(6Q,3Y)\in\{(6,3),(-6,-3),(0,-3),(0,3)\}$, and there are weights of $\mathbf{16}\cdot\mathbf{16}\cdot\mathbf{10}$ that sum to zero, as a Yukawa coupling requires.
+\item In the vector representation $\mathbf{10}$, the four $\SO(4)$ weights form the Higgs bidoublet $(1,2,2)$ with $(6Q,6Y)\in\{(6,3),(-6,-3),(0,-3),(0,3)\}$, and there are weights of $\mathbf{16}\cdot\mathbf{16}\cdot\mathbf{10}$ that sum to zero, as a Yukawa coupling requires.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Of the $2^5=32$ sign vectors, exactly half have an even number of minus signs. Write $s=e_0+e_1+e_2$, and classify by the number of minus signs among the colour components. The parity condition then fixes the parity of $(e_3,e_4)$.
+\begin{center}
+\begin{tabular}{cccccl}
+colour minus signs & $s$ & $B-L$ & $(e_3,e_4)$ & $(T_{3L},T_{3R})$ & states\\\hline
+$0$ & $3$ & $-1$ & $(+,+),(-,-)$ & $(\pm\frac12,0)$ & $\nu,e$\\
+$3$ & $-3$ & $1$ & $(+,-),(-,+)$ & $(0,\pm\frac12)$ & $e^c,\nu^c$\\
+$1$ (3 ways) & $1$ & $-\frac13$ & $(+,-),(-,+)$ & $(0,\pm\frac12)$ & $d^c,u^c$\\
+$2$ (3 ways) & $-1$ & $\frac13$ & $(+,+),(-,-)$ & $(\pm\frac12,0)$ & $u_L,d_L$
+\end{tabular}
+\end{center}
+Then $Q=T_{3L}+T_{3R}+\frac12(B-L)$ gives the following charges.
+\begin{itemize}[nosep]
+\item First row: $0$ and $-1$.
+\item Second row: $\pm\frac12+\frac12$, that is, $1$ for $e^c$ and $0$ for $\nu^c$.
+\item Third row: $\pm\frac12-\frac16$, that is, $\frac13$ for $d^c$ and $-\frac23$ for $u^c$.
+\item Fourth row: $\pm\frac12+\frac16$, that is, $\frac23$ and $-\frac13$.
+\end{itemize}
+This is one generation, $2+2+6+6=16$ states. Adding the three formulas gives $6Q=\frac32(e_3+e_4)+\frac32(e_3-e_4)-s=3e_3-s$. The weights of $\overline{\mathbf{16}}$ are the negatives of these, with an odd number of minus signs, so all their charges change sign.
+
+\emph{(ii)} A Cartan element $H=\sum c_iH_i$ commutes with the root vector $E_\alpha$ exactly when $\alpha(c)=0$. The roots of $\SU(3)_C$ are $\varepsilon_i-\varepsilon_j$ with $i,j\in\{0,1,2\}$, so we need $c_0=c_1=c_2$, which is the direction of $B-L$. The root of $\SU(2)_L$ is $\varepsilon_3+\varepsilon_4$, so we need $c_3+c_4=0$, which is the direction of $T_{3R}$.
+
+\emph{(iii)} Neutrality of $\nu_L$ ($T_{3L}=\frac12$, $T_{3R}=0$, $B-L=-1$) gives $\frac12-b=0$. Neutrality of $\nu^c$ ($T_{3L}=0$, $T_{3R}=-\frac12$, $B-L=1$) gives $-\frac a2+b=0$. Hence $b=\frac12$ and $a=1$.
+
+If one asks only that the doublet $L$ have a neutral member, then $\pm\frac12-b=0$, so $b=\pm\frac12$. Asking the same of the right doublet $(e^c,\nu^c)$ gives $\pm\frac a2+b=0$, so $a=\pm2b$. Altogether there are four sign choices, and changing the sign of $e_3$ or $e_4$ relabels them.
+
+\emph{(iv)} The vector weights are $\pm\varepsilon_i$. On $\pm\varepsilon_3,\pm\varepsilon_4$ we have $B-L=0$, $T_{3L}=\frac12(w_3+w_4)$ and $T_{3R}=\frac12(w_3-w_4)$. Hence $Q=w_3$ and $Y=T_{3R}=\frac12(w_3-w_4)$. The four weights $(w_3,w_4)=(1,0),(-1,0),(0,1),(0,-1)$ give $(6Q,6Y)=(6,3),(-6,-3),(0,-3),(0,3)$.
+
+For the Yukawa coupling, take the weights $e=(1,1,1,1,1)$ and $e'=(-1,-1,-1,-1,1)$. Both have an even number of minus signs: $e$ is $\nu_L$ and $e'$ is $\nu^c$. Their sum is $(0,0,0,0,2)$, which is cancelled by the vector weight $-\varepsilon_4$, in doubled units $(0,0,0,0,-2)$. This is the Dirac neutrino mass term.
+\end{proof}
+
 
 \section{The octonions: new results}
 
@@ -98,6 +202,24 @@ For imaginary units $e_1,\dots,e_7$, polarising $L_{\bar a}L_a=|a|^2$ gives $L_{
 \begin{theorem}[Left and right multiplication are the two paravector representations]\label{thm:octcl7}\txt\num\
 Both $\{L_{e_i}\}$ and $\{R_{e_i}\}$ generate representations of $\mathrm{Cl}_{0,7}$ on $\RR^8$. Their volume elements are $L_{e_1}\cdots L_{e_7}=-\mathbf 1$ and $R_{e_1}\cdots R_{e_7}=+\mathbf 1$ (in the Cayley--Dickson basis), so they are the two inequivalent irreducible modules of $\mathrm{Cl}_{0,7}\cong\Mat_8(\RR)\oplus\Mat_8(\RR)$. The Lie algebra generated by the $L_{e_i}$ alone is all of $\mathfrak{so}(8)$, of dimension $28$, whereas for quaternions the $L_i,L_j,L_k$ generate only $\su(2)$.
 \end{theorem}
+\begin{proof}
+\emph{Clifford relations.} For a unit imaginary $e_i$ we have $\bar e_i=-e_i$. By \cref{prop:octmat}, $L_{\bar e_i}L_{e_i}=1$, so $L_{e_i}^2=-1$. Apply the same identity to $a=e_i+e_j$ with $i\ne j$, for which $|a|^2=2$:
+\[
+-(L_{e_i}+L_{e_j})^2=2 .
+\]
+Expanding and using $L_{e_i}^2=L_{e_j}^2=-1$ gives $L_{e_i}L_{e_j}+L_{e_j}L_{e_i}=0$. The same argument works for $R$.
+
+\emph{Volume elements.} Let $\omega=L_{e_1}\cdots L_{e_7}$. Moving each factor past the others shows that $\omega$ commutes with every $L_{e_i}$, because $7$ is odd. The same reordering gives
+\[
+\omega^2=(-1)^{21}\prod_i L_{e_i}^2=(-1)^{21}(-1)^7=1 .
+\]
+The algebra $\mathrm{Cl}_{0,7}$ has dimension $2^7=128=2\cdot8^2$, so an $8$-dimensional module is irreducible. By Schur's lemma, the central element $\omega$ with $\omega^2=1$ acts as $+1$ or $-1$. Which sign occurs can be read off on the single vector $1$: there $\omega$ gives the nested product $e_1(e_2(\cdots(e_6e_7)))$, and for $R$ it gives $((e_7e_6)\cdots)e_1$. Evaluating these with the Cayley--Dickson table gives $-1$ and $+1$. The script \texttt{numerics/octonion\_spin10.py} prints this check. Isomorphic modules give the same value of $\omega$, so the two modules are inequivalent.
+
+\emph{The Lie algebra.} Each $L_{e_i}$ is antisymmetric, since $L_{e_i}^{\mathsf T}=L_{\bar e_i}=-L_{e_i}$. Each product $L_{e_i}L_{e_j}$ with $i<j$ is also antisymmetric, because $(L_{e_i}L_{e_j})^{\mathsf T}=L_{e_j}L_{e_i}=-L_{e_i}L_{e_j}$. This gives $7+21=28$ elements. They are linearly independent: the module map identifies a Clifford monomial only with the complementary monomial, so monomials of degree $1$ and $2$ stay independent. Hence they span $\mathfrak{so}(8)$, which has dimension $28$. The Lie algebra generated by the $L_{e_i}$ contains the commutators $[L_{e_i},L_{e_j}]=2L_{e_i}L_{e_j}$, so it is all of $\mathfrak{so}(8)$.
+
+For quaternions, by contrast, $L_iL_j=L_{ij}=L_k$ by associativity, so the three generators close on themselves.
+\end{proof}
+
 
 The last statement is the algebraic face of non-associativity: for quaternions $[L_a,L_b]=L_{[a,b]}$ closes on three generators, while for octonions the commutators of left multiplications are no longer left multiplications and fill out $\mathfrak{so}(8)$.
 
@@ -155,10 +277,40 @@ The construction of \cref{ch:lorentz}, Minkowski space as $2\times2$ Hermitian m
 \item In the vector representation, the sum of the three rotations of $\CC_I^\perp$, which is the direction of $B-L$ in $\SO(6)$, equals the complex structure $J=R_I$ on $\CC_I^\perp$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Write $L_j=L_{e_j}$, with $e_0=1$. Then
+\[
+\Gamma_i\Gamma_j+\Gamma_j\Gamma_i=\begin{pmatrix}L_iL_j^{\mathsf T}+L_jL_i^{\mathsf T}&0\\0&L_i^{\mathsf T}L_j+L_j^{\mathsf T}L_i\end{pmatrix}=2\delta_{ij}\mathbf 1 .
+\]
+The diagonal blocks follow by polarising $L_aL_a^{\mathsf T}=L_a^{\mathsf T}L_a=|a|^2$ (\cref{prop:octmat}), that is, by applying it to $a=e_i+e_j$. The matrix $\Gamma_8$ squares to $\mathbf 1$ and anticommutes with every block-off-diagonal $\Gamma_j$.
 
-\begin{proof}[Idea of proof]
-(i) follows from \cref{prop:octmat} by polarisation. (ii) is the computation $(\mp\ii v_0+\Gamma\cdot\mathbf v)(\pm\ii v_0+\Gamma\cdot\mathbf v)=v_0^2+|\mathbf v|^2$ with the bilinear square, using (i). (iii) follows as in \cref{thm:svformula}, noting that $\sigma(x)^\dagger\sigma(y)-\sigma(y)^\dagger\sigma(x)$ is traceless because the $\Gamma_j$ are. (iv) and (v) are finite computations, carried out in the script.
+\emph{(ii)} By (i), $(\Gamma\cdot\mathbf v)^2=\sum_kv_k^2$ with the bilinear square. The cross terms $\pm\ii v_0\,\Gamma\cdot\mathbf v$ cancel, so
+\[
+(-\ii v_0+\Gamma\cdot\mathbf v)(\ii v_0+\Gamma\cdot\mathbf v)=v_0^2+\textstyle\sum_kv_k^2=v\cdot v .
+\]
+The same holds in the other order. Hence $\gamma(v)^2=(v\cdot v)\mathbf 1$, which is the Clifford relation on $\CC^{32}$. In octonionic form, $\Gamma\cdot\mathbf v$ has the block $L_a$ with $a=\sum v_je_{j-1}$, the block $L_a^{\mathsf T}=L_{\bar a}$, and $\pm v_9$ on the diagonal.
+
+\emph{(iii)} We argue as in \cref{thm:svformula}. Write $v=x+\ii y$ with $x,y\in\RR^{10}$. Polarising (ii) gives
+\[
+\tilde\sigma(u)\sigma(w)+\tilde\sigma(w)\sigma(u)=2\,u\cdot w ,
+\]
+and the same for $\sigma\tilde\sigma$. Since $\sigma(v)^\dagger=\tilde\sigma(\bar v)$,
+\[
+\sigma(v)^\dagger\sigma(v)=(x\cdot x+y\cdot y)+\ii M,\qquad M=\tilde\sigma(x)\sigma(y)-\tilde\sigma(y)\sigma(x).
+\]
+The matrix $\ii M$ is Hermitian. It is traceless, because $\tr\tilde\sigma(x)\sigma(y)=16\,x\cdot y$ is symmetric in $x,y$.
+
+Replacing $y$ by its component orthogonal to $x$ does not change $M$, so assume $x\cdot y=0$. Then $\tilde\sigma(y)\sigma(x)=-\tilde\sigma(x)\sigma(y)$ and $\sigma(y)\tilde\sigma(x)=-\sigma(x)\tilde\sigma(y)$, so
+\[
+M^2=4\,\tilde\sigma(x)\sigma(y)\tilde\sigma(x)\sigma(y)=-4\,\tilde\sigma(x)\sigma(x)\tilde\sigma(y)\sigma(y)=-4|x|^2|y|^2 .
+\]
+In general, therefore, $(\ii M)^2=4(|x|^2|y|^2-(x\cdot y)^2)=\|v\|^4-|v\cdot v|^2$. A traceless Hermitian $16\times16$ matrix whose square is a scalar has the eigenvalues $\pm$ (square root) with multiplicity $8$ each.
+
+\emph{(iv)} The five Cartan generators act on disjoint pairs of the ten directions, so they commute. Each squares to $\frac14$, so its eigenvalues are $\pm\frac12$, and their product is fixed by the chirality of the $\mathbf{16}$. This gives sign vectors with an even number of minus signs, which are exactly the weights of \cref{thm:sixteen}. Matching the five planes to the labels requires diagonalising five commuting $16\times16$ matrices. We have done this numerically with the script \texttt{numerics/octonion\_spin10.py}, which prints the charge table of one generation; it is not a hand computation.
+
+\emph{(v)} In the vector representation, the rotation generator in the plane $(u,Ju)$ acts as $J$ on that plane and as zero elsewhere. The three planes are orthogonal and together span $\CC_I^\perp$, so the sum of the three generators is $J$ on $\CC_I^\perp$. The only convention involved is the orientation of each pair, which is fixed by taking the second vector to be $Ju$.
 \end{proof}
+
 
 \Cref{thm:octspin10} answers the question of this section in the affirmative, with an honest qualification. The structures involved, normed division algebras, $\Spin(9)$ acting on $\OO^2$, and the $1+3$ split of $\OO$, are known; see Baez and Huerta \cite{BaezHuerta2010}, Furey \cite{Furey2016} and Krasnov \cite{Krasnov2021} for recent work along these lines. What this section adds is the paravector viewpoint, in which left and right multiplications are the two Clifford modules and their nullity is measured by the singular-value formula, together with an explicit verification that the slice decomposition $\OO=\CC_I\oplus\CC^3$ produces the Pati--Salam split of $\RR^{10}$ and the $B-L$ generator. In this picture the $\RR^4$ of $\SO(4)=\SU(2)_L\times\SU(2)_R$ is the complex slice $\CC_I$ together with the two extra directions $v_0,v_9$, and the $\RR^6$ of $\SO(6)\supset\SU(3)_c\times U(1)_{B-L}$ is its complement. Whether this algebraic fact has dynamical content is \opn.
 
@@ -175,6 +327,33 @@ A Kaluza--Klein-style way to obtain $\SO(10)$ is as the isometry group of an int
 \item On the unit $S^9$, $\mathrm{scal}=9\cdot8=72$ and $\mathrm{scal}/4=18>0$, so $D\psi=0$ implies $\psi=0$: there are no zero modes. More generally any internal space of positive scalar curvature, for instance a convex hypersurface (all principal curvatures positive, so $\sum_{i\ne j}\kappa_i\kappa_j>0$; an ellipsoid has positive second fundamental form), has none.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} For symmetric $D$: $y\perp\operatorname{ran}D$ $\iff$ $\langle Dx,y\rangle=0$ for all $x$ $\iff$ $\langle x,Dy\rangle=0$ for all $x$ $\iff$ $Dy=0$. So the cokernel has the same dimension as the kernel, and the index $\dim\ker-\dim\operatorname{coker}$ vanishes. In odd dimension there is no chirality grading, so the Dirac operator acts on all spinors at once and is symmetric.
+
+\emph{(ii)} We use the convention $\gamma_a\gamma_b+\gamma_b\gamma_a=-2\delta_{ab}$. Write $\gamma_{bcd}$ for the totally antisymmetrised product. Then
+\[
+\gamma_b\gamma_c\gamma_d=\gamma_{bcd}-\delta_{bc}\gamma_d+\delta_{bd}\gamma_c-\delta_{cd}\gamma_b .
+\]
+To check it, test $b=c=d$, which gives $-\gamma_b$ on both sides, and the cases with exactly two equal indices.
+
+Contract with $R_{abcd}$. The $\gamma_{bcd}$ term vanishes: $\gamma_{bcd}$ is invariant under cyclic permutations of $(b,c,d)$, so this term is a third of the cyclic sum of $R_{abcd}$, which is zero by the Bianchi identity. The $\delta_{cd}$ term vanishes because $R_{abcc}=0$. The $\delta_{bc}$ term becomes $+\sum R_{abdb}\gamma_d$ after one swap of the last pair. Hence
+\[
+\sum_{bcd}R_{abcd}\gamma_b\gamma_c\gamma_d=2\sum_c\Bigl(\sum_bR_{abcb}\Bigr)\gamma_c .
+\]
+Multiply by $\gamma_a$ and sum over $a$. The coefficient matrix $\sum_bR_{abcb}$ is symmetric in $a,c$ by pair symmetry, so only $\frac12\{\gamma_a,\gamma_c\}=-\delta_{ac}$ survives, and the sum is $-2\sum_{a,b}R_{abab}$.
+
+Now use the two analytic inputs:
+\begin{itemize}[nosep]
+\item in a normal frame, $D^2=\sum\gamma_a\gamma_b\nabla_a\nabla_b=-\sum\nabla_a\nabla_a+\frac12\sum\gamma_a\gamma_b[\nabla_a,\nabla_b]$;
+\item the spinor curvature is $[\nabla_a,\nabla_b]=\frac14\sum R_{abcd}\gamma_c\gamma_d$.
+\end{itemize}
+Together these give $D^2=\nabla^*\nabla-\frac14\sum R_{abab}$. In the convention where $R_{abba}$ is the sectional curvature, the last term is $+\frac14\,\mathrm{scal}$. Pair with $\psi$ and integrate over the closed manifold to obtain the formula.
+
+\emph{(iii)} On the unit sphere every sectional curvature is $1$, so $\mathrm{scal}=n(n-1)=72$ for $n=9$. If $D\psi=0$, then $0=\|\nabla\psi\|^2+18\|\psi\|^2$, and both terms are nonnegative, so $\psi=0$.
+
+For a hypersurface, the Gauss equation makes the sectional curvature of the plane of two principal directions equal to $\kappa_i\kappa_j$. Hence $\mathrm{scal}=\sum_{i\ne j}\kappa_i\kappa_j$, which is positive when all $\kappa_i>0$. For the ellipsoid $F=\sum x_i^2/a_i^2=1$, the second fundamental form is the Hessian $\operatorname{diag}(2/a_i^2)$ restricted to the tangent space and divided by $|\nabla F|$. It is positive definite.
+\end{proof}
+
 
 This is a version of the well-known obstruction to obtaining chiral fermions from smooth compactifications \cite{Witten1981}. The lowest Dirac eigenvalue is nevertheless interesting, because its dependence on the shape measures how the ellipsoidal deformation is ``felt'' by fermions.
 
@@ -187,6 +366,64 @@ This is a version of the well-known obstruction to obtaining chiral fermions fro
 \item To first order the ellipsoidal deformation equals a diffeomorphism plus a conformal rescaling, the normalised eigenvalue is stationary to first order, and its second-order coefficient does not depend on the second-order part of the deformation. Hence, along the ellipsoidal family, the round sphere is a strict local minimum of the normalised lowest Dirac eigenvalue.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Write $H=H_0+tV+t^2W$, $\psi=\psi_0+t\psi_1+\dots$ and $E=E_0+tE_1+t^2E_2+\dots$, normalised so that $\langle\psi_1,\psi_0\rangle=0$. The equations at each order are:
+\[
+(H_0-E_0)\psi_1=(E_1-V)\psi_0,\qquad(H_0-E_0)\psi_2+(V-E_1)\psi_1+(W-E_2)\psi_0=0 .
+\]
+Take the inner product of both with $\psi_0$. The terms with $H_0-E_0$ drop out because $H_0$ is symmetric and $(H_0-E_0)\psi_0=0$. The first equation gives $E_1=\langle V\psi_0,\psi_0\rangle$. The second gives $E_2=\langle W\psi_0,\psi_0\rangle+\langle V\psi_1,\psi_0\rangle$.
+
+If $u=(V-E_1)\psi_0$ lies in a single eigenspace with $H_0-E_0=L$, then $\psi_1=-u/L$. Since $u\perp\psi_0$, this gives $E_2=\langle W\psi_0\rangle-\|u\|^2/L$. In an eigenbasis, $\psi_1=\sum_{m\ne0}\frac{V_{m0}}{E_0-E_m}\psi_m$, which gives the sum formula. For Hermitian $V$, $V_{0m}V_{m0}=|V_{m0}|^2$.
+
+\emph{(ii)} By conformal covariance of the Dirac operator, the eigenvalue problem of $g_t$ becomes $D\varphi=\lambda e^{tf}\varphi$ for the round $D$. Let $M$ be multiplication by $f$, and expand
+\[
+\lambda=a+t\lambda_1+t^2\lambda_2,\qquad\varphi=\psi+t\varphi_1+t^2\varphi_2 .
+\]
+\begin{itemize}
+\item Order $t$: $D\varphi_1=a\varphi_1+aM\psi+\lambda_1\psi$. Pairing with $\psi$ gives $\lambda_1=-a\langle\psi,f\psi\rangle$. This vanishes, because $|\psi|$ is constant and the mean of $f=X-\frac25$ is zero by (iii).
+\item Resolvent. With $u=f\psi$, check the formula directly:
+\[
+(D-a)\Bigl(\tfrac{n-1}Lu+\tfrac1Lw\Bigr)=\tfrac{n-1}Lw+\tfrac1L\Bigl(Lu-\tfrac{n-2}2w-\tfrac n2w\Bigr)=u .
+\]
+So $\varphi_1=a\bigl(\frac{n-1}Lu+\frac1Lw\bigr)$, up to a vector in the kernel of $D-a$ that is orthogonal to $u$.
+\item Order $t^2$: pairing with $\psi$ gives $\lambda_2=-a\langle u,\varphi_1\rangle-\frac a2\langle u,u\rangle$. With $\langle u,w\rangle=0$ and $\langle u,u\rangle=A$, this is
+\[
+\lambda_2=-a^2\frac{n-1}LA-\frac a2A=-\frac{n^2(n-1)}{4L}A-\frac n4A .
+\]
+\end{itemize}
+
+\emph{(iii)} Each input is a short computation.
+\begin{itemize}
+\item \emph{Clifford sandwich.} For $i\ne j$, $e_ie_je_i=e_j$, while $e_je_je_j=-e_j$. So $\sum_ie_ie_je_i=(n-1)e_j-e_j=(n-2)e_j$.
+\item \emph{Hessian.} For symmetric $H$, $\sum H_{ij}e_ie_j=-\tr H$, by splitting into the diagonal part and the anticommuting off-diagonal pairs.
+\item \emph{The two Dirac formulas.} Let $\nabla_X\psi=\mu X\cdot\psi$ be a Killing spinor. Then $D\psi=-n\mu\psi=a\psi$, so $\mu=-\frac12$, and $D(f\psi)=\dd f\cdot\psi+fD\psi=w+au$. Next,
+\[
+D(\dd f\cdot\psi)=\sum(\nabla^2f)_{ij}e_ie_j\psi+\mu\sum e_i\,\dd f\,e_i\psi=Lf\psi+\mu(n-2)\,\dd f\cdot\psi .
+\]
+Here $L=k(k+n-1)$ is the Laplace eigenvalue of the degree-$k$ harmonic $f$, and $\mu(n-2)=-\frac{n-2}2$.
+\item \emph{Constant norms and $\langle u,w\rangle$.} Clifford multiplication by a vector is skew, so $\langle x,Tx\rangle=0$ for it. This gives $X\langle\psi,\psi\rangle=2\mu\langle X\cdot\psi,\psi\rangle=0$, and $\langle u,w\rangle=\sum f\,\partial_if\,\langle\psi,e_i\psi\rangle=0$.
+\item \emph{Moments.} Write $S^9\ni y=(\cos\theta\,\omega,\sin\theta\,\eta)$ with $\omega\in S^3$ and $\eta\in S^5$. The volume element is $\cos^3\theta\sin^5\theta\,\dd\theta\,\dd\omega\,\dd\eta$. With $X=\cos^2\theta$ it becomes $\frac12X(1-X)^2\dd X$, so $E[X^k]=B(k+2,3)/B(2,3)$. Since $B(2,3)=\frac1{12}$, $B(3,3)=\frac1{30}$ and $B(4,3)=\frac1{60}$, we get $E[X]=\frac25$ and $E[X^2]=\frac15$. Hence $\operatorname{Var}X=\frac15-\frac4{25}=\frac1{25}$.
+\end{itemize}
+
+\emph{(iv)} For $k=2$ and $n=9$, $L=2\cdot10=20$. Then
+\[
+\lambda_2=-\tfrac{81}4\cdot\tfrac8{20}\cdot\tfrac1{25}-\tfrac94\cdot\tfrac1{25}=-\tfrac{648}{2000}-\tfrac{180}{2000}=-\tfrac{207}{500}.
+\]
+The volume is $\int e^{ntf}=V_0(1+\frac{n^2}2At^2+\dots)$, so $\mathrm{Vol}^{1/n}=1+\frac n2At^2+\dots$. The $t^2$ coefficient of $\lambda\,\mathrm{Vol}^{1/n}$ is
+\[
+a\cdot\frac n2A+\lambda_2=\frac{n^2}4A-\frac{n^2(n-1)}{4L}A-\frac n4A=\frac{n(n-1)}4\Bigl(1-\frac nL\Bigr)A .
+\]
+For $n=9$ this is $18\cdot\frac{11}{20}\cdot\frac1{25}=\frac{99}{250}$.
+
+\emph{(v)} This part combines algebra with standard external results.
+\begin{itemize}
+\item \emph{First order.} For $A=1+\varepsilon B$ with $B$ diagonal, expand $|Av|^2=|v|^2+2\varepsilon\langle v,Bv\rangle+\varepsilon^2|Bv|^2$. Composing with the diffeomorphism $x\mapsto Ax/|Ax|$ of the sphere, one finds that the induced metric is $e^{2\varepsilon\langle x,Bx\rangle}g_0+O(\varepsilon^2)$. For $B=\mathbf 1$ on $\RR^4$, the exponent is $|y_H|^2=f+\frac25$.
+\item \emph{Stationarity.} The Killing-spinor stress tensor is $T=-2\mu g|\psi|^2$, a pure trace. By the first-variation formula of Bourguignon and Gauduchon \ext, $\delta\lambda$ depends only on the mean of $\tr h$. That is exactly cancelled by $\delta\mathrm{Vol}$, so the normalised eigenvalue is stationary.
+\item \emph{Second order.} By analytic perturbation theory \ext, the second-order coefficient is $Q(h_1)+N'[h_2]=Q(h_1)$. It depends only on the first-order direction $h_1$, which is the conformal direction above, and the spectrum is diffeomorphism invariant. So it equals $\frac{99}{250}>0$.
+\end{itemize}
+Finally, $f(t)=f(0)+ct^2+o(t^2)$ with $c>0$ has a strict local minimum at $t=0$.
+\end{proof}
+
 
 The global question of whether the round sphere minimises the normalised eigenvalue among all ellipsoids is \opn; only the local statement is claimed.
 
@@ -197,14 +434,44 @@ If the internal space gives no zero modes, chirality must come from somewhere el
 \begin{proposition}[Domain walls]\label{prop:jackiwrebbi}\ver\
 For $f'=-mf$ with $M'=m$, the solution is unique: $f(y)=f(0)e^{M(0)-M(y)}$. For the kink $m=\tanh y$, $f_+=\operatorname{sech}y$ is normalisable, $\int_{-R}^R f_+^2=2\tanh R<2$, while $f_-=\cosh y$ is not, $\int_{-R}^Rf_-^2\ge2R$. Exactly one chirality is bound to the wall \cite{JackiwRebbi1976}.
 \end{proposition}
+\begin{proof}
+\emph{Uniqueness.} $(fe^{M})'=(f'+mf)e^M=0$, so $fe^M$ is constant, which is the formula.
+
+\emph{The kink.} For $m=\tanh y$ we take $M=\log\cosh y$. The mode solving $f'=-mf$ is then $f_+=e^{-M}=\operatorname{sech}y$. The other chirality solves $f'=+mf$, with solution $f_-=e^{M}=\cosh y$.
+
+\emph{Norms.} Since $(\tanh y)'=\operatorname{sech}^2y$, we get $\int_{-R}^R\operatorname{sech}^2y\,\dd y=2\tanh R<2$ for every $R$. On the other hand $\cosh^2y\ge1$, so $\int_{-R}^R\cosh^2y\,\dd y\ge2R\to\infty$.
+\end{proof}
+
 
 \begin{proposition}[Helicity on the celestial sphere]\label{prop:helicity}\ver\
 The hemisphere point $(m/E,\mathbf p/E)$ is a unit vector, $m/E>0$ iff $m>0$, and $m/E=0$ iff $m=0$: massless states live on the equator. The helicity-$h$ line bundles over the equatorial sphere have Chern numbers $2h=\pm1$, summing to zero for a massive particle. If bundles that extend over the hemisphere have Chern number zero \ext, then the bundles of Chern number $\pm1$ do not extend: massless chirality is topologically protected against acquiring a mass on its own.
 \end{proposition}
+\begin{proof}
+\emph{The hemisphere point.} $(m/E)^2+|\mathbf p/E|^2=(m^2+|\mathbf p|^2)/E^2=1$. Since $E>0$, $m/E$ has the sign of $m$ and vanishes exactly when $m=0$.
+
+\emph{Chern numbers.} The helicity-$h$ bundle on the equatorial sphere is the monopole bundle of charge $q=h$, so by \cref{thm:dirac} its Chern number is $2q=2h=\pm1$. A massive particle carries both helicities, with total $1+(-1)=0$.
+
+\emph{Extension.} The hemisphere is contractible. If every bundle on it is trivial, as assumed \ext, its restriction to the boundary sphere has Chern number $0$. A bundle with Chern number $\pm1$ therefore cannot be such a restriction.
+\end{proof}
+
 
 \begin{proposition}[Twisting by half the spin connection]\label{prop:twist}\ver\
 On the unit $S^2$ the spin connection $\omega_\phi=-\cos\theta$ has curvature $\sin\theta$, total flux $4\pi$ and Euler number $2$. Twisting by half of it gives charge $q=\frac12$. The candidate zero modes $\tan(\theta/2)^m\sin^{1/2}\theta$ are $L^2$ at both poles iff $m=0$, and the other chirality has none: exactly one zero mode.
 \end{proposition}
+\begin{proof}
+\emph{The spin connection.} For the frame $e^1=\dd\theta$, $e^2=\sin\theta\,\dd\phi$ we have $\dd e^2=\cos\theta\,\dd\theta\wedge\dd\phi$. Cartan's equation $\dd e^2=-\omega^2{}_1\wedge e^1$ gives $\omega^2{}_1=\cos\theta\,\dd\phi$, that is, $\omega_\phi=\omega^1{}_2(\partial_\phi)=-\cos\theta$. Its curvature is $\dd\omega=\sin\theta\,\dd\theta\wedge\dd\phi$, the area form, so the Gaussian curvature is $K=1$.
+
+\emph{Flux and charge.} The total flux is $\int_0^{2\pi}\!\int_0^\pi\sin\theta\,\dd\theta\,\dd\phi=4\pi$, and Gauss--Bonnet gives $\chi=4\pi/2\pi=2$. Half the connection has flux $2\pi$, so its charge is $q=\frac1{4\pi}\cdot2\pi=\frac12$.
+
+\emph{Zero modes.} In this normalisation, square integrability at the poles is integrability of $f(\theta)^2\,\dd\theta$. Near $\theta=0$,
+\[
+\tan(\theta/2)^{2m}\sin\theta\sim2^{-2m}\theta^{2m+1},
+\]
+which is integrable if and only if $2m+1>-1$, that is, $m>-1$. Near $\theta=\pi$, with $\tan(\theta/2)\sim2/(\pi-\theta)$, the same reasoning requires $m<1$. For an integer $m$ both hold only for $m=0$.
+
+\emph{The other chirality.} The candidate modes have $\sin^{-1/2}\theta$ instead of $\sin^{1/2}\theta$. The two endpoint conditions become $m>0$ and $m<0$, which are incompatible.
+\end{proof}
+
 
 Finally, the embedding of an $\mathfrak{so}(4)$ gauge field into $\mathfrak{so}(4+m)$ by $X\mapsto\operatorname{diag}(X,0)$ preserves antisymmetry, and the Yang--Mills equations, even with an additional $H\cdot F$ coupling, commute with the embedding: $A=\iota(\Omega)$ solves them if and only if $\Omega$ does. This is the four-dimensional analogue of the standard embedding of \cref{thm:spinwitten}.
 

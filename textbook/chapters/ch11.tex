@@ -20,6 +20,20 @@ Regard $\HH$ as a right module over itself, the natural setting for quaternionic
 \item The pure quaternions $\frac i2,\frac j2,\frac k2$ satisfy $[\tfrac i2,\tfrac j2]=\tfrac k2$ and cyclically: they are the structure constants $\epsilon_{abc}$ of $\su(2)$.
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\emph{(i)} Put $x=1$ in $T(xq)=T(x)q$: $T(q)=T(1)q$ for every $q$. Additivity is not needed.
+
+\emph{(ii)} $|T(1)|=|1|=1$.
+
+\emph{(iii)} For $|u|=1$, associativity gives $u(xq)=(ux)q$, and multiplicativity of the norm gives $|ux|=|u||x|=|x|$.
+
+\emph{(iv)} From $ij=k$ and $ji=-k$,
+\[
+\Bigl[\frac i2,\frac j2\Bigr]=\frac{ij-ji}4=\frac{2k}4=\frac k2 .
+\]
+The cyclic permutations $jk=i$ and $ki=j$ give the other two brackets. Hence $[e_a/2,e_b/2]=\epsilon_{abc}\,e_c/2$ with $(e_1,e_2,e_3)=(i,j,k)$.
+\end{proof}
+
 
 The group of symmetries is therefore the group of unit quaternions acting on the left, which is $\SU(2)$ by \cref{thm:rho}, and its Lie algebra has the structure constants $\epsilon_{abc}$ used in \cref{ch:fields}. The right action, which commutes with it (\cref{thm:commutant}), is what remains of the quaternionic scalars.
 
@@ -38,12 +52,72 @@ Gauge invariance means that $Q$ does not change when $\xi\mapsto\xi+tk$.
 \item $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ is invariant under $A\mapsto A+\dd\lambda$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Replace $\xi$ by $\xi+tk$. Then
+\[
+\xi\cdot\xi\mapsto\xi\cdot\xi+2t\,k\cdot\xi+t^2k\cdot k,\qquad k\cdot\xi\mapsto k\cdot\xi+t\,k\cdot k .
+\]
+Hence the change of the massless symbol is
+\[
+\begin{aligned}
+&a(k\cdot k)\bigl(2t\,k\cdot\xi+t^2k\cdot k\bigr)+b\bigl(2t(k\cdot k)(k\cdot\xi)+t^2(k\cdot k)^2\bigr)\\
+&\qquad=(a+b)\bigl(2t(k\cdot k)(k\cdot\xi)+t^2(k\cdot k)^2\bigr).
+\end{aligned}
+\]
+Choosing $k\cdot k\ne0$ and $t=1$ shows that invariance forces $a+b=0$; conversely $a+b=0$ makes the change zero. With $b=-a$,
+\[
+Q=a\bigl((k\cdot k)(\xi\cdot\xi)-(k\cdot\xi)^2\bigr).
+\]
+On the other hand, for $F_{\mu\nu}=k_\mu\xi_\nu-k_\nu\xi_\mu$,
+\[
+F_{\mu\nu}F^{\mu\nu}=2(k\cdot k)(\xi\cdot\xi)-2(k\cdot\xi)^2 .
+\]
+So $Q=\frac a2F_{\mu\nu}F^{\mu\nu}$.
+
+\emph{(ii)} The mass term adds $m^2(2t\,k\cdot\xi+t^2k\cdot k)$ to the change. The coefficient of $t^2$ in the change is then
+\[
+(k\cdot k)\bigl((a+b)\,k\cdot k+m^2\bigr).
+\]
+For this to vanish for two different nonzero values of $k\cdot k$, we need $a+b=0$ and $m^2=0$. The converse is (i).
+
+\emph{(iii)} The change of $F_{\mu\nu}$ is $\partial_\mu\partial_\nu\lambda-\partial_\nu\partial_\mu\lambda=0$.
+\end{proof}
+
 
 The same reasoning applied to a symmetric tensor $h_{\mu\nu}$ with the linearised diffeomorphisms $\delta h_{\mu\nu}=k_\mu\xi_\nu+k_\nu\xi_\mu$ singles out linearised general relativity.
 
 \begin{theorem}[Fierz--Pauli]\label{thm:fierzpauli}\ver\
 The general quadratic symbol $c_0(k\cdot k)h_{\mu\nu}h^{\mu\nu}+c_1|k\cdot h|^2+c_2\,(\tr h)(k\cdot h\cdot k)+c_3(k\cdot k)(\tr h)^2$ is invariant under linearised diffeomorphisms if and only if $c_1=-2c_0$, $c_2=2c_0$, $c_3=-c_0$.
 \end{theorem}
+\begin{proof}
+Write the four monomials with the notation $(k\cdot h)_\nu=k^\mu h_{\mu\nu}$ and $khk=k^\mu h_{\mu\nu}k^\nu$:
+\[
+T_0=(k\cdot k)\,h\cdot h,\quad T_1=(k\cdot h)\cdot(k\cdot h),\quad T_2=(\tr h)\,khk,\quad T_3=(k\cdot k)(\tr h)^2 .
+\]
+For $\delta h_{\mu\nu}=k_\mu\xi_\nu+k_\nu\xi_\mu$ we need four elementary contractions:
+\[
+\tr\delta h=2k\cdot\xi,\qquad (k\cdot\delta h)_\nu=(k\cdot k)\xi_\nu+(k\cdot\xi)k_\nu,\qquad k\,\delta h\,k=2(k\cdot k)(k\cdot\xi),\qquad h\cdot\delta h=2\,kh\xi .
+\]
+The parts of the variations that are linear in $\delta h$ are then:
+\begin{align*}
+\delta T_0&=4(k\cdot k)\,kh\xi,\\
+\delta T_1&=2(k\cdot k)\,kh\xi+2(k\cdot\xi)\,khk,\\
+\delta T_2&=2(k\cdot\xi)\,khk+2(k\cdot k)(k\cdot\xi)\tr h,\\
+\delta T_3&=4(k\cdot k)(k\cdot\xi)\tr h .
+\end{align*}
+Collect the three independent monomials:
+\begin{itemize}[nosep]
+\item $(k\cdot k)\,kh\xi$: $4c_0+2c_1=0$;
+\item $(k\cdot\xi)\,khk$: $2c_1+2c_2=0$;
+\item $(k\cdot k)(k\cdot\xi)\tr h$: $2c_2+4c_3=0$.
+\end{itemize}
+Solving gives $c_1=-2c_0$, $c_2=2c_0$, $c_3=-c_0$.
+
+The three monomials really are independent. Take $k\cdot\xi=0$ with $kh\xi\ne0$ to isolate the first. Then take $k\cdot\xi\ne0$ and choose $h$ traceless with $khk\ne0$, or with $khk=0$ and $\tr h\ne0$, to isolate the other two. So these three equations are necessary.
+
+They are also sufficient. The first-order variation is the polarisation of the quadratic form, so if it vanishes for every $h$, the second-order term (the form evaluated on $\delta h$) vanishes as well. Hence the symbol is exactly invariant.
+\end{proof}
+
 
 These are the relative coefficients of the quadratic part of the Einstein--Hilbert action \cite{FierzPauli1939}; the passage to the full nonlinear action is Lovelock's theorem \ext\ \cite{Lovelock1971}.
 
@@ -57,6 +131,43 @@ For non-Abelian fields the question is what coefficient $c$ multiplies the commu
 \item The topological density is a total derivative: $\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}=4\,\partial_\mu(\epsilon^{\mu\nu\rho\sigma}A_\nu\partial_\rho A_\sigma)$ for an Abelian field, so it does not affect the field equations.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+Let the infinitesimal transformation be $\delta A^a_\mu=\partial_\mu\varepsilon^a+\epsilon_{abc}A^b_\mu\varepsilon^c$. Its form does not depend on $c$. Write $u=A_\mu$, $v=A_\nu$ and $w=\varepsilon$ as vectors in colour space, so that $\epsilon_{abc}X^bY^c=(X\times Y)^a$.
+
+\emph{(i)} By the Leibniz rule,
+\[
+\delta F^a_{\mu\nu}=\partial_\mu\delta A^a_\nu-\partial_\nu\delta A^a_\mu+c\,\epsilon_{abe}\bigl(\delta A^b_\mu A^e_\nu+A^b_\mu\delta A^e_\nu\bigr).
+\]
+Sort the terms into three kinds.
+\begin{itemize}[nosep]
+\item \emph{Second derivatives of $\varepsilon$:} $\partial_\mu\partial_\nu\varepsilon^a-\partial_\nu\partial_\mu\varepsilon^a=0$.
+\item \emph{First derivatives of $\varepsilon$:} the abelian part gives $\epsilon_{abe}(A^b_\nu\partial_\mu\varepsilon^e-A^b_\mu\partial_\nu\varepsilon^e)$. The $c$ part gives $c\,\epsilon_{abe}(\partial_\mu\varepsilon^bA^e_\nu+A^b_\mu\partial_\nu\varepsilon^e)$. After the swap $b\leftrightarrow e$ in the first of these, this is $c\,\epsilon_{abe}(A^b_\mu\partial_\nu\varepsilon^e-A^b_\nu\partial_\mu\varepsilon^e)$. Together they give $(c-1)X^a_{\mu\nu}$ with
+\[
+X^a_{\mu\nu}=\epsilon_{abe}\bigl(A^b_\mu\partial_\nu\varepsilon^e-A^b_\nu\partial_\mu\varepsilon^e\bigr).
+\]
+\item \emph{No derivatives of $\varepsilon$:} the abelian part gives $\epsilon_{abe}(\partial_\mu A^b_\nu-\partial_\nu A^b_\mu)\varepsilon^e$. The $c$ part gives $c\bigl((u\times w)\times v+u\times(v\times w)\bigr)$. By the Jacobi identity $u\times(v\times w)+v\times(w\times u)+w\times(u\times v)=0$, and $(u\times w)\times v=v\times(w\times u)$, this bracket equals $(u\times v)\times w$.
+\end{itemize}
+In the third kind, $(u\times v)^b=\epsilon_{bfg}A^f_\mu A^g_\nu$ is the quadratic part of $F^b$. So the third kind is exactly $\epsilon_{abe}F^b_{\mu\nu}\varepsilon^e$.
+
+\emph{(ii)} Covariance for all configurations means $(c-1)X=0$ for all $A$ and $\varepsilon$. Take $A^2_0=1$ with all other components zero, and $\varepsilon^3=x^1$ with the others zero. Then
+\[
+X^1_{01}=\epsilon_{123}A^2_0\,\partial_1x^1=1 ,
+\]
+so $c=1$.
+
+\emph{(iii)} For $c=1$, $\sum_aF^a\,\delta F^a=\epsilon_{abe}F^aF^b\varepsilon^e=0$, because $\epsilon_{abe}$ is antisymmetric in $a,b$ while $F^aF^b$ is symmetric. Hence $\delta(F^aF^a)=2F^a\delta F^a=0$.
+
+\emph{(iv)} Write $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$. Contracted with the totally antisymmetric $\epsilon^{\mu\nu\rho\sigma}$, each $F$ contributes a factor $2$:
+\[
+\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}=4\,\epsilon^{\mu\nu\rho\sigma}\partial_\mu A_\nu\,\partial_\rho A_\sigma .
+\]
+On the other hand,
+\[
+\partial_\mu\bigl(\epsilon^{\mu\nu\rho\sigma}A_\nu\partial_\rho A_\sigma\bigr)=\epsilon^{\mu\nu\rho\sigma}\partial_\mu A_\nu\partial_\rho A_\sigma+\epsilon^{\mu\nu\rho\sigma}A_\nu\partial_\mu\partial_\rho A_\sigma ,
+\]
+and the last term vanishes because $\partial_\mu\partial_\rho$ is symmetric in $\mu\rho$ while $\epsilon$ is antisymmetric.
+\end{proof}
+
 
 Item (ii) is the core of Utiyama's argument \cite{Utiyama1956}: the quadratic term in the field strength, and hence the self-interaction of Yang--Mills fields, is not a choice but a consequence of local gauge covariance.
 
@@ -71,6 +182,48 @@ For $\dd s^2=-N^2\dd t^2+A^2\dd x^2+R^2\dd\Omega^2$ with arbitrary $N,A,R$ of $(
 \]
 where $L_1=2AN-\frac{2AR_t^2}{N}-\frac{4RA_tR_t}{N}+\frac{2NR_x^2}{A}+\frac{4RN_xR_x}{A}$ contains only first derivatives, $\sqrt h\,K_t=(A_tR^2+2ARR_t)/N$ for the surfaces $t=$ const and $\sqrt{-\gamma}\,K_x=(N_xR^2+2NRR_x)/A$ for $x=$ const. The analogous identity for a closed FRW universe holds as well.
 \end{theorem}
+\begin{proof}
+The input is the scalar curvature of the metric. Taking the trace of the Einstein tensor of \cref{thm:einD} and using ${}^{(4)}\!R=-G^\mu{}_\mu$ gives the warped-product formula
+\[
+{}^{(4)}\!R={}^{(2)}\!R-\frac{4\,\Box R}{R}+\frac{2\bigl(1-(\nabla R)^2\bigr)}{R^2}.
+\]
+Multiply by $\sqrt{-g}/\sin\theta=NAR^2$ and write it out (dots are $\partial_t$, primes are $\partial_x$):
+\[
+\begin{aligned}
+\frac{\sqrt{-g}\,R}{\sin\theta}={}&2AN+\frac{4AR\ddot R+2A\dot R^2+2R^2\ddot A+4R\dot A\dot R}{N}-\frac{4AR\dot N\dot R+2R^2\dot A\dot N}{N^2}\\
+&-\frac{4NRR''+2NR'^2+2R^2N''+4RN'R'}{A}+\frac{4NRA'R'+2R^2A'N'}{A^2}.
+\end{aligned}
+\]
+The theorem is the statement that this expression rearranges as claimed, and the rearrangement is pure Leibniz rule. First,
+\[
+\begin{aligned}
+\partial_t\Bigl(\frac{2(\dot AR^2+2AR\dot R)}N\Bigr)={}&\frac{2R^2\ddot A+8R\dot A\dot R+4A\dot R^2+4AR\ddot R}{N}\\
+&-\frac{2R^2\dot A\dot N+4AR\dot R\dot N}{N^2}.
+\end{aligned}
+\]
+Second,
+\[
+\begin{aligned}
+\partial_x\Bigl(-\frac{2(N'R^2+2NRR')}A\Bigr)={}&-\frac{2R^2N''+8RN'R'+4NR'^2+4NRR''}{A}\\
+&+\frac{2R^2A'N'+4NRR'A'}{A^2}.
+\end{aligned}
+\]
+Add $L_1$ and compare coefficients with the expression above.
+\begin{itemize}[nosep]
+\item Terms with second derivatives, and the terms with $1/N^2$ or $1/A^2$, occur only in the two total derivatives, and they match term by term.
+\item $A\dot R^2/N$: $-2+4=2$. \quad $R\dot A\dot R/N$: $-4+8=4$.
+\item $NR'^2/A$: $2-4=-2$. \quad $RN'R'/A$: $4-8=-4$.
+\item $2AN$ appears once on each side.
+\end{itemize}
+So the identity holds.
+
+For the closed FRW metric $-\dd t^2+a^2\dd\Omega_3^2$ the same reasoning reads
+\[
+a^2\ddot a+a\dot a^2+a=(a^2\dot a)^{\displaystyle\cdot}-a\dot a^2+a ,
+\]
+since $(a^2\dot a)^{\displaystyle\cdot}=2a\dot a^2+a^2\ddot a$. The second derivative sits only in the total derivative.
+\end{proof}
+
 
 The two total derivatives are exactly what the Gibbons--Hawking--York term cancels, so the Einstein--Hilbert action plus its boundary term equals $\frac1{16\pi G}\int L_1$, a first-order Lagrangian in $N$, $A$ and $R$. This is the starting point for the reduction of Chapter~12.
 
@@ -85,6 +238,27 @@ Let $p_i=\partial L/\partial\dot q_i$ satisfy the Euler--Lagrange equations $\do
 \item for a field, $\partial_\mu F^{\mu\nu}=j^\nu$ with $F$ antisymmetric implies $\partial_\nu j^\nu=0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+By the product rule, the Euler--Lagrange equations and the symmetry condition,
+\[
+\frac{\dd}{\dd t}\sum_ip_iK_i=\sum_i\bigl(\dot p_iK_i+p_i\dot K_i\bigr)=\sum_i\Bigl(\frac{\partial L}{\partial q_i}K_i+p_i\dot K_i\Bigr)=0 .
+\]
+
+\emph{(i)} Take $K_i=\delta_{ij}$. Then $\dot K=0$, and the symmetry condition reads $\partial L/\partial q_j=0$, which says that $q_j$ is cyclic. The conserved quantity is $p_j$.
+
+\emph{(ii)} For $L(q,v)$ with $v=\dot q$, the chain rule gives $\frac{\dd L}{\dd t}=\frac{\partial L}{\partial q}v+\frac{\partial L}{\partial v}\dot v$. Hence
+\[
+\frac{\dd E}{\dd t}=\dot v\frac{\partial L}{\partial v}+v\frac{\dd}{\dd t}\frac{\partial L}{\partial v}-\frac{\partial L}{\partial q}v-\frac{\partial L}{\partial v}\dot v=v\Bigl(\frac{\dd}{\dd t}\frac{\partial L}{\partial v}-\frac{\partial L}{\partial q}\Bigr)=0 .
+\]
+
+\emph{(iii)} Differentiate and insert the equation of motion:
+\[
+\frac{\dd}{\dd t}m(q_0\dot q_1-q_1\dot q_0)=m(\dot q_0\dot q_1+q_0\ddot q_1-\dot q_1\dot q_0-q_1\ddot q_0)=q_0fq_1-q_1fq_0=0 .
+\]
+
+\emph{(iv)} $\partial_\nu j^\nu=\partial_\nu\partial_\mu F^{\mu\nu}=0$ by the symmetry argument of \cref{thm:bianchi}.
+\end{proof}
+
 
 \section{The spin connection of a spherical slice}
 
@@ -97,6 +271,40 @@ The connection one-forms of the frame above are antisymmetric and torsion free, 
 \]
 Under the isomorphism $\mathfrak{so}(3)\cong\su(2)$ this is precisely the magnetic Yang--Mills ansatz \eqref{eq:magansatz} with $w=r'$. Similarly, in a left-invariant frame on the unit three-sphere, $\dd e^a=-\epsilon_{abc}e^b\wedge e^c$ and the spin connection is $\omega^a{}_{bc}=-\epsilon_{abc}$.
 \end{theorem}
+\begin{proof}
+The proof has three parts: compute the exterior derivatives of the frame, check Cartan's first structure equation, and identify the Lie algebras.
+
+\emph{Exterior derivatives.} Write $e^s=\dd s$, $e^\theta=r\,\dd\theta$ and $e^\phi=r\sin\theta\,\dd\phi$. Then
+\[
+\dd e^s=0,\qquad\dd e^\theta=r'\,\dd s\wedge\dd\theta,\qquad\dd e^\phi=r'\sin\theta\,\dd s\wedge\dd\phi+r\cos\theta\,\dd\theta\wedge\dd\phi .
+\]
+
+\emph{Torsion.} The proposed one-forms are antisymmetric by definition: $\omega^s{}_\theta=-\omega^\theta{}_s$, and so on. Check Cartan's first equation $\dd e^a=-\omega^a{}_b\wedge e^b$:
+\begin{align*}
+-\omega^s{}_\theta\wedge e^\theta-\omega^s{}_\phi\wedge e^\phi&=r'\dd\theta\wedge r\dd\theta+r'\sin\theta\,\dd\phi\wedge r\sin\theta\,\dd\phi=0,\\
+-\omega^\theta{}_s\wedge e^s-\omega^\theta{}_\phi\wedge e^\phi&=-r'\dd\theta\wedge\dd s+\cos\theta\,\dd\phi\wedge r\sin\theta\,\dd\phi=r'\dd s\wedge\dd\theta,\\
+-\omega^\phi{}_s\wedge e^s-\omega^\phi{}_\theta\wedge e^\theta&=-r'\sin\theta\,\dd\phi\wedge\dd s-\cos\theta\,\dd\phi\wedge r\dd\theta\\
+&=r'\sin\theta\,\dd s\wedge\dd\phi+r\cos\theta\,\dd\theta\wedge\dd\phi .
+\end{align*}
+These are the exterior derivatives above. An antisymmetric, torsion-free connection is unique, so this is the Levi-Civita connection.
+
+\emph{Identification.} Let $M_1,M_2,M_3$ be the rotation generators in the $(\theta,s)$, $(\phi,s)$ and $(\phi,\theta)$ planes. As matrices, $M_1=E_{\theta s}-E_{s\theta}$, and similarly for the other two. A short matrix multiplication gives
+\[
+[M_1,M_2]=M_3,\qquad[M_2,M_3]=M_1,\qquad[M_3,M_1]=M_2 .
+\]
+These are the relations of $\frac i2,\frac j2,\frac k2$ in \cref{prop:gaugegroup}(iv). So $M_a\mapsto e_a/2$ is a Lie algebra isomorphism. Under it,
+\[
+\omega=r'\dd\theta\,M_1+r'\sin\theta\,\dd\phi\,M_2+\cos\theta\,\dd\phi\,M_3
+\]
+becomes $A^1=r'\dd\theta$, $A^2=r'\sin\theta\,\dd\phi$, $A^3=\cos\theta\,\dd\phi$. This is \eqref{eq:magansatz} with $w=r'$.
+
+\emph{Three-sphere.} With $\omega^a{}_b=-\epsilon_{abc}e^c$, which is antisymmetric in $a,b$,
+\[
+-\omega^a{}_b\wedge e^b=\epsilon_{abc}\,e^c\wedge e^b=-\epsilon_{abc}\,e^b\wedge e^c=\dd e^a ,
+\]
+so this connection is torsion free.
+\end{proof}
+
 
 In words: for any spherically symmetric slice, the geometry itself supplies an $\SU(2)$ gauge field of exactly the Witten form, with $w$ equal to the slope $r'$ of the areal radius. Identifying the Yang--Mills field with the spin connection is the ``standard embedding'' familiar from string compactifications \cite{CHSW1985}; here it arises in four-dimensional Einstein--Yang--Mills theory. Two values are special. At an equator of a round sphere, where $r'=0$, the spin connection is the embedded Dirac monopole $w=0$. In flat space, where $r'=1$, it is the vacuum $w=1$. We shall see in Chapter~18 that the condition $w=\pm r'$ is not an assumption but the equality case of an inequality.
 
@@ -115,6 +323,14 @@ the natural unit of length of the theory, used for instance in the Bartnik--McKi
 \begin{proposition}[The size of $\ell$]\label{prop:ellsize}\ver\
 With $\ell_P^2=G$ and $\alpha=g^2/(4\pi)$, $\alpha\,\ell^2=\ell_P^2$. Consequently, if the coupling is strong, $\alpha\ge\alpha_0>0$, then $\ell^2\le\ell_P^2/\alpha_0$; and if $\ell$ is classically large, $\ell\ge L$, then $\alpha\le\ell_P^2/L^2$. The two cannot hold at once for $L\gg\ell_P$.
 \end{proposition}
+\begin{proof}
+Multiply the definitions:
+\[
+\alpha\ell^2=\frac{g^2}{4\pi}\cdot\frac{4\pi G}{g^2}=G=\ell_P^2 .
+\]
+If $\alpha\ge\alpha_0>0$, then $\ell^2=\ell_P^2/\alpha\le\ell_P^2/\alpha_0$. If $\ell\ge L>0$, then $\alpha=\ell_P^2/\ell^2\le\ell_P^2/L^2$. Both together would give $\alpha_0\le\ell_P^2/L^2$, that is, $L^2\le\ell_P^2/\alpha_0$. This fails as soon as $L$ is larger than $\ell_P/\sqrt{\alpha_0}$, which is what ``$L\gg\ell_P$'' means for a coupling $\alpha_0$ of order one.
+\end{proof}
+
 
 So a classical geometry of size $\ell$ requires a weakly coupled gauge field, and a strongly coupled one lives at the Planck scale. Nothing in this book fixes the value of $\alpha$; in particular the fine-structure constant is not derived.
 

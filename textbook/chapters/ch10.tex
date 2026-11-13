@@ -17,6 +17,27 @@ The field strength of a potential $A_\mu$ is $F_{\mu\nu}=\partial_\mu A_\nu-\par
 \begin{theorem}[The Bianchi identity and its consequences]\label{thm:bianchi}\ver\
 For every $A_\mu$: $\partial_\lambda F_{\mu\nu}+\partial_\mu F_{\nu\lambda}+\partial_\nu F_{\lambda\mu}=0$. In terms of $\mathbf E$ and $\mathbf B$ this is $\nabla\cdot\mathbf B=0$ and $\nabla\times\mathbf E+\partial_t\mathbf B=0$. Moreover $\partial_\nu\partial_\mu F^{\mu\nu}=0$ identically.
 \end{theorem}
+\begin{proof}
+Substitute $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ into the cyclic sum:
+\[
+\begin{aligned}
+&\partial_\lambda\partial_\mu A_\nu-\partial_\lambda\partial_\nu A_\mu
++\partial_\mu\partial_\nu A_\lambda-\partial_\mu\partial_\lambda A_\nu
++\partial_\nu\partial_\lambda A_\mu-\partial_\nu\partial_\mu A_\lambda .
+\end{aligned}
+\]
+Since partial derivatives commute, the first and fourth terms cancel, the second and fifth cancel, and the third and sixth cancel. So the cyclic sum is zero.
+
+To read off the vector form we use the conventions forced by the components of $\mathcal E$ in \cref{thm:maxwellvar}: $\eta=\operatorname{diag}(-1,1,1,1)$, $E_i=F_{i0}$ and $B_i=\frac12\epsilon_{ijk}F_{jk}$, so that $F_{12}=B_3$, $F_{23}=B_1$, $F_{31}=B_2$.
+\begin{itemize}[nosep]
+\item $(\lambda,\mu,\nu)=(1,2,3)$: $\partial_1F_{23}+\partial_2F_{31}+\partial_3F_{12}=\partial_1B_1+\partial_2B_2+\partial_3B_3=\nabla\cdot\mathbf B$.
+\item $(\lambda,\mu,\nu)=(0,2,3)$: $\partial_0F_{23}+\partial_2F_{30}+\partial_3F_{02}=\partial_tB_1+\partial_2E_3-\partial_3E_2=\partial_tB_1+(\nabla\times\mathbf E)_1$.
+\end{itemize}
+The triples $(0,3,1)$ and $(0,1,2)$ give the second and third components in the same way.
+
+For the last claim, write $S=\partial_\nu\partial_\mu F^{\mu\nu}$. Renaming the summation indices $\mu\leftrightarrow\nu$ gives $S=\partial_\mu\partial_\nu F^{\nu\mu}$. Using $F^{\nu\mu}=-F^{\mu\nu}$ and the commutation of partial derivatives, this equals $-\partial_\nu\partial_\mu F^{\mu\nu}=-S$. Hence $S=0$.
+\end{proof}
+
 
 The other half comes from the action $S=\int\bigl(-\frac14F_{\mu\nu}F^{\mu\nu}+J^\mu A_\mu\bigr)$.
 
@@ -27,12 +48,52 @@ Under $A\mapsto A+\varepsilon B$ with constant $\varepsilon$, the Lagrangian cha
 \]
 so $\mathcal E=0$ is Gauss's law $\nabla\cdot\mathbf E=\rho$ and the Amp\`ere--Maxwell law $\nabla\times\mathbf B-\partial_t\mathbf E=\mathbf J$. If $\mathcal E=0$ then $\partial_\nu J^\nu=0$.
 \end{theorem}
+\begin{proof}
+Write $F_B=\partial_\mu B_\nu-\partial_\nu B_\mu$. Then $F(A+\varepsilon B)=F+\varepsilon F_B$, and
+\[
+-\tfrac14(F+\varepsilon F_B)^2=-\tfrac14F^2-\tfrac12\varepsilon\,F^{\mu\nu}(F_B)_{\mu\nu}-\tfrac14\varepsilon^2F_B^2 .
+\]
+The $\varepsilon^2$ term is the one announced. For the linear term, the antisymmetry of $F^{\mu\nu}$ gives
+\[
+F^{\mu\nu}(\partial_\mu B_\nu-\partial_\nu B_\mu)=2F^{\mu\nu}\partial_\mu B_\nu .
+\]
+Hence
+\[
+-\tfrac12F^{\mu\nu}(F_B)_{\mu\nu}=-F^{\mu\nu}\partial_\mu B_\nu=(\partial_\mu F^{\mu\nu})B_\nu-\partial_\mu\bigl(F^{\mu\nu}B_\nu\bigr).
+\]
+Adding the source term $\varepsilon J^\nu B_\nu$, the coefficient of $\varepsilon B_\nu$ is
+\[
+\mathcal E^\nu=\partial_\mu F^{\mu\nu}+J^\nu ,
+\]
+and the total divergence is $-\partial_\mu(F^{\mu\nu}B_\nu)$.
+
+Now take components. Raising indices with $\eta=\operatorname{diag}(-1,1,1,1)$ gives $F^{i0}=-F_{i0}=-E_i$ and $F^{ij}=F_{ij}$.
+\begin{itemize}[nosep]
+\item $\nu=0$: $\mathcal E^0=\partial_iF^{i0}+J^0=-\nabla\cdot\mathbf E+\rho$.
+\item $\nu=1$: $\mathcal E^1=\partial_0F^{01}+\partial_2F^{21}+\partial_3F^{31}+J^1$. Here $F^{01}=-F_{01}=F_{10}=E_1$, $F^{21}=F_{21}=-B_3$ and $F^{31}=F_{31}=B_2$. So
+\[
+\mathcal E^1=\partial_tE_1-(\partial_2B_3-\partial_3B_2)+J^1=\partial_tE_1-(\nabla\times\mathbf B)_1+J^1 .
+\]
+\end{itemize}
+Setting $\mathcal E=0$ gives Gauss's law and the Amp\`ere--Maxwell law.
+
+Finally, take the divergence of $\mathcal E^\nu=\partial_\mu F^{\mu\nu}+J^\nu$. The first term is $\partial_\nu\partial_\mu F^{\mu\nu}=0$ by \cref{thm:bianchi}, so $\partial_\nu\mathcal E^\nu=\partial_\nu J^\nu$. If $\mathcal E=0$, then $\partial_\nu J^\nu=0$.
+\end{proof}
+
 
 Charge conservation is not an extra postulate: it is the compatibility condition between the field equations and the identity $\partial_\nu\partial_\mu F^{\mu\nu}=0$. In spherical symmetry Gauss's law integrates to the familiar statement that the flux through a sphere measures the enclosed charge.
 
 \begin{proposition}[Integrated Gauss law]\label{prop:gaussint}\ver\
 If $\partial_r(r^2E_r)=r^2\rho$ on $[a,b]$, then $4\pi b^2E_r(b)-4\pi a^2E_r(a)=4\pi\int_a^br^2\rho\,\dd r$.
 \end{proposition}
+\begin{proof}
+The function $r\mapsto r^2E_r(r)$ has derivative $r^2\rho$ on $[a,b]$. By the fundamental theorem of calculus,
+\[
+b^2E_r(b)-a^2E_r(a)=\int_a^br^2\rho\,\dd r .
+\]
+Multiplying by $4\pi$, the area of the unit sphere, gives the claim. The left side is the outward flux through the sphere of radius $b$ minus the flux through the sphere of radius $a$.
+\end{proof}
+
 
 The Maxwell stress tensor $T_{\mu\nu}=F_{\mu\alpha}F_\nu{}^\alpha-\frac14\eta_{\mu\nu}F^2$ satisfies the identity $\partial^\mu T_{\mu\nu}=F_{\nu\alpha}\,\partial_\mu F^{\mu\alpha}$, which holds once the Bianchi identity is used; on shell the right side is $-F_{\nu\alpha}J^\alpha$, the Lorentz force density.
 
@@ -46,12 +107,70 @@ For the worldline Lagrangian $L=\frac12m\,\eta_{\mu\nu}u^\mu u^\nu+q\,A_\mu u^\m
 \item If $\eta_{\mu\nu}u^\mu u^\nu=-1$ with $u^0>0$, then $E_{\mathrm{kin}}=mu^0$ and $\mathbf p_{\mathrm{kin}}=m\mathbf u$ satisfy $E_{\mathrm{kin}}^2=m^2+|\mathbf p_{\mathrm{kin}}|^2$, and $(m/E_{\mathrm{kin}},\mathbf p_{\mathrm{kin}}/E_{\mathrm{kin}})$ is a point of the unit sphere.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Treat $x^\mu$ and $u^\mu$ as independent in the Lagrangian.
+\begin{itemize}[nosep]
+\item Velocity derivative: $\partial L/\partial u^\mu=m\,u_\mu+qA_\mu$. Its $\tau$-derivative, by the chain rule, is
+\[
+\frac{\dd}{\dd\tau}\frac{\partial L}{\partial u^\mu}=m\frac{\dd u_\mu}{\dd\tau}+q\,u^\nu\partial_\nu A_\mu .
+\]
+\item Position derivative: $A$ is the only place $x$ appears, so $\partial L/\partial x^\mu=q\,u^\nu\partial_\mu A_\nu$.
+\end{itemize}
+The Euler--Lagrange equation sets the two equal:
+\[
+m\frac{\dd u_\mu}{\dd\tau}=q\,u^\nu(\partial_\mu A_\nu-\partial_\nu A_\mu)=qF_{\mu\nu}u^\nu .
+\]
+
+\emph{(ii)} Put $\pi_\mu=p_\mu-qA_\mu$, so that $H=\frac1{2m}\eta^{\mu\nu}\pi_\mu\pi_\nu$. Hamilton's equations are
+\[
+\frac{\dd x^\mu}{\dd\tau}=\frac{\partial H}{\partial p_\mu}=\frac1m\eta^{\mu\nu}\pi_\nu,\qquad
+\frac{\dd p_\mu}{\dd\tau}=-\frac{\partial H}{\partial x^\mu}=\frac qm\eta^{\alpha\beta}\pi_\alpha\,\partial_\mu A_\beta .
+\]
+The first equation says $\pi_\mu=m\,u_\mu$, that is, $p_\mu=m u_\mu+qA_\mu$; this is the definition of $p$ used in (ii). With it, the second equation reads
+\[
+m\frac{\dd u_\mu}{\dd\tau}+q\,u^\nu\partial_\nu A_\mu=q\,u^\beta\partial_\mu A_\beta ,
+\]
+which is the equation of (i). Conversely, given a solution of (i), define $p_\mu=mu_\mu+qA_\mu$; the same lines read backwards show that Hamilton's equations hold.
+
+\emph{(iii)} Write $\eta_{\mu\nu}u^\mu u^\nu=-1$ as $-(u^0)^2+|\mathbf u|^2=-1$. Multiplying by $-m^2$ gives
+\[
+(mu^0)^2=m^2+m^2|\mathbf u|^2,\qquad\text{that is,}\qquad E_{\mathrm{kin}}^2=m^2+|\mathbf p_{\mathrm{kin}}|^2 .
+\]
+Divide by $E_{\mathrm{kin}}^2>0$: $(m/E_{\mathrm{kin}})^2+|\mathbf p_{\mathrm{kin}}/E_{\mathrm{kin}}|^2=1$. This is a point of the unit sphere in $\RR^4$, and its first coordinate $m/E_{\mathrm{kin}}$ is positive.
+\end{proof}
+
 
 Item (iii) connects the classical particle with \cref{ch:hemisphere}: the kinetic four-momentum of a charged particle in any field, divided by its energy, is a point of the hemisphere.
 
 \begin{proposition}[Charged dust]\label{prop:dust}\ver\
 For dust $T^{\mu\nu}=\rho u^\mu u^\nu$ with charge current $\rho_eu^\mu$: if $\partial_\mu(\rho u^\mu)=0$ and the total stress--energy is conserved, then $\rho\,u^\mu\partial_\mu u^\nu=\rho_eF^\nu{}_\lambda u^\lambda$.
 \end{proposition}
+\begin{proof}
+The proof has three steps.
+
+\emph{Step 1: the dust part.} By the product rule,
+\[
+\partial_\mu(\rho u^\mu u^\nu)=\partial_\mu(\rho u^\mu)\,u^\nu+\rho\,u^\mu\partial_\mu u^\nu=\rho\,u^\mu\partial_\mu u^\nu ,
+\]
+where we used $\partial_\mu(\rho u^\mu)=0$.
+
+\emph{Step 2: the field part.} We show $\partial^\mu T_{\mu\nu}=F_{\nu\alpha}\partial_\mu F^{\mu\alpha}$ for the Maxwell tensor. The derivative of the first term is
+\[
+\partial^\mu(F_{\mu\alpha}F_\nu{}^\alpha)=(\partial^\mu F_{\mu\alpha})F_\nu{}^\alpha+F^{\mu\alpha}\partial_\mu F_{\nu\alpha}.
+\]
+The derivative of the second term is $\partial_\nu(\frac14F^2)=\frac12F^{\mu\alpha}\partial_\nu F_{\mu\alpha}$. The Bianchi identity gives
+\[
+\partial_\nu F_{\mu\alpha}=-\partial_\mu F_{\alpha\nu}-\partial_\alpha F_{\nu\mu}=\partial_\mu F_{\nu\alpha}-\partial_\alpha F_{\nu\mu}.
+\]
+Contract with $F^{\mu\alpha}$. In the second term rename $\mu\leftrightarrow\alpha$ and use $F^{\alpha\mu}=-F^{\mu\alpha}$; it becomes equal to the first. Hence
+\[
+\tfrac12F^{\mu\alpha}\partial_\nu F_{\mu\alpha}=F^{\mu\alpha}\partial_\mu F_{\nu\alpha},
+\]
+which cancels the second term of the first derivative. What remains is $(\partial^\mu F_{\mu\alpha})F_\nu{}^\alpha=F_{\nu\alpha}\partial_\mu F^{\mu\alpha}$.
+
+\emph{Step 3: combine.} On shell, \cref{thm:maxwellvar} gives $\partial_\mu F^{\mu\alpha}=-J^\alpha$ with $J^\alpha=\rho_eu^\alpha$, so the field part is $\partial_\mu T_{\mathrm{em}}^{\mu\nu}=-\rho_eF^\nu{}_\lambda u^\lambda$. Conservation of the total, $\partial_\mu(T_{\mathrm{dust}}^{\mu\nu}+T_{\mathrm{em}}^{\mu\nu})=0$, together with Step 1 gives $\rho\,u^\mu\partial_\mu u^\nu=\rho_eF^\nu{}_\lambda u^\lambda$.
+\end{proof}
+
 
 \section{Relativistic fluids}
 
@@ -66,6 +185,24 @@ A perfect fluid has $T^{\mu\nu}=(\rho+p)u^\mu u^\nu+p\,\eta^{\mu\nu}$ with $u\cd
 \]
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Apply the product rule to $(\rho+p)u^\mu\cdot u^\nu$:
+\[
+\partial_\mu\bigl((\rho+p)u^\mu u^\nu\bigr)=\partial_\mu\bigl((\rho+p)u^\mu\bigr)u^\nu+(\rho+p)u^\mu\partial_\mu u^\nu .
+\]
+The metric is constant and diagonal, so $\partial_\mu(p\,\eta^{\mu\nu})=\eta^{\nu\nu}\partial_\nu p$ (no sum over $\nu$). Adding the two gives the formula. Differentiating $u_\nu u^\nu=-1$ gives $2u_\nu\partial_\mu u^\nu=0$.
+
+\emph{(ii)} Contract $\partial_\mu T^{\mu\nu}=0$ with $u_\nu$ and use three facts: $u_\nu u^\nu=-1$, $u_\nu\partial_\mu u^\nu=0$, and $u_\nu\eta^{\nu\nu}\partial_\nu p=u^\nu\partial_\nu p$. The result is
+\[
+-\partial_\mu\bigl((\rho+p)u^\mu\bigr)+0+u^\nu\partial_\nu p=0 .
+\]
+This is the first claim. Put it back into $\partial_\mu T^{\mu\nu}=0$:
+\[
+(u^\mu\partial_\mu p)\,u^\nu+(\rho+p)u^\mu\partial_\mu u^\nu+\eta^{\nu\nu}\partial_\nu p=0 ,
+\]
+which rearranges to the stated equation.
+\end{proof}
+
 
 Vorticity is governed by Cartan's formula for the Lie derivative. For a closed two-form $\omega=\dd w$, $\mathcal L_u\omega=\dd(i_u\omega)$.
 
@@ -77,6 +214,29 @@ For $\omega_{\mu\nu}=\partial_\mu w_\nu-\partial_\nu w_\mu$:
 \item (Flux freezing) For $F=\dd A$ and ideal magnetohydrodynamics $i_uF=0$, $\mathcal L_uF=0$.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Substitute $\omega_{\mu\nu}=\partial_\mu w_\nu-\partial_\nu w_\mu$:
+\[
+\partial_\lambda\partial_\mu w_\nu-\partial_\lambda\partial_\nu w_\mu-\partial_\mu\partial_\lambda w_\nu+\partial_\mu\partial_\nu w_\lambda+\partial_\nu\partial_\lambda w_\mu-\partial_\nu\partial_\mu w_\lambda=0 ,
+\]
+because the six terms cancel in pairs. Equivalently, $\partial_\lambda\omega_{\mu\nu}=\partial_\mu\omega_{\lambda\nu}-\partial_\nu\omega_{\lambda\mu}$.
+
+For the Lie derivative we use the coordinate formula
+\[
+(\mathcal L_u\omega)_{\mu\nu}=u^\lambda\partial_\lambda\omega_{\mu\nu}+\omega_{\lambda\nu}\partial_\mu u^\lambda+\omega_{\mu\lambda}\partial_\nu u^\lambda .
+\]
+Since $(i_u\omega)_\nu=u^\lambda\omega_{\lambda\nu}$, the product rule gives
+\[
+\partial_\mu(i_u\omega)_\nu-\partial_\nu(i_u\omega)_\mu
+=\omega_{\lambda\nu}\partial_\mu u^\lambda-\omega_{\lambda\mu}\partial_\nu u^\lambda+u^\lambda\bigl(\partial_\mu\omega_{\lambda\nu}-\partial_\nu\omega_{\lambda\mu}\bigr).
+\]
+In the second term, $-\omega_{\lambda\mu}=\omega_{\mu\lambda}$. By the first identity, the bracket is $\partial_\lambda\omega_{\mu\nu}$. The right side is therefore the coordinate formula for $(\mathcal L_u\omega)_{\mu\nu}$.
+
+\emph{(ii)} If $i_u\omega=0$, the right side of (i) vanishes.
+
+\emph{(iii)} This is (ii) with $w=A$ and $\omega=F$. The ideal MHD condition $i_uF=0$ says that the electric field vanishes in the rest frame of the fluid.
+\end{proof}
+
 
 In three dimensions the vortex-stretching term involves a cross product, and here quaternions reappear: for pure quaternions $v,w$, $[v,w]=2\,v\times w$. Finally, magnetic helicity obeys the local balance law $\partial_t(\mathbf A\cdot\mathbf B)+\nabla\cdot(\varphi\mathbf B+\mathbf E\times\mathbf A)+2\,\mathbf E\cdot\mathbf B=0$, so it is conserved when $\mathbf E\cdot\mathbf B=0$.
 
@@ -96,6 +256,56 @@ In matrix notation $F=\dd A+A\wedge A$, and a gauge transformation acts by $A\ma
 \item If $A^2=A^3=0$ and $J^2=J^3=0$, the $a=1$ equation is Maxwell's equation.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Differentiate $g\,g^{-1}=1$: $(\partial_kg)g^{-1}+g\,\partial_k(g^{-1})=0$, so $\partial_k(g^{-1})=-g^{-1}(\partial_kg)g^{-1}$.
+
+For covariance, write $F_{ij}=\partial_iA_j-\partial_jA_i+[A_i,A_j]$ and $A'_i=gA_ig^{-1}+g\,\partial_ig^{-1}$. We use two consequences of the first identity:
+\[
+(\partial_ig^{-1})\,g=-g^{-1}\partial_ig,\qquad g\,\partial_ig^{-1}=-(\partial_ig)\,g^{-1}.
+\]
+\begin{itemize}[nosep]
+\item Derivative terms. With $(i\leftrightarrow j)$ standing for the same expression with $i,j$ swapped,
+\[
+\partial_iA'_j-(i\leftrightarrow j)=\bigl[\partial_ig\,A_jg^{-1}+g\,\partial_iA_j\,g^{-1}+gA_j\partial_ig^{-1}+\partial_ig\,\partial_jg^{-1}\bigr]-(i\leftrightarrow j),
+\]
+because $g\,\partial_i\partial_jg^{-1}$ is symmetric and drops out.
+\item Commutator terms. $[A'_i,A'_j]$ equals $g[A_i,A_j]g^{-1}$ plus
+\[
+\bigl[gA_i\partial_jg^{-1}-\partial_ig\,A_jg^{-1}-\partial_ig\,\partial_jg^{-1}\bigr]-(i\leftrightarrow j).
+\]
+\end{itemize}
+Add the two lists.
+\begin{itemize}[nosep]
+\item Terms of the form $\partial g\,A\,g^{-1}$: from the derivative terms, $\partial_ig\,A_jg^{-1}-\partial_jg\,A_ig^{-1}$; from the commutator, $-\partial_ig\,A_jg^{-1}+\partial_jg\,A_ig^{-1}$. They cancel.
+\item Terms of the form $g\,A\,\partial g^{-1}$: from the derivative terms, $gA_j\partial_ig^{-1}-gA_i\partial_jg^{-1}$; from the commutator, $gA_i\partial_jg^{-1}-gA_j\partial_ig^{-1}$. They cancel.
+\item Terms of the form $\partial g\,\partial g^{-1}$: also cancel.
+\end{itemize}
+What remains is $g(\partial_iA_j-\partial_jA_i+[A_i,A_j])g^{-1}=gF_{ij}g^{-1}$. Only associativity was used, never commutativity.
+
+\emph{(ii)} The derivative part is antisymmetric. For the quadratic part, rename $b\leftrightarrow c$ and use $\epsilon_{acb}=-\epsilon_{abc}$:
+\[
+\epsilon_{abc}A^b_\nu A^c_\mu=\epsilon_{acb}A^c_\nu A^b_\mu=-\epsilon_{abc}A^b_\mu A^c_\nu .
+\]
+For the variation, define the covariant derivative of an adjoint-valued one-form by $(\nabla_\mu X)^a_\nu=\partial_\mu X^a_\nu+\epsilon_{abc}A^b_\mu X^c_\nu$. The part of $F^a_{\mu\nu}(A+\delta A)$ that is linear in $\delta A$ is
+\[
+\partial_\mu\delta A^a_\nu-\partial_\nu\delta A^a_\mu+\epsilon_{abc}\bigl(\delta A^b_\mu A^c_\nu+A^b_\mu\delta A^c_\nu\bigr).
+\]
+Apply the same renaming to the first $\epsilon$ term: $\epsilon_{abc}\delta A^b_\mu A^c_\nu=-\epsilon_{abc}A^b_\nu\delta A^c_\mu$. The linear part is then exactly $(\nabla_\mu\delta A)^a_\nu-(\nabla_\nu\delta A)^a_\mu$.
+
+\emph{(iii)} By (ii) and the antisymmetry of $F^{a\mu\nu}$,
+\[
+\delta\bigl(-\tfrac14F^2\bigr)=-\tfrac12F^{a\mu\nu}\bigl((\nabla_\mu\delta A)^a_\nu-(\nabla_\nu\delta A)^a_\mu\bigr)=-F^{a\mu\nu}(\nabla_\mu\delta A)^a_\nu .
+\]
+Expand the covariant derivative into two pieces.
+\begin{itemize}[nosep]
+\item Derivative piece: $-F^{a\mu\nu}\partial_\mu\delta A^a_\nu=(\partial_\mu F^{a\mu\nu})\delta A^a_\nu-\partial_\mu(F^{a\mu\nu}\delta A^a_\nu)$.
+\item $\epsilon$ piece: $-\epsilon_{abc}F^{a\mu\nu}A^b_\mu\delta A^c_\nu$. Relabel the colour indices cyclically, $(a,b,c)\to(b,c,a)$. Since $\epsilon_{bca}=\epsilon_{abc}$, this is $-\epsilon_{abc}F^{b\mu\nu}A^c_\mu\delta A^a_\nu$. Swapping $b\leftrightarrow c$ turns it into $+\epsilon_{abc}A^b_\mu F^{c\mu\nu}\delta A^a_\nu$.
+\end{itemize}
+The coefficient of $\delta A^a_\nu$ is therefore $\partial_\mu F^{a\mu\nu}+\epsilon_{abc}A^b_\mu F^{c\mu\nu}+J^{a\nu}=\mathcal E^{a\nu}$.
+
+\emph{(iv)} With only $A^1$ nonzero, every product $\epsilon_{abc}A^b A^c$ needs $b=c=1$ and vanishes. Hence $F^2=F^3=0$ and $F^1=\dd A^1$. In $\mathcal E^{1\nu}$ the extra term $\epsilon_{1bc}A^bF^c$ needs $b=1$ and vanishes. In $\mathcal E^{2\nu}$ and $\mathcal E^{3\nu}$ every term vanishes. So the only equation left is $\partial_\mu F^{1\mu\nu}+J^{1\nu}=0$, which is Maxwell's equation (\cref{thm:maxwellvar}).
+\end{proof}
+
 
 The bookkeeping lemmas used in (iii), namely the relabelling of $\epsilon_{abc}$ in a triple product and $\sum F^{\mu\nu}(X_{\mu\nu}-X_{\nu\mu})=2\sum F^{\mu\nu}X_{\mu\nu}$, are recorded in the checklist.
 
@@ -106,6 +316,45 @@ On $S^3=\SU(2)$ the simplest Yang--Mills fields are multiples of the Maurer--Car
 \begin{theorem}[Homogeneous Yang--Mills fields on $S^3$]\label{thm:merons}\ver\
 For $A=\lambda\,U^{-1}\dd U$ the Yang--Mills expression is $8\ii\lambda(1-\lambda)(2\lambda-1)$ times a fixed generator. Hence $A$ solves the Yang--Mills equation if and only if $\lambda\in\{0,\tfrac12,1\}$.
 \end{theorem}
+\begin{proof}
+The computation is done in a left-invariant frame, so no coordinates on $S^3$ are needed. It has four steps.
+
+\emph{Step 1: frame and connection.} Let $s_a=\sigma_a/2$, so that $[s_a,s_b]=\ii\epsilon_{abc}s_c$. The left-invariant vector fields $X_a$ that correspond to $\ii\sigma_a=2\ii s_a$ satisfy
+\[
+[X_a,X_b]=-2\epsilon_{abc}X_c ,
+\]
+because $[\ii\sigma_a,\ii\sigma_b]=-2\ii\epsilon_{abc}\sigma_c$. Normalise the bi-invariant metric so that the $X_a$ are orthonormal. The Levi-Civita connection of a bi-invariant metric is $\nabla_XY=\frac12[X,Y]$ on left-invariant fields.
+
+The Maurer--Cartan form sends $X_a$ to its Lie algebra element, $U^{-1}\dd U(X_a)=2\ii s_a$. Therefore the frame components of $A$ are the constants $A_a=2\ii\lambda\,s_a$.
+
+\emph{Step 2: curvature.} The components $A_a$ are constant, so $X_a(A_b)=0$. The definition $F(X,Y)=X(A(Y))-Y(A(X))-A([X,Y])+[A(X),A(Y)]$ then gives
+\[
+F_{ab}=[A_a,A_b]+2\epsilon_{abc}A_c=(2\ii\lambda)^2\ii\epsilon_{abc}s_c+4\ii\lambda\epsilon_{abc}s_c=4\ii\lambda(1-\lambda)\,\epsilon_{abc}s_c .
+\]
+This vanishes at $\lambda=0,1$, as it must for a pure gauge.
+
+\emph{Step 3: divergence of a left-invariant two-form.} The components $F_{ab}$ are constant, so
+\[
+(\nabla_{X_a}F)(X_a,X_b)=-F(\nabla_{X_a}X_a,X_b)-F(X_a,\nabla_{X_a}X_b)=-F\bigl(X_a,-\epsilon_{abc}X_c\bigr)=\epsilon_{abc}F_{ac},
+\]
+since $\nabla_{X_a}X_a=\frac12[X_a,X_a]=0$. The Yang--Mills expression in direction $b$ is therefore
+\[
+\mathrm{YM}_b=\sum_a\Bigl([A_a,F_{ab}]+\sum_c\epsilon_{abc}F_{ac}\Bigr).
+\]
+
+\emph{Step 4: evaluate.} We need the contraction
+\[
+\sum_{a,c}\epsilon_{abc}\epsilon_{acd}=-\sum_{a,c}\epsilon_{abc}\epsilon_{adc}=-2\delta_{bd}.
+\]
+Then:
+\begin{align*}
+\sum_a[A_a,F_{ab}]&=2\ii\lambda\cdot4\ii\lambda(1-\lambda)\sum_{a,c}\epsilon_{abc}[s_a,s_c]
+=-8\lambda^2(1-\lambda)\,\ii\sum_{a,c,d}\epsilon_{abc}\epsilon_{acd}s_d=16\ii\lambda^2(1-\lambda)\,s_b,\\
+\sum_{a,c}\epsilon_{abc}F_{ac}&=4\ii\lambda(1-\lambda)\sum_{a,c,d}\epsilon_{abc}\epsilon_{acd}s_d=-8\ii\lambda(1-\lambda)\,s_b .
+\end{align*}
+The sum is $8\ii\lambda(1-\lambda)(2\lambda-1)\,s_b$. The matrix $s_b$ is nonzero, so $\mathrm{YM}_b=0$ for all $b$ if and only if $\lambda(1-\lambda)(2\lambda-1)=0$, that is, $\lambda\in\{0,\frac12,1\}$.
+\end{proof}
+
 
 The values $\lambda=0$ and $\lambda=1$ are the trivial connection and its gauge transform, both flat. The value $\lambda=\frac12$ is the meron \cite{deAlfaroFubiniFurlan1976}, half of a pure gauge. Its field strength does not vanish, and it will reappear in Chapter~15 as the matter content of a closed universe.
 
@@ -127,6 +376,53 @@ with a single function $w(t,x)$. The value $w=\pm1$ is a pure gauge (vacuum), an
 \item In the double-null gauge \eqref{eq:nullmetric}, $\hat T_{uu}=2w_u^2/r^2$, $\hat T_{vv}=2w_v^2/r^2$, $\hat T_{uv}=\Omega(1-w^2)^2/(2r^4)$, $\hat T_{\theta\theta}=(1-w^2)^2/(2r^2)$, and the mixed angular components vanish.
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+\emph{(i)} Use $F^a_{\mu\nu}=\partial_\mu A^a_\nu-\partial_\nu A^a_\mu+\epsilon_{abc}A^b_\mu A^c_\nu$, the coordinates $(t,x,\theta,\phi)$ and $w=w(t,x)$. The only nonzero potential components are $A^1_\theta=w$, $A^2_\phi=w\sin\theta$ and $A^3_\phi=\cos\theta$. Since $A_t=A_x=0$, the quadratic term can be nonzero only for the pair $(\theta,\phi)$.
+\begin{itemize}[nosep]
+\item $F^1_{t\theta}=\partial_tw$ and $F^1_{x\theta}=\partial_xw$.
+\item $F^2_{t\phi}=w_t\sin\theta$ and $F^2_{x\phi}=w_x\sin\theta$.
+\item $F^1_{\theta\phi}=-\partial_\phi w+\epsilon_{123}(A^2_\theta A^3_\phi-A^3_\theta A^2_\phi)=0$, since $A^2_\theta=A^3_\theta=0$.
+\item $F^2_{\theta\phi}=\partial_\theta(w\sin\theta)+\epsilon_{231}A^3_\theta A^1_\phi+\epsilon_{213}A^1_\theta A^3_\phi=w\cos\theta+0-w\cos\theta=0$.
+\item $F^3_{\theta\phi}=\partial_\theta\cos\theta+\epsilon_{312}A^1_\theta A^2_\phi=-\sin\theta+w^2\sin\theta$.
+\end{itemize}
+All other components vanish because $A^3$ does not depend on $t$ or $x$.
+
+\emph{(ii)} The inverse metric is diagonal: $g^{tt}=-1/N^2$, $g^{xx}=1/A^2$, $g^{\theta\theta}=1/R^2$, $g^{\phi\phi}=1/(R^2\sin^2\theta)$. Then
+\[
+F^a_{\alpha\beta}F^{a\alpha\beta}=2\sum_{\alpha<\beta}g^{\alpha\alpha}g^{\beta\beta}(F^a_{\alpha\beta})^2
+=2\Bigl(-\frac{2w_t^2}{N^2R^2}+\frac{2w_x^2}{A^2R^2}+\frac{(1-w^2)^2}{R^4}\Bigr).
+\]
+The $\sin^2\theta$ from $F^2$ and $F^3$ cancels against $g^{\phi\phi}$. Next,
+\[
+F^a_{t\lambda}F^{a}{}_t{}^\lambda=\frac{w_t^2}{R^2}+\frac{w_t^2\sin^2\theta}{R^2\sin^2\theta}=\frac{2w_t^2}{R^2},
+\]
+and $-\frac14g_{tt}F^2=\frac{N^2}4F^2$. Adding,
+\[
+\hat T_{tt}=\frac{2w_t^2}{R^2}-\frac{w_t^2}{R^2}+\frac{N^2w_x^2}{A^2R^2}+\frac{N^2(1-w^2)^2}{2R^4},
+\]
+and dividing by $N^2$ gives the displayed formula. The same steps give
+\[
+\hat T_{xx}=\frac{w_x^2}{R^2}+\frac{A^2w_t^2}{N^2R^2}-\frac{A^2(1-w^2)^2}{2R^4}.
+\]
+The off-diagonal component is $\hat T_{tx}=g^{\theta\theta}F^1_{t\theta}F^1_{x\theta}+g^{\phi\phi}F^2_{t\phi}F^2_{x\phi}=2w_tw_x/R^2$. For the angular component,
+\[
+\hat T_{\theta\theta}=\Bigl(-\frac{w_t^2}{N^2}+\frac{w_x^2}{A^2}+\frac{(1-w^2)^2}{R^2}\Bigr)-\frac{R^2}4F^2=\frac{(1-w^2)^2}{2R^2}.
+\]
+Here the kinetic and gradient terms cancel exactly, and half of the magnetic term survives.
+
+\emph{(iii)} Now $g_{uv}=-\Omega$ and $g^{uv}=-1/\Omega$, and the components of (i) hold with $(t,x)$ replaced by $(u,v)$. Because $g^{uu}=g^{vv}=0$, every contraction over a null index pairs $u$ with $v$:
+\[
+F^a_{\alpha\beta}F^{a\alpha\beta}=4g^{uv}g^{\theta\theta}F^1_{u\theta}F^1_{v\theta}+4g^{uv}g^{\phi\phi}F^2_{u\phi}F^2_{v\phi}+\frac{2(1-w^2)^2}{r^4}=-\frac{8w_uw_v}{\Omega r^2}+\frac{2(1-w^2)^2}{r^4}.
+\]
+Then the components follow one by one.
+\begin{itemize}[nosep]
+\item $g_{uu}=0$, so $\hat T_{uu}=g^{\theta\theta}(F^1_{u\theta})^2+g^{\phi\phi}(F^2_{u\phi})^2=2w_u^2/r^2$. The same holds for $\hat T_{vv}$.
+\item $\hat T_{uv}=\frac{2w_uw_v}{r^2}+\frac\Omega4F^2=\frac{\Omega(1-w^2)^2}{2r^4}$.
+\item $\hat T_{\theta\theta}=2g^{uv}F^1_{\theta u}F^1_{\theta v}+\frac{(1-w^2)^2}{r^2}-\frac{r^2}4F^2=\frac{(1-w^2)^2}{2r^2}$.
+\end{itemize}
+For $\hat T_{\theta\phi}$ and $\hat T_{u\theta}$, every term has a factor that is zero in the list (i). For example, $F^1_{u\lambda}$ is nonzero only for $\lambda=\theta$, but $F^1_{\theta\theta}=0$. These components therefore vanish.
+\end{proof}
+
 
 The physical stress tensor is $T_{\mu\nu}=\hat T_{\mu\nu}/g^2$. The energy density is the sum of a kinetic term, a gradient term and the magnetic self-energy $(1-w^2)^2/(2g^2R^4)$ of the angular field. The last term is what distinguishes Yang--Mills from Maxwell in spherical symmetry: at $w=0$ it is the Coulomb energy of a unit magnetic charge, and at $w=\pm1$ it vanishes.
 
