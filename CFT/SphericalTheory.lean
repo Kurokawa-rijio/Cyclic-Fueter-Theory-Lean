@@ -13,23 +13,23 @@
     Ω の量子幾何学 …… CFT.AlphaOmega_Quantum(OQ)、CFT.AlphaOmega_Close(OC)、CFT.AlphaOmega_Last(OL)
     アイデアの検証 …… CFT.AlphaIdeas_Check(ID)
 -/
-import CFT.AlphaCanonical
-import CFT.AlphaQuantumSpherical
-import CFT.AlphaKS_WDW
-import CFT.AlphaFamous
-import CFT.AlphaFermion
-import CFT.AlphaSphericalClose
-import CFT.AlphaDumbbell_Shape
-import CFT.AlphaDumbbell_Bogomolny
-import CFT.AlphaJunction_Unique
-import CFT.AlphaConstArea
-import CFT.AlphaOpen_Split
-import CFT.AlphaReal_Junction
-import CFT.AlphaReal_Rest
-import CFT.AlphaOmega_Quantum
-import CFT.AlphaOmega_Close
-import CFT.AlphaOmega_Last
-import CFT.AlphaIdeas_Check
+import CFT.Spherical.SphericalCanonicalAction
+import CFT.Quantum.QuantumSphericalWDW
+import CFT.Quantum.KantowskiSachsWDW
+import CFT.Unification.FamousEquationsCheck
+import CFT.Quantum.FermionDiracSpectrum
+import CFT.Spherical.SphericalDiracThermoClose
+import CFT.Spherical.DumbbellShapeCircle
+import CFT.Spherical.DumbbellBogomolnyBound
+import CFT.Junction.JunctionUniqueness
+import CFT.Spherical.ConstantAreaSlices
+import CFT.Spherical.OpenItemsSplit
+import CFT.Junction.RealFunctionJunction
+import CFT.Junction.RealFunctionClosings
+import CFT.Quantum.OmegaQuantumGeometry
+import CFT.Spherical.OmegaCloseItems
+import CFT.Spherical.OmegaLastItems
+import CFT.Unification.IdeaChecks
 
 namespace CFT.Spherical
 

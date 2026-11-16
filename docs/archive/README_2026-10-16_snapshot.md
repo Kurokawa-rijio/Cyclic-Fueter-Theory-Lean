@@ -8,7 +8,7 @@
 - 定理 706 個が、すべてエラーなしでコンパイルを通る(2026-10-16、全体を作り直して確認)(うち 109 個は α-II.5 の証明を小さく分けた補助恒等式 `cf…_k…`)。
 - `sorry`(証明の穴)はゼロ。独自の `axiom` もゼロ。
 - `#print axioms`(audit.txt)では、697 個が Lean 標準の公理 [propext, Classical.choice, Quot.sound] だけに、4 個(fw_generator、d_inv、curvature_covariant、inversion_swaps)が propext だけに、2 個(yukawa_weight、deriv_ofNat)が propext と Quot.sound だけに依存し、3 個(witten_even、spinor16_count、higgs_bidoublet)は公理を使わない。
-- **独立監査(review/audit_table.md)の結果、51 項目のうち台帳の命題どおりに完全なのは 12 項目だった。B(ダンベルの基礎、2026-10-16)と作用原理で 4 項目、2026-10-17 に 6 項目を閉じ、いまは 22 項目。** 下の「集計」と各行の判定は監査後のもの。
+- **独立監査(review/AuditTable_2026-10-16.md)の結果、51 項目のうち台帳の命題どおりに完全なのは 12 項目だった。B(ダンベルの基礎、2026-10-16)と作用原理で 4 項目、2026-10-17 に 6 項目を閉じ、いまは 22 項目。** 下の「集計」と各行の判定は監査後のもの。
 - 形式化の途中で、式の誤り二つ、規約の問題一つ、質量の定義の取り違え一つが見つかった(下の「見つかった誤り」)。どれも結論は変わらない。
 
 ## 判定の意味
@@ -34,7 +34,7 @@ Lean が保証するのは「書かれた仮定から、書かれた結論が論
 
 監査直後は 完全 12 / 部分 19 / 条件つき 16 / 未 4。B(2026-10-16)で α-I.5(部分 → 完全)、α-III.3、α-IV.5(条件つき → 完全)を、作用原理(2026-10-16)で α-II.1(部分 → 完全(外部定理を仮定))を、2026-10-17 に α-I.7、α-III.4、α-V.4、α-VIII.7、α-VII.6、α-VIII.5(条件つき → 完全、うち I.7、VIII.7、VII.6、VIII.5 は外部定理を仮定)を更新した。α-VIII.7 は仮定が一つ減ったが、外部定理の仮定が残るので条件つきのまま。
 
-独立した監査(review/audit_table.md)で、各項目の Lean の定理の仮定と結論を、台帳 Z・Y の命題と一つずつ照合した結果。監査前は 49 項目を「完全」としていたが、それは過大評価だった。
+独立した監査(review/AuditTable_2026-10-16.md)で、各項目の Lean の定理の仮定と結論を、台帳 Z・Y の命題と一つずつ照合した結果。監査前は 49 項目を「完全」としていたが、それは過大評価だった。
 
 ## 見つかった誤り
 
@@ -152,15 +152,15 @@ Lean が保証するのは「書かれた仮定から、書かれた結論が論
 
 ## ファイル
 
-- `CFT/Basic.lean`:共通の import
-- `CFT/AlphaI.lean` 〜 `CFT/AlphaVII.lean`、`AlphaIII_P1`、`AlphaV_FW`、`AlphaIntegrals`、`AlphaI_AW`:各群の本体
-- `CFT/AlphaCompleteA.lean` 〜 `AlphaCompleteD.lean`、`AlphaCompleteC2.lean`:前回の完全化
+- `CFT/Foundations/Basic.lean`:共通の import
+- `CFT/Foundations/QuaternionBasics.lean` 〜 `CFT/Unification/MonopoleDiracGenerations.lean`、`AlphaIII_P1`、`AlphaV_FW`、`AlphaIntegrals`、`AlphaI_AW`:各群の本体
+- `CFT/Spherical/CompletionNeckDynamics.lean` 〜 `MonopoleZeroModes.lean`、`HyperbolicBPSMonopoleClosed.lean`:前回の完全化
 - `CFT/Cartan/`:Cartan の動標構の代数的な形式化(Frame:公理と曲率、C2:Codazzi の解・構造式・Bochner 恒等式、Aligned:整列型の非存在、BochnerSign:各点での符号)
-- `CFT/AlphaI_C.lean`(巡回 Fueter 行列)、`AlphaIII_Junction.lean`(接合)、`AlphaVII_N1.lean`(N1 と左右の作用)、`AlphaVII_Bundle.lean`(単極子の束・一様な YM 場)、`AlphaVII_Perturb.lean`(二次の摂動公式)、`AlphaVIII_BF.lean`(BF 境界・条件つきの算術)
-- `CFT/GaugeCovariance.lean`、`ZeroModeL2.lean`、`AlphaII_Diagonal.lean`、`AlphaII_Z5.lean`、`AlphaV_A4.lean`:今回の追加(ゲージ共変性、L² 判定、対角型の非存在、Z5 の完全な証明、a₄ の導出)
+- `CFT/Foundations/CyclicMatrixKernels.lean`(巡回 Fueter 行列)、`SphericalJunction.lean`(接合)、`N1ObstructionBreaking.lean`(N1 と左右の作用)、`MonopoleBundleChern.lean`(単極子の束・一様な YM 場)、`RayleighSchrodingerPerturbation.lean`(二次の摂動公式)、`BFBoundLinearModes.lean`(BF 境界・条件つきの算術)
+- `CFT/Unification/GaugeCovariance.lean`、`ZeroModeL2Condition.lean`、`DiagonalClassNonexistence.lean`、`StaticDumbbellNonexistence.lean`、`HeatKernelA4Derivation.lean`:今回の追加(ゲージ共変性、L² 判定、対角型の非存在、Z5 の完全な証明、a₄ の導出)
 - `Audit.lean`、`audit.txt`:公理の監査
-- α-II.5 の Lean ファイル(CFT/Cartan/SS*.lean、SecondStage.lean)は aux/cartan/gen_ss.py、gen_split.py、run_split.py、assemble_split.py、bj_cert.py が生成し、fastsyntax.py が書式を整える。大きな多項式の恒等式は、Λ = (λ, α, β, γ, η) 以外の原子の単項式 κ ごとに係数を比べる形に分けた(係数は def、κ ごとの恒等式は補助定理 `cf…_k…`)。意味は一つの大きな ring と同じで、メモリ 8GB に収めるための分割である。ビルドは全体で 1 時間ほどかかる(SSJet が約 2 分半、SSCoefR3/R6 が各 8 分、SSK が約 9 分)。
-- `aux/`:Lean に渡す係数を求めた sympy スクリプト(`aux/diag/`:対角型の証明書、`aux/z5/`:Z5 の証明書、`aux/cartan/`:動標構の計算と Lean の生成、α-II.5 の厳密な点ごとの確認、`gen_audit.py`:Audit.lean の生成)
+- α-II.5 の Lean ファイル(CFT/Cartan/SS*.lean、BjVanishesOnC2.lean)は aux/cartan/gen_ss.py、gen_split.py、run_split.py、assemble_split.py、bj_cert.py が生成し、fastsyntax.py が書式を整える。大きな多項式の恒等式は、Λ = (λ, α, β, γ, η) 以外の原子の単項式 κ ごとに係数を比べる形に分けた(係数は def、κ ごとの恒等式は補助定理 `cf…_k…`)。意味は一つの大きな ring と同じで、メモリ 8GB に収めるための分割である。ビルドは全体で 1 時間ほどかかる(SSJet が約 2 分半、SSCoefR3/R6 が各 8 分、SSK が約 9 分)。
+- `aux/`:Lean に渡す係数を求めた sympy スクリプト(`aux/diag/`:対角型の証明書、`aux/z5/`:Z5 の証明書、`aux/cartan/`:動標構の計算と Lean の生成、α-II.5 の厳密な点ごとの確認、`GenerateAuditIndex.py`:Audit.lean の生成)
 
 ## 検証の手順
 

@@ -86,7 +86,7 @@ p(z)=z^3-\frac34z-\frac C4
 
 ## 3. α-II.5 — 階数証明書
 
-`Cartan/SSRank.lean` には、Bochner 多項式 \(B_j(x_*)=0\) となる有理点
+`Cartan/SecondStageRank12.lean` には、Bochner 多項式 \(B_j(x_*)=0\) となる有理点
 \[
 x_*=(0,-4,-2,-1/32,-1/32,-1/16,3/32)
 \]
@@ -96,11 +96,11 @@ x_*=(0,-4,-2,-1/32,-1/32,-1/16,3/32)
 
 ## 4. α-II.6 — 対角型の退化
 
-`AlphaII_Diagonal.lean` の `cert` は
+`DiagonalClassNonexistence.lean` の `cert` は
 \[
 \Delta^2=c_1e_1+c_2e_2+c_3e_3+c_4e_4
 \]
-を多項式恒等式として `ring` で証明している。Codazzi を進化式に置き換え、\(\sigma_2\) 一定から \(e_i=0\) を導くので \(\Delta=0\)。従って、指定された対角計量・Codazzi・\(\sigma_2\) 一定という仮定のもとで、\(\alpha\ne0\) かつ三固有値が相異なる対角解は存在しない。`Cartan/Aligned.lean` の整列型補題も別にある。
+を多項式恒等式として `ring` で証明している。Codazzi を進化式に置き換え、\(\sigma_2\) 一定から \(e_i=0\) を導くので \(\Delta=0\)。従って、指定された対角計量・Codazzi・\(\sigma_2\) 一定という仮定のもとで、\(\alpha\ne0\) かつ三固有値が相異なる対角解は存在しない。`Cartan/AlignedNoGo.lean` の整列型補題も別にある。
 
 この結論を一般のすべての局所分類と混同しない。ここで閉じたのは、ファイルに明示された対角クラスと整列クラスである。
 
@@ -140,7 +140,7 @@ M_2'=r^2(\rho r'-JrK_T)
 \[
 M_2(s)\ge r(s_0)
 \]
-となる。`AlphaIII_Shape.lean` は元の「質量微分恒等式」を仮定で置かず拘束から導いている。必要な幾何入力は球対称スカラー曲率の公式と拘束式である。
+となる。`DumbbellShapeBasics.lean` は元の「質量微分恒等式」を仮定で置かず拘束から導いている。必要な幾何入力は球対称スカラー曲率の公式と拘束式である。
 
 ## 7. α-III.4 — キャップ、首、平坦部
 
@@ -149,7 +149,7 @@ M_2=r(1-r'^2+r^2K_T^2).
 \]
 キャップ \(r=a\sin\chi,\ r'=\cos\chi,\ K_T=0\) では \(M_2=a\sin^3\chi\)、赤道で \(M_2=a\)。首 \(r=\ell, r'=K_T=0\) では \(M_2=\ell\)、平坦部 \(r=s,r'=1,K_T=0\) では \(M_2=0\)。すべて独立計算で恒等式として確認した。
 
-接合条件は旧 `a_eq_l` の「質量連続」をそのまま前提とする経路だけでなく、現行 `AlphaIII_Glue.lean` に C¹ 接合からの `glue_C1` と EYM 拘束からの `glue_EYM` があるため、\(a=\ell\) を別経路で得られる。首から平坦部へ移れないという主張は III.3 の DEC・未捕捉外側仮定を引き継ぐ。
+接合条件は旧 `a_eq_l` の「質量連続」をそのまま前提とする経路だけでなく、現行 `CapNeckGluing.lean` に C¹ 接合からの `glue_C1` と EYM 拘束からの `glue_EYM` があるため、\(a=\ell\) を別経路で得られる。首から平坦部へ移れないという主張は III.3 の DEC・未捕捉外側仮定を引き継ぐ。
 
 ## 8. α-III.5 — Schwarzschild の排除
 
@@ -221,7 +221,7 @@ m\ge\frac{\ell_*}{2G}
 
 ## 11. α-V.4 — Gauss 写像
 
-`AlphaV_Gauss.lean` は、球対称切り口を回転面
+`GaussMapMassAngle.lean` は、球対称切り口を回転面
 \[
 X(s,n)=(r(s)n,z(s))\in\mathbb R^3\times\mathbb R
 \]
@@ -237,7 +237,7 @@ X(s,n)=(r(s)n,z(s))\in\mathbb R^3\times\mathbb R
 
 ## 独立計算一覧
 
-`stage3_independent_checks.py` を実行し、**23/23** の厳密な記号検査を通した。内容はモデル方程式、II.4 の判別式・窓不等式、拘束式からの質量微分、キャップ／首／平坦部の質量、球対称ワープ計量の Christoffel から得る断面曲率、Schwarzschild 曲率不変量、固定密度の同時極限、最小質量係数、Gauss 写像の質量関係である。
+`Stage3IndependentChecks.py` を実行し、**23/23** の厳密な記号検査を通した。内容はモデル方程式、II.4 の判別式・窓不等式、拘束式からの質量微分、キャップ／首／平坦部の質量、球対称ワープ計量の Christoffel から得る断面曲率、Schwarzschild 曲率不変量、固定密度の同時極限、最小質量係数、Gauss 写像の質量関係である。
 
 これらは計算検証であり、Lean の再ビルドではない。II.4 の合成補題と III.6 の極限定理は、今後 Lean に追記して同一コミットで全件ビルドすべき項目である。
 

@@ -2,6 +2,10 @@
 .lake/
 .build/
 
+# Python bytecode (regenerated on run; do not commit)
+__pycache__/
+*.pyc
+
 # Editor / OS files
 .DS_Store
 Thumbs.db

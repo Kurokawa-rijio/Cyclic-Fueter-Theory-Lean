@@ -1,13 +1,13 @@
 # 命題群 α 段階 1〜5 の再監査(2026-10-21、最新ソースに対して)
 
-旧 `review/audit_table.md`(2026-10-16)は古いソースへの監査なので、この表で置き換える。評価軸は外部の評価基準(2026-10-21)の A〜F:
+旧 `review/AuditTable_2026-10-16.md`(2026-10-16)は古いソースへの監査なので、この表で置き換える。評価軸は外部の評価基準(2026-10-21)の A〜F:
 
 - A 命題の一致
 - B 仮定の妥当性
 - C 数学的導出
 - D 依存関係(最終定理が補題を実際に使うか。`DepCheck.lean` が推移的な依存を機械的に確かめる)
 - E 適用範囲
-- F 再現性(ゼロからの全体ビルドのログ `build_all.log`、公理の監査 `audit.txt`)
+- F 再現性(ゼロからの全体ビルドのログ `build_all_2026-10-17b.log`、公理の監査 `audit.txt`)
 
 判定の記号:
 
@@ -82,15 +82,15 @@
 
 ## F:再現性
 
-- `build_all.log`:2026-10-21 にコピーした作業ディレクトリで .lake/build を空にして全体を作り直した記録。2 コアと 8 GB では大きな SS* ファイルが並列で OOM(code 137)になるので、それらを順に作り直し、最後に全体をもう一度ビルドした
+- `build_all_2026-10-17b.log`:2026-10-21 にコピーした作業ディレクトリで .lake/build を空にして全体を作り直した記録。2 コアと 8 GB では大きな SS* ファイルが並列で OOM(code 137)になるので、それらを順に作り直し、最後に全体をもう一度ビルドした
 - 結果:ビルド成功(最後の全体ビルド 18 分、エラー 0)。定理 990 個(977 個が標準の 3 公理だけ、6 個が propext と Quot.sound、4 個が propext、3 個は公理なし)、sorryAx 0
 - `audit.txt`:すべての定理の `#print axioms`(sorryAx なし)
-- `DepCheck.lean`:最終定理の推移的な依存の機械的な確認。結果 `review/depcheck.txt`:最終定理が呼ぶべき補題はすべて true(57 件)、false は入力版の補助定理 3 件と、Goursat の形を仮定にとる `constraint_prop_u`(合成は `constraint_prop_from_eqs`)だけ
+- `DepCheck.lean`:最終定理の推移的な依存の機械的な確認。結果 `review/DepCheckOutput.txt`:最終定理が呼ぶべき補題はすべて true(57 件)、false は入力版の補助定理 3 件と、Goursat の形を仮定にとる `constraint_prop_u`(合成は `constraint_prop_from_eqs`)だけ
 
 ### 2026-10-21 第 10 弾(外部パッチ j の検証と段階 2 の 4 次元照合)
 
 - 外部パッチ j(`null_final` の両側の色流束と共通トレース `cs`、`min_mass_from_constraints` の `ell_neck` からの首の半径の導出、`profile_immersion_data`・`profileMap_injective`、DepCheck の証明本体と型の依存の分離)を Lean でコンパイルし、内容が正しいことを確認した。パッチの「未コンパイル」の注記はこの版で解消。
 - 段階 2 の「縮約の正当性」を AlphaS2_4DMatch で閉じた(上の表)。外部の検算(4 成分 + YM 1 成分、SymPy)と一致し、残りの全成分も Lean で検証した。
-- 全体ビルド成功(build_k.log、エラー 0、sorry 0)。定理 1074 個(1061 個が標準の 3 公理だけ、6 個が propext と Quot.sound、4 個が propext、3 個は公理なし)、sorryAx 0、独自の axiom 0(audit.txt)。DepCheck(review/depcheck.txt)で `full_4d_iff_alpha` が `sync_*`・`ym_sync_*`・`fym_eq` を、`palais_free` が `el_iff_alpha` を、`min_mass_from_constraints` が `ell_neck` を証明の中で使うことを確認。false の 4 件(timelike_dumbbell、null_front_weak、constraint_prop_u)は δ の係数や Goursat の形を入力にとる補助版で、第 9 弾と同じ。
+- 全体ビルド成功(build_k.log、エラー 0、sorry 0)。定理 1074 個(1061 個が標準の 3 公理だけ、6 個が propext と Quot.sound、4 個が propext、3 個は公理なし)、sorryAx 0、独自の axiom 0(audit.txt)。DepCheck(review/DepCheckOutput.txt)で `full_4d_iff_alpha` が `sync_*`・`ym_sync_*`・`fym_eq` を、`palais_free` が `el_iff_alpha` を、`min_mass_from_constraints` が `ell_neck` を証明の中で使うことを確認。false の 4 件(timelike_dumbbell、null_front_weak、constraint_prop_u)は δ の係数や Goursat の形を入力にとる補助版で、第 9 弾と同じ。
 - `wave_jump_final` の使っていない仮定 v0 ≤ v1 を外した(仮定が減るだけで結論は同じ)。
 

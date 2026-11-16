@@ -14,11 +14,11 @@
 - `ym_sync_02`:YM(1,θ) = −s eP。`ym_sync_13`:s·YM(2,φ) = YM(1,θ)。他の 10 成分 0。
 - `full_4d_iff_alpha`:4 次元の EYM の全成分(16 + 12、F = dA + A∧A)⇔ α の五つの方程式。
 - `palais_free`:4 次元の EYM の全成分 ⇔ 縮約した作用の五つの EL 方程式(`el_iff_alpha` と合成)。Palais の対称臨界性は使わない。
-- 生成スクリプトと証明書:aux/S4/{gen4all.py, genTall.py, genYMDall.py, gen4dall.py, mkall.py, mk4d.py}、*.pkl。
+- 生成スクリプトと証明書:aux/S4/{GenerateCertificatesAll.py, GenerateYMStressCertificatesAll.py, GenerateYMDiagonalAll.py, GenerateFourDimCertificatesAll.py, AssembleAllComponentProofs.py, AssembleFourDimMatch.py}、*.pkl。
 
 ## その他
 - AlphaS5_Final `wave_jump_final`:使っていない仮定 v0 ≤ v1 を外した。
 
 ## 検査
 - 定理 1074 個、1061 個が [propext, Classical.choice, Quot.sound]、6 個が [propext, Quot.sound]、4 個が [propext]、3 個は公理なし。sorryAx 0、独自の axiom 0(audit.txt)。
-- DepCheck(review/depcheck.txt):新しい依存はすべて true。false の 4 件は補助版で第 9 弾と同じ。
+- DepCheck(review/DepCheckOutput.txt):新しい依存はすべて true。false の 4 件は補助版で第 9 弾と同じ。

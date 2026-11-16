@@ -21,7 +21,7 @@ Gudermann 関数とヌル特性曲線の関係（IV.7）、および平坦極限
 
 ### 1.1 既存の代数的な拘束伝播式
 
-README と `AlphaIV_Propagation.lean` の記法で、ハミルトン拘束を \(H\)、運動量拘束を \(M\)、\(a=DR/R\)、\(K=K_x+2K_T\)、\(b=K_x+K_T\) と書く。発展方程式を仮定すると、次の斉次系が得られる。
+README と `ConstraintPropagation.lean` の記法で、ハミルトン拘束を \(H\)、運動量拘束を \(M\)、\(a=DR/R\)、\(K=K_x+2K_T\)、\(b=K_x+K_T\) と書く。発展方程式を仮定すると、次の斉次系が得られる。
 
 \[
 \partial_t H=2KH-4aM-2DM,\qquad
@@ -424,6 +424,6 @@ z_\ell(t)=t+\frac{t^3}{6\ell^2}+\frac{t^5}{24\ell^4}+O(\ell^{-6}),
 
 ## 9. 再現可能な検算
 
-`stage5_independent_checks.py` は、定義からの微分恒等式、中心エネルギー式、跳びの代数、Taylor 係数を SymPy で検算する。ログは `stage5_independent_checks_results.txt`。検算数は11件であり、これは形式証明の件数ではない。特に枝条件、PDE 適切性、弱解の延長判定は記号計算で証明したものではない。
+`Stage5IndependentChecks.py` は、定義からの微分恒等式、中心エネルギー式、跳びの代数、Taylor 係数を SymPy で検算する。ログは `Stage5IndependentChecksResults.txt`。検算数は11件であり、これは形式証明の件数ではない。特に枝条件、PDE 適切性、弱解の延長判定は記号計算で証明したものではない。
 
 **Lean 状態:** この実行環境では `lean` / `lake` が見つからなかったため、ソースを変更した Lean のコンパイルや新定理のビルドは実施していない。今回の成果は、独立した解析導出・範囲監査・記号検算であり、未コンパイルのコードを「ビルド済み」とは報告しない。
