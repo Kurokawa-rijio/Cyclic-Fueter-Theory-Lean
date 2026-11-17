@@ -48,12 +48,15 @@ import CFT.Spherical.WedgeEYMSystem
 import CFT.Spherical.WedgeConstraintPropagation
 import CFT.Spherical.WedgeEnergyIdentity
 import CFT.Spherical.WedgeTransportIntegratingFactor
+import CFT.Spherical.WedgeTransportODE
+import CFT.Spherical.WedgeTransportAnalytic
 import CFT.Spherical.WedgeCornerConditions
 import CFT.Spherical.WedgeVacuumReduction
 import CFT.Spherical.WedgeMisnerSharpMass
 import CFT.Spherical.SchwarzschildVacuumSolution
 import CFT.Spherical.FlatLimit
 import CFT.Spherical.WedgeEnergyBalance
+import CFT.Spherical.WedgeEnergyAnalytic
 import CFT.Spherical.BartnikMcKinnonOrigin
 import CFT.Quantum.MinisuperspaceBoundaryTerms
 import CFT.Quantum.MinisuperspaceVariation
@@ -169,6 +172,7 @@ import CFT.Quantum.SpinCurvatureProduct
 import CFT.Quantum.SpinCurvatureS2
 import CFT.Quantum.SchwarzschildTemperature
 import CFT.Quantum.ReissnerNordstromTemperature
+import CFT.Quantum.ExtremalLimit
 import CFT.Quantum.WignerRotationHolonomy
 import CFT.Unification.WeakGravityWindow
 import CFT.Spherical.HiggsSupportedNeck
