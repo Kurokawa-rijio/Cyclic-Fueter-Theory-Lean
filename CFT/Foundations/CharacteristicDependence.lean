@@ -13,7 +13,7 @@
 import CFT.Foundations.CharacteristicUniqueness
 
 open Real Set
-open CFT.CharUniqueness
+open CFT.CharUniqueness CFT.CharGronwall
 
 namespace CFT.CharDependence
 
