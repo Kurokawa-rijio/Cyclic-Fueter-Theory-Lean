@@ -90,7 +90,7 @@ theorem chr1_symm (a b c : Fin n) : J.chr1 a b c = J.chr1 a c b := by
 
 theorem metric_compat (a b c : Fin n) : J.dg c a b = J.chr1 a b c + J.chr1 b a c := by
   unfold chr1
-  rw [J.dg_symm b a c, J.dg_symm a b c]
+  rw [J.dg_symm c b a]
   ring
 
 theorem dchr1_symm (e a b c : Fin n) : J.dchr1 e a b c = J.dchr1 e a c b := by
