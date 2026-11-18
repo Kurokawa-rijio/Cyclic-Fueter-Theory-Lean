@@ -30,7 +30,7 @@ The current snapshot contains **2743 declarations** (2740 theorems and 3 private
   - curvature from metric jets, the second and contracted Bianchi identities;
   - linearised gravity and the Newtonian limit, and the geodesic equation;
   - Kepler, oscillator and rigid body; Navier–Stokes, Bernoulli, elasticity, sound and Coulomb; special relativity;
-  - Maxwell's equations as one biquaternionic Fueter equation, and quaternionic mechanics (Kustaanheimo–Stiefel, Euler's equations, frame geodesics).
+  - Maxwell's equations imply one biquaternionic Fueter equation D F = −(Iρ + j) (one direction; the converse is not formalised), and quaternionic mechanics (Kustaanheimo–Stiefel, Euler's equations, frame geodesics).
 - **Einstein equations:**
   - from the first-order Cartan–Palatini action: G = 0 and 8G = T;
   - torsion-free from the connection variation, and the Koszul formula;

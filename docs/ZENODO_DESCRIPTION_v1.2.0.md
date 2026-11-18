@@ -28,9 +28,9 @@ Scope: these are statements about the three evolution equations. That the soluti
 - Continuum laws. Navier–Stokes in conservation form, Bernoulli, Navier–Cauchy, the acoustic wave equation, and Coulomb's law (harmonicity and field).
 - Special relativity. Mass shell, invariance of the interval under boosts, velocity addition, and the electromagnetic invariants.
 - Bridges to the Fueter operator.
-  - Maxwell's equations as one biquaternionic Fueter equation D F = −(Iρ + j).
+  - Maxwell's equations imply one biquaternionic Fueter equation D F = −(Iρ + j) (one direction; the converse is not formalised).
   - The electromagnetic invariants as the scalar part of F², and the mass shell as the biquaternionic norm.
-  - Bernoulli, viscous Navier–Stokes and Coulomb in terms of D̄D = Δ / □.
+  - Bernoulli, viscous Navier–Stokes and Coulomb in terms of the spatial Fueter operator Vec = i∂₁ + j∂₂ + k∂₃ (Vec u = −div u + curl u for a vector field u, and Vec² = −Δ). The two Coulomb theorems state their hypotheses ∂_j x_j = 1 and ∂_j(1/r) = −x_j/r³ also for the time index j = 0; for a static potential these are incompatible, so as stated they do not apply to the static Coulomb field (see docs/REVIEW_2026-11-18_JA.md, item 8).
   - The Lorenz gauge, and the quaternionic gauge Bianchi identity.
 - Quaternionic mechanics.
   - Kustaanheimo–Stiefel map x = q i q̄, with |x| = |q|² and the speed identity. The Kepler energy relation is rewritten in the form of a four-dimensional oscillator energy; the equation of motion is not derived.
