@@ -187,6 +187,8 @@ import CFT.Foundations.LinearizedGravity
 import CFT.Foundations.ClassicalMechanicsLaws
 import CFT.Foundations.ContinuumFieldLaws
 import CFT.Foundations.SpecialRelativityLaws
+import CFT.Foundations.GeodesicEquation
+import CFT.Foundations.ContractedBianchiNormal
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -2878,3 +2880,9 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.SpecialRel.velocity_addition_gamma
 #print axioms CFT.SpecialRel.em_invariant_dot
 #print axioms CFT.SpecialRel.em_invariant_sq
+#print axioms CFT.Geodesic.geodesic_EL
+#print axioms CFT.ContractedBianchi.relabel_pairs
+#print axioms CFT.ContractedBianchi.relabel_within
+#print axioms CFT.ContractedBianchi.relabel_reverse
+#print axioms CFT.ContractedBianchi.S4_congr
+#print axioms CFT.ContractedBianchi.contracted_bianchi_normal

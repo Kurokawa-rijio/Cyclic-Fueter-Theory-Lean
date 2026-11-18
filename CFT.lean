@@ -238,6 +238,8 @@ import CFT.Foundations.LinearizedGravity
 import CFT.Foundations.ClassicalMechanicsLaws
 import CFT.Foundations.ContinuumFieldLaws
 import CFT.Foundations.SpecialRelativityLaws
+import CFT.Foundations.GeodesicEquation
+import CFT.Foundations.ContractedBianchiNormal
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
