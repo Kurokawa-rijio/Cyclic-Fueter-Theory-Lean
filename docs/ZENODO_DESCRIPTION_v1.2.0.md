@@ -21,7 +21,7 @@ Scope: "C²" in this section means that the function, ∂_u, ∂_v and ∂_u∂_
 2. Classical physics written from the author's geometry (new chapter 13 of the proposition set).
 
 - Curvature from metric jets. Christoffel symbols and the Riemann tensor are built from the values of the metric derivatives; metric compatibility and the first Bianchi identity are proved.
-- Second Bianchi identity. It is proved in gauge form for an arbitrary noncommutative ring and in coordinate components. The contracted Bianchi identity ∇^μ G_μν = 0 is proved in normal coordinates.
+- Second Bianchi identity. It is proved in gauge form for an arbitrary noncommutative ring and in coordinate components. The contracted Bianchi identity ∇^μ G_μν = 0 is proved at a point in normal coordinates (Γ = 0 and ∂g = 0 there); the step from normal coordinates to arbitrary coordinates (tensoriality) is not formalised.
 - Linearised gravity. Gauge invariance, the linearised Bianchi identity, matter conservation, the harmonic (Lorenz) gauge, vacuum gravitational waves, and the Newtonian limit (G₀₀ ↔ Poisson equation, Christoffel symbols ↔ Newtonian force).
 - The geodesic equation as the Euler–Lagrange equation of ½ g v v.
 - Mechanics. Kepler problem: angular momentum, energy, the Laplace–Runge–Lenz vector and the identity A·x = L² − kr. Harmonic oscillator, and rigid-body conservation laws (2T = Σ I_i ω_i² and |L|²).
