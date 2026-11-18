@@ -226,3 +226,4 @@ import CFT.Spherical.ThroatIsometrySL2
 import CFT.Foundations.CurvatureJetAlgebra
 import CFT.Foundations.CharacteristicGronwall
 import CFT.Foundations.CharacteristicUniqueness
+import CFT.Spherical.WedgeUniqueness

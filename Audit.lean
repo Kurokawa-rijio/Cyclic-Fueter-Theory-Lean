@@ -175,6 +175,7 @@ import CFT.Spherical.ThroatIsometrySL2
 import CFT.Foundations.CurvatureJetAlgebra
 import CFT.Foundations.CharacteristicGronwall
 import CFT.Foundations.CharacteristicUniqueness
+import CFT.Spherical.WedgeUniqueness
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2661,3 +2662,31 @@ import CFT.Foundations.CharacteristicUniqueness
 #print axioms CFT.CharUniqueness.slice1
 #print axioms CFT.CharUniqueness.slice2
 #print axioms CFT.CharUniqueness.char_uniqueness
+#print axioms CFT.WedgeUniq.pdist_nonneg
+#print axioms CFT.WedgeUniq.abs_add_le'
+#print axioms CFT.WedgeUniq.abs_sub_le'
+#print axioms CFT.WedgeUniq.UL_congr
+#print axioms CFT.WedgeUniq.UL_const
+#print axioms CFT.WedgeUniq.UL_var
+#print axioms CFT.WedgeUniq.pdist_ge
+#print axioms CFT.WedgeUniq.UL_Om
+#print axioms CFT.WedgeUniq.UL_W
+#print axioms CFT.WedgeUniq.UL_ru
+#print axioms CFT.WedgeUniq.UL_rv
+#print axioms CFT.WedgeUniq.UL_Ou
+#print axioms CFT.WedgeUniq.UL_Ov
+#print axioms CFT.WedgeUniq.UL_inv_of
+#print axioms CFT.WedgeUniq.UL_invr
+#print axioms CFT.WedgeUniq.UL_invOm
+#print axioms CFT.WedgeUniq.UL_add
+#print axioms CFT.WedgeUniq.UL_sub
+#print axioms CFT.WedgeUniq.UL_mul
+#print axioms CFT.WedgeUniq.UL_oneMinusW2
+#print axioms CFT.WedgeUniq.UL_rhsR
+#print axioms CFT.WedgeUniq.UL_rhsOm
+#print axioms CFT.WedgeUniq.UL_rhsW
+#print axioms CFT.WedgeUniq.Du_sub
+#print axioms CFT.WedgeUniq.Dv_sub
+#print axioms CFT.WedgeUniq.Duv_sub
+#print axioms CFT.WedgeUniq.C2.sub
+#print axioms CFT.WedgeUniq.wedge_uniqueness
