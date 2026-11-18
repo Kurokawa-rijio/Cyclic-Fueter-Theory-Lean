@@ -13,6 +13,10 @@
       ∂_t²ρ₁ = c²Δρ₁(音波の波動方程式)。
   * `coulomb_harmonic`:r = |x|、ri = 1/r(∂_i ri = −x_i ri³、|x|² ri² = 1)について Δ(q/r) = 0(r ≠ 0)。
     `coulomb_field`:E_i = −∂_i(q/r) = q x_i/r³(Coulomb の法則)。
+    注意(独立点検 2026-11-18):`coulomb_harmonic` の仮定 `hx`(∂_j x_j = 1)と `hri`(∂_j ri = −x_j ri³)は
+    時間の添字 j = 0 も含む Fin 4 全体で置いている。静的なポテンシャル(∂₀ ri = 0)では、`hri` の j = 0 から
+    x₀ ri³ = 0、つまり x₀ = 0 が出て、`hx` の j = 0(∂₀ x₀ = 1)と矛盾する。したがってこの定理は、∂₀ = ∂_t の
+    ふつうの静的モデルには当てはめられない(証明が使うのは j = 1, 2, 3 だけなので、仮定を j ≠ 0 に制限すれば直る)。
 -/
 import Mathlib.RingTheory.Derivation.Basic
 import Mathlib.Tactic

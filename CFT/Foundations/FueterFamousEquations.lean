@@ -9,7 +9,9 @@
   * `vec_vec`:Vec(Vec f) = −(∂₁² + ∂₂² + ∂₃²) f(空間の Laplacian の因数分解)。
   * 流体:`bernoulli_fueter`:Fueter 正則な流れ(Vec u = 0、つまり非圧縮かつ渦なし)では Bernoulli の定理が成り立つ。
     `ns_viscous_fueter`:Navier–Stokes の粘性項 μΔu は −μ Vec(Vec u) の虚部。
-  * 静電場:`coulomb_fueter`:Coulomb ポテンシャル φ = q/r について、電場 ∇φ = Vec φ は Fueter 正則(Vec(Vec φ) = 0)。
+  * 静電場:`coulomb_fueter`:Coulomb ポテンシャル φ = q/r について、Vec φ = ∇φ(電場 E = −∇φ の符号を変えたもの)は
+    Fueter 正則(Vec(Vec φ) = 0)。仮定 `hx`、`hri` は j = 0 も含むので、静的なモデル(∂₀ ri = 0)では両立しない
+    (`ContinuumFieldLaws` の `coulomb_harmonic` の注意を参照)。
   * 電磁場:`maxwell_biquaternion`:F = E + I B(純虚の双四元数)について
       D F = (div B − I div E) + (∂₀E − curl B) + I(∂₀B + curl E)。
     系 `maxwell_single_equation`:Maxwell 方程式(源 ρ, j)⇒ D F = −(Iρ + j)(1 本の双四元数の式)。
