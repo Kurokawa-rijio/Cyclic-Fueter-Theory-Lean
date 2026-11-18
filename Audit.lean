@@ -181,6 +181,12 @@ import CFT.Spherical.WedgeExistence
 import CFT.Foundations.CharacteristicDependence
 import CFT.Spherical.WedgeDependence
 import CFT.Foundations.BianchiSecond
+import CFT.Spherical.WedgeDifferenceSystem
+import CFT.Spherical.WedgeDifferenceEnergy
+import CFT.Spherical.WedgeDifferenceEnergyROm
+import CFT.Spherical.WedgeDifferenceCoefficientsBounded
+import CFT.Spherical.WedgeCompactBounds
+import CFT.Quantum.PhysicalInnerProductIntegral
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2696,8 +2702,6 @@ import CFT.Foundations.BianchiSecond
 #print axioms CFT.WedgeUniq.wedgeEqsOn_of_global
 #print axioms CFT.WedgeUniq.wedgeDataOn_of_global
 #print axioms CFT.WedgeUniq.wedge_uniqueness
-#print axioms CFT.WedgeUniq.exists_bound_rect
-#print axioms CFT.WedgeUniq.exists_pos_lower_rect
 #print axioms CFT.WedgeUniq.wedge_uniqueness_of_pos
 #print axioms CFT.Goursat.slice_v
 #print axioms CFT.Goursat.slice_u
@@ -2750,3 +2754,86 @@ import CFT.Foundations.BianchiSecond
 #print axioms CFT.Classical.curv_apply
 #print axioms CFT.Classical.nablaR_explicit
 #print axioms CFT.Classical.bianchi_second
+#print axioms CFT.WedgeDifference.w_cubic_factor
+#print axioms CFT.WedgeDifference.w_quartic_factor
+#print axioms CFT.WedgeDifference.om_sq_factor
+#print axioms CFT.WedgeDifference.inv_diff
+#print axioms CFT.WedgeDifference.inv_sq_diff
+#print axioms CFT.WedgeDifference.inv_cube_diff
+#print axioms CFT.WedgeDifference.inv_pow4_diff
+#print axioms CFT.WedgeDifference.inv_diff_Om
+#print axioms CFT.WedgeDifference.wedgeWuv_diff_grouped
+#print axioms CFT.WedgeDifference.wedgeWuv_diff_linear
+#print axioms CFT.WedgeDifference.wedgeRuv_diff_grouped
+#print axioms CFT.WedgeDifference.wedgeRuv_diff_linear
+#print axioms CFT.WedgeDifference.wedgeOmuv_diff_grouped
+#print axioms CFT.WedgeDifference.wedgeOmuv_diff_linear
+#print axioms CFT.WedgeDifference.diff_W_eq
+#print axioms CFT.WedgeDifference.diff_r_eq
+#print axioms CFT.WedgeDifference.diff_Om_eq
+#print axioms CFT.WedgeDifference.difference_system
+#print axioms CFT.WedgeDifferenceEnergy.rhsW_eq_wedgeWuv
+#print axioms CFT.WedgeDifferenceEnergy.rhsW_sub_eq_source
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Dv_eq
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Du_eq
+#print axioms CFT.WedgeDifferenceEnergy.diffW_eq_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Dv_diff_u
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Du_diff_v
+#print axioms CFT.WedgeDifferenceEnergy.diffW_energy_u_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_energy_v_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_flux_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_energy_balance_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsR_eq_wedgeRuv
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsR_sub_eq_source
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Dv_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Du_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_eq_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Dv_diff_u
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Du_diff_v
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_energy_u_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_energy_v_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_flux_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_energy_balance_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsOm_eq_wedgeOmuv
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsOm_sub_eq_source
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Dv_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Du_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_eq_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Dv_diff_u
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Du_diff_v
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_energy_u_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_energy_v_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_flux_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_energy_balance_analytic
+#print axioms CFT.WedgeDifferenceCoefficients.abs_inv_le_of_le
+#print axioms CFT.WedgeDifferenceCoefficients.abs_one_sub_sq_le
+#print axioms CFT.WedgeDifferenceCoefficients.diffWCoefOm_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffWCoefW_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffWCoefR_bound
+#print axioms CFT.WedgeDifferenceCoefficients.abs_add_le'
+#print axioms CFT.WedgeDifferenceCoefficients.abs_two_sub_sq_le
+#print axioms CFT.WedgeDifferenceCoefficients.abs_r_quad_le
+#print axioms CFT.WedgeDifferenceCoefficients.abs_r_cubic_le
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefOm_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefW_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefR_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefRu_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefRv_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefOu_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefOv_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefOm_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefRuv_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefR_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefW_bound
+#print axioms CFT.WedgeCompactBounds.exists_abs_bound_of_continuousOn
+#print axioms CFT.WedgeCompactBounds.exists_pos_lower_bound_of_continuousOn
+#print axioms CFT.WedgeCompactBounds.exists_abs_bound_on_rect
+#print axioms CFT.WedgeCompactBounds.exists_pos_lower_bound_on_rect
+#print axioms CFT.WedgeCompactBounds.wedge_fields_bounds
+#print axioms CFT.PhysInner.phys_inner_eq_integral
+#print axioms CFT.PhysInner.phys_normSq_eq_integral
+#print axioms CFT.PhysInner.phys_inner_pos_of_ne_zero
+#print axioms CFT.PhysInner.phys_inner_pos_integral
+#print axioms CFT.PhysInner.phys_inner_conj_symm
+#print axioms CFT.PhysInner.phys_inner_add_right
+#print axioms CFT.PhysInner.phys_inner_smul_right

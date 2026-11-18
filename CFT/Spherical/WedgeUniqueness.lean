@@ -11,11 +11,13 @@
     `UL_const`、`UL_var`、`UL_invr`、`UL_invOm`(1/r、1/Ω)、`UL_add`、`UL_sub`、`UL_mul`、`UL_congr`。
   * `UL_rhsR`、`UL_rhsOm`、`UL_rhsW`:3 本の右辺はすべて UL(Ω の式の r_uv は r の式で置き換える)。
   * `wedge_uniqueness`:評価つきの一意性。差 (δr, δΩ, δW) を `CharacteristicUniqueness.char_uniqueness` に入れる。
-  * `wedge_uniqueness_of_pos`:主定理。B、m は連続性とコンパクト性から出るので、残る仮定は r > 0、Ω > 0。
+  * `wedge_uniqueness_of_pos`:主定理。B、m は連続性とコンパクト性から出る(`WedgeCompactBounds` の
+    `exists_abs_bound_of_continuousOn`・`exists_pos_lower_bound_of_continuousOn`)ので、残る仮定は r > 0、Ω > 0。
   * `wedgeEqsOn_of_global`、`wedgeDataOn_of_global`:全平面の `WedgeEvolutionEqs`、`HasWedgeData` からの橋渡し。
 -/
 import CFT.Foundations.CharacteristicUniqueness
 import CFT.Spherical.WedgeEYMSystem
+import CFT.Spherical.WedgeCompactBounds
 
 open Real Set CFT.Wedge
 
@@ -234,7 +236,7 @@ theorem UL_rhsW {B m : ℝ} (hm : 0 < m) : UL B m eW := by
 
 /-! ### 長方形の上の方程式・データ・正則性 -/
 
-open CFT.CharUniqueness
+open CFT.CharUniqueness CFT.WedgeCompactBounds
 
 /-- 長方形 [0,a]×[0,b] の上の C² 級(微分は `Du`、`Dv`、`Duv`) -/
 abbrev C2On (a b : ℝ) (x : ℝ → ℝ → ℝ) : Prop := C2Data a b x (Du x) (Dv x) (Duv x)
@@ -351,26 +353,7 @@ theorem wedge_uniqueness (F G : WedgeFields) {a b B m : ℝ}
   have k2 : F.W u v - G.W u v = 0 := key 2 u hu v hv
   exact ⟨sub_eq_zero.mp k0, sub_eq_zero.mp k1, sub_eq_zero.mp k2⟩
 
-/-! ### 第 3 段:定数 B、m は連続性とコンパクト性から出る -/
-
-theorem exists_bound_rect {a b : ℝ} {g : ℝ × ℝ → ℝ}
-    (hg : ContinuousOn g (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b)) :
-    ∃ B, ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, |g (u, v)| ≤ B := by
-  obtain ⟨C, hC⟩ := (isCompact_Icc.prod isCompact_Icc).exists_bound_of_continuousOn hg
-  exact ⟨C, fun u hu v hv => by
-    have := hC (u, v) (Set.mk_mem_prod hu hv)
-    rwa [Real.norm_eq_abs] at this⟩
-
-theorem exists_pos_lower_rect {a b : ℝ} {g : ℝ × ℝ → ℝ}
-    (hg : ContinuousOn g (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b))
-    (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, 0 < g (u, v)) :
-    ∃ m, 0 < m ∧ ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, m ≤ g (u, v) := by
-  by_cases hne : (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b).Nonempty
-  · obtain ⟨p, hp, hmin⟩ := (isCompact_Icc.prod isCompact_Icc).exists_isMinOn hne hg
-    have hp' := Set.mem_prod.mp hp
-    refine ⟨g p, hpos p.1 hp'.1 p.2 hp'.2, fun u hu v hv => ?_⟩
-    exact (isMinOn_iff.mp hmin) (u, v) (Set.mk_mem_prod hu hv)
-  · exact ⟨1, one_pos, fun u hu v hv => absurd ⟨(u, v), Set.mk_mem_prod hu hv⟩ hne⟩
+/-! ### 第 3 段:定数 B、m は連続性とコンパクト性から出る(`CFT.WedgeCompactBounds` を使う) -/
 
 /-- 主定理:長方形 [0,a]×[0,b] の上で、発展方程式・特性データ・C² 級をみたす 2 つの解が、
 そこで r > 0、Ω > 0 なら、長方形の上で一致する(長方形の外については何も仮定しない)。 -/
@@ -383,6 +366,11 @@ theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
       0 < F.r u v ∧ 0 < F.Om u v ∧ 0 < G.r u v ∧ 0 < G.Om u v) :
     ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
       F.r u v = G.r u v ∧ F.Om u v = G.Om u v ∧ F.W u v = G.W u v := by
+  by_cases hne : (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b).Nonempty
+  swap
+  · intro u hu v hv
+    exact absurd ⟨(u, v), Set.mk_mem_prod hu hv⟩ hne
+  have hK : IsCompact (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b) := isCompact_Icc.prod isCompact_Icc
   let S : ℝ × ℝ → ℝ := fun p =>
     |Function.uncurry F.Om p| + |Function.uncurry F.W p| + |Function.uncurry (Du F.r) p|
       + |Function.uncurry (Dv F.r) p| + |Function.uncurry (Du F.Om) p|
@@ -395,25 +383,32 @@ theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
       rFO.cont_u.abs).add rFO.cont_v.abs).add
       (((((rGO.cont.abs.add rGW.cont.abs).add rGr.cont_u.abs).add rGr.cont_v.abs).add
       rGO.cont_u.abs).add rGO.cont_v.abs))
-  obtain ⟨B, hB⟩ := exists_bound_rect hS
-  obtain ⟨m1, hm1, h1⟩ := exists_pos_lower_rect rFr.cont (fun u hu v hv => (hpos u hu v hv).1)
-  obtain ⟨m2, hm2, h2⟩ := exists_pos_lower_rect rFO.cont (fun u hu v hv => (hpos u hu v hv).2.1)
-  obtain ⟨m3, hm3, h3⟩ := exists_pos_lower_rect rGr.cont
-    (fun u hu v hv => (hpos u hu v hv).2.2.1)
-  obtain ⟨m4, hm4, h4⟩ := exists_pos_lower_rect rGO.cont
-    (fun u hu v hv => (hpos u hu v hv).2.2.2)
+  obtain ⟨B, hB⟩ := exists_abs_bound_of_continuousOn hK hne (f := fun u v => S (u, v))
+    (hS.congr (fun p _ => rfl))
+  have hpos' : ∀ u v, (u, v) ∈ Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b →
+      0 < F.r u v ∧ 0 < F.Om u v ∧ 0 < G.r u v ∧ 0 < G.Om u v := fun u v huv =>
+    hpos u (Set.mem_prod.mp huv).1 v (Set.mem_prod.mp huv).2
+  obtain ⟨m1, hm1, h1⟩ := exists_pos_lower_bound_of_continuousOn hK hne rFr.cont
+    (fun u v huv => (hpos' u v huv).1)
+  obtain ⟨m2, hm2, h2⟩ := exists_pos_lower_bound_of_continuousOn hK hne rFO.cont
+    (fun u v huv => (hpos' u v huv).2.1)
+  obtain ⟨m3, hm3, h3⟩ := exists_pos_lower_bound_of_continuousOn hK hne rGr.cont
+    (fun u v huv => (hpos' u v huv).2.2.1)
+  obtain ⟨m4, hm4, h4⟩ := exists_pos_lower_bound_of_continuousOn hK hne rGO.cont
+    (fun u v huv => (hpos' u v huv).2.2.2)
   have hm : 0 < min (min m1 m2) (min m3 m4) := lt_min (lt_min hm1 hm2) (lt_min hm3 hm4)
   refine wedge_uniqueness F G eF eG dF dG rFr rFO rFW rGr rGO rGW (B := B) hm ?_
   intro u hu v hv
-  have hb := hB u hu v hv
+  have huv : (u, v) ∈ Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b := Set.mk_mem_prod hu hv
+  have hb := hB u v huv
   have l1 : min (min m1 m2) (min m3 m4) ≤ F.r u v :=
-    (min_le_left _ _).trans ((min_le_left _ _).trans (h1 u hu v hv))
+    (min_le_left _ _).trans ((min_le_left _ _).trans (h1 u v huv))
   have l2 : min (min m1 m2) (min m3 m4) ≤ F.Om u v :=
-    (min_le_left _ _).trans ((min_le_right _ _).trans (h2 u hu v hv))
+    (min_le_left _ _).trans ((min_le_right _ _).trans (h2 u v huv))
   have l3 : min (min m1 m2) (min m3 m4) ≤ G.r u v :=
-    (min_le_right _ _).trans ((min_le_left _ _).trans (h3 u hu v hv))
+    (min_le_right _ _).trans ((min_le_left _ _).trans (h3 u v huv))
   have l4 : min (min m1 m2) (min m3 m4) ≤ G.Om u v :=
-    (min_le_right _ _).trans ((min_le_right _ _).trans (h4 u hu v hv))
+    (min_le_right _ _).trans ((min_le_right _ _).trans (h4 u v huv))
   simp only [S, Function.uncurry_apply_pair] at hb
   rw [abs_of_nonneg (by positivity)] at hb
   have := abs_nonneg (F.Om u v)
