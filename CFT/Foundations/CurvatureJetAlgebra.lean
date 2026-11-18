@@ -16,6 +16,10 @@
   * `chr2_symm`、`dchr2_symm`:Γ^a_bc = g^ad Γ_dbc とその微分は b, c について対称。
   * `riem`:計量から作った Riemann テンソル。`bianchi_first_metric`:第 1 Bianchi 恒等式をみたす。
     `riem_antisymm`:R^a_bcd = −R^a_bdc。
+  範囲の注意(独立点検 2026-11-18):`MetricJet` は計量 g_ab そのものを持たず、ginv と dg、dginv と dg の関係
+  (g g⁻¹ = 1、∂g⁻¹ = −g⁻¹(∂g)g⁻¹)も、ddg の微分の添字の対称性 ∂_e∂_c = ∂_c∂_e も仮定していない。
+  上の定理はどれもこれらを使わずに成り立つ(対称な接続一般の性質)。添字を下げた R_abcd の前の 2 添字の反対称性
+  (`FrameCoordinateEinstein` で仮定にしているもの)を示すには、これらの関係を `MetricJet` に足す必要がある。
 -/
 import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.Data.Real.Basic

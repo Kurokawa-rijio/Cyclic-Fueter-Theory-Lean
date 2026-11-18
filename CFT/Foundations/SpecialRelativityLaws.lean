@@ -5,6 +5,7 @@
   * `boost_interval`:γ²(1 − v²) = 1 の Lorentz ブーストは −t² + x² を保つ。
   * `velocity_addition`:ブーストの合成は速度 (v₁ + v₂)/(1 + v₁v₂)、γ = γ₁γ₂(1 + v₁v₂) のブースト
     (`velocity_addition_gamma`:その γ も γ²(1 − v²) = 1 をみたす)。
+    示しているのは合成の時間成分 t″ の式だけ。空間成分 x″ = γ(x − v t) の式は同じ計算で出るが、文にしていない。
   * `em_invariant_dot`、`em_invariant_sq`:x 方向のブーストで電磁場は
       E′ = (E₁, γ(E₂ − vB₃), γ(E₃ + vB₂))、B′ = (B₁, γ(B₂ + vE₃), γ(B₃ − vE₂))
     と変わり、E·B と |E|² − |B|² は不変(電磁場テンソルの 2 つの不変量)。

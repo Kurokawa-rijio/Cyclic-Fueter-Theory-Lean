@@ -9,8 +9,11 @@
   * `hasDerivAt_f`:f′ = −2 cos χ / sin³χ。
   * `xi1_*`、`xi2_*`:成分の偏微分(HasDerivAt)。
   * `killing_xi0`、`killing_xi1`、`killing_xi2`:3 つとも Killing 方程式をみたす。
+    `Killing` は偏微分の値を引数に取る代数の式で、その値が実際の偏微分であることは `xi1_*`、`xi2_*` が別に示す
+    (2 つを 1 本の定理にまとめてはいない)。
   * `comm_01_*`、`comm_02_*`、`comm_12_*`:[ξ₀, ξ₁] = ξ₂、[ξ₀, ξ₂] = −ξ₁、[ξ₁, ξ₂] = −ξ₀(sl(2,ℝ))。
-  つまり、Tolman 宇宙の線形摂動として残る 3 つのゲージの向きは、喉の対称性 sl(2,ℝ) と同じである。
+    これも偏微分の値を代入した恒等式。
+  解釈(未形式化):Tolman 宇宙の線形摂動として残る 3 つのゲージの向きは、喉の対称性 sl(2,ℝ) と同じである。
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 import Mathlib.Tactic

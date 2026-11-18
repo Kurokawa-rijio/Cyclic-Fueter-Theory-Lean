@@ -18,7 +18,8 @@
     座標の Einstein 方程式 G_{νσ} = 0 と同値。
 
   範囲の注意:Rc は与えられた座標の曲率で、2 組の反対称性を仮定する。計量の Christoffel 記号から作った Riemann
-  テンソル(`CurvatureJetAlgebra.riem`)の添字を下げたものがこの反対称性をみたすことは、ここでは示していない。
+  テンソル(`CurvatureJetAlgebra.riem`)の添字を下げたものがこの反対称性をみたすことは、ここでは示していない
+  (今の `MetricJet` には g と、g⁻¹・∂g⁻¹ と ∂g の関係が無いので、そのままでは示せない。`CurvatureJetAlgebra` の注意を参照)。
   枠の曲率を「接続 ω の曲率」として作ったものと `RF` が一致することも(`curv_gauge_covariant` は共役まで)示していない。
 -/
 import CFT.Foundations.CartanTorsionLorentz
