@@ -234,6 +234,10 @@ import CFT.Spherical.WedgeDependence
 import CFT.Foundations.BianchiSecond
 import CFT.Foundations.LinearCharacteristicStability
 import CFT.Spherical.WedgeContinuation
+import CFT.Foundations.LinearizedGravity
+import CFT.Foundations.ClassicalMechanicsLaws
+import CFT.Foundations.ContinuumFieldLaws
+import CFT.Foundations.SpecialRelativityLaws
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
