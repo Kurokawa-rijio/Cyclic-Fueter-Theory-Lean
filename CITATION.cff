@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software in academic work, cite the version archived by Zenodo and the relevant research documents."
 title: "Cyclic Fueter Theory: Lean 4 Formalization of Selected Results"
-version: "1.1.1"
-date-released: "2026-11-16"
+version: "1.2.0"
+date-released: "2026-11-18"
 license: MIT
 repository-code: "https://github.com/Kurokawa-rijio/Cyclic-Fueter-Theory-Lean"
 authors:
@@ -20,7 +20,10 @@ abstract: >-
   principle for the Einstein–Yang–Mills dumbbell, including its junction, conformal
   frame and smoothness, the shape of the dumbbell, a reduced action with canonical
   constraints and a Wheeler–DeWitt equation for the spherically symmetric sector,
-  and a two-dimensional Dirac field. The repository includes an
+  and a two-dimensional Dirac field. Version 1.2.0 adds local well-posedness of the
+  wedge characteristic problem for the evolution equations, classical field equations
+  written through Fueter-type operators, and the nonlinear Einstein equations from the
+  first-order Cartan–Palatini action with the frame–coordinate correspondence. The repository includes an
   author-maintained status ledger of 182 items in α-I–α-XV, each recorded as
   kinematics, action, and dynamics. Status labels
   describe the current formalization scope and are not independent certification or

@@ -1,7 +1,7 @@
 # Cyclic Fueter Theory: Lean 4 Formalization of Selected Results
 
 **Author:** Ryojiro Kurokawa  
-**Version:** v1.1.1 (2026-11-16)  
+**Version:** v1.2.0 (2026-11-18)  
 **Lean toolchain:** `leanprover/lean4:v4.15.0`  
 **Mathlib dependency:** `v4.15.0`
 
@@ -11,7 +11,37 @@
 
 This repository contains Lean 4 formalizations associated with the research program *Cyclic Fueter Theory* (CFT) and the author's claim ledger α-I–α-XV. The code covers quaternionic algebra, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, the reduced Einstein–Yang–Mills (EYM) action and its field equations, curvature and stress tensors computed from metric and connection data, distributional junction conditions, characteristic evolution and constraint propagation, zero-mode calculations, and selected links to WZW and related geometric formulas.
 
-The current snapshot contains **2471 declarations** (2468 theorems and 3 private lemmas) in 232 Lean modules (v1.6.1: 1857 in 169; v0.6.0: 1873 in 171; v0.5.0: 1641 in 150; v0.4.0: 1544 in 141; v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 556 aliases in the index module `CFT/Index.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+The current snapshot contains **2743 declarations** (2740 theorems and 3 private lemmas) in 261 Lean modules (v1.1.1 at its last update: 2471 in 232; v1.6.1: 1857 in 169; v0.6.0: 1873 in 171; v0.5.0: 1641 in 150; v0.4.0: 1544 in 141; v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 556 aliases in the index module `CFT/Index.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+
+## What changed in v1.2.0
+
+**Local well-posedness of the wedge, classical physics from the Fueter geometry, and the nonlinear Einstein equations.** Thirty modules were added. The full description is `docs/ZENODO_DESCRIPTION_v1.2.0.md`; a Japanese review summary, with every assumption listed, is `docs/REVIEW_2026-11-18_JA.md`.
+
+- **Wedge evolution:**
+  - uniqueness on a rectangle (4-7);
+  - continuous dependence on the data (4-8);
+  - a Goursat existence theorem by the Banach fixed-point theorem (4-9);
+  - local existence and well-posedness for arbitrary C¹ data with r, Ω ≥ r₀ > 0 (4-17, `Spherical/WedgeLocalExistenceGeneral.lean`);
+  - a local linearised stability estimate (4-12);
+  - the truncated-solution statement behind the continuation obstruction (4-15).
+
+  These are statements about the evolution equations only; the constraints are not included.
+- **Classical physics:**
+  - curvature from metric jets, the second and contracted Bianchi identities;
+  - linearised gravity and the Newtonian limit, and the geodesic equation;
+  - Kepler, oscillator and rigid body; Navier–Stokes, Bernoulli, elasticity, sound and Coulomb; special relativity;
+  - Maxwell's equations as one biquaternionic Fueter equation, and quaternionic mechanics (Kustaanheimo–Stiefel, Euler's equations, frame geodesics).
+- **Einstein equations:**
+  - from the first-order Cartan–Palatini action: G = 0 and 8G = T;
+  - torsion-free from the connection variation, and the Koszul formula;
+  - Lorentz signature, and gauge covariance of the curvature;
+  - frame–coordinate correspondence: stationarity ⇔ coordinate G_{νσ} = 0 (`Foundations/FrameCoordinateEinstein.lean`).
+- **Also added:**
+  - Wheeler–DeWitt results: integral inner product, internal clock, semiclassical limit, branch correspondence;
+  - Reissner–Nordström and Schwarzschild in analytic form, and the extremal near-horizon limit;
+  - light parts of the wedge classification (12-8);
+  - octonions, the Cayley form, self-dual 2-forms, null fields and the BPS–Langevin correspondence.
+- The header wording was revised after an author-side audit; no theorem statement changed. Not independently reviewed.
 
 ## What changed in v1.1.1
 
