@@ -174,6 +174,7 @@ import CFT.Geometry.MonopoleLangevin
 import CFT.Spherical.ThroatIsometrySL2
 import CFT.Foundations.CurvatureJetAlgebra
 import CFT.Foundations.CharacteristicGronwall
+import CFT.Foundations.CharacteristicUniqueness
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2656,3 +2657,7 @@ import CFT.Foundations.CharacteristicGronwall
 #print axioms CFT.CharGronwall.exp_int_le
 #print axioms CFT.CharGronwall.char_gronwall
 #print axioms CFT.CharGronwall.char_gronwall_triple
+#print axioms CFT.CharUniqueness.abs_le_integral_abs
+#print axioms CFT.CharUniqueness.slice1
+#print axioms CFT.CharUniqueness.slice2
+#print axioms CFT.CharUniqueness.char_uniqueness
