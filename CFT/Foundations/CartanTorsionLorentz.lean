@@ -11,10 +11,13 @@
     * `eps_raise`:ε^{μνρσ} = −ε_{μνρσ}(det η = −1)。
     * `cartan_einstein_lorentz`:Σ ε^{μνρσ} ε_{aνcd} R^{cd}_{ρσ} = 4 η^{μμ} G^L_{μa}
       (Ric^L_{μa} = Σ_d η^{dd} R_{μdad}、R^L = Σ_μ η^{μμ} Ric^L_{μμ}、G^L = Ric^L − ½ η R^L)。
-    * `einstein_lorentz_iff`:Lorentz の Cartan 作用 L_L(e) = −Lb(R̃)(R̃ = ηηR)の停留点 ⇔ G^L = 0。
+    * `einstein_lorentz_iff`:停留条件を Euclid 版の第一変分 V(R̃) = 0(R̃ = ηηR)で表すと、⇔ G^L = 0。
+      (Lorentz の作用を別に定義して、その第一変分が V(R̃) の定数倍になることは示していない。
+      `cartan_einstein_lorentz` の EL = −E(R̃) がその読み替えの根拠)
   C. 座標との対応(一般の非可換環)
     * `curv_gauge_covariant`:可逆な g(枠の行列)で A′ = g⁻¹Ag + g⁻¹∂g と移すと F(A′) = g⁻¹F(A)g。
-      座標の接続(Christoffel の行列)を枠に移した接続 ω の曲率は、座標の Riemann テンソルを枠で共役にしたもの。
+      解釈(未形式化):座標の接続(Christoffel の行列)を枠に移した接続 ω の曲率は、座標の Riemann テンソルを
+      枠で共役にしたもの。「枠に移したものが Levi-Civita の ω であること」と縮約の一致は示していない。
 -/
 import CFT.Foundations.CartanEinstein
 import CFT.Foundations.BianchiSecond

@@ -7,9 +7,9 @@
     - `kepler_energy`:E = ½(ẋ² + ẏ²) − k/r は保存。
     - `kepler_lrl_x`、`kepler_lrl_y`:Laplace–Runge–Lenz ベクトル A = (ẏL − kx/r, −ẋL − ky/r) は保存。
     - `kepler_orbit`:A·x = L² − k r。|A| = ke とおくと r = (L²/k)/(1 + e cos θ)、軌道は円錐曲線(第 1 法則)。
-  * `oscillator_energy`:ẍ = −ω²x なら ẋ² + ω²x² は保存。
+  * `oscillator_energy`:ẍ = −ω²x なら ẋ² + ω²x²(エネルギーの 2 倍)は保存。
   * 剛体の Euler 方程式 I₁ω̇₁ = (I₂ − I₃)ω₂ω₃(巡回)について
-    `rigid_energy`(回転エネルギー)と `rigid_angular_momentum`(|L|² = Σ I_i²ω_i²)は保存。
+    `rigid_energy`(Σ I_i ω_i²、回転エネルギー T の 2 倍)と `rigid_angular_momentum`(|L|² = Σ I_i²ω_i²)は保存。
 -/
 import Mathlib.RingTheory.Derivation.Basic
 import Mathlib.Tactic
@@ -73,7 +73,7 @@ theorem oscillator_energy (x v ω : S) (hx : d x = v) (hv : d v = -(ω ^ 2 * x))
   simp only [map_add, Derivation.leibniz, smul_eq_mul, hx, hv, hω]
   ring
 
-/-- 剛体の Euler 方程式からの回転エネルギーの保存 -/
+/-- 剛体の Euler 方程式からの 2T = Σ I_i ω_i²(回転エネルギーの 2 倍)の保存 -/
 theorem rigid_energy (w1 w2 w3 I1 I2 I3 : S) (hI1 : d I1 = 0) (hI2 : d I2 = 0) (hI3 : d I3 = 0)
     (e1 : I1 * d w1 = (I2 - I3) * w2 * w3) (e2 : I2 * d w2 = (I3 - I1) * w3 * w1)
     (e3 : I3 * d w3 = (I1 - I2) * w1 * w2) :

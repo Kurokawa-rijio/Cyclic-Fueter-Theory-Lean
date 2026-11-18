@@ -1,5 +1,7 @@
 /-
   非線形の Einstein 方程式を作用から出す(一階形式、4 次元の正規直交枠、2026-11-18)
+  (1 点での代数:作用の密度を e = δ のまわりで有限次元の変分 k について調べる。場の汎関数としての変分、
+  部分積分、座標との対応はここでは扱わない)
 
   Cartan–Palatini の作用 L(e) = Σ ε^{μνρσ} ε_{abcd} e^a_μ e^b_ν R^{cd}_{ρσ}(枠 e と接続を独立に扱う一階形式、
   R は接続の曲率で e によらない)を、正規直交枠 e = δ のまわりで e → δ + t k と動かす。
@@ -11,7 +13,7 @@
   * `first_variation`:V(k) = −8 Σ_{μa} k_{aμ} G_{μa}。
   * `einstein_iff_stationary`:すべての変分 k で V(k) = 0 ⇔ G_{μa} = 0(真空の Einstein 方程式)。
     `einstein_with_matter`:物質の項 Σ k_{aμ} T_{μa} を足した作用の停留点 ⇔ 8 G_{μa} = T_{μa}。
-  曲率と接続の関係(接続の変分から捩れ 0 が出ること)と Lorentz 符号への移行は、この段では扱わない。
+  曲率と接続の関係(接続の変分から捩れ 0 が出ること)と Lorentz 符号への移行は `CartanTorsionLorentz`。
 -/
 import Mathlib.Tactic
 

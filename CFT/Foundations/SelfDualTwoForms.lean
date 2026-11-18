@@ -8,7 +8,7 @@
   * `leftForm_spec`、`rightForm_spec`:⟨u, x v⟩ = x₀⟨u,v⟩ + ω^L_x(u,v)、⟨u, v x⟩ = x₀⟨u,v⟩ + ω^R_x(u,v)。
   * `decomp`:2F = ω^L_p + ω^R_q(p, q は F の成分の一次結合)。Λ² = Λ²₊ ⊕ Λ²₋ ≅ Im ℍ ⊕ Im ℍ。
   * `selfDual_of_right_zero`、`antiSelfDual_of_left_zero`:q = 0 なら *F = F、p = 0 なら *F = −F。
-  八元数(R⁸)での対応物は `CFT/Foundations/CayleyFormSplitting.lean`(Cayley 4 形式、7 + 21 への分解)。
+  八元数(R⁸)での対応物は `CFT/Foundations/CayleyFormSplitting.lean`(Cayley 4 形式、固有値 3 と −1 による分け方)。
 -/
 import Mathlib.Algebra.Quaternion
 import Mathlib.Tactic
