@@ -166,6 +166,39 @@ import CFT.Cartan.BjVanishesOnC2
 import CFT.Unification.GaugeCovariance
 import CFT.SphericalTheory
 import CFT.Quantum.ZeroModeL2Condition
+import CFT.Foundations.OctonionAlgebra
+import CFT.Foundations.CayleyFormSplitting
+import CFT.Foundations.SelfDualTwoForms
+import CFT.Foundations.NullFieldNilpotent
+import CFT.Geometry.MonopoleLangevin
+import CFT.Spherical.ThroatIsometrySL2
+import CFT.Foundations.CurvatureJetAlgebra
+import CFT.Foundations.CharacteristicGronwall
+import CFT.Foundations.CharacteristicUniqueness
+import CFT.Spherical.WedgeUniqueness
+import CFT.Foundations.GoursatExistence
+import CFT.Spherical.WedgeExistence
+import CFT.Foundations.CharacteristicDependence
+import CFT.Spherical.WedgeDependence
+import CFT.Foundations.BianchiSecond
+import CFT.Foundations.LinearCharacteristicStability
+import CFT.Spherical.WedgeContinuation
+import CFT.Foundations.LinearizedGravity
+import CFT.Foundations.ClassicalMechanicsLaws
+import CFT.Foundations.ContinuumFieldLaws
+import CFT.Foundations.SpecialRelativityLaws
+import CFT.Foundations.GeodesicEquation
+import CFT.Foundations.ContractedBianchiNormal
+import CFT.Foundations.FueterFamousEquations
+import CFT.Foundations.QuaternionMechanics
+import CFT.Foundations.CartanEinstein
+import CFT.Foundations.CartanTorsionLorentz
+import CFT.Spherical.WedgeDifferenceSystem
+import CFT.Spherical.WedgeDifferenceEnergy
+import CFT.Spherical.WedgeDifferenceEnergyROm
+import CFT.Spherical.WedgeDifferenceCoefficientsBounded
+import CFT.Spherical.WedgeCompactBounds
+import CFT.Quantum.PhysicalInnerProductIntegral
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2572,3 +2605,335 @@ import CFT.Quantum.ZeroModeL2Condition
 #print axioms CFT.ZeroModeL2.reflect
 #print axioms CFT.ZeroModeL2.pi_side
 #print axioms CFT.ZeroModeL2.zero_mode_L2
+#print axioms CFT.Oct8.normSq_mul
+#print axioms CFT.Oct8.left_alt
+#print axioms CFT.Oct8.right_alt
+#print axioms CFT.Oct8.flexible
+#print axioms CFT.Oct8.moufang_left
+#print axioms CFT.Oct8.moufang_right
+#print axioms CFT.Oct8.moufang_middle
+#print axioms CFT.Oct8.conj_mul
+#print axioms CFT.Oct8.mul_conj
+#print axioms CFT.Oct8.conj_mul_self
+#print axioms CFT.Oct8.inner_mul_left
+#print axioms CFT.Oct8.inner_mul_right
+#print axioms CFT.Oct8.not_assoc
+#print axioms CFT.Oct8.null_example
+#print axioms CFT.Oct8.TwoForm.T_quadratic
+#print axioms CFT.Oct8.TwoForm.T_rightForm
+#print axioms CFT.Oct8.TwoForm.rightForm_spec
+#print axioms CFT.Oct8.TwoForm.T_decomp
+#print axioms CFT.Oct8.TwoForm.T_eigen_neg_one
+#print axioms CFT.Oct8.TwoForm.proj7_rightForm
+#print axioms CFT.Oct8.TwoForm.proj7_T
+#print axioms CFT.Oct8.TwoForm.cayley_link
+#print axioms CFT.SelfDual4.star_star
+#print axioms CFT.SelfDual4.star_leftForm
+#print axioms CFT.SelfDual4.star_rightForm
+#print axioms CFT.SelfDual4.leftForm_spec
+#print axioms CFT.SelfDual4.rightForm_spec
+#print axioms CFT.SelfDual4.decomp
+#print axioms CFT.SelfDual4.selfDual_of_right_zero
+#print axioms CFT.SelfDual4.antiSelfDual_of_left_zero
+#print axioms CFT.NullField.M_det
+#print axioms CFT.NullField.M_sq
+#print axioms CFT.NullField.M_sq_zero_iff
+#print axioms CFT.NullField.M_det_zero_iff
+#print axioms CFT.NullField.pauli_param
+#print axioms CFT.NullField.fsq_re
+#print axioms CFT.NullField.fsq_im
+#print axioms CFT.NullField.null_iff
+#print axioms CFT.NullField.null_iff_nilpotent
+#print axioms CFT.MonopoleLangevin.sinh_ne
+#print axioms CFT.MonopoleLangevin.W_eq_inv_Z
+#print axioms CFT.MonopoleLangevin.Z_integral
+#print axioms CFT.MonopoleLangevin.hasDerivAt_Z
+#print axioms CFT.MonopoleLangevin.hasDerivAt_logZ
+#print axioms CFT.MonopoleLangevin.bogomolny_W
+#print axioms CFT.MonopoleLangevin.bogomolny_h
+#print axioms CFT.ThroatSymmetry.hasDerivAt_f
+#print axioms CFT.ThroatSymmetry.xi1_a_eta
+#print axioms CFT.ThroatSymmetry.xi1_a_chi
+#print axioms CFT.ThroatSymmetry.xi1_b_eta
+#print axioms CFT.ThroatSymmetry.xi1_b_chi
+#print axioms CFT.ThroatSymmetry.xi2_a_eta
+#print axioms CFT.ThroatSymmetry.xi2_a_chi
+#print axioms CFT.ThroatSymmetry.xi2_b_eta
+#print axioms CFT.ThroatSymmetry.xi2_b_chi
+#print axioms CFT.ThroatSymmetry.killing_xi0
+#print axioms CFT.ThroatSymmetry.killing_xi1
+#print axioms CFT.ThroatSymmetry.killing_xi2
+#print axioms CFT.ThroatSymmetry.comm_01_a
+#print axioms CFT.ThroatSymmetry.comm_01_b
+#print axioms CFT.ThroatSymmetry.comm_02_a
+#print axioms CFT.ThroatSymmetry.comm_02_b
+#print axioms CFT.ThroatSymmetry.comm_12_a
+#print axioms CFT.ThroatSymmetry.comm_12_b
+#print axioms CFT.Classical.riemann_antisymm
+#print axioms CFT.Classical.bianchi_first
+#print axioms CFT.Classical.MetricJet.chr1_symm
+#print axioms CFT.Classical.MetricJet.metric_compat
+#print axioms CFT.Classical.MetricJet.dchr1_symm
+#print axioms CFT.Classical.MetricJet.chr2_symm
+#print axioms CFT.Classical.MetricJet.dchr2_symm
+#print axioms CFT.Classical.MetricJet.bianchi_first_metric
+#print axioms CFT.Classical.MetricJet.riem_antisymm
+#print axioms CFT.CharGronwall.exp_int_le
+#print axioms CFT.CharGronwall.char_gronwall_on
+#print axioms CFT.CharGronwall.char_gronwall
+#print axioms CFT.CharGronwall.char_gronwall_triple
+#print axioms CFT.CharUniqueness.C2Data.sub
+#print axioms CFT.CharUniqueness.abs_le_integral_abs
+#print axioms CFT.CharUniqueness.sliceOn1
+#print axioms CFT.CharUniqueness.sliceOn2
+#print axioms CFT.CharUniqueness.edge_deriv_zero
+#print axioms CFT.CharUniqueness.char_uniqueness
+#print axioms CFT.WedgeUniq.pdist_nonneg
+#print axioms CFT.WedgeUniq.abs_add_le'
+#print axioms CFT.WedgeUniq.abs_sub_le'
+#print axioms CFT.WedgeUniq.UL_congr
+#print axioms CFT.WedgeUniq.UL_const
+#print axioms CFT.WedgeUniq.UL_var
+#print axioms CFT.WedgeUniq.pdist_ge
+#print axioms CFT.WedgeUniq.UL_Om
+#print axioms CFT.WedgeUniq.UL_W
+#print axioms CFT.WedgeUniq.UL_ru
+#print axioms CFT.WedgeUniq.UL_rv
+#print axioms CFT.WedgeUniq.UL_Ou
+#print axioms CFT.WedgeUniq.UL_Ov
+#print axioms CFT.WedgeUniq.UL_inv_of
+#print axioms CFT.WedgeUniq.UL_invr
+#print axioms CFT.WedgeUniq.UL_invOm
+#print axioms CFT.WedgeUniq.UL_add
+#print axioms CFT.WedgeUniq.UL_sub
+#print axioms CFT.WedgeUniq.UL_mul
+#print axioms CFT.WedgeUniq.UL_oneMinusW2
+#print axioms CFT.WedgeUniq.UL_rhsR
+#print axioms CFT.WedgeUniq.UL_rhsOm
+#print axioms CFT.WedgeUniq.UL_rhsW
+#print axioms CFT.WedgeUniq.wedgeEqsOn_of_global
+#print axioms CFT.WedgeUniq.wedgeDataOn_of_global
+#print axioms CFT.WedgeUniq.wedge_uniqueness
+#print axioms CFT.WedgeUniq.wedge_uniqueness_of_pos
+#print axioms CFT.Goursat.slice_v
+#print axioms CFT.Goursat.slice_u
+#print axioms CFT.Goursat.primV_cont
+#print axioms CFT.Goursat.primU_cont
+#print axioms CFT.Goursat.primUV_cont
+#print axioms CFT.Goursat.primV_deriv
+#print axioms CFT.Goursat.primU_deriv
+#print axioms CFT.Goursat.primUV_deriv_u
+#print axioms CFT.Goursat.primUV_deriv_v
+#print axioms CFT.Goursat.primUV_zero_right
+#print axioms CFT.Goursat.primUV_zero_left
+#print axioms CFT.Goursat.primV_sub
+#print axioms CFT.Goursat.primU_sub
+#print axioms CFT.Goursat.primUV_sub
+#print axioms CFT.Goursat.exp_cont_aux
+#print axioms CFT.Goursat.primV_bound
+#print axioms CFT.Goursat.primU_bound
+#print axioms CFT.Goursat.primUV_bound
+#print axioms CFT.Goursat.GlobalC2.toC2Data
+#print axioms CFT.Goursat.Uof_C2
+#print axioms CFT.Goursat.cont_of_lip
+#print axioms CFT.Goursat.extR_cont
+#print axioms CFT.Goursat.wz_cont
+#print axioms CFT.Goursat.goursat_exists
+#print axioms CFT.WedgeExist.clampIcc_lip
+#print axioms CFT.WedgeExist.clampIcc_ge
+#print axioms CFT.WedgeExist.clampIcc_le
+#print axioms CFT.WedgeExist.clampIcc_of
+#print axioms CFT.WedgeExist.trunc_good
+#print axioms CFT.WedgeExist.trunc_pdist
+#print axioms CFT.WedgeExist.trunc_of
+#print axioms CFT.WedgeExist.lip_trunc
+#print axioms CFT.WedgeExist.toPt_pdist
+#print axioms CFT.WedgeExist.Fw_lip
+#print axioms CFT.WedgeExist.capR_cd
+#print axioms CFT.WedgeExist.capOm_cd
+#print axioms CFT.WedgeExist.capW_cd
+#print axioms CFT.WedgeExist.neckOm_cd
+#print axioms CFT.WedgeExist.phiW_cd
+#print axioms CFT.WedgeExist.psiW_cd
+#print axioms CFT.WedgeExist.phiW_psiW_corner
+#print axioms CFT.WedgeExist.wedge_local_existence
+#print axioms CFT.WedgeExist.wedge_local_wellposed
+#print axioms CFT.CharDependence.char_gronwall_inhom
+#print axioms CFT.CharDependence.abs_le_add_integral_abs
+#print axioms CFT.CharDependence.char_dependence
+#print axioms CFT.WedgeDep.wedge_dependence
+#print axioms CFT.Classical.gauge_bianchi
+#print axioms CFT.Classical.curv_apply
+#print axioms CFT.Classical.nablaR_explicit
+#print axioms CFT.Classical.bianchi_second
+#print axioms CFT.WedgeDifference.w_cubic_factor
+#print axioms CFT.WedgeDifference.w_quartic_factor
+#print axioms CFT.WedgeDifference.om_sq_factor
+#print axioms CFT.WedgeDifference.inv_diff
+#print axioms CFT.WedgeDifference.inv_sq_diff
+#print axioms CFT.WedgeDifference.inv_cube_diff
+#print axioms CFT.WedgeDifference.inv_pow4_diff
+#print axioms CFT.WedgeDifference.inv_diff_Om
+#print axioms CFT.WedgeDifference.wedgeWuv_diff_grouped
+#print axioms CFT.WedgeDifference.wedgeWuv_diff_linear
+#print axioms CFT.WedgeDifference.wedgeRuv_diff_grouped
+#print axioms CFT.WedgeDifference.wedgeRuv_diff_linear
+#print axioms CFT.WedgeDifference.wedgeOmuv_diff_grouped
+#print axioms CFT.WedgeDifference.wedgeOmuv_diff_linear
+#print axioms CFT.WedgeDifference.diff_W_eq
+#print axioms CFT.WedgeDifference.diff_r_eq
+#print axioms CFT.WedgeDifference.diff_Om_eq
+#print axioms CFT.WedgeDifference.difference_system
+#print axioms CFT.WedgeDifferenceEnergy.rhsW_eq_wedgeWuv
+#print axioms CFT.WedgeDifferenceEnergy.rhsW_sub_eq_source
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Dv_eq
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Du_eq
+#print axioms CFT.WedgeDifferenceEnergy.diffW_eq_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Dv_diff_u
+#print axioms CFT.WedgeDifferenceEnergy.diffW_Du_diff_v
+#print axioms CFT.WedgeDifferenceEnergy.diffW_energy_u_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_energy_v_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_flux_analytic
+#print axioms CFT.WedgeDifferenceEnergy.diffW_energy_balance_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsR_eq_wedgeRuv
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsR_sub_eq_source
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Dv_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Du_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_eq_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Dv_diff_u
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_Du_diff_v
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_energy_u_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_energy_v_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_flux_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffR_energy_balance_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsOm_eq_wedgeOmuv
+#print axioms CFT.WedgeDifferenceEnergyROm.rhsOm_sub_eq_source
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Dv_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Du_eq
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_eq_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Dv_diff_u
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_Du_diff_v
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_energy_u_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_energy_v_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_flux_analytic
+#print axioms CFT.WedgeDifferenceEnergyROm.diffOm_energy_balance_analytic
+#print axioms CFT.WedgeDifferenceCoefficients.abs_inv_le_of_le
+#print axioms CFT.WedgeDifferenceCoefficients.abs_one_sub_sq_le
+#print axioms CFT.WedgeDifferenceCoefficients.diffWCoefOm_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffWCoefW_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffWCoefR_bound
+#print axioms CFT.WedgeDifferenceCoefficients.abs_add_le'
+#print axioms CFT.WedgeDifferenceCoefficients.abs_two_sub_sq_le
+#print axioms CFT.WedgeDifferenceCoefficients.abs_r_quad_le
+#print axioms CFT.WedgeDifferenceCoefficients.abs_r_cubic_le
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefOm_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefW_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefR_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefRu_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffRCoefRv_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefOu_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefOv_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefOm_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefRuv_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefR_bound
+#print axioms CFT.WedgeDifferenceCoefficients.diffOmCoefW_bound
+#print axioms CFT.WedgeCompactBounds.exists_abs_bound_of_continuousOn
+#print axioms CFT.WedgeCompactBounds.exists_pos_lower_bound_of_continuousOn
+#print axioms CFT.WedgeCompactBounds.exists_abs_bound_on_rect
+#print axioms CFT.WedgeCompactBounds.exists_pos_lower_bound_on_rect
+#print axioms CFT.WedgeCompactBounds.wedge_fields_bounds
+#print axioms CFT.PhysInner.phys_inner_eq_integral
+#print axioms CFT.PhysInner.phys_normSq_eq_integral
+#print axioms CFT.PhysInner.phys_inner_pos_of_ne_zero
+#print axioms CFT.PhysInner.phys_inner_pos_integral
+#print axioms CFT.PhysInner.phys_inner_conj_symm
+#print axioms CFT.PhysInner.phys_inner_add_right
+#print axioms CFT.PhysInner.phys_inner_smul_right
+#print axioms CFT.LinearStability.linear_rhs_bound
+#print axioms CFT.LinearStability.linear_stability
+#print axioms CFT.WedgeCont.trunc_of_inside
+#print axioms CFT.WedgeCont.wedge_continuation
+#print axioms CFT.LinGrav.d_half
+#print axioms CFT.LinGrav.ric_gauge
+#print axioms CFT.LinGrav.lin_bianchi
+#print axioms CFT.LinGrav.matter_conservation
+#print axioms CFT.LinGrav.G_harmonic
+#print axioms CFT.LinGrav.G_lorenz_gauge
+#print axioms CFT.LinGrav.gw_vacuum
+#print axioms CFT.LinGrav.newton_G00
+#print axioms CFT.LinGrav.newton_poisson
+#print axioms CFT.LinGrav.newton_christoffel
+#print axioms CFT.Mechanics.kepler_angular_momentum
+#print axioms CFT.Mechanics.kepler_energy
+#print axioms CFT.Mechanics.kepler_lrl_x
+#print axioms CFT.Mechanics.kepler_lrl_y
+#print axioms CFT.Mechanics.kepler_orbit
+#print axioms CFT.Mechanics.oscillator_energy
+#print axioms CFT.Mechanics.rigid_energy
+#print axioms CFT.Mechanics.rigid_angular_momentum
+#print axioms CFT.Continuum.d_half'
+#print axioms CFT.Continuum.navier_stokes
+#print axioms CFT.Continuum.bernoulli
+#print axioms CFT.Continuum.navier_cauchy
+#print axioms CFT.Continuum.sound_wave
+#print axioms CFT.Continuum.coulomb_harmonic
+#print axioms CFT.Continuum.coulomb_field
+#print axioms CFT.SpecialRel.mass_shell
+#print axioms CFT.SpecialRel.boost_interval
+#print axioms CFT.SpecialRel.velocity_addition
+#print axioms CFT.SpecialRel.velocity_addition_gamma
+#print axioms CFT.SpecialRel.em_invariant_dot
+#print axioms CFT.SpecialRel.em_invariant_sq
+#print axioms CFT.Geodesic.geodesic_EL
+#print axioms CFT.ContractedBianchi.relabel_pairs
+#print axioms CFT.ContractedBianchi.relabel_within
+#print axioms CFT.ContractedBianchi.relabel_reverse
+#print axioms CFT.ContractedBianchi.S4_congr
+#print axioms CFT.ContractedBianchi.contracted_bianchi_normal
+#print axioms CFT.FueterBridge.vec_vector
+#print axioms CFT.FueterBridge.fueter_regular_iff
+#print axioms CFT.FueterBridge.vec_vec
+#print axioms CFT.FueterBridge.maxwell_biquaternion
+#print axioms CFT.FueterBridge.maxwell_single_equation
+#print axioms CFT.FueterBridge.em_square
+#print axioms CFT.FueterBridge.em_square_invariant
+#print axioms CFT.FueterBridge.mass_shell_biquaternion
+#print axioms CFT.FueterBridge.bernoulli_fueter
+#print axioms CFT.FueterBridge.ns_viscous_fueter
+#print axioms CFT.FueterBridge.coulomb_fueter
+#print axioms CFT.FueterBridge.box_bridge
+#print axioms CFT.FueterBridge.lorenz_gauge_fueter
+#print axioms CFT.FueterBridge.quaternion_gauge_bianchi
+#print axioms CFT.QuatMech.ks_pure
+#print axioms CFT.QuatMech.ks_norm
+#print axioms CFT.QuatMech.ks_velocity
+#print axioms CFT.QuatMech.ks_speed
+#print axioms CFT.QuatMech.euler_commutator
+#print axioms CFT.QuatMech.ks_oscillator
+#print axioms CFT.QuatMech.dq_mul
+#print axioms CFT.QuatMech.dq_star
+#print axioms CFT.QuatMech.dq_add
+#print axioms CFT.QuatMech.frame_geodesic_speed
+#print axioms CFT.QuatMech.attitude_unit
+#print axioms CFT.CartanEinstein.eps_0123
+#print axioms CFT.CartanEinstein.eps_swap12
+#print axioms CFT.CartanEinstein.eps_swap23
+#print axioms CFT.CartanEinstein.eps_swap34
+#print axioms CFT.CartanEinstein.cartan_einstein
+#print axioms CFT.CartanEinstein.quad_expansion
+#print axioms CFT.CartanEinstein.first_variation_hasDerivAt
+#print axioms CFT.CartanEinstein.Lb_k_delta
+#print axioms CFT.CartanEinstein.Lb_delta_k
+#print axioms CFT.CartanEinstein.first_variation
+#print axioms CFT.CartanEinstein.pick
+#print axioms CFT.CartanEinstein.einstein_iff_stationary
+#print axioms CFT.CartanEinstein.einstein_with_matter
+#print axioms CFT.CartanEinstein.torsion_contraction
+#print axioms CFT.CartanEinstein.torsion_free_of_stationary
+#print axioms CFT.CartanEinstein.levi_civita_unique
+#print axioms CFT.CartanEinstein.etaL_sq
+#print axioms CFT.CartanEinstein.eps_raise
+#print axioms CFT.CartanEinstein.Gt_Rt
+#print axioms CFT.CartanEinstein.cartan_einstein_lorentz
+#print axioms CFT.CartanEinstein.einstein_lorentz_iff
+#print axioms CFT.Classical.curv_gauge_covariant
