@@ -194,6 +194,7 @@ import CFT.Foundations.QuaternionMechanics
 import CFT.Foundations.CartanEinstein
 import CFT.Foundations.CartanTorsionLorentz
 import CFT.Spherical.WedgeLocalExistenceGeneral
+import CFT.Foundations.FrameCoordinateEinstein
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -2945,3 +2946,19 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.WedgeExistGen.abs_le_of_near
 #print axioms CFT.WedgeExistGen.wedge_local_existence_gen
 #print axioms CFT.WedgeExistGen.wedge_local_wellposed_gen
+#print axioms CFT.FrameCoord.sum3
+#print axioms CFT.FrameCoord.sum4
+#print axioms CFT.FrameCoord.sum5
+#print axioms CFT.FrameCoord.sum_mul_sum'
+#print axioms CFT.FrameCoord.complete_of_heE
+#print axioms CFT.FrameCoord.metric_inverse
+#print axioms CFT.FrameCoord.ricci_frame
+#print axioms CFT.FrameCoord.scalar_frame
+#print axioms CFT.FrameCoord.metric_frame
+#print axioms CFT.FrameCoord.einstein_frame
+#print axioms CFT.FrameCoord.coord_of_frame
+#print axioms CFT.FrameCoord.einstein_frame_iff
+#print axioms CFT.FrameCoord.RF_antisymm1
+#print axioms CFT.FrameCoord.RF_antisymm2
+#print axioms CFT.FrameCoord.GF_etaL
+#print axioms CFT.FrameCoord.einstein_lorentz_coord

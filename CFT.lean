@@ -257,3 +257,4 @@ import CFT.Foundations.FueterFamousEquations
 import CFT.Foundations.QuaternionMechanics
 import CFT.Foundations.CartanEinstein
 import CFT.Foundations.CartanTorsionLorentz
+import CFT.Foundations.FrameCoordinateEinstein
