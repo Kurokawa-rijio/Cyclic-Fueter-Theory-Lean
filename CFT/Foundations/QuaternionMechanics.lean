@@ -69,7 +69,7 @@ theorem euler_commutator (I1 I2 I3 w1 w2 w3 : R) :
 end Algebra
 
 /-- Kepler ↔ 4 次元の調和振動子(仮想時間 ds = dt/r) -/
-theorem ks_oscillator {S : Type*} [Field S] (r E k X Y Y' : S) (hr : r ≠ 0)
+theorem ks_oscillator {S : Type*} [Field S] [CharZero S] (r E k X Y Y' : S) (hr : r ≠ 0)
     (hE : E = X / 2 - k / r) (hX : X = 4 * r * Y) (hY' : Y' = r ^ 2 * Y) :
     2 * Y' - E * r = k := by
   subst hE hX hY'
