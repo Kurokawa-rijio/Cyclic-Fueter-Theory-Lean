@@ -1,6 +1,11 @@
 import CFT.Foundations.Basic
 import CFT.Foundations.PeriodicIntegrationByParts
 import CFT.Foundations.WaveCharacteristicData
+import CFT.Foundations.WaveCharacteristicIntegralEquation
+import CFT.Foundations.WedgeIterationMap
+import CFT.Foundations.WedgeRhsLipschitz
+import CFT.Foundations.WedgeC1Norm
+import CFT.Foundations.WedgeDerivContraction
 import CFT.Foundations.WaveCharacteristicUniqueness
 import CFT.Foundations.WaveDataContinuousDependence
 import CFT.Geometry.QuantumSphereHyperboloid
@@ -65,6 +70,11 @@ import CFT.Spherical.WedgeCouplingDivergence
 import CFT.Spherical.WedgeGaugeFixing
 import CFT.Spherical.WedgeEnergyBalance
 import CFT.Spherical.WedgeEnergyAnalytic
+import CFT.Spherical.WedgeDifferenceSystem
+import CFT.Spherical.WedgeDifferenceEnergy
+import CFT.Spherical.WedgeDifferenceEnergyROm
+import CFT.Spherical.WedgeDifferenceCoefficientsBounded
+import CFT.Spherical.WedgeCompactBounds
 import CFT.Spherical.BartnikMcKinnonOrigin
 import CFT.Quantum.MinisuperspaceBoundaryTerms
 import CFT.Quantum.MinisuperspaceVariation
@@ -164,6 +174,7 @@ import CFT.Foundations.CliffordDiracInputs
 import CFT.Quantum.S9DiracPerturbation
 import CFT.Quantum.AffineQuantizationInnerProduct
 import CFT.Quantum.PhysicalInnerProductStates
+import CFT.Quantum.PhysicalInnerProductIntegral
 import CFT.Quantum.PhysicalBranchAffine
 import CFT.Quantum.SechFourthIntegral
 import CFT.Quantum.StationaryPhaseConditions
