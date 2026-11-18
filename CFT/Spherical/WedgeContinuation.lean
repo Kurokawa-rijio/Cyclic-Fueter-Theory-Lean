@@ -68,7 +68,7 @@ theorem wedge_continuation {a b B m : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (hm : 0
           = toPt (fun j => U j u v) (fun j => Uu j u v) (fun j => Uv j u v) := by
         show (⟨U 1 u v, U 2 u v, Du (U 0) u v, Dv (U 0) u v, U 0 u v, Du (U 1) u v,
           Dv (U 1) u v⟩ : Pt) = _
-        (rw [eDu, eDv]) <;> rfl
+        (rw [eDu, eDu, eDv, eDv]) <;> rfl
       rw [← e]
       exact hin
     have q0 : Uuv 0 u v = rhsR (U 1 u v) (U 2 u v) (Uu 0 u v) (Uv 0 u v) (U 0 u v) := by
