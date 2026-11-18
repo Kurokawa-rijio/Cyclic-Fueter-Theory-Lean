@@ -368,9 +368,11 @@ theorem goursat_exists {n : ℕ} {a b L : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (hL
         rw [← primU_sub (hw z1 j) (hw z2 j)]
         simp only [Uvof]
         ring
-      have b1 := primUV_bound hl hδ0 hu.1 hv.1 hDc (fun t _ s _ => hD j t s)
-      have b2 := primV_bound hl hδ0 hv.1 (slice_v hDc u) (fun s _ => hD j u s)
-      have b3 := primU_bound hl hδ0 hu.1 (slice_u hDc v) (fun t _ => hD j t v)
+      have b1 := primUV_bound (f := (fun t s => wz ha hb lam z1 j t s - wz ha hb lam z2 j t s)) hl hδ0 hu.1 hv.1 hDc (fun t _ s _ => hD j t s)
+      have b2 := primV_bound (f := (fun t s => wz ha hb lam z1 j t s - wz ha hb lam z2 j t s)) (u := u) hl hδ0 hv.1 (slice_v hDc u)
+        (fun s _ => hD j u s)
+      have b3 := primU_bound (f := (fun t s => wz ha hb lam z1 j t s - wz ha hb lam z2 j t s)) (v := v) hl hδ0 hu.1 (slice_u hDc v)
+        (fun t _ => hD j t v)
       have hq : 0 ≤ ‖z1 - z2‖ * exp (lam * (u + v)) / lam := by positivity
       have b1' : ‖z1 - z2‖ * exp (lam * (u + v)) / lam / lam
           ≤ ‖z1 - z2‖ * exp (lam * (u + v)) / lam := div_le_self hq hlam1
@@ -401,7 +403,7 @@ theorem goursat_exists {n : ℕ} {a b L : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (hL
           ring
       _ = 3 * (L * n) * ‖z1 - z2‖ / lam := by rw [hinv, one_mul]
       _ ≤ 2⁻¹ * ‖z1 - z2‖ := by
-          rw [div_le_iff hl, hlam]
+          rw [div_le_iff₀ hl, hlam]
           nlinarith [mul_nonneg hLn hδ0]
   have hT : ContractingWith (2⁻¹ : NNReal) T := by
     refine ⟨by rw [← NNReal.coe_lt_coe]; norm_num, LipschitzWith.of_dist_le_mul fun z1 z2 => ?_⟩
