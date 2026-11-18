@@ -189,6 +189,7 @@ import CFT.Foundations.ContinuumFieldLaws
 import CFT.Foundations.SpecialRelativityLaws
 import CFT.Foundations.GeodesicEquation
 import CFT.Foundations.ContractedBianchiNormal
+import CFT.Foundations.FueterFamousEquations
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -2886,3 +2887,17 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.ContractedBianchi.relabel_reverse
 #print axioms CFT.ContractedBianchi.S4_congr
 #print axioms CFT.ContractedBianchi.contracted_bianchi_normal
+#print axioms CFT.FueterBridge.vec_vector
+#print axioms CFT.FueterBridge.fueter_regular_iff
+#print axioms CFT.FueterBridge.vec_vec
+#print axioms CFT.FueterBridge.maxwell_biquaternion
+#print axioms CFT.FueterBridge.maxwell_single_equation
+#print axioms CFT.FueterBridge.em_square
+#print axioms CFT.FueterBridge.em_square_invariant
+#print axioms CFT.FueterBridge.mass_shell_biquaternion
+#print axioms CFT.FueterBridge.bernoulli_fueter
+#print axioms CFT.FueterBridge.ns_viscous_fueter
+#print axioms CFT.FueterBridge.coulomb_fueter
+#print axioms CFT.FueterBridge.box_bridge
+#print axioms CFT.FueterBridge.lorenz_gauge_fueter
+#print axioms CFT.FueterBridge.quaternion_gauge_bianchi

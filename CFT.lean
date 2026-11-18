@@ -240,6 +240,7 @@ import CFT.Foundations.ContinuumFieldLaws
 import CFT.Foundations.SpecialRelativityLaws
 import CFT.Foundations.GeodesicEquation
 import CFT.Foundations.ContractedBianchiNormal
+import CFT.Foundations.FueterFamousEquations
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
