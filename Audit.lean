@@ -166,6 +166,14 @@ import CFT.Cartan.BjVanishesOnC2
 import CFT.Unification.GaugeCovariance
 import CFT.SphericalTheory
 import CFT.Quantum.ZeroModeL2Condition
+import CFT.Foundations.OctonionAlgebra
+import CFT.Foundations.CayleyFormSplitting
+import CFT.Foundations.SelfDualTwoForms
+import CFT.Foundations.NullFieldNilpotent
+import CFT.Geometry.MonopoleLangevin
+import CFT.Spherical.ThroatIsometrySL2
+import CFT.Foundations.CurvatureJetAlgebra
+import CFT.Foundations.CharacteristicGronwall
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2572,3 +2580,79 @@ import CFT.Quantum.ZeroModeL2Condition
 #print axioms CFT.ZeroModeL2.reflect
 #print axioms CFT.ZeroModeL2.pi_side
 #print axioms CFT.ZeroModeL2.zero_mode_L2
+#print axioms CFT.Oct8.normSq_mul
+#print axioms CFT.Oct8.left_alt
+#print axioms CFT.Oct8.right_alt
+#print axioms CFT.Oct8.flexible
+#print axioms CFT.Oct8.moufang_left
+#print axioms CFT.Oct8.moufang_right
+#print axioms CFT.Oct8.moufang_middle
+#print axioms CFT.Oct8.conj_mul
+#print axioms CFT.Oct8.mul_conj
+#print axioms CFT.Oct8.conj_mul_self
+#print axioms CFT.Oct8.inner_mul_left
+#print axioms CFT.Oct8.inner_mul_right
+#print axioms CFT.Oct8.not_assoc
+#print axioms CFT.Oct8.null_example
+#print axioms CFT.Oct8.TwoForm.T_quadratic
+#print axioms CFT.Oct8.TwoForm.T_rightForm
+#print axioms CFT.Oct8.TwoForm.rightForm_spec
+#print axioms CFT.Oct8.TwoForm.T_decomp
+#print axioms CFT.Oct8.TwoForm.T_eigen_neg_one
+#print axioms CFT.Oct8.TwoForm.proj7_rightForm
+#print axioms CFT.Oct8.TwoForm.proj7_T
+#print axioms CFT.Oct8.TwoForm.cayley_link
+#print axioms CFT.SelfDual4.star_star
+#print axioms CFT.SelfDual4.star_leftForm
+#print axioms CFT.SelfDual4.star_rightForm
+#print axioms CFT.SelfDual4.leftForm_spec
+#print axioms CFT.SelfDual4.rightForm_spec
+#print axioms CFT.SelfDual4.decomp
+#print axioms CFT.SelfDual4.selfDual_of_right_zero
+#print axioms CFT.SelfDual4.antiSelfDual_of_left_zero
+#print axioms CFT.NullField.M_det
+#print axioms CFT.NullField.M_sq
+#print axioms CFT.NullField.M_sq_zero_iff
+#print axioms CFT.NullField.M_det_zero_iff
+#print axioms CFT.NullField.pauli_param
+#print axioms CFT.NullField.fsq_re
+#print axioms CFT.NullField.fsq_im
+#print axioms CFT.NullField.null_iff
+#print axioms CFT.NullField.null_iff_nilpotent
+#print axioms CFT.MonopoleLangevin.sinh_ne
+#print axioms CFT.MonopoleLangevin.W_eq_inv_Z
+#print axioms CFT.MonopoleLangevin.Z_integral
+#print axioms CFT.MonopoleLangevin.hasDerivAt_Z
+#print axioms CFT.MonopoleLangevin.hasDerivAt_logZ
+#print axioms CFT.MonopoleLangevin.bogomolny_W
+#print axioms CFT.MonopoleLangevin.bogomolny_h
+#print axioms CFT.ThroatSymmetry.hasDerivAt_f
+#print axioms CFT.ThroatSymmetry.xi1_a_eta
+#print axioms CFT.ThroatSymmetry.xi1_a_chi
+#print axioms CFT.ThroatSymmetry.xi1_b_eta
+#print axioms CFT.ThroatSymmetry.xi1_b_chi
+#print axioms CFT.ThroatSymmetry.xi2_a_eta
+#print axioms CFT.ThroatSymmetry.xi2_a_chi
+#print axioms CFT.ThroatSymmetry.xi2_b_eta
+#print axioms CFT.ThroatSymmetry.xi2_b_chi
+#print axioms CFT.ThroatSymmetry.killing_xi0
+#print axioms CFT.ThroatSymmetry.killing_xi1
+#print axioms CFT.ThroatSymmetry.killing_xi2
+#print axioms CFT.ThroatSymmetry.comm_01_a
+#print axioms CFT.ThroatSymmetry.comm_01_b
+#print axioms CFT.ThroatSymmetry.comm_02_a
+#print axioms CFT.ThroatSymmetry.comm_02_b
+#print axioms CFT.ThroatSymmetry.comm_12_a
+#print axioms CFT.ThroatSymmetry.comm_12_b
+#print axioms CFT.Classical.riemann_antisymm
+#print axioms CFT.Classical.bianchi_first
+#print axioms CFT.Classical.MetricJet.chr1_symm
+#print axioms CFT.Classical.MetricJet.metric_compat
+#print axioms CFT.Classical.MetricJet.dchr1_symm
+#print axioms CFT.Classical.MetricJet.chr2_symm
+#print axioms CFT.Classical.MetricJet.dchr2_symm
+#print axioms CFT.Classical.MetricJet.bianchi_first_metric
+#print axioms CFT.Classical.MetricJet.riem_antisymm
+#print axioms CFT.CharGronwall.exp_int_le
+#print axioms CFT.CharGronwall.char_gronwall
+#print axioms CFT.CharGronwall.char_gronwall_triple

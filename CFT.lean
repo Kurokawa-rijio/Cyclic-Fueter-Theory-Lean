@@ -217,3 +217,11 @@ import CFT.Cartan.BjVanishesOnC2
 import CFT.Unification.GaugeCovariance
 import CFT.SphericalTheory
 import CFT.Quantum.ZeroModeL2Condition
+import CFT.Foundations.OctonionAlgebra
+import CFT.Foundations.CayleyFormSplitting
+import CFT.Foundations.SelfDualTwoForms
+import CFT.Foundations.NullFieldNilpotent
+import CFT.Geometry.MonopoleLangevin
+import CFT.Spherical.ThroatIsometrySL2
+import CFT.Foundations.CurvatureJetAlgebra
+import CFT.Foundations.CharacteristicGronwall
