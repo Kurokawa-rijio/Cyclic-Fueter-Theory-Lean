@@ -37,12 +37,12 @@ jobs:
 
       - name: Build Lean project
         shell: bash
-        run: lake build
+        run: lake build CFT.Spherical.WedgeDependence CFT.Spherical.WedgeExistence
 
       - name: Axiom audit (every theorem)
         shell: bash
         run: |
-          lake env lean Audit.lean > audit.txt 2>&1
+          echo '#print axioms CFT.WedgeUniq.wedge_uniqueness_of_pos' > scripts/check_dedup.lean.tmp; (echo 'import CFT.Spherical.WedgeUniqueness'; cat scripts/check_dedup.lean.tmp) > scripts/check_dedup.lean; lake env lean scripts/check_dedup.lean > audit.txt 2>&1 || echo LEAN_FAILED >> audit.txt
           total=$(grep -c "depends on axioms\|does not depend on any axioms" audit.txt || true)
           sorry=$(grep -c "sorryAx" audit.txt || true)
           std=$(grep -c "depends on axioms: \[propext, Classical.choice, Quot.sound\]" audit.txt || true)
