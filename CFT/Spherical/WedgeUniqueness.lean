@@ -13,7 +13,7 @@
   * `UL_rhsR`、`UL_rhsOm`、`UL_rhsW`:3 本の右辺はすべて UL(Ω の式の r_uv は r の式で置き換える)。
   * `C2`:正則性(連続性と、混合偏微分の交換を含む HasDerivAt)。`C2.sub`、`Du_sub`、`Dv_sub`、`Duv_sub`:差も C2 で、微分は差の微分。
   * `wedge_uniqueness`:主定理。差 (δr, δΩ, δW) が `CharacteristicUniqueness.char_uniqueness` の条件をみたす。
-  定数 B、m の存在(連続性とコンパクト性から出る部分)は第 3 段で扱う。
+  * `wedge_uniqueness_of_pos`:第 3 段。B、m は連続性とコンパクト性から出るので、仮定は r > 0、Ω > 0 だけになる。
 -/
 import CFT.Foundations.CharacteristicUniqueness
 
@@ -405,5 +405,87 @@ theorem wedge_uniqueness (F G : WedgeFields) (eF : WedgeEvolutionEqs F) (eG : We
   simp only [dd, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
     Matrix.cons_val_two, Matrix.tail_cons] at k0 k1 k2
   exact ⟨sub_eq_zero.mp k0, sub_eq_zero.mp k1, sub_eq_zero.mp k2⟩
+
+/-! ### 第 3 段:定数 B、m は連続性とコンパクト性から出る -/
+
+theorem exists_bound_rect {a b : ℝ} {g : ℝ × ℝ → ℝ} (hg : Continuous g) :
+    ∃ B, ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, |g (u, v)| ≤ B := by
+  obtain ⟨C, hC⟩ := (isCompact_Icc.prod isCompact_Icc).exists_bound_of_continuousOn
+    (s := Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b) hg.continuousOn
+  exact ⟨C, fun u hu v hv => by
+    have := hC (u, v) (Set.mk_mem_prod hu hv)
+    rwa [Real.norm_eq_abs] at this⟩
+
+theorem exists_pos_lower_rect {a b : ℝ} {g : ℝ × ℝ → ℝ} (hg : Continuous g)
+    (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, 0 < g (u, v)) :
+    ∃ m, 0 < m ∧ ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, m ≤ g (u, v) := by
+  by_cases hne : (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b).Nonempty
+  · obtain ⟨p, hp, hmin⟩ :=
+      (isCompact_Icc.prod isCompact_Icc).exists_isMinOn hne hg.continuousOn
+    have hp' := Set.mem_prod.mp hp
+    refine ⟨g p, hpos p.1 hp'.1 p.2 hp'.2, fun u hu v hv => ?_⟩
+    exact (isMinOn_iff.mp hmin) (u, v) (Set.mk_mem_prod hu hv)
+  · exact ⟨1, one_pos, fun u hu v hv => absurd ⟨(u, v), Set.mk_mem_prod hu hv⟩ hne⟩
+
+/-- 主定理(仮定は正値性だけ):C² 級の 2 つの解が同じ特性データを持ち、
+長方形の上で r > 0、Ω > 0 なら、長方形の上で一致する。 -/
+theorem wedge_uniqueness_of_pos (F G : WedgeFields) (eF : WedgeEvolutionEqs F)
+    (eG : WedgeEvolutionEqs G) (dF : HasWedgeData F) (dG : HasWedgeData G)
+    (rFr : C2 F.r) (rFO : C2 F.Om) (rFW : C2 F.W)
+    (rGr : C2 G.r) (rGO : C2 G.Om) (rGW : C2 G.W) {a b : ℝ}
+    (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      0 < F.r u v ∧ 0 < F.Om u v ∧ 0 < G.r u v ∧ 0 < G.Om u v) :
+    ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      F.r u v = G.r u v ∧ F.Om u v = G.Om u v ∧ F.W u v = G.W u v := by
+  let S : ℝ × ℝ → ℝ := fun p =>
+    |Function.uncurry F.Om p| + |Function.uncurry F.W p| + |Function.uncurry (Du F.r) p|
+      + |Function.uncurry (Dv F.r) p| + |Function.uncurry (Du F.Om) p|
+      + |Function.uncurry (Dv F.Om) p|
+      + (|Function.uncurry G.Om p| + |Function.uncurry G.W p| + |Function.uncurry (Du G.r) p|
+      + |Function.uncurry (Dv G.r) p| + |Function.uncurry (Du G.Om) p|
+      + |Function.uncurry (Dv G.Om) p|)
+  have hS : Continuous S :=
+    ((((((rFO.cont.abs.add rFW.cont.abs).add rFr.cont_u.abs).add rFr.cont_v.abs).add
+      rFO.cont_u.abs).add rFO.cont_v.abs).add
+      (((((rGO.cont.abs.add rGW.cont.abs).add rGr.cont_u.abs).add rGr.cont_v.abs).add
+      rGO.cont_u.abs).add rGO.cont_v.abs))
+  obtain ⟨B, hB⟩ := exists_bound_rect (a := a) (b := b) hS
+  obtain ⟨m1, hm1, h1⟩ := exists_pos_lower_rect (a := a) (b := b) rFr.cont
+    (fun u hu v hv => (hpos u hu v hv).1)
+  obtain ⟨m2, hm2, h2⟩ := exists_pos_lower_rect (a := a) (b := b) rFO.cont
+    (fun u hu v hv => (hpos u hu v hv).2.1)
+  obtain ⟨m3, hm3, h3⟩ := exists_pos_lower_rect (a := a) (b := b) rGr.cont
+    (fun u hu v hv => (hpos u hu v hv).2.2.1)
+  obtain ⟨m4, hm4, h4⟩ := exists_pos_lower_rect (a := a) (b := b) rGO.cont
+    (fun u hu v hv => (hpos u hu v hv).2.2.2)
+  have hm : 0 < min (min m1 m2) (min m3 m4) := lt_min (lt_min hm1 hm2) (lt_min hm3 hm4)
+  refine wedge_uniqueness F G eF eG dF dG rFr rFO rFW rGr rGO rGW (B := B) hm ?_
+  intro u hu v hv
+  have hb := hB u hu v hv
+  have l1 : min (min m1 m2) (min m3 m4) ≤ F.r u v :=
+    (min_le_left _ _).trans ((min_le_left _ _).trans (h1 u hu v hv))
+  have l2 : min (min m1 m2) (min m3 m4) ≤ F.Om u v :=
+    (min_le_left _ _).trans ((min_le_right _ _).trans (h2 u hu v hv))
+  have l3 : min (min m1 m2) (min m3 m4) ≤ G.r u v :=
+    (min_le_right _ _).trans ((min_le_left _ _).trans (h3 u hu v hv))
+  have l4 : min (min m1 m2) (min m3 m4) ≤ G.Om u v :=
+    (min_le_right _ _).trans ((min_le_right _ _).trans (h4 u hu v hv))
+  simp only [S, Function.uncurry_apply_pair] at hb
+  rw [abs_of_nonneg (by positivity)] at hb
+  have := abs_nonneg (F.Om u v)
+  have := abs_nonneg (F.W u v)
+  have := abs_nonneg (Du F.r u v)
+  have := abs_nonneg (Dv F.r u v)
+  have := abs_nonneg (Du F.Om u v)
+  have := abs_nonneg (Dv F.Om u v)
+  have := abs_nonneg (G.Om u v)
+  have := abs_nonneg (G.W u v)
+  have := abs_nonneg (Du G.r u v)
+  have := abs_nonneg (Dv G.r u v)
+  have := abs_nonneg (Du G.Om u v)
+  have := abs_nonneg (Dv G.Om u v)
+  simp only [Good, ptOf]
+  refine ⟨⟨by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, l1, l2⟩,
+    ⟨by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, l3, l4⟩⟩
 
 end CFT.WedgeUniq

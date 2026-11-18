@@ -2690,3 +2690,6 @@ import CFT.Spherical.WedgeUniqueness
 #print axioms CFT.WedgeUniq.Duv_sub
 #print axioms CFT.WedgeUniq.C2.sub
 #print axioms CFT.WedgeUniq.wedge_uniqueness
+#print axioms CFT.WedgeUniq.exists_bound_rect
+#print axioms CFT.WedgeUniq.exists_pos_lower_rect
+#print axioms CFT.WedgeUniq.wedge_uniqueness_of_pos
