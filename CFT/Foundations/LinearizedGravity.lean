@@ -79,7 +79,7 @@ theorem ric_gauge (hc : ∀ μ ν x, D μ (D ν x) = D ν (D μ x)) (ξ : Fin 4 
 /-- 線形化した縮約 Bianchi 恒等式 ∂^μ G_μν = 0 -/
 theorem lin_bianchi (hc : ∀ μ ν x, D μ (D ν x) = D ν (D μ x)) (hs : ∀ μ ν, h μ ν = h ν μ)
     (ν : Fin 4) : ∑ μ, eta μ * D μ (Gt D h μ ν) = 0 := by
-  have h12 := d_half D
+  have h12 : ∀ μ, D μ (1/2 : S) = 0 := fun μ => d_half (D μ)
   fin_cases ν <;>
   simp (config := { decide := true }) only [Gt, Rs, Ric, dv, box, tr, etaM, eta, map_add, map_sub,
     map_sum, map_neg, map_zero, Derivation.leibniz, smul_eq_mul, Derivation.map_one_eq_zero,
@@ -109,7 +109,7 @@ def Lg (ν : Fin 4) : S := ∑ ρ, eta ρ * D ρ (hbar h ρ ν)
 theorem G_harmonic (hc : ∀ μ ν x, D μ (D ν x) = D ν (D μ x)) (μ ν : Fin 4) :
     Gt D h μ ν = (1/2 : S) * (D μ (Lg D h ν) + D ν (Lg D h μ))
       - (1/2 : S) * etaM μ ν * (∑ ρ, eta ρ * D ρ (Lg D h ρ)) - (1/2 : S) * box D (hbar h μ ν) := by
-  have h12 := d_half D
+  have h12 : ∀ μ, D μ (1/2 : S) = 0 := fun μ => d_half (D μ)
   fin_cases μ <;> fin_cases ν <;>
   simp (config := { decide := true }) only [Gt, Rs, Ric, dv, box, tr, Lg, hbar, etaM, eta,
     map_add, map_sub, map_sum, map_neg, map_zero, Derivation.leibniz, smul_eq_mul, Derivation.map_one_eq_zero,
@@ -141,7 +141,7 @@ def lap (Φ : S) : S := D 1 (D 1 Φ) + D 2 (D 2 Φ) + D 3 (D 3 Φ)
 
 theorem newton_G00 (hc : ∀ μ ν x, D μ (D ν x) = D ν (D μ x)) (Φ : S) (hst : D 0 Φ = 0) :
     Gt D (hN Φ) 0 0 = 2 * lap D Φ := by
-  have h12 := d_half D
+  have h12 : ∀ μ, D μ (1/2 : S) = 0 := fun μ => d_half (D μ)
   have hst' : ∀ i, D 0 (D i Φ) = 0 := fun i => by rw [hc 0 i, hst, map_zero]
   simp (config := { decide := true }) only [Gt, Rs, Ric, dv, box, tr, hN, lap, etaM, eta,
     map_add, map_sub, map_sum, map_neg, map_zero, hst, hst' 1, hst' 2, hst' 3, Derivation.leibniz, smul_eq_mul, Derivation.map_one_eq_zero,
