@@ -6,9 +6,11 @@
     |∂_u∂_v δ_i| ≤ L Σ_j (|δ_j| + |∂_u δ_j| + |∂_v δ_j|)
   なら、R の上で δ_i ≡ 0。
 
-  仮定はすべて R の上だけで置く(R の外での値や方程式は使わない)。
-  * `C2Data a b d du dv duv`:R の上での C² 級。d、du、dv、duv は R 上で連続、R の各点で
+  方程式とデータの仮定は R の上だけで置く(R の外で方程式は課さない)。ただし下の `C2Data` は R の辺の点でも
+  両側の HasDerivAt を仮定するので、辺の点での微分を通して R のすぐ外の値には依存する。
+  * `C2Data a b d du dv duv`:R の上での「混合 C² 級」。d、du、dv、duv は R 上で連続、R の各点で
     ∂_u d = du、∂_v d = dv、∂_u dv = duv、∂_v du = duv(混合偏微分の可換性を含む)。
+    ∂_u² d、∂_v² d の存在は含まない(通常の C² より弱い。方程式に出るのは ∂_u∂_v だけなので、この弱い形で足りる)。
     微分は関数そのものとして渡す(`deriv` で書かない)ので、差 d − d′ の微分は du − du′ になるだけで済む。
     R の辺の点でも HasDerivAt を仮定するので、解は R より少し広い範囲で C¹ に延びているとしている。
   * `abs_le_integral_abs`:g(0) = 0 なら |g(v)| ≤ ∫_0^v |g′|(微積分学の基本定理)。
@@ -23,7 +25,8 @@ open Real Set
 
 namespace CFT.CharUniqueness
 
-/-- 長方形 [0,a]×[0,b] の上での C² 級(微分は関数として渡す) -/
+/-- 長方形 [0,a]×[0,b] の上での混合 C² 級(値・∂_u・∂_v・∂_u∂_v が連続。∂_u²、∂_v² は含まない。
+微分は関数として渡す) -/
 structure C2Data (a b : ℝ) (d du dv duv : ℝ → ℝ → ℝ) : Prop where
   cont : ContinuousOn (Function.uncurry d) (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b)
   cont_u : ContinuousOn (Function.uncurry du) (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b)

@@ -14,8 +14,10 @@
 
   * `primV`、`primU`、`primUV`:v 方向・u 方向・両方向の原始関数。連続性、微分(`primUV_deriv_v` は積分記号下の微分)、
     差、重みつきの評価。
-  * `GlobalC2`:平面全体での C² 級。`GlobalC2.toC2Data` で長方形の上の `C2Data` に落ちる。
-  * `Uof_C2`:上の式で作った U は、連続な w に対して C² 級で、∂_u∂_v U = w。
+  * `GlobalC2`:平面全体での混合 C² 級(値・∂_u・∂_v・∂_u∂_v が連続。∂_u²、∂_v² は含まない)。
+    `GlobalC2.toC2Data` で長方形の上の `C2Data` に落ちる。
+  * `Uof_C2`:上の式で作った U は、連続な w に対してこの意味で C² 級で、∂_u∂_v U = w。
+    データ φ、ψ は C¹ しか仮定しないので、∂_u² U(v = 0 の辺では φ″)は一般には存在しない。
   * `cont_of_lip`:リプシッツな F は連続。
   * `goursat_exists`:主定理。
 -/
@@ -177,7 +179,7 @@ theorem primUV_bound {f : ℝ → ℝ → ℝ} {lam M u v : ℝ} (hl : 0 < lam) 
 
 /-! ### 平面全体での C² 級と、w から作る解 -/
 
-/-- 平面全体での C² 級(微分は関数として渡す) -/
+/-- 平面全体での混合 C² 級(∂_u²、∂_v² は含まない。微分は関数として渡す) -/
 structure GlobalC2 (d du dv duv : ℝ → ℝ → ℝ) : Prop where
   cont : Continuous (Function.uncurry d)
   cont_u : Continuous (Function.uncurry du)

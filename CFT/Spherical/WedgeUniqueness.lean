@@ -240,7 +240,7 @@ theorem UL_rhsW {B m : ℝ} (hm : 0 < m) : UL B m eW := by
 
 open CFT.CharUniqueness CFT.WedgeCompactBounds
 
-/-- 長方形 [0,a]×[0,b] の上の C² 級(微分は `Du`、`Dv`、`Duv`) -/
+/-- 長方形 [0,a]×[0,b] の上の混合 C² 級(微分は `Du`、`Dv`、`Duv`。∂_u²、∂_v² は含まない) -/
 abbrev C2On (a b : ℝ) (x : ℝ → ℝ → ℝ) : Prop := C2Data a b x (Du x) (Dv x) (Duv x)
 
 /-- 発展方程式を長方形の上だけで課したもの -/
