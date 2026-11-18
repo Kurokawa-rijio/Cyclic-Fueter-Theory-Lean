@@ -229,3 +229,5 @@ import CFT.Foundations.CharacteristicUniqueness
 import CFT.Spherical.WedgeUniqueness
 import CFT.Foundations.GoursatExistence
 import CFT.Spherical.WedgeExistence
+import CFT.Foundations.CharacteristicDependence
+import CFT.Spherical.WedgeDependence
