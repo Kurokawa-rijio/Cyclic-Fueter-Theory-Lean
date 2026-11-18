@@ -5,7 +5,7 @@
   * `navier_stokes`:連続の式 ∂_tρ + ∂_j(ρu_j) = 0、非圧縮 ∂_ju_j = 0、運動量の保存形
       ∂_t(ρu_i) + ∂_j(ρu_iu_j − μ(∂_ju_i + ∂_iu_j)) + ∂_ip = 0(μ は定数)
     から Navier–Stokes 方程式 ρ(∂_tu_i + u_j∂_ju_i) = −∂_ip + μΔu_i。
-  * `bernoulli`:定常・非粘性・非圧縮(ρ は定数)・渦なし(∂_iu_j = ∂_ju_i)の Euler 方程式
+  * `bernoulli`:定常・非粘性・非圧縮(ρ は定数)・渦なし(∂_iu_j = ∂_ju_i、j = 1, 2, 3)の Euler 方程式
       ρ u_j∂_ju_i = −∂_ip − ρ∂_iΦ から ∂_i(½|u|² + p/ρ + Φ) = 0(Bernoulli の定理)。
   * `navier_cauchy`:等方弾性体 σ_ij = λδ_ij θ + μ(∂_iu_j + ∂_ju_i)(θ = ∂_ku_k)について
       ∂_jσ_ij = (λ + μ)∂_iθ + μΔu_i(Navier–Cauchy 方程式の左辺)。
@@ -49,7 +49,8 @@ theorem navier_stokes (hc : ∀ μ ν x, D μ (D ν x) = D ν (D μ x)) (ρ p μ
 
 /-- Bernoulli の定理 -/
 theorem bernoulli (ρ p Φ : S) (u : Fin 4 → S) (i : Fin 4) (hρ : ρ ≠ 0) (hρc : D i ρ = 0)
-    (hirr : ∀ j, D i (u j) = D j (u i))
+    (hirr1 : D i (u 1) = D 1 (u i)) (hirr2 : D i (u 2) = D 2 (u i))
+    (hirr3 : D i (u 3) = D 3 (u i))
     (heuler : ρ * ssum (fun j => u j * D j (u i)) = -(D i p) - ρ * D i Φ) :
     D i ((1/2 : S) * ssum (fun j => u j * u j) + p * ρ⁻¹ + Φ) = 0 := by
   have hinv : D i ρ⁻¹ = 0 := by
@@ -60,7 +61,7 @@ theorem bernoulli (ρ p Φ : S) (u : Fin 4 → S) (i : Fin 4) (hρ : ρ ≠ 0) (
   have hρi : ρ⁻¹ * ρ = 1 := inv_mul_cancel₀ hρ
   unfold ssum at heuler ⊢
   simp only [map_add, Derivation.leibniz, smul_eq_mul, hinv, d_half' (D i), mul_zero, add_zero]
-  rw [hirr 1, hirr 2, hirr 3]
+  rw [hirr1, hirr2, hirr3]
   linear_combination ρ⁻¹ * heuler
     - (u 1 * D 1 (u i) + u 2 * D 2 (u i) + u 3 * D 3 (u i) + D i Φ) * hρi
 
