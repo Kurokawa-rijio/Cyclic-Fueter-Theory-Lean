@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Lean project
         shell: bash
-        run: lake build CFT.Foundations.CharacteristicUniqueness
+        run: lake build CFT.Spherical.WedgeUniqueness
 
       - name: Axiom audit (every theorem)
         shell: bash
