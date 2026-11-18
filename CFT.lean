@@ -6,6 +6,8 @@ import CFT.Foundations.WedgeIterationMap
 import CFT.Foundations.WedgeRhsLipschitz
 import CFT.Foundations.WedgeC1Norm
 import CFT.Foundations.WedgeDerivContraction
+import CFT.Foundations.WedgeC1Contraction
+import CFT.Foundations.WedgeC1Metric
 import CFT.Foundations.WaveCharacteristicUniqueness
 import CFT.Foundations.WaveDataContinuousDependence
 import CFT.Geometry.QuantumSphereHyperboloid
@@ -70,6 +72,7 @@ import CFT.Spherical.WedgeCouplingDivergence
 import CFT.Spherical.WedgeGaugeFixing
 import CFT.Spherical.WedgeEnergyBalance
 import CFT.Spherical.WedgeEnergyAnalytic
+import CFT.Spherical.WedgeOmegaZeroOrder
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -93,6 +96,9 @@ import CFT.Quantum.WDWTwoBranches
 import CFT.Quantum.WDWBoundaryConditions
 import CFT.Quantum.WDWBranchCombination
 import CFT.Quantum.WDWOutgoingCorrespondence
+import CFT.Quantum.WDWWavePacketNonvanishing
+import CFT.Quantum.WDWWavePacketGeneral
+import CFT.Quantum.WDWWavePacketPhase
 import CFT.Quantum.WDWSemiclassical
 import CFT.Quantum.WDWInternalClock
 import CFT.Spherical.NeckThroatCollapse

@@ -11,7 +11,18 @@
 
 This repository contains Lean 4 formalizations associated with the research program *Cyclic Fueter Theory* (CFT) and the author's claim ledger α-I–α-XV. The code covers quaternionic algebra, matrix and spinor constructions, quantum-geometric identities, Cartan-frame calculations, the reduced Einstein–Yang–Mills (EYM) action and its field equations, curvature and stress tensors computed from metric and connection data, distributional junction conditions, characteristic evolution and constraint propagation, zero-mode calculations, and selected links to WZW and related geometric formulas.
 
-The current snapshot contains **2464 declarations** (2461 theorems and 3 private lemmas) in 231 Lean modules (v1.6.1: 1857 in 169; v0.6.0: 1873 in 171; v0.5.0: 1641 in 150; v0.4.0: 1544 in 141; v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 556 aliases in the index module `CFT/Index.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+The current snapshot contains **2520 declarations** (2517 theorems and 3 private lemmas) in 237 Lean modules (v1.6.1: 1857 in 169; v0.6.0: 1873 in 171; v0.5.0: 1641 in 150; v0.4.0: 1544 in 141; v0.3.0: 1216 in 118; v0.2.0: 1074 in 101), plus 556 aliases in the index module `CFT/Index.lean`, which restate existing theorems under ledger names without adding hypotheses. This count includes 109 auxiliary polynomial identities used in the α-II.5 calculations and many component-by-component tensor identities; it is a count of declarations, **not** of independent research claims.
+
+### How the declaration count is produced
+
+The numbers above are produced by fixed text searches, so anyone can reproduce them from the tree (verified 2026-11-19):
+
+- **Declarations** — lines in `*.lean` files under `CFT/` matching `^(theorem|private lemma) `, counted with `grep -rh -E '^(theorem|private lemma) ' CFT/ | wc -l`. Current snapshot: 2517 `theorem` lines + 3 `private lemma` lines = 2520. The count includes every `.lean` file under `CFT/`, whether or not it is imported by `CFT.lean`.
+- **Modules** — `.lean` files under `CFT/` plus the library root `CFT.lean`: `find CFT -name '*.lean' | wc -l` (= 236) + 1 = 237.
+- **Aliases** — lines matching `^alias ` in `CFT/Index.lean` (556), counted separately; they restate existing theorems and are not declarations.
+- **Not counted** — `def` / `structure` / `instance` / `abbrev` / `class` / `inductive` (359 lines in the current snapshot), `example`s (none in the tree), and the six `private theorem` helper lemmas in `CFT/Foundations/FueterOperatorSquares.lean` (commutation of the Fueter partials, used inside that file only). There is no `sorry` in the tree.
+
+**Earlier versions used a slightly different pattern.** The parenthetical figures for v0.2.0–v1.6.1 above were produced by a count that also included the six `private theorem` lines and counted modules as the files under `CFT/` only (without the root `CFT.lean`). Verified by re-measurement: v0.6.0 is 1864 + 3 + 6 = 1873 declarations in 171 modules, and v1.6.1 is 1848 + 3 + 6 = 1857 in 169 modules. On the current canonical pattern those two versions read v0.6.0: 1867 declarations in 172 modules; v1.6.1: 1851 in 170 modules. The v0.2.0–v0.5.0 figures are quoted from the release notes (no tree on hand to re-measure); the same −6 declarations / +1 module adjustment would apply to them if the same files existed then, which is unverified. Full per-version provenance is in `docs/SOURCE_SNAPSHOT.md`.
 
 ## What changed in v1.1.1
 
