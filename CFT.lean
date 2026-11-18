@@ -243,6 +243,7 @@ import CFT.Foundations.ContractedBianchiNormal
 import CFT.Foundations.FueterFamousEquations
 import CFT.Foundations.QuaternionMechanics
 import CFT.Foundations.CartanEinstein
+import CFT.Foundations.CartanTorsionLorentz
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm

@@ -192,6 +192,7 @@ import CFT.Foundations.ContractedBianchiNormal
 import CFT.Foundations.FueterFamousEquations
 import CFT.Foundations.QuaternionMechanics
 import CFT.Foundations.CartanEinstein
+import CFT.Foundations.CartanTorsionLorentz
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -2927,3 +2928,12 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.CartanEinstein.pick
 #print axioms CFT.CartanEinstein.einstein_iff_stationary
 #print axioms CFT.CartanEinstein.einstein_with_matter
+#print axioms CFT.CartanEinstein.torsion_contraction
+#print axioms CFT.CartanEinstein.torsion_free_of_stationary
+#print axioms CFT.CartanEinstein.levi_civita_unique
+#print axioms CFT.CartanEinstein.etaL_sq
+#print axioms CFT.CartanEinstein.eps_raise
+#print axioms CFT.CartanEinstein.Gt_Rt
+#print axioms CFT.CartanEinstein.cartan_einstein_lorentz
+#print axioms CFT.CartanEinstein.einstein_lorentz_iff
+#print axioms CFT.Classical.curv_gauge_covariant
