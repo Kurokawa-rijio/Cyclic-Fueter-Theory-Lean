@@ -17,6 +17,7 @@
     - `frame_geodesic_speed`:枠での測地線の式 V̇ = −(PV − VQ) なら |V|² は一定(速さが保たれる)。
 -/
 import CFT.Foundations.FueterOperatorSquares
+import Mathlib.Tactic
 
 open Quaternion CFT.Operators
 
