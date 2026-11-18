@@ -13,10 +13,9 @@
       ∂_t²ρ₁ = c²Δρ₁(音波の波動方程式)。
   * `coulomb_harmonic`:r = |x|、ri = 1/r(∂_i ri = −x_i ri³、|x|² ri² = 1)について Δ(q/r) = 0(r ≠ 0)。
     `coulomb_field`:E_i = −∂_i(q/r) = q x_i/r³(Coulomb の法則)。
-    注意(独立点検 2026-11-18):`coulomb_harmonic` の仮定 `hx`(∂_j x_j = 1)と `hri`(∂_j ri = −x_j ri³)は
-    時間の添字 j = 0 も含む Fin 4 全体で置いている。静的なポテンシャル(∂₀ ri = 0)では、`hri` の j = 0 から
-    x₀ ri³ = 0、つまり x₀ = 0 が出て、`hx` の j = 0(∂₀ x₀ = 1)と矛盾する。したがってこの定理は、∂₀ = ∂_t の
-    ふつうの静的モデルには当てはめられない(証明が使うのは j = 1, 2, 3 だけなので、仮定を j ≠ 0 に制限すれば直る)。
+    仮定 `hx`(∂_j x_j = 1)と `hri`(∂_j ri = −x_j ri³)は空間の添字 j ≠ 0 だけで置く。
+    (2026-11-19 修正:以前は時間の添字 j = 0 も含めていたため、静的なポテンシャル ∂₀ ri = 0 では
+    x₀ = 0 と ∂₀ x₀ = 1 が矛盾した。独立点検の指摘による。)
 -/
 import Mathlib.RingTheory.Derivation.Basic
 import Mathlib.Tactic
@@ -97,18 +96,25 @@ theorem sound_wave (hc : ∀ μ ν x, D μ (D ν x) = D ν (D μ x)) (ρ1 ρ0 c2
 
 /-- Coulomb ポテンシャル q/r は r ≠ 0 で調和 -/
 theorem coulomb_harmonic (q ri : S) (x : Fin 4 → S) (hq : ∀ j, D j q = 0)
-    (hx : ∀ j, D j (x j) = 1) (hri : ∀ j, D j ri = -(x j * (ri * ri * ri)))
+    (hx : ∀ j, j ≠ 0 → D j (x j) = 1) (hri : ∀ j, j ≠ 0 → D j ri = -(x j * (ri * ri * ri)))
     (hnorm : (x 1 ^ 2 + x 2 ^ 2 + x 3 ^ 2) * ri ^ 2 = 1) :
     ssum (fun j => D j (D j (q * ri))) = 0 := by
+  have hx1 := hx 1 (by decide)
+  have hx2 := hx 2 (by decide)
+  have hx3 := hx 3 (by decide)
+  have hr1 := hri 1 (by decide)
+  have hr2 := hri 2 (by decide)
+  have hr3 := hri 3 (by decide)
   unfold ssum
-  simp only [map_neg, Derivation.leibniz, smul_eq_mul, hq, hx, hri, mul_zero, add_zero]
+  simp only [map_neg, Derivation.leibniz, smul_eq_mul, hq, hx1, hx2, hx3, hr1, hr2, hr3,
+    mul_zero, add_zero]
   linear_combination (3 * q * ri ^ 3) * hnorm
 
-/-- Coulomb の法則 E_i = −∂_i(q/r) = q x_i / r³ -/
+/-- Coulomb の法則 E_i = −∂_i(q/r) = q x_i / r³(空間の添字 i ≠ 0) -/
 theorem coulomb_field (q ri : S) (x : Fin 4 → S) (hq : ∀ j, D j q = 0)
-    (hri : ∀ j, D j ri = -(x j * (ri * ri * ri))) (j : Fin 4) :
+    (hri : ∀ j, j ≠ 0 → D j ri = -(x j * (ri * ri * ri))) (j : Fin 4) (hj : j ≠ 0) :
     -(D j (q * ri)) = q * x j * (ri * ri * ri) := by
-  rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, hq, hri]
+  rw [Derivation.leibniz, smul_eq_mul, smul_eq_mul, hq, hri j hj]
   ring
 
 end CFT.Continuum

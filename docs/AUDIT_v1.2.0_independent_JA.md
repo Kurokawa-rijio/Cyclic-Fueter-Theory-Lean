@@ -1,5 +1,11 @@
 # v1.2.0 独立点検の報告(2026-11-18)
 
+> **点検後の対応(2026-11-19、Claude)**:
+> - 1-1(Coulomb、major)は、定理の文を空間の添字 j ≠ 0 に制限して直しました(`coulomb_harmonic`、`coulomb_field`、`coulomb_fueter`)。
+> - 2-6・4-1 は、直した `scripts/GenerateAuditIndex.py` で `Audit.lean` を作り直して対応しました(3297 行、未掲載 0)。
+> - どちらも CI で確かめます。ほかの指摘への対応は、このファイルの本文のとおりです。
+
+
 対象:ブランチ `release-v1.2.0`(HEAD f1167e7「v1.2.0 audit follow-up」)。`origin/main` に対して追加された
 CFT 以下の 30 モジュール、`README.md`(What changed in v1.2.0)、`docs/REVIEW_2026-11-18_JA.md`、
 `docs/ZENODO_DESCRIPTION_v1.2.0.md`、`CITATION.cff`、`.zenodo.json`、命題集 `LEAN_GAP_TREES_merged.md`
