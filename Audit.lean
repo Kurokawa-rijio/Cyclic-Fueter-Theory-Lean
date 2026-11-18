@@ -193,6 +193,7 @@ import CFT.Foundations.FueterFamousEquations
 import CFT.Foundations.QuaternionMechanics
 import CFT.Foundations.CartanEinstein
 import CFT.Foundations.CartanTorsionLorentz
+import CFT.Spherical.WedgeLocalExistenceGeneral
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -2937,3 +2938,10 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.CartanEinstein.cartan_einstein_lorentz
 #print axioms CFT.CartanEinstein.einstein_lorentz_iff
 #print axioms CFT.Classical.curv_gauge_covariant
+#print axioms CFT.WedgeUniq.sameDataOn_of_dataOn
+#print axioms CFT.WedgeUniq.wedge_uniqueness_same
+#print axioms CFT.WedgeUniq.wedge_uniqueness_of_pos_same
+#print axioms CFT.WedgeExistGen.sameDataOn_of_gen
+#print axioms CFT.WedgeExistGen.abs_le_of_near
+#print axioms CFT.WedgeExistGen.wedge_local_existence_gen
+#print axioms CFT.WedgeExistGen.wedge_local_wellposed_gen

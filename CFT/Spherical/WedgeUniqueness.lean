@@ -256,6 +256,19 @@ def WedgeDataOn (a b : ℝ) (F : WedgeFields) : Prop :=
   (∀ u ∈ Icc (0:ℝ) a, F.r u 0 = capR u ∧ F.Om u 0 = capOm u ∧ F.W u 0 = capW u)
     ∧ (∀ v ∈ Icc (0:ℝ) b, F.r 0 v = 1 ∧ F.Om 0 v = neckOm v ∧ F.W 0 v = 0)
 
+/-- 2 つの場が長方形の 2 辺の上で同じ特性データをもつこと(データは任意) -/
+def SameDataOn (a b : ℝ) (F G : WedgeFields) : Prop :=
+  (∀ u ∈ Icc (0:ℝ) a, F.r u 0 = G.r u 0 ∧ F.Om u 0 = G.Om u 0 ∧ F.W u 0 = G.W u 0)
+    ∧ (∀ v ∈ Icc (0:ℝ) b, F.r 0 v = G.r 0 v ∧ F.Om 0 v = G.Om 0 v ∧ F.W 0 v = G.W 0 v)
+
+/-- 帽子と首のデータをもつ 2 つの場は、同じデータをもつ -/
+theorem sameDataOn_of_dataOn {a b : ℝ} {F G : WedgeFields} (dF : WedgeDataOn a b F)
+    (dG : WedgeDataOn a b G) : SameDataOn a b F G :=
+  ⟨fun u hu => ⟨(dF.1 u hu).1.trans (dG.1 u hu).1.symm, (dF.1 u hu).2.1.trans (dG.1 u hu).2.1.symm,
+      (dF.1 u hu).2.2.trans (dG.1 u hu).2.2.symm⟩,
+    fun v hv => ⟨(dF.2 v hv).1.trans (dG.2 v hv).1.symm, (dF.2 v hv).2.1.trans (dG.2 v hv).2.1.symm,
+      (dF.2 v hv).2.2.trans (dG.2 v hv).2.2.symm⟩⟩
+
 /-- 全平面の方程式は長方形の上の方程式を含む -/
 theorem wedgeEqsOn_of_global {F : WedgeFields} (h : WedgeEvolutionEqs F) (a b : ℝ) :
     WedgeEqsOn a b F := fun u _ v _ => h u v
@@ -286,11 +299,11 @@ noncomputable def dduv (F G : WedgeFields) : Fin 3 → ℝ → ℝ → ℝ :=
   ![fun s t => Duv F.r s t - Duv G.r s t, fun s t => Duv F.Om s t - Duv G.Om s t,
     fun s t => Duv F.W s t - Duv G.W s t]
 
-/-- 一意性(評価つき):長方形の上で方程式・データ・C² 級をみたす 2 つの解が、
-評価 `Good B m`(m > 0)をみたせば、長方形の上で一致する。 -/
-theorem wedge_uniqueness (F G : WedgeFields) {a b B m : ℝ}
+/-- 一意性(評価つき、データは任意):長方形の上で方程式と C² 級をみたし、2 辺の上で同じデータをもつ
+2 つの解が、評価 `Good B m`(m > 0)をみたせば、長方形の上で一致する。 -/
+theorem wedge_uniqueness_same (F G : WedgeFields) {a b B m : ℝ}
     (eF : WedgeEqsOn a b F) (eG : WedgeEqsOn a b G)
-    (dF : WedgeDataOn a b F) (dG : WedgeDataOn a b G)
+    (hd : SameDataOn a b F G)
     (rFr : C2On a b F.r) (rFO : C2On a b F.Om) (rFW : C2On a b F.W)
     (rGr : C2On a b G.r) (rGO : C2On a b G.Om) (rGW : C2On a b G.W)
     (hm : 0 < m)
@@ -319,19 +332,19 @@ theorem wedge_uniqueness (F G : WedgeFields) {a b B m : ℝ}
     (fun i u hu => by
       fin_cases i
       · show F.r u 0 - G.r u 0 = 0
-        rw [(dF.1 u hu).1, (dG.1 u hu).1, sub_self]
+        rw [(hd.1 u hu).1, sub_self]
       · show F.Om u 0 - G.Om u 0 = 0
-        rw [(dF.1 u hu).2.1, (dG.1 u hu).2.1, sub_self]
+        rw [(hd.1 u hu).2.1, sub_self]
       · show F.W u 0 - G.W u 0 = 0
-        rw [(dF.1 u hu).2.2, (dG.1 u hu).2.2, sub_self])
+        rw [(hd.1 u hu).2.2, sub_self])
     (fun i v hv => by
       fin_cases i
       · show F.r 0 v - G.r 0 v = 0
-        rw [(dF.2 v hv).1, (dG.2 v hv).1, sub_self]
+        rw [(hd.2 v hv).1, sub_self]
       · show F.Om 0 v - G.Om 0 v = 0
-        rw [(dF.2 v hv).2.1, (dG.2 v hv).2.1, sub_self]
+        rw [(hd.2 v hv).2.1, sub_self]
       · show F.W 0 v - G.W 0 v = 0
-        rw [(dF.2 v hv).2.2, (dG.2 v hv).2.2, sub_self])
+        rw [(hd.2 v hv).2.2, sub_self])
     (fun i u hu v hv => by
       obtain ⟨gF, gG⟩ := hgood u hu v hv
       have hp := hpd u v
@@ -355,13 +368,27 @@ theorem wedge_uniqueness (F G : WedgeFields) {a b B m : ℝ}
   have k2 : F.W u v - G.W u v = 0 := key 2 u hu v hv
   exact ⟨sub_eq_zero.mp k0, sub_eq_zero.mp k1, sub_eq_zero.mp k2⟩
 
-/-! ### 第 3 段:定数 B、m は連続性とコンパクト性から出る(`CFT.WedgeCompactBounds` を使う) -/
-
-/-- 主定理:長方形 [0,a]×[0,b] の上で、発展方程式・特性データ・C² 級をみたす 2 つの解が、
-そこで r > 0、Ω > 0 なら、長方形の上で一致する(長方形の外については何も仮定しない)。 -/
-theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
+/-- 一意性(評価つき):長方形の上で方程式・データ・C² 級をみたす 2 つの解が、
+評価 `Good B m`(m > 0)をみたせば、長方形の上で一致する。 -/
+theorem wedge_uniqueness (F G : WedgeFields) {a b B m : ℝ}
     (eF : WedgeEqsOn a b F) (eG : WedgeEqsOn a b G)
     (dF : WedgeDataOn a b F) (dG : WedgeDataOn a b G)
+    (rFr : C2On a b F.r) (rFO : C2On a b F.Om) (rFW : C2On a b F.W)
+    (rGr : C2On a b G.r) (rGO : C2On a b G.Om) (rGW : C2On a b G.W)
+    (hm : 0 < m)
+    (hgood : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      Good B m (ptOf F u v) ∧ Good B m (ptOf G u v)) :
+    ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      F.r u v = G.r u v ∧ F.Om u v = G.Om u v ∧ F.W u v = G.W u v :=
+  wedge_uniqueness_same F G eF eG (sameDataOn_of_dataOn dF dG) rFr rFO rFW rGr rGO rGW hm hgood
+
+/-! ### 第 3 段:定数 B、m は連続性とコンパクト性から出る(`CFT.WedgeCompactBounds` を使う) -/
+
+/-- 主定理(データは任意):長方形 [0,a]×[0,b] の上で発展方程式と C² 級をみたし、2 辺の上で同じデータを
+もつ 2 つの解が、そこで r > 0、Ω > 0 なら、長方形の上で一致する。 -/
+theorem wedge_uniqueness_of_pos_same (F G : WedgeFields) {a b : ℝ}
+    (eF : WedgeEqsOn a b F) (eG : WedgeEqsOn a b G)
+    (hd : SameDataOn a b F G)
     (rFr : C2On a b F.r) (rFO : C2On a b F.Om) (rFW : C2On a b F.W)
     (rGr : C2On a b G.r) (rGO : C2On a b G.Om) (rGW : C2On a b G.W)
     (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
@@ -399,7 +426,7 @@ theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
   obtain ⟨m4, hm4, h4⟩ := exists_pos_lower_bound_of_continuousOn hK hne rGO.cont
     (fun u v huv => (hpos' u v huv).2.2.2)
   have hm : 0 < min (min m1 m2) (min m3 m4) := lt_min (lt_min hm1 hm2) (lt_min hm3 hm4)
-  refine wedge_uniqueness F G eF eG dF dG rFr rFO rFW rGr rGO rGW (B := B) hm ?_
+  refine wedge_uniqueness_same F G eF eG hd rFr rFO rFW rGr rGO rGW (B := B) hm ?_
   intro u hu v hv
   have huv : (u, v) ∈ Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b := Set.mk_mem_prod hu hv
   have hb := hB u v huv
@@ -428,5 +455,18 @@ theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
   simp only [Good, ptOf]
   refine ⟨⟨by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, l1, l2⟩,
     ⟨by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, l3, l4⟩⟩
+
+/-- 主定理:長方形 [0,a]×[0,b] の上で、発展方程式・特性データ・C² 級をみたす 2 つの解が、
+そこで r > 0、Ω > 0 なら、長方形の上で一致する(方程式は長方形の外に課さない)。 -/
+theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
+    (eF : WedgeEqsOn a b F) (eG : WedgeEqsOn a b G)
+    (dF : WedgeDataOn a b F) (dG : WedgeDataOn a b G)
+    (rFr : C2On a b F.r) (rFO : C2On a b F.Om) (rFW : C2On a b F.W)
+    (rGr : C2On a b G.r) (rGO : C2On a b G.Om) (rGW : C2On a b G.W)
+    (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      0 < F.r u v ∧ 0 < F.Om u v ∧ 0 < G.r u v ∧ 0 < G.Om u v) :
+    ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      F.r u v = G.r u v ∧ F.Om u v = G.Om u v ∧ F.W u v = G.W u v :=
+  wedge_uniqueness_of_pos_same F G eF eG (sameDataOn_of_dataOn dF dG) rFr rFO rFW rGr rGO rGW hpos
 
 end CFT.WedgeUniq
