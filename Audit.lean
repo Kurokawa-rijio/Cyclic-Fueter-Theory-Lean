@@ -201,6 +201,7 @@ import CFT.Spherical.WedgeDifferenceEnergyROm
 import CFT.Spherical.WedgeDifferenceCoefficientsBounded
 import CFT.Spherical.WedgeCompactBounds
 import CFT.Quantum.PhysicalInnerProductIntegral
+import CFT.Foundations.WedgeC1Contraction
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2962,3 +2963,10 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.FrameCoord.RF_antisymm2
 #print axioms CFT.FrameCoord.GF_etaL
 #print axioms CFT.FrameCoord.einstein_lorentz_coord
+#print axioms CFT.WedgeC1Contract.wedgeLipMax_nonneg
+#print axioms CFT.WedgeC1Contract.wedgeLipR_le_wedgeLipMax
+#print axioms CFT.WedgeC1Contract.wedgeLipOm_le_wedgeLipMax
+#print axioms CFT.WedgeC1Contract.wedgeLipW_le_wedgeLipMax
+#print axioms CFT.WedgeC1Contract.wedgeC1Dist_iterate_le
+#print axioms CFT.WedgeC1Contract.wedgeC1Dist_iterate_lt
+#print axioms CFT.WedgeC1Contract.exists_delta_contraction
