@@ -21,7 +21,7 @@ The current snapshot contains **2743 declarations** (2740 theorems and 3 private
   - uniqueness on a rectangle (4-7);
   - continuous dependence on the data (4-8);
   - a Goursat existence theorem by the Banach fixed-point theorem (4-9);
-  - local existence and well-posedness for arbitrary C¹ data with r, Ω ≥ r₀ > 0 (4-17, `Spherical/WedgeLocalExistenceGeneral.lean`);
+  - local existence and well-posedness for data C¹ on ℝ with r, Ω ≥ r₀ > 0 (4-17, `Spherical/WedgeLocalExistenceGeneral.lean`);
   - a local linearised stability estimate (4-12);
   - the truncated-solution statement behind the continuation obstruction (4-15).
 

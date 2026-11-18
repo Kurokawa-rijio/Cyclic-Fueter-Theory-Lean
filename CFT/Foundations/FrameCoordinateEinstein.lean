@@ -4,7 +4,8 @@
   座標の Riemann テンソル(添字はすべて下)Rc_{μνρσ}、枠 e^a_μ(枠の添字 a、座標の添字 μ)とその逆 E_a^μ
   (Σ_μ e^a_μ E_b^μ = δ_ab)、枠の符号 η_a(Euclid なら 1、Lorentz なら `etaL`)から、
     計量      g_{μν} = Σ_a η_a e^a_μ e^a_ν        (`gco`)
-    逆の計量  g^{μν} = Σ_a η_a E_a^μ E_a^ν        (`gin`、η_a² = 1 なら g の逆行列:`metric_inverse`)
+    逆の計量  g^{μν} = Σ_a η_a E_a^μ E_a^ν        (`gin`、η_a² = 1 なら Σ_ν g_{μν} g^{νρ} = δ:`metric_inverse`。
+                                                   示すのは片側の積だけで、`einstein_*` の経路では使わない)
     枠の成分  R_{abcd} = Σ E_a^μ E_b^ν E_c^ρ E_d^σ Rc_{μνρσ}   (`RF`)
   をつくる。縮約は `CartanTorsionLorentz` と同じく 2 番目と 4 番目の添字で取る。
   * `ricci_frame`:枠の Ricci Σ_a η_a R_{b a d a} は、座標の Ricci g^{μρ} Rc_{νμσρ} を枠に移したもの。
@@ -113,7 +114,7 @@ theorem complete_of_heE (e E : ι → ι → ℝ)
   have h := congrArg (fun M : Matrix ι ι ℝ => M μ ν) hBA
   simpa [A, Bm, Matrix.mul_apply, Matrix.one_apply] using h
 
-/-- η_a² = 1 なら `gin` は `gco` の逆行列 -/
+/-- η_a² = 1 なら Σ_ν g_{μν} g^{νρ} = δ_μρ(片側の積。逆側 Σ_ν g^{μν} g_{νρ} = δ も同じ原理で従うが、ここでは文にしていない) -/
 theorem metric_inverse (e E : ι → ι → ℝ) (η : ι → ℝ)
     (heE : ∀ a b, ∑ μ, e a μ * E b μ = if a = b then 1 else 0) (hη : ∀ a, η a * η a = 1)
     (μ ρ : ι) : ∑ ν, gco e η μ ν * gin E η ν ρ = if μ = ρ then 1 else 0 := by
@@ -256,7 +257,9 @@ theorem GF_etaL (R : Fin 4 → Fin 4 → Fin 4 → Fin 4 → ℝ) (b d : Fin 4) 
     GF etaL R b d = GLor R b d := rfl
 
 open CFT.CartanEinstein in
-/-- Lorentz の Cartan 作用の停留条件(`einstein_lorentz_iff` の形)⇔ 座標の Einstein 方程式 G_{νσ} = 0 -/
+/-- Lorentz の Cartan 作用の停留条件(`einstein_lorentz_iff` の形)⇔ 座標の Einstein 方程式 G_{νσ} = 0。
+`V` は `CFT.CartanEinstein.V`(第一変分、`CartanEinstein`)、`Rt` は `CFT.CartanEinstein.Rt`
+(R の前の 2 添字を η で上げたもの、`CartanTorsionLorentz`)。 -/
 theorem einstein_lorentz_coord (e E : Fin 4 → Fin 4 → ℝ) (Rc : Fin 4 → Fin 4 → Fin 4 → Fin 4 → ℝ)
     (heE : ∀ a b, ∑ μ, e a μ * E b μ = if a = b then 1 else 0)
     (h1 : ∀ μ ν ρ σ, Rc μ ν ρ σ = -Rc ν μ ρ σ) (h2 : ∀ μ ν ρ σ, Rc μ ν ρ σ = -Rc μ ν σ ρ) :
