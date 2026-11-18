@@ -180,6 +180,7 @@ import CFT.Foundations.GoursatExistence
 import CFT.Spherical.WedgeExistence
 import CFT.Foundations.CharacteristicDependence
 import CFT.Spherical.WedgeDependence
+import CFT.Foundations.BianchiSecond
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2745,3 +2746,7 @@ import CFT.Spherical.WedgeDependence
 #print axioms CFT.CharDependence.abs_le_add_integral_abs
 #print axioms CFT.CharDependence.char_dependence
 #print axioms CFT.WedgeDep.wedge_dependence
+#print axioms CFT.Classical.gauge_bianchi
+#print axioms CFT.Classical.curv_apply
+#print axioms CFT.Classical.nablaR_explicit
+#print axioms CFT.Classical.bianchi_second
