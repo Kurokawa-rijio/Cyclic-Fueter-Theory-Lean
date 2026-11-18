@@ -10,8 +10,9 @@
   エネルギー法(Mathlib に無い、原子核 4-16)を使わずに一意性を取る道具になる。
 
   * `exp_int_le`:∫_0^v e^{λ(u+s)} ds ≤ e^{λ(u+v)}/λ(λ > 0)。
-  * `char_gronwall`:長方形 [0,a]×[0,b] 上で連続かつ非負な f が上の積分不等式をみたせば、f は長方形上で 0。
+  * `char_gronwall_on`:長方形 [0,a]×[0,b] 上で連続かつ非負な f が上の積分不等式をみたせば、f は長方形上で 0。
     証明:重み e^{−λ(u+v)} をつけた g の最大値 N を取る(コンパクト性)。λ = 4K とすると N ≤ N/2 になり N = 0。
+    連続性は長方形の上だけで仮定する。`char_gronwall` は全平面で連続な場合の系。
   * `char_gronwall_triple`:1 階の系 (X, Y, Z) の形。
     |Y(u,v)| ≤ L ∫_0^v |X(u,s)| ds、|Z(u,v)| ≤ L ∫_0^u |X(t,v)| dt、|X(u,v)| ≤ ∫_0^u |Y(t,v)| dt
     なら X, Y, Z はすべて 0(4-7 の組み立てで使う形)。
@@ -45,18 +46,18 @@ theorem exp_int_le (lam u v : ℝ) (hl : 0 < lam) :
   rw [div_eq_mul_inv]
   nlinarith [mul_pos hu hi]
 
-/-- 特性方向の 2 変数グロンウォール -/
-theorem char_gronwall {a b K : ℝ} {f : ℝ → ℝ → ℝ}
-    (hf : Continuous (Function.uncurry f))
+/-- 特性方向の 2 変数グロンウォール(連続性は長方形の上だけで仮定) -/
+theorem char_gronwall_on {a b K : ℝ} {f : ℝ → ℝ → ℝ}
+    (hf : ContinuousOn (Function.uncurry f) (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b))
     (hnn : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, 0 ≤ f u v)
     (hK : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
       f u v ≤ K * ((∫ s in (0:ℝ)..v, f u s) + ∫ t in (0:ℝ)..u, f t v)) :
     ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, f u v = 0 := by
   intro u hu v hv
-  have hc1 : ∀ x, Continuous (fun s => f x s) := fun x =>
-    hf.comp (continuous_const.prod_mk continuous_id)
-  have hc2 : ∀ y, Continuous (fun t => f t y) := fun y =>
-    hf.comp (continuous_id.prod_mk continuous_const)
+  have hc1 : ∀ x ∈ Icc (0:ℝ) a, ContinuousOn (fun s => f x s) (Icc (0:ℝ) b) := fun x hx =>
+    hf.comp (continuousOn_const.prod continuousOn_id) (fun s hs => Set.mk_mem_prod hx hs)
+  have hc2 : ∀ y ∈ Icc (0:ℝ) b, ContinuousOn (fun t => f t y) (Icc (0:ℝ) a) := fun y hy =>
+    hf.comp (continuousOn_id.prod continuousOn_const) (fun t ht => Set.mk_mem_prod ht hy)
   -- K を正の定数 K' = max K 1 に取り替える
   have hint1 : ∀ x ∈ Icc (0:ℝ) a, ∀ y ∈ Icc (0:ℝ) b, 0 ≤ ∫ s in (0:ℝ)..y, f x s :=
     fun x hx y hy => intervalIntegral.integral_nonneg hy.1
@@ -72,11 +73,12 @@ theorem char_gronwall {a b K : ℝ} {f : ℝ → ℝ → ℝ}
   -- 重み e^{−λ(u+v)} をつけた関数の最大値
   have hlpos : 0 < 4 * max K 1 := by positivity
   let g : ℝ × ℝ → ℝ := fun p => exp (-((4 * max K 1) * (p.1 + p.2))) * Function.uncurry f p
-  have hg : Continuous g :=
-    (Real.continuous_exp.comp (continuous_const.mul (continuous_fst.add continuous_snd)).neg).mul hf
+  have hg : ContinuousOn g (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b) :=
+    (Real.continuous_exp.comp
+      (continuous_const.mul (continuous_fst.add continuous_snd)).neg).continuousOn.mul hf
   have hR : IsCompact (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b) := isCompact_Icc.prod isCompact_Icc
   have hne : (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b).Nonempty := ⟨(u, v), hu, hv⟩
-  obtain ⟨p, hp, hmax⟩ := hR.exists_isMaxOn hne hg.continuousOn
+  obtain ⟨p, hp, hmax⟩ := hR.exists_isMaxOn hne hg
   have hmax' : ∀ q ∈ Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b, g q ≤ g p := fun q hq => isMaxOn_iff.mp hmax q hq
   obtain ⟨hp1, hp2⟩ := hp
   have hgq : ∀ x y, g (x, y) = exp (-((4 * max K 1) * (x + y))) * f x y := fun x y => rfl
@@ -106,7 +108,7 @@ theorem char_gronwall {a b K : ℝ} {f : ℝ → ℝ → ℝ}
       ≤ g p * (exp ((4 * max K 1) * (p.1 + p.2)) / (4 * max K 1)) := by
     calc ∫ s in (0:ℝ)..p.2, f p.1 s
         ≤ ∫ s in (0:ℝ)..p.2, g p * exp ((4 * max K 1) * (p.1 + s)) :=
-          intervalIntegral.integral_mono_on hp2.1 ((hc1 p.1).intervalIntegrable _ _)
+          intervalIntegral.integral_mono_on hp2.1 (((hc1 p.1 hp1).mono (Icc_subset_Icc le_rfl hp2.2)).intervalIntegrable_of_Icc hp2.1)
             ((hcont_e p.1).intervalIntegrable _ _)
             (fun s hs => hbound p.1 hp1 s ⟨hs.1, hs.2.trans hp2.2⟩)
       _ = g p * ∫ s in (0:ℝ)..p.2, exp ((4 * max K 1) * (p.1 + s)) :=
@@ -117,7 +119,7 @@ theorem char_gronwall {a b K : ℝ} {f : ℝ → ℝ → ℝ}
       ≤ g p * (exp ((4 * max K 1) * (p.1 + p.2)) / (4 * max K 1)) := by
     calc ∫ t in (0:ℝ)..p.1, f t p.2
         ≤ ∫ t in (0:ℝ)..p.1, g p * exp ((4 * max K 1) * (p.2 + t)) :=
-          intervalIntegral.integral_mono_on hp1.1 ((hc2 p.2).intervalIntegrable _ _)
+          intervalIntegral.integral_mono_on hp1.1 (((hc2 p.2 hp2).mono (Icc_subset_Icc le_rfl hp1.2)).intervalIntegrable_of_Icc hp1.1)
             ((hcont_e p.2).intervalIntegrable _ _)
             (fun t ht => by
               have h := hbound t ⟨ht.1, ht.2.trans hp1.2⟩ p.2 hp2
@@ -161,6 +163,15 @@ theorem char_gronwall {a b K : ℝ} {f : ℝ → ℝ → ℝ}
     have := mul_pos (Real.exp_pos (-((4 * max K 1) * (u + v)))) h
     linarith
   exact le_antisymm hf0 (hnn u hu v hv)
+
+/-- 特性方向の 2 変数グロンウォール(全平面で連続な場合) -/
+theorem char_gronwall {a b K : ℝ} {f : ℝ → ℝ → ℝ}
+    (hf : Continuous (Function.uncurry f))
+    (hnn : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, 0 ≤ f u v)
+    (hK : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+      f u v ≤ K * ((∫ s in (0:ℝ)..v, f u s) + ∫ t in (0:ℝ)..u, f t v)) :
+    ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, f u v = 0 :=
+  char_gronwall_on hf.continuousOn hnn hK
 
 /-- 1 階の系 (X, Y, Z) の形:
 |Y(u,v)| ≤ L ∫_0^v |X(u,s)| ds、|Z(u,v)| ≤ L ∫_0^u |X(t,v)| dt、|X(u,v)| ≤ ∫_0^u |Y(t,v)| dt

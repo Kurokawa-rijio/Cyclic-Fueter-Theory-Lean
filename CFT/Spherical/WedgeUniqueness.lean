@@ -1,21 +1,21 @@
 /-
-  命題集 `LEAN_GAP_TREES.md` 4-7(一意性)の組み立て 第 2 段:くさびの 2 つの解は一致する(2026-11-18)
+  命題集 `LEAN_GAP_TREES.md` 4-7(一意性)の組み立て 第 2・3 段:くさびの 2 つの解は一致する(2026-11-18)
 
-  F、G をくさびの発展方程式(`CFT.Wedge.WedgeEvolutionEqs`)の解で、同じ特性データ(`HasWedgeData`)を持つとする。
-  長方形 [0,a]×[0,b] の上で、両方の解が
-    |Ω|, |W|, |r_u|, |r_v|, |Ω_u|, |Ω_v| ≤ B、 r ≥ m > 0、 Ω ≥ m > 0
-  をみたし、C² 級(`C2`)なら、長方形の上で F = G。
+  長方形 R = [0,a]×[0,b] の上だけで仮定を置く(R の外での値・方程式は使わない)。
+  F、G が R の上でくさびの発展方程式(`WedgeEqsOn`)、2 辺の上で同じ特性データ(`WedgeDataOn`)、
+  R の上で C² 級(`C2On`。辺の点でも偏微分が存在する)をみたし、R の上で r > 0、Ω > 0 なら、R の上で F = G。
 
   方法:右辺の差が「値と 1 階微分の差」で抑えられること(リプシッツ性)を、式の組み立てに沿って示す。
   * `Pt`:右辺に出てくる 7 個の量 (Ω, W, r_u, r_v, r, Ω_u, Ω_v)。`Good B m p`:上の評価。`pdist`:差の絶対値の和。
   * `UL B m e`:e は Good な点の上で有界かつリプシッツ(定数は B と m だけで決まる)。
     `UL_const`、`UL_var`、`UL_invr`、`UL_invOm`(1/r、1/Ω)、`UL_add`、`UL_sub`、`UL_mul`、`UL_congr`。
   * `UL_rhsR`、`UL_rhsOm`、`UL_rhsW`:3 本の右辺はすべて UL(Ω の式の r_uv は r の式で置き換える)。
-  * `C2`:正則性(連続性と、混合偏微分の交換を含む HasDerivAt)。`C2.sub`、`Du_sub`、`Dv_sub`、`Duv_sub`:差も C2 で、微分は差の微分。
-  * `wedge_uniqueness`:主定理。差 (δr, δΩ, δW) が `CharacteristicUniqueness.char_uniqueness` の条件をみたす。
-  * `wedge_uniqueness_of_pos`:第 3 段。B、m は連続性とコンパクト性から出るので、仮定は r > 0、Ω > 0 だけになる。
+  * `wedge_uniqueness`:評価つきの一意性。差 (δr, δΩ, δW) を `CharacteristicUniqueness.char_uniqueness` に入れる。
+  * `wedge_uniqueness_of_pos`:主定理。B、m は連続性とコンパクト性から出るので、残る仮定は r > 0、Ω > 0。
+  * `wedgeEqsOn_of_global`、`wedgeDataOn_of_global`:全平面の `WedgeEvolutionEqs`、`HasWedgeData` からの橋渡し。
 -/
 import CFT.Foundations.CharacteristicUniqueness
+import CFT.Spherical.WedgeEYMSystem
 
 open Real Set CFT.Wedge
 
@@ -232,81 +232,33 @@ theorem UL_rhsW {B m : ℝ} (hm : 0 < m) : UL B m eW := by
   simp only [eW, rhsW]
   ring
 
-/-! ### 正則性と差 -/
+/-! ### 長方形の上の方程式・データ・正則性 -/
 
-/-- C² 級(連続性と、混合偏微分の交換を含む偏微分の存在) -/
-structure C2 (x : ℝ → ℝ → ℝ) : Prop where
-  cont : Continuous (Function.uncurry x)
-  cont_u : Continuous (Function.uncurry (Du x))
-  cont_v : Continuous (Function.uncurry (Dv x))
-  cont_uv : Continuous (Function.uncurry (Duv x))
-  du : ∀ u v, HasDerivAt (fun t => x t v) (Du x u v) u
-  dv : ∀ u v, HasDerivAt (fun s => x u s) (Dv x u v) v
-  duv_u : ∀ u v, HasDerivAt (fun t => Dv x t v) (Duv x u v) u
-  duv_v : ∀ u v, HasDerivAt (fun s => Du x u s) (Duv x u v) v
+open CFT.CharUniqueness
 
-variable {x y : ℝ → ℝ → ℝ}
+/-- 長方形 [0,a]×[0,b] の上の C² 級(微分は `Du`、`Dv`、`Duv`) -/
+abbrev C2On (a b : ℝ) (x : ℝ → ℝ → ℝ) : Prop := C2Data a b x (Du x) (Dv x) (Duv x)
 
-theorem Du_sub (hx : C2 x) (hy : C2 y) (u v : ℝ) :
-    Du (fun a b => x a b - y a b) u v = Du x u v - Du y u v :=
-  ((hx.du u v).sub (hy.du u v)).deriv
+/-- 発展方程式を長方形の上だけで課したもの -/
+def WedgeEqsOn (a b : ℝ) (F : WedgeFields) : Prop :=
+  ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
+    Duv F.r u v = rhsR (F.Om u v) (F.W u v) (Du F.r u v) (Dv F.r u v) (F.r u v)
+    ∧ Duv F.Om u v
+        = rhsOm (F.Om u v) (Du F.Om u v) (Dv F.Om u v) (Duv F.r u v) (F.r u v) (F.W u v)
+    ∧ Duv F.W u v = rhsW (F.Om u v) (F.W u v) (F.r u v)
 
-theorem Dv_sub (hx : C2 x) (hy : C2 y) (u v : ℝ) :
-    Dv (fun a b => x a b - y a b) u v = Dv x u v - Dv y u v :=
-  ((hx.dv u v).sub (hy.dv u v)).deriv
+/-- 特性データを長方形の 2 辺の上だけで課したもの -/
+def WedgeDataOn (a b : ℝ) (F : WedgeFields) : Prop :=
+  (∀ u ∈ Icc (0:ℝ) a, F.r u 0 = capR u ∧ F.Om u 0 = capOm u ∧ F.W u 0 = capW u)
+    ∧ (∀ v ∈ Icc (0:ℝ) b, F.r 0 v = 1 ∧ F.Om 0 v = neckOm v ∧ F.W 0 v = 0)
 
-theorem Duv_sub (hx : C2 x) (hy : C2 y) (u v : ℝ) :
-    Duv (fun a b => x a b - y a b) u v = Duv x u v - Duv y u v := by
-  have h : (fun t => deriv (fun s => x t s - y t s) v) = fun t => Dv x t v - Dv y t v := by
-    funext t
-    exact Dv_sub hx hy t v
-  show deriv (fun t => deriv (fun s => x t s - y t s) v) u = _
-  rw [h]
-  exact ((hx.duv_u u v).sub (hy.duv_u u v)).deriv
+/-- 全平面の方程式は長方形の上の方程式を含む -/
+theorem wedgeEqsOn_of_global {F : WedgeFields} (h : WedgeEvolutionEqs F) (a b : ℝ) :
+    WedgeEqsOn a b F := fun u _ v _ => h u v
 
-theorem C2.sub (hx : C2 x) (hy : C2 y) : C2 (fun a b => x a b - y a b) where
-  cont := hx.cont.sub hy.cont
-  cont_u := by
-    have : Function.uncurry (Du (fun a b => x a b - y a b))
-        = fun p => Function.uncurry (Du x) p - Function.uncurry (Du y) p := by
-      funext p
-      exact Du_sub hx hy p.1 p.2
-    rw [this]
-    exact hx.cont_u.sub hy.cont_u
-  cont_v := by
-    have : Function.uncurry (Dv (fun a b => x a b - y a b))
-        = fun p => Function.uncurry (Dv x) p - Function.uncurry (Dv y) p := by
-      funext p
-      exact Dv_sub hx hy p.1 p.2
-    rw [this]
-    exact hx.cont_v.sub hy.cont_v
-  cont_uv := by
-    have : Function.uncurry (Duv (fun a b => x a b - y a b))
-        = fun p => Function.uncurry (Duv x) p - Function.uncurry (Duv y) p := by
-      funext p
-      exact Duv_sub hx hy p.1 p.2
-    rw [this]
-    exact hx.cont_uv.sub hy.cont_uv
-  du := fun u v => by
-    rw [Du_sub hx hy]
-    exact (hx.du u v).sub (hy.du u v)
-  dv := fun u v => by
-    rw [Dv_sub hx hy]
-    exact (hx.dv u v).sub (hy.dv u v)
-  duv_u := fun u v => by
-    rw [Duv_sub hx hy]
-    have : (fun t => Dv (fun a b => x a b - y a b) t v) = fun t => Dv x t v - Dv y t v := by
-      funext t
-      exact Dv_sub hx hy t v
-    rw [this]
-    exact (hx.duv_u u v).sub (hy.duv_u u v)
-  duv_v := fun u v => by
-    rw [Duv_sub hx hy]
-    have : (fun s => Du (fun a b => x a b - y a b) u s) = fun s => Du x u s - Du y u s := by
-      funext s
-      exact Du_sub hx hy u s
-    rw [this]
-    exact (hx.duv_v u v).sub (hy.duv_v u v)
+/-- 全平面のデータは長方形の辺の上のデータを含む -/
+theorem wedgeDataOn_of_global {F : WedgeFields} (h : HasWedgeData F) (a b : ℝ) :
+    WedgeDataOn a b F := ⟨fun u _ => h.1 u, fun v _ => h.2 v⟩
 
 /-! ### 主定理 -/
 
@@ -314,15 +266,30 @@ theorem C2.sub (hx : C2 x) (hy : C2 y) : C2 (fun a b => x a b - y a b) where
 noncomputable def ptOf (F : WedgeFields) (u v : ℝ) : Pt :=
   ⟨F.Om u v, F.W u v, Du F.r u v, Dv F.r u v, F.r u v, Du F.Om u v, Dv F.Om u v⟩
 
-/-- 2 つの解の差 (δr, δΩ, δW) -/
+/-- 2 つの解の差 (δr, δΩ, δW) と、その微分 -/
 noncomputable def dd (F G : WedgeFields) : Fin 3 → ℝ → ℝ → ℝ :=
-  ![fun a b => F.r a b - G.r a b, fun a b => F.Om a b - G.Om a b, fun a b => F.W a b - G.W a b]
+  ![fun s t => F.r s t - G.r s t, fun s t => F.Om s t - G.Om s t, fun s t => F.W s t - G.W s t]
 
-theorem wedge_uniqueness (F G : WedgeFields) (eF : WedgeEvolutionEqs F) (eG : WedgeEvolutionEqs G)
-    (dF : HasWedgeData F) (dG : HasWedgeData G)
-    (rFr : C2 F.r) (rFO : C2 F.Om) (rFW : C2 F.W)
-    (rGr : C2 G.r) (rGO : C2 G.Om) (rGW : C2 G.W)
-    {a b B m : ℝ} (hm : 0 < m)
+noncomputable def ddu (F G : WedgeFields) : Fin 3 → ℝ → ℝ → ℝ :=
+  ![fun s t => Du F.r s t - Du G.r s t, fun s t => Du F.Om s t - Du G.Om s t,
+    fun s t => Du F.W s t - Du G.W s t]
+
+noncomputable def ddv (F G : WedgeFields) : Fin 3 → ℝ → ℝ → ℝ :=
+  ![fun s t => Dv F.r s t - Dv G.r s t, fun s t => Dv F.Om s t - Dv G.Om s t,
+    fun s t => Dv F.W s t - Dv G.W s t]
+
+noncomputable def dduv (F G : WedgeFields) : Fin 3 → ℝ → ℝ → ℝ :=
+  ![fun s t => Duv F.r s t - Duv G.r s t, fun s t => Duv F.Om s t - Duv G.Om s t,
+    fun s t => Duv F.W s t - Duv G.W s t]
+
+/-- 一意性(評価つき):長方形の上で方程式・データ・C² 級をみたす 2 つの解が、
+評価 `Good B m`(m > 0)をみたせば、長方形の上で一致する。 -/
+theorem wedge_uniqueness (F G : WedgeFields) {a b B m : ℝ}
+    (eF : WedgeEqsOn a b F) (eG : WedgeEqsOn a b G)
+    (dF : WedgeDataOn a b F) (dG : WedgeDataOn a b G)
+    (rFr : C2On a b F.r) (rFO : C2On a b F.Om) (rFW : C2On a b F.W)
+    (rGr : C2On a b G.r) (rGO : C2On a b G.Om) (rGW : C2On a b G.W)
+    (hm : 0 < m)
     (hgood : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
       Good B m (ptOf F u v) ∧ Good B m (ptOf G u v)) :
     ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
@@ -330,109 +297,88 @@ theorem wedge_uniqueness (F G : WedgeFields) (eF : WedgeEvolutionEqs F) (eG : We
   obtain ⟨ΛR, hRn, hR⟩ := UL_rhsR (B := B) hm
   obtain ⟨ΛO, hOn, hO⟩ := UL_rhsOm (B := B) hm
   obtain ⟨ΛW, hWn, hW⟩ := UL_rhsW (B := B) hm
-  have cr := rFr.sub rGr
-  have cO := rFO.sub rGO
-  have cW := rFW.sub rGW
-  have hC : ∀ i, C2 (dd F G i) := by
+  have hC : ∀ i, C2Data a b (dd F G i) (ddu F G i) (ddv F G i) (dduv F G i) := by
     intro i
     fin_cases i
-    · exact cr
-    · exact cO
-    · exact cW
-  -- 差の和
-  have hS : ∀ u v, ∑ j, (|dd F G j u v| + |Du (dd F G j) u v| + |Dv (dd F G j) u v|)
-      = (|F.r u v - G.r u v| + |Du F.r u v - Du G.r u v| + |Dv F.r u v - Dv G.r u v|)
-        + (|F.Om u v - G.Om u v| + |Du F.Om u v - Du G.Om u v| + |Dv F.Om u v - Dv G.Om u v|)
-        + (|F.W u v - G.W u v| + |Du F.W u v - Du G.W u v| + |Dv F.W u v - Dv G.W u v|) := by
+    · exact rFr.sub rGr
+    · exact rFO.sub rGO
+    · exact rFW.sub rGW
+  have hpd : ∀ u v, pdist (ptOf F u v) (ptOf G u v)
+      ≤ ∑ j, (|dd F G j u v| + |ddu F G j u v| + |ddv F G j u v|) := by
     intro u v
     rw [Fin.sum_univ_three]
-    simp only [dd, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-      Matrix.cons_val_two, Matrix.tail_cons]
-    rw [Du_sub rFr rGr, Dv_sub rFr rGr, Du_sub rFO rGO, Dv_sub rFO rGO, Du_sub rFW rGW,
-      Dv_sub rFW rGW]
-  have hpd : ∀ u v, pdist (ptOf F u v) (ptOf G u v)
-      ≤ ∑ j, (|dd F G j u v| + |Du (dd F G j) u v| + |Dv (dd F G j) u v|) := by
-    intro u v
-    rw [hS]
-    simp only [pdist, ptOf]
-    have := abs_nonneg (Du F.W u v - Du G.W u v)
-    have := abs_nonneg (Dv F.W u v - Dv G.W u v)
-    linarith
-  have hSn : ∀ u v, 0 ≤ ∑ j, (|dd F G j u v| + |Du (dd F G j) u v| + |Dv (dd F G j) u v|) :=
-    fun u v => Finset.sum_nonneg (fun j _ => by positivity)
-  have key := CFT.CharUniqueness.char_uniqueness (n := 3) (a := a) (b := b)
-    (L := ΛR + ΛO + ΛW) (by linarith) (dd F G)
-    (fun i u => by
-      fin_cases i <;> simp only [dd, Matrix.cons_val_zero, Matrix.cons_val_one,
-        Matrix.head_cons, Matrix.cons_val_two, Matrix.tail_cons, Fin.zero_eta, Fin.mk_one,
-        Fin.reduceFinMk]
-      · rw [(dF.1 u).1, (dG.1 u).1, sub_self]
-      · rw [(dF.1 u).2.1, (dG.1 u).2.1, sub_self]
-      · rw [(dF.1 u).2.2, (dG.1 u).2.2, sub_self])
-    (fun i v => by
-      fin_cases i <;> simp only [dd, Matrix.cons_val_zero, Matrix.cons_val_one,
-        Matrix.head_cons, Matrix.cons_val_two, Matrix.tail_cons, Fin.zero_eta, Fin.mk_one,
-        Fin.reduceFinMk]
-      · rw [(dF.2 v).1, (dG.2 v).1, sub_self]
-      · rw [(dF.2 v).2.1, (dG.2 v).2.1, sub_self]
-      · rw [(dF.2 v).2.2, (dG.2 v).2.2, sub_self])
-    (fun i => (hC i).cont) (fun i => (hC i).cont_u) (fun i => (hC i).cont_v)
-    (fun i => (hC i).cont_uv)
-    (fun i u _ v _ => (hC i).dv u v) (fun i u _ v _ => (hC i).duv_u u v)
-    (fun i u _ v _ => (hC i).duv_v u v)
+    simp only [pdist, ptOf, dd, ddu, ddv, Matrix.cons_val_zero, Matrix.cons_val_one,
+      Matrix.head_cons, Matrix.cons_val_two, Matrix.tail_cons]
+    linarith [abs_nonneg (Du F.W u v - Du G.W u v), abs_nonneg (Dv F.W u v - Dv G.W u v)]
+  have key := char_uniqueness (n := 3) (a := a) (b := b)
+    (L := ΛR + ΛO + ΛW) (by linarith) (dd F G) (ddu F G) (ddv F G) (dduv F G) hC
+    (fun i u hu => by
+      fin_cases i
+      · show F.r u 0 - G.r u 0 = 0
+        rw [(dF.1 u hu).1, (dG.1 u hu).1, sub_self]
+      · show F.Om u 0 - G.Om u 0 = 0
+        rw [(dF.1 u hu).2.1, (dG.1 u hu).2.1, sub_self]
+      · show F.W u 0 - G.W u 0 = 0
+        rw [(dF.1 u hu).2.2, (dG.1 u hu).2.2, sub_self])
+    (fun i v hv => by
+      fin_cases i
+      · show F.r 0 v - G.r 0 v = 0
+        rw [(dF.2 v hv).1, (dG.2 v hv).1, sub_self]
+      · show F.Om 0 v - G.Om 0 v = 0
+        rw [(dF.2 v hv).2.1, (dG.2 v hv).2.1, sub_self]
+      · show F.W 0 v - G.W 0 v = 0
+        rw [(dF.2 v hv).2.2, (dG.2 v hv).2.2, sub_self])
     (fun i u hu v hv => by
       obtain ⟨gF, gG⟩ := hgood u hu v hv
       have hp := hpd u v
-      have hs := hSn u v
       have lift : ∀ Λ : ℝ, 0 ≤ Λ → Λ ≤ ΛR + ΛO + ΛW →
           Λ * pdist (ptOf F u v) (ptOf G u v)
-            ≤ (ΛR + ΛO + ΛW) * ∑ j, (|dd F G j u v| + |Du (dd F G j) u v| + |Dv (dd F G j) u v|) :=
+            ≤ (ΛR + ΛO + ΛW) * ∑ j, (|dd F G j u v| + |ddu F G j u v| + |ddv F G j u v|) :=
         fun Λ h0 h1 => mul_le_mul h1 hp (pdist_nonneg _ _) (by linarith)
       fin_cases i
-      · show |Duv (fun a b => F.r a b - G.r a b) u v| ≤ _
-        rw [Duv_sub rFr rGr, (eF u v).1, (eG u v).1]
+      · show |Duv F.r u v - Duv G.r u v| ≤ _
+        rw [(eF u hu v hv).1, (eG u hu v hv).1]
         exact (hR _ _ gF gG).2.2.trans (lift ΛR hRn (by linarith))
-      · show |Duv (fun a b => F.Om a b - G.Om a b) u v| ≤ _
-        rw [Duv_sub rFO rGO, (eF u v).2.1, (eG u v).2.1, (eF u v).1, (eG u v).1]
+      · show |Duv F.Om u v - Duv G.Om u v| ≤ _
+        rw [(eF u hu v hv).2.1, (eG u hu v hv).2.1, (eF u hu v hv).1, (eG u hu v hv).1]
         exact (hO _ _ gF gG).2.2.trans (lift ΛO hOn (by linarith))
-      · show |Duv (fun a b => F.W a b - G.W a b) u v| ≤ _
-        rw [Duv_sub rFW rGW, (eF u v).2.2, (eG u v).2.2]
+      · show |Duv F.W u v - Duv G.W u v| ≤ _
+        rw [(eF u hu v hv).2.2, (eG u hu v hv).2.2]
         exact (hW _ _ gF gG).2.2.trans (lift ΛW hWn (by linarith)))
   intro u hu v hv
-  have k0 := key 0 u hu v hv
-  have k1 := key 1 u hu v hv
-  have k2 := key 2 u hu v hv
-  simp only [dd, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-    Matrix.cons_val_two, Matrix.tail_cons] at k0 k1 k2
+  have k0 : F.r u v - G.r u v = 0 := key 0 u hu v hv
+  have k1 : F.Om u v - G.Om u v = 0 := key 1 u hu v hv
+  have k2 : F.W u v - G.W u v = 0 := key 2 u hu v hv
   exact ⟨sub_eq_zero.mp k0, sub_eq_zero.mp k1, sub_eq_zero.mp k2⟩
 
 /-! ### 第 3 段:定数 B、m は連続性とコンパクト性から出る -/
 
-theorem exists_bound_rect {a b : ℝ} {g : ℝ × ℝ → ℝ} (hg : Continuous g) :
+theorem exists_bound_rect {a b : ℝ} {g : ℝ × ℝ → ℝ}
+    (hg : ContinuousOn g (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b)) :
     ∃ B, ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, |g (u, v)| ≤ B := by
-  obtain ⟨C, hC⟩ := (isCompact_Icc.prod isCompact_Icc).exists_bound_of_continuousOn
-    (s := Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b) hg.continuousOn
+  obtain ⟨C, hC⟩ := (isCompact_Icc.prod isCompact_Icc).exists_bound_of_continuousOn hg
   exact ⟨C, fun u hu v hv => by
     have := hC (u, v) (Set.mk_mem_prod hu hv)
     rwa [Real.norm_eq_abs] at this⟩
 
-theorem exists_pos_lower_rect {a b : ℝ} {g : ℝ × ℝ → ℝ} (hg : Continuous g)
+theorem exists_pos_lower_rect {a b : ℝ} {g : ℝ × ℝ → ℝ}
+    (hg : ContinuousOn g (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b))
     (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, 0 < g (u, v)) :
     ∃ m, 0 < m ∧ ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b, m ≤ g (u, v) := by
   by_cases hne : (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b).Nonempty
-  · obtain ⟨p, hp, hmin⟩ :=
-      (isCompact_Icc.prod isCompact_Icc).exists_isMinOn hne hg.continuousOn
+  · obtain ⟨p, hp, hmin⟩ := (isCompact_Icc.prod isCompact_Icc).exists_isMinOn hne hg
     have hp' := Set.mem_prod.mp hp
     refine ⟨g p, hpos p.1 hp'.1 p.2 hp'.2, fun u hu v hv => ?_⟩
     exact (isMinOn_iff.mp hmin) (u, v) (Set.mk_mem_prod hu hv)
   · exact ⟨1, one_pos, fun u hu v hv => absurd ⟨(u, v), Set.mk_mem_prod hu hv⟩ hne⟩
 
-/-- 主定理(仮定は正値性だけ):C² 級の 2 つの解が同じ特性データを持ち、
-長方形の上で r > 0、Ω > 0 なら、長方形の上で一致する。 -/
-theorem wedge_uniqueness_of_pos (F G : WedgeFields) (eF : WedgeEvolutionEqs F)
-    (eG : WedgeEvolutionEqs G) (dF : HasWedgeData F) (dG : HasWedgeData G)
-    (rFr : C2 F.r) (rFO : C2 F.Om) (rFW : C2 F.W)
-    (rGr : C2 G.r) (rGO : C2 G.Om) (rGW : C2 G.W) {a b : ℝ}
+/-- 主定理:長方形 [0,a]×[0,b] の上で、発展方程式・特性データ・C² 級をみたす 2 つの解が、
+そこで r > 0、Ω > 0 なら、長方形の上で一致する(長方形の外については何も仮定しない)。 -/
+theorem wedge_uniqueness_of_pos (F G : WedgeFields) {a b : ℝ}
+    (eF : WedgeEqsOn a b F) (eG : WedgeEqsOn a b G)
+    (dF : WedgeDataOn a b F) (dG : WedgeDataOn a b G)
+    (rFr : C2On a b F.r) (rFO : C2On a b F.Om) (rFW : C2On a b F.W)
+    (rGr : C2On a b G.r) (rGO : C2On a b G.Om) (rGW : C2On a b G.W)
     (hpos : ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
       0 < F.r u v ∧ 0 < F.Om u v ∧ 0 < G.r u v ∧ 0 < G.Om u v) :
     ∀ u ∈ Icc (0:ℝ) a, ∀ v ∈ Icc (0:ℝ) b,
@@ -444,19 +390,17 @@ theorem wedge_uniqueness_of_pos (F G : WedgeFields) (eF : WedgeEvolutionEqs F)
       + (|Function.uncurry G.Om p| + |Function.uncurry G.W p| + |Function.uncurry (Du G.r) p|
       + |Function.uncurry (Dv G.r) p| + |Function.uncurry (Du G.Om) p|
       + |Function.uncurry (Dv G.Om) p|)
-  have hS : Continuous S :=
+  have hS : ContinuousOn S (Icc (0:ℝ) a ×ˢ Icc (0:ℝ) b) :=
     ((((((rFO.cont.abs.add rFW.cont.abs).add rFr.cont_u.abs).add rFr.cont_v.abs).add
       rFO.cont_u.abs).add rFO.cont_v.abs).add
       (((((rGO.cont.abs.add rGW.cont.abs).add rGr.cont_u.abs).add rGr.cont_v.abs).add
       rGO.cont_u.abs).add rGO.cont_v.abs))
-  obtain ⟨B, hB⟩ := exists_bound_rect (a := a) (b := b) hS
-  obtain ⟨m1, hm1, h1⟩ := exists_pos_lower_rect (a := a) (b := b) rFr.cont
-    (fun u hu v hv => (hpos u hu v hv).1)
-  obtain ⟨m2, hm2, h2⟩ := exists_pos_lower_rect (a := a) (b := b) rFO.cont
-    (fun u hu v hv => (hpos u hu v hv).2.1)
-  obtain ⟨m3, hm3, h3⟩ := exists_pos_lower_rect (a := a) (b := b) rGr.cont
+  obtain ⟨B, hB⟩ := exists_bound_rect hS
+  obtain ⟨m1, hm1, h1⟩ := exists_pos_lower_rect rFr.cont (fun u hu v hv => (hpos u hu v hv).1)
+  obtain ⟨m2, hm2, h2⟩ := exists_pos_lower_rect rFO.cont (fun u hu v hv => (hpos u hu v hv).2.1)
+  obtain ⟨m3, hm3, h3⟩ := exists_pos_lower_rect rGr.cont
     (fun u hu v hv => (hpos u hu v hv).2.2.1)
-  obtain ⟨m4, hm4, h4⟩ := exists_pos_lower_rect (a := a) (b := b) rGO.cont
+  obtain ⟨m4, hm4, h4⟩ := exists_pos_lower_rect rGO.cont
     (fun u hu v hv => (hpos u hu v hv).2.2.2)
   have hm : 0 < min (min m1 m2) (min m3 m4) := lt_min (lt_min hm1 hm2) (lt_min hm3 hm4)
   refine wedge_uniqueness F G eF eG dF dG rFr rFO rFW rGr rGO rGW (B := B) hm ?_
