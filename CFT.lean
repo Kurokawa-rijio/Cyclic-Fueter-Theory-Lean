@@ -232,6 +232,8 @@ import CFT.Spherical.WedgeExistence
 import CFT.Foundations.CharacteristicDependence
 import CFT.Spherical.WedgeDependence
 import CFT.Foundations.BianchiSecond
+import CFT.Foundations.LinearCharacteristicStability
+import CFT.Spherical.WedgeContinuation
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm

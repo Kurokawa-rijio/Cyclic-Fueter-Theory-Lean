@@ -181,6 +181,8 @@ import CFT.Spherical.WedgeExistence
 import CFT.Foundations.CharacteristicDependence
 import CFT.Spherical.WedgeDependence
 import CFT.Foundations.BianchiSecond
+import CFT.Foundations.LinearCharacteristicStability
+import CFT.Spherical.WedgeContinuation
 import CFT.Spherical.WedgeDifferenceSystem
 import CFT.Spherical.WedgeDifferenceEnergy
 import CFT.Spherical.WedgeDifferenceEnergyROm
@@ -2837,3 +2839,7 @@ import CFT.Quantum.PhysicalInnerProductIntegral
 #print axioms CFT.PhysInner.phys_inner_conj_symm
 #print axioms CFT.PhysInner.phys_inner_add_right
 #print axioms CFT.PhysInner.phys_inner_smul_right
+#print axioms CFT.LinearStability.linear_rhs_bound
+#print axioms CFT.LinearStability.linear_stability
+#print axioms CFT.WedgeCont.trunc_of_inside
+#print axioms CFT.WedgeCont.wedge_continuation
