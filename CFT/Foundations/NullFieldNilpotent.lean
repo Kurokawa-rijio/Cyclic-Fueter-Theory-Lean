@@ -9,8 +9,9 @@
   * `pauli_param`:a = f₃、b = f₁ − i f₂、c = f₁ + i f₂ なら a² + bc = f₁² + f₂² + f₃²。
   * `fsq_re`、`fsq_im`:f·f の実部は E² − B²、虚部は 2 E·B。
   * `null_iff`:f·f = 0 ⇔ E² = B² かつ E·B = 0。
-  * `null_iff_nilpotent`:E² = B² かつ E·B = 0 ⇔ M² = 0(ゼロでない M なら階数 1)。
-  これは「階数 1 = 光的」の、場の強さについての形。
+  * `null_iff_nilpotent`:E² = B² かつ E·B = 0 ⇔ M² = 0。
+  解釈(未形式化):ゼロでない 2×2 の冪零行列は階数 1 なので、これは「階数 1 = 光的」の場の強さについての形と読める。
+  階数についての定理はこのファイルにはない。
 -/
 import Mathlib.Data.Complex.Basic
 import Mathlib.LinearAlgebra.Matrix.Determinant.Basic

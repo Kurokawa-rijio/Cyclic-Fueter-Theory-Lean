@@ -6,7 +6,8 @@
     - `kepler_angular_momentum`:L = x ẏ − y ẋ は保存(面積速度一定、Kepler の第 2 法則)。
     - `kepler_energy`:E = ½(ẋ² + ẏ²) − k/r は保存。
     - `kepler_lrl_x`、`kepler_lrl_y`:Laplace–Runge–Lenz ベクトル A = (ẏL − kx/r, −ẋL − ky/r) は保存。
-    - `kepler_orbit`:A·x = L² − k r。|A| = ke とおくと r = (L²/k)/(1 + e cos θ)、軌道は円錐曲線(第 1 法則)。
+    - `kepler_orbit`:A·x = L² − k r。示すのはこの式まで。
+      解釈(未形式化):|A| = ke、A·x = r|A| cos θ とおくと r = (L²/k)/(1 + e cos θ) で、軌道は円錐曲線(第 1 法則)。
   * `oscillator_energy`:ẍ = −ω²x なら ẋ² + ω²x²(エネルギーの 2 倍)は保存。
   * 剛体の Euler 方程式 I₁ω̇₁ = (I₂ − I₃)ω₂ω₃(巡回)について
     `rigid_energy`(Σ I_i ω_i²、回転エネルギー T の 2 倍)と `rigid_angular_momentum`(|L|² = Σ I_i²ω_i²)は保存。

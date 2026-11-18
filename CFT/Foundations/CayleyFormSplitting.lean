@@ -4,12 +4,12 @@
 
   2 形式 F を成分 F_ab(a < b、28 個)で表す。作用素 T は (T F)_ab = Σ_{c<d} Φ_abcd F_cd、つまり T F = *(Φ ∧ F)。
   Φ は八元数の積から Φ(u,v,w,z) = ½⟨u, z(w̄v) − v(w̄z)⟩ で決まる(`cayley_link`)。
-  符号(向き)は、7 次元の側の固有値が +3 になるように選んだ。逆の向きでは固有値は −3 と +1 になる。
+  符号(向き)は、ω_x の側の固有値が +3 になるように選んだ。逆の向きでは固有値は −3 と +1 になる。
   * `T_quadratic`:T² = 2T + 3、つまり (T − 3)(T + 1) = 0。固有値は 3 と −1 だけ。
-  * `T_rightForm`:虚の八元数 x の右からの掛け算がつくる 2 形式 ω_x(u,v) = ⟨u, v x⟩ は T ω_x = 3 ω_x をみたす(7 次元)。
+  * `T_rightForm`:虚の八元数 x の右からの掛け算がつくる 2 形式 ω_x(u,v) = ⟨u, v x⟩ は T ω_x = 3 ω_x をみたす(x は虚の八元数で成分は 7 個。張る空間の次元は数えていない)。
     `rightForm_spec`:⟨u, v x⟩ = x₀⟨u,v⟩ + ω_x(u,v)。
   * `T_decomp`:T F = −F + ω_(p(F))。p(F) は F と 7 個の ω_i との内積(`proj7`)。
-    `T_eigen_neg_one`:p(F) = 0(7 本の一次条件)なら T F = −F(28 − 7 = 21 次元)。
+    `T_eigen_neg_one`:p(F) = 0(7 本の一次条件)なら T F = −F(28 個の成分に 7 本の条件。21 次元であることは数えていない)。
   * `proj7_rightForm`:p(ω_x) = 4 x(7 個の ω_i は直交し、長さの 2 乗は 4)。`proj7_T`:p(T F) = 3 p(F)。
 -/
 import CFT.Foundations.OctonionAlgebra

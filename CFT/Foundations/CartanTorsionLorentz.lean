@@ -144,7 +144,7 @@ theorem cartan_einstein_lorentz (hR1 : ∀ c d x y, R c d x y = -R d c x y)
   rw [e, cartan_einstein (Rt R) h1 h2, Gt_Rt]
   ring
 
-/-- Lorentz の Cartan 作用の停留点 ⇔ G^L = 0 -/
+/-- 停留条件を Euclid 版の第一変分 V(R̃) = 0(R̃ = ηηR)で表すと ⇔ G^L = 0 -/
 theorem einstein_lorentz_iff (hR1 : ∀ c d x y, R c d x y = -R d c x y)
     (hR2 : ∀ c d x y, R c d x y = -R c d y x) :
     (∀ k, V (Rt R) k = 0) ↔ ∀ μ a, GLor R μ a = 0 := by

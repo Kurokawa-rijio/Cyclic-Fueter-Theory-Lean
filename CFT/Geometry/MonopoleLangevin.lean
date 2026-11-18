@@ -9,6 +9,8 @@
   * `bogomolny_W`:W′ = −h W(Bogomolny 方程式の 1 本目)。
   * `bogomolny_h`:h′ = (1 − W²)/x²(Bogomolny 方程式の 2 本目)。
     h′ = (ln Z)″ は向きのゆらぎの分散 ⟨u²⟩ − ⟨u⟩² なので、この式は「感受率 = 分散」(揺動応答の関係)と同じ式。
+  すべての定理は x ≠ 0 で示している。x = 0 では Lean の割り算の約束(a/0 = 0)により Z 0 = 0、W 0 = 0 となり、
+  本来の連続な値 Z(0) = W(0) = 1 とは違う(h 0 = 0 は本来の値と一致する)。x = 0 への連続な延長は扱っていない。
   ここで示すのは Z の積分表示と (ln Z)′、(ln Z)″ の式まで。⟨u⟩、⟨u²⟩ を積分で書いて微分と積分を入れ替える部分は示していない。
 -/
 import Mathlib.Analysis.SpecialFunctions.Integrals

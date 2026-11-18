@@ -10,10 +10,12 @@
   * `riemann_antisymm`:R^a_bcd = −R^a_bdc。
   * `bianchi_first`:Γ が下の 2 つの添字で対称、∂Γ も同じ添字で対称なら、
     R^a_bcd + R^a_cdb + R^a_dbc = 0(第 1 Bianchi 恒等式)。
-  * `christoffel1_symm`:第 1 種の Christoffel 記号 Γ_abc = ½(∂_b g_ac + ∂_c g_ab − ∂_a g_bc) は b, c について対称。
+  * `chr1_symm`:第 1 種の Christoffel 記号 Γ_abc = ½(∂_b g_ac + ∂_c g_ab − ∂_a g_bc) は b, c について対称。
   * `metric_compat`:∂_c g_ab = Γ_abc + Γ_bac(計量との両立、∇g = 0 の成分の形)。
-  * `christoffel2_symm`、`dchristoffel2_symm`:Γ^a_bc = g^ad Γ_dbc とその微分は b, c について対称。
-  * `bianchi_first_metric`:計量から作った Riemann テンソルは第 1 Bianchi 恒等式をみたす。
+  * `dchr1_symm`:∂_e Γ_abc も b, c について対称。
+  * `chr2_symm`、`dchr2_symm`:Γ^a_bc = g^ad Γ_dbc とその微分は b, c について対称。
+  * `riem`:計量から作った Riemann テンソル。`bianchi_first_metric`:第 1 Bianchi 恒等式をみたす。
+    `riem_antisymm`:R^a_bcd = −R^a_bdc。
 -/
 import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.Data.Real.Basic

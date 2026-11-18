@@ -15,7 +15,9 @@
     系 `maxwell_single_equation`:Maxwell 方程式(源 ρ, j)⇒ D F = −(Iρ + j)(1 本の双四元数の式)。
     `em_square`:F² = −(|E|² − |B|²) − 2I(E·B)(電磁場の 2 つの不変量は F² のスカラー部)。
     `em_square_invariant`:F² がスカラーなら、可逆な q による変換 F ↦ qFq⁻¹ で F² は不変
-    (Lorentz 変換は双四元数の共役で書けるので、`SpecialRelativityLaws.em_invariant_*` はこの特別な場合)。
+    (仮定は F² がスカラーであることと q q′ = q′ q = 1 だけ。解釈(未形式化):Lorentz 変換が双四元数の共役 F ↦ qFq⁻¹ で
+    書けるなら、`SpecialRelativityLaws.em_invariant_*` はこの特別な場合。共役が Lorentz 変換になること、
+    x 方向のブーストがこの形で書けることは示していない。`LorentzPolarDecomposition` との照合が必要)。
   * 特殊相対論:`mass_shell_biquaternion`:P = p₀ + I(p₁i + p₂j + p₃k) について P P̄ = p₀² − |p|²
     (Minkowski のノルムは双四元数のノルム。質量殻 E² = |p|² + m² は P P̄ = m²)。
   * 重力:`box_bridge`:線形化重力の □(η = diag(−1,1,1,1))は −Box のスカラー部。
