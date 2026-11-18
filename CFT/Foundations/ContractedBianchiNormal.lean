@@ -143,8 +143,7 @@ theorem contracted_bianchi_normal (hgi : ∀ a b, gi a b = gi b a)
     rw [← relabel_within (fun a b c e => W a b c e * H c a e b d)]
     exact S4_congr fun a b c e => by
       simp only [W]
-      rw [hgi a b, hgi c e, hcyc e b a d c, hcyc e b d c a]
-      ring
+      (rw [hgi a b, hgi c e, hcyc e b a d c, hcyc e b d c a]) <;> ring
   rw [hexp, hsplit, p1, p2, p3, p4, r1, r2, r3]
   ring
 
