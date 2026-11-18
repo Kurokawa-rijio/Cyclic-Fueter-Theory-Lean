@@ -227,3 +227,5 @@ import CFT.Foundations.CurvatureJetAlgebra
 import CFT.Foundations.CharacteristicGronwall
 import CFT.Foundations.CharacteristicUniqueness
 import CFT.Spherical.WedgeUniqueness
+import CFT.Foundations.GoursatExistence
+import CFT.Spherical.WedgeExistence

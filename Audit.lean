@@ -176,6 +176,8 @@ import CFT.Foundations.CurvatureJetAlgebra
 import CFT.Foundations.CharacteristicGronwall
 import CFT.Foundations.CharacteristicUniqueness
 import CFT.Spherical.WedgeUniqueness
+import CFT.Foundations.GoursatExistence
+import CFT.Spherical.WedgeExistence
 
 #print axioms CFT.QH.qh_reciprocal
 #print axioms CFT.QH.gudermann
@@ -2694,3 +2696,46 @@ import CFT.Spherical.WedgeUniqueness
 #print axioms CFT.WedgeUniq.exists_bound_rect
 #print axioms CFT.WedgeUniq.exists_pos_lower_rect
 #print axioms CFT.WedgeUniq.wedge_uniqueness_of_pos
+#print axioms CFT.Goursat.slice_v
+#print axioms CFT.Goursat.slice_u
+#print axioms CFT.Goursat.primV_cont
+#print axioms CFT.Goursat.primU_cont
+#print axioms CFT.Goursat.primUV_cont
+#print axioms CFT.Goursat.primV_deriv
+#print axioms CFT.Goursat.primU_deriv
+#print axioms CFT.Goursat.primUV_deriv_u
+#print axioms CFT.Goursat.primUV_deriv_v
+#print axioms CFT.Goursat.primUV_zero_right
+#print axioms CFT.Goursat.primUV_zero_left
+#print axioms CFT.Goursat.primV_sub
+#print axioms CFT.Goursat.primU_sub
+#print axioms CFT.Goursat.primUV_sub
+#print axioms CFT.Goursat.exp_cont_aux
+#print axioms CFT.Goursat.primV_bound
+#print axioms CFT.Goursat.primU_bound
+#print axioms CFT.Goursat.primUV_bound
+#print axioms CFT.Goursat.GlobalC2.toC2Data
+#print axioms CFT.Goursat.Uof_C2
+#print axioms CFT.Goursat.cont_of_lip
+#print axioms CFT.Goursat.extR_cont
+#print axioms CFT.Goursat.wz_cont
+#print axioms CFT.Goursat.goursat_exists
+#print axioms CFT.WedgeExist.clampIcc_lip
+#print axioms CFT.WedgeExist.clampIcc_ge
+#print axioms CFT.WedgeExist.clampIcc_le
+#print axioms CFT.WedgeExist.clampIcc_of
+#print axioms CFT.WedgeExist.trunc_good
+#print axioms CFT.WedgeExist.trunc_pdist
+#print axioms CFT.WedgeExist.trunc_of
+#print axioms CFT.WedgeExist.lip_trunc
+#print axioms CFT.WedgeExist.toPt_pdist
+#print axioms CFT.WedgeExist.Fw_lip
+#print axioms CFT.WedgeExist.capR_cd
+#print axioms CFT.WedgeExist.capOm_cd
+#print axioms CFT.WedgeExist.capW_cd
+#print axioms CFT.WedgeExist.neckOm_cd
+#print axioms CFT.WedgeExist.phiW_cd
+#print axioms CFT.WedgeExist.psiW_cd
+#print axioms CFT.WedgeExist.phiW_psiW_corner
+#print axioms CFT.WedgeExist.wedge_local_existence
+#print axioms CFT.WedgeExist.wedge_local_wellposed
