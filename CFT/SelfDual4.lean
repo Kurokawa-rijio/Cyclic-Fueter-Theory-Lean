@@ -97,7 +97,7 @@ theorem antiSelfDual_of_left_zero (F : TwoForm4 R)
     star F = smul (-1) F := by
   ext <;> simp only [star, smul]
   · linear_combination -h1
-  · linear_combination h2
+  · linear_combination -h2
   · linear_combination -h3
   · linear_combination -h3
   · linear_combination h2
