@@ -1,0 +1,70 @@
+import CFT.Octonion
+import CFT.Cayley4
+import CFT.SelfDual4
+import CFT.NullField
+import CFT.MonopoleLangevin
+import CFT.ThroatSymmetry
+#print axioms CFT.Oct8.normSq_mul
+#print axioms CFT.Oct8.left_alt
+#print axioms CFT.Oct8.right_alt
+#print axioms CFT.Oct8.flexible
+#print axioms CFT.Oct8.moufang_left
+#print axioms CFT.Oct8.moufang_right
+#print axioms CFT.Oct8.moufang_middle
+#print axioms CFT.Oct8.conj_mul
+#print axioms CFT.Oct8.mul_conj
+#print axioms CFT.Oct8.conj_mul_self
+#print axioms CFT.Oct8.inner_mul_left
+#print axioms CFT.Oct8.inner_mul_right
+#print axioms CFT.Oct8.not_assoc
+#print axioms CFT.Oct8.null_example
+#print axioms CFT.Oct8.TwoForm.T_quadratic
+#print axioms CFT.Oct8.TwoForm.T_rightForm
+#print axioms CFT.Oct8.TwoForm.rightForm_spec
+#print axioms CFT.Oct8.TwoForm.T_decomp
+#print axioms CFT.Oct8.TwoForm.T_eigen_neg_one
+#print axioms CFT.Oct8.TwoForm.proj7_rightForm
+#print axioms CFT.Oct8.TwoForm.proj7_T
+#print axioms CFT.Oct8.TwoForm.cayley_link
+#print axioms CFT.SelfDual4.star_star
+#print axioms CFT.SelfDual4.star_leftForm
+#print axioms CFT.SelfDual4.star_rightForm
+#print axioms CFT.SelfDual4.leftForm_spec
+#print axioms CFT.SelfDual4.rightForm_spec
+#print axioms CFT.SelfDual4.decomp
+#print axioms CFT.SelfDual4.selfDual_of_right_zero
+#print axioms CFT.SelfDual4.antiSelfDual_of_left_zero
+#print axioms CFT.NullField.M_det
+#print axioms CFT.NullField.M_sq
+#print axioms CFT.NullField.M_sq_zero_iff
+#print axioms CFT.NullField.M_det_zero_iff
+#print axioms CFT.NullField.pauli_param
+#print axioms CFT.NullField.fsq_re
+#print axioms CFT.NullField.fsq_im
+#print axioms CFT.NullField.null_iff
+#print axioms CFT.NullField.null_iff_nilpotent
+#print axioms CFT.MonopoleLangevin.sinh_ne
+#print axioms CFT.MonopoleLangevin.W_eq_inv_Z
+#print axioms CFT.MonopoleLangevin.Z_integral
+#print axioms CFT.MonopoleLangevin.hasDerivAt_Z
+#print axioms CFT.MonopoleLangevin.hasDerivAt_logZ
+#print axioms CFT.MonopoleLangevin.bogomolny_W
+#print axioms CFT.MonopoleLangevin.bogomolny_h
+#print axioms CFT.ThroatSymmetry.hasDerivAt_f
+#print axioms CFT.ThroatSymmetry.xi1_a_eta
+#print axioms CFT.ThroatSymmetry.xi1_a_chi
+#print axioms CFT.ThroatSymmetry.xi1_b_eta
+#print axioms CFT.ThroatSymmetry.xi1_b_chi
+#print axioms CFT.ThroatSymmetry.xi2_a_eta
+#print axioms CFT.ThroatSymmetry.xi2_a_chi
+#print axioms CFT.ThroatSymmetry.xi2_b_eta
+#print axioms CFT.ThroatSymmetry.xi2_b_chi
+#print axioms CFT.ThroatSymmetry.killing_xi0
+#print axioms CFT.ThroatSymmetry.killing_xi1
+#print axioms CFT.ThroatSymmetry.killing_xi2
+#print axioms CFT.ThroatSymmetry.comm_01_a
+#print axioms CFT.ThroatSymmetry.comm_01_b
+#print axioms CFT.ThroatSymmetry.comm_02_a
+#print axioms CFT.ThroatSymmetry.comm_02_b
+#print axioms CFT.ThroatSymmetry.comm_12_a
+#print axioms CFT.ThroatSymmetry.comm_12_b
