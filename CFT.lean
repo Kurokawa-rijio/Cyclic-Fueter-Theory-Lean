@@ -6,6 +6,7 @@ import CFT.Foundations.WedgeIterationMap
 import CFT.Foundations.WedgeRhsLipschitz
 import CFT.Foundations.WedgeC1Norm
 import CFT.Foundations.WedgeDerivContraction
+import CFT.Foundations.WedgeC1Contraction
 import CFT.Foundations.WaveCharacteristicUniqueness
 import CFT.Foundations.WaveDataContinuousDependence
 import CFT.Geometry.QuantumSphereHyperboloid
