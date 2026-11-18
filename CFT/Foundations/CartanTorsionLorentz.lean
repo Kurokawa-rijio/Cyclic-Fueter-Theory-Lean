@@ -101,7 +101,7 @@ def RicL (μ a : Fin 4) : ℝ := ∑ d, etaL d * R μ d a d
 def RsL : ℝ := ∑ μ, etaL μ * RicL R μ μ
 
 /-- Lorentz の Einstein テンソル G^L_{μa} = Ric^L − ½ η_{μa} R^L -/
-noncomputable def GL (μ a : Fin 4) : ℝ :=
+noncomputable def GLor (μ a : Fin 4) : ℝ :=
   RicL R μ a - (1/2 : ℝ) * (if μ = a then etaL μ else 0) * RsL R
 
 /-- Σ ε^{μνρσ} ε_{aνcd} R^{cd}_{ρσ} -/
@@ -109,7 +109,7 @@ noncomputable def EL (μ a : Fin 4) : ℝ :=
   ∑ ν, ∑ ρ, ∑ σ, ∑ c, ∑ d,
     (etaL μ * etaL ν * etaL ρ * etaL σ * eps μ ν ρ σ) * eps a ν c d * Rt R c d ρ σ
 
-theorem Gt_Rt (μ a : Fin 4) : Gt (Rt R) μ a = etaL μ * GL R μ a := by
+theorem Gt_Rt (μ a : Fin 4) : Gt (Rt R) μ a = etaL μ * GLor R μ a := by
   have hRic : ∀ x y, Ric (Rt R) x y = etaL x * RicL R x y := fun x y => by
     unfold Ric RicL Rt
     rw [Finset.mul_sum]
@@ -117,7 +117,7 @@ theorem Gt_Rt (μ a : Fin 4) : Gt (Rt R) μ a = etaL μ * GL R μ a := by
   have hRs : Rs (Rt R) = RsL R := by
     unfold Rs RsL
     exact Finset.sum_congr rfl fun x _ => hRic x x
-  unfold Gt GL
+  unfold Gt GLor
   rw [hRic, hRs]
   split_ifs with h
   · subst h
@@ -127,7 +127,7 @@ theorem Gt_Rt (μ a : Fin 4) : Gt (Rt R) μ a = etaL μ * GL R μ a := by
 
 theorem cartan_einstein_lorentz (hR1 : ∀ c d x y, R c d x y = -R d c x y)
     (hR2 : ∀ c d x y, R c d x y = -R c d y x) (μ a : Fin 4) :
-    EL R μ a = 4 * etaL μ * GL R μ a := by
+    EL R μ a = 4 * etaL μ * GLor R μ a := by
   have h1 : ∀ c d x y, Rt R c d x y = -Rt R d c x y := fun c d x y => by
     unfold Rt; rw [hR1 c d x y]; ring
   have h2 : ∀ c d x y, Rt R c d x y = -Rt R c d y x := fun c d x y => by
@@ -144,7 +144,7 @@ theorem cartan_einstein_lorentz (hR1 : ∀ c d x y, R c d x y = -R d c x y)
 /-- Lorentz の Cartan 作用の停留点 ⇔ G^L = 0 -/
 theorem einstein_lorentz_iff (hR1 : ∀ c d x y, R c d x y = -R d c x y)
     (hR2 : ∀ c d x y, R c d x y = -R c d y x) :
-    (∀ k, V (Rt R) k = 0) ↔ ∀ μ a, GL R μ a = 0 := by
+    (∀ k, V (Rt R) k = 0) ↔ ∀ μ a, GLor R μ a = 0 := by
   have h1 : ∀ c d x y, Rt R c d x y = -Rt R d c x y := fun c d x y => by
     unfold Rt; rw [hR1 c d x y]; ring
   have h2 : ∀ c d x y, Rt R c d x y = -Rt R c d y x := fun c d x y => by
