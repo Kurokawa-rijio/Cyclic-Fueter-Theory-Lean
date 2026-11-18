@@ -30,7 +30,8 @@ theorem clampIcc_lip (lo hi x y : ℝ) : |clampIcc lo hi x - clampIcc lo hi y| �
   have h1 := abs_max_sub_max_le_max lo (min hi x) lo (min hi y)
   have h2 := abs_min_sub_min_le_max hi x hi y
   simp only [sub_self, abs_zero] at h1 h2
-  rw [max_eq_right (abs_nonneg _)] at h1 h2
+  rw [max_eq_right (abs_nonneg (min hi x - min hi y))] at h1
+  rw [max_eq_right (abs_nonneg (x - y))] at h2
   exact h1.trans h2
 
 theorem clampIcc_ge (lo hi x : ℝ) : lo ≤ clampIcc lo hi x := le_max_left _ _
