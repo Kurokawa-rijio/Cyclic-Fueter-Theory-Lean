@@ -15,7 +15,7 @@ The current snapshot contains **2743 declarations** (2740 theorems and 3 private
 
 ## What changed in v1.2.0
 
-**Local well-posedness of the wedge, classical physics from the Fueter geometry, and the nonlinear Einstein equations.** Thirty modules were added. The full description is `docs/ZENODO_DESCRIPTION_v1.2.0.md`; a Japanese review summary, with every assumption listed, is `docs/REVIEW_2026-11-18_JA.md`.
+**Local well-posedness of the wedge, classical physics from the Fueter geometry, and the nonlinear Einstein equations.** Thirty modules were added relative to `main` (twenty-nine new ones and `Foundations/WedgeC1Contraction.lean` from the v1.1.1 snapshot, which the v1.1.1 count above already includes). The full description is `docs/ZENODO_DESCRIPTION_v1.2.0.md`; a Japanese review summary, with every assumption listed, is `docs/REVIEW_2026-11-18_JA.md`.
 
 - **Wedge evolution:**
   - uniqueness on a rectangle (4-7);
@@ -27,7 +27,7 @@ The current snapshot contains **2743 declarations** (2740 theorems and 3 private
 
   These are statements about the evolution equations only; the constraints are not included.
 - **Classical physics:**
-  - curvature from metric jets, the second and contracted Bianchi identities;
+  - curvature from metric jets, the second Bianchi identity, and the contracted Bianchi identity at a point in normal coordinates (the tensoriality step is not formalised);
   - linearised gravity and the Newtonian limit, and the geodesic equation;
   - Kepler, oscillator and rigid body; Navier–Stokes, Bernoulli, elasticity, sound and Coulomb; special relativity;
   - Maxwell's equations imply one biquaternionic Fueter equation D F = −(Iρ + j) (one direction; the converse is not formalised), and quaternionic mechanics (Kustaanheimo–Stiefel, Euler's equations, frame geodesics).
@@ -187,7 +187,8 @@ The `lean-toolchain` file pins Lean 4.15.0 and `lakefile.lean` uses Mathlib tag 
 To run the axiom audit and the dependency checks after building:
 
 ```bash
-lake env lean Audit.lean      # #print axioms for every theorem; output recorded in audit.txt
+lake env lean Audit.lean      # #print axioms for the theorems listed in Audit.lean; output recorded in audit.txt
+                              # (v1.2.0: 530 theorems in 55 modules, mostly from the v1.1.1 light closures, are not yet listed)
 lake env lean DepCheck.lean   # proof and statement dependencies; output recorded in review/DepCheckOutput.txt
 ```
 
