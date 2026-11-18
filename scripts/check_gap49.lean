@@ -1,0 +1,25 @@
+import CFT.Foundations.GoursatExistence
+#print axioms CFT.Goursat.slice_v
+#print axioms CFT.Goursat.slice_u
+#print axioms CFT.Goursat.primV_cont
+#print axioms CFT.Goursat.primU_cont
+#print axioms CFT.Goursat.primUV_cont
+#print axioms CFT.Goursat.primV_deriv
+#print axioms CFT.Goursat.primU_deriv
+#print axioms CFT.Goursat.primUV_deriv_u
+#print axioms CFT.Goursat.primUV_deriv_v
+#print axioms CFT.Goursat.primUV_zero_right
+#print axioms CFT.Goursat.primUV_zero_left
+#print axioms CFT.Goursat.primV_sub
+#print axioms CFT.Goursat.primU_sub
+#print axioms CFT.Goursat.primUV_sub
+#print axioms CFT.Goursat.exp_cont_aux
+#print axioms CFT.Goursat.primV_bound
+#print axioms CFT.Goursat.primU_bound
+#print axioms CFT.Goursat.primUV_bound
+#print axioms CFT.Goursat.GlobalC2.toC2Data
+#print axioms CFT.Goursat.Uof_C2
+#print axioms CFT.Goursat.cont_of_lip
+#print axioms CFT.Goursat.extR_cont
+#print axioms CFT.Goursat.wz_cont
+#print axioms CFT.Goursat.goursat_exists
