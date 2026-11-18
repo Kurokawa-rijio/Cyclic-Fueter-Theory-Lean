@@ -1,4 +1,4 @@
-import CFT.Foundations.GoursatExistence
+import CFT.Spherical.WedgeExistence
 #print axioms CFT.Goursat.slice_v
 #print axioms CFT.Goursat.slice_u
 #print axioms CFT.Goursat.primV_cont
@@ -23,3 +23,22 @@ import CFT.Foundations.GoursatExistence
 #print axioms CFT.Goursat.extR_cont
 #print axioms CFT.Goursat.wz_cont
 #print axioms CFT.Goursat.goursat_exists
+#print axioms CFT.WedgeExist.clampIcc_lip
+#print axioms CFT.WedgeExist.clampIcc_ge
+#print axioms CFT.WedgeExist.clampIcc_le
+#print axioms CFT.WedgeExist.clampIcc_of
+#print axioms CFT.WedgeExist.trunc_good
+#print axioms CFT.WedgeExist.trunc_pdist
+#print axioms CFT.WedgeExist.trunc_of
+#print axioms CFT.WedgeExist.lip_trunc
+#print axioms CFT.WedgeExist.toPt_pdist
+#print axioms CFT.WedgeExist.Fw_lip
+#print axioms CFT.WedgeExist.capR_cd
+#print axioms CFT.WedgeExist.capOm_cd
+#print axioms CFT.WedgeExist.capW_cd
+#print axioms CFT.WedgeExist.neckOm_cd
+#print axioms CFT.WedgeExist.phiW_cd
+#print axioms CFT.WedgeExist.psiW_cd
+#print axioms CFT.WedgeExist.phiW_psiW_corner
+#print axioms CFT.WedgeExist.wedge_local_existence
+#print axioms CFT.WedgeExist.wedge_local_wellposed

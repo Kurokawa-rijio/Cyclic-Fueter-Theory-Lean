@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Lean project
         shell: bash
-        run: lake build CFT.Foundations.GoursatExistence
+        run: lake build CFT.Spherical.WedgeExistence
 
       - name: Axiom audit (every theorem)
         shell: bash
