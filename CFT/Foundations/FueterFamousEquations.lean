@@ -54,12 +54,10 @@ theorem fueter_regular_iff (u : Fin 4 → R) :
   rw [vec_vector]
   constructor
   · intro h
-    have h0 := congrArg Quaternion.re h
-    have h1 := congrArg Quaternion.imI h
-    have h2 := congrArg Quaternion.imJ h
-    have h3 := congrArg Quaternion.imK h
-    simp only [Quaternion.zero_re, Quaternion.zero_imI, Quaternion.zero_imJ,
-      Quaternion.zero_imK] at h0 h1 h2 h3
+    have h0 : -(d 1 (u 1) + d 2 (u 2) + d 3 (u 3)) = 0 := congrArg (fun q : ℍ[R] => q.re) h
+    have h1 : d 2 (u 3) - d 3 (u 2) = 0 := congrArg (fun q : ℍ[R] => q.imI) h
+    have h2 : d 3 (u 1) - d 1 (u 3) = 0 := congrArg (fun q : ℍ[R] => q.imJ) h
+    have h3 : d 1 (u 2) - d 2 (u 1) = 0 := congrArg (fun q : ℍ[R] => q.imK) h
     exact ⟨neg_eq_zero.mp h0, sub_eq_zero.mp h1, sub_eq_zero.mp h2, sub_eq_zero.mp h3⟩
   · rintro ⟨h0, h1, h2, h3⟩
     ext <;> simp [h0, h1, h2, h3]
@@ -131,7 +129,7 @@ theorem em_square_invariant (F q q' : ℍ[R]) (s : R) (hFF : F * F = (s : ℍ[R]
 /-- 4 元運動量の双四元数 P = p₀ + I(p₁i + p₂j + p₃k) のノルム P P̄ = p₀² − |p|² -/
 theorem mass_shell_biquaternion (I : R) (hI : I * I = -1) (p0 p1 p2 p3 : R) :
     (⟨p0, I * p1, I * p2, I * p3⟩ : ℍ[R]) * star (⟨p0, I * p1, I * p2, I * p3⟩ : ℍ[R])
-      = ((p0 ^ 2 - (p1 ^ 2 + p2 ^ 2 + p3 ^ 2) : R) : ℍ[R]) := by
+      = ⟨p0 ^ 2 - (p1 ^ 2 + p2 ^ 2 + p3 ^ 2), 0, 0, 0⟩ := by
   ext
   · simp
     linear_combination (p1 ^ 2 + p2 ^ 2 + p3 ^ 2) * hI
