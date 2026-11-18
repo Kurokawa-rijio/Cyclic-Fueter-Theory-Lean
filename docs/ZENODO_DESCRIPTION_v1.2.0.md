@@ -16,7 +16,7 @@ The wedge between the null fronts of the dumbbell is a characteristic initial-va
 - Also proved: a local stability estimate for the linearised system (4-12), of Grönwall type growing from the corner; and, for every rectangle and box of bounds, the existence of a C² field with the cap and neck data that satisfies the evolution equations wherever its values stay inside the box (4-15).
 - A second, independent line of work reduces the PDE to an integral equation, defines the frozen-coefficient iteration map, and proves a contraction estimate for it in the C¹ norm on small rectangles; the fixed-point step is not carried out on that route, so the existence result above is the one to cite.
 
-Scope: these are statements about the three evolution equations. That the solutions also satisfy the constraint equations C_u = C_v = 0 is not proved here. The corner is placed at (0,0). The version including the cap centre (r = 0) remains open (4-16). The reading of 4-15 as "the only obstruction to continuation is leaving the box" is an interpretation; no continuation theorem of that form is proved.
+Scope: "C²" in this section means that the function, ∂_u, ∂_v and ∂_u∂_v are continuous (with ∂_u∂_v = ∂_v∂_u); ∂_u² and ∂_v² are not included, and for C¹ data they need not exist. These are statements about the three evolution equations. That the solutions also satisfy the constraint equations C_u = C_v = 0 is not proved here. The corner is placed at (0,0). The version including the cap centre (r = 0) remains open (4-16). The reading of 4-15 as "the only obstruction to continuation is leaving the box" is an interpretation; no continuation theorem of that form is proved.
 
 2. Classical physics written from the author's geometry (new chapter 13 of the proposition set).
 
