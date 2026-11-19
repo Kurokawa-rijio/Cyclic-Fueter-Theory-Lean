@@ -44,7 +44,7 @@ theorem D_div (d : Derivation ℤ S S) (a : S) {b : S} (hb : b ≠ 0) :
   calc d (a / b) = b * d (a / b) / b := (mul_div_cancel_left₀ _ hb).symm
     _ = (d a - a / b * d b) / b := by
         rw [show b * d (a / b) = d a - a / b * d b by linear_combination (-1 : S) * h]
-    _ = (d a * b - a * d b) / (b * b) := by field_simp <;> ring
+    _ = (d a * b - a * d b) / (b * b) := by (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 /-- The spherically symmetric double-null ansatz. -/
 structure Ansatz (D : Fin 4 → Derivation ℤ S S) (Om r sn cs : S) : Prop where
@@ -121,7 +121,7 @@ theorem christoffel (A : Ansatz D Om r sn cs) (a b c : Fin 4) :
     ↓reduceIte, Fin.zero_eta, Fin.mk_one, Fin.reduceFinMk, map_neg, map_zero, Derivation.leibniz,
     smul_eq_mul, A.Om2, A.Om3, A.r2, A.r3, A.sn0, A.sn1, A.sn2, A.sn3, mul_zero, zero_mul,
     add_zero, zero_add, sub_zero, zero_sub, neg_zero] <;>
-  (try field_simp) <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 variable (D Om r sn cs)
 
@@ -180,7 +180,7 @@ theorem ric_eq (A : Ansatz D Om r sn cs) (b d : Fin 4) :
     smul_eq_mul, A.Om2, A.Om3, A.r2, A.r3, A.sn0, A.sn1, A.sn2, A.sn3, A.cs0, A.cs1, A.cs2, A.cs3,
     c2O, c3O, c2r, c3r, c10O, c10r, iO, ir, isn, mul_zero, zero_mul, add_zero, zero_add,
     sub_zero, zero_sub, neg_zero, neg_neg] <;>
-  (try field_simp) <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem rs_eq (A : Ansatz D Om r sn cs) :
     Rs D Om r sn = -(2 / Om) * (-logOuv D Om - 2 / r * D 0 (D 1 r))
@@ -191,7 +191,7 @@ theorem rs_eq (A : Ansatz D Om r sn cs) :
   unfold Rs
   simp (config := { decide := true }) only [ric_eq A, gi, Fin.sum_univ_four, Fin.isValue,
     ↓reduceIte, Fin.zero_eta, Fin.mk_one, Fin.reduceFinMk, mul_zero, zero_mul, add_zero, zero_add]
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem G00 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 0 0 = -(2 / r) * (D 0 (D 0 r) - D 0 Om / Om * D 0 r) := by
@@ -213,7 +213,7 @@ theorem G01 (A : Ansatz D Om r sn cs) :
   unfold Gt
   rw [rs_eq A]
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem G22 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 2 2 = -(r * r / Om) * logOuv D Om - 2 * r / Om * D 0 (D 1 r) := by
@@ -222,7 +222,7 @@ theorem G22 (A : Ansatz D Om r sn cs) :
   unfold Gt
   rw [rs_eq A]
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem G33 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 3 3 = sn * sn * Gt D Om r sn 2 2 := by
@@ -263,7 +263,7 @@ theorem uu_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G00 A]
   unfold T00
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem vv_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 1 1 - 2 * T11 D r W
@@ -272,7 +272,7 @@ theorem vv_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G11 A]
   unfold T11
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem uv_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 0 1 - 2 * T01 Om r W
@@ -281,7 +281,7 @@ theorem uv_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G01 A]
   unfold T01 rhsR
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 theorem thth_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 2 2 - 2 * T22 r W
@@ -290,7 +290,7 @@ theorem thth_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G22 A]
   unfold T22 rhsOm logOuv
-  field_simp <;> ring
+  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
 
 /-- The Einstein equations G = 2T for the magnetic Yang–Mills source are equivalent to the two
 constraint equations and the r- and Ω-evolution equations of the double-null system. -/
