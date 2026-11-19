@@ -100,6 +100,7 @@ import CFT.Quantum.BlackHoleThermodynamics
 import CFT.Quantum.CanonicalFormalism
 import CFT.Quantum.DiracEndpointAsymptotics
 import CFT.Quantum.ExtremalLimit
+import CFT.Quantum.ExtremalThroatLength
 import CFT.Quantum.FRWQuantumStress
 import CFT.Quantum.FermionDiracSpectrum
 import CFT.Quantum.FoldyWouthuysenExact
@@ -119,6 +120,7 @@ import CFT.Quantum.ModeTimeEvolution
 import CFT.Quantum.MonopoleZeroModes
 import CFT.Quantum.NeckQuantumStress
 import CFT.Quantum.NeckWDWReducedPhase
+import CFT.Quantum.NonextremalThroatLength
 import CFT.Quantum.OmegaQuantumGeometry
 import CFT.Quantum.PhysicalBranchAffine
 import CFT.Quantum.PhysicalInnerProductIntegral
@@ -127,6 +129,7 @@ import CFT.Quantum.QuantumSphericalWDW
 import CFT.Quantum.QuantumStressBackreaction
 import CFT.Quantum.RNExtremalDoubleZero
 import CFT.Quantum.RNExtremalNearHorizon
+import CFT.Quantum.RNHorizons
 import CFT.Quantum.ReissnerNordstromTemperature
 import CFT.Quantum.S3DiracReduction
 import CFT.Quantum.S9DiracPerturbation
@@ -156,7 +159,15 @@ import CFT.Quantum.WDWWavePacketClosedForm
 import CFT.Quantum.WDWWavePacketZero
 import CFT.Quantum.WDWWavePacketZeroUnique
 import CFT.Quantum.WDWWavePacketZeros
+import CFT.Quantum.WDWWavePacketZerosGeneral
 import CFT.Quantum.WDWWavePacketZeroSpacing
+import CFT.Quantum.WDWWavePacketZeroSpacingGeneral
+import CFT.Quantum.WDWWavePacketSymmetricWeight
+import CFT.Quantum.WDWWavePacketAsymmetricWeight
+import CFT.Quantum.WDWWavePacketSineZero
+import CFT.Quantum.WDWWavePacketPolyWeight
+import CFT.Quantum.WDWWavePacketC1Weight
+import CFT.Quantum.WDWWavePacketIntervalMono
 import CFT.Quantum.WDWWavePacketDecay
 import CFT.Quantum.WDWWavePacketDecayExplicit
 import CFT.Quantum.WDWWavePacketGeneral
@@ -212,6 +223,7 @@ import CFT.Spherical.WavefrontEvolution
 import CFT.Spherical.WedgeCompactBounds
 import CFT.Spherical.WedgeConstraintPropagation
 import CFT.Spherical.WedgeContinuation
+import CFT.Spherical.WedgeContinuationNoZero
 import CFT.Spherical.WedgeCornerConditions
 import CFT.Spherical.WedgeCornerScale
 import CFT.Spherical.WedgeCouplingDivergence
@@ -1781,6 +1793,13 @@ import CFT.Unification.YangMillsVariation
 #print axioms CFT.Extremal.rn_temperature_strictAntiOn
 #print axioms CFT.Extremal.rn_period_tendsto_top
 #print axioms CFT.Extremal.extremal_limit
+#print axioms CFT.ExtremalThroat.extremal_sqrt_rnF
+#print axioms CFT.ExtremalThroat.properLength_integrand
+#print axioms CFT.ExtremalThroat.throatLength_integral
+#print axioms CFT.ExtremalThroat.throatLength_pos
+#print axioms CFT.ExtremalThroat.throatLength_tendsto_atTop
+#print axioms CFT.ExtremalThroat.throat_properLength_integral
+#print axioms CFT.ExtremalThroat.extremal_throat_infinite
 #print axioms CFT.FRW.frw_subs
 #print axioms CFT.FRW.frw_r0
 #print axioms CFT.FRW.frw_r1
@@ -3689,6 +3708,17 @@ import CFT.Unification.YangMillsVariation
 #print axioms CFT.WDWWavePacketZeros.packetPhase_bump_zero_set_countable
 #print axioms CFT.WDWWavePacketZeros.packetPhase_bump_zero_set_measure_zero
 #print axioms CFT.WDWWavePacketZeros.packetPhase_bump_ae_ne_zero
+#print axioms CFT.WDWWavePacketZerosGen.phaseFun_scaled
+#print axioms CFT.WDWWavePacketZerosGen.phase_condition_general_iff
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_iff_phase_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_value_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_ne_zero_at_zero_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_iff_exists_int_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_set_eq_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_set_countable_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_set_measure_zero_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_ae_ne_zero_general
+#print axioms CFT.WDWWavePacketZerosGen.packetPhase_bump_zero_iff_general_example
 #print axioms CFT.WDWWavePacketSpacing.phaseFun_sub
 #print axioms CFT.WDWWavePacketSpacing.phaseZero_succ_sub
 #print axioms CFT.WDWWavePacketSpacing.phaseZero_strictMono
@@ -3697,3 +3727,111 @@ import CFT.Unification.YangMillsVariation
 #print axioms CFT.WDWWavePacketSpacing.phaseZero_spacing_mem_Ioo
 #print axioms CFT.WDWWavePacketSpacing.tendsto_arctan_pi_nat
 #print axioms CFT.WDWWavePacketSpacing.tendsto_phaseZero_spacing
+#print axioms CFT.WDWWavePacketSpacingGen.genZero_succ_sub
+#print axioms CFT.WDWWavePacketSpacingGen.genZero_spacing_lower
+#print axioms CFT.WDWWavePacketSpacingGen.genZero_spacing_upper
+#print axioms CFT.WDWWavePacketSpacingGen.genZero_spacing_mem_Ioo
+#print axioms CFT.WDWWavePacketSpacingGen.tendsto_genZero_spacing
+#print axioms CFT.WDWWavePacketSpacingGen.packetPhase_bump_genZero_is_zero
+#print axioms CFT.WDWWavePacketSpacingGen.packetPhase_bump_consec_zero_spacing
+#print axioms CFT.WDWWavePacketSpacingGen.tendsto_genZero_spacing_example
+#print axioms CFT.NonextremalThroat.model_sqrt_integral
+#print axioms CFT.NonextremalThroat.nonextremal_sqrt_rnF
+#print axioms CFT.NonextremalThroat.nonextremal_properLength_integrand
+#print axioms CFT.NonextremalThroat.nonextremal_integrand_le
+#print axioms CFT.NonextremalThroat.nonextremal_throatLength_le
+#print axioms CFT.NonextremalThroat.nonextremal_throatLength_nonneg
+#print axioms CFT.NonextremalThroat.nonextremal_throat_finite
+#print axioms CFT.NonextremalThroat.nonextremal_throat_not_tendsto_atTop
+#print axioms CFT.WedgeContNoZero.wedge_continuation_no_zero
+#print axioms CFT.WedgeContNoZero.wedge_horizon_exits_box
+#print axioms CFT.WedgeContNoZero.wedge_no_horizon_of_stays_in_box
+#print axioms CFT.RNHorizons.rPlus_add_rMinus
+#print axioms CFT.RNHorizons.rPlus_mul_rMinus
+#print axioms CFT.RNHorizons.rPlus_sub_rMinus
+#print axioms CFT.RNHorizons.rnF_horizons_eq_standard
+#print axioms CFT.RNHorizons.rnF_horizon_iff
+#print axioms CFT.RNHorizons.rPlus_pos
+#print axioms CFT.RNHorizons.rMinus_nonneg
+#print axioms CFT.RNHorizons.rMinus_lt_rPlus
+#print axioms CFT.RNHorizons.rMinus_pos
+#print axioms CFT.RNHorizons.extremal_horizons
+#print axioms CFT.RNHorizons.extremal_iff_horizons_eq
+#print axioms CFT.RNHorizons.standard_form_pos_of_naked
+#print axioms CFT.RNHorizons.schwarzschild_horizons
+#print axioms CFT.RNHorizons.rn_temperature_horizons
+#print axioms CFT.RNHorizons.rn_temperature_explicit
+#print axioms CFT.RNHorizons.rn_temperature_pos_explicit
+#print axioms CFT.WDWWavePacketSymmW.integral_sin_symm_eq_zero
+#print axioms CFT.WDWWavePacketSymmW.integral_exp_symm_eq
+#print axioms CFT.WDWWavePacketSymmW.packetPhase_symm_eq
+#print axioms CFT.WDWWavePacketSymmW.packetPhase_symm_eq_zero_iff
+#print axioms CFT.WDWWavePacketSymmW.bumpW_symm
+#print axioms CFT.WDWWavePacketSymmW.bumpW_cont
+#print axioms CFT.WDWWavePacketSymmW.bumpG_eq_bumpW_mul_sqrt
+#print axioms CFT.WDWWavePacketSymmW.packetPhase_bump_symm_eq
+#print axioms CFT.WDWWavePacketSymmW.packetPhase_bump_symm_eq_zero_iff
+#print axioms CFT.WDWWavePacketSymmW.packetPhase_bump_symm_example
+#print axioms CFT.WDWWavePacketAsymW.mapsTo_reflect
+#print axioms CFT.WDWWavePacketAsymW.symPart_symm
+#print axioms CFT.WDWWavePacketAsymW.antiPart_antisymm
+#print axioms CFT.WDWWavePacketAsymW.symPart_add_antiPart
+#print axioms CFT.WDWWavePacketAsymW.symPart_continuousOn
+#print axioms CFT.WDWWavePacketAsymW.antiPart_continuousOn
+#print axioms CFT.WDWWavePacketAsymW.integral_cos_antiPart_eq_zero
+#print axioms CFT.WDWWavePacketAsymW.integral_sin_symPart_eq_zero
+#print axioms CFT.WDWWavePacketAsymW.integral_cos_eq_symPart
+#print axioms CFT.WDWWavePacketAsymW.integral_sin_eq_antiPart
+#print axioms CFT.WDWWavePacketAsymW.integral_exp_decomp_eq
+#print axioms CFT.WDWWavePacketAsymW.packetPhase_decomp_eq
+#print axioms CFT.WDWWavePacketAsymW.packetPhase_decomp_eq_zero_iff
+#print axioms CFT.WDWWavePacketAsymW.packetPhase_ne_of_cos_integral_ne
+#print axioms CFT.WDWWavePacketAsymW.norm_integral_sin_antiPart_le
+#print axioms CFT.WDWWavePacketAsymW.symPart_bumpW_eq
+#print axioms CFT.WDWWavePacketAsymW.antiPart_bumpW_eq_zero
+#print axioms CFT.WDWWavePacketAsymW.packetPhase_bump_decomp_eq
+#print axioms CFT.WDWWavePacketSineZero.antiPart_neg
+#print axioms CFT.WDWWavePacketSineZero.mul_sin_nonneg
+#print axioms CFT.WDWWavePacketSineZero.mul_sin_pos
+#print axioms CFT.WDWWavePacketSineZero.exists_pos_point_ne_mid
+#print axioms CFT.WDWWavePacketSineZero.integral_sin_antiPart_pos
+#print axioms CFT.WDWWavePacketSineZero.integral_sin_antiPart_neg
+#print axioms CFT.WDWWavePacketSineZero.packetPhase_ne_of_sin_integral_ne
+#print axioms CFT.WDWWavePacketSineZero.packetPhase_ne_of_small_pos
+#print axioms CFT.WDWWavePacketSineZero.packetPhase_ne_of_small_neg
+#print axioms CFT.WDWWavePacketSineZero.antiPart_linear_eq
+#print axioms CFT.WDWWavePacketSineZero.integral_sin_linear_pos
+#print axioms CFT.WDWWavePacketSineZero.packetPhase_ne_linear_example
+#print axioms CFT.WDWWavePacketPolyWeight.antiPart_pow_eq
+#print axioms CFT.WDWWavePacketPolyWeight.antiPart_pow_factor_continuousOn
+#print axioms CFT.WDWWavePacketPolyWeight.antiPart_sq_eq
+#print axioms CFT.WDWWavePacketPolyWeight.antiPart_cube_eq
+#print axioms CFT.WDWWavePacketPolyWeight.integral_sin_sq_pos
+#print axioms CFT.WDWWavePacketPolyWeight.integral_sin_cube_pos
+#print axioms CFT.WDWWavePacketPolyWeight.packetPhase_ne_sq_example
+#print axioms CFT.WDWWavePacketPolyWeight.packetPhase_ne_cube_example
+#print axioms CFT.WDWWavePacketC1Weight.antiQuot_mid
+#print axioms CFT.WDWWavePacketC1Weight.antiQuot_eq_of_ne
+#print axioms CFT.WDWWavePacketC1Weight.antiPart_eq_mul_antiQuot
+#print axioms CFT.WDWWavePacketC1Weight.exists_deriv_eq_antiQuot
+#print axioms CFT.WDWWavePacketC1Weight.continuousAt_antiQuot_mid
+#print axioms CFT.WDWWavePacketC1Weight.continuousAt_antiQuot_of_ne
+#print axioms CFT.WDWWavePacketC1Weight.continuousOn_antiQuot
+#print axioms CFT.WDWWavePacketC1Weight.mem_uIcc_reflect
+#print axioms CFT.WDWWavePacketC1Weight.antiQuot_nonneg_of_ne
+#print axioms CFT.WDWWavePacketC1Weight.antiQuot_nonneg_of_monotone
+#print axioms CFT.WDWWavePacketC1Weight.antiQuot_pos_of_strictMonoOn
+#print axioms CFT.WDWWavePacketC1Weight.integral_sin_antiQuot_pos
+#print axioms CFT.WDWWavePacketC1Weight.packetPhase_ne_of_small_pos_of_monotone
+#print axioms CFT.WDWWavePacketC1Weight.packetPhase_ne_exp_example
+#print axioms CFT.WDWWavePacketIntervalMono.antiQuot_nonneg_of_ne_of_monotoneOn
+#print axioms CFT.WDWWavePacketIntervalMono.antiQuot_nonneg_of_monotoneOn
+#print axioms CFT.WDWWavePacketIntervalMono.integral_sin_antiPart_pos_of_nonnegOn
+#print axioms CFT.WDWWavePacketIntervalMono.integral_sin_antiPart_neg_of_nonposOn
+#print axioms CFT.WDWWavePacketIntervalMono.packetPhase_ne_of_small_pos_of_nonnegOn
+#print axioms CFT.WDWWavePacketIntervalMono.packetPhase_ne_of_small_neg_of_nonposOn
+#print axioms CFT.WDWWavePacketIntervalMono.integral_sin_antiQuot_pos_of_monotoneOn
+#print axioms CFT.WDWWavePacketIntervalMono.packetPhase_ne_of_small_pos_of_monotoneOn
+#print axioms CFT.WDWWavePacketIntervalMono.quad_strictMonoOn
+#print axioms CFT.WDWWavePacketIntervalMono.quad_monotoneOn
+#print axioms CFT.WDWWavePacketIntervalMono.packetPhase_ne_quad_example

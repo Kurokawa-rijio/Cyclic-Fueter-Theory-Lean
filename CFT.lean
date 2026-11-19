@@ -101,6 +101,7 @@ import CFT.Quantum.BlackHoleThermodynamics
 import CFT.Quantum.CanonicalFormalism
 import CFT.Quantum.DiracEndpointAsymptotics
 import CFT.Quantum.ExtremalLimit
+import CFT.Quantum.ExtremalThroatLength
 import CFT.Quantum.FRWQuantumStress
 import CFT.Quantum.FermionDiracSpectrum
 import CFT.Quantum.FoldyWouthuysenExact
@@ -120,6 +121,7 @@ import CFT.Quantum.ModeTimeEvolution
 import CFT.Quantum.MonopoleZeroModes
 import CFT.Quantum.NeckQuantumStress
 import CFT.Quantum.NeckWDWReducedPhase
+import CFT.Quantum.NonextremalThroatLength
 import CFT.Quantum.OmegaQuantumGeometry
 import CFT.Quantum.PhysicalBranchAffine
 import CFT.Quantum.PhysicalInnerProductIntegral
@@ -128,6 +130,7 @@ import CFT.Quantum.QuantumSphericalWDW
 import CFT.Quantum.QuantumStressBackreaction
 import CFT.Quantum.RNExtremalDoubleZero
 import CFT.Quantum.RNExtremalNearHorizon
+import CFT.Quantum.RNHorizons
 import CFT.Quantum.ReissnerNordstromTemperature
 import CFT.Quantum.S3DiracReduction
 import CFT.Quantum.S9DiracPerturbation
@@ -163,7 +166,15 @@ import CFT.Quantum.WDWWavePacketClosedForm
 import CFT.Quantum.WDWWavePacketZero
 import CFT.Quantum.WDWWavePacketZeroUnique
 import CFT.Quantum.WDWWavePacketZeros
+import CFT.Quantum.WDWWavePacketZerosGeneral
 import CFT.Quantum.WDWWavePacketZeroSpacing
+import CFT.Quantum.WDWWavePacketZeroSpacingGeneral
+import CFT.Quantum.WDWWavePacketSymmetricWeight
+import CFT.Quantum.WDWWavePacketAsymmetricWeight
+import CFT.Quantum.WDWWavePacketSineZero
+import CFT.Quantum.WDWWavePacketPolyWeight
+import CFT.Quantum.WDWWavePacketC1Weight
+import CFT.Quantum.WDWWavePacketIntervalMono
 import CFT.Quantum.WignerRotationHolonomy
 import CFT.Quantum.ZeroModeL2Condition
 import CFT.Spherical.AttractorNeckRadius
@@ -213,6 +224,7 @@ import CFT.Spherical.WavefrontEvolution
 import CFT.Spherical.WedgeCompactBounds
 import CFT.Spherical.WedgeConstraintPropagation
 import CFT.Spherical.WedgeContinuation
+import CFT.Spherical.WedgeContinuationNoZero
 import CFT.Spherical.WedgeCornerConditions
 import CFT.Spherical.WedgeCornerScale
 import CFT.Spherical.WedgeCouplingDivergence
