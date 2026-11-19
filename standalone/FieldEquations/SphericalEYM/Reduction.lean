@@ -213,7 +213,11 @@ theorem G01 (A : Ansatz D Om r sn cs) :
   unfold Gt
   rw [rs_eq A]
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
-  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
+  first
+    | ((try field_simp) <;> ring)
+    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring)
+    | (simp only [div_eq_mul_inv, inv_pow, mul_inv]; field_simp; ring)
+    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> ring)
 
 theorem G22 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 2 2 = -(r * r / Om) * logOuv D Om - 2 * r / Om * D 0 (D 1 r) := by
@@ -222,7 +226,11 @@ theorem G22 (A : Ansatz D Om r sn cs) :
   unfold Gt
   rw [rs_eq A]
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
-  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
+  first
+    | ((try field_simp) <;> ring)
+    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring)
+    | (simp only [div_eq_mul_inv, inv_pow, mul_inv]; field_simp; ring)
+    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> ring)
 
 theorem G33 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 3 3 = sn * sn * Gt D Om r sn 2 2 := by
@@ -281,7 +289,11 @@ theorem uv_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G01 A]
   unfold T01 rhsR
-  (try field_simp) <;> (try ring_nf) <;> (try field_simp) <;> ring
+  first
+    | ((try field_simp) <;> ring)
+    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring)
+    | (simp only [div_eq_mul_inv, inv_pow, mul_inv]; field_simp; ring)
+    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> ring)
 
 theorem thth_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 2 2 - 2 * T22 r W
