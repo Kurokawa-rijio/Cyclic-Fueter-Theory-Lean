@@ -212,12 +212,13 @@ theorem G01 (A : Ansatz D Om r sn cs) :
   have hr := A.hr
   unfold Gt
   rw [rs_eq A]
-  simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
+  simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte]
   first
-    | ((try field_simp) <;> ring)
-    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring)
-    | (simp only [div_eq_mul_inv, inv_pow, mul_inv]; field_simp; ring)
-    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> ring)
+    | linear_combination (logOuv D Om + 2 * r⁻¹ ^ 2 * (D 0 r * D 1 r) + 2 * r⁻¹ * D 0 (D 1 r)
+        + 2 * r⁻¹ ^ 2 * r * D 0 (D 1 r)) * mul_inv_cancel₀ hOm
+        + (2 * r⁻¹ * D 0 (D 1 r)) * mul_inv_cancel₀ hr
+    | (unfold logOuv; ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring))
+
 
 theorem G22 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 2 2 = -(r * r / Om) * logOuv D Om - 2 * r / Om * D 0 (D 1 r) := by
@@ -225,12 +226,12 @@ theorem G22 (A : Ansatz D Om r sn cs) :
   have hr := A.hr
   unfold Gt
   rw [rs_eq A]
-  simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
+  simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte]
   first
-    | ((try field_simp) <;> ring)
-    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring)
-    | (simp only [div_eq_mul_inv, inv_pow, mul_inv]; field_simp; ring)
-    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> ring)
+    | linear_combination (-(r * r⁻¹ + 1) * (1 + 2 * Om⁻¹ * (r * D 0 (D 1 r) + D 0 r * D 1 r))
+        - 2 * r * Om⁻¹ * D 0 (D 1 r)) * mul_inv_cancel₀ hr
+    | (unfold logOuv; ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring))
+
 
 theorem G33 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 3 3 = sn * sn * Gt D Om r sn 2 2 := by
@@ -290,10 +291,10 @@ theorem uv_eq (A : Ansatz D Om r sn cs) (W : S) :
   rw [G01 A]
   unfold T01 rhsR
   first
-    | ((try field_simp) <;> ring)
+    | ring
+    | (simp only [div_eq_mul_inv]; ring)
     | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow]) <;> (try field_simp) <;> ring)
-    | (simp only [div_eq_mul_inv, inv_pow, mul_inv]; field_simp; ring)
-    | ((try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> (try ring_nf) <;> (try simp only [inv_pow, ← div_eq_mul_inv]) <;> (try field_simp) <;> ring)
+
 
 theorem thth_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 2 2 - 2 * T22 r W
