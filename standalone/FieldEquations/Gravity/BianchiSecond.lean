@@ -1,5 +1,5 @@
+import Mathlib
 import FieldEquations.Gravity.CurvatureJet
-import Mathlib.Tactic
 
 /-
 # The second Bianchi identity

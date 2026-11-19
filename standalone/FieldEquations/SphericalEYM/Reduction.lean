@@ -36,13 +36,15 @@ namespace FieldEquations.SphericalReduction
 
 variable {S : Type*} [Field S] [CharZero S]
 
-/-- The derivative of an inverse. -/
-theorem D_inv (d : Derivation ℤ S S) {x : S} (hx : x ≠ 0) : d x⁻¹ = -(x⁻¹ * x⁻¹) * d x := by
-  have h := d.leibniz x x⁻¹
-  rw [mul_inv_cancel₀ hx, Derivation.map_one_eq_zero, smul_eq_mul, smul_eq_mul] at h
-  have h2 : x * d x⁻¹ = -(x⁻¹ * d x) := by linear_combination -h
-  calc d x⁻¹ = x⁻¹ * (x * d x⁻¹) := by rw [← mul_assoc, inv_mul_cancel₀ hx, one_mul]
-    _ = -(x⁻¹ * x⁻¹) * d x := by rw [h2]; ring
+/-- The derivative of a quotient. -/
+theorem D_div (d : Derivation ℤ S S) (a : S) {b : S} (hb : b ≠ 0) :
+    d (a / b) = (d a * b - a * d b) / (b * b) := by
+  have h := d.leibniz (a / b) b
+  rw [div_mul_cancel₀ a hb, smul_eq_mul, smul_eq_mul] at h
+  calc d (a / b) = b * d (a / b) / b := (mul_div_cancel_left₀ _ hb).symm
+    _ = (d a - a / b * d b) / b := by
+        rw [show b * d (a / b) = d a - a / b * d b by linear_combination (-1 : S) * h]
+    _ = (d a * b - a * d b) / (b * b) := by field_simp <;> ring
 
 /-- The spherically symmetric double-null ansatz. -/
 structure Ansatz (D : Fin 4 → Derivation ℤ S S) (Om r sn cs : S) : Prop where
@@ -74,10 +76,10 @@ def gm (a b : Fin 4) : S :=
 
 /-- The inverse metric. -/
 noncomputable def gi (a b : Fin 4) : S :=
-  if a = 0 then (if b = 1 then -Om⁻¹ else 0)
-  else if a = 1 then (if b = 0 then -Om⁻¹ else 0)
-  else if a = 2 then (if b = 2 then r⁻¹ * r⁻¹ else 0)
-  else (if b = 3 then r⁻¹ * r⁻¹ * (sn⁻¹ * sn⁻¹) else 0)
+  if a = 0 then (if b = 1 then -(1 / Om) else 0)
+  else if a = 1 then (if b = 0 then -(1 / Om) else 0)
+  else if a = 2 then (if b = 2 then 1 / (r * r) else 0)
+  else (if b = 3 then 1 / (r * r * (sn * sn)) else 0)
 
 /-- The Levi-Civita connection of `gm`. -/
 noncomputable def Γ (a b c : Fin 4) : S :=
@@ -87,27 +89,28 @@ noncomputable def Γ (a b c : Fin 4) : S :=
 /-- The Christoffel symbols in closed form. -/
 noncomputable def Γe (a b c : Fin 4) : S :=
   if a = 0 then
-    (if b = 0 then (if c = 0 then D 0 Om * Om⁻¹ else 0)
-     else if b = 2 then (if c = 2 then r * D 1 r * Om⁻¹ else 0)
-     else if b = 3 then (if c = 3 then r * D 1 r * (sn * sn) * Om⁻¹ else 0) else 0)
+    (if b = 0 then (if c = 0 then D 0 Om / Om else 0)
+     else if b = 2 then (if c = 2 then r * D 1 r / Om else 0)
+     else if b = 3 then (if c = 3 then r * D 1 r * (sn * sn) / Om else 0) else 0)
   else if a = 1 then
-    (if b = 1 then (if c = 1 then D 1 Om * Om⁻¹ else 0)
-     else if b = 2 then (if c = 2 then r * D 0 r * Om⁻¹ else 0)
-     else if b = 3 then (if c = 3 then r * D 0 r * (sn * sn) * Om⁻¹ else 0) else 0)
+    (if b = 1 then (if c = 1 then D 1 Om / Om else 0)
+     else if b = 2 then (if c = 2 then r * D 0 r / Om else 0)
+     else if b = 3 then (if c = 3 then r * D 0 r * (sn * sn) / Om else 0) else 0)
   else if a = 2 then
-    (if b = 0 then (if c = 2 then D 0 r * r⁻¹ else 0)
-     else if b = 1 then (if c = 2 then D 1 r * r⁻¹ else 0)
-     else if b = 2 then (if c = 0 then D 0 r * r⁻¹ else if c = 1 then D 1 r * r⁻¹ else 0)
+    (if b = 0 then (if c = 2 then D 0 r / r else 0)
+     else if b = 1 then (if c = 2 then D 1 r / r else 0)
+     else if b = 2 then (if c = 0 then D 0 r / r else if c = 1 then D 1 r / r else 0)
      else (if c = 3 then -(sn * cs) else 0))
   else
-    (if b = 0 then (if c = 3 then D 0 r * r⁻¹ else 0)
-     else if b = 1 then (if c = 3 then D 1 r * r⁻¹ else 0)
-     else if b = 2 then (if c = 3 then cs * sn⁻¹ else 0)
-     else (if c = 0 then D 0 r * r⁻¹ else if c = 1 then D 1 r * r⁻¹
-       else if c = 2 then cs * sn⁻¹ else 0))
+    (if b = 0 then (if c = 3 then D 0 r / r else 0)
+     else if b = 1 then (if c = 3 then D 1 r / r else 0)
+     else if b = 2 then (if c = 3 then cs / sn else 0)
+     else (if c = 0 then D 0 r / r else if c = 1 then D 1 r / r
+       else if c = 2 then cs / sn else 0))
 
 variable {D Om r sn cs}
 
+set_option maxHeartbeats 4000000 in
 theorem christoffel (A : Ansatz D Om r sn cs) (a b c : Fin 4) :
     Γ D Om r sn a b c = Γe D Om r sn cs a b c := by
   have hOm := A.hOm
@@ -140,20 +143,21 @@ variable {D Om r sn cs}
 
 /-- (log Ω)_uv. -/
 noncomputable def logOuv (D : Fin 4 → Derivation ℤ S S) (Om : S) : S :=
-  D 0 (D 1 Om) * Om⁻¹ - D 0 Om * D 1 Om * (Om⁻¹ * Om⁻¹)
+  D 0 (D 1 Om) / Om - D 0 Om * D 1 Om / (Om * Om)
 
+set_option maxHeartbeats 8000000 in
 theorem ric_eq (A : Ansatz D Om r sn cs) (b d : Fin 4) :
     Ric D Om r sn b d =
       if b = 0 then
-        (if d = 0 then -(2 * r⁻¹) * (D 0 (D 0 r) - D 0 Om * Om⁻¹ * D 0 r)
-         else if d = 1 then -logOuv D Om - 2 * r⁻¹ * D 0 (D 1 r) else 0)
+        (if d = 0 then -(2 / r) * (D 0 (D 0 r) - D 0 Om / Om * D 0 r)
+         else if d = 1 then -logOuv D Om - 2 / r * D 0 (D 1 r) else 0)
       else if b = 1 then
-        (if d = 1 then -(2 * r⁻¹) * (D 1 (D 1 r) - D 1 Om * Om⁻¹ * D 1 r)
-         else if d = 0 then -logOuv D Om - 2 * r⁻¹ * D 0 (D 1 r) else 0)
+        (if d = 1 then -(2 / r) * (D 1 (D 1 r) - D 1 Om / Om * D 1 r)
+         else if d = 0 then -logOuv D Om - 2 / r * D 0 (D 1 r) else 0)
       else if b = 2 then
-        (if d = 2 then 1 + 2 * Om⁻¹ * (r * D 0 (D 1 r) + D 0 r * D 1 r) else 0)
+        (if d = 2 then 1 + 2 / Om * (r * D 0 (D 1 r) + D 0 r * D 1 r) else 0)
       else
-        (if d = 3 then sn * sn * (1 + 2 * Om⁻¹ * (r * D 0 (D 1 r) + D 0 r * D 1 r)) else 0) := by
+        (if d = 3 then sn * sn * (1 + 2 / Om * (r * D 0 (D 1 r) + D 0 r * D 1 r)) else 0) := by
   have hOm := A.hOm
   have hr := A.hr
   have hsn := A.hsn
@@ -163,9 +167,11 @@ theorem ric_eq (A : Ansatz D Om r sn cs) (b d : Fin 4) :
   have c3r : ∀ j, D 3 (D j r) = 0 := fun j => by rw [A.comm, A.r3, map_zero]
   have c10O : D 1 (D 0 Om) = D 0 (D 1 Om) := A.comm 1 0 Om
   have c10r : D 1 (D 0 r) = D 0 (D 1 r) := A.comm 1 0 r
-  have iO := fun i => D_inv (D i) hOm
-  have ir := fun i => D_inv (D i) hr
-  have isn := fun i => D_inv (D i) hsn
+  have iO : ∀ i a, D i (a / Om) = (D i a * Om - a * D i Om) / (Om * Om) :=
+    fun i a => D_div (D i) a hOm
+  have ir : ∀ i a, D i (a / r) = (D i a * r - a * D i r) / (r * r) := fun i a => D_div (D i) a hr
+  have isn : ∀ i a, D i (a / sn) = (D i a * sn - a * D i sn) / (sn * sn) :=
+    fun i a => D_div (D i) a hsn
   unfold Ric Riem logOuv
   simp only [christoffel A]
   fin_cases b <;> fin_cases d <;>
@@ -177,49 +183,46 @@ theorem ric_eq (A : Ansatz D Om r sn cs) (b d : Fin 4) :
   (try field_simp) <;> ring
 
 theorem rs_eq (A : Ansatz D Om r sn cs) :
-    Rs D Om r sn = -(2 * Om⁻¹) * (-logOuv D Om - 2 * r⁻¹ * D 0 (D 1 r))
-      + 2 * (r⁻¹ * r⁻¹) * (1 + 2 * Om⁻¹ * (r * D 0 (D 1 r) + D 0 r * D 1 r)) := by
+    Rs D Om r sn = -(2 / Om) * (-logOuv D Om - 2 / r * D 0 (D 1 r))
+      + 2 / (r * r) * (1 + 2 / Om * (r * D 0 (D 1 r) + D 0 r * D 1 r)) := by
   have hOm := A.hOm
   have hr := A.hr
   have hsn := A.hsn
   unfold Rs
   simp (config := { decide := true }) only [ric_eq A, gi, Fin.sum_univ_four, Fin.isValue,
     ↓reduceIte, Fin.zero_eta, Fin.mk_one, Fin.reduceFinMk, mul_zero, zero_mul, add_zero, zero_add]
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem G00 (A : Ansatz D Om r sn cs) :
-    Gt D Om r sn 0 0 = -(2 * r⁻¹) * (D 0 (D 0 r) - D 0 Om * Om⁻¹ * D 0 r) := by
+    Gt D Om r sn 0 0 = -(2 / r) * (D 0 (D 0 r) - D 0 Om / Om * D 0 r) := by
   unfold Gt
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, mul_zero,
     zero_mul, sub_zero]
 
 theorem G11 (A : Ansatz D Om r sn cs) :
-    Gt D Om r sn 1 1 = -(2 * r⁻¹) * (D 1 (D 1 r) - D 1 Om * Om⁻¹ * D 1 r) := by
+    Gt D Om r sn 1 1 = -(2 / r) * (D 1 (D 1 r) - D 1 Om / Om * D 1 r) := by
   unfold Gt
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, mul_zero,
     zero_mul, sub_zero]
 
 theorem G01 (A : Ansatz D Om r sn cs) :
-    Gt D Om r sn 0 1 = 2 * r⁻¹ * D 0 (D 1 r) + 2 * (r⁻¹ * r⁻¹) * (D 0 r * D 1 r)
-      + Om * (r⁻¹ * r⁻¹) := by
+    Gt D Om r sn 0 1 = 2 / r * D 0 (D 1 r) + 2 / (r * r) * (D 0 r * D 1 r)
+      + Om / (r * r) := by
   have hOm := A.hOm
   have hr := A.hr
   unfold Gt
   rw [rs_eq A]
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem G22 (A : Ansatz D Om r sn cs) :
-    Gt D Om r sn 2 2 = -(r * r * Om⁻¹) * logOuv D Om - 2 * r * Om⁻¹ * D 0 (D 1 r) := by
+    Gt D Om r sn 2 2 = -(r * r / Om) * logOuv D Om - 2 * r / Om * D 0 (D 1 r) := by
   have hOm := A.hOm
   have hr := A.hr
   unfold Gt
   rw [rs_eq A]
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem G33 (A : Ansatz D Om r sn cs) :
     Gt D Om r sn 3 3 = sn * sn * Gt D Om r sn 2 2 := by
@@ -230,12 +233,13 @@ theorem G33 (A : Ansatz D Om r sn cs) :
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, logOuv]
   ring
 
-theorem G_offdiag (A : Ansatz D Om r sn cs) (b d : Fin 4) (hbd : b ≠ d)
-    (h01 : ¬ (b = 0 ∧ d = 1)) (h10 : ¬ (b = 1 ∧ d = 0)) : Gt D Om r sn b d = 0 := by
+theorem G_offdiag (A : Ansatz D Om r sn cs) (b d : Fin 4) (h : b ≠ d)
+    (h' : ¬ (b.val + d.val = 1)) : Gt D Om r sn b d = 0 := by
   unfold Gt
   fin_cases b <;> fin_cases d <;>
   simp (config := { decide := true }) only [ric_eq A, gm, Fin.isValue, ↓reduceIte, mul_zero,
-    zero_mul, sub_zero] at hbd h01 h10 ⊢
+    zero_mul, sub_zero, sub_self] <;>
+  first | exact absurd rfl h | exact absurd rfl h'
 
 /-! ### The Yang–Mills source and the reduced system -/
 
@@ -259,8 +263,7 @@ theorem uu_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G00 A]
   unfold T00
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem vv_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 1 1 - 2 * T11 D r W
@@ -269,8 +272,7 @@ theorem vv_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G11 A]
   unfold T11
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem uv_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 0 1 - 2 * T01 Om r W
@@ -279,8 +281,7 @@ theorem uv_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G01 A]
   unfold T01 rhsR
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem thth_eq (A : Ansatz D Om r sn cs) (W : S) :
     Gt D Om r sn 2 2 - 2 * T22 r W
@@ -289,8 +290,7 @@ theorem thth_eq (A : Ansatz D Om r sn cs) (W : S) :
   have hr := A.hr
   rw [G22 A]
   unfold T22 rhsOm logOuv
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- The Einstein equations G = 2T for the magnetic Yang–Mills source are equivalent to the two
 constraint equations and the r- and Ω-evolution equations of the double-null system. -/
