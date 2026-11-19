@@ -1,0 +1,38 @@
+\documentclass[11pt]{letter}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{xurl}
+\usepackage{enumitem}
+
+\signature{Ryojiro Kurokawa}
+\address{Ryojiro Kurokawa\\Graduate School of Science and Technology\\Tokyo University of Science\\Noda, Chiba, Japan\\EMAIL-TO-BE-ADDED}
+
+\begin{document}
+\begin{letter}{The Editors\\Journal of Automated Reasoning\\Springer Nature}
+
+\opening{Dear Editor,}
+
+I am submitting the manuscript ``From the Cartan--Palatini action to the Goursat problem: a machine-checked treatment of the spherically symmetric Einstein--Yang--Mills equations'' for consideration as a regular article in the \emph{Journal of Automated Reasoning}.
+
+I should say at the outset that I am not a specialist in general relativity, in partial differential equations, or in interactive theorem proving. The work began with a more modest aim. I was trying to write out, with complete mathematical rigour, the standard derivation of the spherically symmetric Einstein--Yang--Mills equations in double-null form, together with the local theory that the literature relies on for them. Whenever a step was described as classical, I tried to prove it rather than cite it, and a proof assistant turned out to be the most reliable way to make sure that nothing had been skipped. Along the way I noticed that the local existence theory for the characteristic (Goursat) problem, which every paper I read quotes as known, did not seem to have any formal counterpart. The manuscript is the result of filling that gap and of connecting it, through an explicit computation of the Einstein tensor, to the first-order variational principle of general relativity.
+
+The mathematics itself is classical, and the paper says so plainly. What I hope will interest readers of the journal is the formal development:
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt]
+\item a formalized Goursat theory for semilinear systems $w_{uv}=F(w,w_u,w_v)$, namely a characteristic Gr\"onwall inequality, uniqueness, existence by a contraction in a weighted norm, and continuous dependence on the data; as far as I have been able to find, this is the first formal existence theorem for a hyperbolic characteristic problem;
+\item its application to the spherically symmetric Einstein--Yang--Mills system, giving local existence, uniqueness and Lipschitz dependence for $C^1$ characteristic data;
+\item a machine-checked path from the Cartan--Palatini action to the Einstein equations, and from there, by an explicit computation, to the reduced system used in the analytic part.
+\end{itemize}
+I have tried to be careful about the limits of the work. Section~7 of the manuscript lists what is not formalized, the most important item being the propagation of the constraint equations.
+
+The development has 20 files and 167 theorems, builds with Lean~4.15.0 and Mathlib~v4.15.0, and uses no axioms beyond the standard ones; an axiom report for every theorem is included with the code, which is publicly available at REPOSITORY-URL-TO-BE-ADDED.
+
+In line with Springer Nature's policy on artificial intelligence, I would like to state clearly that a large language model (Claude, developed by Anthropic) was used extensively as a programming assistant when writing the Lean proofs, and also to help draft and edit the manuscript. This is described in the Methods section of the paper. I chose the results, checked the formal statements against the cited literature, and take responsibility for the content; the correctness of the proofs themselves is guaranteed by the Lean kernel rather than by me or by the assistant.
+
+Some of the formal proofs were first developed inside a larger personal Lean repository of mine, which is publicly available but has not been peer reviewed. The code accompanying this submission is a self-contained extraction of the relevant parts, rewritten in standard terminology. The manuscript has not been published before and is not under consideration by any other journal. I have no competing interests to declare, and the work received no funding.
+
+Thank you for considering this submission. I would be grateful for any comments from the editors and reviewers, and I am glad to provide further information about the code if that would help.
+
+\closing{Yours sincerely,}
+
+\end{letter}
+\end{document}

@@ -1,0 +1,283 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{17}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Christodoulou}{1986}]{Christodoulou1986}
+\begin{barticle}
+\bauthor{\bsnm{Christodoulou}, \binits{D.}}:
+\batitle{The problem of a self-gravitating scalar field}.
+\bjtitle{Communications in Mathematical Physics}
+\bvolume{105}(\bissue{3}),
+\bfpage{337}--\blpage{361}
+(\byear{1986})
+\doiurl{10.1007/BF01205930}
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Christodoulou}{1993}]{Christodoulou1993}
+\begin{barticle}
+\bauthor{\bsnm{Christodoulou}, \binits{D.}}:
+\batitle{Bounded variation solutions of the spherically symmetric
+  {Einstein}-scalar field equations}.
+\bjtitle{Communications on Pure and Applied Mathematics}
+\bvolume{46},
+\bfpage{1131}--\blpage{1220}
+(\byear{1993})
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Dafermos}{2005}]{Dafermos2005}
+\begin{barticle}
+\bauthor{\bsnm{Dafermos}, \binits{M.}}:
+\batitle{The interior of charged black holes and the problem of uniqueness in
+  general relativity}.
+\bjtitle{Communications on Pure and Applied Mathematics}
+\bvolume{58},
+\bfpage{445}--\blpage{504}
+(\byear{2005})
+\doiurl{10.1002/cpa.20071}
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Rendall}{1990}]{Rendall1990}
+\begin{barticle}
+\bauthor{\bsnm{Rendall}, \binits{A.D.}}:
+\batitle{Reduction of the characteristic initial value problem to the {Cauchy}
+  problem and its applications to the {Einstein} equations}.
+\bjtitle{Proceedings of the Royal Society of London. Series A}
+\bvolume{427}(\bissue{1872}),
+\bfpage{221}--\blpage{239}
+(\byear{1990})
+\doiurl{10.1098/rspa.1990.0009}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Bartnik and
+  McKinnon}{1988}]{BartnikMcKinnon1988}
+\begin{barticle}
+\bauthor{\bsnm{Bartnik}, \binits{R.}},
+\bauthor{\bsnm{McKinnon}, \binits{J.}}:
+\batitle{Particlelike solutions of the {Einstein--Yang--Mills} equations}.
+\bjtitle{Physical Review Letters}
+\bvolume{61},
+\bfpage{141}--\blpage{144}
+(\byear{1988})
+\doiurl{10.1103/PhysRevLett.61.141}
+\end{barticle}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Choptuik
+  et~al.}{1996}]{ChoptuikChmajBizon1996}
+\begin{barticle}
+\bauthor{\bsnm{Choptuik}, \binits{M.W.}},
+\bauthor{\bsnm{Chmaj}, \binits{T.}},
+\bauthor{\bsnm{Bizo{\'n}}, \binits{P.}}:
+\batitle{Critical behavior in gravitational collapse of a {Yang--Mills} field}.
+\bjtitle{Physical Review Letters}
+\bvolume{77}(\bissue{3}),
+\bfpage{424}--\blpage{427}
+(\byear{1996})
+\doiurl{10.1103/PhysRevLett.77.424}
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Volkov and Gal'tsov}{1999}]{VolkovGaltsov1999}
+\begin{barticle}
+\bauthor{\bsnm{Volkov}, \binits{M.S.}},
+\bauthor{\bsnm{Gal'tsov}, \binits{D.V.}}:
+\batitle{Gravitating non-{Abelian} solitons and black holes with {Yang--Mills}
+  fields}.
+\bjtitle{Physics Reports}
+\bvolume{319},
+\bfpage{1}--\blpage{83}
+(\byear{1999}).
+\bcomment{arXiv:hep-th/9810070}
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Garabedian}{1964}]{Garabedian1964}
+\begin{bbook}
+\bauthor{\bsnm{Garabedian}, \binits{P.R.}}:
+\bbtitle{Partial Differential Equations}.
+\bpublisher{John Wiley \& Sons},
+\blocation{New York}
+(\byear{1964})
+\end{bbook}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Courant and
+  Hilbert}{1962}]{CourantHilbert1962}
+\begin{bbook}
+\bauthor{\bsnm{Courant}, \binits{R.}},
+\bauthor{\bsnm{Hilbert}, \binits{D.}}:
+\bbtitle{Methods of Mathematical Physics, Volume {II}: Partial Differential
+  Equations}.
+\bpublisher{Interscience Publishers},
+\blocation{New York}
+(\byear{1962})
+\end{bbook}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Peld{\'a}n}{1994}]{Peldan1994}
+\begin{barticle}
+\bauthor{\bsnm{Peld{\'a}n}, \binits{P.}}:
+\batitle{Actions for gravity, with generalizations: a review}.
+\bjtitle{Classical and Quantum Gravity}
+\bvolume{11},
+\bfpage{1087}--\blpage{1132}
+(\byear{1994}).
+\bcomment{arXiv:gr-qc/9305011}
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Wald}{1984}]{Wald1984}
+\begin{bbook}
+\bauthor{\bsnm{Wald}, \binits{R.M.}}:
+\bbtitle{General Relativity}.
+\bpublisher{University of Chicago Press},
+\blocation{Chicago}
+(\byear{1984})
+\end{bbook}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{{de Moura} and
+  Ullrich}{2021}]{deMouraUllrich2021}
+\begin{bchapter}
+\bauthor{\bsnm{{de Moura}}, \binits{L.}},
+\bauthor{\bsnm{Ullrich}, \binits{S.}}:
+\bctitle{The {Lean} 4 theorem prover and programming language}.
+In: \bbtitle{Automated Deduction -- {CADE} 28}.
+\bsertitle{Lecture Notes in Computer Science},
+vol. \bseriesno{12699},
+pp. \bfpage{625}--\blpage{635}.
+\bpublisher{Springer},
+\blocation{Cham}
+(\byear{2021}).
+\doiurl{10.1007/978-3-030-79876-5_37}
+\end{bchapter}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{{The mathlib Community}}{2020}]{mathlib2020}
+\begin{bchapter}
+\bauthor{\bsnm{{The mathlib Community}}}:
+\bctitle{The {Lean} mathematical library}.
+In: \bbtitle{Proceedings of the 9th ACM SIGPLAN International Conference on
+  Certified Programs and Proofs ({CPP} 2020)},
+pp. \bfpage{367}--\blpage{381}.
+\bpublisher{ACM},
+\blocation{New York}
+(\byear{2020}).
+\doiurl{10.1145/3372885.3373824}
+\end{bchapter}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Boldo et~al.}{2014}]{Boldo2014}
+\begin{barticle}
+\bauthor{\bsnm{Boldo}, \binits{S.}},
+\bauthor{\bsnm{Cl{\'e}ment}, \binits{F.}},
+\bauthor{\bsnm{Filli{\^a}tre}, \binits{J.-C.}},
+\bauthor{\bsnm{Mayero}, \binits{M.}},
+\bauthor{\bsnm{Melquiond}, \binits{G.}},
+\bauthor{\bsnm{Weis}, \binits{P.}}:
+\batitle{Trusting computations: a mechanized proof from partial differential
+  equations to actual program}.
+\bjtitle{Computers \& Mathematics with Applications}
+\bvolume{68}(\bissue{3}),
+\bfpage{325}--\blpage{352}
+(\byear{2014}).
+\bcomment{arXiv:1212.6641}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Soto~Franco and
+  Marshall-Stevens}{2026}]{SotoFrancoMarshallStevens2026}
+\begin{botherref}
+\oauthor{\bsnm{Soto~Franco}, \binits{A.J.}},
+\oauthor{\bsnm{Marshall-Stevens}, \binits{K.}}:
+Formalising linear elliptic {PDE} theory in {Lean} 4.
+Preprint, arXiv:2609.32561
+(2026)
+\end{botherref}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Armstrong and
+  Kempe}{2026}]{ArmstrongKempe2026}
+\begin{botherref}
+\oauthor{\bsnm{Armstrong}, \binits{S.}},
+\oauthor{\bsnm{Kempe}, \binits{J.}}:
+Formalization of {De Giorgi--Nash--Moser} theory in {Lean}.
+Preprint, arXiv:2604.05984
+(2026)
+\end{botherref}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Chow et~al.}{2026}]{ChowLiaoQin2026}
+\begin{botherref}
+\oauthor{\bsnm{Chow}, \binits{B.}},
+\oauthor{\bsnm{Liao}, \binits{Y.}},
+\oauthor{\bsnm{Qin}, \binits{Z.}}:
+A {Lean} formalization of {Hamilton's} three-manifold theorem.
+Preprint, arXiv:2608.21502
+(2026)
+\end{botherref}
+\endbibitem
+
+\end{thebibliography}
