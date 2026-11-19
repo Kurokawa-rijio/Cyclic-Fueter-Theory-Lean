@@ -12,8 +12,10 @@ import CFT.Foundations.WedgeDerivContraction
   δ × (3 つのリプシッツ定数の最大) × D で抑えられる。δ を小さく取れば
   縮小定数 δ × LipMax < 1 になる。
 
-  これで第3層 (c) は閉じた。残り（4-17 の完成）：バナッハ不動点定理の適用による
-  局所解の存在そのもの。キャップ（r = 0）を含む版は 4-16 に残る。
+  これで第3層 (c)(縮小の評価)は閉じた。このモジュールが示すのは評価までで、反復写像が閉球を
+  自分に移すこと(自己写像性)や Banach の不動点定理の適用は含まない。存在の証明としては引用しないこと。
+  4-17 の局所解の存在そのものは、別の道(切り落としと `GoursatExistence.goursat_exists`)で
+  `Spherical/WedgeLocalExistenceGeneral` が閉じた(2026-11-18)。キャップ（r = 0）を含む版は 4-16 に残る。
 -/
 
 namespace CFT.WedgeC1Contract

@@ -16,5 +16,5 @@ for m in mods:
             ns=".".join(x for x in stack if x)
             lines.append(f"#print axioms {ns}.{t.group(1)}")
 open(root+'/Audit.lean','w').write("\n".join(lines)+"\n")
-open(root+'/CFT.lean','w').write("import CFT.Basic\n"+"\n".join(f"import CFT.{m}" for m in mods)+"\n")
+open(root+'/CFT.lean','w').write("import CFT.Foundations.Basic\n"+"\n".join(f"import CFT.{m}" for m in mods)+"\n")
 print(len([l for l in lines if l.startswith('#print')]),mods)
