@@ -1,0 +1,125 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{BCF{\etalchar{+}}14}
+
+\bibitem[AK26]{ArmstrongKempe2026}
+Scott Armstrong and Julia Kempe.
+\newblock Formalization of {De Giorgi--Nash--Moser} theory in {Lean}, 2026.
+\newblock Preprint.
+\newblock \href {https://arxiv.org/abs/2604.05984} {\path{arXiv:2604.05984}}.
+
+\bibitem[BCF{\etalchar{+}}14]{Boldo2014}
+Sylvie Boldo, Fran{\c{c}}ois Cl{\'e}ment, Jean-Christophe Filli{\^a}tre,
+  Micaela Mayero, Guillaume Melquiond, and Pierre Weis.
+\newblock Trusting computations: a mechanized proof from partial differential
+  equations to actual program.
+\newblock {\em Computers \& Mathematics with Applications}, 68(3):325--352,
+  2014.
+\newblock \href {https://arxiv.org/abs/1212.6641} {\path{arXiv:1212.6641}}.
+
+\bibitem[BM88]{BartnikMcKinnon1988}
+Robert Bartnik and John McKinnon.
+\newblock Particlelike solutions of the {Einstein--Yang--Mills} equations.
+\newblock {\em Physical Review Letters}, 61:141--144, 1988.
+\newblock \href {https://doi.org/10.1103/PhysRevLett.61.141}
+  {\path{doi:10.1103/PhysRevLett.61.141}}.
+
+\bibitem[CCB96]{ChoptuikChmajBizon1996}
+Matthew~W. Choptuik, Tadeusz Chmaj, and Piotr Bizo{\'n}.
+\newblock Critical behavior in gravitational collapse of a {Yang--Mills} field.
+\newblock {\em Physical Review Letters}, 77(3):424--427, 1996.
+\newblock \href {https://doi.org/10.1103/PhysRevLett.77.424}
+  {\path{doi:10.1103/PhysRevLett.77.424}}.
+
+\bibitem[CH62]{CourantHilbert1962}
+Richard Courant and David Hilbert.
+\newblock {\em Methods of Mathematical Physics, Volume {II}: Partial
+  Differential Equations}.
+\newblock Interscience Publishers, New York, 1962.
+
+\bibitem[Chr86]{Christodoulou1986}
+Demetrios Christodoulou.
+\newblock The problem of a self-gravitating scalar field.
+\newblock {\em Communications in Mathematical Physics}, 105(3):337--361, 1986.
+\newblock \href {https://doi.org/10.1007/BF01205930}
+  {\path{doi:10.1007/BF01205930}}.
+
+\bibitem[Chr93]{Christodoulou1993}
+Demetrios Christodoulou.
+\newblock Bounded variation solutions of the spherically symmetric
+  {Einstein}-scalar field equations.
+\newblock {\em Communications on Pure and Applied Mathematics}, 46:1131--1220,
+  1993.
+
+\bibitem[CLQ26]{ChowLiaoQin2026}
+Bennett Chow, Yuan Liao, and Ziyang Qin.
+\newblock A {Lean} formalization of {Hamilton's} three-manifold theorem, 2026.
+\newblock Preprint.
+\newblock \href {https://arxiv.org/abs/2608.21502} {\path{arXiv:2608.21502}}.
+
+\bibitem[Daf05]{Dafermos2005}
+Mihalis Dafermos.
+\newblock The interior of charged black holes and the problem of uniqueness in
+  general relativity.
+\newblock {\em Communications on Pure and Applied Mathematics}, 58:445--504,
+  2005.
+\newblock \href {https://doi.org/10.1002/cpa.20071}
+  {\path{doi:10.1002/cpa.20071}}.
+
+\bibitem[dU21]{deMouraUllrich2021}
+Leonardo {de Moura} and Sebastian Ullrich.
+\newblock The {Lean} 4 theorem prover and programming language.
+\newblock In {\em Automated Deduction -- {CADE} 28}, volume 12699 of {\em
+  Lecture Notes in Computer Science}, pages 625--635, Cham, 2021. Springer.
+\newblock \href {https://doi.org/10.1007/978-3-030-79876-5_37}
+  {\path{doi:10.1007/978-3-030-79876-5_37}}.
+
+\bibitem[Gar64]{Garabedian1964}
+Paul~R. Garabedian.
+\newblock {\em Partial Differential Equations}.
+\newblock John Wiley \& Sons, New York, 1964.
+
+\bibitem[Pel94]{Peldan1994}
+Peter Peld{\'a}n.
+\newblock Actions for gravity, with generalizations: a review.
+\newblock {\em Classical and Quantum Gravity}, 11:1087--1132, 1994.
+\newblock \href {https://arxiv.org/abs/gr-qc/9305011}
+  {\path{arXiv:gr-qc/9305011}}.
+
+\bibitem[Ren90]{Rendall1990}
+Alan~D. Rendall.
+\newblock Reduction of the characteristic initial value problem to the {Cauchy}
+  problem and its applications to the {Einstein} equations.
+\newblock {\em Proceedings of the Royal Society of London. Series A},
+  427(1872):221--239, 1990.
+\newblock \href {https://doi.org/10.1098/rspa.1990.0009}
+  {\path{doi:10.1098/rspa.1990.0009}}.
+
+\bibitem[SFMS26]{SotoFrancoMarshallStevens2026}
+Alejandro~Jos{\'e} Soto~Franco and Kobe Marshall-Stevens.
+\newblock Formalising linear elliptic {PDE} theory in {Lean} 4, 2026.
+\newblock Preprint.
+\newblock \href {https://arxiv.org/abs/2609.32561} {\path{arXiv:2609.32561}}.
+
+\bibitem[{The}20]{mathlib2020}
+{The mathlib Community}.
+\newblock The {Lean} mathematical library.
+\newblock In {\em Proceedings of the 9th ACM SIGPLAN International Conference
+  on Certified Programs and Proofs ({CPP} 2020)}, pages 367--381, New York,
+  2020. ACM.
+\newblock \href {https://doi.org/10.1145/3372885.3373824}
+  {\path{doi:10.1145/3372885.3373824}}.
+
+\bibitem[VG99]{VolkovGaltsov1999}
+Mikhail~S. Volkov and Dmitri~V. Gal'tsov.
+\newblock Gravitating non-{Abelian} solitons and black holes with {Yang--Mills}
+  fields.
+\newblock {\em Physics Reports}, 319:1--83, 1999.
+\newblock \href {https://arxiv.org/abs/hep-th/9810070}
+  {\path{arXiv:hep-th/9810070}}.
+
+\bibitem[Wal84]{Wald1984}
+Robert~M. Wald.
+\newblock {\em General Relativity}.
+\newblock University of Chicago Press, Chicago, 1984.
+
+\end{thebibliography}
