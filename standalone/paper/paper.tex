@@ -1,0 +1,298 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\sloppy
+\emergencystretch=2em
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+
+\title[From the Cartan--Palatini action to the Goursat problem]{From the Cartan--Palatini action to the Goursat problem:\\ a machine-checked treatment of the spherically symmetric\\ Einstein--Yang--Mills equations}
+
+\author{Ryojiro Kurokawa}
+\address{Graduate School of Science and Technology, Tokyo University of Science, Noda, Chiba, Japan}
+
+\subjclass[2020]{68V20 (primary); 35L52, 83C05, 35Q76, 83C20}
+\keywords{Lean 4, Mathlib, formal verification, Goursat problem, characteristic initial value problem, Einstein--Yang--Mills, Cartan--Palatini action, double-null coordinates}
+
+\begin{document}
+
+\begin{abstract}
+We present a formalization in the Lean~4 proof assistant, built on the Mathlib library, of three results that together lead from the first-order variational principle of general relativity to the local well-posedness of a characteristic initial value problem. First, at a point and in an orthonormal frame, the first variation of the Cartan--Palatini density is $-8\sum k_{a\mu}G_{\mu a}$, so stationarity is equivalent to the Einstein equations; we also derive torsion-freeness from the connection variation, the Lorentzian version, gauge covariance of the curvature, and the equivalence of the frame and coordinate Einstein equations. Second, for the spherically symmetric metric $-2\Omega\,\dd u\,\dd v+r^2\,\dd\Omega^2$ we compute the Einstein tensor from the Levi-Civita connection and show that the Einstein equations with the magnetic $SU(2)$ Yang--Mills source are equivalent to two constraint equations and the evolution equations for $r$ and $\Omega$. Third, for semilinear systems $w_{uv}=F(w,w_u,w_v)$ we prove a characteristic Gr\"onwall inequality, uniqueness, existence by the Banach fixed-point theorem in a weighted supremum norm, and continuous dependence on the data; applied to the spherically symmetric Einstein--Yang--Mills system, this gives local existence and uniqueness for $C^1$ characteristic data with $r,\Omega>0$ at the corner, and Lipschitz dependence on the data. The mathematics is classical. What is new is the machine-checked proof: to our knowledge this is the first formalized existence theorem for a hyperbolic characteristic problem in a proof assistant, and the first formal treatment of this chain for the Einstein equations. The development has 20 modules and 167 theorems and uses no axioms beyond those of Lean's standard library. We state precisely which steps are not formalized, the main one being the propagation of the constraint equations.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The characteristic (Goursat) initial value problem prescribes data for a second-order hyperbolic system on two intersecting null hypersurfaces rather than on a spacelike slice. In general relativity it is the natural setting for gravitational collapse in spherical symmetry, where the double-null form of the equations has been the basis of the analysis of the Einstein--scalar field system by Christodoulou~\cite{Christodoulou1986,Christodoulou1993} and of the interior of charged black holes by Dafermos~\cite{Dafermos2005}. For the full Einstein equations, Rendall reduced the characteristic problem to the Cauchy problem and proved local existence~\cite{Rendall1990}. The spherically symmetric Einstein--Yang--Mills (EYM) system with the magnetic $SU(2)$ ansatz carries one gauge function $W$. It has the Bartnik--McKinnon solitons~\cite{BartnikMcKinnon1988}, shows critical behaviour in collapse~\cite{ChoptuikChmajBizon1996}, and is reviewed in~\cite{VolkovGaltsov1999}.
+
+The results we formalize are, as mathematics, standard. Our aim is a proof in which every step is checked by a computer, so that the statement a reader relies on is exactly the statement that was proved, with every assumption visible. Formal proofs about partial differential equations are still rare. The work of Boldo et al.~\cite{Boldo2014} verifies, in Coq, the convergence of a finite-difference scheme for the one-dimensional wave equation, but assumes the properties of the exact solution it needs. In Lean, linear elliptic theory~\cite{SotoFrancoMarshallStevens} and De~Giorgi--Nash--Moser regularity~\cite{ArmstrongKempe2026} have been formalized, and a formalization of Hamilton's three-manifold theorem~\cite{ChowLiaoQin2026} includes the Levi-Civita connection and the Ricci-flow equation. We are not aware of a formalized existence theorem for a hyperbolic characteristic problem, nor of a formalization of the Einstein equations as the stationarity condition of the Cartan--Palatini action.
+
+\subsection*{Contributions}
+\begin{enumerate}[label=(\roman*)]
+\item \emph{The first-order variational principle} (Section~\ref{sec:action}). In a four-dimensional orthonormal frame, for any curvature tensor with the two antisymmetries, $\sum\varepsilon_{\mu\nu\rho\sigma}\varepsilon_{a\nu cd}R_{cd\rho\sigma}=-4G_{\mu a}$. The first variation of the Cartan--Palatini density at $e=\delta$ is $-8\sum k_{a\mu}G_{\mu a}$, and stationarity is equivalent to $G=0$ (to $8G=T$ with a source). We also prove:
+  \begin{itemize}
+  \item torsion-freeness from the connection variation;
+  \item the Lorentzian version;
+  \item gauge covariance $F(g^{-1}Ag+g^{-1}\partial g)=g^{-1}F(A)g$ over an arbitrary ring;
+  \item the equivalence of the frame and coordinate Einstein equations.
+  \end{itemize}
+\item \emph{The spherical reduction} (Section~\ref{sec:reduction}). For $-2\Omega\,\dd u\,\dd v+r^2(\dd\theta^2+\sin^2\theta\,\dd\phi^2)$ we compute all Christoffel symbols from the Levi-Civita formula and the Einstein tensor from them. With the magnetic Yang--Mills source, $G=2T$ is equivalent to the constraint equations and the evolution equations for $r$ and $\Omega$, with exactly the right-hand sides used in~(iii).
+\item \emph{The characteristic problem} (Sections~\ref{sec:goursat}--\ref{sec:eym}). For semilinear systems $w_{uv}=F(w,w_u,w_v)$ we prove a characteristic Gr\"onwall inequality, uniqueness, existence for globally Lipschitz $F$ (Banach fixed point in a weighted supremum norm), continuous dependence, and a stability estimate for linear systems. For the spherically symmetric EYM system this gives local existence and uniqueness for $C^1$ data with $r,\Omega>0$ at the corner, and Lipschitz dependence on the data.
+\end{enumerate}
+
+The three parts concern the same equations, but they are not composed into a single Lean statement. Part (i) works pointwise with algebraic tensors, part (ii) in a differential field, and part (iii) with real functions on a rectangle. Section~\ref{sec:scope} lists what is not formalized. The most important omission is that solutions of the evolution equations are not shown to satisfy the constraint equations.
+
+\section{Setting and conventions}\label{sec:setting}
+
+The development uses Lean~4~\cite{deMouraUllrich2021} (version 4.15.0) and Mathlib~\cite{mathlib2020}. It consists of 20 modules (about 3\,600 lines) and 167 theorems. A generated file prints the axioms used by every theorem; all depend at most on \lean{propext}, \lean{Classical.choice} and \lean{Quot.sound}, and none uses \lean{sorry}. We write Lean names in typewriter font; each module begins with a header stating exactly what it proves.
+
+Two models of derivatives are used.
+\begin{itemize}
+\item In Parts (i) and (ii), and in the auxiliary results on Bianchi identities and linearized gravity, partial derivatives are commuting derivations $D_0,\dots,D_3$ on a commutative ring or field. This is the algebra of jets of smooth functions, and the identities proved there hold in any such model.
+\item In Part (iii), functions are real-valued on $\R^2$ and derivatives are Mathlib's \lean{HasDerivAt} along coordinate slices.
+\end{itemize}
+
+\begin{definition}[\lean{C2Data}]\label{def:c2}
+For $a,b\ge0$ and $R=[0,a]\times[0,b]$, a function $d$ together with $d_u$, $d_v$, $d_{uv}$ is \emph{mixed $C^2$ on $R$} if all four are continuous on $R$, $d_u$ and $d_v$ are the partial derivatives of $d$, and $d_{uv}$ is the partial derivative of $d_v$ in $u$ and of $d_u$ in $v$, at every point of $R$.
+\end{definition}
+The pure second derivatives $d_{uu},d_{vv}$ are not required; this is the regularity in which the evolution equations, which involve only $\partial_u\partial_v$, make sense. Derivatives at boundary points of $R$ are two-sided, so the definition implicitly asks the functions to be defined, and $C^1$, slightly beyond $R$.
+
+\section{The Cartan--Palatini action and the Einstein equations}\label{sec:action}
+
+Throughout this section indices run over $\{0,1,2,3\}$. The Levi-Civita symbol is defined by the Vandermonde product, $\varepsilon_{\mu\nu\rho\sigma}=\frac{1}{12}\prod_{i<j}(x_j-x_i)$ evaluated at the indices, which makes its antisymmetry provable by normalization of polynomial identities. Let $R_{cd\rho\sigma}$ be a real array with
+\begin{equation}\label{eq:antisym}
+R_{cd\rho\sigma}=-R_{dc\rho\sigma},\qquad R_{cd\rho\sigma}=-R_{cd\sigma\rho},
+\end{equation}
+the curvature 2-form of a connection in an orthonormal frame. Set $\mathrm{Ric}_{\mu a}=\sum_d R_{\mu d a d}$, $R=\sum_\mu \mathrm{Ric}_{\mu\mu}$ and $G_{\mu a}=\mathrm{Ric}_{\mu a}-\frac12\delta_{\mu a}R$.
+
+\begin{theorem}[\lean{cartan\_einstein}]
+Under~\eqref{eq:antisym}, $\sum_{\nu,\rho,\sigma,c,d}\varepsilon_{\mu\nu\rho\sigma}\varepsilon_{a\nu cd}R_{cd\rho\sigma}=-4G_{\mu a}$.
+\end{theorem}
+Neither the pair symmetry $R_{cd\rho\sigma}=R_{\rho\sigma cd}$ nor the first Bianchi identity is needed.
+
+The Cartan--Palatini density in a frame $e^a{}_\mu$ is, up to normalization, $L(e)=\sum\varepsilon_{\mu\nu\rho\sigma}\varepsilon_{abcd}\,e^a{}_\mu e^b{}_\nu R_{cd\rho\sigma}$ (cf.~\cite{Peldan1994}). We vary the frame at $e=\delta$ in a direction $k$, $e=\delta+tk$. The density is quadratic in $t$ (\lean{quad\_expansion}), and the first-order coefficient $V(k)$ is its derivative at $t=0$ (\lean{first\_variation\_hasDerivAt}).
+
+\begin{theorem}[\lean{first\_variation}, \lean{einstein\_iff\_stationary}, \lean{einstein\_with\_matter}]
+Under~\eqref{eq:antisym}, $V(k)=-8\sum_{\mu,a}k_{a\mu}G_{\mu a}$. Hence $V(k)=0$ for all $k$ if and only if $G=0$, and $V(k)+\sum k_{a\mu}T_{\mu a}=0$ for all $k$ if and only if $8G=T$.
+\end{theorem}
+The variation is pointwise and finite dimensional; no functional derivative or integration by parts is involved.
+
+\subsection{Torsion and the Levi-Civita connection}
+Varying the connection gives, after integration by parts, an expression $K$ linear in the torsion $T^a{}_{\nu\rho}$. We take this standard form as the definition (\lean{Ktor}); the integration by parts itself is not formalized. For torsion antisymmetric in its last two indices,
+\begin{equation}
+K_{\mu cd}=2\big(T_{\mu cd}-\delta_{\mu c}\,t_d+\delta_{\mu d}\,t_c\big),\qquad t_d=\sum_a T_{aad}
+\end{equation}
+(\lean{torsion\_contraction}). Hence $K=0$ implies $T=0$ (\lean{torsion\_free\_of\_stationary}). The converse holds trivially, since $K$ is linear in $T$. A metric-compatible torsion-free connection is then given by the Koszul formula (\lean{levi\_civita\_unique}); this step has been formalized before~\cite{ChowLiaoQin2026}.
+
+\subsection{Lorentz signature}
+Let $\eta=\mathrm{diag}(-1,1,1,1)$. Raising all four indices of $\varepsilon$ with $\eta$ gives $-\varepsilon$ (\lean{eps\_raise}). For $\tilde R_{cd\rho\sigma}=\eta_c\eta_dR_{cd\rho\sigma}$ and the Lorentzian Einstein tensor $G^{L}_{\mu a}=\mathrm{Ric}^L_{\mu a}-\frac12\eta_\mu\delta_{\mu a}R^L$, with $\mathrm{Ric}^L_{\mu a}=\sum_d\eta_dR_{\mu dad}$, we obtain the following.
+\begin{theorem}[\lean{cartan\_einstein\_lorentz}, \lean{einstein\_lorentz\_iff}]
+Under~\eqref{eq:antisym}, the Lorentzian contraction equals $4\eta_\mu G^L_{\mu a}$. Stationarity, expressed as $V(\tilde R)(k)=0$ for all $k$, is equivalent to $G^L=0$.
+\end{theorem}
+
+\subsection{Gauge covariance and coordinates}
+\begin{theorem}[\lean{curv\_gauge\_covariant}]
+Let $A_c$ take values in an arbitrary ring, with curvature $F_{cd}=\partial_cA_d-\partial_dA_c+A_cA_d-A_dA_c$. Let $g$ satisfy $gg^{-1}=1$ and $\partial_c\partial_dg=\partial_d\partial_cg$, and let $\partial g^{-1}=-g^{-1}(\partial g)g^{-1}$. Then the connection $A'_c=g^{-1}A_cg+g^{-1}\partial_cg$ has curvature $F'_{cd}=g^{-1}F_{cd}\,g$.
+\end{theorem}
+
+Let $\mathrm{Rc}_{\mu\nu\rho\sigma}$ be a coordinate curvature tensor with the antisymmetries~\eqref{eq:antisym}, $e^a{}_\mu$ a frame with dual $E_a{}^\mu$ ($\sum_\mu e^a{}_\mu E_b{}^\mu=\delta_{ab}$), and $\eta_a$ signs. Define $g_{\mu\nu}=\sum_a\eta_ae^a{}_\mu e^a{}_\nu$ and $g^{\mu\nu}=\sum_a\eta_aE_a{}^\mu E_a{}^\nu$. The frame components $R_{abcd}$ are $\mathrm{Rc}$ contracted with $E$ in all four slots.
+\begin{theorem}[\lean{einstein\_frame}, \lean{einstein\_frame\_iff}, \lean{einstein\_lorentz\_coord}]
+The frame Einstein tensor equals the coordinate Einstein tensor transported by the frame, $G^{\mathrm{frame}}_{bd}=\sum E_b{}^\nu E_d{}^\sigma G_{\nu\sigma}$, and $G^{\mathrm{frame}}=0$ if and only if $G_{\nu\sigma}=0$. For $\eta=\mathrm{diag}(-1,1,1,1)$, Lorentzian Cartan--Palatini stationarity is equivalent to the coordinate Einstein equations $G_{\nu\sigma}=0$.
+\end{theorem}
+The second dual relation $\sum_aE_a{}^\mu e^a{}_\nu=\delta^\mu{}_\nu$ is derived from the first via the fact that a one-sided inverse of a finite square matrix is two-sided. With $\eta_a^2=1$, $\sum_\nu g_{\mu\nu}g^{\nu\rho}=\delta_\mu{}^\rho$ (\lean{metric\_inverse}).
+
+\subsection{Further identities}
+The development also contains:
+\begin{itemize}
+\item the first Bianchi identity for torsion-free connections (\lean{bianchi\_first});
+\item the second Bianchi identity, both in gauge form over an arbitrary ring and in components (\lean{gauge\_bianchi}, \lean{bianchi\_second});
+\item the contracted Bianchi identity $\nabla^aG_{ab}=0$ at a point in normal coordinates (\lean{contracted\_bianchi\_normal});
+\item linearized gravity about $\eta$: gauge invariance, the linearized Bianchi identity, the harmonic gauge and vacuum waves;
+\item the Newtonian limit $G_{00}=2\Delta\Phi$ for $h=-2\Phi\,\mathrm{diag}(1,1,1,1)$, together with $\Gamma^i{}_{00}=\partial_i\Phi$ (\lean{newton\_G00}, \lean{newton\_christoffel});
+\item the geodesic equation as the Euler--Lagrange equation of $\frac12g_{\mu\nu}v^\mu v^\nu$.
+\end{itemize}
+
+\section{The spherical reduction}\label{sec:reduction}
+
+Let $S$ be a field of characteristic zero with commuting derivations $D_0,\dots,D_3$, standing for $\partial_u,\partial_v,\partial_\theta,\partial_\phi$. Let $\Omega,r,s,c\in S$ with $\Omega,r,s\ne0$. Assume that $\Omega$ and $r$ are annihilated by $D_2,D_3$, that $s,c$ are annihilated by $D_0,D_1,D_3$, and that $D_2s=c$, $D_2c=-s$; here $s$ and $c$ play the roles of $\sin\theta$ and $\cos\theta$ (structure \lean{Ansatz}). The metric is
+\begin{equation}\label{eq:metric}
+\dd s^2=-2\Omega\,\dd u\,\dd v+r^2\big(\dd\theta^2+s^2\,\dd\phi^2\big).
+\end{equation}
+
+\begin{theorem}[\lean{christoffel}, \lean{G00}--\lean{G33}, \lean{G\_offdiag}]\label{thm:G}
+Let $\Gamma^a{}_{bc}=\frac12g^{ad}(D_bg_{dc}+D_cg_{db}-D_dg_{bc})$ be the Levi-Civita connection of~\eqref{eq:metric}, and let $R^a{}_{bcd}$, $\mathrm{Ric}_{bd}=R^a{}_{bad}$, $R$ and $G$ be the curvature tensors computed from it. Then
+\begin{align*}
+G_{uu}&=-\tfrac{2}{r}\big(r_{uu}-\tfrac{\Omega_u}{\Omega}r_u\big),\qquad
+G_{vv}=-\tfrac{2}{r}\big(r_{vv}-\tfrac{\Omega_v}{\Omega}r_v\big),\\
+G_{uv}&=\tfrac{2}{r}r_{uv}+\tfrac{2}{r^2}r_ur_v+\tfrac{\Omega}{r^2},\qquad
+G_{\theta\theta}=-\tfrac{r^2}{\Omega}(\log\Omega)_{uv}-\tfrac{2r}{\Omega}r_{uv},\qquad
+G_{\phi\phi}=s^2G_{\theta\theta},
+\end{align*}
+and all other components vanish. Here $(\log\Omega)_{uv}$ stands for $\Omega_{uv}/\Omega-\Omega_u\Omega_v/\Omega^2$.
+\end{theorem}
+
+For the magnetic ansatz with gauge function $W(u,v)$, the Yang--Mills stress tensor has the components
+\begin{equation}\label{eq:T}
+T_{uu}=\frac{2W_u^2}{r^2},\quad T_{vv}=\frac{2W_v^2}{r^2},\quad T_{uv}=\frac{\Omega(1-W^2)^2}{2r^4},\quad T_{\theta\theta}=\frac{(1-W^2)^2}{2r^2},\quad T_{\phi\phi}=s^2T_{\theta\theta},
+\end{equation}
+with the other components zero. These are standard; see~\cite{VolkovGaltsov1999}. We take~\eqref{eq:T} as given; deriving it from the field strength is not formalized. The factor in $G=2T$ fixes the units of the coupling.
+
+\begin{theorem}[\lean{einstein\_iff\_system}]\label{thm:reduction}
+Under the ansatz, $G_{uu}=2T_{uu}$, $G_{vv}=2T_{vv}$, $G_{uv}=2T_{uv}$ and $G_{\theta\theta}=2T_{\theta\theta}$ hold if and only if
+\begin{align}
+r_{uu}-\frac{\Omega_u}{\Omega}r_u+\frac{2W_u^2}{r}&=0,\qquad r_{vv}-\frac{\Omega_v}{\Omega}r_v+\frac{2W_v^2}{r}=0,\label{eq:constraints}\\
+r_{uv}&=\frac{\Omega}{2r}\Big(\frac{(1-W^2)^2}{r^2}-1\Big)-\frac{r_ur_v}{r},\label{eq:r}\\
+\Omega_{uv}&=\frac{\Omega_u\Omega_v}{\Omega}-\frac{2\Omega\,r_{uv}}{r}-\frac{\Omega^2(1-W^2)^2}{r^4}.\label{eq:Om}
+\end{align}
+The right-hand sides of~\eqref{eq:r} and~\eqref{eq:Om} are the Lean definitions \lean{rhsR} and \lean{rhsOm} used in Section~\ref{sec:eym}.
+\end{theorem}
+Together with the Yang--Mills equation
+\begin{equation}\label{eq:W}
+W_{uv}=\frac{\Omega\,W(1-W^2)}{2r^2},
+\end{equation}
+which we take from the literature, \eqref{eq:r}--\eqref{eq:W} are the evolution equations of Section~\ref{sec:eym}, and~\eqref{eq:constraints} are its constraints. Before formalizing Theorem~\ref{thm:G}, we checked its formulas against a finite-difference computation of the Einstein tensor for sample functions $\Omega,r$.
+
+\section{The characteristic problem for semilinear systems}\label{sec:goursat}
+
+Let $R=[0,a]\times[0,b]$ and $n\in\mathbb N$.
+
+\begin{theorem}[Characteristic Gr\"onwall inequality, \lean{char\_gronwall\_on}]
+Let $f$ be continuous and nonnegative on $R$, and suppose that on $R$
+\[
+f(u,v)\le K\Big(\int_0^vf(u,s)\,\dd s+\int_0^uf(t,v)\,\dd t\Big).
+\]
+Then $f=0$ on $R$.
+\end{theorem}
+The proof compares $f$ with $e^{\lambda(u+v)}$ for large $\lambda$, using $\int_0^ve^{\lambda(u+s)}\dd s\le e^{\lambda(u+v)}/\lambda$, and uses compactness of $R$. An inhomogeneous version gives $f\le2De^{4\max(K,1)(u+v)}$ when the right-hand side has an additional constant $D$ (\lean{char\_gronwall\_inhom}).
+
+\begin{theorem}[Uniqueness, \lean{char\_uniqueness}]
+Let $d=(d_i)_{i<n}$ be mixed $C^2$ on $R$, vanish on the edges $\{v=0\}$ and $\{u=0\}$, and satisfy $|d_{i,uv}|\le L\sum_j(|d_j|+|d_{j,u}|+|d_{j,v}|)$ on $R$. Then $d=0$ on $R$.
+\end{theorem}
+
+\begin{theorem}[Existence, \lean{goursat\_exists}]\label{thm:existence}
+Let $F_i(x,y,z)$, $i<n$, be globally Lipschitz in the sum norm of $(x,y,z)\in(\R^n)^3$. Let $\varphi,\psi:\R\to\R^n$ be $C^1$ with $\varphi(0)=\psi(0)$. Then there is $w:\R^2\to\R^n$, with continuous first partial derivatives and continuous mixed derivative on $\R^2$, such that $w(u,0)=\varphi(u)$, $w(0,v)=\psi(v)$ and $w_{uv}=F(w,w_u,w_v)$ on $R$.
+\end{theorem}
+The unknown is $z=w_{uv}$, from which $w$ is recovered by
+\[
+w(u,v)=\varphi(u)+\psi(v)-\varphi(0)+\int_0^u\!\!\int_0^vz.
+\]
+The map $z\mapsto F(w[z],w_u[z],w_v[z])$ is a contraction on $C(R,\R)^n$ with the norm $\sup_Re^{-\lambda(u+v)}|\cdot|$ for $\lambda$ large compared with $L$. Mathlib's \lean{ContractingWith} gives the fixed point. Functions on $R$ are extended to $\R^2$ by projection onto $R$.
+
+\begin{theorem}[Continuous dependence and linear stability, \lean{char\_dependence}, \lean{linear\_stability}]
+Under the hypotheses of the uniqueness theorem, except that the edge traces satisfy $|d_i(u,0)|,|d_{i,u}(u,0)|,|d_{i,v}(0,v)|\le E$, we have
+\[
+\sum_j\big(|d_j|+|d_{j,u}|+|d_{j,v}|\big)\le6nE\,e^{4\max(n(1+L),1)(u+v)}\quad\text{on }R.
+\]
+The same bound, with $L$ replaced by $M$, holds for linear systems with coefficients bounded by $M$.
+\end{theorem}
+
+\section{Local well-posedness for the spherically symmetric EYM system}\label{sec:eym}
+
+The unknowns are $(r,\Omega,W)$ on $R$. The evolution equations are~\eqref{eq:r}--\eqref{eq:W}, imposed on $R$ only (\lean{EYMEqsOn}). The right-hand sides are Lipschitz on every box
+\[
+\mathcal B_{B,m}=\{m\le\Omega\le B,\ m\le r\le B,\ |W|,|r_u|,|r_v|,|\Omega_u|,|\Omega_v|\le B\},\qquad m>0.
+\]
+
+\begin{theorem}[Uniqueness, \lean{eym\_uniqueness\_of\_pos}]
+Let two triples $(r,\Omega,W)$ be mixed $C^2$ on $R$, solve the evolution equations on $R$, and have the same characteristic data on $\{v=0\}$ and $\{u=0\}$. If both have $r>0$ and $\Omega>0$ on $R$, they coincide on $R$.
+\end{theorem}
+The bounds needed for the Lipschitz estimate are obtained from continuity on the compact set $R$, and the conclusion follows from the uniqueness theorem of Section~\ref{sec:goursat} applied to the difference.
+
+\begin{theorem}[Local existence and uniqueness, \lean{eym\_local\_existence}, \lean{eym\_local\_wellposed}]\label{thm:lwp}
+Let $\varphi,\psi:\R\to\R^3$ be $C^1$ on $\R$, with $\varphi(0)=\psi(0)$ and $r,\Omega>0$ at the corner. Then there is $\varepsilon>0$ such that on $[0,\varepsilon]^2$:
+\begin{itemize}
+\item there is a mixed $C^2$ solution of~\eqref{eq:r}--\eqref{eq:W} with data $\varphi$ on $\{v=0\}$ and $\psi$ on $\{u=0\}$;
+\item this solution satisfies $r,\Omega\ge r_0:=\frac12\min(r(0,0),\Omega(0,0))$;
+\item it is the only mixed $C^2$ solution on $[0,\varepsilon]^2$ with these data and $r,\Omega>0$.
+\end{itemize}
+\end{theorem}
+The proof clamps the seven quantities $(\Omega,W,r_u,r_v,r,\Omega_u,\Omega_v)$ into a box, which makes the right-hand side globally Lipschitz (\lean{Fw\_lip}), and applies Theorem~\ref{thm:existence}. By continuity, near the corner the solution stays inside the box, where clamping is the identity (\lean{trunc\_of}). The number $\varepsilon$ is not made explicit.
+
+\begin{theorem}[Lipschitz dependence, \lean{eym\_dependence}]
+For $B$ and $m>0$ there is $C\ge0$ with the following property. If two solutions on $R$ stay in $\mathcal B_{B,m}$, and their values and $u$-derivatives on $\{v=0\}$ and their $v$-derivatives on $\{u=0\}$ differ by at most $E$, then $|\delta r|+|\delta\Omega|+|\delta W|\le CE$ on $R$.
+\end{theorem}
+
+\section{Scope}\label{sec:scope}
+
+The following are not formalized.
+\begin{enumerate}[label=(\alph*)]
+\item That solutions of the evolution equations satisfy the constraint equations~\eqref{eq:constraints}. The standard argument propagates them along the characteristics. It needs the pure second derivatives $r_{uu},r_{vv}$, which the mixed $C^2$ regularity of Theorem~\ref{thm:lwp} does not provide.
+\item The derivation of the Yang--Mills stress tensor~\eqref{eq:T} and of the Yang--Mills equation~\eqref{eq:W} from the field strength of the magnetic ansatz.
+\item A single Lean statement composing Sections~\ref{sec:action}, \ref{sec:reduction} and~\ref{sec:eym}. This would require a model of the derivation algebra by smooth functions on a domain of $\R^4$.
+\item Integration by parts in the connection variation, which enters through the definition of $K$.
+\item The facts that the Riemann tensor of a Levi-Civita connection has the two antisymmetries~\eqref{eq:antisym}, and that the frame connection obtained from the Christoffel symbols is the Levi-Civita connection of the frame. These are hypotheses of the frame--coordinate theorem.
+\item Characteristic data at a general corner $(u_0,v_0)$ (a translation), data given only on the edges rather than on $\R$, the case including the centre $r=0$, and global or long-time results.
+\end{enumerate}
+
+\section{Remarks on the formalization}
+
+Two technical choices kept the development small.
+\begin{itemize}
+\item The tensor identities in four dimensions are proved by expanding finite sums over $\mathrm{Fin}\,4$ and normalizing polynomial identities. The Levi-Civita symbol is defined so that these normalizations close.
+\item In the analytic part, regularity is the explicit structure of Definition~\ref{def:c2} rather than a general smoothness class. This matches exactly what the characteristic equations use.
+\end{itemize}
+The main analytic work is the weighted-norm contraction and the extension of continuous functions from the closed rectangle to the plane. We hope the characteristic Gr\"onwall inequality and the Goursat existence theorem will be useful for other hyperbolic problems.
+
+\section*{Code availability}
+The Lean source, with a build script and the axiom audit, is available from the author. It builds with Lean 4.15.0 and Mathlib v4.15.0.
+
+\begin{thebibliography}{99}
+
+\bibitem{BartnikMcKinnon1988}
+R.~Bartnik and J.~McKinnon, Particlelike solutions of the Einstein--Yang--Mills equations, \emph{Phys. Rev. Lett.} \textbf{61} (1988), 141--144.
+
+\bibitem{Boldo2014}
+S.~Boldo, F.~Cl\'ement, J.-C.~Filli\^atre, M.~Mayero, G.~Melquiond and P.~Weis, Trusting computations: a mechanized proof from partial differential equations to actual program, \emph{Comput. Math. Appl.} \textbf{68} (2014), no.~3, 325--352.
+
+\bibitem{ChoptuikChmajBizon1996}
+M.~W.~Choptuik, T.~Chmaj and P.~Bizo\'n, Critical behavior in gravitational collapse of a Yang--Mills field, \emph{Phys. Rev. Lett.} \textbf{77} (1996), 424--427.
+
+\bibitem{ChowLiaoQin2026}
+B.~Chow, Y.~Liao and Z.~Qin, A Lean formalization of Hamilton's three-manifold theorem, preprint (2026), arXiv:2608.21502.
+
+\bibitem{Christodoulou1986}
+D.~Christodoulou, The problem of a self-gravitating scalar field, \emph{Comm. Math. Phys.} \textbf{105} (1986), 337--361.
+
+\bibitem{Christodoulou1993}
+D.~Christodoulou, Bounded variation solutions of the spherically symmetric Einstein-scalar field equations, \emph{Comm. Pure Appl. Math.} \textbf{46} (1993), 1131--1220.
+
+\bibitem{Dafermos2005}
+M.~Dafermos, The interior of charged black holes and the problem of uniqueness in general relativity, \emph{Comm. Pure Appl. Math.} \textbf{58} (2005), 445--504.
+
+\bibitem{deMouraUllrich2021}
+L.~de~Moura and S.~Ullrich, The Lean 4 theorem prover and programming language, in \emph{Automated Deduction -- CADE 28}, Lecture Notes in Comput. Sci. \textbf{12699}, Springer, 2021, 625--635.
+
+\bibitem{ArmstrongKempe2026}
+S.~Armstrong and J.~Kempe, Formalization of De Giorgi--Nash--Moser theory in Lean, preprint (2026), arXiv:2604.05984.
+
+\bibitem{mathlib2020}
+The mathlib Community, The Lean mathematical library, in \emph{Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2020)}, ACM, 2020, 367--381.
+
+\bibitem{Peldan1994}
+P.~Peld\'an, Actions for gravity, with generalizations: a review, \emph{Classical Quantum Gravity} \textbf{11} (1994), 1087--1132.
+
+\bibitem{Rendall1990}
+A.~D.~Rendall, Reduction of the characteristic initial value problem to the Cauchy problem and its applications to the Einstein equations, \emph{Proc. R. Soc. Lond. A} \textbf{427} (1990), 221--239.
+
+\bibitem{SotoFrancoMarshallStevens}
+A.~J.~Soto Franco and K.~Marshall-Stevens, Formalising linear elliptic PDE theory in Lean 4, preprint (2026), arXiv:2609.32561.
+
+\bibitem{VolkovGaltsov1999}
+M.~S.~Volkov and D.~V.~Gal'tsov, Gravitating non-Abelian solitons and black holes with Yang--Mills fields, \emph{Phys. Rep.} \textbf{319} (1999), 1--83.
+
+\end{thebibliography}
+
+\end{document}
