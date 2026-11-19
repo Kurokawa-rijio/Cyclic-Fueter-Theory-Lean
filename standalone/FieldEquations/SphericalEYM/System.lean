@@ -31,15 +31,15 @@ noncomputable def Dvv (F : ℝ → ℝ → ℝ) (u v : ℝ) : ℝ :=
   deriv (fun v' => deriv (fun v'' => F u v'') v') v
 
 /-- Right-hand side of the r_{uv} equation. -/
-noncomputable def rhsR (Om W ru rv r : ℝ) : ℝ :=
+noncomputable def rhsR {K : Type*} [Field K] (Om W ru rv r : K) : K :=
   (1 / 2) * Om * ((1 - W ^ 2) ^ 2 / r ^ 2 - 1) / r - ru * rv / r
 
 /-- Right-hand side of the Ω_{uv} equation (it uses the value of r_{uv}). -/
-noncomputable def rhsOm (Om Ou Ov ruv r W : ℝ) : ℝ :=
+noncomputable def rhsOm {K : Type*} [Field K] (Om Ou Ov ruv r W : K) : K :=
   Ou * Ov / Om - 2 * Om * ruv / r - Om ^ 2 * (1 - W ^ 2) ^ 2 / r ^ 4
 
 /-- Right-hand side of the W_{uv} equation. -/
-noncomputable def rhsW (Om W r : ℝ) : ℝ :=
+noncomputable def rhsW {K : Type*} [Field K] (Om W r : K) : K :=
   (1 / 2) * Om * W * (1 - W ^ 2) / r ^ 2
 
 /-- The unknowns (r, Ω, W). -/

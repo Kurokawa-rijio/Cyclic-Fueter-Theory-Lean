@@ -11,19 +11,10 @@ import FieldEquations.Gravity.FrameCoordinate
 import FieldEquations.Gravity.Geodesic
 import FieldEquations.Gravity.Linearized
 import FieldEquations.Gravity.TorsionLorentz
-import FieldEquations.Quaternionic.AdS2Killing
-import FieldEquations.Quaternionic.CayleyForm
-import FieldEquations.Quaternionic.ContinuumLaws
-import FieldEquations.Quaternionic.FueterForms
-import FieldEquations.Quaternionic.Mechanics
-import FieldEquations.Quaternionic.MonopoleLangevin
-import FieldEquations.Quaternionic.NullField
-import FieldEquations.Quaternionic.Octonion
-import FieldEquations.Quaternionic.Operators
-import FieldEquations.Quaternionic.SelfDual
 import FieldEquations.SphericalEYM.CompactBounds
 import FieldEquations.SphericalEYM.Dependence
 import FieldEquations.SphericalEYM.LocalExistence
+import FieldEquations.SphericalEYM.Reduction
 import FieldEquations.SphericalEYM.System
 import FieldEquations.SphericalEYM.Truncation
 import FieldEquations.SphericalEYM.Uniqueness
@@ -134,107 +125,6 @@ import FieldEquations.SphericalEYM.Uniqueness
 #print axioms FieldEquations.CartanPalatini.cartan_einstein_lorentz
 #print axioms FieldEquations.CartanPalatini.einstein_lorentz_iff
 #print axioms FieldEquations.Curvature.curv_gauge_covariant
-#print axioms FieldEquations.AdS2Killing.hasDerivAt_f
-#print axioms FieldEquations.AdS2Killing.xi1_a_eta
-#print axioms FieldEquations.AdS2Killing.xi1_a_chi
-#print axioms FieldEquations.AdS2Killing.xi1_b_eta
-#print axioms FieldEquations.AdS2Killing.xi1_b_chi
-#print axioms FieldEquations.AdS2Killing.xi2_a_eta
-#print axioms FieldEquations.AdS2Killing.xi2_a_chi
-#print axioms FieldEquations.AdS2Killing.xi2_b_eta
-#print axioms FieldEquations.AdS2Killing.xi2_b_chi
-#print axioms FieldEquations.AdS2Killing.killing_xi0
-#print axioms FieldEquations.AdS2Killing.killing_xi1
-#print axioms FieldEquations.AdS2Killing.killing_xi2
-#print axioms FieldEquations.AdS2Killing.comm_01_a
-#print axioms FieldEquations.AdS2Killing.comm_01_b
-#print axioms FieldEquations.AdS2Killing.comm_02_a
-#print axioms FieldEquations.AdS2Killing.comm_02_b
-#print axioms FieldEquations.AdS2Killing.comm_12_a
-#print axioms FieldEquations.AdS2Killing.comm_12_b
-#print axioms FieldEquations.Octonion.TwoForm.T_quadratic
-#print axioms FieldEquations.Octonion.TwoForm.T_rightForm
-#print axioms FieldEquations.Octonion.TwoForm.rightForm_spec
-#print axioms FieldEquations.Octonion.TwoForm.T_decomp
-#print axioms FieldEquations.Octonion.TwoForm.T_eigen_neg_one
-#print axioms FieldEquations.Octonion.TwoForm.proj7_rightForm
-#print axioms FieldEquations.Octonion.TwoForm.proj7_T
-#print axioms FieldEquations.Octonion.TwoForm.cayley_link
-#print axioms FieldEquations.Continuum.d_half'
-#print axioms FieldEquations.Continuum.navier_stokes
-#print axioms FieldEquations.Continuum.bernoulli
-#print axioms FieldEquations.Continuum.navier_cauchy
-#print axioms FieldEquations.Continuum.sound_wave
-#print axioms FieldEquations.Continuum.coulomb_harmonic
-#print axioms FieldEquations.Continuum.coulomb_field
-#print axioms FieldEquations.FueterForms.vec_vector
-#print axioms FieldEquations.FueterForms.fueter_regular_iff
-#print axioms FieldEquations.FueterForms.vec_vec
-#print axioms FieldEquations.FueterForms.maxwell_biquaternion
-#print axioms FieldEquations.FueterForms.maxwell_single_equation
-#print axioms FieldEquations.FueterForms.em_square
-#print axioms FieldEquations.FueterForms.em_square_invariant
-#print axioms FieldEquations.FueterForms.mass_shell_biquaternion
-#print axioms bernoulli_fueter
-#print axioms ns_viscous_fueter
-#print axioms coulomb_fueter
-#print axioms box_bridge
-#print axioms lorenz_gauge_fueter
-#print axioms quaternion_gauge_bianchi
-#print axioms FieldEquations.QuaternionMechanics.ks_pure
-#print axioms FieldEquations.QuaternionMechanics.ks_norm
-#print axioms FieldEquations.QuaternionMechanics.ks_velocity
-#print axioms FieldEquations.QuaternionMechanics.ks_speed
-#print axioms FieldEquations.QuaternionMechanics.euler_commutator
-#print axioms ks_oscillator
-#print axioms dq_mul
-#print axioms dq_star
-#print axioms dq_add
-#print axioms frame_geodesic_speed
-#print axioms attitude_unit
-#print axioms FieldEquations.MonopoleLangevin.sinh_ne
-#print axioms FieldEquations.MonopoleLangevin.W_eq_inv_Z
-#print axioms FieldEquations.MonopoleLangevin.Z_integral
-#print axioms FieldEquations.MonopoleLangevin.hasDerivAt_Z
-#print axioms FieldEquations.MonopoleLangevin.hasDerivAt_logZ
-#print axioms FieldEquations.MonopoleLangevin.bogomolny_W
-#print axioms FieldEquations.MonopoleLangevin.bogomolny_h
-#print axioms FieldEquations.NullField.M_det
-#print axioms FieldEquations.NullField.M_sq
-#print axioms FieldEquations.NullField.M_sq_zero_iff
-#print axioms FieldEquations.NullField.M_det_zero_iff
-#print axioms FieldEquations.NullField.pauli_param
-#print axioms FieldEquations.NullField.fsq_re
-#print axioms FieldEquations.NullField.fsq_im
-#print axioms FieldEquations.NullField.null_iff
-#print axioms FieldEquations.NullField.null_iff_nilpotent
-#print axioms FieldEquations.Octonion.normSq_mul
-#print axioms FieldEquations.Octonion.left_alt
-#print axioms FieldEquations.Octonion.right_alt
-#print axioms FieldEquations.Octonion.flexible
-#print axioms FieldEquations.Octonion.moufang_left
-#print axioms FieldEquations.Octonion.moufang_right
-#print axioms FieldEquations.Octonion.moufang_middle
-#print axioms FieldEquations.Octonion.conj_mul
-#print axioms FieldEquations.Octonion.mul_conj
-#print axioms FieldEquations.Octonion.conj_mul_self
-#print axioms FieldEquations.Octonion.inner_mul_left
-#print axioms FieldEquations.Octonion.inner_mul_right
-#print axioms FieldEquations.Octonion.not_assoc
-#print axioms FieldEquations.Octonion.null_example
-#print axioms FieldEquations.QuaternionOperators.conj_product
-#print axioms FieldEquations.QuaternionOperators.product_conj
-#print axioms FieldEquations.QuaternionOperators.square
-#print axioms FieldEquations.QuaternionOperators.square_sum
-#print axioms FieldEquations.QuaternionOperators.biquaternion_box
-#print axioms FieldEquations.SelfDual.star_star
-#print axioms FieldEquations.SelfDual.star_leftForm
-#print axioms FieldEquations.SelfDual.star_rightForm
-#print axioms FieldEquations.SelfDual.leftForm_spec
-#print axioms FieldEquations.SelfDual.rightForm_spec
-#print axioms FieldEquations.SelfDual.decomp
-#print axioms FieldEquations.SelfDual.selfDual_of_right_zero
-#print axioms FieldEquations.SelfDual.antiSelfDual_of_left_zero
 #print axioms FieldEquations.CompactBounds.exists_abs_bound_of_continuousOn
 #print axioms FieldEquations.CompactBounds.exists_pos_lower_bound_of_continuousOn
 #print axioms FieldEquations.CompactBounds.exists_abs_bound_on_rect
@@ -245,6 +135,21 @@ import FieldEquations.SphericalEYM.Uniqueness
 #print axioms FieldEquations.EYMLocalExistence.abs_le_of_near
 #print axioms FieldEquations.EYMLocalExistence.eym_local_existence
 #print axioms FieldEquations.EYMLocalExistence.eym_local_wellposed
+#print axioms FieldEquations.SphericalReduction.D_inv
+#print axioms FieldEquations.SphericalReduction.christoffel
+#print axioms FieldEquations.SphericalReduction.ric_eq
+#print axioms FieldEquations.SphericalReduction.rs_eq
+#print axioms FieldEquations.SphericalReduction.G00
+#print axioms FieldEquations.SphericalReduction.G11
+#print axioms FieldEquations.SphericalReduction.G01
+#print axioms FieldEquations.SphericalReduction.G22
+#print axioms FieldEquations.SphericalReduction.G33
+#print axioms FieldEquations.SphericalReduction.G_offdiag
+#print axioms FieldEquations.SphericalReduction.uu_eq
+#print axioms FieldEquations.SphericalReduction.vv_eq
+#print axioms FieldEquations.SphericalReduction.uv_eq
+#print axioms FieldEquations.SphericalReduction.thth_eq
+#print axioms FieldEquations.SphericalReduction.einstein_iff_system
 #print axioms FieldEquations.EYMTruncation.clampIcc_lip
 #print axioms FieldEquations.EYMTruncation.clampIcc_ge
 #print axioms FieldEquations.EYMTruncation.clampIcc_le

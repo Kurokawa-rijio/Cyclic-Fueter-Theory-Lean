@@ -13,7 +13,7 @@ Lean 4 / Mathlib formalization of
    variation, Lorentz signature, gauge covariance of curvature, the correspondence between frame and coordinate Einstein
    tensors, the second and contracted Bianchi identities, linearized gravity and the Newtonian limit
    (`FieldEquations/Gravity`).
-4. **Quaternionic and octonionic formulations**: Fueter operators and the biquaternionic d'Alembertian, Maxwell's
+
    equations as a single biquaternionic equation, Kustaanheimo–Stiefel identities, the Cayley 4-form on 2-forms of ℝ⁸,
    self-dual 2-forms, null fields, the BPS monopole and the Langevin function, Killing fields of AdS₂
    (`FieldEquations/Quaternionic`).
