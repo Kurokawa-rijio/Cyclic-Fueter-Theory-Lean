@@ -129,6 +129,7 @@ import CFT.Quantum.PhysicalInnerProductStates
 import CFT.Quantum.QuantumSphericalWDW
 import CFT.Quantum.QuantumStressBackreaction
 import CFT.Quantum.RNExtremalDoubleZero
+import CFT.Quantum.RNLogDerivative
 import CFT.Quantum.RNExtremalNearHorizon
 import CFT.Quantum.RNHorizons
 import CFT.Quantum.ReissnerNordstromTemperature
@@ -239,6 +240,17 @@ import CFT.Spherical.WedgeEnergyBalance
 import CFT.Spherical.WedgeEnergyIdentity
 import CFT.Spherical.WedgeExistence
 import CFT.Spherical.WedgeGaugeFixing
+import CFT.Spherical.WedgeHorizonClassification
+import CFT.Spherical.WedgeHorizonFirstZero
+import CFT.Spherical.WedgeHorizonCorrespondence
+import CFT.Spherical.WedgeHorizonFirstExit
+import CFT.Spherical.WedgeHorizonRatioLimit
+import CFT.Spherical.WedgeHorizonRhoCandidate
+import CFT.Spherical.WedgeHorizonRatioODE
+import CFT.Spherical.WedgeHorizonDefectTransport
+import CFT.Spherical.WedgeHorizonDefectConstancy
+import CFT.Spherical.WedgeHorizonDefectSource
+import CFT.Spherical.WedgeHorizonDefectCorner
 import CFT.Spherical.WedgeLocalExistenceGeneral
 import CFT.Spherical.WedgeLocalNoZero
 import CFT.Spherical.WedgeMisnerSharpMass
@@ -284,3 +296,4 @@ import CFT.Unification.UnifiedEquationPhases
 import CFT.Unification.WZWLevelObstruction
 import CFT.Unification.WeakGravityWindow
 import CFT.Unification.YangMillsVariation
+import CFT.Foundations.ConstantFunctional

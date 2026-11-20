@@ -30,6 +30,7 @@ import CFT.Foundations.CharacteristicGronwall
 import CFT.Foundations.CharacteristicUniqueness
 import CFT.Foundations.ClassicalMechanicsLaws
 import CFT.Foundations.CliffordDiracInputs
+import CFT.Foundations.ConstantFunctional
 import CFT.Foundations.ContinuumFieldLaws
 import CFT.Foundations.ContractedBianchiNormal
 import CFT.Foundations.CurvatureJetAlgebra
@@ -128,6 +129,7 @@ import CFT.Quantum.PhysicalInnerProductStates
 import CFT.Quantum.QuantumSphericalWDW
 import CFT.Quantum.QuantumStressBackreaction
 import CFT.Quantum.RNExtremalDoubleZero
+import CFT.Quantum.RNLogDerivative
 import CFT.Quantum.RNExtremalNearHorizon
 import CFT.Quantum.RNHorizons
 import CFT.Quantum.ReissnerNordstromTemperature
@@ -238,6 +240,17 @@ import CFT.Spherical.WedgeEnergyBalance
 import CFT.Spherical.WedgeEnergyIdentity
 import CFT.Spherical.WedgeExistence
 import CFT.Spherical.WedgeGaugeFixing
+import CFT.Spherical.WedgeHorizonClassification
+import CFT.Spherical.WedgeHorizonFirstZero
+import CFT.Spherical.WedgeHorizonCorrespondence
+import CFT.Spherical.WedgeHorizonFirstExit
+import CFT.Spherical.WedgeHorizonRatioLimit
+import CFT.Spherical.WedgeHorizonRhoCandidate
+import CFT.Spherical.WedgeHorizonRatioODE
+import CFT.Spherical.WedgeHorizonDefectTransport
+import CFT.Spherical.WedgeHorizonDefectConstancy
+import CFT.Spherical.WedgeHorizonDefectSource
+import CFT.Spherical.WedgeHorizonDefectCorner
 import CFT.Spherical.WedgeLocalExistenceGeneral
 import CFT.Spherical.WedgeLocalNoZero
 import CFT.Spherical.WedgeMisnerSharpMass
@@ -3835,3 +3848,100 @@ import CFT.Unification.YangMillsVariation
 #print axioms CFT.WDWWavePacketIntervalMono.quad_strictMonoOn
 #print axioms CFT.WDWWavePacketIntervalMono.quad_monotoneOn
 #print axioms CFT.WDWWavePacketIntervalMono.packetPhase_ne_quad_example
+#print axioms CFT.WedgeHorizon.wedgeOmega_deriv_at_horizon
+#print axioms CFT.WedgeHorizon.wedgeOmega_zero_iff
+#print axioms CFT.WedgeHorizon.wedgeOmega_simple_zero_iff
+#print axioms CFT.WedgeHorizon.wedgeOmega_doubleZeroOrMore_iff
+#print axioms CFT.WedgeHorizon.wedgeOmega_simple_zero_pos_temperature
+#print axioms CFT.WedgeHorizon.wedgeOmega_double_zero_extremal
+#print axioms CFT.WedgeHorizon.wedgeOmega_double_zero_infinite_throat
+#print axioms CFT.WedgeHorizon.wedgeOmega_double_zero_near_horizon
+#print axioms CFT.WedgeHorizon.wedgeOmega_simple_zero_finite_throat
+#print axioms CFT.WedgeHorizon.wedgeA_simple_zero_iff_rn
+#print axioms CFT.WedgeHorizon.wedgeA_doubleZeroOrMore_iff_rn
+#print axioms CFT.WedgeHorizon.wedge_horizon_classification
+#print axioms CFT.WedgeFirstZero.exists_zero_of_sign_change
+#print axioms CFT.WedgeFirstZero.first_zero
+#print axioms CFT.WedgeFirstZero.sign_change_of_hasDerivAt
+#print axioms CFT.WedgeFirstZero.sign_change_of_simpleZero
+#print axioms CFT.WedgeFirstZero.wedge_first_horizon
+#print axioms CFT.WedgeFirstZero.wedge_first_horizon_crossing
+#print axioms CFT.WedgeHorizonCorr.corr_zero_iff
+#print axioms CFT.WedgeHorizonCorr.corr_pos_iff
+#print axioms CFT.WedgeHorizonCorr.corr_neg_iff
+#print axioms CFT.WedgeHorizonCorr.corr_zero_at_horizon
+#print axioms CFT.WedgeHorizonCorr.corr_first_zero
+#print axioms CFT.WedgeHorizonCorr.corr_wedge_first_horizon
+#print axioms CFT.WedgeHorizonCorr.corr_simple_zero_iff
+#print axioms CFT.WedgeFirstExit.neckOm_pos
+#print axioms CFT.WedgeFirstExit.wedge_Om_zero_pos_of_data
+#print axioms CFT.WedgeFirstExit.wedge_first_horizon_of_data
+#print axioms CFT.WedgeFirstExit.wedge_first_exit
+#print axioms CFT.WedgeFirstExit.wedge_first_exit_of_continuation
+#print axioms CFT.WedgeFirstExit.wedge_first_exit_crossing
+#print axioms CFT.WedgeFirstExit.wedge_first_exit_coupling
+#print axioms CFT.WedgeFirstExit.wedge_first_exit_is_horizon
+#print axioms CFT.WedgeHorizonRatio.tendsto_div_of_hasDerivAt_zero
+#print axioms CFT.WedgeHorizonRatio.wedgeOmega_ratio_tendsto
+#print axioms CFT.WedgeHorizonRatio.wedgeOmega_ratio_limit_ne_zero
+#print axioms CFT.WedgeHorizonRatio.wedgeOmega_ratio_tendsto_rn
+#print axioms CFT.WedgeHorizonRatio.wedgeOmega_ratio_eventually_pos
+#print axioms CFT.WedgeHorizonRatio.wedgeOmega_ratio_eventually_pos_rn
+#print axioms CFT.WedgeHorizonRatio.wedge_first_exit_ratio_limit
+#print axioms CFT.constant_integral_zero
+#print axioms CFT.WedgeHorizonRho.strictMonoOn_of_deriv_pos_Icc
+#print axioms CFT.WedgeHorizonRho.injOn_of_deriv_pos_Icc
+#print axioms CFT.WedgeHorizonRho.image_Icc_of_deriv_pos
+#print axioms CFT.WedgeHorizonRho.const_of_hasDerivAt_zero_Icc
+#print axioms CFT.WedgeHorizonRho.wedge_r_slice_strictMonoOn
+#print axioms CFT.WedgeHorizonRho.wedge_r_slice_strictMonoOn_of_C2
+#print axioms CFT.WedgeHorizonRho.wedge_r_slice_image_Icc
+#print axioms CFT.WedgeHorizonRho.wedgeOmega_ratio_tendsto_rho_eq_r
+#print axioms CFT.WedgeHorizonRho.wedgeOmega_ratio_tendsto_rho_eq_r_rn
+#print axioms CFT.WedgeHorizonRho.wedgeOmega_ratio_limit_ne_zero_rho_eq_r
+#print axioms CFT.WedgeHorizonRho.wedge_ratio_const_of_deriv_zero
+#print axioms CFT.WedgeHorizonRho.wedge_first_exit_rho_limit
+#print axioms CFT.WedgeHorizonRatioODE.ratio_hasDerivAt
+#print axioms CFT.WedgeHorizonRatioODE.ratio_deriv_zero_iff
+#print axioms CFT.WedgeHorizonRatioODE.logDeriv_match_iff
+#print axioms CFT.WedgeHorizonRatioODE.ratio_const_of_logDeriv_match
+#print axioms CFT.WedgeHorizonRatioODE.eq_const_mul_of_ratio_const
+#print axioms CFT.WedgeHorizonRatioODE.correspondence_of_logDeriv_match
+#print axioms CFT.WedgeHorizonRatioODE.wedge_ratio_hasDerivAt
+#print axioms CFT.WedgeHorizonRatioODE.wedge_correspondence_of_logDeriv_match
+#print axioms CFT.WedgeDefectTransport.Om_logDeriv_hasDerivAt_v
+#print axioms CFT.WedgeDefectTransport.rLogDeriv_hasDerivAt_v
+#print axioms CFT.WedgeDefectTransport.defect_hasDerivAt_v
+#print axioms CFT.WedgeDefectTransport.defect_deriv_v
+#print axioms CFT.WedgeDefectTransport.correspondence_nec_source_zero
+#print axioms CFT.WedgeDefectTransport.defect_hasDerivAt_v_of_C2
+#print axioms CFT.WedgeDefectTransport.rnLogDeriv_hasDerivAt
+#print axioms CFT.WedgeDefectTransport.defect_transport_rn
+#print axioms CFT.WedgeDefectTransport.correspondence_nec_source_zero_rn
+#print axioms CFT.RNLogDeriv.rnF_deriv_value
+#print axioms CFT.RNLogDeriv.rnF_hasDerivAt_logDeriv
+#print axioms CFT.RNLogDeriv.rnF_deriv_eq
+#print axioms CFT.RNLogDeriv.rnF_ne_zero_of_ne
+#print axioms CFT.RNLogDeriv.rnF_logDeriv_eq
+#print axioms CFT.RNLogDeriv.rnLogDeriv_extremal
+#print axioms CFT.RNLogDeriv.rnLogDeriv_mul_sub_tendsto_one
+#print axioms CFT.RNLogDeriv.rnLogDeriv_mul_sub_tendsto_two
+#print axioms CFT.RNLogDeriv.wedge_correspondence_rn_logDeriv
+#print axioms CFT.RNLogDeriv.wedge_correspondence_rn_logDeriv_extremal
+#print axioms CFT.WedgeDefectConstancy.defectSource_eq_of_agree
+#print axioms CFT.WedgeDefectConstancy.defect_const_of_source_zero
+#print axioms CFT.WedgeDefectConstancy.defect_eq_zero_of_source_zero
+#print axioms CFT.WedgeDefectConstancy.defect_eq_zero_of_source_zero_of_C2
+#print axioms CFT.WedgeDefectConstancy.wedge_correspondence_of_source_zero
+#print axioms CFT.WedgeDefectConstancy.wedge_correspondence_of_source_zero_rn
+#print axioms CFT.WedgeDefectSource.defectSource_eq
+#print axioms CFT.WedgeDefectSource.defectSource_eq_zero_iff
+#print axioms CFT.WedgeDefectSource.defectSource_eq_zero_iff_balance
+#print axioms CFT.WedgeDefectSource.defectSource_rn_eq
+#print axioms CFT.WedgeDefectSource.defectSource_rn_eq_zero_iff
+#print axioms CFT.WedgeDefectCorner.defectSource_corner_eq
+#print axioms CFT.WedgeDefectCorner.defectSource_corner_ne_zero
+#print axioms CFT.WedgeDefectCorner.defectSource_corner_rn_eq
+#print axioms CFT.WedgeDefectCorner.logDerivDefect_corner_eq_zero
+#print axioms CFT.WedgeDefectCorner.defect_deriv_v_corner
+#print axioms CFT.WedgeDefectCorner.defect_neg_near_corner
